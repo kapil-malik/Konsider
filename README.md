@@ -1,71 +1,63 @@
 # Konsider
 
-Konsider is a Phase 1 MVP for an AI-powered country suitability and relocation advisor.
+Konsider is an evidence-backed country suitability and relocation advisor. It produces personalized,
+explainable country rankings from user priorities and is designed to grow into a system that
+refreshes public evidence, serves deterministic rankings, and supports conversational exploration.
 
-The project ranks countries against a user's priorities instead of presenting a generic "best countries" list. Phase 1 focuses on a small, explainable foundation that can later grow into a Streamlit app with retrieval, agent-style workflows, MCP tools, and deployment support.
+The repository is currently at the architecture-aligned Phase 1 foundation: fixture-backed country
+data and a tested Python scoring domain. API, worker, React, retrieval, and LLM runtimes are planned
+but intentionally not implemented in this structural change.
 
-## Phase 1 Scope
+## Architecture
 
-- 10 countries
-- 10 comparison parameters
-- Editable user weights
-- Weighted, explainable country rankings
-- Default profile-based rankings
-- Parameter-level score breakdowns
-- Structured metric loading
-- Qualitative evidence document loading
-- Tested scoring and validation core
+Konsider is organized around three independently deployable applications:
 
-This first sprint intentionally does not include Streamlit, LangGraph, MCP, Chroma, or LLM calls.
+- A Python data refresh worker that builds versioned, validated dataset releases.
+- A Python live engine that owns profiles, scoring, retrieval, chat tools, and public APIs.
+- A React + Vite website that accesses only the live engine.
 
-## Countries
+Start with [docs/architecture.md](docs/architecture.md). The component documents, storage design,
+and current sprint sequence are linked from there and from [docs/roadmap.md](docs/roadmap.md).
 
-- India
-- Singapore
-- Canada
-- Australia
-- Germany
-- Netherlands
-- Switzerland
-- United States
-- United Kingdom
-- UAE
+## Current Capabilities
 
-## Parameters
+- Ten countries and ten comparison metrics.
+- Complete fixture validation.
+- Editable and normalized user weights.
+- Three default profile templates.
+- Deterministic weighted rankings.
+- Parameter-level contribution breakdowns, strengths, and tradeoffs.
+- Qualitative evidence fixture loading.
 
-- Tech jobs
-- Finance jobs
-- Crime rate
-- Female safety
-- Healthcare
-- Air quality
-- Infrastructure
-- Tax burden
-- Cost of living
-- University quality
+All current scores are approximate MVP fixtures and are not a source of truth for relocation
+decisions.
 
-All parameter scores are normalized from 1 to 10, where 10 is better for the user. Negative metrics such as crime rate, tax burden, and cost of living are already inverted in the MVP data so higher remains better.
-
-## Project Layout
+## Repository Layout
 
 ```text
+apps/
+  api/                         # future FastAPI deployment root
+  worker/                      # future data refresh deployment root
+contracts/                     # future machine-readable shared contracts
 data/
-  countries.yml
-  parameter_definitions.yml
-  country_metrics.csv
-  evidence/
-src/
-  konsider/
-    data_loader.py
-    models.py
-    profiles.py
-    scoring.py
+  fixtures/                    # local pre-published Phase 1 dataset
+docs/
+  architecture.md
+  components/
+  roadmap.md
+  storage.md
+src/konsider/
+  domain/                      # framework-free models, profiles, scoring
+  repositories/               # fixture and future storage adapters
 tests/
+  unit/domain/
+  integration/repositories/
+web/                           # future React + Vite deployment root
 ```
 
 ## Setup
 
-```bash
+```powershell
 python -m venv .venv
 .venv\Scripts\activate
 python -m pip install -e .[dev]
@@ -73,37 +65,27 @@ python -m pip install -e .[dev]
 
 ## Run Tests
 
-```bash
+```powershell
 python -m pytest
+```
+
+The tests also run without third-party test tooling:
+
+```powershell
+python -m unittest discover -s tests
 ```
 
 ## Example
 
 ```python
-from konsider.data_loader import load_project_data
-from konsider.profiles import get_default_profile
-from konsider.scoring import build_ranking_table, get_country_breakdown, rank_countries
+from konsider.domain.profiles import get_default_profile
+from konsider.domain.scoring import build_ranking_table, rank_countries
+from konsider.repositories.fixture_repository import FixtureProjectDataRepository
 
-data = load_project_data()
+data = FixtureProjectDataRepository().load()
 profile = get_default_profile("indian_tech_professional_with_teenage_child")
-
 rankings = rank_countries(data.metrics, profile.weights)
 table = build_ranking_table(rankings, data.countries)
 
 print(table[0].rank, table[0].country_name, table[0].total_score)
-print(get_country_breakdown(rankings[0]))
 ```
-
-## Default Profiles
-
-Sprint 2 includes three starter profiles:
-
-- `indian_tech_professional_with_teenage_child`
-- `student_planning_higher_education`
-- `finance_professional`
-
-Profile weights are intentionally editable numeric priorities. The scoring engine normalizes them before ranking countries.
-
-## Data Caveat
-
-The included country scores are placeholder MVP estimates for product and architecture development. They are not a source of truth for real relocation decisions.

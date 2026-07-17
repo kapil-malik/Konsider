@@ -1,4 +1,8 @@
-# Konsider — Codex Context Pack
+# Konsider - Historical Context Pack
+
+> **Status: superseded.** This file preserves the original Phase 1 brief and sprint assumptions.
+> The accepted system design is now in [architecture.md](architecture.md), with the current delivery
+> sequence in [roadmap.md](roadmap.md). Component details live under [components/](components/).
 
 ## Project Summary
 
@@ -378,4 +382,3 @@ The project should clearly demonstrate:
 * critique
 * explainable recommendation
 * clean software architecture
-

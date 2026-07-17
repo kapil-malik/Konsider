@@ -1,8 +1,8 @@
 from unittest import TestCase
 
-from konsider.data_loader import load_project_data
-from konsider.profiles import DEFAULT_PROFILES, get_default_profile
-from konsider.scoring import normalize_weights
+from konsider.domain.profiles import DEFAULT_PROFILES, get_default_profile
+from konsider.domain.scoring import normalize_weights
+from konsider.repositories.fixture_repository import load_project_data
 
 
 class DefaultProfileTests(TestCase):

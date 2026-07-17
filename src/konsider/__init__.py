@@ -1,3 +1,3 @@
-"""Konsider country suitability scoring package."""
+"""Shared Python domain and repository adapters for Konsider."""
 
-__all__ = ["data_loader", "models", "profiles", "scoring"]
+__all__ = ["domain", "repositories"]

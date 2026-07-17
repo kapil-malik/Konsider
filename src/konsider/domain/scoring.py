@@ -5,7 +5,13 @@ from __future__ import annotations
 from collections import defaultdict
 from collections.abc import Iterable, Mapping
 
-from konsider.models import Country, CountryMetric, CountryRanking, RankingRow, ScoreContribution
+from konsider.domain.models import (
+    Country,
+    CountryMetric,
+    CountryRanking,
+    RankingRow,
+    ScoreContribution,
+)
 
 
 class ScoringError(ValueError):

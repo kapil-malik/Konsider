@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from konsider.models import DefaultProfile
+from konsider.domain.models import DefaultProfile
 
 
 DEFAULT_PROFILES: dict[str, DefaultProfile] = {

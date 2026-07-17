@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "konsider"
 version = "0.1.0"
-description = "Explainable country suitability scoring for relocation decisions."
+description = "Evidence-backed and explainable country suitability for relocation decisions."
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Konsider" }]

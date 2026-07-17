@@ -1,4 +1,4 @@
-"""Load and validate Konsider Phase 1 data files."""
+"""Load and validate the local Phase 1 fixture release."""
 
 from __future__ import annotations
 
@@ -7,17 +7,35 @@ import json
 from pathlib import Path
 from typing import Any
 
-from konsider.models import Country, CountryMetric, EvidenceDocument, ParameterDefinition, ProjectData
+from konsider.domain.models import (
+    Country,
+    CountryMetric,
+    EvidenceDocument,
+    ParameterDefinition,
+    ProjectData,
+)
 
-DEFAULT_DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+DEFAULT_FIXTURE_DIR = Path(__file__).resolve().parents[3] / "data" / "fixtures"
 
 
 class DataValidationError(ValueError):
     """Raised when the local MVP data files are incomplete or inconsistent."""
 
 
-def load_project_data(data_dir: Path | str = DEFAULT_DATA_DIR) -> ProjectData:
-    """Load all structured and qualitative MVP data."""
+class FixtureProjectDataRepository:
+    """Read one complete local fixture release from disk."""
+
+    def __init__(self, data_dir: Path | str = DEFAULT_FIXTURE_DIR) -> None:
+        self.data_dir = Path(data_dir)
+
+    def load(self) -> ProjectData:
+        """Load and validate the complete fixture release."""
+
+        return load_project_data(self.data_dir)
+
+
+def load_project_data(data_dir: Path | str = DEFAULT_FIXTURE_DIR) -> ProjectData:
+    """Load all structured and qualitative data from a fixture release."""
 
     data_path = Path(data_dir)
     countries = load_countries(data_path / "countries.yml")

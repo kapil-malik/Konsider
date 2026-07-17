@@ -1,15 +1,15 @@
 from unittest import TestCase
 
-from konsider.data_loader import load_project_data
-from konsider.models import CountryMetric
-from konsider.profiles import get_default_profile
-from konsider.scoring import (
+from konsider.domain.models import CountryMetric
+from konsider.domain.profiles import get_default_profile
+from konsider.domain.scoring import (
     ScoringError,
     build_ranking_table,
     get_country_breakdown,
     normalize_weights,
     rank_countries,
 )
+from konsider.repositories.fixture_repository import load_project_data
 
 
 class ScoringTests(TestCase):

@@ -1,7 +1,11 @@
 from pathlib import Path
 from unittest import TestCase
 
-from konsider.data_loader import DataValidationError, load_project_data
+from konsider.repositories.fixture_repository import (
+    DataValidationError,
+    FixtureProjectDataRepository,
+    load_project_data,
+)
 
 
 class DataLoaderTests(TestCase):
@@ -17,6 +21,12 @@ class DataLoaderTests(TestCase):
         data = load_project_data()
 
         self.assertTrue(all(1 <= metric.score <= 10 for metric in data.metrics))
+
+    def test_repository_loads_the_default_fixture_release(self):
+        data = FixtureProjectDataRepository().load()
+
+        self.assertEqual(len(data.countries), 10)
+        self.assertEqual(len(data.metrics), 100)
 
     def test_loader_rejects_missing_evidence(self):
         import tempfile
