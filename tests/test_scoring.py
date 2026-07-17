@@ -2,7 +2,14 @@ from unittest import TestCase
 
 from konsider.data_loader import load_project_data
 from konsider.models import CountryMetric
-from konsider.scoring import ScoringError, normalize_weights, rank_countries
+from konsider.profiles import get_default_profile
+from konsider.scoring import (
+    ScoringError,
+    build_ranking_table,
+    get_country_breakdown,
+    normalize_weights,
+    rank_countries,
+)
 
 
 class ScoringTests(TestCase):
@@ -39,19 +46,36 @@ class ScoringTests(TestCase):
 
     def test_rank_real_dataset_with_default_style_profile(self):
         data = load_project_data()
-        rankings = rank_countries(
-            data.metrics,
-            {
-                "tech_jobs": 5,
-                "female_safety": 5,
-                "crime_rate": 4,
-                "university_quality": 4,
-                "healthcare": 3,
-                "cost_of_living": 2,
-                "tax_burden": 1,
-            },
-        )
+        profile = get_default_profile("indian_tech_professional_with_teenage_child")
+        rankings = rank_countries(data.metrics, profile.weights)
 
         self.assertEqual(len(rankings), 10)
         self.assertGreaterEqual(rankings[0].total_score, rankings[-1].total_score)
         self.assertTrue(all(ranking.contributions for ranking in rankings))
+
+    def test_country_breakdown_orders_contributions_descending(self):
+        metrics = [
+            CountryMetric("alpha", "tech_jobs", 8.0, "test", "2026-01-01", "test"),
+            CountryMetric("alpha", "cost_of_living", 4.0, "test", "2026-01-01", "test"),
+            CountryMetric("beta", "tech_jobs", 1.0, "test", "2026-01-01", "test"),
+            CountryMetric("beta", "cost_of_living", 1.0, "test", "2026-01-01", "test"),
+        ]
+
+        ranking = rank_countries(metrics, {"tech_jobs": 1, "cost_of_living": 1})[0]
+        breakdown = get_country_breakdown(ranking)
+
+        self.assertEqual([item.parameter_id for item in breakdown], ["tech_jobs", "cost_of_living"])
+        self.assertGreaterEqual(breakdown[0].contribution, breakdown[1].contribution)
+
+    def test_build_ranking_table_adds_country_names_and_signals(self):
+        data = load_project_data()
+        profile = get_default_profile("student_planning_higher_education")
+        rankings = rank_countries(data.metrics, profile.weights)
+
+        table = build_ranking_table(rankings, data.countries, signal_count=2)
+
+        self.assertEqual(len(table), 10)
+        self.assertEqual(table[0].rank, 1)
+        self.assertTrue(table[0].country_name)
+        self.assertEqual(len(table[0].top_strengths), 2)
+        self.assertEqual(len(table[0].top_tradeoffs), 2)

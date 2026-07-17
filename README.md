@@ -10,6 +10,8 @@ The project ranks countries against a user's priorities instead of presenting a 
 - 10 comparison parameters
 - Editable user weights
 - Weighted, explainable country rankings
+- Default profile-based rankings
+- Parameter-level score breakdowns
 - Structured metric loading
 - Qualitative evidence document loading
 - Tested scoring and validation core
@@ -56,6 +58,7 @@ src/
   konsider/
     data_loader.py
     models.py
+    profiles.py
     scoring.py
 tests/
 ```
@@ -78,19 +81,28 @@ python -m pytest
 
 ```python
 from konsider.data_loader import load_project_data
-from konsider.scoring import rank_countries
+from konsider.profiles import get_default_profile
+from konsider.scoring import build_ranking_table, get_country_breakdown, rank_countries
 
 data = load_project_data()
-weights = {
-    "tech_jobs": 5,
-    "female_safety": 5,
-    "university_quality": 4,
-    "cost_of_living": 2,
-}
+profile = get_default_profile("indian_tech_professional_with_teenage_child")
 
-rankings = rank_countries(data.metrics, weights)
-print(rankings[0].country_id, rankings[0].total_score)
+rankings = rank_countries(data.metrics, profile.weights)
+table = build_ranking_table(rankings, data.countries)
+
+print(table[0].rank, table[0].country_name, table[0].total_score)
+print(get_country_breakdown(rankings[0]))
 ```
+
+## Default Profiles
+
+Sprint 2 includes three starter profiles:
+
+- `indian_tech_professional_with_teenage_child`
+- `student_planning_higher_education`
+- `finance_professional`
+
+Profile weights are intentionally editable numeric priorities. The scoring engine normalizes them before ranking countries.
 
 ## Data Caveat
 

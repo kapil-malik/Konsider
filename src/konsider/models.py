@@ -47,6 +47,14 @@ class ProjectData:
 
 
 @dataclass(frozen=True)
+class DefaultProfile:
+    id: str
+    name: str
+    description: str
+    weights: dict[str, float]
+
+
+@dataclass(frozen=True)
 class ScoreContribution:
     parameter_id: str
     raw_score: float
@@ -59,3 +67,13 @@ class CountryRanking:
     country_id: str
     total_score: float
     contributions: list[ScoreContribution]
+
+
+@dataclass(frozen=True)
+class RankingRow:
+    rank: int
+    country_id: str
+    country_name: str
+    total_score: float
+    top_strengths: list[str]
+    top_tradeoffs: list[str]

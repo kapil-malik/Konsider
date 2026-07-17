@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections import defaultdict
 from collections.abc import Iterable, Mapping
 
-from konsider.models import CountryMetric, CountryRanking, ScoreContribution
+from konsider.models import Country, CountryMetric, CountryRanking, RankingRow, ScoreContribution
 
 
 class ScoringError(ValueError):
@@ -27,7 +27,9 @@ def normalize_weights(
     if unknown_parameters:
         raise ScoringError(f"Unknown weight parameter(s): {sorted(unknown_parameters)}")
 
-    normalized_inputs = {parameter_id: float(weights.get(parameter_id, 0.0)) for parameter_id in allowed_parameters}
+    normalized_inputs = {
+        parameter_id: float(weights.get(parameter_id, 0.0)) for parameter_id in allowed_parameters
+    }
     negative_weights = [parameter_id for parameter_id, weight in normalized_inputs.items() if weight < 0]
     if negative_weights:
         raise ScoringError(f"Weights cannot be negative: {sorted(negative_weights)}")
@@ -59,34 +61,97 @@ def rank_countries(
     parameter_ids = {metric.parameter_id for metric in metric_rows}
     normalized_weights = normalize_weights(weights, parameter_ids)
 
-    metrics_by_country: dict[str, list[CountryMetric]] = defaultdict(list)
-    for metric in metric_rows:
-        metrics_by_country[metric.country_id].append(metric)
+    metrics_by_country = group_metrics_by_country(metric_rows)
 
     rankings = []
     for country_id, country_metrics in metrics_by_country.items():
-        contributions = []
-        for metric in sorted(country_metrics, key=lambda item: item.parameter_id):
-            weight = normalized_weights.get(metric.parameter_id, 0.0)
-            if weight == 0:
-                continue
-            contribution = metric.score * weight
-            contributions.append(
-                ScoreContribution(
-                    parameter_id=metric.parameter_id,
-                    raw_score=metric.score,
-                    weight=weight,
-                    contribution=contribution,
-                )
-            )
+        rankings.append(score_country(country_id, country_metrics, normalized_weights))
 
-        total_score = sum(item.contribution for item in contributions)
-        rankings.append(
-            CountryRanking(
-                country_id=country_id,
-                total_score=round(total_score, 4),
-                contributions=contributions,
+    return sorted(rankings, key=lambda item: (-item.total_score, item.country_id))
+
+
+def score_country(
+    country_id: str,
+    metrics: Iterable[CountryMetric],
+    normalized_weights: Mapping[str, float],
+) -> CountryRanking:
+    """Score one country using already-normalized weights."""
+
+    contributions = []
+    for metric in sorted(metrics, key=lambda item: item.parameter_id):
+        weight = normalized_weights.get(metric.parameter_id, 0.0)
+        if weight == 0:
+            continue
+        contribution = metric.score * weight
+        contributions.append(
+            ScoreContribution(
+                parameter_id=metric.parameter_id,
+                raw_score=metric.score,
+                weight=weight,
+                contribution=round(contribution, 4),
             )
         )
 
-    return sorted(rankings, key=lambda item: (-item.total_score, item.country_id))
+    total_score = sum(item.contribution for item in contributions)
+    return CountryRanking(
+        country_id=country_id,
+        total_score=round(total_score, 4),
+        contributions=contributions,
+    )
+
+
+def group_metrics_by_country(metrics: Iterable[CountryMetric]) -> dict[str, list[CountryMetric]]:
+    """Group metric rows by country id."""
+
+    metrics_by_country: dict[str, list[CountryMetric]] = defaultdict(list)
+    for metric in metrics:
+        metrics_by_country[metric.country_id].append(metric)
+    return dict(metrics_by_country)
+
+
+def get_country_breakdown(ranking: CountryRanking) -> list[ScoreContribution]:
+    """Return a country's score contributions from largest to smallest."""
+
+    return sorted(ranking.contributions, key=lambda item: (-item.contribution, item.parameter_id))
+
+
+def build_ranking_table(
+    rankings: Iterable[CountryRanking],
+    countries: Mapping[str, Country],
+    *,
+    signal_count: int = 3,
+) -> list[RankingRow]:
+    """Build display-ready ranking rows with strengths and tradeoffs."""
+
+    rows = []
+    for rank, ranking in enumerate(rankings, start=1):
+        country = countries.get(ranking.country_id)
+        country_name = country.name if country else ranking.country_id
+        rows.append(
+            RankingRow(
+                rank=rank,
+                country_id=ranking.country_id,
+                country_name=country_name,
+                total_score=ranking.total_score,
+                top_strengths=_top_parameter_ids(ranking, signal_count, strongest=True),
+                top_tradeoffs=_top_parameter_ids(ranking, signal_count, strongest=False),
+            )
+        )
+    return rows
+
+
+def _top_parameter_ids(
+    ranking: CountryRanking,
+    count: int,
+    *,
+    strongest: bool,
+) -> list[str]:
+    ordered = sorted(
+        ranking.contributions,
+        key=lambda item: (
+            -item.raw_score if strongest else item.raw_score,
+            -item.weight,
+            item.parameter_id,
+        ),
+    )
+    return [item.parameter_id for item in ordered[:count]]
