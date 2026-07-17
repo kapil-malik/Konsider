@@ -1,0 +1,12 @@
+[
+  {"id": "india", "name": "India", "region": "Asia"},
+  {"id": "singapore", "name": "Singapore", "region": "Asia"},
+  {"id": "canada", "name": "Canada", "region": "North America"},
+  {"id": "australia", "name": "Australia", "region": "Oceania"},
+  {"id": "germany", "name": "Germany", "region": "Europe"},
+  {"id": "netherlands", "name": "Netherlands", "region": "Europe"},
+  {"id": "switzerland", "name": "Switzerland", "region": "Europe"},
+  {"id": "united_states", "name": "United States", "region": "North America"},
+  {"id": "united_kingdom", "name": "United Kingdom", "region": "Europe"},
+  {"id": "uae", "name": "UAE", "region": "Middle East"}
+]

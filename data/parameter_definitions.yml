@@ -1,0 +1,72 @@
+[
+  {
+    "id": "tech_jobs",
+    "name": "Tech jobs",
+    "category": "Career",
+    "description": "Depth of technology roles, startup activity, and global tech employer presence.",
+    "higher_is_better": true
+  },
+  {
+    "id": "finance_jobs",
+    "name": "Finance jobs",
+    "category": "Career",
+    "description": "Depth of banking, investment, fintech, and corporate finance opportunities.",
+    "higher_is_better": true
+  },
+  {
+    "id": "crime_rate",
+    "name": "Crime rate",
+    "category": "Safety",
+    "description": "Inverted public safety score; higher means lower perceived crime risk.",
+    "higher_is_better": true
+  },
+  {
+    "id": "female_safety",
+    "name": "Female safety",
+    "category": "Safety",
+    "description": "Approximate suitability for women based on safety, mobility, and social factors.",
+    "higher_is_better": true
+  },
+  {
+    "id": "healthcare",
+    "name": "Healthcare",
+    "category": "Quality of Life",
+    "description": "Availability, reliability, and quality of healthcare access.",
+    "higher_is_better": true
+  },
+  {
+    "id": "air_quality",
+    "name": "Air quality",
+    "category": "Quality of Life",
+    "description": "Inverted pollution score; higher means cleaner air in major population centers.",
+    "higher_is_better": true
+  },
+  {
+    "id": "infrastructure",
+    "name": "Infrastructure",
+    "category": "Quality of Life",
+    "description": "Transport, utilities, digital infrastructure, and public systems reliability.",
+    "higher_is_better": true
+  },
+  {
+    "id": "tax_burden",
+    "name": "Tax burden",
+    "category": "Economics",
+    "description": "Inverted tax score; higher means lighter effective tax burden for many professionals.",
+    "higher_is_better": true
+  },
+  {
+    "id": "cost_of_living",
+    "name": "Cost of living",
+    "category": "Economics",
+    "description": "Inverted affordability score; higher means more affordable relative daily costs.",
+    "higher_is_better": true
+  },
+  {
+    "id": "university_quality",
+    "name": "University quality",
+    "category": "Education",
+    "description": "Strength of university ecosystem, global reputation, and higher education options.",
+    "higher_is_better": true
+  }
+]

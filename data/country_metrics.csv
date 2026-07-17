@@ -1,0 +1,101 @@
+country_id,parameter_id,score,source,last_updated,notes
+india,tech_jobs,8.2,MVP-estimate,2026-01-01,Strong domestic tech market and startup ecosystem.
+india,finance_jobs,7.0,MVP-estimate,2026-01-01,Large finance sector with concentration in major cities.
+india,crime_rate,5.2,MVP-estimate,2026-01-01,Inverted safety score; varies significantly by city.
+india,female_safety,4.8,MVP-estimate,2026-01-01,Mobility and safety vary widely by region and time of day.
+india,healthcare,5.8,MVP-estimate,2026-01-01,Strong private care in metros with uneven public access.
+india,air_quality,3.8,MVP-estimate,2026-01-01,Major city air quality can be a serious concern.
+india,infrastructure,5.7,MVP-estimate,2026-01-01,Rapidly improving but inconsistent across cities.
+india,tax_burden,6.2,MVP-estimate,2026-01-01,Moderate professional tax burden in this rough scoring model.
+india,cost_of_living,8.0,MVP-estimate,2026-01-01,More affordable than most other Phase 1 countries.
+india,university_quality,6.6,MVP-estimate,2026-01-01,Strong elite institutions with uneven broader quality.
+singapore,tech_jobs,8.6,MVP-estimate,2026-01-01,Regional technology hub with strong multinational presence.
+singapore,finance_jobs,9.2,MVP-estimate,2026-01-01,Major Asian finance and wealth management center.
+singapore,crime_rate,9.4,MVP-estimate,2026-01-01,Very strong public safety in the MVP scoring model.
+singapore,female_safety,8.8,MVP-estimate,2026-01-01,High safety and reliable public infrastructure.
+singapore,healthcare,8.9,MVP-estimate,2026-01-01,High-quality healthcare with significant private costs.
+singapore,air_quality,7.2,MVP-estimate,2026-01-01,Generally strong but can be affected by regional haze.
+singapore,infrastructure,9.6,MVP-estimate,2026-01-01,Excellent transport and public systems.
+singapore,tax_burden,8.8,MVP-estimate,2026-01-01,Relatively attractive personal tax environment.
+singapore,cost_of_living,4.2,MVP-estimate,2026-01-01,Housing and schooling can be expensive.
+singapore,university_quality,8.5,MVP-estimate,2026-01-01,Strong universities and international reputation.
+canada,tech_jobs,8.0,MVP-estimate,2026-01-01,Good technology hubs in Toronto, Vancouver, Montreal, and Waterloo.
+canada,finance_jobs,7.6,MVP-estimate,2026-01-01,Strong banking and finance market centered around Toronto.
+canada,crime_rate,8.1,MVP-estimate,2026-01-01,Generally safe with city-specific differences.
+canada,female_safety,8.2,MVP-estimate,2026-01-01,Strong general safety and social protections.
+canada,healthcare,8.0,MVP-estimate,2026-01-01,Public healthcare access is valued but wait times can matter.
+canada,air_quality,8.1,MVP-estimate,2026-01-01,Generally good with wildfire season exceptions.
+canada,infrastructure,7.4,MVP-estimate,2026-01-01,Solid infrastructure with car dependence in many areas.
+canada,tax_burden,5.2,MVP-estimate,2026-01-01,Relatively high tax burden for many professionals.
+canada,cost_of_living,5.0,MVP-estimate,2026-01-01,Housing affordability is a major issue in leading cities.
+canada,university_quality,8.3,MVP-estimate,2026-01-01,Strong higher education options across provinces.
+australia,tech_jobs,7.4,MVP-estimate,2026-01-01,Good tech market in Sydney, Melbourne, and Brisbane.
+australia,finance_jobs,7.2,MVP-estimate,2026-01-01,Healthy finance sector with Sydney as a major hub.
+australia,crime_rate,8.0,MVP-estimate,2026-01-01,Generally strong public safety.
+australia,female_safety,8.0,MVP-estimate,2026-01-01,Good safety profile with urban and regional differences.
+australia,healthcare,8.3,MVP-estimate,2026-01-01,Strong public-private healthcare system.
+australia,air_quality,8.0,MVP-estimate,2026-01-01,Generally good with bushfire-related exceptions.
+australia,infrastructure,7.6,MVP-estimate,2026-01-01,Good infrastructure with distance and housing constraints.
+australia,tax_burden,5.4,MVP-estimate,2026-01-01,Moderate to high tax burden for many professionals.
+australia,cost_of_living,5.1,MVP-estimate,2026-01-01,Major cities are expensive.
+australia,university_quality,8.1,MVP-estimate,2026-01-01,Strong university sector and international student market.
+germany,tech_jobs,7.8,MVP-estimate,2026-01-01,Strong engineering and growing software market.
+germany,finance_jobs,7.4,MVP-estimate,2026-01-01,Frankfurt and other cities provide solid finance opportunities.
+germany,crime_rate,8.0,MVP-estimate,2026-01-01,Generally safe by MVP comparison.
+germany,female_safety,8.1,MVP-estimate,2026-01-01,Strong general safety and rights environment.
+germany,healthcare,8.7,MVP-estimate,2026-01-01,High-quality healthcare system.
+germany,air_quality,7.7,MVP-estimate,2026-01-01,Generally good with urban variation.
+germany,infrastructure,8.0,MVP-estimate,2026-01-01,Strong infrastructure with some modernization concerns.
+germany,tax_burden,4.8,MVP-estimate,2026-01-01,Higher tax and social contribution burden.
+germany,cost_of_living,6.0,MVP-estimate,2026-01-01,More affordable than some peers but city dependent.
+germany,university_quality,8.2,MVP-estimate,2026-01-01,Strong public university system and research base.
+netherlands,tech_jobs,8.0,MVP-estimate,2026-01-01,Strong tech and startup activity around Amsterdam and Eindhoven.
+netherlands,finance_jobs,7.5,MVP-estimate,2026-01-01,Good finance and fintech opportunities.
+netherlands,crime_rate,8.2,MVP-estimate,2026-01-01,Generally safe with local variation.
+netherlands,female_safety,8.4,MVP-estimate,2026-01-01,High safety and quality of life indicators.
+netherlands,healthcare,8.4,MVP-estimate,2026-01-01,Strong healthcare system with insurance complexity.
+netherlands,air_quality,7.5,MVP-estimate,2026-01-01,Generally good but dense urban areas vary.
+netherlands,infrastructure,8.8,MVP-estimate,2026-01-01,Excellent transport and cycling infrastructure.
+netherlands,tax_burden,5.0,MVP-estimate,2026-01-01,Higher tax burden partly offset by public services.
+netherlands,cost_of_living,5.3,MVP-estimate,2026-01-01,Housing availability and cost are constraints.
+netherlands,university_quality,8.2,MVP-estimate,2026-01-01,Strong internationally ranked universities.
+switzerland,tech_jobs,8.1,MVP-estimate,2026-01-01,Strong tech, pharma, and research-linked opportunities.
+switzerland,finance_jobs,8.8,MVP-estimate,2026-01-01,Major global finance and wealth management center.
+switzerland,crime_rate,9.0,MVP-estimate,2026-01-01,Very strong public safety profile.
+switzerland,female_safety,8.6,MVP-estimate,2026-01-01,High safety and public order.
+switzerland,healthcare,9.0,MVP-estimate,2026-01-01,Excellent healthcare quality with high insurance costs.
+switzerland,air_quality,8.6,MVP-estimate,2026-01-01,Strong environmental quality overall.
+switzerland,infrastructure,9.2,MVP-estimate,2026-01-01,Excellent transport and civic infrastructure.
+switzerland,tax_burden,6.8,MVP-estimate,2026-01-01,Tax burden can be favorable but varies by canton.
+switzerland,cost_of_living,3.6,MVP-estimate,2026-01-01,Very high living costs.
+switzerland,university_quality,8.8,MVP-estimate,2026-01-01,Excellent universities and research institutions.
+united_states,tech_jobs,9.5,MVP-estimate,2026-01-01,World-leading depth in tech roles and company scale.
+united_states,finance_jobs,9.0,MVP-estimate,2026-01-01,Deep finance market across major hubs.
+united_states,crime_rate,5.8,MVP-estimate,2026-01-01,Safety varies substantially by city and neighborhood.
+united_states,female_safety,6.8,MVP-estimate,2026-01-01,Strong opportunity but safety and policy vary by state.
+united_states,healthcare,6.7,MVP-estimate,2026-01-01,High quality can be available but cost and insurance complexity are major issues.
+united_states,air_quality,7.2,MVP-estimate,2026-01-01,Generally decent with regional variation.
+united_states,infrastructure,6.8,MVP-estimate,2026-01-01,Strong digital and business infrastructure with uneven public systems.
+united_states,tax_burden,6.0,MVP-estimate,2026-01-01,Varies widely by federal, state, and local profile.
+united_states,cost_of_living,4.8,MVP-estimate,2026-01-01,Leading job hubs can be very expensive.
+united_states,university_quality,9.6,MVP-estimate,2026-01-01,World-leading higher education ecosystem.
+united_kingdom,tech_jobs,8.0,MVP-estimate,2026-01-01,London and regional hubs support a strong tech market.
+united_kingdom,finance_jobs,8.8,MVP-estimate,2026-01-01,London is a leading global finance center.
+united_kingdom,crime_rate,7.2,MVP-estimate,2026-01-01,Generally safe with city-specific concerns.
+united_kingdom,female_safety,7.5,MVP-estimate,2026-01-01,Good overall but public safety concerns vary by area.
+united_kingdom,healthcare,7.8,MVP-estimate,2026-01-01,NHS access is valued but wait times can be material.
+united_kingdom,air_quality,7.1,MVP-estimate,2026-01-01,Generally moderate to good with urban variation.
+united_kingdom,infrastructure,7.4,MVP-estimate,2026-01-01,Strong national systems with aging infrastructure in places.
+united_kingdom,tax_burden,5.1,MVP-estimate,2026-01-01,Moderate to high tax burden for professionals.
+united_kingdom,cost_of_living,4.9,MVP-estimate,2026-01-01,London and the southeast are expensive.
+united_kingdom,university_quality,9.0,MVP-estimate,2026-01-01,Excellent universities and global reputation.
+uae,tech_jobs,7.2,MVP-estimate,2026-01-01,Growing tech and digital transformation market.
+uae,finance_jobs,8.2,MVP-estimate,2026-01-01,Dubai and Abu Dhabi are strong finance hubs.
+uae,crime_rate,8.8,MVP-estimate,2026-01-01,Low crime profile in the MVP scoring model.
+uae,female_safety,8.0,MVP-estimate,2026-01-01,High public safety with important legal and cultural context.
+uae,healthcare,8.0,MVP-estimate,2026-01-01,High-quality private healthcare access in major emirates.
+uae,air_quality,5.9,MVP-estimate,2026-01-01,Heat, dust, and urban conditions affect air quality.
+uae,infrastructure,9.0,MVP-estimate,2026-01-01,Excellent urban infrastructure in major emirates.
+uae,tax_burden,9.4,MVP-estimate,2026-01-01,Very attractive personal tax profile for many expats.
+uae,cost_of_living,5.5,MVP-estimate,2026-01-01,Lifestyle and schooling choices can make costs high.
+uae,university_quality,6.8,MVP-estimate,2026-01-01,Improving but less deep than top education destinations.
