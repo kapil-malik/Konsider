@@ -1,90 +1,106 @@
 # Konsider Roadmap
 
-Status: current roadmap
+Status: worker-first roadmap
 
-Supersedes the sprint sequence in `konsider_context.md`.
+Last updated: 2026-07-17
 
-## Product Direction
+Supersedes the fixture-first product sequence in `konsider_context.md`. The fixture repository remains
+test-only; fixture scores are not evidence and cannot enter a real dataset release.
 
-Konsider will become an evidence-backed, personalized country decision platform with three
-deployable components: a data refresh worker, a Python live engine, and a React web application.
-The deterministic scoring domain remains independent of LLMs. Retrieval and conversational agents
-use that domain through typed tools and cite versioned evidence.
+## Completion Gate
 
-## Completed Foundation
+The live engine, FastAPI surface, React UI, retrieval, explanations, LLM chat, agents, SSE, MCP, and
+cloud deployment are blocked until a local release demonstrates all of the following:
 
-### Sprint 1: Repository and Fixture Data
+- at least five defensible criteria backed by reproducible official or clearly identified independent
+  sources across the 20-country experiment set;
+- immutable raw bytes plus URL, retrieval time, HTTP metadata, checksum, source version, and parser
+  version;
+- normalized observations that retain year, unit, geographic scope, and reported/modelled/imputed or
+  derived status;
+- explicit missing, stale, incomparable, and rejected records without substituted estimates;
+- versioned, transparent scoring experiments and sensitivity results;
+- a validation report that passes schema, range, coverage, freshness, duplication, and provenance
+  checks;
+- immutable draft-to-published promotion and replay tests that reproduce observations and scores.
 
-- Python package and project configuration.
-- Ten-country, ten-metric fixture dataset.
-- Fixture validation and qualitative evidence loading.
-- Initial tests and README.
+A criterion that fails the gate is narrowed, redefined, or deferred. Missing data is never filled with
+fixture-era scores.
 
-### Sprint 2: Deterministic Scoring
+## Stage 1: 20-Country Feasibility Spike
 
-- Weight normalization and country ranking.
-- Default profiles.
-- Parameter-level contributions, strengths, and tradeoffs.
-- Scoring and profile tests.
+Evaluate India, Singapore, Canada, Australia, Germany, Netherlands, Switzerland, United States,
+United Kingdom, United Arab Emirates, France, Sweden, Denmark, Norway, Ireland, New Zealand, Japan,
+South Korea, Spain, and Portugal using stable ISO alpha-3 codes.
 
-### Architecture Alignment
+For every proposed source, verify the current official download or documented API, methodology,
+coverage, reference period, update cadence, usage/attribution terms, and redistribution constraints.
+Record the result in the source catalog even when the source is rejected.
 
-- Define the three deployable boundaries and their storage/API handshakes.
-- Move existing behavior into domain and fixture-repository packages.
-- Reserve application roots for the API, worker, and website.
-- Keep this step behavior-preserving.
+Initial decisions:
 
-## Planned Delivery
+1. Air pollution exposure: WHO population-weighted modelled PM2.5. The unevenly monitored WHO
+   ground-measurement database is retained as reconnaissance evidence but is not used to rank countries.
+2. Serious violent-crime risk: intentional homicide per 100,000, with UNODC lineage and source type.
+3. Healthcare service access: WHO UHC Service Coverage Index (SDG 3.8.1), not expat healthcare quality.
+4. Relative national price level: World Bank ICP household-consumption PPP relative to market exchange,
+   anchored to the 2021 benchmark; it is not a city budget.
+5. Women's inclusion, justice, and security: latest downloadable GIWPS/PRIO WPS Index data, preserving
+   composite and imputation caveats.
+6. Infrastructure: component feasibility only until coverage, correlation, weighting, and sensitivity
+   tests justify a composite.
 
-### Sprint 3: API-backed React MVP
+## Stage 2: Observation, Provenance, and Release Contracts
 
-- Add a minimal FastAPI live engine using the fixture repository.
-- Publish catalog and ranking endpoints with generated OpenAPI.
-- Build the React + Vite + TypeScript website.
-- Add profile selection, editable weights, top-K ranking, contribution breakdown, and caveats.
-- Deploy the website locally first; keep it compatible with Amplify Hosting.
+Implement source registrations, immutable content-addressed raw artifacts, source-neutral observations,
+quality flags, validation reports, draft releases, atomic publication, active-release pointers, and replay.
+Contracts are finalized from the real source schemas rather than from fixture tables.
 
-### Sprint 4: Evidence Model and Retrieval
+## Stage 3: WHO Air-Quality Vertical Slice
 
-- Introduce structured evidence IDs and provenance fields.
-- Add evidence lookup endpoints and website evidence details.
-- Add retrieval interfaces and a local retrieval implementation.
-- Provide template-based explanations that work without an LLM key.
+Deliver source registration -> HTTP capture -> immutable artifact -> parser -> normalized modelled PM2.5
+observations -> validation -> draft release -> publication -> replay. Publication must fail on missing
+provenance, duplicates, invalid units/ranges, or insufficient country coverage.
 
-### Sprint 5: Conversational Profiles and Explanations
+## Stage 4: Worker Expansion
 
-- Add chat sessions, profile revisions, typed stream events, and SSE.
-- Integrate an LLM behind server-side tools and secrets.
-- Allow chat to propose/apply weight changes and refresh rankings.
-- Require evidence citations and retain a deterministic fallback.
+Add one source family at a time, rerunning the full release gate after each:
 
-### Sprint 6: First Production Data Connector
+1. UNODC intentional homicide and WHO UHC.
+2. World Bank ICP household price-level inputs and derivation.
+3. WPS Index overall and dimension data where terms permit redistribution.
+4. Infrastructure components from World Bank, UN DESA, and ITU; do not publish a composite until the
+   sensitivity study passes.
 
-- Add source registrations, refresh runs, raw-artifact capture, and draft releases.
-- Implement one approved public API connector end to end.
-- Add normalization, validation, publication, and replay tests.
-- Keep fixture releases available for demos and tests.
+## Stage 5: Scoring Experiments
 
-### Sprint 7: Critic, Agent Workflow, and MCP
+Explore policy-threshold bands and winsorized min-max/percentile transformations using real
+distributions. Every score retains input observation IDs, direction, transform parameters, method
+version, and sensitivity results. Scores use modest precision and never imply source certainty that is
+not present.
 
-- Add recommendation critique and explicit risk/caveat output.
-- Introduce LangGraph only where durable orchestration improves the proven service flow.
-- Expose stable ranking, comparison, evidence, and reporting tools through MCP.
-- Test tool use, citation coverage, and failure fallbacks.
+## Stage 6: First Published Local Dataset
 
-### Sprint 8: AWS Deployment and Operations
+Publish an immutable release only after at least five criteria pass. Keep fixtures isolated for unit tests.
+Document what every observation and score means, does not mean, and how stale/modelled/imputed data is
+shown. This stage is the prerequisite for all live-product work.
 
-- Host the React application on Amplify Hosting.
-- Deploy the FastAPI container to App Runner or ECS Fargate based on measured needs.
-- Schedule refresh workflows with EventBridge and Step Functions.
-- Add AWS-backed repositories, secrets, tracing, alerts, backup, and rollback procedures.
-- Add authentication and user-data lifecycle controls when persistence is enabled.
+## Deferred Product Sequence
+
+After the completion gate, and only then:
+
+1. Build the framework-free live ranking service and FastAPI endpoints against one published release.
+2. Build the React comparison UI.
+3. Add structured evidence lookup and deterministic explanations.
+4. Add retrieval only when metadata/lexical lookup is insufficient.
+5. Add LLM chat, typed events/SSE, agents, and MCP after deterministic behavior is proven.
+6. Add AWS storage and scheduling adapters after local worker operations are reliable.
 
 ## Delivery Rules
 
-- Each sprint ends with a runnable vertical slice, tests, and updated contracts.
-- Business logic is not duplicated between Python and TypeScript.
-- New data is not published without provenance and validation.
-- LLM availability is never required for deterministic ranking.
-- Architecture choices listed as deferred in `architecture.md` remain reversible until load,
-  latency, cost, or compliance requirements justify a decision.
+- Each meaningful source or infrastructure increment ends with tests and updated source/methodology docs.
+- Published releases and raw artifacts are immutable; corrections produce new IDs.
+- The worker never manufactures observations or scores for missing source data.
+- Source-specific parsing stays isolated; scoring logic is not duplicated in worker, API, or UI.
+- Live requests never depend on external source availability.
+- Product-stack work remains out of scope until the release gate is demonstrably green.

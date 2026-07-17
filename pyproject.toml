@@ -9,7 +9,7 @@ description = "Evidence-backed and explainable country suitability for relocatio
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Konsider" }]
-dependencies = []
+dependencies = ["openpyxl>=3.1,<4"]
 
 [project.optional-dependencies]
 dev = [

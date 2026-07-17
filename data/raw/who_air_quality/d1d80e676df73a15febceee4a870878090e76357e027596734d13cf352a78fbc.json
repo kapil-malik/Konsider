@@ -1,0 +1,13 @@
+{
+  "artifact_id": "sha256:d1d80e676df73a15febceee4a870878090e76357e027596734d13cf352a78fbc",
+  "byte_length": 617743,
+  "dataset_version": "GHO update 2026-05-08",
+  "final_url": "https://ghoapi.azureedge.net/api/SDGPM25?%24top=1000&%24skip=3000",
+  "media_type": "application/json",
+  "parser_version": "who_air_quality_v1",
+  "path": "data/raw/who_air_quality/d1d80e676df73a15febceee4a870878090e76357e027596734d13cf352a78fbc.bin",
+  "requested_url": "https://ghoapi.azureedge.net/api/SDGPM25?%24top=1000&%24skip=3000",
+  "retrieved_at": "2026-07-17T16:30:43.210157+00:00",
+  "sha256": "d1d80e676df73a15febceee4a870878090e76357e027596734d13cf352a78fbc",
+  "source_id": "who_air_quality"
+}

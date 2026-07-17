@@ -1,0 +1,13 @@
+{
+  "artifact_id": "sha256:18c81bb6522703f34fcf35f3899e4e115f4cb3459843af260d398cedbf81511b",
+  "byte_length": 75816,
+  "dataset_version": "2025/26",
+  "final_url": "https://giwps.georgetown.edu/wp-content/uploads/2025/10/WPS-Index-2025-Data.xlsx",
+  "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "parser_version": "wps_index_v1",
+  "path": "data/raw/wps_index/18c81bb6522703f34fcf35f3899e4e115f4cb3459843af260d398cedbf81511b.bin",
+  "requested_url": "https://giwps.georgetown.edu/wp-content/uploads/2025/10/WPS-Index-2025-Data.xlsx",
+  "retrieved_at": "2026-07-17T16:30:43.210157+00:00",
+  "sha256": "18c81bb6522703f34fcf35f3899e4e115f4cb3459843af260d398cedbf81511b",
+  "source_id": "wps_index"
+}

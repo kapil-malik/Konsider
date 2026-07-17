@@ -1,5 +1,9 @@
 # React Web Application
 
+Status: component design
+
+Last updated: 2026-07-17
+
 ## Responsibility
 
 The website provides the complete user experience for selecting or describing a profile, editing
@@ -17,6 +21,9 @@ the live engine and has no direct access to storage, public data sources, or LLM
 - Visible dataset freshness and approximation warnings.
 - Loading, empty, partial-data, disconnected, and recoverable error states.
 
+The first UI should behave like an operational decision tool: compact, responsive, accessible, and
+optimized for comparison. It should not be a marketing landing page.
+
 ## API Access
 
 The web application calls only the live engine:
@@ -25,7 +32,8 @@ The web application calls only the live engine:
 | --- | --- |
 | Build controls | `GET /api/v1/catalog` |
 | Calculate or refresh ranking | `POST /api/v1/rankings` |
-| Inspect supporting information | `GET /api/v1/countries/{id}/evidence` |
+| Inspect country scores | `GET /api/v1/countries/{id}/metrics` |
+| Inspect supporting information | `GET /api/v1/evidence?country_id=...&criterion_id=...` |
 | Start chat | `POST /api/v1/chat/sessions` |
 | Send message and receive updates | SSE response from the session message endpoint |
 
@@ -34,12 +42,24 @@ the browser use the `VITE_` prefix; secrets must never be placed there.
 
 ## State Ownership
 
-- The API catalog is authoritative for countries, metrics, labels, and profile templates.
+- The API catalog is authoritative for countries, criteria, labels, caveats, and profile templates.
 - The server is authoritative for persisted profile and conversation revisions.
 - The browser owns temporary form edits until ranking or profile update submission.
 - Ranking responses replace client calculations; the website does not normalize or score locally.
 - Chat text and typed events are stored separately. Typed events update profile and ranking state.
 - URLs may identify selected countries or views, but must not expose private conversation content.
+
+## Profile Behavior
+
+The website should support these profile states:
+
+- Select a server-provided template profile.
+- Edit weights with sliders and submit them to the ranking API.
+- Reset to the selected template.
+- Apply a `profile.updated` chat event to the sliders and ranking table.
+- Undo the last applied profile revision when the server supports revision history.
+
+The UI should never parse assistant prose to infer profile changes.
 
 ## Technology
 
@@ -50,15 +70,14 @@ the browser use the `VITE_` prefix; secrets must never be placed there.
 - Component and accessibility tests plus end-to-end coverage for the principal ranking flow.
 - AWS Amplify Hosting with Git-based builds and SPA route fallback.
 
-The first UI should remain an operational decision tool: compact, responsive, accessible, and
-optimized for comparison. It does not need server-side rendering because ranking and chat content
-are personalized application data rather than search-indexed marketing pages.
+The app does not need server-side rendering because ranking and chat content are personalized
+application data rather than search-indexed marketing pages.
 
 ## Amplify Build Contract
 
-The deployable application lives in `web` and builds to `web/dist`. A typical monorepo Amplify
-configuration uses `web` as the application root, installs from the committed lockfile, runs tests
-and `npm run build`, and publishes `dist`.
+The deployable application lives in `web` and builds to `web/dist`. A monorepo Amplify
+configuration should use `web` as the application root, install from the committed lockfile, run
+tests and `npm run build`, and publish `dist`.
 
 Runtime configuration includes:
 

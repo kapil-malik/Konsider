@@ -1,0 +1,13 @@
+{
+  "criterion_coverage": {
+    "ambient_pm25_population_weighted": 20,
+    "household_consumption_price_level_us_100": 20,
+    "intentional_homicide_rate": 20,
+    "uhc_service_coverage_index": 20,
+    "women_peace_security_index": 20
+  },
+  "issues": [],
+  "observation_count": 100,
+  "passed": true,
+  "score_count": 100
+}

@@ -1,11 +1,15 @@
 # Live Python Engine
 
+Status: component design
+
+Last updated: 2026-07-17
+
 ## Responsibility
 
-The live engine is the sole authority for user profiles, weight normalization, deterministic
+The live engine is the sole authority for profile templates, weight normalization, deterministic
 rankings, evidence retrieval, and chat orchestration. It exposes versioned APIs to the website and
-MCP tools later. It reads published releases only and never refreshes external sources during a
-user request.
+future integration tools. It reads published releases only and never refreshes external sources
+during a user request.
 
 ## Internal Layers
 
@@ -18,7 +22,7 @@ user request.
 | Agents | LLM prompts and tool orchestration built on services; no independent scoring implementation |
 
 The current `konsider.domain` package is intentionally framework-free and remains usable by tests,
-the API, worker validation, CLI utilities, and future MCP adapters.
+the API, worker validation, CLI utilities, and future integration adapters.
 
 ## REST API
 
@@ -26,29 +30,42 @@ All endpoints are rooted at `/api/v1`. FastAPI-generated OpenAPI is the canonica
 
 ### Catalog
 
-`GET /api/v1/catalog` returns countries, metric definitions, default profiles, caveats, and the
+`GET /api/v1/catalog` returns countries, criteria, default profile templates, caveats, and the
 active dataset release. The website uses it to construct controls and labels rather than embedding
 the catalog in JavaScript.
+
+Small endpoints such as `GET /api/v1/countries` and `GET /api/v1/criteria` may be added for
+clients that do not need the full catalog payload.
 
 ### Ranking
 
 `POST /api/v1/rankings` accepts editable non-negative weights, an optional profile template ID,
 and `top_k`. The service:
 
-1. Validates metric IDs and numeric bounds.
-2. Completes omitted metrics with zero and normalizes the weights.
+1. Validates criterion IDs and numeric bounds.
+2. Completes omitted criteria with zero and normalizes the weights.
 3. Pins the request to one active dataset release.
-4. Computes totals and parameter contributions through the domain scorer.
+4. Computes totals and criterion contributions through the domain scorer.
 5. Returns stable country IDs, display metadata, strengths, tradeoffs, versions, and evidence
    references.
 
 Results may be cached by dataset version, scoring version, normalized-weight hash, and `top_k`.
 
-### Evidence
+### Metrics and Evidence
 
-`GET /api/v1/countries/{country_id}/evidence` supports metric/topic filters, pagination, and a
-result limit. Each result includes an evidence ID, source label and URL when permitted, effective
-and retrieval dates, excerpt, confidence, and dataset version.
+`GET /api/v1/countries/{country_id}/metrics` returns the full score and observation view for one
+country. It is the structured answer for questions like "what are Canada's healthcare and tax
+scores?"
+
+`GET /api/v1/evidence` supports country, criterion, source, topic, pagination, and result-limit
+filters. Each result includes an evidence ID, source label and URL when permitted, effective and
+retrieval dates, excerpt, confidence, and dataset version.
+
+Explanation services should keep these modes distinct:
+
+- Score questions are structured lookups.
+- Ranking questions are deterministic contribution comparisons.
+- Evidence questions are retrieval/RAG.
 
 ## Chat API
 
@@ -76,6 +93,14 @@ The React client updates sliders from this event; it never extracts weights from
 or broad changes can be proposed for confirmation, while accepted changes create a new revision
 that can be undone.
 
+## Profile Ownership
+
+Template profiles are server-owned and returned through the catalog. Edited templates can live in
+React state until the user requests a ranking. Chat-modified profiles are session state. Saved
+custom profiles are deferred until authentication and durable user storage exist.
+
+This avoids hardcoding business defaults in the UI while keeping Phase 1 persistence simple.
+
 ## Agent and Tool Boundary
 
 The conversational layer may call these application tools:
@@ -97,11 +122,21 @@ configured or the provider fails.
 
 - Python 3.11 or newer and FastAPI.
 - Pydantic API models separated from domain dataclasses where transport requirements differ.
-- Uvicorn locally; a container deployed to App Runner or ECS Fargate initially.
-- SSE for first chat streaming; API Gateway WebSockets only when bidirectional requirements justify
-  the added connection-state machinery.
+- Uvicorn locally.
+- API Gateway plus Python Lambda as the initial AWS runtime.
+- App Runner or ECS only if measured cold starts, streaming behavior, dependency size, or runtime
+  shape justify moving away from Lambda.
+- SSE for first chat streaming; WebSockets only when bidirectional requirements justify the added
+  connection-state machinery.
 - LangGraph after the service/tool flow is stable, not as a prerequisite for ranking.
 - OpenTelemetry-compatible tracing and structured logs.
+
+## Storage Access
+
+At the expected Phase 1 scale, the API can load the active release into memory at startup or on
+first request. S3 or local filesystem adapters provide the same repository interfaces. DynamoDB is
+introduced only when saved profiles, conversations, quotas, or payment state need durable mutable
+storage.
 
 ## Security and Reliability
 
@@ -119,6 +154,6 @@ configured or the provider fails.
 - Domain unit tests remain fast and have no network or framework dependency.
 - Service tests use in-memory repositories.
 - API contract tests validate status codes and schemas.
-- Integration tests cover one published release and database adapters.
+- Integration tests cover one published release and storage adapters.
 - Agent tests assert tool usage, citation presence, fallback behavior, and structured event order
   rather than exact prose.

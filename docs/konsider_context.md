@@ -3,6 +3,9 @@
 > **Status: superseded.** This file preserves the original Phase 1 brief and sprint assumptions.
 > The accepted system design is now in [architecture.md](architecture.md), with the current delivery
 > sequence in [roadmap.md](roadmap.md). Component details live under [components/](components/).
+> References below to early vector search, LangGraph, MCP, or heavier AWS infrastructure are
+> historical; the current plan starts with release artifacts, Lambda, S3, and metadata evidence
+> lookup.
 
 ## Project Summary
 

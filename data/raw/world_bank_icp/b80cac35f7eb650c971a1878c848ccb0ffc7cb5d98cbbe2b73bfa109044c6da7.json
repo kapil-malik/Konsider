@@ -1,0 +1,13 @@
+{
+  "artifact_id": "sha256:b80cac35f7eb650c971a1878c848ccb0ffc7cb5d98cbbe2b73bfa109044c6da7",
+  "byte_length": 63504,
+  "dataset_version": "ICP 2021 benchmark",
+  "final_url": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?format=json&date=2021&per_page=30000",
+  "media_type": "application/json",
+  "parser_version": "world_bank_icp_v1",
+  "path": "data/raw/world_bank_icp/b80cac35f7eb650c971a1878c848ccb0ffc7cb5d98cbbe2b73bfa109044c6da7.bin",
+  "requested_url": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?format=json&date=2021&per_page=30000",
+  "retrieved_at": "2026-07-17T16:30:43.210157+00:00",
+  "sha256": "b80cac35f7eb650c971a1878c848ccb0ffc7cb5d98cbbe2b73bfa109044c6da7",
+  "source_id": "world_bank_icp"
+}
