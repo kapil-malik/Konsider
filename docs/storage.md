@@ -1,8 +1,8 @@
 # Storage Architecture
 
-Status: Phase 1 storage decision record
+Status: worker stabilization storage decision record
 
-Last updated: 2026-07-17
+Last updated: 2026-07-18
 
 ## Goals
 
@@ -18,7 +18,7 @@ state or proven query pressure.**
 
 | Class | Examples | Mutability | Local store | Initial AWS store |
 | --- | --- | --- | --- | --- |
-| Raw source artifacts | API JSON, CSV, HTML, PDFs, headers, checksums | Immutable | Files under `raw/` | S3 |
+| Raw source artifacts | API JSON, XLSX, headers, checksums | Immutable | Ignored files under `data/raw/` | Private S3 only after licence/security review |
 | Extracted evidence | Clean snippets, document sections, source tags | Immutable by release | JSONL | S3 release artifact |
 | Metric observations | Raw values, units, effective periods, source lineage | Immutable by release | JSONL | S3 release artifact |
 | Metric scores | Normalized 1-10 values, confidence, method version | Immutable by release | JSONL | S3 release artifact |
@@ -36,35 +36,34 @@ file or object.
 
 ```text
 releases/
-  active-release.json
-  rel_2026_07_17_01/
+  active.json
+  2026-07-18.2/
     manifest.json
-    countries.json
-    criteria.json
-    profile_templates.json
-    metrics.jsonl
     observations.jsonl
-    evidence.jsonl
+    scores.jsonl
+    attempts.jsonl
+    raw-artifacts.json
+    sources.json
+    scoring-sensitivity.json
     validation.json
 raw/
-  run_2026_07_17_01/
-    source_id/
-      artifact_001.json
-      artifact_001.meta.json
+  source_id/
+    sha256.bin
+    sha256.json
 ```
 
 Minimum release metadata:
 
 ```json
 {
-  "release_id": "rel_2026_07_17_01",
-  "dataset_version": "2026-07-17.1",
-  "schema_version": "1",
-  "scoring_method_versions": ["weighted-score-v1"],
+  "release_id": "2026-07-18.2",
+  "schema_version": "konsider-release-2.0",
+  "scoring_method_versions": ["pm25_health_bands_v1"],
   "status": "published",
   "created_at": "2026-07-17T08:00:00Z",
   "published_at": "2026-07-17T10:00:00Z",
-  "manifest_checksum": "sha256:..."
+  "release_checksum": "sha256:...",
+  "validation_summary": {"structural_passed": true, "product_ready": false}
 }
 ```
 
@@ -81,12 +80,12 @@ metrics in long form.
 {
   "release_id": "rel_2026_07_17_01",
   "country_id": "canada",
-  "criterion_id": "healthcare",
+  "criterion_id": "uhc_service_coverage_index",
   "raw_value": 78.4,
   "unit": "index",
   "normalized_score": 8.1,
   "confidence": 0.82,
-  "methodology_version": "healthcare-normalization-v1",
+  "methodology_version": "uhc_coverage_bands_v1",
   "observation_ids": ["obs_123"],
   "evidence_ids": ["ev_456"],
   "effective_date": "2026-01-01"

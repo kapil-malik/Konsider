@@ -11,7 +11,7 @@ Run a replay of the first real-data release:
 
 ```powershell
 $env:PYTHONPATH = "src"
-python -m konsider.ingestion.worker replay data\releases\2026-07-17.1
+python -m konsider.ingestion.worker replay data\releases\2026-07-18.2
 ```
 
 Build a new local release from registered public sources:
@@ -23,4 +23,5 @@ python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N
 
 The worker currently covers WHO air quality, UNODC-lineage homicide via WDI, WHO UHC, World Bank ICP,
 and WPS. See `docs/data-source-feasibility.md`, `docs/scoring-methodology.md`, and
-`docs/release-2026-07-17.1.md`.
+`docs/release-2026-07-18.2.md`. Raw third-party bytes are retained locally under ignored
+`data/raw/`; they are not part of the Git release payload.

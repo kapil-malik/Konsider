@@ -1,0 +1,103 @@
+{
+  "artifact_checksums": {
+    "sha256:06a02aa5f1b02eaaad5a328095669f46456d8f70065cbc5c47f5e8e599a7c86a": "sha256:06a02aa5f1b02eaaad5a328095669f46456d8f70065cbc5c47f5e8e599a7c86a",
+    "sha256:0f42de3487163434187f7949fcca4174e98b221773fd92b6fdf46a6d270212a7": "sha256:0f42de3487163434187f7949fcca4174e98b221773fd92b6fdf46a6d270212a7",
+    "sha256:16cd61448f47bc57f614024be0a081d3573d31684295e80aafaad6cb94cfd7d9": "sha256:16cd61448f47bc57f614024be0a081d3573d31684295e80aafaad6cb94cfd7d9",
+    "sha256:18c81bb6522703f34fcf35f3899e4e115f4cb3459843af260d398cedbf81511b": "sha256:18c81bb6522703f34fcf35f3899e4e115f4cb3459843af260d398cedbf81511b",
+    "sha256:19cdcfce4e40d3308add2072d39c0bf5e3e661c74d2cc601c79be2cc2abeb2bb": "sha256:19cdcfce4e40d3308add2072d39c0bf5e3e661c74d2cc601c79be2cc2abeb2bb",
+    "sha256:1f083363a79118a002dfc3ec49fccf8600e1824cf2f747a4b00aaf6740861936": "sha256:1f083363a79118a002dfc3ec49fccf8600e1824cf2f747a4b00aaf6740861936",
+    "sha256:221d66c0d9eb6bea8eeb1a59eb28816455f6a2334ac176cd46b2696e4a0b770a": "sha256:221d66c0d9eb6bea8eeb1a59eb28816455f6a2334ac176cd46b2696e4a0b770a",
+    "sha256:2d24a9d79e7e289634c5a4785f990ef8b662cb1194ffa59255daa09f28718c19": "sha256:2d24a9d79e7e289634c5a4785f990ef8b662cb1194ffa59255daa09f28718c19",
+    "sha256:396b188973cbcdc4b4bfc0b9e01805638fcac914c27b17d791b7f0776eabd0c5": "sha256:396b188973cbcdc4b4bfc0b9e01805638fcac914c27b17d791b7f0776eabd0c5",
+    "sha256:3b1a94b132047f167d3ec28e24eb6aed83c80f6465a907f718ddbd9b48b653ed": "sha256:3b1a94b132047f167d3ec28e24eb6aed83c80f6465a907f718ddbd9b48b653ed",
+    "sha256:3b9f71c4c6e3f4dc19eb1c948da7a09f6dcc2571708f8284bb9d0089b553af2f": "sha256:3b9f71c4c6e3f4dc19eb1c948da7a09f6dcc2571708f8284bb9d0089b553af2f",
+    "sha256:4242901412ad07215fe56fc859af193f0bbc76cc6ef8b6b620e2793a33d60a6c": "sha256:4242901412ad07215fe56fc859af193f0bbc76cc6ef8b6b620e2793a33d60a6c",
+    "sha256:55f12c71b28e3351c2e2335b2b24ca9f9c3c16d777b0e107a9e90d39da986335": "sha256:55f12c71b28e3351c2e2335b2b24ca9f9c3c16d777b0e107a9e90d39da986335",
+    "sha256:62951eb4bebf05bc87febb7649e07dcc051ba6e90a1db3d1dc76c4e83284a145": "sha256:62951eb4bebf05bc87febb7649e07dcc051ba6e90a1db3d1dc76c4e83284a145",
+    "sha256:72d62d16be294c71148b2d29a439eb614553fb6c3f0dea4fc14929b373a835fb": "sha256:72d62d16be294c71148b2d29a439eb614553fb6c3f0dea4fc14929b373a835fb",
+    "sha256:9356132c5bd40d1bbd42f7a9526e1b32f6dfe616335d16c07991d714d799457a": "sha256:9356132c5bd40d1bbd42f7a9526e1b32f6dfe616335d16c07991d714d799457a",
+    "sha256:975483b81da6fa8fd89cf9dd3740551ba0f5bfe7c9c27b2d2ae93b2dec1ea4a9": "sha256:975483b81da6fa8fd89cf9dd3740551ba0f5bfe7c9c27b2d2ae93b2dec1ea4a9",
+    "sha256:a5cbc4bbf1ead04222e154f7b4015fa27e29cedc999f8406b345ddff00cbe65f": "sha256:a5cbc4bbf1ead04222e154f7b4015fa27e29cedc999f8406b345ddff00cbe65f",
+    "sha256:a699028b7e2af7cc153256311ee69877ff4a744c23c058045df51d2151a01bd7": "sha256:a699028b7e2af7cc153256311ee69877ff4a744c23c058045df51d2151a01bd7",
+    "sha256:aad0d6df3fddb5b33a8a6d0c4f615c21ab8c6fd479ee4fa57e67a0d797442b0c": "sha256:aad0d6df3fddb5b33a8a6d0c4f615c21ab8c6fd479ee4fa57e67a0d797442b0c",
+    "sha256:b21c45429fc0b739fbd2f3b5451e2e7c36a27116ae3a8d85d69b29162371cbfa": "sha256:b21c45429fc0b739fbd2f3b5451e2e7c36a27116ae3a8d85d69b29162371cbfa",
+    "sha256:b49e395da18538737ab60bd914c73f96b851c50815002922c35828857095cf18": "sha256:b49e395da18538737ab60bd914c73f96b851c50815002922c35828857095cf18",
+    "sha256:b80cac35f7eb650c971a1878c848ccb0ffc7cb5d98cbbe2b73bfa109044c6da7": "sha256:b80cac35f7eb650c971a1878c848ccb0ffc7cb5d98cbbe2b73bfa109044c6da7",
+    "sha256:bbc288102783055d791922f9583e07e2e69db699e4f081ac8e060fe4b4d269f8": "sha256:bbc288102783055d791922f9583e07e2e69db699e4f081ac8e060fe4b4d269f8",
+    "sha256:bc53d5ea7949f22dd2937a8fb206d1acd625fa2bf0a2aecf6701f55908defca8": "sha256:bc53d5ea7949f22dd2937a8fb206d1acd625fa2bf0a2aecf6701f55908defca8",
+    "sha256:bc9feed26493f7a1d31088329a0895ac0e341e31f74870319bf080faa130ff74": "sha256:bc9feed26493f7a1d31088329a0895ac0e341e31f74870319bf080faa130ff74",
+    "sha256:c0f8100b9fcd8283778804b6b3de055722dfd1dd78293791605e11584f0bd647": "sha256:c0f8100b9fcd8283778804b6b3de055722dfd1dd78293791605e11584f0bd647",
+    "sha256:d1d80e676df73a15febceee4a870878090e76357e027596734d13cf352a78fbc": "sha256:d1d80e676df73a15febceee4a870878090e76357e027596734d13cf352a78fbc",
+    "sha256:f074ab2423e01ba64d214deebe5422103b599e9f99a7edf388000d138e048ea4": "sha256:f074ab2423e01ba64d214deebe5422103b599e9f99a7edf388000d138e048ea4",
+    "sha256:f2a3fbebdd196af4e86990d2cd842d67e7908d64aba8c65de7b44370a2829c6d": "sha256:f2a3fbebdd196af4e86990d2cd842d67e7908d64aba8c65de7b44370a2829c6d",
+    "sha256:f543b3bd16dce6a3e25eb92d40a33c36d7a4f373ea3c87983ece58315e74be2b": "sha256:f543b3bd16dce6a3e25eb92d40a33c36d7a4f373ea3c87983ece58315e74be2b",
+    "sha256:fe0ed5638c076dd943f9686e5186666199d68a9ea274ca19fb35e3bc3b7f1476": "sha256:fe0ed5638c076dd943f9686e5186666199d68a9ea274ca19fb35e3bc3b7f1476"
+  },
+  "attempt_count": 100,
+  "created_at": "2026-07-18T15:10:57.532636+00:00",
+  "criteria": [
+    "ambient_pm25_population_weighted",
+    "household_consumption_price_level_us_100",
+    "intentional_homicide_rate",
+    "uhc_service_coverage_index",
+    "women_peace_security_index"
+  ],
+  "file_checksums": {
+    "attempts.jsonl": "sha256:e3959124874acddc4490894e83fdc76980ecf81ad84c3d83c5848602f4466f29",
+    "observations.jsonl": "sha256:bd6c5676dce6401d25156ba0eb8c26a97b3898babe42ed569c1c9a7d06099fbc",
+    "raw-artifacts.json": "sha256:0cd95e3edcf202ceaf1a73cdc1663d5be851c1e14cba8cf5aeb0e1975bc77d57",
+    "scores.jsonl": "sha256:4f04011189d32dfb931b301d049e0420874e816a4eb2681dbe24e773be7eac80",
+    "scoring-sensitivity.json": "sha256:153a6c3d3efffbde5b9fb9f2a71fea6bbe75d216103f01f8159217d0c58439d5",
+    "sources.json": "sha256:e0d2c8660af26eb99d2fb51a50de1bc3312d2f3df5e6a3ae65ab8739ac1c638a",
+    "validation.json": "sha256:7a53706b1aff61841eb3364527d687b3487bc4d3558ffac6af3c7ad691c56ccd"
+  },
+  "observation_count": 100,
+  "previous_release_id": "2026-07-17.1",
+  "published_at": "2026-07-18T15:10:57.745039+00:00",
+  "release_checksum": "sha256:73651360deafac1ae0af83219e83ad8e103f5c914c3d5fab4466e66f29619a70",
+  "release_id": "2026-07-18.1",
+  "reproducibility": {
+    "observation_method_versions": [
+      "who_air_quality_observation_v2",
+      "who_uhc_observation_v2",
+      "world_bank_homicide_observation_v2",
+      "world_bank_icp_pli_v2",
+      "wps_index_observation_v2"
+    ],
+    "parser_versions": [
+      "who_air_quality_v2",
+      "who_uhc_v2",
+      "world_bank_homicide_v2",
+      "world_bank_icp_v2",
+      "wps_index_v2"
+    ],
+    "python_requires": ">=3.11",
+    "raw_storage": "local content-addressed files excluded from git",
+    "replay_command": "python -m konsider.ingestion.worker replay data/releases/2026-07-18.1",
+    "worker_package": "konsider-0.1.0"
+  },
+  "schema_version": "konsider-release-2.0",
+  "score_count": 100,
+  "scoring_method_versions": [
+    "homicide_risk_bands_v1",
+    "icp_price_level_bands_v1",
+    "pm25_health_bands_v1",
+    "uhc_coverage_bands_v1",
+    "wps_index_bands_v1"
+  ],
+  "source_versions": {
+    "unodc_homicide": "VC.IHR.PSRC.P5@WDI",
+    "who_air_quality": "SDGPM25@2026-05-08",
+    "who_uhc": "UHC_INDEX_REPORTED@2025-12-05",
+    "world_bank_icp": "PA.NUS.PRVT.PP+PA.NUS.FCRF@2021",
+    "wps_index": "WPS-Index-2025-Data"
+  },
+  "status": "published",
+  "validation_summary": {
+    "blockers": 4,
+    "errors": 0,
+    "product_ready": false,
+    "structural_passed": true,
+    "warnings": 0
+  }
+}

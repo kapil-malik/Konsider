@@ -9,3 +9,7 @@ node_modules/
 web/dist/
 .vite/
 .env
+
+# Third-party source bytes are content-addressed and retained locally. They are not committed unless
+# a source-specific licence has been reviewed and explicitly permits redistribution.
+data/raw/

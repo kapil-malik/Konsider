@@ -2,7 +2,7 @@
 
 Status: first local vertical slice implemented
 
-Last updated: 2026-07-17
+Last updated: 2026-07-18
 
 ## Responsibility
 
@@ -15,7 +15,7 @@ The worker is an ordinary Python executable first:
 ```powershell
 $env:PYTHONPATH = "src"
 python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N
-python -m konsider.ingestion.worker replay data\releases\2026-07-17.1
+python -m konsider.ingestion.worker replay data\releases\2026-07-18.2
 ```
 
 AWS Lambda or ECS adapters should be thin wrappers around the same command/service code.
@@ -46,7 +46,7 @@ The worker consumes a source registry rather than arbitrary URLs supplied at run
   "base_url": "https://example.org/api",
   "coverage": {
     "country_ids": ["canada", "germany"],
-    "criterion_ids": ["healthcare"]
+    "criterion_ids": ["uhc_service_coverage_index"]
   },
   "schedule": "rate(7 days)",
   "connector": "example_api_v1",
@@ -62,7 +62,7 @@ Manual triggers may narrow scope but may not bypass source registration or publi
   "requested_by": "admin-user-id",
   "source_ids": ["example-public-api"],
   "country_ids": ["canada"],
-  "criterion_ids": ["healthcare"],
+  "criterion_ids": ["uhc_service_coverage_index"],
   "publish_if_valid": true
 }
 ```

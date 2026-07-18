@@ -1,8 +1,12 @@
 # Konsider Architecture
 
-Status: accepted target architecture for Phase 1 and early production
+Status: deferred target architecture; worker stabilization is the only active implementation scope
 
-Last updated: 2026-07-17
+Last updated: 2026-07-18
+
+The live engine, FastAPI, React, retrieval, chat, agents, MCP, and cloud deployment described below
+are design records only. The five-criterion dataset gate is not green. No product-stack
+implementation may begin until the roadmap's licensing, methodology, and readiness blockers close.
 
 ## Purpose
 
@@ -197,7 +201,7 @@ Example response shape:
 ```json
 {
   "request_id": "req_123",
-  "dataset_version": "2026-07-17.1",
+  "dataset_version": "2026-07-18.2",
   "scoring_version": "weighted-score-v1",
   "normalized_weights": {
     "finance_jobs": 0.4167,
@@ -213,7 +217,7 @@ Example response shape:
       "evidence_refs": []
     }
   ],
-  "caveats": ["Phase 1 values are approximate MVP estimates."]
+  "caveats": ["WHO UHC is population service coverage, not migrant access experience."]
 }
 ```
 

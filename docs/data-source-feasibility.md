@@ -1,89 +1,29 @@
-# Data Source Feasibility
+# Data-source feasibility and licence audit
 
-Status: first 20-country release published
+Status: stabilization audit; not legal advice
 
-Last updated: 2026-07-17
+Last checked: 2026-07-18
 
-This file records the source decisions behind release `2026-07-17.1`. The experiment set is India,
-Singapore, Canada, Australia, Germany, Netherlands, Switzerland, United States, United Kingdom,
-United Arab Emirates, France, Sweden, Denmark, Norway, Ireland, New Zealand, Japan, South Korea,
-Spain, and Portugal.
+This audit covers the five 20-country experimental criteria. A public download is not itself a
+licence. Privacy policies and generic site terms are not recorded as dataset licences. Raw source
+bytes live under ignored `data/raw/`; release manifests retain URLs, retrieval metadata, and SHA-256
+checksums. The earlier committed raw files are removed from the current Git index without rewriting
+history.
 
-## Release Result
+| Criterion / source | Exact licence evidence | Permitted use and required attribution | Konsider decision |
+| --- | --- | --- | --- |
+| WHO modelled PM2.5 (`SDGPM25`) | [WHO Copyright, Licensing and Permissions](https://www.who.int/about/policies/publishing/copyright) says CC BY-NC-SA 3.0 IGO applies to materials *issued under that licence*. It permits non-commercial copying, distribution, translation, and adaptation with WHO attribution and share-alike; commercial use and licensing technical information in database products require permission. The GHO API response and indicator page do not display a dataset-specific licence. | Do not use the WHO logo or imply endorsement. Cite WHO/GHO, the indicator, retrieval date, and identify adaptations. Commercial/database-product use is not cleared from the evidence found. | Raw responses remain local. Experimental normalized observations may be used only in a non-commercial research context pending written confirmation. Product readiness is blocked. |
+| WHO UHC Service Coverage (`UHC_INDEX_REPORTED`) | Same WHO copyright page and same absence of a licence notice in the GHO response. | Same conditional CC BY-NC-SA terms and attribution requirements as above. | Raw responses remain local. Commercial/database-product use is not cleared. Product readiness is blocked. |
+| UNODC homicide via World Bank WDI (`VC.IHR.PSRC.P5`) | [WDI indicator metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/VC.IHR.PSRC.P5) explicitly labels the distributed indicator `CC BY-4.0`. [World Bank Data Access and Licensing](https://datacatalog.worldbank.org/public-licenses) says CC BY 4.0 permits copying, modification, and distribution for any purpose with attribution and change indication, subject to its additional terms. Generic UN terms allow only personal non-commercial copying and prohibit redistribution/derivative compilations, so Konsider does not rely on those terms or redistribute direct UNODC downloads. | Attribute World Bank WDI indicator `VC.IHR.PSRC.P5`, identify UNODC as original source, link the licence, and state Konsider transformations. | Use only the explicitly CC BY-4.0 WDI representation. Raw WDI API bytes are still kept local under the repository-wide conservative raw-artifact policy. |
+| World Bank ICP / WDI (`PA.NUS.PRVT.PP`, `PA.NUS.FCRF`) | WDI metadata for [private-consumption PPP](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.PRVT.PP) and [official exchange rate](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.FCRF) explicitly labels both `CC BY-4.0`. | Commercial and non-commercial copy, adaptation, and redistribution are allowed with attribution and change indication, subject to World Bank additional terms. Attribute ICP/WDI and label the Konsider PLI calculation. | Licence is adequate for redistribution. Methodology remains a blocker for strict rankings: ICP metadata says PPPs are not recommended as a precise measure for establishing strict country rankings. |
+| GIWPS/PRIO WPS Index 2025/26 | The copyright page of the [official 2025/26 report](https://giwps.georgetown.edu/wp-content/uploads/2025/10/WPS-Index-2025-Report.pdf) states `Creative Commons Attribution Non-Commercial 4.0`. The downloadable workbook contains no separate licence notice found in this audit. A Georgetown privacy policy is not a data licence. | The report licence permits sharing and adaptation only for non-commercial purposes with attribution and change indication. It does not grant commercial rights. It is unclear whether the workbook is within the licensed work. | Keep the workbook local. Treat normalized values as non-commercial research output only; obtain written confirmation of workbook scope and commercial plans before product use. Product readiness is blocked. |
 
-The first local release contains 100 observations and 100 scores: five criteria across all 20
-countries. Validation passed with no issues, and replay reproduced the observations and scores from
-the immutable raw artifacts.
+Source quality remains separate from licence status. WHO PM2.5 is a modelled population-weighted
+national estimate with uncertainty bounds. WHO UHC measures population service coverage, not migrant
+eligibility or care experience. UNODC/WDI homicide has legal-system and reporting comparability
+limits. ICP is a national price-level comparison, not a household budget or city cost index. WPS is
+an independent composite using mixed reference years and possible imputation.
 
-| Criterion | Source | Release years | Coverage | Treatment |
-| --- | --- | ---: | ---: | --- |
-| `ambient_pm25_population_weighted` | WHO GHO `SDGPM25` | 2023 | 20/20 | Modelled national population exposure; lower is better. |
-| `intentional_homicide_rate` | UNODC lineage via World Bank WDI `VC.IHR.PSRC.P5` | 2021-2023 | 20/20 | Latest available annual rate; lower is better. |
-| `uhc_service_coverage_index` | WHO GHO `UHC_INDEX_REPORTED` | 2023 | 20/20 | Population-level service coverage; higher is better. |
-| `household_consumption_price_level_us_100` | World Bank ICP/WDI `PA.NUS.PRVT.PP` and `PA.NUS.FCRF` | 2021 | 20/20 | Derived household price level, US=100; lower is better. |
-| `women_peace_security_index` | GIWPS/PRIO WPS Index 2025 data workbook | 2025 | 20/20 | Independent composite index; higher is better. |
-
-## Source Decisions
-
-### WHO Air Quality
-
-Use the WHO Global Health Observatory `SDGPM25` API for country-level modelled PM2.5 exposure. The
-WHO ambient air quality ground-monitor database was verified as a current official source, but WHO's
-own notes warn that monitor density and methods differ enough that direct country comparisons are not
-appropriate. For ranking, the criterion is therefore narrowed to modelled national population exposure.
-
-Official references: [WHO air quality database](https://www.who.int/data/gho/data/themes/air-pollution/who-air-quality-database),
-[WHO GHO OData API](https://www.who.int/data/gho/info/gho-odata-api).
-
-### UNODC Crime
-
-Use intentional homicide per 100,000 people. UNODC remains the source lineage and methodology
-authority, while the worker currently downloads the WDI-distributed indicator because the official
-UNODC data portal did not expose a stable unattended download during verification. The observation
-flags retain `secondary_distribution`.
-
-Official references: [UNODC intentional homicide metadata PDF](https://data.unodc.org/sites/dataportal.unodc.org/files/2025-11/metadata_intentional_homicide.pdf),
-[World Bank WDI API](https://api.worldbank.org/v2/).
-
-### WHO Healthcare
-
-Use WHO's UHC Service Coverage Index. This is a defensible public-health access proxy, but it is not
-an expatriate insurance, eligibility, waiting-time, or private-care quality metric. Those narrower
-questions are deferred unless credible comparable sources are found.
-
-Official references: [WHO service coverage topic](https://www.who.int/data/gho/data/themes/topics/service-coverage),
-[WHO GHO OData API](https://www.who.int/data/gho/info/gho-odata-api).
-
-### World Bank ICP Price Level
-
-Use the 2021 ICP benchmark inputs distributed through WDI. The release derives household-consumption
-price level as household/NPISH PPP divided by official exchange rate times 100, with the United States
-anchored at 100. This is a national relative price level, not a city budget or household-specific cost
-model.
-
-Official references: [World Bank ICP data](https://www.worldbank.org/en/programs/icp/data),
-[World Bank ICP methodology](https://www.worldbank.org/en/programs/icp/methodology),
-[WDI April 2026 release note](https://datatopics.worldbank.org/world-development-indicators/release-note/apr-2026.html).
-
-### WPS Index
-
-Use the latest GIWPS/PRIO WPS Index data workbook for the overall 2025 score. It is an independent
-academic composite with mixed underlying reference years and imputation caveats, so the release flags
-it as `independent_composite`.
-
-Official references: [WPS Index](https://giwps.georgetown.edu/the-index/),
-[WPS methodology](https://giwps.georgetown.edu/wps-index-methodology/).
-
-### Infrastructure
-
-Infrastructure remains in feasibility status. A composite should not be published until component
-coverage, units, correlation, weighting, and sensitivity tests are documented. Candidate components
-include electricity access, internet use, water/sanitation, transport, and digital public-service
-availability.
-
-## Usage and Redistribution Notes
-
-The release stores raw source bytes locally for audit and replay. Before packaging or redistributing
-raw third-party files outside a local development environment, review each source's current terms:
-WHO publishing/copyright, United Nations terms of use, World Bank legal terms, and Georgetown/GIWPS
-site terms.
+The worker source registry stores the licence name, URL, evidence statement, redistribution decision,
+permitted use, and attribution text. Any change in those fields requires a new source version and a
+fresh audit date.

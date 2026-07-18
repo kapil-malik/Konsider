@@ -4,10 +4,9 @@ Konsider is an evidence-backed country suitability and relocation advisor. It pr
 explainable country rankings from user priorities and is designed to grow into a system that
 refreshes public evidence, serves deterministic rankings, and supports conversational exploration.
 
-The repository is currently past the original fixture-only Phase 1 foundation. It now includes a
-local data-refresh worker that publishes and replays a validated real-data release. API, React,
-retrieval, and LLM runtimes remain intentionally blocked until the worker-first dataset gate is
-satisfied and reviewed.
+The repository includes a local data-refresh worker and a structurally validated 20-country,
+five-criterion research release. The complete dataset gate is **not green**: source-licence and
+methodology blockers remain. API, React, retrieval, and LLM runtimes therefore remain blocked.
 
 ## Architecture
 
@@ -27,10 +26,11 @@ and current sprint sequence are linked from there and from [docs/roadmap.md](doc
 
 ## Current Capabilities
 
-- Published local release `2026-07-17.1` with five credible criteria across 20 countries.
-- Immutable raw artifact capture, normalized observations, validation, scoring, publication, and
-  replay for the first worker vertical slice.
-- Ten countries and ten comparison metrics.
+- Active local stabilization release `2026-07-18.2`: five experimental real-data criteria across
+  20 countries, 100 source attempts, record-level provenance, sensitivity evidence, and replay.
+- Local immutable raw capture excluded from Git; release manifests retain retrieval metadata and
+  checksums.
+- A separate legacy fixture dataset with ten countries and ten approximate comparison metrics.
 - Complete fixture validation.
 - Editable and normalized user weights.
 - Three default profile templates.
@@ -39,8 +39,10 @@ and current sprint sequence are linked from there and from [docs/roadmap.md](doc
 - Qualitative evidence fixture loading.
 
 Fixture scores remain approximate MVP fixtures and are not a source of truth for relocation
-decisions. The real-data release is documented separately in
-[docs/release-2026-07-17.1.md](docs/release-2026-07-17.1.md).
+decisions. The active release and blockers are documented in
+[docs/release-2026-07-18.2.md](docs/release-2026-07-18.2.md). The earlier
+[`2026-07-17.1` release](docs/release-2026-07-17.1.md) is an experimental baseline, not proof of gate
+completion.
 
 ## Repository Layout
 
@@ -50,7 +52,9 @@ apps/
   worker/                      # future refresh CLI/Lambda worker root
 contracts/                     # future machine-readable shared contracts
 data/
-  fixtures/                    # local pre-published Phase 1 dataset
+  fixtures/                    # legacy 10-country test/demo fixtures
+  raw/                         # ignored local third-party bytes
+  releases/                    # immutable local release records and manifests
 docs/
   architecture.md
   components/
@@ -86,6 +90,8 @@ python -m unittest discover -s tests
 ```
 
 ## Example
+
+This is a legacy fixture-engine example; it does not consume the active real-data release.
 
 ```python
 from konsider.domain.profiles import get_default_profile

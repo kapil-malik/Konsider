@@ -22,6 +22,8 @@ class ParserTests(TestCase):
         observations = parse_who_air_quality([artifact("who_air_quality")], [body])
         self.assertEqual([(item.country_code, item.value, item.reference_end) for item in observations], [("IND", 48.0, "2021-12-31")])
         self.assertEqual(observations[0].observation_type, "modelled")
+        self.assertEqual(observations[0].raw_artifact_ids, ("sha256:0",))
+        self.assertEqual(observations[0].source_records[0].locator, "$.value[1]")
 
     def test_icp_preserves_both_inputs_and_derives_price_level(self):
         ppp = json.dumps([{}, [{"countryiso3code": "IND", "date": "2021", "value": 20}]]).encode()
@@ -29,6 +31,7 @@ class ParserTests(TestCase):
         observations = parse_world_bank_icp([artifact("world_bank_icp", 1), artifact("world_bank_icp", 2)], [ppp, exchange])
         self.assertEqual(observations[0].value, 25.0)
         self.assertEqual(len(observations[0].raw_artifact_ids), 2)
+        self.assertEqual(len(observations[0].source_records), 2)
 
     def test_wps_finds_named_columns_without_sheet_position_assumptions(self):
         workbook = Workbook()

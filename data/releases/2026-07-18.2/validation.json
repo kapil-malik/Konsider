@@ -1,0 +1,53 @@
+{
+  "attempt_count": 100,
+  "criterion_coverage": {
+    "ambient_pm25_population_weighted": 20,
+    "household_consumption_price_level_us_100": 20,
+    "intentional_homicide_rate": 20,
+    "uhc_service_coverage_index": 20,
+    "women_peace_security_index": 20
+  },
+  "issues": [
+    {
+      "code": "licence_clearance_pending",
+      "country_code": null,
+      "message": "who_air_quality: raw API responses kept local; redistribution not treated as permitted",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "licence_clearance_pending",
+      "country_code": null,
+      "message": "who_uhc: raw API responses kept local; redistribution not treated as permitted",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "strict_ranking_not_recommended",
+      "country_code": null,
+      "message": "ICP advises PPPs are not a precise measure for strict country rankings.",
+      "metric_id": "household_consumption_price_level_us_100",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "licence_clearance_pending",
+      "country_code": null,
+      "message": "wps_index: raw workbook kept local; normalized values treated as non-commercial research output pending written confirmation that the report licence covers the workbook.",
+      "metric_id": "women_peace_security_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    }
+  ],
+  "observation_count": 100,
+  "passed": true,
+  "product_ready": false,
+  "schema_version": "validation-2.0",
+  "score_count": 100,
+  "status_counts": {
+    "success": 100
+  },
+  "structural_passed": true
+}

@@ -1,6 +1,8 @@
 # Konsider - Historical Context Pack
 
 > **Status: superseded.** This file preserves the original Phase 1 brief and sprint assumptions.
+> Its 10-country, 10-metric fixture dataset is legacy test/demo data and is separate from the
+> 20-country real-data releases. It must not be used to fill missing real observations.
 > The accepted system design is now in [architecture.md](architecture.md), with the current delivery
 > sequence in [roadmap.md](roadmap.md). Component details live under [components/](components/).
 > References below to early vector search, LangGraph, MCP, or heavier AWS infrastructure are

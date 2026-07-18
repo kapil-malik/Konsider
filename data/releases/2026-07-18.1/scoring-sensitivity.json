@@ -1,0 +1,334 @@
+{
+  "criteria": {
+    "ambient_pm25_population_weighted": {
+      "anchors": [
+        [
+          5,
+          10
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          25,
+          6
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          50,
+          1
+        ]
+      ],
+      "country_set_test": {
+        "scenario": "remove one minimum and one maximum raw observation",
+        "threshold_score_range_full": [
+          2.501,
+          10
+        ],
+        "threshold_score_range_trimmed": [
+          2.501,
+          10
+        ]
+      },
+      "observed_raw_range": [
+        4.619649031,
+        42.496679624
+      ],
+      "score_ranges": {
+        "percentile_rank": [
+          1.0,
+          10.0
+        ],
+        "threshold": [
+          2.501,
+          10
+        ],
+        "winsorized_minmax": [
+          1.0,
+          10.0
+        ]
+      },
+      "score_standard_deviation": {
+        "percentile_rank": 2.7314,
+        "threshold": 1.9034,
+        "winsorized_minmax": 2.5374
+      },
+      "selected_method_version": "pm25_health_bands_v1",
+      "selection_reason": "Fixed domain anchors are composition-stable and do not force small observed differences across the full score range.",
+      "tight_cluster_test_score_spread": {
+        "percentile_rank": 9.0,
+        "threshold": 0.0758,
+        "winsorized_minmax": 9.0
+      }
+    },
+    "household_consumption_price_level_us_100": {
+      "anchors": [
+        [
+          50,
+          10
+        ],
+        [
+          75,
+          8
+        ],
+        [
+          100,
+          6
+        ],
+        [
+          125,
+          4
+        ],
+        [
+          150,
+          2
+        ],
+        [
+          175,
+          1
+        ]
+      ],
+      "country_set_test": {
+        "scenario": "remove one minimum and one maximum raw observation",
+        "threshold_score_range_full": [
+          3.104,
+          10
+        ],
+        "threshold_score_range_trimmed": [
+          3.104,
+          10
+        ]
+      },
+      "observed_raw_range": [
+        26.338573684628347,
+        136.19890298783076
+      ],
+      "score_ranges": {
+        "percentile_rank": [
+          1.0,
+          10.0
+        ],
+        "threshold": [
+          3.104,
+          10
+        ],
+        "winsorized_minmax": [
+          1.0,
+          10.0
+        ]
+      },
+      "score_standard_deviation": {
+        "percentile_rank": 2.7314,
+        "threshold": 1.5323,
+        "winsorized_minmax": 2.9523
+      },
+      "selected_method_version": "icp_price_level_bands_v1",
+      "selection_reason": "Fixed domain anchors are composition-stable and do not force small observed differences across the full score range.",
+      "tight_cluster_test_score_spread": {
+        "percentile_rank": 9.0,
+        "threshold": 0.0879,
+        "winsorized_minmax": 9.0
+      }
+    },
+    "intentional_homicide_rate": {
+      "anchors": [
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          10,
+          1
+        ]
+      ],
+      "country_set_test": {
+        "scenario": "remove one minimum and one maximum raw observation",
+        "threshold_score_range_full": [
+          4.389,
+          9.931
+        ],
+        "threshold_score_range_trimmed": [
+          7.185,
+          9.931
+        ]
+      },
+      "observed_raw_range": [
+        0.0690954942050905,
+        5.76340794073065
+      ],
+      "score_ranges": {
+        "percentile_rank": [
+          1.0,
+          10.0
+        ],
+        "threshold": [
+          4.389,
+          9.931
+        ],
+        "winsorized_minmax": [
+          1.0,
+          10.0
+        ]
+      },
+      "score_standard_deviation": {
+        "percentile_rank": 2.7314,
+        "threshold": 1.1775,
+        "winsorized_minmax": 2.3961
+      },
+      "selected_method_version": "homicide_risk_bands_v1",
+      "selection_reason": "Fixed domain anchors are composition-stable and do not force small observed differences across the full score range.",
+      "tight_cluster_test_score_spread": {
+        "percentile_rank": 9.0,
+        "threshold": 0.0569,
+        "winsorized_minmax": 9.0
+      }
+    },
+    "uhc_service_coverage_index": {
+      "anchors": [
+        [
+          50,
+          1
+        ],
+        [
+          60,
+          3
+        ],
+        [
+          70,
+          5
+        ],
+        [
+          80,
+          7.5
+        ],
+        [
+          90,
+          10
+        ]
+      ],
+      "country_set_test": {
+        "scenario": "remove one minimum and one maximum raw observation",
+        "threshold_score_range_full": [
+          4.8,
+          10
+        ],
+        "threshold_score_range_trimmed": [
+          4.8,
+          10
+        ]
+      },
+      "observed_raw_range": [
+        69.0,
+        92.0
+      ],
+      "score_ranges": {
+        "percentile_rank": [
+          1.0,
+          10.0
+        ],
+        "threshold": [
+          4.8,
+          10
+        ],
+        "winsorized_minmax": [
+          1.0,
+          10.0
+        ]
+      },
+      "score_standard_deviation": {
+        "percentile_rank": 2.6069,
+        "threshold": 1.1015,
+        "winsorized_minmax": 2.9251
+      },
+      "selected_method_version": "uhc_coverage_bands_v1",
+      "selection_reason": "Fixed domain anchors are composition-stable and do not force small observed differences across the full score range.",
+      "tight_cluster_test_score_spread": {
+        "percentile_rank": 9.0,
+        "threshold": 0.0575,
+        "winsorized_minmax": 9.0
+      }
+    },
+    "women_peace_security_index": {
+      "anchors": [
+        [
+          0.5,
+          1
+        ],
+        [
+          0.6,
+          3
+        ],
+        [
+          0.7,
+          5
+        ],
+        [
+          0.8,
+          7.5
+        ],
+        [
+          0.9,
+          10
+        ]
+      ],
+      "country_set_test": {
+        "scenario": "remove one minimum and one maximum raw observation",
+        "threshold_score_range_full": [
+          3.14,
+          10
+        ],
+        "threshold_score_range_trimmed": [
+          3.14,
+          10
+        ]
+      },
+      "observed_raw_range": [
+        0.607,
+        0.939
+      ],
+      "score_ranges": {
+        "percentile_rank": [
+          1.0,
+          10.0
+        ],
+        "threshold": [
+          3.14,
+          10
+        ],
+        "winsorized_minmax": [
+          1.0,
+          10.0
+        ]
+      },
+      "score_standard_deviation": {
+        "percentile_rank": 2.7145,
+        "threshold": 1.4686,
+        "winsorized_minmax": 2.3727
+      },
+      "selected_method_version": "wps_index_bands_v1",
+      "selection_reason": "Fixed domain anchors are composition-stable and do not force small observed differences across the full score range.",
+      "tight_cluster_test_score_spread": {
+        "percentile_rank": 9.0,
+        "threshold": 0.25,
+        "winsorized_minmax": 9.0
+      }
+    }
+  },
+  "schema_version": "scoring-sensitivity-1.0"
+}

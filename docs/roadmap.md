@@ -2,12 +2,16 @@
 
 Status: worker-first roadmap
 
-Last updated: 2026-07-17
+Last updated: 2026-07-18
 
 Supersedes the fixture-first product sequence in `konsider_context.md`. The fixture repository remains
 test-only; fixture scores are not evidence and cannot enter a real dataset release.
 
 ## Completion Gate
+
+Current state: **blocked / not green**. Release `2026-07-18.2` passes structural validation, but
+product readiness remains false until WHO GHO and WPS workbook reuse rights are cleared and the ICP
+criterion is narrowed or presented without a precise strict-rank interpretation.
 
 The live engine, FastAPI surface, React UI, retrieval, explanations, LLM chat, agents, SSE, MCP, and
 cloud deployment are blocked until a local release demonstrates all of the following:
@@ -99,7 +103,9 @@ After the completion gate, and only then:
 ## Delivery Rules
 
 - Each meaningful source or infrastructure increment ends with tests and updated source/methodology docs.
-- Published releases and raw artifacts are immutable; corrections produce new IDs.
+- Published releases and local raw artifacts are immutable; corrections produce new IDs. Raw
+  third-party bytes are ignored by Git unless an audited source licence explicitly permits
+  redistribution.
 - The worker never manufactures observations or scores for missing source data.
 - Source-specific parsing stays isolated; scoring logic is not duplicated in worker, API, or UI.
 - Live requests never depend on external source availability.
