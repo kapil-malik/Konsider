@@ -71,6 +71,24 @@ class SourceRecordReference:
 
 
 @dataclass(frozen=True)
+class ObservationComponent:
+    component_id: str
+    value: float
+    unit: str
+    reference_year: int
+    source_record: SourceRecordReference
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "component_id": self.component_id,
+            "value": self.value,
+            "unit": self.unit,
+            "reference_year": self.reference_year,
+            "source_record": self.source_record.to_dict(),
+        }
+
+
+@dataclass(frozen=True)
 class MetricObservation:
     observation_id: str
     country_code: str
@@ -89,12 +107,17 @@ class MetricObservation:
     quality_flags: tuple[str, ...] = field(default_factory=tuple)
     lower_bound: float | None = None
     upper_bound: float | None = None
+    components: tuple[ObservationComponent, ...] = field(default_factory=tuple)
 
     def to_dict(self) -> dict[str, Any]:
         value = asdict(self)
         value["raw_artifact_ids"] = list(dict.fromkeys(self.raw_artifact_ids))
         value["source_records"] = [item.to_dict() for item in self.source_records]
         value["quality_flags"] = list(self.quality_flags)
+        if self.components:
+            value["components"] = [item.to_dict() for item in self.components]
+        else:
+            value.pop("components", None)
         return value
 
 
@@ -153,6 +176,8 @@ class ValidationReport:
     score_count: int
     attempt_count: int
     criterion_coverage: dict[str, int]
+    criterion_readiness: dict[str, bool]
+    ready_criterion_count: int
     status_counts: dict[str, int]
     issues: tuple[ValidationIssue, ...]
 
@@ -163,7 +188,7 @@ class ValidationReport:
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "schema_version": "validation-2.0",
+            "schema_version": "validation-3.0",
             "structural_passed": self.structural_passed,
             "product_ready": self.product_ready,
             "passed": self.structural_passed,
@@ -171,6 +196,8 @@ class ValidationReport:
             "score_count": self.score_count,
             "attempt_count": self.attempt_count,
             "criterion_coverage": dict(sorted(self.criterion_coverage.items())),
+            "criterion_readiness": dict(sorted(self.criterion_readiness.items())),
+            "ready_criterion_count": self.ready_criterion_count,
             "status_counts": dict(sorted(self.status_counts.items())),
             "issues": [issue.to_dict() for issue in self.issues],
         }

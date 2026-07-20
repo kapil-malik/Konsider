@@ -67,6 +67,8 @@ class ReleaseRepository:
             "validation_summary": {
                 "structural_passed": validation.structural_passed,
                 "product_ready": validation.product_ready,
+                "ready_criterion_count": validation.ready_criterion_count,
+                "criterion_readiness": dict(sorted(validation.criterion_readiness.items())),
                 "errors": sum(i.severity == "error" for i in validation.issues),
                 "blockers": sum(i.severity == "blocker" for i in validation.issues),
                 "warnings": sum(i.severity == "warning" for i in validation.issues),
@@ -81,11 +83,13 @@ class ReleaseRepository:
         })
         return draft
 
-    def publish(self, release_id: str) -> Path:
+    def publish(self, release_id: str, *, require_product_ready: bool = True) -> Path:
         draft = self.root / ".draft" / release_id
         validation = json.loads((draft / "validation.json").read_text(encoding="utf-8"))
         if not validation["structural_passed"]:
             raise ValueError("A structurally invalid release cannot be published.")
+        if require_product_ready and not validation["product_ready"]:
+            raise ValueError("A release with fewer than five product-ready criteria cannot be promoted.")
         published = self.root / release_id
         if published.exists():
             raise FileExistsError(f"Published release is immutable: {release_id}")

@@ -1,4 +1,5 @@
 from pathlib import Path
+import hashlib
 import json
 import shutil
 from tempfile import TemporaryDirectory
@@ -24,6 +25,50 @@ class PublishedReleaseReplayTests(TestCase):
         release = Path("data/releases/2026-07-18.2")
         if not release.exists():
             self.skipTest("The stabilization release has not been built locally.")
+        self._require_local_raw(release)
+        self.assertTrue(replay(release))
+
+    def test_world_bank_candidate_release_contract(self):
+        release = Path("data/releases/2026-07-20.2")
+        self.assertTrue(release.exists())
+        manifest = json.loads((release / "manifest.json").read_text(encoding="utf-8"))
+        validation = json.loads((release / "validation.json").read_text(encoding="utf-8"))
+        sources = json.loads((release / "sources.json").read_text(encoding="utf-8"))
+        artifacts = json.loads((release / "raw-artifacts.json").read_text(encoding="utf-8"))
+        observations = [json.loads(row) for row in (release / "observations.jsonl").read_text(encoding="utf-8").splitlines()]
+        attempts = [json.loads(row) for row in (release / "attempts.jsonl").read_text(encoding="utf-8").splitlines()]
+        self.assertEqual(manifest["schema_version"], "konsider-release-3.0")
+        self.assertEqual(manifest["status"], "published")
+        self.assertEqual(manifest["observation_count"], 120)
+        self.assertEqual(manifest["attempt_count"], 120)
+        self.assertTrue(validation["structural_passed"])
+        self.assertTrue(validation["product_ready"])
+        self.assertEqual(validation["ready_criterion_count"], 5)
+        self.assertFalse(validation["criterion_readiness"]["uhc_service_coverage_index"])
+        self.assertEqual(len(sources), 6)
+        self.assertTrue(all(source["license_name"] == "Creative Commons Attribution 4.0 International" for source in sources))
+        self.assertTrue(all(source["license_evidence"] and source["methodology_url"] and source["attribution"] for source in sources))
+        self.assertEqual(len({(item["source_id"], item["country_code"], item["criterion_id"]) for item in attempts}), 120)
+        self.assertEqual({item["status"] for item in attempts}, {"success"})
+        artifact_ids = {item["artifact_id"] for item in artifacts}
+        for observation in observations:
+            referenced = {record["artifact_id"] for record in observation["source_records"]}
+            self.assertEqual(set(observation["raw_artifact_ids"]), referenced)
+            self.assertTrue(referenced <= artifact_ids)
+            self.assertTrue(all(record["locator"] and record["record_id"] for record in observation["source_records"]))
+            for component in observation.get("components", []):
+                self.assertIn(component["source_record"], observation["source_records"])
+
+        file_checksums = {}
+        for name, expected in manifest["file_checksums"].items():
+            actual = hashlib.sha256((release / name).read_bytes()).hexdigest()
+            self.assertEqual(expected, f"sha256:{actual}")
+            file_checksums[name] = expected
+        release_digest = hashlib.sha256(json.dumps(file_checksums, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        self.assertEqual(manifest["release_checksum"], f"sha256:{release_digest}")
+
+    def test_world_bank_candidate_release_replays_from_local_raw(self):
+        release = Path("data/releases/2026-07-20.2")
         self._require_local_raw(release)
         self.assertTrue(replay(release))
 

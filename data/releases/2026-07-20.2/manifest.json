@@ -1,0 +1,94 @@
+{
+  "artifact_checksums": {
+    "sha256:2fb5331b5c98212d2dd843d6743d7bef252bbaf159cd371b81a302db2bb70f97": "sha256:2fb5331b5c98212d2dd843d6743d7bef252bbaf159cd371b81a302db2bb70f97",
+    "sha256:6c3cf161d0798b847de909e12eeacc99501b017294c50dee387d39ca75200d57": "sha256:6c3cf161d0798b847de909e12eeacc99501b017294c50dee387d39ca75200d57",
+    "sha256:7d8fbe0f19a57f7c4f7b7d46a23cf00f42736226b920fc5c5c27d4516306270c": "sha256:7d8fbe0f19a57f7c4f7b7d46a23cf00f42736226b920fc5c5c27d4516306270c",
+    "sha256:9c50f4c510c83642cb69954a889342602c3d280256ca09c82ca202f883d340dd": "sha256:9c50f4c510c83642cb69954a889342602c3d280256ca09c82ca202f883d340dd",
+    "sha256:a2c74879b5f49cbbd48018d0fd4b240df7e43622f8542711e79e50682ef5ccb6": "sha256:a2c74879b5f49cbbd48018d0fd4b240df7e43622f8542711e79e50682ef5ccb6",
+    "sha256:bba7da151c56682d3183d7f920532b6bb663e399c05acf095eb71504bf5015c1": "sha256:bba7da151c56682d3183d7f920532b6bb663e399c05acf095eb71504bf5015c1",
+    "sha256:bc65408507ec1d0202b16f6897b9fff2761c6ac501fefc6f5fe1c199c8c9d162": "sha256:bc65408507ec1d0202b16f6897b9fff2761c6ac501fefc6f5fe1c199c8c9d162",
+    "sha256:bf6f38e1a6129122169bc1603a3667b9861f62fb47e45be643176f0de700254b": "sha256:bf6f38e1a6129122169bc1603a3667b9861f62fb47e45be643176f0de700254b",
+    "sha256:e4203ad14b1c6a378f2c1d88cf61a3c46692db4be96110d1143e680702ce85c4": "sha256:e4203ad14b1c6a378f2c1d88cf61a3c46692db4be96110d1143e680702ce85c4"
+  },
+  "attempt_count": 120,
+  "created_at": "2026-07-20T04:18:25.114087+00:00",
+  "criteria": [
+    "ambient_pm25_population_weighted",
+    "household_consumption_price_level_us_100",
+    "infrastructure_readiness_composite",
+    "intentional_homicide_rate",
+    "uhc_service_coverage_index",
+    "women_legal_economic_equality"
+  ],
+  "file_checksums": {
+    "attempts.jsonl": "sha256:194456cc431ff93cda746cd0c38964859dc08c2140069d04c02c656740f94356",
+    "observations.jsonl": "sha256:d5944b962c3bc0a7970132200a37118dda2daf238bb1f5ef33878d943f2c94a4",
+    "raw-artifacts.json": "sha256:80ac76bd842a61217b638aec6a130090de8e7b990b5c4e55dafeb007b5985a71",
+    "scores.jsonl": "sha256:c739d62b8709519311d25e7125d757360ea28514817403bf49b0fb9ef174d91e",
+    "scoring-sensitivity.json": "sha256:df0d099744fa5719ff62b02708388b6d70246a34491a91e3c5b9fa178a5ba832",
+    "sources.json": "sha256:659281fc8e79bd3208897edade62def13d207232edcc3a7cbc1ee1cdac321beb",
+    "validation.json": "sha256:3ce85e1c852e87ab94e67a9a0532120f53ed2700d0ac96400bde15b84e07d799"
+  },
+  "observation_count": 120,
+  "previous_release_id": "2026-07-18.2",
+  "published_at": "2026-07-20T04:18:25.314921+00:00",
+  "release_checksum": "sha256:d43d73d1919b5ce578911eb3cebcc6285514fcdc519503d57060ca5a21cdcecf",
+  "release_id": "2026-07-20.2",
+  "reproducibility": {
+    "observation_method_versions": [
+      "wbl_2026_legal_framework_index_v1",
+      "wdi_infrastructure_equal_weight_v1",
+      "world_bank_homicide_observation_v3",
+      "world_bank_icp_pli_v3",
+      "world_bank_pm25_observation_v1",
+      "world_bank_uhc_observation_v1"
+    ],
+    "parser_versions": [
+      "world_bank_homicide_v3",
+      "world_bank_icp_v3",
+      "world_bank_infrastructure_v1",
+      "world_bank_pm25_v1",
+      "world_bank_uhc_v1",
+      "world_bank_wbl_v1"
+    ],
+    "python_requires": ">=3.11",
+    "raw_storage": "local content-addressed files excluded from git",
+    "replay_command": "python -m konsider.ingestion.worker replay data/releases/2026-07-20.2",
+    "worker_package": "konsider-0.1.0"
+  },
+  "schema_version": "konsider-release-3.0",
+  "score_count": 120,
+  "scoring_method_versions": [
+    "homicide_risk_bands_v1",
+    "icp_relative_cost_bands_v2",
+    "infrastructure_readiness_bands_v1",
+    "pm25_health_bands_v1",
+    "uhc_coverage_bands_v1",
+    "wbl_legal_equality_bands_v1"
+  ],
+  "source_versions": {
+    "unodc_homicide": "VC.IHR.PSRC.P5@WDI-2026-07-13",
+    "world_bank_icp": "PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13",
+    "world_bank_infrastructure": "INFRA-3@WDI-2026-07-13",
+    "world_bank_pm25": "EN.ATM.PM25.MC.M3@WDI-2026-07-13",
+    "world_bank_uhc": "SH.UHC.SRVS.CV.XD@HNP-2026-07-01",
+    "world_bank_wbl": "WBL26_FINAL_ALL@2026-02-23"
+  },
+  "status": "published",
+  "validation_summary": {
+    "blockers": 20,
+    "criterion_readiness": {
+      "ambient_pm25_population_weighted": true,
+      "household_consumption_price_level_us_100": true,
+      "infrastructure_readiness_composite": true,
+      "intentional_homicide_rate": true,
+      "uhc_service_coverage_index": false,
+      "women_legal_economic_equality": true
+    },
+    "errors": 0,
+    "product_ready": true,
+    "ready_criterion_count": 5,
+    "structural_passed": true,
+    "warnings": 10
+  }
+}

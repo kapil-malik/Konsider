@@ -14,7 +14,7 @@ class ValidationTests(TestCase):
             "obs", "IND", "uhc_service_coverage_index", 75, "index_0_100", "2023-01-01",
             "2023-12-31", "source", ("sha256:a",),
             (SourceRecordReference("sha256:a", "$[0]", "IND|2023"),), "estimated", "national",
-            "parser-v", "method-v", ("population_level_not_expat_access",),
+            "parser-v", "method-v", ("wdi_distribution", "population_level_not_expat_access"),
         )
 
     def test_missing_provenance_blocks_publication(self):
@@ -30,7 +30,7 @@ class ValidationTests(TestCase):
     def test_expected_attempt_matrix_is_required_when_sources_are_supplied(self):
         report = validate_release(
             [self.observation], score_observations([self.observation]), [self.artifact], [],
-            [SOURCES["who_uhc"]], min_criteria=1, min_country_coverage=1,
+            [SOURCES["world_bank_uhc"]], min_criteria=1, min_country_coverage=1,
         )
         self.assertFalse(report.structural_passed)
         self.assertIn("attempt_matrix_incomplete", {issue.code for issue in report.issues})

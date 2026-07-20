@@ -1,27 +1,20 @@
-# Data Refresh Worker Application
+# Data refresh worker application
 
-This directory is the deployment root for scheduled and manually triggered data refresh jobs. The
-first local worker vertical slice is implemented under `src/konsider/ingestion`.
-
-The worker should start as a normal Python executable that can run locally against a release
-directory. Production can wrap the same code in a Lambda handler scheduled by EventBridge; scheduled
-ECS Fargate is reserved for long-running or browser-heavy refreshes.
-
-Run a replay of the first real-data release:
-
-```powershell
-$env:PYTHONPATH = "src"
-python -m konsider.ingestion.worker replay data\releases\2026-07-18.2
-```
-
-Build a new local release from registered public sources:
+The implemented local worker lives under `src/konsider/ingestion`. It captures registered World Bank
+sources, writes source-neutral observations and attempts, runs structural and criterion-level
+readiness validation, and atomically publishes only candidates with at least five ready criteria.
 
 ```powershell
 $env:PYTHONPATH = "src"
 python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N
+python -m konsider.ingestion.worker replay data\releases\2026-07-20.2
 ```
 
-The worker currently covers WHO air quality, UNODC-lineage homicide via WDI, WHO UHC, World Bank ICP,
-and WPS. See `docs/data-source-feasibility.md`, `docs/scoring-methodology.md`, and
-`docs/release-2026-07-18.2.md`. Raw third-party bytes are retained locally under ignored
-`data/raw/`; they are not part of the Git release payload.
+Release `2026-07-20.2` covers WDI PM2.5, WDI/UNODC homicide, World Bank HNP UHC, ICP relative-cost
+bands, WBL legal and economic equality, and an experimental WDI infrastructure composite. UHC is
+present but non-ready because its latest official value is 2021. See
+`docs/data-source-feasibility.md`, `docs/scoring-methodology.md`, and
+`docs/release-2026-07-20.2.md`.
+
+Raw third-party bytes remain local under ignored `data/raw/`; release history and metadata are
+committed without the source payloads. No API, UI, retrieval, or chat runtime is implemented here.

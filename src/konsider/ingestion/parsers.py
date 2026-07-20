@@ -1,4 +1,4 @@
-"""Isolated parsers with record-level provenance for the five source families."""
+"""Isolated parsers with record-level provenance for current and historical source families."""
 
 from __future__ import annotations
 
@@ -10,7 +10,9 @@ from collections.abc import Iterable
 from openpyxl import load_workbook
 
 from konsider.ingestion.countries import COUNTRIES, COUNTRY_ALIASES
-from konsider.ingestion.models import MetricObservation, RawArtifact, SourceRecordReference
+from konsider.ingestion.models import (
+    MetricObservation, ObservationComponent, RawArtifact, SourceRecordReference,
+)
 
 
 def _observation_id(source: str, country: str, metric: str, year: int) -> str:
@@ -21,7 +23,7 @@ def _annual_observation(
     *, records: tuple[SourceRecordReference, ...], source_id: str, country: str, metric: str,
     value: float, unit: str, year: int, observation_type: str, parser_version: str,
     method: str, flags: tuple[str, ...] = (), lower: float | None = None,
-    upper: float | None = None,
+    upper: float | None = None, components: tuple[ObservationComponent, ...] = (),
 ) -> MetricObservation:
     artifact_ids = tuple(dict.fromkeys(record.artifact_id for record in records))
     return MetricObservation(
@@ -31,6 +33,7 @@ def _annual_observation(
         raw_artifact_ids=artifact_ids, source_records=records, observation_type=observation_type,
         geographic_scope="national", parser_version=parser_version, method_version=method,
         quality_flags=flags, lower_bound=lower, upper_bound=upper,
+        components=components,
     )
 
 
@@ -155,10 +158,164 @@ def parse_wps_index(artifacts: list[RawArtifact], bodies: list[bytes]) -> list[M
     raise ValueError("Could not locate country and WPS index score columns")
 
 
+def _latest_wdi_rows(artifact: RawArtifact, body: bytes):
+    rows = []
+    for row, reference in _world_bank_rows(artifact, body):
+        if row.get("value") is None:
+            continue
+        normalized = {**row, "iso3": row.get("countryiso3code"), "year": int(str(row["date"]))}
+        rows.append((normalized, reference))
+    return _latest_by_country(rows, "iso3", "year")
+
+
+def parse_world_bank_pm25(artifacts: list[RawArtifact], bodies: list[bytes]) -> list[MetricObservation]:
+    latest = _latest_wdi_rows(artifacts[0], bodies[0])
+    return [_annual_observation(
+        records=(ref,), source_id="world_bank_pm25", country=code,
+        metric="ambient_pm25_population_weighted", value=row["value"],
+        unit="micrograms_per_cubic_metre", year=int(row["year"]), observation_type="modelled",
+        parser_version="world_bank_pm25_v1", method="world_bank_pm25_observation_v1",
+        flags=("wdi_distribution", "modelled_estimate", "cross_country_comparison_only"),
+    ) for code, (row, ref) in sorted(latest.items())]
+
+
+def parse_world_bank_uhc(artifacts: list[RawArtifact], bodies: list[bytes]) -> list[MetricObservation]:
+    latest = _latest_wdi_rows(artifacts[0], bodies[0])
+    return [_annual_observation(
+        records=(ref,), source_id="world_bank_uhc", country=code,
+        metric="uhc_service_coverage_index", value=row["value"], unit="index_0_100",
+        year=int(row["year"]), observation_type="estimated", parser_version="world_bank_uhc_v1",
+        method="world_bank_uhc_observation_v1",
+        flags=("wdi_distribution", "population_level_not_expat_access", "upstream_latest_2021"),
+    ) for code, (row, ref) in sorted(latest.items())]
+
+
+def parse_world_bank_homicide_current(artifacts: list[RawArtifact], bodies: list[bytes]) -> list[MetricObservation]:
+    latest = _latest_wdi_rows(artifacts[0], bodies[0])
+    return [_annual_observation(
+        records=(ref,), source_id="unodc_homicide", country=code,
+        metric="intentional_homicide_rate", value=row["value"], unit="per_100000_people",
+        year=int(row["year"]), observation_type="reported_or_estimated",
+        parser_version="world_bank_homicide_v3", method="world_bank_homicide_observation_v3",
+        flags=("wdi_distribution", "secondary_distribution", "cross_country_comparability_caution"),
+    ) for code, (row, ref) in sorted(latest.items())]
+
+
+def parse_world_bank_icp_current(artifacts: list[RawArtifact], bodies: list[bytes]) -> list[MetricObservation]:
+    ppp_rows = list(_world_bank_rows(artifacts[0], bodies[0]))
+    exchange_rows = list(_world_bank_rows(artifacts[1], bodies[1]))
+    ppp = {(row["countryiso3code"], int(str(row["date"]))): (row, ref) for row, ref in ppp_rows if row.get("value") is not None}
+    exchange = {(row["countryiso3code"], int(str(row["date"]))): (row, ref) for row, ref in exchange_rows if row.get("value") is not None}
+    output = []
+    for code in sorted(COUNTRIES):
+        years = sorted({year for country, year in ppp if country == code} & {year for country, year in exchange if country == code})
+        if not years:
+            continue
+        year = years[-1]
+        ppp_row, ppp_ref = ppp[(code, year)]
+        exchange_row, exchange_ref = exchange[(code, year)]
+        ppp_value, exchange_value = float(ppp_row["value"]), float(exchange_row["value"])
+        components = (
+            ObservationComponent("household_consumption_ppp", ppp_value, "lcu_per_international_dollar", year, ppp_ref),
+            ObservationComponent("official_exchange_rate", exchange_value, "lcu_per_us_dollar", year, exchange_ref),
+        )
+        output.append(_annual_observation(
+            records=(ppp_ref, exchange_ref), source_id="world_bank_icp", country=code,
+            metric="household_consumption_price_level_us_100", value=ppp_value / exchange_value * 100,
+            unit="index_us_100", year=year, observation_type="derived", parser_version="world_bank_icp_v3",
+            method="world_bank_icp_pli_v3", components=components,
+            flags=("wdi_distribution", "derived_from_official_ppp_and_exchange_rate", "national_not_city_level", "broad_band_only", "not_for_precise_strict_ranking"),
+        ))
+    return output
+
+
+def parse_world_bank_wbl(artifacts: list[RawArtifact], bodies: list[bytes]) -> list[MetricObservation]:
+    workbook = load_workbook(io.BytesIO(bodies[0]), read_only=True, data_only=True)
+    sheet = workbook["WBL Economy Scores"]
+    rows = list(sheet.iter_rows(values_only=True))
+    header_index = next(i for i, row in enumerate(rows[:20]) if row and row[0] == "Economy")
+    headers = list(rows[header_index])
+    iso_column = headers.index("ISO Code")
+    year_column = headers.index("Report Year")
+    score_column = headers.index("I. Economy LF Index")
+    latest_rows: dict[str, tuple[int, int, tuple[object, ...]]] = {}
+    for row_index, row in enumerate(rows[header_index + 1:], start=header_index + 2):
+        code = str(row[iso_column]).strip() if row[iso_column] is not None else ""
+        if code not in COUNTRIES or not isinstance(row[score_column], (int, float)):
+            continue
+        report_year = int(row[year_column])
+        if code not in latest_rows or report_year > latest_rows[code][0]:
+            latest_rows[code] = (report_year, row_index, row)
+
+    output = []
+    for code, (report_year, row_index, row) in sorted(latest_rows.items()):
+        reference = SourceRecordReference(
+            artifacts[0].artifact_id, f"WBL Economy Scores!R{row_index}C{score_column + 1}",
+            f"{code}|WBL_LF_INDEX|report-{report_year}",
+        )
+        output.append(_annual_observation(
+            records=(reference,), source_id="world_bank_wbl", country=code,
+            metric="women_legal_economic_equality", value=float(row[score_column]),
+            unit="index_0_100", year=2025, observation_type="composite",
+            parser_version="world_bank_wbl_v1", method="wbl_2026_legal_framework_index_v1",
+            flags=("world_bank_primary_dataset", "de_jure_legal_framework", "not_de_facto_outcomes", "data_current_2025_10_01"),
+        ))
+    return output
+
+
+def _piecewise_0_100(value: float, anchors: tuple[tuple[float, float], ...]) -> float:
+    if value <= anchors[0][0]:
+        return anchors[0][1]
+    if value >= anchors[-1][0]:
+        return anchors[-1][1]
+    for (x0, y0), (x1, y1) in zip(anchors, anchors[1:], strict=False):
+        if x0 <= value <= x1:
+            return y0 + (value - x0) / (x1 - x0) * (y1 - y0)
+    raise AssertionError("component interpolation failed")
+
+
+def parse_world_bank_infrastructure(artifacts: list[RawArtifact], bodies: list[bytes]) -> list[MetricObservation]:
+    latest_by_component = [_latest_wdi_rows(artifact, body) for artifact, body in zip(artifacts, bodies, strict=True)]
+    component_ids = ("internet_users_percent", "fixed_broadband_per_100", "lpi_infrastructure_quality")
+    component_units = ("percent_population", "subscriptions_per_100", "index_1_5")
+    output = []
+    for code in sorted(COUNTRIES):
+        if not all(code in latest for latest in latest_by_component):
+            continue
+        rows_refs = [latest[code] for latest in latest_by_component]
+        values = [float(row["value"]) for row, _ in rows_refs]
+        normalized = (
+            min(max(values[0], 0), 100),
+            _piecewise_0_100(values[1], ((0, 0), (10, 25), (20, 50), (30, 75), (40, 100))),
+            _piecewise_0_100(values[2], ((1, 0), (2, 25), (3, 50), (4, 75), (5, 100))),
+        )
+        references = tuple(ref for _, ref in rows_refs)
+        components = tuple(
+            ObservationComponent(component_id, value, unit, int(row["year"]), ref)
+            for component_id, unit, value, (row, ref) in zip(component_ids, component_units, values, rows_refs, strict=True)
+        )
+        years = [component.reference_year for component in components]
+        output.append(_annual_observation(
+            records=references, source_id="world_bank_infrastructure", country=code,
+            metric="infrastructure_readiness_composite", value=sum(normalized) / len(normalized),
+            unit="index_0_100", year=max(years), observation_type="derived_composite",
+            parser_version="world_bank_infrastructure_v1", method="wdi_infrastructure_equal_weight_v1",
+            components=components,
+            flags=("wdi_distribution", "equal_weight_three_components", "mixed_reference_years", "digital_and_trade_transport_scope", "itu_attribution_required"),
+        ))
+    return output
+
+
 PARSERS = {
     "who_air_quality": parse_who_air_quality,
     "who_uhc": parse_who_uhc,
     "world_bank_homicide": parse_world_bank_homicide,
     "world_bank_icp": parse_world_bank_icp,
     "wps_index": parse_wps_index,
+    "world_bank_pm25": parse_world_bank_pm25,
+    "world_bank_uhc": parse_world_bank_uhc,
+    "world_bank_homicide_current": parse_world_bank_homicide_current,
+    "world_bank_icp_current": parse_world_bank_icp_current,
+    "world_bank_wbl": parse_world_bank_wbl,
+    "world_bank_infrastructure": parse_world_bank_infrastructure,
 }

@@ -1,29 +1,44 @@
 # Data-source feasibility and licence audit
 
-Status: stabilization audit; not legal advice
+Status: audited for candidate release `2026-07-20.2`; not legal advice
 
-Last checked: 2026-07-18
+Last checked: 2026-07-20
 
-This audit covers the five 20-country experimental criteria. A public download is not itself a
-licence. Privacy policies and generic site terms are not recorded as dataset licences. Raw source
-bytes live under ignored `data/raw/`; release manifests retain URLs, retrieval metadata, and SHA-256
-checksums. The earlier committed raw files are removed from the current Git index without rewriting
-history.
+A public endpoint is not a licence. This audit relies on dataset/indicator-specific metadata and the
+[World Bank public licence terms](https://datacatalog.worldbank.org/public-licenses), not privacy
+policies or generic website terms. All selected distributions state Creative Commons Attribution 4.0
+International (CC BY 4.0), which permits copying, adaptation, and distribution for commercial and
+non-commercial purposes with attribution and change indication, subject to the World Bank terms.
+Konsider nevertheless keeps raw third-party bytes under ignored `data/raw/`; committed releases store
+URLs, HTTP metadata, checksums, versions, attribution, and exact record references.
 
-| Criterion / source | Exact licence evidence | Permitted use and required attribution | Konsider decision |
-| --- | --- | --- | --- |
-| WHO modelled PM2.5 (`SDGPM25`) | [WHO Copyright, Licensing and Permissions](https://www.who.int/about/policies/publishing/copyright) says CC BY-NC-SA 3.0 IGO applies to materials *issued under that licence*. It permits non-commercial copying, distribution, translation, and adaptation with WHO attribution and share-alike; commercial use and licensing technical information in database products require permission. The GHO API response and indicator page do not display a dataset-specific licence. | Do not use the WHO logo or imply endorsement. Cite WHO/GHO, the indicator, retrieval date, and identify adaptations. Commercial/database-product use is not cleared from the evidence found. | Raw responses remain local. Experimental normalized observations may be used only in a non-commercial research context pending written confirmation. Product readiness is blocked. |
-| WHO UHC Service Coverage (`UHC_INDEX_REPORTED`) | Same WHO copyright page and same absence of a licence notice in the GHO response. | Same conditional CC BY-NC-SA terms and attribution requirements as above. | Raw responses remain local. Commercial/database-product use is not cleared. Product readiness is blocked. |
-| UNODC homicide via World Bank WDI (`VC.IHR.PSRC.P5`) | [WDI indicator metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/VC.IHR.PSRC.P5) explicitly labels the distributed indicator `CC BY-4.0`. [World Bank Data Access and Licensing](https://datacatalog.worldbank.org/public-licenses) says CC BY 4.0 permits copying, modification, and distribution for any purpose with attribution and change indication, subject to its additional terms. Generic UN terms allow only personal non-commercial copying and prohibit redistribution/derivative compilations, so Konsider does not rely on those terms or redistribute direct UNODC downloads. | Attribute World Bank WDI indicator `VC.IHR.PSRC.P5`, identify UNODC as original source, link the licence, and state Konsider transformations. | Use only the explicitly CC BY-4.0 WDI representation. Raw WDI API bytes are still kept local under the repository-wide conservative raw-artifact policy. |
-| World Bank ICP / WDI (`PA.NUS.PRVT.PP`, `PA.NUS.FCRF`) | WDI metadata for [private-consumption PPP](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.PRVT.PP) and [official exchange rate](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.FCRF) explicitly labels both `CC BY-4.0`. | Commercial and non-commercial copy, adaptation, and redistribution are allowed with attribution and change indication, subject to World Bank additional terms. Attribute ICP/WDI and label the Konsider PLI calculation. | Licence is adequate for redistribution. Methodology remains a blocker for strict rankings: ICP metadata says PPPs are not recommended as a precise measure for establishing strict country rankings. |
-| GIWPS/PRIO WPS Index 2025/26 | The copyright page of the [official 2025/26 report](https://giwps.georgetown.edu/wp-content/uploads/2025/10/WPS-Index-2025-Report.pdf) states `Creative Commons Attribution Non-Commercial 4.0`. The downloadable workbook contains no separate licence notice found in this audit. A Georgetown privacy policy is not a data licence. | The report licence permits sharing and adaptation only for non-commercial purposes with attribution and change indication. It does not grant commercial rights. It is unclear whether the workbook is within the licensed work. | Keep the workbook local. Treat normalized values as non-commercial research output only; obtain written confirmation of workbook scope and commercial plans before product use. Product readiness is blocked. |
+## Audited sources
 
-Source quality remains separate from licence status. WHO PM2.5 is a modelled population-weighted
-national estimate with uncertainty bounds. WHO UHC measures population service coverage, not migrant
-eligibility or care experience. UNODC/WDI homicide has legal-system and reporting comparability
-limits. ICP is a national price-level comparison, not a household budget or city cost index. WPS is
-an independent composite using mixed reference years and possible imputation.
+| Criterion | Official access and methodology | Coverage and freshness observed 2026-07-20 | Licence and required use | Decision |
+| --- | --- | --- | --- | --- |
+| Population-weighted PM2.5 | WDI API `EN.ATM.PM25.MC.M3`; [indicator metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/EN.ATM.PM25.MC.M3) | 20/20; latest 2023; WDI update shown as 2026-07-13 | Metadata says CC BY 4.0. Attribute World Bank WDI and GBD 2023/IHME, identify Konsider transformation. | Ready. Modelled national exposure for comparative health risk, not a monitoring-station or regulatory measure. |
+| UHC service coverage | World Bank Indicators API, HNP source 16, `SH.UHC.SRVS.CV.XD`; [HNP metadata](https://databank.worldbank.org/metadataglossary/health-nutrition-and-population-statistics/series/SH.UHC.SRVS.CV.XD) | 20/20; latest 2021; HNP update shown as 2026-07-01. The current WDI source-2 endpoint returned no observations, so the registered official API source is HNP 16. | HNP metadata says CC BY 4.0. Attribute World Bank HNP and WHO GHO, identify transformation. | Not ready: complete but stale under the three-year rule. It measures population service coverage, not migrant eligibility, quality, or care experience. |
+| Intentional homicide | WDI API `VC.IHR.PSRC.P5`; [indicator metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/VC.IHR.PSRC.P5) | 20/20; latest country values range 2021-2023; WDI update shown as 2026-07-13 | The WDI representation says CC BY 4.0. Attribute World Bank WDI and original source UNODC. Direct UNODC portal files are not ingested or redistributed. | Ready with legal-definition and reporting-capacity comparability cautions. |
+| Household-consumption relative cost | WDI API `PA.NUS.PRVT.PP` and `PA.NUS.FCRF`; [PPP metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.PRVT.PP), [exchange-rate metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.FCRF) | 20/20 latest common year 2025; 2021 ICP benchmark with WDI extrapolations | Both inputs say CC BY 4.0. Attribute World Bank ICP/WDI and identify the derived price-level calculation and banding. | Ready only as broad relative-cost bands. ICP cautions against precise strict country ranking; the value is national, not a city or household budget. |
+| Women’s legal and economic equality | Official [WBL 2026 download](https://wbl.worldbank.org/en/data/download-data), workbook `WBL26_FINAL_ALL.xlsx`; [methodology](https://wbl.worldbank.org/en/data/methodology), [catalog record](https://datacatalog.worldbank.org/search/dataset/0038489/women-business-and-the-law) | 20/20; report year 2026, law/data cutoff 2025-10-01; 190-economy dataset | The catalog and [reproducibility package](https://reproducibility.worldbank.org/catalog/459) say CC BY 4.0. Use the World Bank citation/DOI and identify transformations. | Ready. Uses the WBL Legal Framework economy index and therefore measures de jure law, not enforcement or lived outcomes. |
+| Infrastructure readiness experiment | WDI APIs `IT.NET.USER.ZS`, `IT.NET.BBND.P2`, `LP.LPI.INFR.XQ`; metadata for [internet use](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.USER.ZS), [fixed broadband](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.BBND.P2), and [LPI infrastructure](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/LP.LPI.INFR.XQ) | 20/20 for every component; internet 2024-2025, broadband 2023-2024, LPI 2022 | Each WDI representation says CC BY 4.0. Attribute World Bank WDI and ITU for the digital indicators; identify the equal-weight derived composite. | Provisionally ready, still labelled experimental. It covers digital access and trade/transport logistics, not all infrastructure; component years differ and LPI is survey-based. |
 
-The worker source registry stores the licence name, URL, evidence statement, redistribution decision,
-permitted use, and attribution text. Any change in those fields requires a new source version and a
-fresh audit date.
+## Observed API/download behavior
+
+- WDI/HNP API requests use the fixed ISO-3 country set, an explicit date range, JSON, and a page size
+  above the expected result count. The generic connector also follows documented next links or page
+  metadata and terminates on an empty page without storing that terminal response.
+- The WBL site requires normal browser request headers for its official workbook. The worker captures
+  the final URL and HTTP response metadata and selects the latest report row per country rather than
+  treating the workbook’s historical rows as duplicates.
+- Source registrations freeze the URLs, dataset/source versions, parser versions, methodology links,
+  licence evidence, redistribution decision, permitted usage, attribution, and limitations used by a
+  release. Replay reads those embedded registrations rather than silently substituting the current
+  registry.
+
+## Product-readiness interpretation
+
+Licence adequacy is necessary but not sufficient. Each criterion also has source-specific range,
+unit, observation-type, quality-flag, coverage, freshness, attempt, provenance, schema, checksum, and
+replay checks. Release `2026-07-20.2` passes five criteria. UHC remains visible with blockers rather
+than being redefined, imputed, or replaced by a fixture score.

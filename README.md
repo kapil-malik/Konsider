@@ -1,107 +1,70 @@
 # Konsider
 
-Konsider is an evidence-backed country suitability and relocation advisor. It produces personalized,
-explainable country rankings from user priorities and is designed to grow into a system that
-refreshes public evidence, serves deterministic rankings, and supports conversational exploration.
+Konsider is an evidence-backed country suitability and relocation project. The repository currently
+implements the local data-refresh worker; the recommendation engine, APIs, React UI, retrieval, and
+LLM/chat layers remain deferred.
 
-The repository includes a local data-refresh worker and a structurally validated 20-country,
-five-criterion research release. The complete dataset gate is **not green**: source-licence and
-methodology blockers remain. API, React, retrieval, and LLM runtimes therefore remain blocked.
+## Current status
 
-## Architecture
+Published release `2026-07-20.2` contains six real-data criteria for the fixed 20-country experiment
+set. It passes structural validation and the project gate because five criteria pass every
+criterion-level product-readiness check:
 
-Konsider is organized around three independently deployable applications:
+- World Bank WDI population-weighted PM2.5 exposure;
+- UNODC intentional homicide distributed through WDI;
+- World Bank ICP-derived broad relative-cost bands;
+- World Bank Women, Business and the Law legal-framework index; and
+- an experimental three-component WDI infrastructure composite.
 
-- A Python data refresh worker that builds versioned, validated dataset releases.
-- A Python live engine that owns profiles, scoring, retrieval, chat tools, and public APIs.
-- A React + Vite website that accesses only the live engine.
+World Bank HNP UHC coverage has complete 20-country coverage but is not ready: its latest official
+observation is 2021 and exceeds the configured three-year freshness limit. Passing the five-of-six
+data gate does not mean every criterion is ready or that the deferred product stack has started.
 
-The early production target is deliberately lean: Amplify Hosting for the website, API Gateway plus
-Python Lambda for the live API, EventBridge Scheduler plus Python Lambda for weekly refreshes, and
-S3 for immutable dataset releases and raw artifacts. DynamoDB, ECS/App Runner, Step Functions, SQL,
-and vector search are escalation paths rather than starting assumptions.
+The repository also retains a separate legacy ten-country fixture dataset. Those approximate scores
+exist only for domain tests and examples; they are not substituted into real releases.
 
-Start with [docs/architecture.md](docs/architecture.md). The component documents, storage design,
-and current sprint sequence are linked from there and from [docs/roadmap.md](docs/roadmap.md).
+See [the release report](docs/release-2026-07-20.2.md), [source audit](docs/data-source-feasibility.md),
+[scoring experiments](docs/scoring-methodology.md), and [roadmap](docs/roadmap.md).
 
-## Current Capabilities
+## Worker guarantees
 
-- Active local stabilization release `2026-07-18.2`: five experimental real-data criteria across
-  20 countries, 100 source attempts, record-level provenance, sensitivity evidence, and replay.
-- Local immutable raw capture excluded from Git; release manifests retain retrieval metadata and
-  checksums.
-- A separate legacy fixture dataset with ten countries and ten approximate comparison metrics.
-- Complete fixture validation.
-- Editable and normalized user weights.
-- Three default profile templates.
-- Deterministic weighted rankings.
-- Parameter-level contribution breakdowns, strengths, and tradeoffs.
-- Qualitative evidence fixture loading.
+- Content-addressed raw bytes remain local under ignored `data/raw/`; committed release metadata
+  retains exact URLs, HTTP metadata, timestamps, source versions, and SHA-256 checksums.
+- Every observation points to the exact artifact and JSON record or workbook cell that produced it.
+- Every expected source/country/criterion combination has a `success`, `no_data`, `failed`, or
+  `rejected` attempt.
+- Draft publication requires structural validity and at least five product-ready criteria.
+- Published releases are immutable; corrections receive new IDs and earlier releases remain intact.
 
-Fixture scores remain approximate MVP fixtures and are not a source of truth for relocation
-decisions. The active release and blockers are documented in
-[docs/release-2026-07-18.2.md](docs/release-2026-07-18.2.md). The earlier
-[`2026-07-17.1` release](docs/release-2026-07-17.1.md) is an experimental baseline, not proof of gate
-completion.
-
-## Repository Layout
-
-```text
-apps/
-  api/                         # future FastAPI/Lambda live engine root
-  worker/                      # future refresh CLI/Lambda worker root
-contracts/                     # future machine-readable shared contracts
-data/
-  fixtures/                    # legacy 10-country test/demo fixtures
-  raw/                         # ignored local third-party bytes
-  releases/                    # immutable local release records and manifests
-docs/
-  architecture.md
-  components/
-  roadmap.md
-  storage.md
-src/konsider/
-  domain/                      # framework-free models, profiles, scoring
-  repositories/               # fixture and future storage adapters
-tests/
-  unit/domain/
-  integration/repositories/
-web/                           # future React + Vite deployment root
-```
-
-## Setup
+## Setup and verification
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\activate
 python -m pip install -e .[dev]
+$env:PYTHONPATH = "src"
+python -m unittest discover -s tests -p "test_*.py"
+python -m konsider.ingestion.worker replay data\releases\2026-07-20.2
 ```
 
-## Run Tests
+Rebuilding a candidate performs network downloads from registered official sources:
 
 ```powershell
-python -m pytest
+python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N
 ```
 
-The tests also run without third-party test tooling:
+## Repository layout
 
-```powershell
-python -m unittest discover -s tests
+```text
+apps/worker/                  worker deployment notes
+data/fixtures/                legacy 10-country test/demo fixtures
+data/raw/                     ignored local third-party bytes
+data/releases/                immutable published releases and active pointer
+docs/                         architecture, source, method, and release records
+src/konsider/ingestion/       source registry, capture, parsers, scoring, validation
+src/konsider/repositories/    local release publication adapter
+tests/                        unit, integration, failure, publication, and replay tests
 ```
 
-## Example
-
-This is a legacy fixture-engine example; it does not consume the active real-data release.
-
-```python
-from konsider.domain.profiles import get_default_profile
-from konsider.domain.scoring import build_ranking_table, rank_countries
-from konsider.repositories.fixture_repository import FixtureProjectDataRepository
-
-data = FixtureProjectDataRepository().load()
-profile = get_default_profile("indian_tech_professional_with_teenage_child")
-rankings = rank_countries(data.metrics, profile.weights)
-table = build_ranking_table(rankings, data.countries)
-
-print(table[0].rank, table[0].country_name, table[0].total_score)
-```
+The example scorer under `src/konsider/domain` still consumes legacy fixtures; it is not a live
+product engine and must not be presented as using release `2026-07-20.2`.

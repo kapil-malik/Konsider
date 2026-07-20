@@ -2,7 +2,7 @@
 
 Status: worker stabilization storage decision record
 
-Last updated: 2026-07-18
+Last updated: 2026-07-20
 
 ## Goals
 
@@ -37,7 +37,7 @@ file or object.
 ```text
 releases/
   active.json
-  2026-07-18.2/
+  2026-07-20.2/
     manifest.json
     observations.jsonl
     scores.jsonl
@@ -56,19 +56,25 @@ Minimum release metadata:
 
 ```json
 {
-  "release_id": "2026-07-18.2",
-  "schema_version": "konsider-release-2.0",
+  "release_id": "2026-07-20.2",
+  "schema_version": "konsider-release-3.0",
+  "source_versions": {"world_bank_pm25": "EN.ATM.PM25.MC.M3@WDI-2026-07-13"},
   "scoring_method_versions": ["pm25_health_bands_v1"],
   "status": "published",
   "created_at": "2026-07-17T08:00:00Z",
   "published_at": "2026-07-17T10:00:00Z",
   "release_checksum": "sha256:...",
-  "validation_summary": {"structural_passed": true, "product_ready": false}
+  "validation_summary": {
+    "structural_passed": true,
+    "product_ready": true,
+    "ready_criterion_count": 5,
+    "criterion_readiness": {"uhc_service_coverage_index": false}
+  }
 }
 ```
 
 Published records are not edited. Corrections produce a new release. Rollback changes
-`active-release.json` to an earlier compatible release and records who performed the operation and
+`active.json` to an earlier compatible release and records who performed the operation and
 why.
 
 ## Canonical Metric Records
@@ -108,6 +114,8 @@ links to a `RawArtifact` and `SourceRegistration`. Required provenance includes:
 - Confidence, quality flags, and human overrides with actor and reason.
 - Attempt status for source/country/criterion coverage: `success`, `no_data`, `failed`, or
   `rejected`.
+- For a derived observation, exact per-component value, unit, reference year, artifact, and source
+  record; unrelated downloaded artifacts are never attached to the observation.
 
 This chain allows the engine to answer "why does this score exist?" without relying on generated
 text.

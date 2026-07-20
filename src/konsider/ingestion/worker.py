@@ -12,7 +12,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from konsider.ingestion.countries import COUNTRY_CODES
-from konsider.ingestion.models import RawArtifact, SourceAttempt
+from konsider.ingestion.models import RawArtifact, SourceAttempt, SourceRegistration
 from konsider.ingestion.parsers import PARSERS
 from konsider.ingestion.registry import SOURCES
 from konsider.ingestion.scoring import score_observations, sensitivity_experiments
@@ -22,7 +22,11 @@ from konsider.repositories.release_repository import ReleaseRepository
 
 
 def fetch_url(url: str) -> tuple[bytes, str, str, dict[str, object]]:
-    request = urllib.request.Request(url, headers={"User-Agent": "Konsider-data-worker/0.2"})
+    request = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 Konsider-data-worker/0.3",
+        "Referer": "https://wbl.worldbank.org/en/data/download-data",
+        "Accept": "application/json, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, */*",
+    })
     with urllib.request.urlopen(request, timeout=120) as response:  # noqa: S310 - registered URLs only
         return response.read(), response.geturl(), response.headers.get_content_type(), {
             "http_status": response.status, "etag": response.headers.get("ETag"),
@@ -40,7 +44,10 @@ def _fetch_result(fetcher, url: str):
 
 
 def _next_odata_url(url: str, skip: int) -> str:
-    return re.sub(r"(%24skip=|\$skip=)\d+", rf"\g<1>{skip}", url)
+    if re.search(r"(?:%24skip=|\$skip=)\d+", url):
+        return re.sub(r"(%24skip=|\$skip=)\d+", rf"\g<1>{skip}", url)
+    separator = "&" if "?" in url else "?"
+    return f"{url}{separator}%24skip={skip}"
 
 
 def _fetch_registration(registration, raw_repository, fetcher, retrieved_at):
@@ -62,11 +69,22 @@ def _fetch_registration(registration, raw_repository, fetcher, retrieved_at):
         artifacts.append(artifact)
         bodies.append(body)
         if registration.pagination == "odata_skip_until_empty":
-            if len(rows) < 1000:
+            next_url = payload.get("@odata.nextLink") or payload.get("odata.nextLink")
+            if next_url:
+                if next_url in urls:
+                    raise RuntimeError(f"Repeated continuation URL for {registration.source_id}")
+                urls.append(next_url)
+                index += 1
+                continue
+            top_match = re.search(r"(?:%24top=|\$top=)(\d+)", url)
+            if top_match and len(rows) < int(top_match.group(1)):
                 break
             skip_match = re.search(r"(?:%24skip=|\$skip=)(\d+)", url)
-            skip = int(skip_match.group(1)) + 1000 if skip_match else len(rows)
-            urls.append(_next_odata_url(url, skip))
+            skip = int(skip_match.group(1)) + len(rows) if skip_match else len(rows)
+            next_url = _next_odata_url(url, skip)
+            if next_url in urls:
+                raise RuntimeError(f"Pagination made no progress for {registration.source_id}")
+            urls.append(next_url)
             if len(urls) > 10000:
                 raise RuntimeError(f"Pagination safety limit exceeded for {registration.source_id}")
         index += 1
@@ -75,7 +93,10 @@ def _fetch_registration(registration, raw_repository, fetcher, retrieved_at):
 
 def _artifact_order(registration, artifacts: list[RawArtifact]) -> list[RawArtifact]:
     if registration.pagination == "odata_skip_until_empty":
-        return sorted(artifacts, key=lambda item: int(re.search(r"(?:%24skip=|\$skip=)(\d+)", item.requested_url).group(1)))
+        def skip_value(item):
+            match = re.search(r"(?:%24skip=|\$skip=)(\d+)", item.requested_url)
+            return int(match.group(1)) if match else 0
+        return sorted(artifacts, key=skip_value)
     order = {url: index for index, url in enumerate(registration.download_urls)}
     return sorted(artifacts, key=lambda item: order.get(item.requested_url, 9999))
 
@@ -105,10 +126,13 @@ def _attempts_for(registration, observations, attempted_at, fallback_artifacts=(
     return attempts
 
 
-def _parse_artifacts(artifacts: list[RawArtifact], raw_repository: RawArtifactRepository):
+def _parse_artifacts(
+    artifacts: list[RawArtifact], raw_repository: RawArtifactRepository,
+    registrations: list[SourceRegistration] | None = None,
+):
     observations, attempts = [], []
     attempted_at = max((item.retrieved_at for item in artifacts), default=datetime.now(UTC).isoformat())
-    for registration in SOURCES.values():
+    for registration in registrations or list(SOURCES.values()):
         ordered = _artifact_order(registration, [item for item in artifacts if item.source_id == registration.source_id])
         try:
             parsed = PARSERS[registration.parser](ordered, [raw_repository.load(item) for item in ordered])
@@ -124,7 +148,7 @@ def _write_release(
     release_id, artifacts, observations, attempts, release_root, previous_release_id=None,
     previous_observations=None,
 ):
-    scores = score_observations(observations)
+    scores = score_observations(observations, profile="current")
     sensitivity = sensitivity_experiments(observations)
     validation = validate_release(
         observations, scores, artifacts, attempts, list(SOURCES.values()),
@@ -135,7 +159,7 @@ def _write_release(
         release_id, observations, scores, artifacts, [source.to_dict() for source in SOURCES.values()],
         validation, attempts, sensitivity, previous_release_id=previous_release_id,
     )
-    return repository.publish(release_id), validation
+    return repository.publish(release_id, require_product_ready=True), validation
 
 
 def refresh(
@@ -159,12 +183,30 @@ def refresh(
                 failure=f"{type(exc).__name__}: {exc}",
             ))
     observations.sort(key=lambda item: (item.metric_id, item.country_code, item.reference_end))
-    scores = score_observations(observations)
+    scores = score_observations(observations, profile="current")
     sensitivity = sensitivity_experiments(observations)
-    validation = validate_release(observations, scores, artifacts, attempts, list(SOURCES.values()))
+    release_root_path = Path(release_root)
+    active_path = release_root_path / "active.json"
+    previous_release_id = None
+    previous_observations = None
+    if active_path.exists():
+        previous_release_id = json.loads(active_path.read_text(encoding="utf-8"))["release_id"]
+        previous_path = release_root_path / previous_release_id / "observations.jsonl"
+        if previous_path.exists():
+            previous_observations = [
+                SimpleNamespace(**json.loads(line))
+                for line in previous_path.read_text(encoding="utf-8").splitlines()
+            ]
+    validation = validate_release(
+        observations, scores, artifacts, attempts, list(SOURCES.values()),
+        previous_observations=previous_observations,
+    )
     repository = ReleaseRepository(release_root)
-    path = repository.write_draft(release_id, observations, scores, artifacts, [s.to_dict() for s in SOURCES.values()], validation, attempts, sensitivity)
-    return repository.publish(release_id) if publish else path
+    path = repository.write_draft(
+        release_id, observations, scores, artifacts, [s.to_dict() for s in SOURCES.values()],
+        validation, attempts, sensitivity, previous_release_id=previous_release_id,
+    )
+    return repository.publish(release_id, require_product_ready=True) if publish else path
 
 
 def stabilize_baseline(previous_path: Path | str, release_id: str, release_root: Path | str = "data/releases") -> Path:
@@ -193,7 +235,8 @@ def replay(release_path: Path | str) -> bool:
             return False
         if hashlib.sha256(body).hexdigest() != artifact.sha256:
             return False
-    if manifest.get("schema_version") != RELEASE_SCHEMA_VERSION:
+    schema_version = manifest.get("schema_version")
+    if not schema_version:
         return manifest.get("observation_count") == len((release / "observations.jsonl").read_text(encoding="utf-8").splitlines())
     for name, expected in manifest["file_checksums"].items():
         if "sha256:" + hashlib.sha256((release / name).read_bytes()).hexdigest() != expected:
@@ -203,8 +246,11 @@ def replay(release_path: Path | str) -> bool:
     ).hexdigest()
     if manifest.get("release_checksum") != expected_release_checksum:
         return False
-    observations, attempts = _parse_artifacts(artifacts, raw_repository)
-    scores = score_observations(observations)
+    source_items = json.loads((release / "sources.json").read_text(encoding="utf-8"))
+    registrations = [SourceRegistration(**item) for item in source_items]
+    observations, attempts = _parse_artifacts(artifacts, raw_repository, registrations)
+    score_profile = "legacy" if schema_version == "konsider-release-2.0" else "current"
+    scores = score_observations(observations, profile=score_profile)
     expected_observations = [json.loads(line) for line in (release / "observations.jsonl").read_text(encoding="utf-8").splitlines()]
     expected_scores = [json.loads(line) for line in (release / "scores.jsonl").read_text(encoding="utf-8").splitlines()]
     expected_attempts = [json.loads(line) for line in (release / "attempts.jsonl").read_text(encoding="utf-8").splitlines()]

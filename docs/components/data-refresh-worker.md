@@ -1,123 +1,68 @@
-# Data Refresh Worker
+# Data refresh worker
 
-Status: first local vertical slice implemented
+Status: six-criterion local worker and five-criterion publication gate implemented
 
-Last updated: 2026-07-18
+Last updated: 2026-07-20
 
 ## Responsibility
 
-The data refresh worker converts approved public information into a validated, publishable
-Konsider dataset release. It may run on a weekly schedule or from an authorized manual trigger.
-It does not serve user requests and does not mutate an active release in place.
-
-The worker is an ordinary Python executable first:
+The worker converts registered official source data into an immutable, reproducible local release.
+It does not serve user requests or mutate a published release. Raw third-party payloads remain in the
+ignored, content-addressed local store.
 
 ```powershell
 $env:PYTHONPATH = "src"
 python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N
-python -m konsider.ingestion.worker replay data\releases\2026-07-18.2
+python -m konsider.ingestion.worker replay data\releases\2026-07-20.2
 ```
 
-AWS Lambda or ECS adapters should be thin wrappers around the same command/service code.
+## Pipeline
 
-## Processing Stages
+1. Freeze source registration, URLs, methodology, licence/redistribution evidence, attribution,
+   source version, parser, and expected country/criterion scope.
+2. Fetch with bounded retries and capture exact bytes, final URL, status, retrieval timestamp,
+   response headers, byte count, and SHA-256. Paginated connectors follow continuation metadata or
+   stop at an empty page and do not retain an unnecessary terminal empty artifact.
+3. Parse source-specific records and write normalized observations with exact artifact plus JSON
+   record/workbook-cell provenance, parser/method version, type, unit, period, scope, quality flags,
+   and component lineage for derived values.
+4. Record one attempt for every expected source/country/criterion combination as `success`,
+   `no_data`, `failed`, or `rejected`.
+5. Apply versioned provisional scoring and run winsorized min-max, percentile, fixed-threshold,
+   country-set, and tight-cluster sensitivity experiments.
+6. Validate structural contracts separately from criterion product readiness: schema compatibility,
+   checksums, HTTP metadata, registration, provenance, attempts, type/unit/range/flags, coverage,
+   freshness, score lineage, and material changes from the previous active release.
+7. Write a draft and publish atomically only if structural validation passes and at least five
+   criteria are ready. Published directories and previous releases are never edited.
 
-1. Resolve requested source registrations, countries, criteria, and refresh window.
-2. Create a refresh-run record and a draft dataset release.
-3. For each registered source, determine the source-specific country/criterion coverage.
-4. Fetch each source with bounded retries, timeouts, rate limits, and source-specific credentials.
-5. Store the original payload or document with content type, retrieval metadata, and checksum.
-6. Extract source-backed text evidence and raw metric observations.
-7. Record coverage status by source/country/criterion: `success`, `no_data`, `failed`, or
-   `rejected`.
-8. Normalize units, geography, date ranges, and metric direction.
-9. Derive 1-10 scores using a versioned methodology; retain the input observations.
-10. Validate completeness, ranges, freshness, duplicates, provenance, and material score changes.
-11. Publish atomically when the release passes, or retain it as failed/draft for diagnosis.
+## Current sources
 
-## Inputs
+- WDI PM2.5 `EN.ATM.PM25.MC.M3`;
+- WDI homicide `VC.IHR.PSRC.P5`, with UNODC lineage;
+- World Bank HNP UHC `SH.UHC.SRVS.CV.XD` (captured but non-ready due to 2021 freshness);
+- WDI ICP PPP/exchange inputs, emitted only as broad cost bands;
+- WBL 2026 Legal Framework economy index; and
+- experimental WDI infrastructure components for internet, fixed broadband, and LPI infrastructure.
 
-The worker consumes a source registry rather than arbitrary URLs supplied at runtime.
+## Release handshake
 
-```json
-{
-  "source_id": "example-public-api",
-  "kind": "api",
-  "base_url": "https://example.org/api",
-  "coverage": {
-    "country_ids": ["canada", "germany"],
-    "criterion_ids": ["uhc_service_coverage_index"]
-  },
-  "schedule": "rate(7 days)",
-  "connector": "example_api_v1",
-  "license_notes": "Review before production use",
-  "enabled": true
-}
-```
+`manifest.json` declares schema, source/scoring/parser/method versions, creation/publication times,
+artifact and payload checksums, aggregate release checksum, previous release, validation summary, and
+replay metadata. `observations.jsonl`, `scores.jsonl`, `attempts.jsonl`, `raw-artifacts.json`,
+`sources.json`, `validation.json`, and `scoring-sensitivity.json` are checksum-covered payloads.
 
-Manual triggers may narrow scope but may not bypass source registration or publication checks:
+Replay validates those checksums, loads the release-embedded registrations, reparses local raw bytes,
+and regenerates observations and scores using the release's schema/scoring profile. Historic version-2
+releases retain their legacy parsers and scoring behavior.
 
-```json
-{
-  "requested_by": "admin-user-id",
-  "source_ids": ["example-public-api"],
-  "country_ids": ["canada"],
-  "criterion_ids": ["uhc_service_coverage_index"],
-  "publish_if_valid": true
-}
-```
+## Failure policy and tests
 
-## Outputs and Handshake
+- Network/schema/parser failures become explicit attempts and cannot erase the active release.
+- Missing or stale data is never filled from fixtures.
+- A structurally valid candidate with fewer than five ready criteria cannot be promoted.
+- Tests cover source parsing, provenance, dynamic pagination, scoring sensitivity, validation
+  failures, immutable publication, readiness-gate refusal, manifest checksums, replay, and tampering.
 
-The worker communicates with the live engine through published storage contracts, not direct
-process calls. Its principal outputs are:
-
-- `RefreshRun`: status, scope, attempts, counts, timings, and errors.
-- `RawArtifact`: immutable source body or file, request metadata, content hash, and retrieval time.
-- `EvidenceItem`: source-backed excerpt or document with country/criterion tags.
-- `MetricObservation`: raw value, unit, effective period, geography, source, and parser version.
-- `MetricScore`: normalized score, derivation inputs, method version, and confidence.
-- `DatasetRelease`: immutable manifest, catalog, metrics, evidence, and validation summary.
-
-Publication must update the active-release pointer atomically. A release manifest includes a schema
-version and checksums so consumers can detect incompatible or incomplete data.
-
-## Idempotency and Failure Handling
-
-- A run has an idempotency key derived from source, scope, and effective refresh window.
-- Raw artifacts are content-addressed; repeated downloads do not create conflicting facts.
-- Connector retries are bounded and jittered. Permanent source failures do not erase the previous
-  published release.
-- Sources are allowed to cover subsets. Missing data is explicit and evaluated against required
-  coverage rules.
-- One failed optional source may produce warnings; a missing required metric blocks publication.
-- Material score movement beyond configured thresholds requires review or an explicit override.
-- Failed and superseded releases remain auditable and are never selected for live requests.
-
-## Technology
-
-- Python 3.11 or newer.
-- HTTP clients and source-specific SDKs behind connector interfaces.
-- Structured parsing and validation with typed models.
-- Local filesystem release writer for development.
-- S3 release writer for production raw artifacts and published releases.
-- EventBridge Scheduler for recurring triggers and an authenticated administrative trigger for
-  manual runs.
-- Lambda for weekly refresh jobs while execution is reliably under the Lambda timeout limit.
-- Scheduled ECS Fargate task only for browser automation, large documents, or long-running jobs.
-- Step Functions only after simple scheduler-driven execution becomes too limited.
-
-## Repository Placement
-
-The deployable entrypoint belongs in `apps/worker`. Reusable connectors and pipeline behavior live
-under `src/konsider/ingestion`; storage implementations live under
-`src/konsider/repositories`. Phase 1 fixture files represent a pre-published local dataset and are
-kept under `data/fixtures`.
-
-## Testing Expectations
-
-- Unit tests for each parser, normalizer, and score derivation.
-- Contract fixtures captured from sources with sensitive data removed.
-- Integration tests for draft creation, validation, and atomic publication.
-- Replay tests proving the same raw artifacts and method version produce the same scores.
-- Failure tests for timeouts, malformed content, schema drift, duplicates, and partial coverage.
+AWS scheduling/storage adapters remain deferred. They must wrap the same pipeline rather than create a
+second scoring or publication implementation.

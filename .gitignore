@@ -13,3 +13,6 @@ web/dist/
 # Third-party source bytes are content-addressed and retained locally. They are not committed unless
 # a source-specific licence has been reviewed and explicitly permits redistribution.
 data/raw/
+
+# Candidate drafts may include third-party evidence and are never published artifacts.
+data/releases/.draft/

@@ -5,7 +5,7 @@ from unittest import TestCase
 from openpyxl import Workbook
 
 from konsider.ingestion.models import RawArtifact
-from konsider.ingestion.parsers import parse_who_air_quality, parse_world_bank_icp, parse_wps_index
+from konsider.ingestion.parsers import parse_who_air_quality, parse_world_bank_icp, parse_world_bank_wbl, parse_wps_index
 
 
 def artifact(source_id="test", index=0):
@@ -43,3 +43,22 @@ class ParserTests(TestCase):
         workbook.save(output)
         observations = parse_wps_index([artifact("wps_index")], [output.getvalue()])
         self.assertEqual((observations[0].country_code, observations[0].value), ("IND", 0.61))
+
+    def test_wbl_selects_latest_report_row_per_country(self):
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.title = "WBL Economy Scores"
+        sheet.append(["notes"])
+        sheet.append(["more notes"])
+        sheet.append(["methodology"])
+        sheet.append(["Economy", "ISO Code", "Report Year", "I. Economy LF Index"])
+        sheet.append(["India", "IND", 2025, 72.5])
+        sheet.append(["India", "IND", 2026, 75.0])
+        output = io.BytesIO()
+        workbook.save(output)
+
+        observations = parse_world_bank_wbl([artifact("world_bank_wbl")], [output.getvalue()])
+
+        self.assertEqual(len(observations), 1)
+        self.assertEqual((observations[0].country_code, observations[0].value), ("IND", 75.0))
+        self.assertEqual(observations[0].source_records[0].record_id, "IND|WBL_LF_INDEX|report-2026")

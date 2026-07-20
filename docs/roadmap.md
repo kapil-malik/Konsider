@@ -1,112 +1,69 @@
-# Konsider Roadmap
+# Konsider roadmap
 
-Status: worker-first roadmap
+Status: worker-first gate reached; product-stack work still requires an explicit next decision
 
-Last updated: 2026-07-18
+Last updated: 2026-07-20
 
-Supersedes the fixture-first product sequence in `konsider_context.md`. The fixture repository remains
-test-only; fixture scores are not evidence and cannot enter a real dataset release.
+This roadmap supersedes the fixture-first sequence in `konsider_context.md`. Fixture scores remain
+test-only and never fill gaps in a real release.
 
-## Completion Gate
+## Dataset completion gate
 
-Current state: **blocked / not green**. Release `2026-07-18.2` passes structural validation, but
-product readiness remains false until WHO GHO and WPS workbook reuse rights are cleared and the ICP
-criterion is narrowed or presented without a precise strict-rank interpretation.
+Release `2026-07-20.2` is structurally valid and has five of six product-ready criteria across all
+20 countries. The gate is therefore green under the defined `>=5` policy. UHC remains criterion-level
+blocked because 2021 data fails the three-year freshness rule. Ten material-change warnings from the
+previous release are retained for review and do not indicate structural corruption.
 
-The live engine, FastAPI surface, React UI, retrieval, explanations, LLM chat, agents, SSE, MCP, and
-cloud deployment are blocked until a local release demonstrates all of the following:
+A ready criterion must have audited redistribution terms, complete expected attempts and 20-country
+coverage, acceptable freshness/type/unit/quality flags, exact record provenance, compatible schemas,
+valid artifact and release checksums, versioned parsing/scoring, and reproducible replay.
 
-- at least five defensible criteria backed by reproducible official or clearly identified independent
-  sources across the 20-country experiment set;
-- immutable raw bytes plus URL, retrieval time, HTTP metadata, checksum, source version, and parser
-  version;
-- normalized observations that retain year, unit, geographic scope, and reported/modelled/imputed or
-  derived status;
-- explicit missing, stale, incomparable, and rejected records without substituted estimates;
-- versioned, transparent scoring experiments and sensitivity results;
-- a validation report that passes schema, range, coverage, freshness, duplication, and provenance
-  checks;
-- immutable draft-to-published promotion and replay tests that reproduce observations and scores.
+## Completed worker sequence
 
-A criterion that fails the gate is narrowed, redefined, or deferred. Missing data is never filled with
-fixture-era scores.
+1. Audited the fixed 20-country source universe, methodology, reference periods, coverage, freshness,
+   and usage terms.
+2. Implemented immutable local raw capture, source registrations, exact record provenance, normalized
+   observations, explicit attempts, structural validation, criterion readiness, candidate publication,
+   and replay.
+3. Replaced direct WHO PM2.5 and UHC capture with World Bank-distributed CC BY 4.0 indicators.
+4. Retained UNODC-lineage homicide through WDI and narrowed ICP output to broad cost bands.
+5. Replaced WPS with the WBL 2026 Legal Framework economy index, renamed “Women’s legal and economic
+   equality.”
+6. Tested and provisionally admitted an equal-weight WDI infrastructure composite covering internet
+   use, fixed broadband, and LPI trade/transport infrastructure quality.
+7. Compared threshold, percentile, and winsorized min-max scoring under country-set and tight-cluster
+   perturbations; selected fixed, versioned transformations.
+8. Published immutable release `2026-07-20.2` only after five criteria passed.
 
-## Stage 1: 20-Country Feasibility Spike
+## Immediate stabilization work
 
-Evaluate India, Singapore, Canada, Australia, Germany, Netherlands, Switzerland, United States,
-United Kingdom, United Arab Emirates, France, Sweden, Denmark, Norway, Ireland, New Zealand, Japan,
-South Korea, Spain, and Portugal using stable ISO alpha-3 codes.
+- Monitor World Bank/WHO for a post-2021 UHC release; do not waive or silently relax freshness.
+- Review the ten material changes caused by source/method transitions and document acceptance before
+  any consumer treats changes as trend movements.
+- Obtain subject-matter review of the PM2.5, homicide, WBL, and infrastructure anchors.
+- Keep infrastructure labelled experimental and reassess its component correlation, mixed-year
+  composition, and equal weighting on each refresh.
+- Add machine-readable JSON Schemas before another application becomes a release consumer.
 
-For every proposed source, verify the current official download or documented API, methodology,
-coverage, reference period, update cadence, usage/attribution terms, and redistribution constraints.
-Record the result in the source catalog even when the source is rejected.
+## Deferred product sequence
 
-Initial decisions:
+No engine, FastAPI, React, retrieval, agents, chat, MCP, or cloud deployment was implemented in this
+worker milestone. If the project explicitly proceeds beyond the gate, the order is:
 
-1. Air pollution exposure: WHO population-weighted modelled PM2.5. The unevenly monitored WHO
-   ground-measurement database is retained as reconnaissance evidence but is not used to rank countries.
-2. Serious violent-crime risk: intentional homicide per 100,000, with UNODC lineage and source type.
-3. Healthcare service access: WHO UHC Service Coverage Index (SDG 3.8.1), not expat healthcare quality.
-4. Relative national price level: World Bank ICP household-consumption PPP relative to market exchange,
-   anchored to the 2021 benchmark; it is not a city budget.
-5. Women's inclusion, justice, and security: latest downloadable GIWPS/PRIO WPS Index data, preserving
-   composite and imputation caveats.
-6. Infrastructure: component feasibility only until coverage, correlation, weighting, and sensitivity
-   tests justify a composite.
+1. Define the release-consumer contract and framework-free ranking service against one published
+   release, excluding non-ready criteria by default.
+2. Add API endpoints and contract tests.
+3. Add the comparison UI.
+4. Add structured evidence lookup and deterministic explanations.
+5. Add retrieval only if metadata/lexical lookup proves insufficient.
+6. Add LLM chat, typed events, agents, and MCP only after deterministic behavior is proven.
+7. Add AWS storage and scheduling adapters after local worker operations remain stable.
 
-## Stage 2: Observation, Provenance, and Release Contracts
+## Delivery rules
 
-Implement source registrations, immutable content-addressed raw artifacts, source-neutral observations,
-quality flags, validation reports, draft releases, atomic publication, active-release pointers, and replay.
-Contracts are finalized from the real source schemas rather than from fixture tables.
-
-## Stage 3: WHO Air-Quality Vertical Slice
-
-Deliver source registration -> HTTP capture -> immutable artifact -> parser -> normalized modelled PM2.5
-observations -> validation -> draft release -> publication -> replay. Publication must fail on missing
-provenance, duplicates, invalid units/ranges, or insufficient country coverage.
-
-## Stage 4: Worker Expansion
-
-Add one source family at a time, rerunning the full release gate after each:
-
-1. UNODC intentional homicide and WHO UHC.
-2. World Bank ICP household price-level inputs and derivation.
-3. WPS Index overall and dimension data where terms permit redistribution.
-4. Infrastructure components from World Bank, UN DESA, and ITU; do not publish a composite until the
-   sensitivity study passes.
-
-## Stage 5: Scoring Experiments
-
-Explore policy-threshold bands and winsorized min-max/percentile transformations using real
-distributions. Every score retains input observation IDs, direction, transform parameters, method
-version, and sensitivity results. Scores use modest precision and never imply source certainty that is
-not present.
-
-## Stage 6: First Published Local Dataset
-
-Publish an immutable release only after at least five criteria pass. Keep fixtures isolated for unit tests.
-Document what every observation and score means, does not mean, and how stale/modelled/imputed data is
-shown. This stage is the prerequisite for all live-product work.
-
-## Deferred Product Sequence
-
-After the completion gate, and only then:
-
-1. Build the framework-free live ranking service and FastAPI endpoints against one published release.
-2. Build the React comparison UI.
-3. Add structured evidence lookup and deterministic explanations.
-4. Add retrieval only when metadata/lexical lookup is insufficient.
-5. Add LLM chat, typed events/SSE, agents, and MCP after deterministic behavior is proven.
-6. Add AWS storage and scheduling adapters after local worker operations are reliable.
-
-## Delivery Rules
-
-- Each meaningful source or infrastructure increment ends with tests and updated source/methodology docs.
-- Published releases and local raw artifacts are immutable; corrections produce new IDs. Raw
-  third-party bytes are ignored by Git unless an audited source licence explicitly permits
-  redistribution.
-- The worker never manufactures observations or scores for missing source data.
-- Source-specific parsing stays isolated; scoring logic is not duplicated in worker, API, or UI.
-- Live requests never depend on external source availability.
-- Product-stack work remains out of scope until the release gate is demonstrably green.
+- Published releases and raw artifacts are immutable; corrections produce new IDs.
+- Raw third-party bytes stay out of Git even where redistribution is allowed, unless a later decision
+  explicitly changes that conservative policy.
+- Missing, stale, incomparable, and rejected data remains explicit; fixture-style scores are forbidden.
+- Structural validity and product readiness are separate decisions.
+- Passing the aggregate gate never hides a failed individual criterion.
