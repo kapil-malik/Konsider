@@ -1,6 +1,7 @@
-# Data-source feasibility and licence audit
+# Data source and licence audit
 
-Status: audited for candidate release `2026-07-20.2`; not legal advice
+Status: audited for the data published in `2026-07-20.2` and unchanged in active packaging release
+`2026-07-21.1`; not legal advice
 
 Last checked: 2026-07-20
 
@@ -33,12 +34,13 @@ URLs, HTTP metadata, checksums, versions, attribution, and exact record referenc
   treating the workbook’s historical rows as duplicates.
 - Source registrations freeze the URLs, dataset/source versions, parser versions, methodology links,
   licence evidence, redistribution decision, permitted usage, attribution, and limitations used by a
-  release. Replay reads those embedded registrations rather than silently substituting the current
+release. Replay reads those embedded registrations rather than silently substituting the current
   registry.
 
 ## Product-readiness interpretation
 
 Licence adequacy is necessary but not sufficient. Each criterion also has source-specific range,
 unit, observation-type, quality-flag, coverage, freshness, attempt, provenance, schema, checksum, and
-replay checks. Release `2026-07-20.2` passes five criteria. UHC remains visible with blockers rather
+replay checks. Active release `2026-07-21.1` preserves the five ready criteria from
+`2026-07-20.2`. UHC remains visible with blockers rather
 than being redefined, imputed, or replaced by a fixture score.

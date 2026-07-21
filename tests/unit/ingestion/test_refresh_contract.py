@@ -6,7 +6,7 @@ from konsider.ingestion.models import MetricObservation, RawArtifact, SourceReco
 from konsider.ingestion.registry import SOURCES, world_bank_query_range
 from konsider.ingestion.scoring import score_observations
 from konsider.ingestion.validation import validate_release
-from konsider.ingestion.worker import refresh
+from konsider.ingestion.worker import main, refresh
 
 
 def test_world_bank_range_advances_beyond_2026() -> None:
@@ -59,3 +59,12 @@ def test_freshness_uses_injected_clock() -> None:
 def test_refresh_requires_explicit_source_version_acknowledgement(tmp_path) -> None:
     with pytest.raises(ValueError, match="explicit source_versions"):
         refresh("future", raw_root=tmp_path / "raw", release_root=tmp_path / "releases")
+
+
+def test_list_sources_prints_refresh_acknowledgements(monkeypatch, capsys) -> None:
+    monkeypatch.setattr("sys.argv", ["worker", "list-sources"])
+
+    assert main() == 0
+    assert capsys.readouterr().out.splitlines() == [
+        f"{source_id}={SOURCES[source_id].source_version}" for source_id in sorted(SOURCES)
+    ]

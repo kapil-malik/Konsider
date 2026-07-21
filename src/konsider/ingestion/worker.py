@@ -396,6 +396,10 @@ def main() -> int:
         description="Build, stabilize, or replay a Konsider dataset release"
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers.add_parser(
+        "list-sources",
+        help="Print the registered source-version acknowledgements required by refresh.",
+    )
     refresh_parser = subparsers.add_parser("refresh")
     refresh_parser.add_argument("--release-id", required=True)
     refresh_parser.add_argument(
@@ -411,6 +415,10 @@ def main() -> int:
     replay_parser = subparsers.add_parser("replay")
     replay_parser.add_argument("release_path")
     args = parser.parse_args()
+    if args.command == "list-sources":
+        for source_id in sorted(SOURCES):
+            print(f"{source_id}={SOURCES[source_id].source_version}")
+        return 0
     if args.command == "refresh":
         versions = dict(item.split("=", 1) for item in args.source_version)
         print(refresh(args.release_id, source_versions=versions))
