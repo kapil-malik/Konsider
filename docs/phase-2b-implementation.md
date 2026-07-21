@@ -26,3 +26,13 @@ Final local verification:
 - `python -m konsider.ingestion.worker replay data/releases/2026-07-20.2`: passed.
 - Uvicorn was started from outside the repository root and returned a healthy 20-country,
   five-enabled-criterion snapshot.
+
+## Phase 2C readiness hardening
+
+On 2026-07-21, active release `2026-07-21.1` corrected cross-platform packaging without changing
+Phase 2B response contracts or ranking behaviour. A clean Git-tree export passed 89 tests, skipped
+the four raw-artifact replay tests that require intentionally uncommitted third-party files, and
+passed all five endpoint probes with no product endpoint returning `503`. The development checkout
+passed all 93 tests with retained raw artifacts. Ubuntu CI now runs pytest, Ruff, Black, and
+compileall for every push and pull request. See
+[release-2026-07-21.1.md](release-2026-07-21.1.md).

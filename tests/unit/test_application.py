@@ -78,6 +78,6 @@ def test_compare_and_breakdown_are_release_pinned(service) -> None:
     comparison = service.compare(["IND", "SGP"], {})
     breakdown = service.country_breakdown("IND")
 
-    assert comparison["release_id"] == breakdown["release_id"] == "2026-07-20.2"
+    assert comparison["release_id"] == breakdown["release_id"] == "2026-07-21.1"
     assert [item["country_code"] for item in comparison["countries"]] == ["IND", "SGP"]
     assert len(breakdown["criteria"]) == 5

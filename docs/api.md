@@ -87,3 +87,19 @@ retain failure context while public `500` and `503` responses omit stack traces 
 
 S3 storage, Lambda/API Gateway adapters, authentication, rate limiting, UI code, chat, and generated
 explanations are deliberately deferred.
+
+## Continuous integration
+
+`.github/workflows/ci.yml` checks the backend on Ubuntu for pushes and pull requests. Run its gates
+locally from the repository root before opening or merging a change:
+
+```bash
+python -m pip install -e ".[dev]"
+pytest
+ruff check .
+black --check .
+python -m compileall -q src tests
+```
+
+CI deliberately uses the committed active release. Its checkout therefore also exercises LF
+normalization and release checksum validation on Linux.

@@ -37,7 +37,8 @@ file or object.
 ```text
 releases/
   active.json
-  2026-07-20.2/
+  2026-07-20.2/       # immutable original packaging
+  2026-07-21.1/       # active LF packaging correction
     manifest.json
     observations.jsonl
     scores.jsonl
@@ -55,14 +56,14 @@ catalogs/
 ```
 
 The catalog is deliberately separate from each release. This avoids modifying published release
-`2026-07-20.2`; the consumer validates its schema major, exact criterion set, scoring versions, and
+`2026-07-21.1`; the consumer validates its schema major, exact criterion set, scoring versions, and
 readiness against the active release before returning records.
 
 Minimum release metadata:
 
 ```json
 {
-  "release_id": "2026-07-20.2",
+  "release_id": "2026-07-21.1",
   "schema_version": "konsider-release-3.0",
   "source_versions": {"world_bank_pm25": "EN.ATM.PM25.MC.M3@WDI-2026-07-13"},
   "scoring_method_versions": ["pm25_health_bands_v1"],

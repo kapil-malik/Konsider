@@ -2,7 +2,7 @@
 
 Status: Phase 2B complete; Phase 2C comparison UI is next
 
-Last updated: 2026-07-20
+Last updated: 2026-07-21
 
 This roadmap supersedes the earlier fixture-first sequence. The project now has a published real-data
 release, but the legacy fixture repository and profiles are not product inputs and must never fill
@@ -10,9 +10,11 @@ gaps in a real release.
 
 ## Current position
 
-Published release `2026-07-20.2` is structurally valid and contains six criteria for the fixed
-20-country experiment set. Five criteria pass the configured criterion-level product-readiness
-checks:
+Active release `2026-07-21.1` is a packaging-only correction of published release `2026-07-20.2`.
+It standardizes committed release artifacts to LF and makes checksums portable to Linux without
+changing observations, scores, readiness decisions, scoring behaviour, or API contracts. It is
+structurally valid and contains six criteria for the fixed 20-country experiment set. Five criteria
+pass the configured criterion-level product-readiness checks:
 
 - population-weighted PM2.5 exposure;
 - intentional homicide rate;
@@ -24,9 +26,20 @@ UHC service coverage has 20-country coverage but remains non-ready because its l
 from 2021 and exceeds the three-year freshness threshold. Passing the aggregate five-of-six gate
 does not make the UHC criterion ready and must not cause consumers to include it by default.
 
-The existing framework-free ranking functions still consume the legacy ten-country fixture shape.
-They do not yet consume release `2026-07-20.2`; the legacy profiles also reference criteria that are
-absent from the published release. Phase 2A closes this integration gap before FastAPI or React work.
+The Phase 2A recommendation service and Phase 2B API consume the active release directly. The legacy
+ten-country fixtures remain isolated test inputs and are not product data. Phase 2C can therefore
+build against the five stable `/api/v1` contracts without adding backend business rules.
+
+## Phase 2C backend readiness hardening
+
+Completed on 2026-07-21 before UI work:
+
+- published packaging-corrected release `2026-07-21.1` while retaining `2026-07-20.2` unchanged;
+- enforced LF checkout bytes for committed release JSON and JSONL artifacts;
+- added Ubuntu GitHub Actions gates for pytest, Ruff, Black, and Python compilation;
+- verified all five Phase 2B endpoints from a clean Git-tree export; and
+- confirmed 20 countries, five enabled criteria, unavailable UHC, experimental infrastructure,
+  unchanged ranking results, and no product endpoint `503` responses.
 
 ## Dataset readiness policy
 

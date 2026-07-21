@@ -27,7 +27,7 @@ def test_health_reports_validated_snapshot(client) -> None:
 
     assert response.status_code == 200
     assert body.status == "ok"
-    assert body.release_id == "2026-07-20.2"
+    assert body.release_id == "2026-07-21.1"
     assert body.country_count == 20
     assert body.enabled_criterion_count == 5
     assert body.ready_for_rankings is True
@@ -245,7 +245,7 @@ def test_default_paths_do_not_depend_on_current_working_directory(tmp_path, monk
         response = other_client.get("/api/v1/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-20.2"
+    assert response.json()["release_id"] == "2026-07-21.1"
 
 
 def test_service_is_constructed_once_per_app_lifecycle() -> None:
@@ -314,7 +314,7 @@ def test_temporary_release_and_catalog_paths_are_injectable(tmp_path) -> None:
         response = other_client.get("/api/v1/catalog")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-20.2"
+    assert response.json()["release_id"] == "2026-07-21.1"
 
 
 def test_unexpected_failure_returns_safe_500() -> None:

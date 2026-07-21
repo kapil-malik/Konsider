@@ -14,7 +14,7 @@ ignored, content-addressed local store.
 $env:PYTHONPATH = "src"
 python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N \
   --source-version SOURCE_ID=VERSION  # repeat for every registered source
-python -m konsider.ingestion.worker replay data\releases\2026-07-20.2
+python -m konsider.ingestion.worker replay data\releases\2026-07-21.1
 ```
 
 ## Pipeline

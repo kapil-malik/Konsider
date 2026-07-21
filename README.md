@@ -6,8 +6,9 @@ Phase 2B typed FastAPI transport. React, retrieval, and LLM/chat layers remain d
 
 ## Current status
 
-Published release `2026-07-20.2` contains six real-data criteria for the fixed 20-country experiment
-set. It passes structural validation and the project gate because five criteria pass every
+Active release `2026-07-21.1` is a packaging-only correction of `2026-07-20.2` for portable LF
+checksums. It contains the same six real-data criteria, observations, scores, and readiness
+decisions for the fixed 20-country experiment set. Five criteria pass every
 criterion-level product-readiness check:
 
 - World Bank WDI population-weighted PM2.5 exposure;
@@ -29,7 +30,7 @@ logic and reuses one validated immutable release snapshot for the process lifeti
 The repository also retains a separate legacy ten-country fixture dataset. Those approximate scores
 exist only for domain tests and examples; they are not substituted into real releases.
 
-See [the release report](docs/release-2026-07-20.2.md), [source audit](docs/data-source-feasibility.md),
+See [the active release report](docs/release-2026-07-21.1.md), [source audit](docs/data-source-feasibility.md),
 [scoring experiments](docs/scoring-methodology.md), and [roadmap](docs/roadmap.md).
 
 ## Worker guarantees
@@ -51,7 +52,16 @@ python -m pip install -e .[dev]
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests -p "test_*.py"
 python -m pytest -q
-python -m konsider.ingestion.worker replay data\releases\2026-07-20.2
+python -m konsider.ingestion.worker replay data\releases\2026-07-21.1
+```
+
+GitHub Actions runs the same backend gates on Ubuntu for every push and pull request:
+
+```powershell
+pytest
+ruff check .
+black --check .
+python -m compileall -q src tests
 ```
 
 Start the local API from any working directory after setting explicit paths when the checkout data

@@ -1,0 +1,271 @@
+{
+  "attempt_count": 120,
+  "criterion_coverage": {
+    "ambient_pm25_population_weighted": 20,
+    "household_consumption_price_level_us_100": 20,
+    "infrastructure_readiness_composite": 20,
+    "intentional_homicide_rate": 20,
+    "uhc_service_coverage_index": 20,
+    "women_legal_economic_equality": 20
+  },
+  "criterion_readiness": {
+    "ambient_pm25_population_weighted": true,
+    "household_consumption_price_level_us_100": true,
+    "infrastructure_readiness_composite": true,
+    "intentional_homicide_rate": true,
+    "uhc_service_coverage_index": false,
+    "women_legal_economic_equality": true
+  },
+  "issues": [
+    {
+      "code": "source_stale",
+      "country_code": "ARE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "AUS",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CAN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CHE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "DEU",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "DNK",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ESP",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "FRA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "GBR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "IND",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "IRL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "JPN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "KOR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NLD",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NOR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NZL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "PRT",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SGP",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SWE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "USA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "ARE",
+      "message": "Value changed 68.1% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "CAN",
+      "message": "Value changed 25.8% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "ESP",
+      "message": "Value changed 25.6% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "IND",
+      "message": "Value changed 27.2% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "JPN",
+      "message": "Value changed 34.8% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "PRT",
+      "message": "Value changed 41.2% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "SGP",
+      "message": "Value changed 27.9% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "USA",
+      "message": "Value changed 29.1% from previous release.",
+      "metric_id": "ambient_pm25_population_weighted",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "JPN",
+      "message": "Value changed 30.8% from previous release.",
+      "metric_id": "household_consumption_price_level_us_100",
+      "scope": "product_readiness",
+      "severity": "warning"
+    },
+    {
+      "code": "material_change_review",
+      "country_code": "KOR",
+      "message": "Value changed 26.3% from previous release.",
+      "metric_id": "household_consumption_price_level_us_100",
+      "scope": "product_readiness",
+      "severity": "warning"
+    }
+  ],
+  "observation_count": 120,
+  "passed": true,
+  "product_ready": true,
+  "ready_criterion_count": 5,
+  "schema_version": "validation-3.0",
+  "score_count": 120,
+  "status_counts": {
+    "success": 120
+  },
+  "structural_passed": true
+}

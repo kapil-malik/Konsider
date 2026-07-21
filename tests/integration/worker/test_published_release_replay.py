@@ -29,7 +29,7 @@ class PublishedReleaseReplayTests(TestCase):
         self.assertTrue(replay(release))
 
     def test_world_bank_candidate_release_contract(self):
-        release = Path("data/releases/2026-07-20.2")
+        release = Path("data/releases/2026-07-21.1")
         self.assertTrue(release.exists())
         manifest = json.loads((release / "manifest.json").read_text(encoding="utf-8"))
         validation = json.loads((release / "validation.json").read_text(encoding="utf-8"))
@@ -98,8 +98,30 @@ class PublishedReleaseReplayTests(TestCase):
         ).hexdigest()
         self.assertEqual(manifest["release_checksum"], f"sha256:{release_digest}")
 
+    def test_packaging_corrected_release_is_lf_and_semantically_unchanged(self):
+        original = Path("data/releases/2026-07-20.2")
+        corrected = Path("data/releases/2026-07-21.1")
+        manifest = json.loads((corrected / "manifest.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(manifest["previous_release_id"], "2026-07-20.2")
+        for name in manifest["file_checksums"]:
+            corrected_bytes = (corrected / name).read_bytes()
+            self.assertNotIn(b"\r\n", corrected_bytes)
+            if name.endswith(".jsonl"):
+                original_payload = [
+                    json.loads(row)
+                    for row in (original / name).read_text(encoding="utf-8").splitlines()
+                ]
+                corrected_payload = [
+                    json.loads(row) for row in corrected_bytes.decode("utf-8").splitlines()
+                ]
+            else:
+                original_payload = json.loads((original / name).read_text(encoding="utf-8"))
+                corrected_payload = json.loads(corrected_bytes)
+            self.assertEqual(corrected_payload, original_payload)
+
     def test_world_bank_candidate_release_replays_from_local_raw(self):
-        release = Path("data/releases/2026-07-20.2")
+        release = Path("data/releases/2026-07-21.1")
         self._require_local_raw(release)
         self.assertTrue(replay(release))
 

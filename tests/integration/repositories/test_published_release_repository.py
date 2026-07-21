@@ -15,11 +15,11 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
     release_root = tmp_path / "releases"
-    shutil.copytree(ROOT / "data" / "releases" / "2026-07-20.2", release_root / "2026-07-20.2")
+    shutil.copytree(ROOT / "data" / "releases" / "2026-07-21.1", release_root / "2026-07-21.1")
     shutil.copy2(ROOT / "data" / "releases" / "active.json", release_root / "active.json")
     catalog = tmp_path / "consumer-catalog.json"
     shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json", catalog)
-    return PublishedReleaseRepository(release_root, catalog), release_root / "2026-07-20.2"
+    return PublishedReleaseRepository(release_root, catalog), release_root / "2026-07-21.1"
 
 
 def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
@@ -40,7 +40,7 @@ def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
 def test_active_release_loads_complete_ready_matrix() -> None:
     release = PublishedReleaseRepository().load_active()
 
-    assert release.release_id == "2026-07-20.2"
+    assert release.release_id == "2026-07-21.1"
     assert len(release.catalog["countries"]) == 20
     assert len(release.available_criterion_ids) == 6
     assert len(release.enabled_criterion_ids) == 5
@@ -62,7 +62,7 @@ def test_default_repository_paths_do_not_depend_on_working_directory(
 
     release = PublishedReleaseRepository().load_active()
 
-    assert release.release_id == "2026-07-20.2"
+    assert release.release_id == "2026-07-21.1"
 
 
 def test_diagnostic_mode_exposes_non_ready_records_without_enabling_them() -> None:

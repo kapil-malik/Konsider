@@ -6,7 +6,7 @@ Last updated: 2026-07-20
 
 The framework-independent engine and its typed FastAPI transport are implemented. React, retrieval,
 chat, agents, MCP, and cloud deployment described below remain design records. Release
-`2026-07-20.2` is consumed through a read-only schema-validating and checksum-verifying adapter; UHC
+`2026-07-21.1` is consumed through a read-only schema-validating and checksum-verifying adapter; UHC
 remains non-ready.
 
 ## Purpose
@@ -196,7 +196,7 @@ Example response shape:
 
 ```json
 {
-  "release_id": "2026-07-20.2",
+  "release_id": "2026-07-21.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "normalized_weights": {

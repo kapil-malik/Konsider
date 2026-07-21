@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_published_score_and_observation_validate() -> None:
-    release = ROOT / "data" / "releases" / "2026-07-20.2"
+    release = ROOT / "data" / "releases" / "2026-07-21.1"
     score = json.loads((release / "scores.jsonl").read_text(encoding="utf-8").splitlines()[0])
     observation = json.loads(
         (release / "observations.jsonl").read_text(encoding="utf-8").splitlines()[0]
@@ -29,7 +29,7 @@ def test_published_score_and_observation_validate() -> None:
     ],
 )
 def test_representative_contract_failures(schema_name, filename, field, value) -> None:
-    path = ROOT / "data" / "releases" / "2026-07-20.2" / filename
+    path = ROOT / "data" / "releases" / "2026-07-21.1" / filename
     payload = copy.deepcopy(json.loads(path.read_text(encoding="utf-8").splitlines()[0]))
     if value is None:
         payload.pop(field)
