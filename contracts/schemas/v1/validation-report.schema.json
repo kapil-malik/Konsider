@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v1/validation-report.schema.json",
+  "type": "object",
+  "required": ["schema_version", "structural_passed", "product_ready", "observation_count", "score_count", "criterion_coverage", "criterion_readiness", "ready_criterion_count", "issues"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^validation-3\\.[0-9]+$"},
+    "structural_passed": {"type": "boolean"},
+    "product_ready": {"type": "boolean"},
+    "observation_count": {"type": "integer", "minimum": 0},
+    "score_count": {"type": "integer", "minimum": 0},
+    "criterion_coverage": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "criterion_readiness": {"type": "object", "additionalProperties": {"type": "boolean"}},
+    "ready_criterion_count": {"type": "integer", "minimum": 0},
+    "issues": {"type": "array", "items": {"type": "object", "required": ["code", "severity", "message", "scope"], "properties": {"code": {"type": "string"}, "severity": {"enum": ["error", "blocker", "warning"]}, "message": {"type": "string"}, "scope": {"type": "string"}}}}
+  }
+}

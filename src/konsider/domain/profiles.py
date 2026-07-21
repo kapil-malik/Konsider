@@ -4,8 +4,7 @@ from __future__ import annotations
 
 from konsider.domain.models import DefaultProfile
 
-
-DEFAULT_PROFILES: dict[str, DefaultProfile] = {
+LEGACY_FIXTURE_PROFILES: dict[str, DefaultProfile] = {
     "indian_tech_professional_with_teenage_child": DefaultProfile(
         id="indian_tech_professional_with_teenage_child",
         name="Indian tech professional with teenage child",
@@ -68,11 +67,36 @@ DEFAULT_PROFILES: dict[str, DefaultProfile] = {
     ),
 }
 
+MVP_PROFILES: dict[str, DefaultProfile] = {
+    "equal_weight_mvp": DefaultProfile(
+        id="equal_weight_mvp",
+        name="Equal-weight MVP",
+        description=(
+            "Provisional transparent baseline across the five release-ready criteria; "
+            "all weights remain user-editable."
+        ),
+        weights={
+            "ambient_pm25_population_weighted": 1,
+            "household_consumption_price_level_us_100": 1,
+            "infrastructure_readiness_composite": 1,
+            "intentional_homicide_rate": 1,
+            "women_legal_economic_equality": 1,
+        },
+    )
+}
+
+# Backward-compatible fixture-only export. Published-release consumers use MVP_PROFILES and the
+# versioned consumer catalog; these legacy personas must never be applied to release data.
+DEFAULT_PROFILES = LEGACY_FIXTURE_PROFILES
+
 
 def get_default_profile(profile_id: str) -> DefaultProfile:
     """Return a default profile by id."""
 
     try:
-        return DEFAULT_PROFILES[profile_id]
+        return MVP_PROFILES[profile_id]
     except KeyError as exc:
-        raise KeyError(f"Unknown default profile: {profile_id}") from exc
+        try:
+            return LEGACY_FIXTURE_PROFILES[profile_id]
+        except KeyError:
+            raise KeyError(f"Unknown default profile: {profile_id}") from exc

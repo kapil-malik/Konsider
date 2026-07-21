@@ -1,0 +1,49 @@
+{
+  "schema_version": "consumer-catalog-1.0",
+  "compatible_release_schema_major": 3,
+  "countries": [
+    {"code":"ARE","display_name":"United Arab Emirates","region":"Middle East and North Africa"},
+    {"code":"AUS","display_name":"Australia","region":"East Asia and Pacific"},
+    {"code":"CAN","display_name":"Canada","region":"North America"},
+    {"code":"CHE","display_name":"Switzerland","region":"Europe and Central Asia"},
+    {"code":"DEU","display_name":"Germany","region":"Europe and Central Asia"},
+    {"code":"DNK","display_name":"Denmark","region":"Europe and Central Asia"},
+    {"code":"ESP","display_name":"Spain","region":"Europe and Central Asia"},
+    {"code":"FRA","display_name":"France","region":"Europe and Central Asia"},
+    {"code":"GBR","display_name":"United Kingdom","region":"Europe and Central Asia"},
+    {"code":"IND","display_name":"India","region":"South Asia"},
+    {"code":"IRL","display_name":"Ireland","region":"Europe and Central Asia"},
+    {"code":"JPN","display_name":"Japan","region":"East Asia and Pacific"},
+    {"code":"KOR","display_name":"South Korea","region":"East Asia and Pacific"},
+    {"code":"NLD","display_name":"Netherlands","region":"Europe and Central Asia"},
+    {"code":"NOR","display_name":"Norway","region":"Europe and Central Asia"},
+    {"code":"NZL","display_name":"New Zealand","region":"East Asia and Pacific"},
+    {"code":"PRT","display_name":"Portugal","region":"Europe and Central Asia"},
+    {"code":"SGP","display_name":"Singapore","region":"East Asia and Pacific"},
+    {"code":"SWE","display_name":"Sweden","region":"Europe and Central Asia"},
+    {"code":"USA","display_name":"United States","region":"North America"}
+  ],
+  "criteria": [
+    {
+      "id":"ambient_pm25_population_weighted","display_name":"Population-weighted PM2.5 exposure","category":"Environment","description":"National population-weighted modelled exposure to fine particulate matter.","direction":"lower_is_better","raw_unit":"micrograms_per_cubic_metre","interpretation":"Lower exposure receives a higher 1-10 health-band score.","caveats":["Comparative national exposure, not a local air-quality reading."],"quality_limitations":["Modelled population-weighted estimate; not local regulatory monitoring."],"ready":true,"default_enabled":true,"experimental":false,"scoring_method_version":"pm25_health_bands_v1"
+    },
+    {
+      "id":"intentional_homicide_rate","display_name":"Intentional homicide rate","category":"Safety","description":"Intentional homicides per 100,000 people; it does not represent all crime.","direction":"lower_is_better","raw_unit":"per_100000_people","interpretation":"Lower homicide rates receive a higher 1-10 risk-band score.","caveats":["Legal classification and reporting capacity vary by country."],"quality_limitations":["Latest country reference years differ and the measure covers homicide only."],"ready":true,"default_enabled":true,"experimental":false,"scoring_method_version":"homicide_risk_bands_v1"
+    },
+    {
+      "id":"household_consumption_price_level_us_100","display_name":"Broad household-consumption relative cost","category":"Affordability","description":"A broad national household-consumption price-level band relative to United States = 100.","direction":"lower_is_better","raw_unit":"index_us_100","interpretation":"Lower broad relative-cost bands receive higher 1-10 scores; equal bands are genuine ties.","caveats":["Not a precise cost-of-living ranking and not city- or household-specific."],"quality_limitations":["Derived from PPP and official exchange-rate inputs and intentionally scored in broad bands."],"ready":true,"default_enabled":true,"experimental":false,"scoring_method_version":"icp_relative_cost_bands_v2"
+    },
+    {
+      "id":"women_legal_economic_equality","display_name":"Women's legal and economic equality","category":"Equality","description":"Women, Business and the Law legal-framework economy index measuring de jure equality.","direction":"higher_is_better","raw_unit":"index_0_100","interpretation":"Higher legal-framework scores receive higher 1-10 equality-band scores.","caveats":["Measures laws, not lived safety, enforcement, social norms, or outcomes."],"quality_limitations":["A national de jure framework indicator cannot establish individual lived experience."],"ready":true,"default_enabled":true,"experimental":false,"scoring_method_version":"wbl_legal_equality_bands_v1"
+    },
+    {
+      "id":"infrastructure_readiness_composite","display_name":"Infrastructure readiness — experimental","category":"Infrastructure","description":"Experimental equal-weight composite of internet use, fixed broadband, and trade/transport infrastructure quality.","direction":"higher_is_better","raw_unit":"index_0_100","interpretation":"Higher composite values receive higher 1-10 readiness-band scores.","caveats":["Experimental and not a complete measure of infrastructure."],"quality_limitations":["Only three components with mixed reference years; omits housing, energy, transit, resilience, and local access."],"ready":true,"default_enabled":true,"experimental":true,"scoring_method_version":"infrastructure_readiness_bands_v1"
+    },
+    {
+      "id":"uhc_service_coverage_index","display_name":"UHC service coverage — unavailable/non-ready","category":"Healthcare","description":"Population-level universal health coverage service-coverage index.","direction":"higher_is_better","raw_unit":"index_0_100","interpretation":"Available for diagnostics only; it never contributes to normal rankings.","caveats":["Latest official value is from 2021 and fails the release freshness threshold."],"quality_limitations":["Population-level coverage does not describe expat access, quality, waiting time, or individual affordability."],"ready":false,"default_enabled":false,"experimental":false,"scoring_method_version":"uhc_coverage_bands_v1"
+    }
+  ],
+  "profiles": [
+    {"id":"equal_weight_mvp","name":"Equal-weight MVP","description":"Provisional transparent baseline across the five product-ready criteria; every weight is user-editable.","weights":{"ambient_pm25_population_weighted":1,"household_consumption_price_level_us_100":1,"infrastructure_readiness_composite":1,"intentional_homicide_rate":1,"women_legal_economic_equality":1}}
+  ]
+}

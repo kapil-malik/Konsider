@@ -1,13 +1,12 @@
 # Konsider Architecture
 
-Status: deferred target architecture; worker and five-criterion release gate implemented
+Status: Phase 2A deterministic engine foundation implemented; transports remain deferred
 
 Last updated: 2026-07-20
 
-The live engine, FastAPI, React, retrieval, chat, agents, MCP, and cloud deployment described below
-are design records only. Release `2026-07-20.2` reaches the five-of-six dataset gate, but this
-milestone intentionally implements no product-stack component. UHC remains non-ready and any next
-phase requires an explicit decision based on the roadmap's remaining risks.
+The framework-independent live-engine foundation is implemented. FastAPI, React, retrieval, chat,
+agents, MCP, and cloud deployment described below remain design records. Release `2026-07-20.2` is
+consumed through a read-only schema-validating and checksum-verifying adapter; UHC remains non-ready.
 
 ## Purpose
 
@@ -93,7 +92,7 @@ The worker distinguishes four data levels:
 | Raw artifact | Original source response or file exactly as fetched, plus checksum and retrieval metadata | Local files or S3 |
 | Extracted evidence | Clean source-backed text snippets or document sections tagged by country and criterion | `evidence.jsonl` |
 | Metric observation | Exact observed value, unit, geography, effective period, and source lineage | `observations.jsonl` |
-| Metric score | Normalized 1-10 score, confidence, methodology version, and evidence references | `metrics.jsonl` |
+| Metric score | Normalized 1-10 score, method version, and observation lineage | `scores.jsonl` |
 
 Source registrations define the expected coverage. A source may cover all countries, a subset of
 countries, one criterion, or several criteria. Each attempted country/source/criterion combination

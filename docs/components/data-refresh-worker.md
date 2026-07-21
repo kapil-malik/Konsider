@@ -12,7 +12,8 @@ ignored, content-addressed local store.
 
 ```powershell
 $env:PYTHONPATH = "src"
-python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N
+python -m konsider.ingestion.worker refresh --release-id YYYY-MM-DD.N \
+  --source-version SOURCE_ID=VERSION  # repeat for every registered source
 python -m konsider.ingestion.worker replay data\releases\2026-07-20.2
 ```
 
@@ -66,3 +67,17 @@ releases retain their legacy parsers and scoring behavior.
 
 AWS scheduling/storage adapters remain deferred. They must wrap the same pipeline rather than create a
 second scoring or publication implementation.
+
+## Controlled annual and future refreshes
+
+Freshness is evaluated against the injected refresh clock/year; tests do not depend on the machine's
+calendar. World Bank discovery ranges end at the current refresh year instead of 2026. Every refresh
+requires explicit acknowledgement of every registered `source_version`; if upstream content or
+version changes, update and audit the registration before fetching so new bytes cannot carry an old
+frozen label.
+
+WBL workbook URLs are year-specific. For each annual WBL update, review the official download page,
+licence and methodology; update the URL, `dataset_version`, `source_version`, reference period,
+parser fixture, and expected workbook layout together; run parser, validation, replay, and material-
+change review; then publish under a new release ID. Never replace the WBL URL or data inside an
+existing published release.

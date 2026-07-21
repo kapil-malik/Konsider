@@ -1,0 +1,153 @@
+"""Framework-independent deterministic recommendation application services."""
+
+from __future__ import annotations
+
+from collections.abc import Mapping, Sequence
+from typing import Any
+
+from konsider.domain.scoring import ScoringError, normalize_weights
+from konsider.repositories.published_release_repository import PublishedReleaseRepository
+
+
+class RecommendationService:
+    """Catalog, ranking, comparison, and breakdown operations pinned to one release."""
+
+    def __init__(self, repository: PublishedReleaseRepository | None = None) -> None:
+        self.release = (repository or PublishedReleaseRepository()).load_active()
+
+    def get_catalog(self) -> dict[str, Any]:
+        return {
+            "release_id": self.release.release_id,
+            "schema_version": self.release.catalog["schema_version"],
+            "countries": self.release.catalog["countries"],
+            "criteria": self.release.catalog["criteria"],
+            "profiles": self.release.catalog["profiles"],
+        }
+
+    def rank(self, weights: Mapping[str, float]) -> dict[str, Any]:
+        enabled = self.release.enabled_criterion_ids
+        available = set(self.release.available_criterion_ids)
+        supplied = set(weights)
+        non_ready = sorted(supplied & (available - set(enabled)))
+        if non_ready:
+            raise ScoringError(f"Non-ready criteria cannot be weighted: {non_ready}")
+        unknown = sorted(supplied - available)
+        if unknown:
+            raise ScoringError(f"Unknown weight parameter(s): {unknown}")
+        normalized_nonzero = normalize_weights(weights, enabled)
+        normalized = {
+            criterion_id: normalized_nonzero.get(criterion_id, 0.0) for criterion_id in enabled
+        }
+
+        by_country: dict[str, list[Any]] = {}
+        for record in self.release.records:
+            by_country.setdefault(record.country["code"], []).append(record)
+        rankings = []
+        for country_code, records in sorted(by_country.items()):
+            contributions = []
+            for record in sorted(records, key=lambda item: item.criterion["id"]):
+                criterion_id = record.criterion["id"]
+                weight = normalized[criterion_id]
+                contribution = round(record.score["score"] * weight, 8)
+                observation = record.observations[0]
+                contributions.append(
+                    {
+                        "criterion_id": criterion_id,
+                        "criterion_name": record.criterion["display_name"],
+                        "score": record.score["score"],
+                        "normalized_weight": weight,
+                        "contribution": contribution,
+                        "raw_observation": observation["value"],
+                        "raw_unit": observation["unit"],
+                        "reference_start": observation["reference_start"],
+                        "reference_end": observation["reference_end"],
+                        "observation_id": observation["observation_id"],
+                        "observation_method_version": observation["method_version"],
+                        "parser_version": observation["parser_version"],
+                        "scoring_method_version": record.score["method_version"],
+                        "source": {
+                            "source_id": record.source["source_id"],
+                            "publisher": record.source["publisher"],
+                            "source_version": record.source["source_version"],
+                            "dataset_version": record.source["dataset_version"],
+                            "canonical_page_url": record.source["canonical_page_url"],
+                            "attribution": record.source["attribution"],
+                        },
+                        "caveats": record.criterion["caveats"],
+                        "quality_limitations": record.criterion["quality_limitations"],
+                        "experimental": record.criterion["experimental"],
+                        "input_observations": list(record.observations),
+                    }
+                )
+            total = round(sum(item["contribution"] for item in contributions), 8)
+            weighted = [item for item in contributions if item["normalized_weight"] > 0]
+            strengths = [
+                item["criterion_id"]
+                for item in sorted(
+                    weighted, key=lambda item: (-item["score"], item["criterion_id"])
+                )[:3]
+            ]
+            tradeoffs = [
+                item["criterion_id"]
+                for item in sorted(
+                    weighted, key=lambda item: (item["score"], item["criterion_id"])
+                )[:3]
+            ]
+            rankings.append(
+                {
+                    "country_code": country_code,
+                    "country_name": records[0].country["display_name"],
+                    "region": records[0].country["region"],
+                    "total_score": total,
+                    "contributions": contributions,
+                    "strengths": strengths,
+                    "tradeoffs": tradeoffs,
+                }
+            )
+        rankings.sort(key=lambda item: (-item["total_score"], item["country_code"]))
+        for rank, item in enumerate(rankings, 1):
+            item["rank"] = rank
+        return {
+            "release_id": self.release.release_id,
+            "release_schema_version": self.release.manifest["schema_version"],
+            "catalog_schema_version": self.release.catalog["schema_version"],
+            "normalized_weights": normalized,
+            "all_zero_behavior": "equal_weights_across_all_enabled_criteria",
+            "country_tie_breaker": "ascending_iso3_country_code",
+            "rounding_tolerance": 1e-8,
+            "rankings": rankings,
+        }
+
+    def compare(self, country_codes: Sequence[str], weights: Mapping[str, float]) -> dict[str, Any]:
+        if not country_codes:
+            raise ValueError("At least one country code is required.")
+        result = self.rank(weights)
+        requested = list(dict.fromkeys(country_codes))
+        known = {item["code"] for item in self.release.catalog["countries"]}
+        unknown = sorted(set(requested) - known)
+        if unknown:
+            raise ValueError(f"Unknown country code(s): {unknown}")
+        rows = {item["country_code"]: item for item in result["rankings"]}
+        result["countries"] = [rows[code] for code in requested]
+        result.pop("rankings")
+        return result
+
+    def country_breakdown(self, country_code: str) -> dict[str, Any]:
+        records = [
+            record for record in self.release.records if record.country["code"] == country_code
+        ]
+        if not records:
+            raise ValueError(f"Unknown country code: {country_code}")
+        return {
+            "release_id": self.release.release_id,
+            "country": records[0].country,
+            "criteria": [
+                {
+                    "criterion": record.criterion,
+                    "score": record.score,
+                    "observations": list(record.observations),
+                    "source": record.source,
+                }
+                for record in sorted(records, key=lambda item: item.criterion["id"])
+            ],
+        }

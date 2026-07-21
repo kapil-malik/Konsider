@@ -22,7 +22,7 @@ state or proven query pressure.**
 | Extracted evidence | Clean snippets, document sections, source tags | Immutable by release | JSONL | S3 release artifact |
 | Metric observations | Raw values, units, effective periods, source lineage | Immutable by release | JSONL | S3 release artifact |
 | Metric scores | Normalized 1-10 values, confidence, method version | Immutable by release | JSONL | S3 release artifact |
-| Catalog | Countries, criteria, profile templates, caveats | Versioned by release | JSON | S3 release artifact |
+| Catalog | Countries, criteria, profile templates, caveats | Separately versioned; checked against release | `data/catalogs/consumer-catalog-1.0.json` | S3 versioned artifact |
 | Release manifests | Version, checksums, validation summary, active pointer | Immutable except pointer | JSON files | S3 objects |
 | Refresh operations | Run status, counts, failures, manual trigger metadata | Append/update status | JSON logs first | DynamoDB later if needed |
 | User profiles | Saved custom weights and revisions | Mutable with history | Deferred/local state | DynamoDB after accounts exist |
@@ -50,7 +50,13 @@ raw/
   source_id/
     sha256.bin
     sha256.json
+catalogs/
+  consumer-catalog-1.0.json
 ```
+
+The catalog is deliberately separate from each release. This avoids modifying published release
+`2026-07-20.2`; the consumer validates its schema major, exact criterion set, scoring versions, and
+readiness against the active release before returning records.
 
 Minimum release metadata:
 
@@ -158,8 +164,9 @@ Python services depend on narrow interfaces rather than storage clients:
 - `ProfileRepository`: revision-controlled user weights and templates.
 - `ConversationRepository`: messages, typed events, tool calls, citations, and usage counters.
 
-The current `FixtureProjectDataRepository` loads the Phase 1 files from `data/fixtures` and is the
-first adapter for catalog, metrics, and evidence reads.
+`PublishedReleaseRepository` is the product adapter for active releases. The
+`FixtureProjectDataRepository` remains a clearly isolated legacy test adapter and is never a
+fallback for catalog, metrics, observations, or evidence reads.
 
 ## Local and AWS Mapping
 

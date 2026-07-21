@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from collections.abc import Iterable, Mapping
+from math import isfinite
 
 from konsider.domain.models import (
     Country,
@@ -36,6 +37,11 @@ def normalize_weights(
     normalized_inputs = {
         parameter_id: float(weights.get(parameter_id, 0.0)) for parameter_id in allowed_parameters
     }
+    non_finite_weights = [
+        parameter_id for parameter_id, weight in normalized_inputs.items() if not isfinite(weight)
+    ]
+    if non_finite_weights:
+        raise ScoringError(f"Weights must be finite: {sorted(non_finite_weights)}")
     negative_weights = [parameter_id for parameter_id, weight in normalized_inputs.items() if weight < 0]
     if negative_weights:
         raise ScoringError(f"Weights cannot be negative: {sorted(negative_weights)}")

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v1/release-manifest.schema.json",
+  "type": "object",
+  "required": ["schema_version", "release_id", "status", "observation_count", "score_count", "criteria", "file_checksums", "release_checksum", "validation_summary", "reproducibility", "scoring_method_versions", "source_versions"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^konsider-release-3\\.[0-9]+$"},
+    "release_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["draft", "published"]},
+    "observation_count": {"type": "integer", "minimum": 0},
+    "score_count": {"type": "integer", "minimum": 0},
+    "attempt_count": {"type": "integer", "minimum": 0},
+    "criteria": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "file_checksums": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}},
+    "release_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "validation_summary": {"type": "object", "required": ["criterion_readiness", "structural_passed"], "properties": {"criterion_readiness": {"type": "object", "additionalProperties": {"type": "boolean"}}, "structural_passed": {"type": "boolean"}}},
+    "reproducibility": {"type": "object"},
+    "scoring_method_versions": {"type": "array", "items": {"type": "string"}},
+    "source_versions": {"type": "object", "additionalProperties": {"type": "string"}}
+  }
+}

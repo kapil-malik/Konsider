@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v1/source-registration.schema.json",
+  "type": "object",
+  "required": ["source_id", "criterion_id", "publisher", "canonical_page_url", "download_urls", "dataset_version", "source_version", "reference_period", "methodology_url", "license_name", "license_url", "attribution", "parser", "parser_version", "notes"],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1}, "criterion_id": {"type": "string", "minLength": 1}, "publisher": {"type": "string", "minLength": 1},
+    "canonical_page_url": {"type": "string", "format": "uri"}, "download_urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}},
+    "dataset_version": {"type": "string", "minLength": 1}, "source_version": {"type": "string", "minLength": 1}, "reference_period": {"type": "string", "minLength": 1},
+    "methodology_url": {"type": "string", "format": "uri"}, "license_name": {"type": "string"}, "license_url": {"type": "string", "format": "uri"},
+    "attribution": {"type": "string", "minLength": 1}, "parser": {"type": "string", "minLength": 1}, "parser_version": {"type": "string", "minLength": 1}, "notes": {"type": "string"}
+  }
+}

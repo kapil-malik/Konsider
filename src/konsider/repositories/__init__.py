@@ -11,3 +11,10 @@ __all__ = [
     "FixtureProjectDataRepository",
     "load_project_data",
 ]
+from konsider.repositories.published_release_repository import (
+    PublishedRelease,
+    PublishedReleaseError,
+    PublishedReleaseRepository,
+)
+
+__all__ = ["PublishedRelease", "PublishedReleaseError", "PublishedReleaseRepository"]

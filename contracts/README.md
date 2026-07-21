@@ -19,3 +19,9 @@ Current human-readable contracts are documented in:
 - `docs/components/live-engine.md`
 - `docs/components/web-application.md`
 - `docs/storage.md`
+## Phase 2A JSON Schemas
+
+Versioned Draft 2020-12 consumer schemas live in `contracts/schemas/v1`. They cover the active
+pointer, manifest, validation report, source registration, observation (including derived
+components), score, and consumer catalog. Payload schemas remain versioned independently while the
+consumer rejects incompatible release, validation, and catalog major versions before joining data.

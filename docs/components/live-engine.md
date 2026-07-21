@@ -1,22 +1,33 @@
 # Live Python Engine
 
-Status: component design
+Status: Phase 2A framework-independent services implemented; API/chat deferred
 
-Last updated: 2026-07-17
+Last updated: 2026-07-20
 
 ## Responsibility
 
-The live engine is the sole authority for profile templates, weight normalization, deterministic
-rankings, evidence retrieval, and chat orchestration. It exposes versioned APIs to the website and
-future integration tools. It reads published releases only and never refreshes external sources
-during a user request.
+The implemented engine is the sole authority for the catalog, weight normalization, deterministic
+rankings, comparisons, and country breakdowns. `konsider.application.RecommendationService` reads
+published releases only and never refreshes external sources during a request. Evidence retrieval,
+chat orchestration, and API transports remain deferred.
+
+## Implemented Phase 2A behavior
+
+- `PublishedReleaseRepository` resolves `active.json`, accepts release-schema major 3, verifies all
+  declared checksums, validates consumer payloads, and joins every score to observations and source.
+- Normal mode exposes five ready criteria and 100 country/criterion records. The explicitly named
+  `diagnostic_read_only` mode can inspect UHC but never changes its readiness.
+- Omitted weights become zero. If all five enabled weights are zero or absent, each receives 0.2.
+- Negative, unknown, and non-ready weights fail. Country ties use ascending ISO-3 code.
+- Results identify the release and catalog schemas and return raw values, periods, source metadata,
+  caveats, method versions, contributions, strengths, and trade-offs.
 
 ## Internal Layers
 
 | Layer | Responsibility |
 | --- | --- |
 | Domain | Typed models, profile rules, weight normalization, scoring, contribution calculation |
-| Services | Ranking, comparison, evidence retrieval, profile revision, conversation orchestration |
+| Services | Implemented catalog, ranking, comparison, breakdown; deferred retrieval and conversation |
 | Repositories | Interfaces and adapters for releases, metrics, evidence, profiles, and conversations |
 | API | FastAPI routing, validation, authentication, serialization, streaming, and error mapping |
 | Agents | LLM prompts and tool orchestration built on services; no independent scoring implementation |
