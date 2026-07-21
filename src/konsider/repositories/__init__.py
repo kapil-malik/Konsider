@@ -15,6 +15,12 @@ from konsider.repositories.published_release_repository import (
     PublishedRelease,
     PublishedReleaseError,
     PublishedReleaseRepository,
+    UnsupportedReleaseContractError,
 )
 
-__all__ = ["PublishedRelease", "PublishedReleaseError", "PublishedReleaseRepository"]
+__all__ = [
+    "PublishedRelease",
+    "PublishedReleaseError",
+    "PublishedReleaseRepository",
+    "UnsupportedReleaseContractError",
+]

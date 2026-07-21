@@ -14,6 +14,10 @@ class ContractError(ValueError):
     """Raised when a published consumer payload violates its contract."""
 
 
+class UnsupportedContractError(ContractError):
+    """Raised when a payload declares an unsupported contract major."""
+
+
 SCHEMA_ROOT = Path(__file__).resolve().parents[2] / "contracts" / "schemas" / "v1"
 SUPPORTED_MAJORS = {
     "konsider-release": 3,
@@ -25,7 +29,7 @@ SUPPORTED_MAJORS = {
 def require_supported_version(value: object, family: str) -> None:
     match = re.fullmatch(rf"{re.escape(family)}-(\d+)\.\d+", str(value))
     if not match or int(match.group(1)) != SUPPORTED_MAJORS[family]:
-        raise ContractError(
+        raise UnsupportedContractError(
             f"Unsupported {family} schema version {value!r}; "
             f"supported major is {SUPPORTED_MAJORS[family]}."
         )

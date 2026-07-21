@@ -38,17 +38,27 @@ class RawArtifactRepository:
         if not body_path.exists():
             body_path.write_bytes(body)
         artifact = RawArtifact(
-            artifact_id=artifact_id, source_id=registration.source_id,
-            requested_url=requested_url, final_url=final_url, retrieved_at=retrieved_at,
-            media_type=media_type, byte_length=len(body), sha256=digest,
+            artifact_id=artifact_id,
+            source_id=registration.source_id,
+            requested_url=requested_url,
+            final_url=final_url,
+            retrieved_at=retrieved_at,
+            media_type=media_type,
+            byte_length=len(body),
+            sha256=digest,
             dataset_version=registration.dataset_version,
             parser_version=registration.parser_version,
             path=body_path.as_posix(),
-            http_status=http_status, etag=etag, last_modified=last_modified,
+            http_status=http_status,
+            etag=etag,
+            last_modified=last_modified,
             content_length_header=content_length_header,
         )
         encoded = json.dumps(artifact.to_dict(), indent=2, sort_keys=True) + "\n"
-        if metadata_path.exists() and json.loads(metadata_path.read_text(encoding="utf-8"))["sha256"] != digest:
+        if (
+            metadata_path.exists()
+            and json.loads(metadata_path.read_text(encoding="utf-8"))["sha256"] != digest
+        ):
             raise ValueError(f"Immutable artifact metadata collision: {artifact_id}")
         if not metadata_path.exists():
             metadata_path.write_text(encoded, encoding="utf-8")

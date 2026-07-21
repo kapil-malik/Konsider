@@ -55,6 +55,16 @@ def test_active_release_loads_complete_ready_matrix() -> None:
     assert infrastructure["experimental"] is True
 
 
+def test_default_repository_paths_do_not_depend_on_working_directory(
+    tmp_path: Path, monkeypatch
+) -> None:
+    monkeypatch.chdir(tmp_path)
+
+    release = PublishedReleaseRepository().load_active()
+
+    assert release.release_id == "2026-07-20.2"
+
+
 def test_diagnostic_mode_exposes_non_ready_records_without_enabling_them() -> None:
     release = PublishedReleaseRepository().load_active(diagnostic_read_only=True)
 

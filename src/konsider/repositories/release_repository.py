@@ -9,7 +9,13 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Iterable
 
-from konsider.ingestion.models import MetricObservation, MetricScore, RawArtifact, SourceAttempt, ValidationReport
+from konsider.ingestion.models import (
+    MetricObservation,
+    MetricScore,
+    RawArtifact,
+    SourceAttempt,
+    ValidationReport,
+)
 from konsider.ingestion.validation import RELEASE_SCHEMA_VERSION
 
 
@@ -31,10 +37,18 @@ class ReleaseRepository:
         self.root = Path(root)
 
     def write_draft(
-        self, release_id: str, observations: list[MetricObservation], scores: list[MetricScore],
-        artifacts: list[RawArtifact], sources: list[dict[str, object]], validation: ValidationReport,
-        attempts: list[SourceAttempt] | None = None, sensitivity: dict[str, object] | None = None,
-        *, previous_release_id: str | None = None, created_at: str | None = None,
+        self,
+        release_id: str,
+        observations: list[MetricObservation],
+        scores: list[MetricScore],
+        artifacts: list[RawArtifact],
+        sources: list[dict[str, object]],
+        validation: ValidationReport,
+        attempts: list[SourceAttempt] | None = None,
+        sensitivity: dict[str, object] | None = None,
+        *,
+        previous_release_id: str | None = None,
+        created_at: str | None = None,
     ) -> Path:
         draft, published = self.root / ".draft" / release_id, self.root / release_id
         if published.exists():
@@ -51,36 +65,65 @@ class ReleaseRepository:
         _write_json(draft / "sources.json", sources)
         _write_json(draft / "validation.json", validation.to_dict())
         _write_json(draft / "scoring-sensitivity.json", sensitivity or {})
-        payload_names = ["observations.jsonl", "scores.jsonl", "attempts.jsonl", "raw-artifacts.json", "sources.json", "validation.json", "scoring-sensitivity.json"]
+        payload_names = [
+            "observations.jsonl",
+            "scores.jsonl",
+            "attempts.jsonl",
+            "raw-artifacts.json",
+            "sources.json",
+            "validation.json",
+            "scoring-sensitivity.json",
+        ]
         file_checksums = {name: f"sha256:{_sha256(draft / name)}" for name in payload_names}
-        release_checksum = "sha256:" + hashlib.sha256(json.dumps(file_checksums, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        release_checksum = (
+            "sha256:"
+            + hashlib.sha256(
+                json.dumps(file_checksums, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest()
+        )
         method_versions = sorted({score.method_version for score in scores})
-        source_versions = {str(source["source_id"]): str(source["source_version"]) for source in sources}
-        _write_json(draft / "manifest.json", {
-            "schema_version": RELEASE_SCHEMA_VERSION, "release_id": release_id, "status": "draft",
-            "created_at": created_at, "published_at": None, "previous_release_id": previous_release_id,
-            "observation_count": len(observations), "score_count": len(scores), "attempt_count": len(attempts),
-            "criteria": sorted(validation.criterion_coverage), "source_versions": source_versions,
-            "scoring_method_versions": method_versions,
-            "artifact_checksums": {a.artifact_id: f"sha256:{a.sha256}" for a in artifacts},
-            "file_checksums": file_checksums, "release_checksum": release_checksum,
-            "validation_summary": {
-                "structural_passed": validation.structural_passed,
-                "product_ready": validation.product_ready,
-                "ready_criterion_count": validation.ready_criterion_count,
-                "criterion_readiness": dict(sorted(validation.criterion_readiness.items())),
-                "errors": sum(i.severity == "error" for i in validation.issues),
-                "blockers": sum(i.severity == "blocker" for i in validation.issues),
-                "warnings": sum(i.severity == "warning" for i in validation.issues),
+        source_versions = {
+            str(source["source_id"]): str(source["source_version"]) for source in sources
+        }
+        _write_json(
+            draft / "manifest.json",
+            {
+                "schema_version": RELEASE_SCHEMA_VERSION,
+                "release_id": release_id,
+                "status": "draft",
+                "created_at": created_at,
+                "published_at": None,
+                "previous_release_id": previous_release_id,
+                "observation_count": len(observations),
+                "score_count": len(scores),
+                "attempt_count": len(attempts),
+                "criteria": sorted(validation.criterion_coverage),
+                "source_versions": source_versions,
+                "scoring_method_versions": method_versions,
+                "artifact_checksums": {a.artifact_id: f"sha256:{a.sha256}" for a in artifacts},
+                "file_checksums": file_checksums,
+                "release_checksum": release_checksum,
+                "validation_summary": {
+                    "structural_passed": validation.structural_passed,
+                    "product_ready": validation.product_ready,
+                    "ready_criterion_count": validation.ready_criterion_count,
+                    "criterion_readiness": dict(sorted(validation.criterion_readiness.items())),
+                    "errors": sum(i.severity == "error" for i in validation.issues),
+                    "blockers": sum(i.severity == "blocker" for i in validation.issues),
+                    "warnings": sum(i.severity == "warning" for i in validation.issues),
+                },
+                "reproducibility": {
+                    "raw_storage": "local content-addressed files excluded from git",
+                    "parser_versions": sorted({item.parser_version for item in observations}),
+                    "observation_method_versions": sorted(
+                        {item.method_version for item in observations}
+                    ),
+                    "worker_package": "konsider-0.1.0",
+                    "python_requires": ">=3.11",
+                    "replay_command": f"python -m konsider.ingestion.worker replay data/releases/{release_id}",
+                },
             },
-            "reproducibility": {
-                "raw_storage": "local content-addressed files excluded from git",
-                "parser_versions": sorted({item.parser_version for item in observations}),
-                "observation_method_versions": sorted({item.method_version for item in observations}),
-                "worker_package": "konsider-0.1.0", "python_requires": ">=3.11",
-                "replay_command": f"python -m konsider.ingestion.worker replay data/releases/{release_id}",
-            },
-        })
+        )
         return draft
 
     def publish(self, release_id: str, *, require_product_ready: bool = True) -> Path:
@@ -89,7 +132,9 @@ class ReleaseRepository:
         if not validation["structural_passed"]:
             raise ValueError("A structurally invalid release cannot be published.")
         if require_product_ready and not validation["product_ready"]:
-            raise ValueError("A release with fewer than five product-ready criteria cannot be promoted.")
+            raise ValueError(
+                "A release with fewer than five product-ready criteria cannot be promoted."
+            )
         published = self.root / release_id
         if published.exists():
             raise FileExistsError(f"Published release is immutable: {release_id}")
@@ -101,6 +146,8 @@ class ReleaseRepository:
         published.parent.mkdir(parents=True, exist_ok=True)
         draft.replace(published)
         pointer_tmp = self.root / "active.json.tmp"
-        _write_json(pointer_tmp, {"release_id": release_id, "schema_version": RELEASE_SCHEMA_VERSION})
+        _write_json(
+            pointer_tmp, {"release_id": release_id, "schema_version": RELEASE_SCHEMA_VERSION}
+        )
         os.replace(pointer_tmp, self.root / "active.json")
         return published

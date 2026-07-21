@@ -144,10 +144,14 @@ def load_country_metrics(
                 )
             )
 
-    expected_pairs = {(country_id, parameter_id) for country_id in countries for parameter_id in parameters}
+    expected_pairs = {
+        (country_id, parameter_id) for country_id in countries for parameter_id in parameters
+    }
     missing_pairs = expected_pairs - seen_pairs
     if missing_pairs:
-        formatted = ", ".join(f"{country}/{parameter}" for country, parameter in sorted(missing_pairs))
+        formatted = ", ".join(
+            f"{country}/{parameter}" for country, parameter in sorted(missing_pairs)
+        )
         raise DataValidationError(f"Missing metrics for: {formatted}")
 
     return metrics

@@ -42,11 +42,15 @@ def normalize_weights(
     ]
     if non_finite_weights:
         raise ScoringError(f"Weights must be finite: {sorted(non_finite_weights)}")
-    negative_weights = [parameter_id for parameter_id, weight in normalized_inputs.items() if weight < 0]
+    negative_weights = [
+        parameter_id for parameter_id, weight in normalized_inputs.items() if weight < 0
+    ]
     if negative_weights:
         raise ScoringError(f"Weights cannot be negative: {sorted(negative_weights)}")
 
     total = sum(normalized_inputs.values())
+    if not isfinite(total):
+        raise ScoringError("The sum of weights must be finite.")
     if total == 0:
         if not normalized_inputs:
             raise ScoringError("At least one weight is required.")

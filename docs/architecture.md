@@ -1,12 +1,13 @@
 # Konsider Architecture
 
-Status: Phase 2A deterministic engine foundation implemented; transports remain deferred
+Status: Phase 2B thin versioned API implemented; UI and later layers remain deferred
 
 Last updated: 2026-07-20
 
-The framework-independent live-engine foundation is implemented. FastAPI, React, retrieval, chat,
-agents, MCP, and cloud deployment described below remain design records. Release `2026-07-20.2` is
-consumed through a read-only schema-validating and checksum-verifying adapter; UHC remains non-ready.
+The framework-independent engine and its typed FastAPI transport are implemented. React, retrieval,
+chat, agents, MCP, and cloud deployment described below remain design records. Release
+`2026-07-20.2` is consumed through a read-only schema-validating and checksum-verifying adapter; UHC
+remains non-ready.
 
 ## Purpose
 
@@ -165,7 +166,7 @@ events returned by the engine.
 
 ## Public API Contract
 
-FastAPI will be the contract authority and will generate OpenAPI. Generated frontend types should
+FastAPI is the HTTP contract authority and generates OpenAPI. Generated frontend types should
 be produced from that document rather than maintained independently.
 
 Initial endpoints:
@@ -174,23 +175,18 @@ Initial endpoints:
 | --- | --- |
 | `GET /api/v1/health` | Liveness and active-release readiness |
 | `GET /api/v1/catalog` | Countries, criteria, profile templates, active release metadata, and caveats |
-| `GET /api/v1/countries` | Country list when the client needs a smaller catalog response |
-| `GET /api/v1/criteria` | Criterion list when the client needs a smaller catalog response |
 | `GET /api/v1/countries/{country_id}/metrics` | Full score and observation view for one country |
-| `GET /api/v1/evidence?country_id=...&criterion_id=...` | Evidence lookup filtered by country, criterion, source, or topic |
 | `POST /api/v1/rankings` | Normalize weights and return a ranked top-K result |
-| `POST /api/v1/chat/sessions` | Create a conversation and associated profile state |
-| `POST /api/v1/chat/sessions/{session_id}/messages` | Send a message and stream text plus typed events |
+| `POST /api/v1/comparisons` | Compare 2-10 countries with the same ranking semantics |
 
 Example ranking request:
 
 ```json
 {
-  "profile_id": "finance_professional",
   "weights": {
-    "finance_jobs": 5,
-    "tax_burden": 4,
-    "infrastructure": 3
+    "intentional_homicide_rate": 5,
+    "ambient_pm25_population_weighted": 4,
+    "infrastructure_readiness_composite": 2
   },
   "top_k": 5
 }
@@ -200,26 +196,32 @@ Example response shape:
 
 ```json
 {
-  "request_id": "req_123",
-  "dataset_version": "2026-07-20.2",
-  "scoring_version": "weighted-score-v1",
+  "release_id": "2026-07-20.2",
+  "release_schema_version": "konsider-release-3.0",
+  "catalog_schema_version": "consumer-catalog-1.0",
   "normalized_weights": {
-    "finance_jobs": 0.4167,
-    "tax_burden": 0.3333,
-    "infrastructure": 0.25
+    "intentional_homicide_rate": 0.45454545,
+    "ambient_pm25_population_weighted": 0.36363636,
+    "infrastructure_readiness_composite": 0.18181818
   },
   "rankings": [
     {
       "rank": 1,
-      "country_id": "singapore",
+      "country_code": "SGP",
       "total_score": 8.42,
       "contributions": [],
-      "evidence_refs": []
+      "contributions": []
     }
   ],
-  "caveats": ["UHC is excluded: the latest World Bank HNP observation is 2021 and fails freshness."]
+  "total_eligible_country_count": 20,
+  "returned_result_count": 5
 }
 ```
+
+The process constructs one repository and recommendation service during lifespan startup. Requests
+reuse that immutable snapshot; a restart is required to adopt a new active pointer. Configuration
+supports explicit release-root, active-pointer, and catalog paths. No request calls an official
+source, refreshes data, reads raw artifacts, or mixes release files.
 
 All error responses use a stable error code, human-readable message, request ID, and optional field
 details. Clients must not parse message text to determine behavior.

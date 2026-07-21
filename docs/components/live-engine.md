@@ -1,6 +1,6 @@
 # Live Python Engine
 
-Status: Phase 2A framework-independent services implemented; API/chat deferred
+Status: Phase 2B framework-independent services and typed API implemented; chat deferred
 
 Last updated: 2026-07-20
 
@@ -9,7 +9,18 @@ Last updated: 2026-07-20
 The implemented engine is the sole authority for the catalog, weight normalization, deterministic
 rankings, comparisons, and country breakdowns. `konsider.application.RecommendationService` reads
 published releases only and never refreshes external sources during a request. Evidence retrieval,
-chat orchestration, and API transports remain deferred.
+chat orchestration remains deferred. The Phase 2B API is a transport adapter only.
+
+## Phase 2B API lifecycle
+
+`create_app(settings=..., service=..., service_factory=...)` supports deterministic construction
+and tests. During the FastAPI lifespan, one `PublishedReleaseRepository` resolves and validates the
+active release and one `RecommendationService` retains that immutable snapshot. Every request reuses
+it. Startup failures produce safe `503` responses, and adopting a changed active pointer requires a
+process restart. There is no background polling or public refresh endpoint.
+
+Defaults resolve from the source checkout rather than the caller's current directory. Deployments
+can set `KONSIDER_RELEASE_ROOT`, `KONSIDER_ACTIVE_RELEASE_PATH`, and `KONSIDER_CATALOG_PATH`.
 
 ## Implemented Phase 2A behavior
 
@@ -45,8 +56,8 @@ All endpoints are rooted at `/api/v1`. FastAPI-generated OpenAPI is the canonica
 active dataset release. The website uses it to construct controls and labels rather than embedding
 the catalog in JavaScript.
 
-Small endpoints such as `GET /api/v1/countries` and `GET /api/v1/criteria` may be added for
-clients that do not need the full catalog payload.
+The complete implemented contract is documented in [../api.md](../api.md). No additional catalog,
+evidence, chat, admin, or raw-release endpoints are part of Phase 2B.
 
 ### Ranking
 
@@ -68,9 +79,8 @@ Results may be cached by dataset version, scoring version, normalized-weight has
 country. It is the structured answer for questions like "what are Canada's healthcare and tax
 scores?"
 
-`GET /api/v1/evidence` supports country, criterion, source, topic, pagination, and result-limit
-filters. Each result includes an evidence ID, source label and URL when permitted, effective and
-retrieval dates, excerpt, confidence, and dataset version.
+Evidence retrieval remains deferred. Phase 2B returns only source/provenance fields already joined
+to observations by the published-release consumer.
 
 Explanation services should keep these modes distinct:
 

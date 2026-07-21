@@ -35,8 +35,14 @@ class PublishedReleaseReplayTests(TestCase):
         validation = json.loads((release / "validation.json").read_text(encoding="utf-8"))
         sources = json.loads((release / "sources.json").read_text(encoding="utf-8"))
         artifacts = json.loads((release / "raw-artifacts.json").read_text(encoding="utf-8"))
-        observations = [json.loads(row) for row in (release / "observations.jsonl").read_text(encoding="utf-8").splitlines()]
-        attempts = [json.loads(row) for row in (release / "attempts.jsonl").read_text(encoding="utf-8").splitlines()]
+        observations = [
+            json.loads(row)
+            for row in (release / "observations.jsonl").read_text(encoding="utf-8").splitlines()
+        ]
+        attempts = [
+            json.loads(row)
+            for row in (release / "attempts.jsonl").read_text(encoding="utf-8").splitlines()
+        ]
         self.assertEqual(manifest["schema_version"], "konsider-release-3.0")
         self.assertEqual(manifest["status"], "published")
         self.assertEqual(manifest["observation_count"], 120)
@@ -46,16 +52,39 @@ class PublishedReleaseReplayTests(TestCase):
         self.assertEqual(validation["ready_criterion_count"], 5)
         self.assertFalse(validation["criterion_readiness"]["uhc_service_coverage_index"])
         self.assertEqual(len(sources), 6)
-        self.assertTrue(all(source["license_name"] == "Creative Commons Attribution 4.0 International" for source in sources))
-        self.assertTrue(all(source["license_evidence"] and source["methodology_url"] and source["attribution"] for source in sources))
-        self.assertEqual(len({(item["source_id"], item["country_code"], item["criterion_id"]) for item in attempts}), 120)
+        self.assertTrue(
+            all(
+                source["license_name"] == "Creative Commons Attribution 4.0 International"
+                for source in sources
+            )
+        )
+        self.assertTrue(
+            all(
+                source["license_evidence"] and source["methodology_url"] and source["attribution"]
+                for source in sources
+            )
+        )
+        self.assertEqual(
+            len(
+                {
+                    (item["source_id"], item["country_code"], item["criterion_id"])
+                    for item in attempts
+                }
+            ),
+            120,
+        )
         self.assertEqual({item["status"] for item in attempts}, {"success"})
         artifact_ids = {item["artifact_id"] for item in artifacts}
         for observation in observations:
             referenced = {record["artifact_id"] for record in observation["source_records"]}
             self.assertEqual(set(observation["raw_artifact_ids"]), referenced)
             self.assertTrue(referenced <= artifact_ids)
-            self.assertTrue(all(record["locator"] and record["record_id"] for record in observation["source_records"]))
+            self.assertTrue(
+                all(
+                    record["locator"] and record["record_id"]
+                    for record in observation["source_records"]
+                )
+            )
             for component in observation.get("components", []):
                 self.assertIn(component["source_record"], observation["source_records"])
 
@@ -64,7 +93,9 @@ class PublishedReleaseReplayTests(TestCase):
             actual = hashlib.sha256((release / name).read_bytes()).hexdigest()
             self.assertEqual(expected, f"sha256:{actual}")
             file_checksums[name] = expected
-        release_digest = hashlib.sha256(json.dumps(file_checksums, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        release_digest = hashlib.sha256(
+            json.dumps(file_checksums, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()
         self.assertEqual(manifest["release_checksum"], f"sha256:{release_digest}")
 
     def test_world_bank_candidate_release_replays_from_local_raw(self):

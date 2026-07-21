@@ -1,11 +1,16 @@
-# Live API Application
+# Live API application
 
-This directory is the deployment root for the future FastAPI live engine. It will compose the
-shared domain, application services, and repository adapters; expose the versioned REST and chat
-contracts; and own server-side LLM orchestration.
+The implemented Phase 2B API is a thin FastAPI transport over `RecommendationService`. Run it with:
 
-The initial local runtime should be FastAPI/Uvicorn reading a local active release. The initial AWS
-runtime should be API Gateway plus Python Lambda reading S3 release artifacts, with App Runner or
-ECS considered only if Lambda constraints show up in measured usage.
+```powershell
+python -m uvicorn konsider.api.app:app --reload
+```
 
-No API runtime is implemented yet. See `docs/components/live-engine.md` and `docs/roadmap.md`.
+The application factory is `konsider.api.app.create_app`. It accepts explicit settings, an existing
+service, or a service factory for deterministic tests. One active release is validated and loaded
+during the application lifespan and reused for every request. Restart the process to adopt a newly
+activated release.
+
+The API never fetches upstream sources, reads raw artifact bytes, or falls back to legacy fixtures.
+S3/Lambda deployment, authentication, chat, and UI code remain deferred. See `docs/api.md` and
+`docs/components/live-engine.md`.

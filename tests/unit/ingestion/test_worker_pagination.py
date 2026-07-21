@@ -21,11 +21,14 @@ class WorkerPaginationTests(TestCase):
 
         with TemporaryDirectory() as directory:
             registration = replace(
-                SOURCES["world_bank_pm25"], pagination="odata_skip_until_empty",
+                SOURCES["world_bank_pm25"],
+                pagination="odata_skip_until_empty",
                 download_urls=("https://example.test/api?%24top=1000&%24skip=0",),
             )
             artifacts, bodies = _fetch_registration(
-                registration, RawArtifactRepository(Path(directory)), fetcher,
+                registration,
+                RawArtifactRepository(Path(directory)),
+                fetcher,
                 "2026-07-18T00:00:00+00:00",
             )
         self.assertEqual(len(calls), 2)
@@ -39,16 +42,23 @@ class WorkerPaginationTests(TestCase):
 
         def fetcher(url):
             calls.append(url)
-            payload = {"value": [{"SpatialDim": "IND"}], "@odata.nextLink": continuation} if len(calls) == 1 else {"value": []}
+            payload = (
+                {"value": [{"SpatialDim": "IND"}], "@odata.nextLink": continuation}
+                if len(calls) == 1
+                else {"value": []}
+            )
             return json.dumps(payload).encode(), url, "application/json", {"http_status": 200}
 
         with TemporaryDirectory() as directory:
             registration = replace(
-                SOURCES["world_bank_pm25"], pagination="odata_skip_until_empty",
+                SOURCES["world_bank_pm25"],
+                pagination="odata_skip_until_empty",
                 download_urls=("https://example.test/api?%24top=1000&%24skip=0",),
             )
             artifacts, _ = _fetch_registration(
-                registration, RawArtifactRepository(Path(directory)), fetcher,
+                registration,
+                RawArtifactRepository(Path(directory)),
+                fetcher,
                 "2026-07-20T00:00:00+00:00",
             )
 

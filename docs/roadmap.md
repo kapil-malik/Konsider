@@ -1,6 +1,6 @@
 # Konsider roadmap
 
-Status: Phase 2A complete; Phase 2B minimal API is next
+Status: Phase 2B complete; Phase 2C comparison UI is next
 
 Last updated: 2026-07-20
 
@@ -160,13 +160,21 @@ Phase 2A is complete only when one framework-free call can:
 6. Return contribution, provenance, caveat and version details.
 7. Pass the full unit, integration, schema and golden-release test suite.
 
-## Phase 2B â€” Minimal versioned API
+## Completed: Phase 2B — Minimal versioned API
 
 Goal: expose the proven Phase 2A services through a thin FastAPI transport layer.
 
+Implemented on 2026-07-21. Five typed `/api/v1` endpoints expose health, catalog, rankings,
+country metrics, and comparisons over one validated immutable in-memory snapshot. Explicit path
+configuration removes current-working-directory dependence, and stable structured errors cover
+transport, application, and release initialization failures. See [api.md](api.md) and
+[phase-2b-implementation.md](phase-2b-implementation.md).
+
 - Add `GET /api/v1/catalog`.
+- Add `GET /api/v1/health`.
 - Add `POST /api/v1/rankings`.
 - Add `GET /api/v1/countries/{country_code}/metrics`.
+- Add `POST /api/v1/comparisons`.
 - Define separate Pydantic transport models without duplicating domain logic.
 - Return release ID, scoring versions, normalized weights, caveats and provenance references.
 - Add API contract tests for success, validation errors, unavailable criteria and incompatible
@@ -176,7 +184,7 @@ Goal: expose the proven Phase 2A services through a thin FastAPI transport layer
 
 Phase 2B excludes authentication, saved profiles, chat, agents, MCP and cloud deployment.
 
-## Phase 2C â€” Comparison UI
+## Phase 2C — Comparison UI
 
 Goal: provide a small React interface over the stable Phase 2B contracts.
 
@@ -188,7 +196,7 @@ Goal: provide a small React interface over the stable Phase 2B contracts.
 - Add loading, empty, unavailable-release and API-error states.
 - Add component and end-to-end tests for catalog-driven rendering and ranking updates.
 
-## Phase 2D â€” Deterministic evidence and explanations
+## Phase 2D — Deterministic evidence and explanations
 
 Goal: explain rankings without relying on generated prose or semantic retrieval.
 
@@ -199,7 +207,7 @@ Goal: explain rankings without relying on generated prose or semantic retrieval.
 - Introduce an evidence artifact or index only after its consumer requirements are defined.
 - Do not add a vector database unless measured evidence volume and search quality justify it.
 
-## Phase 2E â€” Conversational layer
+## Phase 2E — Conversational layer
 
 Goal: add LLM-assisted exploration only after deterministic ranking and explanations are proven.
 
@@ -220,7 +228,7 @@ Goal: add LLM-assisted exploration only after deterministic ranking and explanat
 - Vector or relational stores.
 - Multi-agent orchestration.
 
-These remain deferred until the local Phase 2Aâ€“2C path is stable and measured requirements justify
+These remain deferred until the local Phase 2A–2C path is stable and measured requirements justify
 the additional infrastructure.
 
 ## Delivery rules

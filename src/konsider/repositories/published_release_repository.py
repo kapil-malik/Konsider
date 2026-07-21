@@ -8,11 +8,22 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from konsider.contracts import ContractError, require_supported_version, validate_contract
+from konsider.contracts import (
+    ContractError,
+    UnsupportedContractError,
+    require_supported_version,
+    validate_contract,
+)
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
 class PublishedReleaseError(ValueError):
     """Raised when a published release cannot safely be consumed."""
+
+
+class UnsupportedReleaseContractError(PublishedReleaseError):
+    """Raised when a release or catalog uses an unsupported contract major."""
 
 
 @dataclass(frozen=True)
@@ -70,15 +81,23 @@ class PublishedReleaseRepository:
 
     def __init__(
         self,
-        release_root: Path | str = "data/releases",
-        catalog_path: Path | str = "data/catalogs/consumer-catalog-1.0.json",
+        release_root: Path | str | None = None,
+        catalog_path: Path | str | None = None,
+        active_release_path: Path | str | None = None,
     ) -> None:
-        self.release_root = Path(release_root)
-        self.catalog_path = Path(catalog_path)
+        self.release_root = Path(release_root or PROJECT_ROOT / "data" / "releases").resolve()
+        self.catalog_path = Path(
+            catalog_path or PROJECT_ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json"
+        ).resolve()
+        self.active_release_path = (
+            Path(active_release_path)
+            if active_release_path is not None
+            else self.release_root / "active.json"
+        )
 
     def load_active(self, *, diagnostic_read_only: bool = False) -> PublishedRelease:
         try:
-            pointer = _read_json(self.release_root / "active.json")
+            pointer = _read_json(self.active_release_path)
             require_supported_version(pointer.get("schema_version"), "konsider-release")
             validate_contract(pointer, "active-release-pointer", context="active release pointer")
             release_path = self.release_root / pointer["release_id"]
@@ -112,6 +131,8 @@ class PublishedReleaseRepository:
             require_supported_version(catalog.get("schema_version"), "consumer-catalog")
             validate_contract(catalog, "consumer-catalog", context="consumer catalog")
             records = self._join(manifest, validation, catalog, sources, observations, scores)
+        except UnsupportedContractError as exc:
+            raise UnsupportedReleaseContractError(str(exc)) from exc
         except ContractError as exc:
             raise PublishedReleaseError(str(exc)) from exc
 

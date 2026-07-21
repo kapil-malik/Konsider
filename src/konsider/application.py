@@ -6,6 +6,16 @@ from collections.abc import Mapping, Sequence
 from typing import Any
 
 from konsider.domain.scoring import ScoringError, normalize_weights
+from konsider.exceptions import (
+    CountryNotFoundError,
+    CriterionNotReadyError,
+    InvalidComparisonError,
+    InvalidProfileSelectionError,
+    InvalidTopKError,
+    InvalidWeightError,
+    ProfileNotFoundError,
+    UnknownCriterionError,
+)
 from konsider.repositories.published_release_repository import PublishedReleaseRepository
 
 
@@ -18,23 +28,54 @@ class RecommendationService:
     def get_catalog(self) -> dict[str, Any]:
         return {
             "release_id": self.release.release_id,
-            "schema_version": self.release.catalog["schema_version"],
+            "release_schema_version": self.release.manifest["schema_version"],
+            "catalog_schema_version": self.release.catalog["schema_version"],
+            "scoring_method_versions": sorted(
+                item["scoring_method_version"] for item in self.release.catalog["criteria"]
+            ),
             "countries": self.release.catalog["countries"],
             "criteria": self.release.catalog["criteria"],
             "profiles": self.release.catalog["profiles"],
         }
 
-    def rank(self, weights: Mapping[str, float]) -> dict[str, Any]:
+    def _resolve_weights(
+        self,
+        weights: Mapping[str, float] | None,
+        profile_id: str | None,
+    ) -> tuple[dict[str, float], str | None]:
+        if weights is not None and profile_id is not None:
+            raise InvalidProfileSelectionError("Provide either weights or profile_id, not both.")
+        if weights is not None:
+            return dict(weights), None
+        selected_profile = profile_id or "equal_weight_mvp"
+        profiles = {item["id"]: item for item in self.release.catalog["profiles"]}
+        try:
+            profile = profiles[selected_profile]
+        except KeyError as exc:
+            raise ProfileNotFoundError(selected_profile) from exc
+        return dict(profile["weights"]), selected_profile
+
+    def rank(
+        self,
+        weights: Mapping[str, float] | None = None,
+        *,
+        profile_id: str | None = None,
+        top_k: int | None = None,
+    ) -> dict[str, Any]:
+        resolved_weights, resolved_profile_id = self._resolve_weights(weights, profile_id)
         enabled = self.release.enabled_criterion_ids
         available = set(self.release.available_criterion_ids)
-        supplied = set(weights)
+        supplied = set(resolved_weights)
         non_ready = sorted(supplied & (available - set(enabled)))
         if non_ready:
-            raise ScoringError(f"Non-ready criteria cannot be weighted: {non_ready}")
+            raise CriterionNotReadyError(non_ready)
         unknown = sorted(supplied - available)
         if unknown:
-            raise ScoringError(f"Unknown weight parameter(s): {unknown}")
-        normalized_nonzero = normalize_weights(weights, enabled)
+            raise UnknownCriterionError(unknown)
+        try:
+            normalized_nonzero = normalize_weights(resolved_weights, enabled)
+        except (ScoringError, TypeError, ValueError) as exc:
+            raise InvalidWeightError(str(exc)) from exc
         normalized = {
             criterion_id: normalized_nonzero.get(criterion_id, 0.0) for criterion_id in enabled
         }
@@ -107,29 +148,54 @@ class RecommendationService:
         rankings.sort(key=lambda item: (-item["total_score"], item["country_code"]))
         for rank, item in enumerate(rankings, 1):
             item["rank"] = rank
+        eligible_count = len(rankings)
+        if top_k is not None and (
+            isinstance(top_k, bool)
+            or not isinstance(top_k, int)
+            or not 1 <= top_k <= eligible_count
+        ):
+            raise InvalidTopKError(top_k, eligible_count)
+        rankings = rankings[:top_k]
         return {
             "release_id": self.release.release_id,
             "release_schema_version": self.release.manifest["schema_version"],
             "catalog_schema_version": self.release.catalog["schema_version"],
+            "scoring_method_versions": sorted(
+                item["scoring_method_version"]
+                for item in self.release.catalog["criteria"]
+                if item["ready"]
+            ),
+            "resolved_profile_id": resolved_profile_id,
             "normalized_weights": normalized,
             "all_zero_behavior": "equal_weights_across_all_enabled_criteria",
             "country_tie_breaker": "ascending_iso3_country_code",
             "rounding_tolerance": 1e-8,
+            "total_eligible_country_count": eligible_count,
+            "returned_result_count": len(rankings),
             "rankings": rankings,
         }
 
-    def compare(self, country_codes: Sequence[str], weights: Mapping[str, float]) -> dict[str, Any]:
-        if not country_codes:
-            raise ValueError("At least one country code is required.")
-        result = self.rank(weights)
-        requested = list(dict.fromkeys(country_codes))
+    def compare(
+        self,
+        country_codes: Sequence[str],
+        weights: Mapping[str, float] | None = None,
+        *,
+        profile_id: str | None = None,
+    ) -> dict[str, Any]:
+        requested = list(country_codes)
+        if len(requested) < 2 or len(requested) > 10:
+            raise InvalidComparisonError("Comparisons require between 2 and 10 countries.")
+        if len(requested) != len(set(requested)):
+            raise InvalidComparisonError("Comparison country codes must be unique.")
+        result = self.rank(weights, profile_id=profile_id)
         known = {item["code"] for item in self.release.catalog["countries"]}
         unknown = sorted(set(requested) - known)
         if unknown:
-            raise ValueError(f"Unknown country code(s): {unknown}")
+            raise CountryNotFoundError(unknown)
         rows = {item["country_code"]: item for item in result["rankings"]}
         result["countries"] = [rows[code] for code in requested]
         result.pop("rankings")
+        result["returned_result_count"] = len(result["countries"])
         return result
 
     def country_breakdown(self, country_code: str) -> dict[str, Any]:
@@ -137,9 +203,16 @@ class RecommendationService:
             record for record in self.release.records if record.country["code"] == country_code
         ]
         if not records:
-            raise ValueError(f"Unknown country code: {country_code}")
+            raise CountryNotFoundError([country_code])
         return {
             "release_id": self.release.release_id,
+            "release_schema_version": self.release.manifest["schema_version"],
+            "catalog_schema_version": self.release.catalog["schema_version"],
+            "scoring_method_versions": sorted(
+                item["scoring_method_version"]
+                for item in self.release.catalog["criteria"]
+                if item["ready"]
+            ),
             "country": records[0].country,
             "criteria": [
                 {

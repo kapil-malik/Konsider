@@ -1,8 +1,8 @@
 # Konsider
 
 Konsider is an evidence-backed country suitability and relocation project. The repository currently
-implements the local data-refresh worker and the framework-independent Phase 2A recommendation
-engine. FastAPI, React, retrieval, and LLM/chat layers remain deferred.
+implements the local data-refresh worker, the framework-independent recommendation engine, and the
+Phase 2B typed FastAPI transport. React, retrieval, and LLM/chat layers remain deferred.
 
 ## Current status
 
@@ -23,6 +23,8 @@ data gate does not mean every criterion is ready. The Phase 2A consumer excludes
 `RecommendationService` resolves and validates the active pointer, verifies every declared file
 checksum, joins scores to observations and sources, and deterministically ranks all 20 countries.
 It exposes catalog, ranking, comparison, and country-breakdown operations without a web framework.
+The FastAPI adapter exposes those operations under `/api/v1` without duplicating their business
+logic and reuses one validated immutable release snapshot for the process lifetime.
 
 The repository also retains a separate legacy ten-country fixture dataset. Those approximate scores
 exist only for domain tests and examples; they are not substituted into real releases.
@@ -51,6 +53,20 @@ python -m unittest discover -s tests -p "test_*.py"
 python -m pytest -q
 python -m konsider.ingestion.worker replay data\releases\2026-07-20.2
 ```
+
+Start the local API from any working directory after setting explicit paths when the checkout data
+is not at its default location:
+
+```powershell
+$env:KONSIDER_RELEASE_ROOT = "C:\path\to\Konsider\data\releases"
+$env:KONSIDER_ACTIVE_RELEASE_PATH = "$env:KONSIDER_RELEASE_ROOT\active.json"
+$env:KONSIDER_CATALOG_PATH = "C:\path\to\Konsider\data\catalogs\consumer-catalog-1.0.json"
+python -m uvicorn konsider.api.app:app --reload
+```
+
+The local source-checkout defaults are absolute and independent of the caller's working directory.
+A process restart is deliberately required after changing `active.json`; Phase 2B does not poll or
+hot-reload releases. See [the API reference](docs/api.md).
 
 Minimal ranking example:
 
@@ -83,6 +99,7 @@ data/catalogs/                versioned release-consumer catalog
 contracts/schemas/v1/         machine-readable consumer JSON Schemas
 docs/                         architecture, source, method, and release records
 src/konsider/application.py   framework-independent recommendation services
+src/konsider/api/             FastAPI factory, typed models, mappings, errors, settings
 src/konsider/ingestion/       source registry, capture, parsers, scoring, validation
 src/konsider/repositories/    release publication and read-only consumer adapters
 tests/                        unit, integration, failure, publication, and replay tests
