@@ -41,6 +41,7 @@ class PublishedRelease:
     manifest: dict[str, Any]
     validation: dict[str, Any]
     catalog: dict[str, Any]
+    sources: tuple[dict[str, Any], ...]
     records: tuple[PublishedMetricRecord, ...]
     diagnostic_read_only: bool = False
 
@@ -139,7 +140,13 @@ class PublishedReleaseRepository:
         if not diagnostic_read_only:
             records = tuple(record for record in records if record.criterion["ready"])
         return PublishedRelease(
-            manifest["release_id"], manifest, validation, catalog, records, diagnostic_read_only
+            release_id=manifest["release_id"],
+            manifest=manifest,
+            validation=validation,
+            catalog=catalog,
+            sources=tuple(sources),
+            records=records,
+            diagnostic_read_only=diagnostic_read_only,
         )
 
     @staticmethod

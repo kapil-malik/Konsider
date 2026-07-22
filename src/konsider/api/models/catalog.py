@@ -6,6 +6,7 @@ from konsider.api.models.common import (
     ApiModel,
     CountryResponse,
     CriterionResponse,
+    CriterionSourceResponse,
     VersionedResponse,
 )
 
@@ -17,6 +18,10 @@ class ProfileResponse(ApiModel):
     weights: dict[str, float]
 
 
+class CatalogCriterionResponse(CriterionResponse):
+    sources: list[CriterionSourceResponse]
+
+
 class HealthResponse(VersionedResponse):
     status: str
     country_count: int
@@ -26,5 +31,5 @@ class HealthResponse(VersionedResponse):
 
 class CatalogResponse(VersionedResponse):
     countries: list[CountryResponse]
-    criteria: list[CriterionResponse]
+    criteria: list[CatalogCriterionResponse]
     profiles: list[ProfileResponse]

@@ -14,12 +14,14 @@ MARKDOWN_ROOTS = [
     ROOT / "docs",
     ROOT / "web",
 ]
+IGNORED_DIRECTORIES = {"node_modules", "dist", "coverage", "playwright-report", "test-results"}
 
 
 def _markdown_files() -> list[Path]:
     files = []
     for root in MARKDOWN_ROOTS:
-        files.extend([root] if root.is_file() else root.rglob("*.md"))
+        candidates = [root] if root.is_file() else root.rglob("*.md")
+        files.extend(path for path in candidates if IGNORED_DIRECTORIES.isdisjoint(path.parts))
     return sorted(files)
 
 

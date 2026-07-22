@@ -1,5 +1,86 @@
-# Web component pointer
+# Konsider web application
 
-The React application is not implemented. The selected Phase 2C scope and constraints are in the
-[UI plan](../docs/product/ui.md) and [ADR 004](../docs/architecture/decisions/004-react-vite-ui.md).
-This directory must not acquire hard-coded scoring, readiness, country, criterion, or release data.
+The Phase 2C UI is a responsive React, TypeScript, and Vite application over the local FastAPI
+`/api/v1` contract. It uses TanStack Query for API state, local React state for unapplied guest
+preferences, generated TypeScript types from FastAPI OpenAPI, Vitest and React Testing Library for
+component coverage, and Playwright for focused browser flows.
+
+The browser never scores, normalizes, sorts, decides readiness, or supplies fallback product data.
+Countries, criteria, profiles, sources, flags, and release IDs come from the API.
+
+## Requirements
+
+- Node.js 22 or newer
+- pnpm 11 (the exact package manager is recorded in `package.json`)
+- the repository Python environment from [local setup](../docs/operations/local-setup.md)
+
+## Configure
+
+Copy `.env.example` to `.env.local` only when the API is not available at the default URL:
+
+```text
+VITE_KONSIDER_API_BASE_URL=http://127.0.0.1:8000/api/v1
+```
+
+Only browser-safe `VITE_` variables belong here. Do not add secrets.
+
+## Start locally
+
+Start the API first from the repository root.
+
+PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+$env:KONSIDER_CORS_ORIGINS = "http://localhost:5173,http://127.0.0.1:5173"
+python -m uvicorn konsider.api.app:app --reload
+```
+
+Bash:
+
+```bash
+source .venv/bin/activate
+KONSIDER_CORS_ORIGINS="http://localhost:5173,http://127.0.0.1:5173" \
+  python -m uvicorn konsider.api.app:app --reload
+```
+
+In a second terminal:
+
+```bash
+cd web
+pnpm install
+pnpm run generate:api
+pnpm run dev
+```
+
+Open <http://127.0.0.1:5173>. If you use `http://localhost:5173`, ensure that exact origin is in
+`KONSIDER_CORS_ORIGINS`.
+
+## Contract generation and quality gates
+
+`pnpm run generate:api` exports OpenAPI directly from the local FastAPI application and regenerates
+`src/api/openapi.json` plus `src/api/schema.d.ts`. Run it after any Pydantic transport change and
+commit both generated files.
+
+```bash
+pnpm run generate:api
+pnpm run typecheck
+pnpm run lint
+pnpm run test --run
+pnpm run build
+pnpm run e2e
+```
+
+Use `pnpm run test:watch` while developing. Playwright uses deterministic mocked API responses and
+starts Vite on port 4173. The normal development UI uses port 5173; FastAPI uses port 8000.
+
+## Troubleshooting
+
+- **The UI says it cannot reach the API:** start Uvicorn and confirm
+  <http://127.0.0.1:8000/api/v1/health> returns `200`.
+- **The browser reports a CORS failure:** add the exact Vite origin to
+  `KONSIDER_CORS_ORIGINS`, then restart Uvicorn.
+- **Generated types changed unexpectedly:** confirm the intended Python environment and active
+  checkout, rerun `pnpm run generate:api`, and inspect both generated files.
+- **Playwright has no browser:** run `pnpm exec playwright install chromium` once, then rerun
+  `pnpm run e2e`.

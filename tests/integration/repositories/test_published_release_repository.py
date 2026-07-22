@@ -46,6 +46,7 @@ def test_active_release_loads_complete_ready_matrix() -> None:
     assert len(release.enabled_criterion_ids) == 5
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
     assert len(release.records) == 100
+    assert len(release.sources) == 6
     assert all(record.observations and record.source for record in release.records)
     infrastructure = next(
         item

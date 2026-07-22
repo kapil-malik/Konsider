@@ -1,0 +1,1320 @@
+{
+  "components": {
+    "schemas": {
+      "CatalogCriterionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "caveats": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Caveats",
+            "type": "array"
+          },
+          "default_enabled": {
+            "title": "Default Enabled",
+            "type": "boolean"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "direction": {
+            "title": "Direction",
+            "type": "string"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "experimental": {
+            "title": "Experimental",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "interpretation": {
+            "title": "Interpretation",
+            "type": "string"
+          },
+          "quality_limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Quality Limitations",
+            "type": "array"
+          },
+          "raw_unit": {
+            "title": "Raw Unit",
+            "type": "string"
+          },
+          "ready": {
+            "title": "Ready",
+            "type": "boolean"
+          },
+          "scoring_method_version": {
+            "title": "Scoring Method Version",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/CriterionSourceResponse"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "display_name",
+          "category",
+          "description",
+          "direction",
+          "raw_unit",
+          "interpretation",
+          "caveats",
+          "quality_limitations",
+          "ready",
+          "default_enabled",
+          "experimental",
+          "scoring_method_version",
+          "sources"
+        ],
+        "title": "CatalogCriterionResponse",
+        "type": "object"
+      },
+      "CatalogResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "catalog_schema_version": {
+            "title": "Catalog Schema Version",
+            "type": "string"
+          },
+          "countries": {
+            "items": {
+              "$ref": "#/components/schemas/CountryResponse"
+            },
+            "title": "Countries",
+            "type": "array"
+          },
+          "criteria": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogCriterionResponse"
+            },
+            "title": "Criteria",
+            "type": "array"
+          },
+          "profiles": {
+            "items": {
+              "$ref": "#/components/schemas/ProfileResponse"
+            },
+            "title": "Profiles",
+            "type": "array"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          },
+          "release_schema_version": {
+            "title": "Release Schema Version",
+            "type": "string"
+          },
+          "scoring_method_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scoring Method Versions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "release_id",
+          "release_schema_version",
+          "catalog_schema_version",
+          "scoring_method_versions",
+          "countries",
+          "criteria",
+          "profiles"
+        ],
+        "title": "CatalogResponse",
+        "type": "object"
+      },
+      "ComparisonRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "country_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Country Codes",
+            "type": "array"
+          },
+          "profile_id": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Id"
+          },
+          "weights": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weights"
+          }
+        },
+        "required": [
+          "country_codes"
+        ],
+        "title": "ComparisonRequest",
+        "type": "object"
+      },
+      "ComparisonResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "all_zero_behavior": {
+            "title": "All Zero Behavior",
+            "type": "string"
+          },
+          "catalog_schema_version": {
+            "title": "Catalog Schema Version",
+            "type": "string"
+          },
+          "countries": {
+            "items": {
+              "$ref": "#/components/schemas/RankedCountryResponse"
+            },
+            "title": "Countries",
+            "type": "array"
+          },
+          "country_tie_breaker": {
+            "title": "Country Tie Breaker",
+            "type": "string"
+          },
+          "normalized_weights": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Normalized Weights",
+            "type": "object"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          },
+          "release_schema_version": {
+            "title": "Release Schema Version",
+            "type": "string"
+          },
+          "resolved_profile_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolved Profile Id"
+          },
+          "returned_result_count": {
+            "title": "Returned Result Count",
+            "type": "integer"
+          },
+          "rounding_tolerance": {
+            "title": "Rounding Tolerance",
+            "type": "number"
+          },
+          "scoring_method_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scoring Method Versions",
+            "type": "array"
+          },
+          "total_eligible_country_count": {
+            "title": "Total Eligible Country Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "release_id",
+          "release_schema_version",
+          "catalog_schema_version",
+          "scoring_method_versions",
+          "resolved_profile_id",
+          "normalized_weights",
+          "all_zero_behavior",
+          "country_tie_breaker",
+          "rounding_tolerance",
+          "total_eligible_country_count",
+          "returned_result_count",
+          "countries"
+        ],
+        "title": "ComparisonResponse",
+        "type": "object"
+      },
+      "ContributionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "caveats": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Caveats",
+            "type": "array"
+          },
+          "contribution": {
+            "title": "Contribution",
+            "type": "number"
+          },
+          "criterion_id": {
+            "title": "Criterion Id",
+            "type": "string"
+          },
+          "criterion_name": {
+            "title": "Criterion Name",
+            "type": "string"
+          },
+          "experimental": {
+            "title": "Experimental",
+            "type": "boolean"
+          },
+          "normalized_weight": {
+            "title": "Normalized Weight",
+            "type": "number"
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/ObservationResponse"
+            },
+            "title": "Observations",
+            "type": "array"
+          },
+          "quality_limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Quality Limitations",
+            "type": "array"
+          },
+          "score": {
+            "title": "Score",
+            "type": "number"
+          },
+          "scoring_method_version": {
+            "title": "Scoring Method Version",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/components/schemas/SourceResponse"
+          }
+        },
+        "required": [
+          "criterion_id",
+          "criterion_name",
+          "score",
+          "normalized_weight",
+          "contribution",
+          "scoring_method_version",
+          "caveats",
+          "quality_limitations",
+          "experimental",
+          "observations",
+          "source"
+        ],
+        "title": "ContributionResponse",
+        "type": "object"
+      },
+      "CountryCriterionMetricResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "criterion": {
+            "$ref": "#/components/schemas/CriterionResponse"
+          },
+          "direction": {
+            "title": "Direction",
+            "type": "string"
+          },
+          "input_observation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Input Observation Ids",
+            "type": "array"
+          },
+          "normalized_score": {
+            "title": "Normalized Score",
+            "type": "number"
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/ObservationResponse"
+            },
+            "title": "Observations",
+            "type": "array"
+          },
+          "scoring_method_version": {
+            "title": "Scoring Method Version",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/components/schemas/SourceResponse"
+          },
+          "transform": {
+            "title": "Transform",
+            "type": "string"
+          }
+        },
+        "required": [
+          "criterion",
+          "normalized_score",
+          "scoring_method_version",
+          "transform",
+          "direction",
+          "input_observation_ids",
+          "observations",
+          "source"
+        ],
+        "title": "CountryCriterionMetricResponse",
+        "type": "object"
+      },
+      "CountryMetricResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "catalog_schema_version": {
+            "title": "Catalog Schema Version",
+            "type": "string"
+          },
+          "country": {
+            "$ref": "#/components/schemas/CountryResponse"
+          },
+          "criteria": {
+            "items": {
+              "$ref": "#/components/schemas/CountryCriterionMetricResponse"
+            },
+            "title": "Criteria",
+            "type": "array"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          },
+          "release_schema_version": {
+            "title": "Release Schema Version",
+            "type": "string"
+          },
+          "scoring_method_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scoring Method Versions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "release_id",
+          "release_schema_version",
+          "catalog_schema_version",
+          "scoring_method_versions",
+          "country",
+          "criteria"
+        ],
+        "title": "CountryMetricResponse",
+        "type": "object"
+      },
+      "CountryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "pattern": "^[A-Z]{3}$",
+            "title": "Code",
+            "type": "string"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "region": {
+            "title": "Region",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "display_name",
+          "region"
+        ],
+        "title": "CountryResponse",
+        "type": "object"
+      },
+      "CriterionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "caveats": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Caveats",
+            "type": "array"
+          },
+          "default_enabled": {
+            "title": "Default Enabled",
+            "type": "boolean"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "direction": {
+            "title": "Direction",
+            "type": "string"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "experimental": {
+            "title": "Experimental",
+            "type": "boolean"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "interpretation": {
+            "title": "Interpretation",
+            "type": "string"
+          },
+          "quality_limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Quality Limitations",
+            "type": "array"
+          },
+          "raw_unit": {
+            "title": "Raw Unit",
+            "type": "string"
+          },
+          "ready": {
+            "title": "Ready",
+            "type": "boolean"
+          },
+          "scoring_method_version": {
+            "title": "Scoring Method Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "display_name",
+          "category",
+          "description",
+          "direction",
+          "raw_unit",
+          "interpretation",
+          "caveats",
+          "quality_limitations",
+          "ready",
+          "default_enabled",
+          "experimental",
+          "scoring_method_version"
+        ],
+        "title": "CriterionResponse",
+        "type": "object"
+      },
+      "CriterionSourceResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "attribution": {
+            "title": "Attribution",
+            "type": "string"
+          },
+          "canonical_page_url": {
+            "format": "uri",
+            "maxLength": 2083,
+            "minLength": 1,
+            "title": "Canonical Page Url",
+            "type": "string"
+          },
+          "dataset_version": {
+            "title": "Dataset Version",
+            "type": "string"
+          },
+          "publisher": {
+            "title": "Publisher",
+            "type": "string"
+          },
+          "reference_period": {
+            "title": "Reference Period",
+            "type": "string"
+          },
+          "source_id": {
+            "title": "Source Id",
+            "type": "string"
+          },
+          "source_version": {
+            "title": "Source Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "publisher",
+          "source_version",
+          "dataset_version",
+          "canonical_page_url",
+          "attribution",
+          "reference_period"
+        ],
+        "title": "CriterionSourceResponse",
+        "type": "object"
+      },
+      "ErrorBody": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "details": {
+            "additionalProperties": true,
+            "title": "Details",
+            "type": "object"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorBody",
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorBody"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "ErrorResponse",
+        "type": "object"
+      },
+      "HealthResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "catalog_schema_version": {
+            "title": "Catalog Schema Version",
+            "type": "string"
+          },
+          "country_count": {
+            "title": "Country Count",
+            "type": "integer"
+          },
+          "enabled_criterion_count": {
+            "title": "Enabled Criterion Count",
+            "type": "integer"
+          },
+          "ready_for_rankings": {
+            "title": "Ready For Rankings",
+            "type": "boolean"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          },
+          "release_schema_version": {
+            "title": "Release Schema Version",
+            "type": "string"
+          },
+          "scoring_method_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scoring Method Versions",
+            "type": "array"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "release_id",
+          "release_schema_version",
+          "catalog_schema_version",
+          "scoring_method_versions",
+          "status",
+          "country_count",
+          "enabled_criterion_count",
+          "ready_for_rankings"
+        ],
+        "title": "HealthResponse",
+        "type": "object"
+      },
+      "ObservationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "observation_id": {
+            "title": "Observation Id",
+            "type": "string"
+          },
+          "observation_method_version": {
+            "title": "Observation Method Version",
+            "type": "string"
+          },
+          "parser_version": {
+            "title": "Parser Version",
+            "type": "string"
+          },
+          "quality_flags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Quality Flags",
+            "type": "array"
+          },
+          "reference_end": {
+            "format": "date",
+            "title": "Reference End",
+            "type": "string"
+          },
+          "reference_start": {
+            "format": "date",
+            "title": "Reference Start",
+            "type": "string"
+          },
+          "source_records": {
+            "items": {
+              "$ref": "#/components/schemas/SourceRecordResponse"
+            },
+            "title": "Source Records",
+            "type": "array"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "observation_id",
+          "value",
+          "unit",
+          "reference_start",
+          "reference_end",
+          "observation_method_version",
+          "parser_version",
+          "quality_flags",
+          "source_records"
+        ],
+        "title": "ObservationResponse",
+        "type": "object"
+      },
+      "ProfileResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "weights": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Weights",
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "weights"
+        ],
+        "title": "ProfileResponse",
+        "type": "object"
+      },
+      "RankedCountryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "contributions": {
+            "items": {
+              "$ref": "#/components/schemas/ContributionResponse"
+            },
+            "title": "Contributions",
+            "type": "array"
+          },
+          "country_code": {
+            "title": "Country Code",
+            "type": "string"
+          },
+          "country_name": {
+            "title": "Country Name",
+            "type": "string"
+          },
+          "rank": {
+            "title": "Rank",
+            "type": "integer"
+          },
+          "region": {
+            "title": "Region",
+            "type": "string"
+          },
+          "strengths": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Strengths",
+            "type": "array"
+          },
+          "total_score": {
+            "title": "Total Score",
+            "type": "number"
+          },
+          "tradeoffs": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tradeoffs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "rank",
+          "country_code",
+          "country_name",
+          "region",
+          "total_score",
+          "contributions",
+          "strengths",
+          "tradeoffs"
+        ],
+        "title": "RankedCountryResponse",
+        "type": "object"
+      },
+      "RankingRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "profile_id": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Id"
+          },
+          "top_k": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Top K"
+          },
+          "weights": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weights"
+          }
+        },
+        "title": "RankingRequest",
+        "type": "object"
+      },
+      "RankingResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "all_zero_behavior": {
+            "title": "All Zero Behavior",
+            "type": "string"
+          },
+          "catalog_schema_version": {
+            "title": "Catalog Schema Version",
+            "type": "string"
+          },
+          "country_tie_breaker": {
+            "title": "Country Tie Breaker",
+            "type": "string"
+          },
+          "normalized_weights": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Normalized Weights",
+            "type": "object"
+          },
+          "rankings": {
+            "items": {
+              "$ref": "#/components/schemas/RankedCountryResponse"
+            },
+            "title": "Rankings",
+            "type": "array"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          },
+          "release_schema_version": {
+            "title": "Release Schema Version",
+            "type": "string"
+          },
+          "resolved_profile_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolved Profile Id"
+          },
+          "returned_result_count": {
+            "title": "Returned Result Count",
+            "type": "integer"
+          },
+          "rounding_tolerance": {
+            "title": "Rounding Tolerance",
+            "type": "number"
+          },
+          "scoring_method_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scoring Method Versions",
+            "type": "array"
+          },
+          "total_eligible_country_count": {
+            "title": "Total Eligible Country Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "release_id",
+          "release_schema_version",
+          "catalog_schema_version",
+          "scoring_method_versions",
+          "resolved_profile_id",
+          "normalized_weights",
+          "all_zero_behavior",
+          "country_tie_breaker",
+          "rounding_tolerance",
+          "total_eligible_country_count",
+          "returned_result_count",
+          "rankings"
+        ],
+        "title": "RankingResponse",
+        "type": "object"
+      },
+      "SourceRecordResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "locator": {
+            "title": "Locator",
+            "type": "string"
+          },
+          "record_id": {
+            "title": "Record Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "locator",
+          "record_id"
+        ],
+        "title": "SourceRecordResponse",
+        "type": "object"
+      },
+      "SourceResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "attribution": {
+            "title": "Attribution",
+            "type": "string"
+          },
+          "canonical_page_url": {
+            "format": "uri",
+            "maxLength": 2083,
+            "minLength": 1,
+            "title": "Canonical Page Url",
+            "type": "string"
+          },
+          "dataset_version": {
+            "title": "Dataset Version",
+            "type": "string"
+          },
+          "publisher": {
+            "title": "Publisher",
+            "type": "string"
+          },
+          "source_id": {
+            "title": "Source Id",
+            "type": "string"
+          },
+          "source_version": {
+            "title": "Source Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "publisher",
+          "source_version",
+          "dataset_version",
+          "canonical_page_url",
+          "attribution"
+        ],
+        "title": "SourceResponse",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "description": "Thin versioned API over one immutable published recommendation snapshot.",
+    "title": "Konsider API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/v1/catalog": {
+      "get": {
+        "operationId": "catalog_api_v1_catalog_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected internal failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Active release unavailable"
+          }
+        },
+        "summary": "Retrieve countries, criteria, readiness, and provisional profiles"
+      }
+    },
+    "/api/v1/comparisons": {
+      "post": {
+        "operationId": "comparisons_api_v1_comparisons_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComparisonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComparisonResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected internal failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Active release unavailable"
+          }
+        },
+        "summary": "Compare 2\u201310 unique countries with consistent ranking semantics"
+      }
+    },
+    "/api/v1/countries/{country_code}/metrics": {
+      "get": {
+        "operationId": "country_metrics_api_v1_countries__country_code__metrics_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "country_code",
+            "required": true,
+            "schema": {
+              "title": "Country Code",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountryMetricResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected internal failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Active release unavailable"
+          }
+        },
+        "summary": "Retrieve the enabled-criterion breakdown for one country"
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Active release unavailable"
+          }
+        },
+        "summary": "Check API and active-release readiness"
+      }
+    },
+    "/api/v1/rankings": {
+      "post": {
+        "operationId": "rankings_api_v1_rankings_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RankingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RankingResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected internal failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Active release unavailable"
+          }
+        },
+        "summary": "Rank eligible countries using a profile or explicit weights"
+      }
+    }
+  }
+}

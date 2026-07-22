@@ -11,7 +11,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Worker operations](operations/worker.md) - refresh, publish, replay, inspect, and roll back data.
 - [API operations and reference](operations/api.md) - configure, start, and use all five routes.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
-- [Phase 2C UI plan](product/ui.md) - product and technical constraints for the next phase.
+- [Phase 2C UI](product/ui.md) - implemented product behavior and technical boundaries.
 
 ## Architecture decisions
 

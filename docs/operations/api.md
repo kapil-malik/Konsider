@@ -168,7 +168,8 @@ Returns `200`, `500`, or `503`. The response contains:
 - 20 ISO-3 countries with display names and regions;
 - six criteria with descriptions, direction, raw units, interpretation, caveats, quality limits,
   readiness, default-enabled state, experimental status, and scoring method version; and
-- the provisional `equal_weight_mvp` profile.
+- four provisional, user-editable profiles, with `equal_weight_mvp` as the documented default; and
+- a public source mapping and source reference period for every criterion.
 
 UHC is returned with `ready: false` and `default_enabled: false`. Infrastructure is returned with
 `experimental: true`. Catalog metadata is authoritative for the UI.
@@ -183,9 +184,13 @@ Carefully abbreviated response:
   "scoring_method_versions": [six available method versions],
   "countries": [20 CountryResponse objects],
   "criteria": [six CriterionResponse objects],
-  "profiles": [{"id": "equal_weight_mvp", "weights": {five enabled criteria}}]
+  "profiles": [four ProfileResponse objects]
 }
 ```
+
+The current profile IDs are `equal_weight_mvp`, `safety_and_stability`, `affordability_first`, and
+`quality_of_life`. Profile labels and raw weights remain server-owned and must not be duplicated in
+the browser.
 
 The route declares `200`, `422`, `500`, and `503`; because it has no input, `422` is not expected in
 a normal call. Startup/catalog validation failures use the shared `503` envelope shown above.

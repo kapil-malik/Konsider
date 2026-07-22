@@ -26,6 +26,19 @@ class RecommendationService:
         self.release = (repository or PublishedReleaseRepository()).load_active()
 
     def get_catalog(self) -> dict[str, Any]:
+        sources_by_criterion: dict[str, list[dict[str, Any]]] = {}
+        for source in self.release.sources:
+            sources_by_criterion.setdefault(source["criterion_id"], []).append(
+                {
+                    "source_id": source["source_id"],
+                    "publisher": source["publisher"],
+                    "source_version": source["source_version"],
+                    "dataset_version": source["dataset_version"],
+                    "canonical_page_url": source["canonical_page_url"],
+                    "attribution": source["attribution"],
+                    "reference_period": source["reference_period"],
+                }
+            )
         return {
             "release_id": self.release.release_id,
             "release_schema_version": self.release.manifest["schema_version"],
@@ -34,7 +47,16 @@ class RecommendationService:
                 item["scoring_method_version"] for item in self.release.catalog["criteria"]
             ),
             "countries": self.release.catalog["countries"],
-            "criteria": self.release.catalog["criteria"],
+            "criteria": [
+                {
+                    **criterion,
+                    "sources": sorted(
+                        sources_by_criterion.get(criterion["id"], []),
+                        key=lambda item: item["source_id"],
+                    ),
+                }
+                for criterion in self.release.catalog["criteria"]
+            ],
             "profiles": self.release.catalog["profiles"],
         }
 

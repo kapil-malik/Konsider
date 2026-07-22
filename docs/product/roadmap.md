@@ -1,20 +1,21 @@
 # Product roadmap
 
-Status: Phase 2B complete and backend hardened; Phase 2C comparison UI is next
+Status: Phase 2C responsive comparison UI implemented locally; Phase 2D is next
 
-Last updated: 2026-07-21
+Last updated: 2026-07-22
 
 ## Current position
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
-deterministic recommendation service, and five-route FastAPI v1 transport are implemented. Active
-release `2026-07-21.1` exposes 20 countries and six available criteria; five are enabled. UHC is
-non-ready because its latest observation is 2021. Infrastructure is enabled but experimental.
+deterministic recommendation service, five-route FastAPI v1 transport, and responsive React UI are
+implemented. Active release `2026-07-21.1` exposes 20 countries and six available criteria; five
+are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure is enabled but
+experimental.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
 
-## Phase 2C: comparison UI
+## Phase 2C: comparison UI — implemented
 
 Dependency: stable `/api/v1` catalog, ranking, comparison, country-metric, and health contracts.
 
@@ -24,13 +25,13 @@ Deliver a small React/TypeScript/Vite interface that:
   and source metadata from the API;
 - provides five editable criterion weights and a ranked 20-country table;
 - shows country metric details, observations, reference periods, source links, and caveats;
-- supports 2-10 country comparisons;
+- supports 2-4 country comparisons in the UI while retaining the API's 2-10 contract;
 - marks infrastructure experimental and never enables UHC as a weight;
 - keeps weights in browser state;
 - handles loading, empty, API-error, and unavailable-release states; and
 - has component and limited end-to-end coverage, accessible controls, and responsive layouts.
 
-Exit criteria:
+Delivered exit criteria:
 
 1. UI contains no scoring or readiness business rules.
 2. Catalog changes drive rendering without hard-coded business labels.
@@ -38,7 +39,7 @@ Exit criteria:
 4. UHC and infrastructure states are represented accurately.
 5. Tests cover initial catalog load, weight edits, ranking refresh, details, comparisons, and errors.
 
-See the [UI plan](ui.md) and [React/Vite decision](../architecture/decisions/004-react-vite-ui.md).
+See the [implemented UI guide](ui.md) and [React/Vite decision](../architecture/decisions/004-react-vite-ui.md).
 
 ## Phase 2D: deterministic evidence and explanations
 

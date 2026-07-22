@@ -1,6 +1,6 @@
 # ADR 004: React and Vite UI
 
-Status: accepted for Phase 2C; not yet implemented
+Status: accepted and implemented in Phase 2C
 
 ## Context
 

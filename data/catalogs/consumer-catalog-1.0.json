@@ -44,6 +44,9 @@
     }
   ],
   "profiles": [
-    {"id":"equal_weight_mvp","name":"Equal-weight MVP","description":"Provisional transparent baseline across the five product-ready criteria; every weight is user-editable.","weights":{"ambient_pm25_population_weighted":1,"household_consumption_price_level_us_100":1,"infrastructure_readiness_composite":1,"intentional_homicide_rate":1,"women_legal_economic_equality":1}}
+    {"id":"equal_weight_mvp","name":"Balanced","description":"Provisional profile where all five enabled criteria contribute equally; every priority remains user-editable.","weights":{"ambient_pm25_population_weighted":1,"household_consumption_price_level_us_100":1,"infrastructure_readiness_composite":1,"intentional_homicide_rate":1,"women_legal_economic_equality":1}},
+    {"id":"safety_and_stability","name":"Safety & Stability","description":"Provisional profile emphasizing personal safety and dependable infrastructure while retaining environmental, equality, and cost considerations.","weights":{"ambient_pm25_population_weighted":0.6,"household_consumption_price_level_us_100":0.4,"infrastructure_readiness_composite":0.8,"intentional_homicide_rate":1,"women_legal_economic_equality":0.6}},
+    {"id":"affordability_first","name":"Affordability First","description":"Provisional profile centered on broad relative cost with a secondary emphasis on safety.","weights":{"ambient_pm25_population_weighted":0.4,"household_consumption_price_level_us_100":1,"infrastructure_readiness_composite":0.4,"intentional_homicide_rate":0.6,"women_legal_economic_equality":0.4}},
+    {"id":"quality_of_life","name":"Quality of Life","description":"Provisional profile emphasizing air quality, safety, equality, and infrastructure while still considering broad relative cost.","weights":{"ambient_pm25_population_weighted":1,"household_consumption_price_level_us_100":0.4,"infrastructure_readiness_composite":0.8,"intentional_homicide_rate":0.8,"women_legal_economic_equality":0.8}}
   ]
 }

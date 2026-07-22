@@ -25,6 +25,19 @@ class CountryResponse(ApiModel):
     region: str
 
 
+class SourceResponse(ApiModel):
+    source_id: str
+    publisher: str
+    source_version: str
+    dataset_version: str
+    canonical_page_url: HttpUrl
+    attribution: str
+
+
+class CriterionSourceResponse(SourceResponse):
+    reference_period: str
+
+
 class CriterionResponse(ApiModel):
     id: str
     display_name: str
@@ -39,15 +52,6 @@ class CriterionResponse(ApiModel):
     default_enabled: bool
     experimental: bool
     scoring_method_version: str
-
-
-class SourceResponse(ApiModel):
-    source_id: str
-    publisher: str
-    source_version: str
-    dataset_version: str
-    canonical_page_url: HttpUrl
-    attribution: str
 
 
 class SourceRecordResponse(ApiModel):

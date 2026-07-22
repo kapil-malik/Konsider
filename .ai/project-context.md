@@ -15,9 +15,9 @@ authoritative. Do not revive older fixture-first plans from Git history or histo
 ## Current state
 
 The repository implements a local data worker, immutable release artifacts, a framework-independent
-recommendation service, and a typed FastAPI v1 API. Active release `2026-07-21.1` contains 20
-countries and six criteria; five are enabled. UHC is non-ready. Infrastructure is experimental.
-Phase 2C React UI work has not started.
+recommendation service, a typed FastAPI v1 API, and the Phase 2C responsive React UI. Active release
+`2026-07-21.1` contains 20 countries and six criteria; five are enabled. UHC is non-ready.
+Infrastructure is experimental. The browser remains catalog-driven and guest state is not saved.
 
 ## Non-negotiable boundaries
 

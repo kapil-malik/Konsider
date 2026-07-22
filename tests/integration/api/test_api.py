@@ -48,10 +48,65 @@ def test_catalog_has_available_and_enabled_contracts(client) -> None:
     )
     assert uhc.ready is False and uhc.default_enabled is False
     assert infrastructure.ready is True and infrastructure.experimental is True
-    assert [item.id for item in body.profiles] == ["equal_weight_mvp"]
+    assert [item.id for item in body.profiles] == [
+        "equal_weight_mvp",
+        "safety_and_stability",
+        "affordability_first",
+        "quality_of_life",
+    ]
+    assert all(item.sources for item in body.criteria)
+    assert uhc.sources[0].reference_period == "annual, latest API value 2021"
     serialized = response.text
     assert "raw_observation" not in serialized
     assert "contribution" not in serialized
+
+
+def test_catalog_profiles_are_exact_enabled_raw_weights(client) -> None:
+    body = CatalogResponse.model_validate(client.get("/api/v1/catalog").json())
+    enabled = {item.id for item in body.criteria if item.ready and item.default_enabled}
+    expected = {
+        "equal_weight_mvp": {
+            "ambient_pm25_population_weighted": 1.0,
+            "household_consumption_price_level_us_100": 1.0,
+            "infrastructure_readiness_composite": 1.0,
+            "intentional_homicide_rate": 1.0,
+            "women_legal_economic_equality": 1.0,
+        },
+        "safety_and_stability": {
+            "ambient_pm25_population_weighted": 0.6,
+            "household_consumption_price_level_us_100": 0.4,
+            "infrastructure_readiness_composite": 0.8,
+            "intentional_homicide_rate": 1.0,
+            "women_legal_economic_equality": 0.6,
+        },
+        "affordability_first": {
+            "ambient_pm25_population_weighted": 0.4,
+            "household_consumption_price_level_us_100": 1.0,
+            "infrastructure_readiness_composite": 0.4,
+            "intentional_homicide_rate": 0.6,
+            "women_legal_economic_equality": 0.4,
+        },
+        "quality_of_life": {
+            "ambient_pm25_population_weighted": 1.0,
+            "household_consumption_price_level_us_100": 0.4,
+            "infrastructure_readiness_composite": 0.8,
+            "intentional_homicide_rate": 0.8,
+            "women_legal_economic_equality": 0.8,
+        },
+    }
+
+    assert {item.id: item.weights for item in body.profiles} == expected
+    assert all(set(item.weights) == enabled for item in body.profiles)
+
+
+def test_added_profiles_use_existing_ranking_semantics(client) -> None:
+    response = client.post("/api/v1/rankings", json={"profile_id": "safety_and_stability"})
+    body = RankingResponse.model_validate(response.json())
+
+    assert response.status_code == 200
+    assert body.resolved_profile_id == "safety_and_stability"
+    assert sum(body.normalized_weights.values()) == pytest.approx(1)
+    assert body.normalized_weights["intentional_homicide_rate"] == pytest.approx(1 / 3.4)
 
 
 def test_rankings_default_profile_and_top_k(client) -> None:

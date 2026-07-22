@@ -1,8 +1,8 @@
 # Konsider
 
-Konsider is an evidence-backed country-suitability project. It currently implements a local official-
-data refresh worker, immutable versioned releases, a deterministic recommendation service, and a
-typed FastAPI v1 API.
+Konsider is an evidence-backed country-suitability project. It implements a local official-data
+refresh worker, immutable versioned releases, a deterministic recommendation service, a typed
+FastAPI v1 API, and a responsive catalog-driven React comparison UI.
 
 Active release `2026-07-21.1` contains 20 countries and six available criteria. Five are enabled for
 ranking. UHC is unavailable because its latest official observation is stale; infrastructure is
@@ -15,8 +15,8 @@ official sources -> worker -> immutable local releases -> RecommendationService 
                                active.json pointer
 ```
 
-React UI, AWS deployment, scheduled refresh, authentication, saved profiles, persistent sessions,
-retrieval, chat, LLMs, agents, and MCP are not implemented. Phase 2C adds the catalog-driven UI next.
+AWS deployment, scheduled refresh, authentication, saved profiles, persistent sessions, retrieval,
+chat, LLMs, agents, and MCP are not implemented. Guest preferences remain in browser memory only.
 
 ## Quick start
 
@@ -32,6 +32,30 @@ python -m uvicorn konsider.api.app:app --reload
 
 Health is available at <http://127.0.0.1:8000/api/v1/health> and interactive API documentation at
 <http://127.0.0.1:8000/docs>.
+
+Start the responsive UI in a second terminal after following the API CORS instructions in the
+[web application guide](web/README.md):
+
+```powershell
+Set-Location web
+pnpm install
+pnpm run generate:api
+pnpm run dev
+```
+
+On Windows, after the Python and frontend dependencies are installed, the repository-root helper
+commands manage both services in the background:
+
+```powershell
+.\start-local.cmd
+.\restart-local.cmd
+.\stop-local.cmd
+```
+
+The start command waits for both health checks and prints the UI and API documentation URLs. Runtime
+PID state and logs are written to the ignored `.konsider-run` directory. See the
+[local deployment guide](docs/operations/deployment-local.md) for prerequisites, overrides, and
+troubleshooting.
 
 Worker commands run from the repository root. A refresh downloads live official data and requires a
 new release ID plus every printed source-version acknowledgement:
@@ -54,6 +78,8 @@ python -m compileall -q src tests
 ```
 
 GitHub Actions runs the same gates on Ubuntu.
+
+Frontend gates are documented in [web/README.md](web/README.md).
 
 ## Documentation
 
