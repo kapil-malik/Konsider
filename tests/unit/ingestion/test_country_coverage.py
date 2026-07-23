@@ -9,6 +9,7 @@ from konsider.ingestion.country_coverage import (
     _world_bank_rows,
     _wdi_single_criterion,
     audit_coverage,
+    enabled_criteria_from_catalog,
     parse_m49_registry,
     select_candidates,
 )
@@ -107,6 +108,30 @@ def test_m49_registry_rejects_unexpectedly_small_table():
         assert "unexpectedly contained" in str(exc)
     else:
         raise AssertionError("Expected small M49 table to be rejected")
+
+
+def test_enabled_criteria_are_catalog_driven(tmp_path):
+    catalog = tmp_path / "catalog.json"
+    catalog.write_text(
+        json.dumps(
+            {
+                "criteria": [
+                    {
+                        "id": "ambient_pm25_population_weighted",
+                        "ready": True,
+                        "default_enabled": True,
+                    },
+                    {
+                        "id": "uhc_service_coverage_index",
+                        "ready": False,
+                        "default_enabled": False,
+                    },
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    assert enabled_criteria_from_catalog(catalog) == ["ambient_pm25_population_weighted"]
 
 
 def test_candidate_selection_is_deterministic_and_retains_existing():

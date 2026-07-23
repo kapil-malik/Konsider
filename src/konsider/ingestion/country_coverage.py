@@ -31,13 +31,34 @@ UN_MIGRANT_STOCK_URL = (
 WORLD_BANK_COUNTRY_METADATA_URL = "https://api.worldbank.org/v2/country?format=json&per_page=400"
 AUDIT_SCHEMA_VERSION = "country-coverage-audit-1.0"
 
-CRITERION_SOURCE_IDS = {
+SUPPORTED_CRITERION_SOURCE_IDS = {
     "ambient_pm25_population_weighted": "world_bank_pm25",
     "intentional_homicide_rate": "unodc_homicide",
     "household_consumption_price_level_us_100": "world_bank_icp",
     "women_legal_economic_equality": "world_bank_wbl",
     "infrastructure_readiness_composite": "world_bank_infrastructure",
 }
+
+
+def enabled_criteria_from_catalog(
+    catalog_path: Path | str = "data/catalogs/consumer-catalog-1.0.json",
+) -> list[str]:
+    catalog = json.loads(Path(catalog_path).read_text(encoding="utf-8"))
+    criteria = [
+        str(item["id"])
+        for item in catalog["criteria"]
+        if item.get("ready") and item.get("default_enabled")
+    ]
+    unsupported = set(criteria) - set(SUPPORTED_CRITERION_SOURCE_IDS)
+    if unsupported:
+        raise ValueError(
+            f"Coverage audit has no implementation for enabled criteria: {sorted(unsupported)}"
+        )
+    registered_by_criterion = {source.criterion_id: source.source_id for source in SOURCES.values()}
+    missing_sources = set(criteria) - set(registered_by_criterion)
+    if missing_sources:
+        raise ValueError(f"Enabled criteria have no registered source: {sorted(missing_sources)}")
+    return criteria
 
 
 def _universe_registration(
@@ -145,12 +166,14 @@ def _world_bank_bulk_url(url: str) -> str:
 
 
 def audit_source_registrations(
-    country_codes: Iterable[str],
+    country_codes: Iterable[str], enabled_criteria: Iterable[str] | None = None
 ) -> dict[str, SourceRegistration]:
     """Return discovery sources plus candidate-set variants of ranking sources."""
 
     registrations = dict(UNIVERSE_SOURCES)
-    for source_id in CRITERION_SOURCE_IDS.values():
+    criteria = list(enabled_criteria or enabled_criteria_from_catalog())
+    registered_by_criterion = {source.criterion_id: source.source_id for source in SOURCES.values()}
+    for source_id in (registered_by_criterion[criterion] for criterion in criteria):
         source = SOURCES[source_id]
         download_urls = (
             tuple(_world_bank_bulk_url(url) for url in source.download_urls)
@@ -895,6 +918,7 @@ def audit_coverage(
     policy = _read_json(Path(universe_path))
     if not isinstance(policy, dict):
         raise ValueError("Country universe policy must be a JSON object.")
+    enabled_criteria = enabled_criteria_from_catalog()
     raw_repository = RawArtifactRepository(raw_root)
     now = (clock or (lambda: datetime.now(UTC)))()
     active_before = _active_pointer_bytes(Path(release_root))
@@ -945,7 +969,7 @@ def audit_coverage(
         candidate_limit=candidate_limit,
     )
     candidate_codes = {str(item["code"]) for item in candidates}
-    registrations = audit_source_registrations(candidate_codes)
+    registrations = audit_source_registrations(candidate_codes, enabled_criteria)
     if mode == "online":
         criterion_registrations = {
             source_id: registration
@@ -972,8 +996,7 @@ def audit_coverage(
                     )
                 )
     bodies = _artifact_bodies(artifacts, raw_repository, registrations)
-    enabled_criteria = list(CRITERION_SOURCE_IDS)
-    criterion_results = {
+    all_criterion_results = {
         "ambient_pm25_population_weighted": _wdi_single_criterion(
             "ambient_pm25_population_weighted",
             "world_bank_pm25",
@@ -997,6 +1020,9 @@ def audit_coverage(
         "infrastructure_readiness_composite": _infrastructure_criterion(
             bodies["world_bank_infrastructure"], candidate_codes, now.year
         ),
+    }
+    criterion_results = {
+        criterion: all_criterion_results[criterion] for criterion in enabled_criteria
     }
     country_rows = []
     exclusions = []
