@@ -1,6 +1,6 @@
 # System architecture
 
-Status: authoritative architecture as of 2026-07-21
+Status: authoritative architecture as of 2026-07-23
 
 Konsider separates data acquisition, immutable publication, deterministic recommendation logic,
 HTTP transport, and the browser UI. Scoring and readiness rules have one server-side owner.
@@ -12,6 +12,8 @@ Registered official sources
         |
         v
 Local Python worker ---> data/raw/ (ignored, content-addressed bytes)
+        |                  |
+        |                  +--> non-publishing country-universe/coverage audit
         |
         v
 data/releases/{release_id}/ + data/releases/active.json
@@ -39,6 +41,9 @@ PublishedReleaseRepository ---> RecommendationService ---> FastAPI /api/v1 ---> 
 
 The active release is `2026-07-21.1`: 20 countries, six available criteria, and five enabled
 criteria. UHC is non-ready and cannot be weighted. Infrastructure remains experimental.
+Country-universe discovery and complete-case auditing are implemented as a separate safe worker
+flow. They use UN migrant-stock/M49 inputs plus the registered criterion sources, write diagnostic
+reports, and assert that `active.json` is unchanged. They do not share publication authority.
 
 ## Browser architecture
 
@@ -77,6 +82,14 @@ The worker captures source registrations and raw artifacts, creates observations
 attempt and diagnostic records, validates the candidate, writes a draft, atomically promotes a new
 release directory, and then replaces only `active.json`. A failed run cannot mutate a published
 release or the active pointer.
+
+### Country-universe and coverage audit
+
+The worker builds a canonical ISO3 registry from official UN M49 and World Bank metadata, ranks
+eligible destinations using official UN migrant stock, evaluates every catalog-enabled criterion,
+and writes candidate, coverage, exclusion, source, and checksum reports. Online mode captures bytes;
+offline mode deterministically replays them. Only a PASS at 100 complete countries authorizes later
+publication work.
 
 ### API startup and request
 

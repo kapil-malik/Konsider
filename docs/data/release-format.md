@@ -25,6 +25,11 @@ data/
 Published files are LF-normalized by `.gitattributes`. Corrections create a new release ID; they do
 not rewrite a historical directory.
 
+Country-universe and coverage-audit outputs live under `data/reports/country-coverage/AUDIT_ID`.
+They are diagnostic artifacts, not releases, are never selected by `active.json`, and do not relax
+the publication contract. A future expanded release may add compact universe metadata only after
+the 100-country gate passes and its schema change is implemented.
+
 ## Files
 
 | File | Role | Classification |

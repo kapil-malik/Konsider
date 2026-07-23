@@ -1,0 +1,71 @@
+{"code":"AFG","display_name":"Afghanistan","reason_codes":["household_consumption_price_level_us_100:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"AGO","display_name":"Angola","reason_codes":["intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"ARG","display_name":"Argentina","reason_codes":["household_consumption_price_level_us_100:stale"],"region":"Latin America & Caribbean"}
+{"code":"AZE","display_name":"Azerbaijan","reason_codes":["infrastructure_readiness_composite:stale"],"region":"Europe & Central Asia"}
+{"code":"BDI","display_name":"Burundi","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"BEN","display_name":"Benin","reason_codes":["intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"BFA","display_name":"Burkina Faso","reason_codes":["intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"BGD","display_name":"Bangladesh","reason_codes":["intentional_homicide_rate:stale"],"region":"South Asia"}
+{"code":"BLR","display_name":"Belarus","reason_codes":["intentional_homicide_rate:stale"],"region":"Europe & Central Asia"}
+{"code":"BLZ","display_name":"Belize","reason_codes":["infrastructure_readiness_composite:missing"],"region":"Latin America & Caribbean"}
+{"code":"BRN","display_name":"Brunei Darussalam","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"East Asia & Pacific"}
+{"code":"BTN","display_name":"Bhutan","reason_codes":["intentional_homicide_rate:stale"],"region":"South Asia"}
+{"code":"CAF","display_name":"Central African Republic","reason_codes":["intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"CHN","display_name":"China","reason_codes":["intentional_homicide_rate:stale"],"region":"East Asia & Pacific"}
+{"code":"CIV","display_name":"Cote d'Ivoire","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"COD","display_name":"Congo, Dem. Rep.","reason_codes":["household_consumption_price_level_us_100:stale","intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"COG","display_name":"Congo, Rep.","reason_codes":["intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"DJI","display_name":"Djibouti","reason_codes":["intentional_homicide_rate:missing"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"ECU","display_name":"Ecuador","reason_codes":["infrastructure_readiness_composite:stale"],"region":"Latin America & Caribbean"}
+{"code":"EGY","display_name":"Egypt, Arab Rep.","reason_codes":["intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"ETH","display_name":"Ethiopia","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"GAB","display_name":"Gabon","reason_codes":["intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"GEO","display_name":"Georgia","reason_codes":["intentional_homicide_rate:stale"],"region":"Europe & Central Asia"}
+{"code":"GIN","display_name":"Guinea","reason_codes":["household_consumption_price_level_us_100:stale","intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"GMB","display_name":"Gambia, The","reason_codes":["intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"GNQ","display_name":"Equatorial Guinea","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"IRN","display_name":"Iran, Islamic Rep.","reason_codes":["household_consumption_price_level_us_100:stale","intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"IRQ","display_name":"Iraq","reason_codes":["intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"JOR","display_name":"Jordan","reason_codes":["infrastructure_readiness_composite:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"KEN","display_name":"Kenya","reason_codes":["infrastructure_readiness_composite:stale"],"region":"Sub-Saharan Africa"}
+{"code":"KGZ","display_name":"Kyrgyz Republic","reason_codes":["intentional_homicide_rate:stale"],"region":"Europe & Central Asia"}
+{"code":"KHM","display_name":"Cambodia","reason_codes":["intentional_homicide_rate:stale"],"region":"East Asia & Pacific"}
+{"code":"KWT","display_name":"Kuwait","reason_codes":["intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"LAO","display_name":"Lao PDR","reason_codes":["intentional_homicide_rate:missing"],"region":"East Asia & Pacific"}
+{"code":"LBN","display_name":"Lebanon","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"LBR","display_name":"Liberia","reason_codes":["household_consumption_price_level_us_100:invalid_value","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"LBY","display_name":"Libya","reason_codes":["intentional_homicide_rate:missing"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"MAR","display_name":"Morocco","reason_codes":["infrastructure_readiness_composite:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"MDV","display_name":"Maldives","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"South Asia"}
+{"code":"MLI","display_name":"Mali","reason_codes":["intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"MMR","display_name":"Myanmar","reason_codes":["household_consumption_price_level_us_100:stale","infrastructure_readiness_composite:stale"],"region":"East Asia & Pacific"}
+{"code":"MOZ","display_name":"Mozambique","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"MRT","display_name":"Mauritania","reason_codes":["household_consumption_price_level_us_100:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"MWI","display_name":"Malawi","reason_codes":["household_consumption_price_level_us_100:stale","infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"NER","display_name":"Niger","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"NPL","display_name":"Nepal","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"South Asia"}
+{"code":"PAK","display_name":"Pakistan","reason_codes":["infrastructure_readiness_composite:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"PRK","display_name":"Korea, Dem. People's Rep.","reason_codes":["household_consumption_price_level_us_100:missing","infrastructure_readiness_composite:missing","intentional_homicide_rate:missing","women_legal_economic_equality:missing"],"region":"East Asia & Pacific"}
+{"code":"PSE","display_name":"West Bank and Gaza","reason_codes":["household_consumption_price_level_us_100:missing","infrastructure_readiness_composite:missing"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"RWA","display_name":"Rwanda","reason_codes":["intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"SAU","display_name":"Saudi Arabia","reason_codes":["intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"SDN","display_name":"Sudan","reason_codes":["household_consumption_price_level_us_100:stale","infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"SEN","display_name":"Senegal","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"SLE","display_name":"Sierra Leone","reason_codes":["household_consumption_price_level_us_100:stale","infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"SOM","display_name":"Somalia, Fed. Rep.","reason_codes":["household_consumption_price_level_us_100:stale","intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"SSD","display_name":"South Sudan","reason_codes":["household_consumption_price_level_us_100:stale","infrastructure_readiness_composite:missing","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"SUR","display_name":"Suriname","reason_codes":["infrastructure_readiness_composite:missing"],"region":"Latin America & Caribbean"}
+{"code":"SYR","display_name":"Syrian Arab Republic","reason_codes":["household_consumption_price_level_us_100:stale","infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"TCD","display_name":"Chad","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"TGO","display_name":"Togo","reason_codes":["intentional_homicide_rate:missing"],"region":"Sub-Saharan Africa"}
+{"code":"THA","display_name":"Thailand","reason_codes":["intentional_homicide_rate:stale"],"region":"East Asia & Pacific"}
+{"code":"TJK","display_name":"Tajikistan","reason_codes":["household_consumption_price_level_us_100:stale","intentional_homicide_rate:stale"],"region":"Europe & Central Asia"}
+{"code":"TKM","display_name":"Turkmenistan","reason_codes":["household_consumption_price_level_us_100:invalid_value","infrastructure_readiness_composite:stale","intentional_homicide_rate:stale","women_legal_economic_equality:missing"],"region":"Europe & Central Asia"}
+{"code":"TUN","display_name":"Tunisia","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"TZA","display_name":"Tanzania","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"UGA","display_name":"Uganda","reason_codes":["infrastructure_readiness_composite:stale"],"region":"Sub-Saharan Africa"}
+{"code":"VEN","display_name":"Venezuela, RB","reason_codes":["household_consumption_price_level_us_100:invalid_value"],"region":"Latin America & Caribbean"}
+{"code":"VNM","display_name":"Viet Nam","reason_codes":["intentional_homicide_rate:stale"],"region":"East Asia & Pacific"}
+{"code":"YEM","display_name":"Yemen, Rep.","reason_codes":["household_consumption_price_level_us_100:stale","infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Middle East, North Africa, Afghanistan & Pakistan"}
+{"code":"ZMB","display_name":"Zambia","reason_codes":["infrastructure_readiness_composite:stale","intentional_homicide_rate:stale"],"region":"Sub-Saharan Africa"}
+{"code":"ZWE","display_name":"Zimbabwe","reason_codes":["household_consumption_price_level_us_100:invalid_value"],"region":"Sub-Saharan Africa"}

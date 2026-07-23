@@ -12,6 +12,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [API operations and reference](operations/api.md) - configure, start, and use all five routes.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
 - [Phase 2C UI](product/ui.md) - implemented product behavior and technical boundaries.
+- [Phase 2D country coverage audit](data/country-coverage-phase-2d.md) - reproducible universe,
+  complete-case results, blocker analysis, and required source decision.
 
 ## Architecture decisions
 
@@ -33,6 +35,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Source and licence audit](data/source-audit.md)
 - [Scoring methodology](data/scoring-methodology.md)
 - [Release format](data/release-format.md)
+- [Phase 2D country coverage audit](data/country-coverage-phase-2d.md)
 
 ## Historical records
 

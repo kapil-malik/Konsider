@@ -5,6 +5,46 @@ source-neutral observations, computes versioned canonical scores, validates a ca
 publishes a new immutable release. It does not serve API requests, modify published releases, fill
 missing data from fixtures, deploy to AWS, or run on a schedule.
 
+## `audit-coverage`
+
+Coverage auditing is separate from refresh and can never activate a release.
+
+```text
+python -m konsider.ingestion.worker audit-coverage \
+  --universe UNIVERSE_JSON \
+  --audit-id AUDIT_ID \
+  --mode online|offline \
+  [--artifacts RAW_ARTIFACT_MANIFEST] \
+  [--candidate-limit N]
+```
+
+Online example:
+
+```bash
+python -m konsider.ingestion.worker audit-coverage \
+  --universe data/country-universes/popular-relocation-v1.json \
+  --audit-id coverage-YYYY-MM-DD.N \
+  --mode online
+```
+
+Offline replay:
+
+```bash
+python -m konsider.ingestion.worker audit-coverage \
+  --universe data/country-universes/popular-relocation-v1.json \
+  --audit-id coverage-YYYY-MM-DD.N-replay \
+  --mode offline \
+  --artifacts data/reports/country-coverage/coverage-YYYY-MM-DD.N/raw-artifacts.json
+```
+
+Online mode fetches official UN M49, UN migrant-stock, World Bank country metadata, the current WBL
+workbook, and official CSV ZIP representations of the registered WDI indicators. Offline mode makes
+no network calls and requires the retained content-addressed bytes. Both modes produce candidate,
+registry, per-criterion, per-country, exclusion, source, artifact, summary, and Markdown reports.
+Exit is `0` for PASS and `2` when the complete intersection is below 100. A FAIL is a diagnostic
+result, not permission to publish. The command compares `active.json` before and after and raises if
+it changes.
+
 ## Prerequisites
 
 - Python 3.11 or newer and the installation in [local setup](local-setup.md).
@@ -142,6 +182,7 @@ source registration
 | `validation.json` | Structural issues, criterion readiness, coverage, blockers, warnings, and aggregate readiness. | Readiness decision. |
 | `scoring-sensitivity.json` | Distribution and alternative-method diagnostics. | Diagnostic review record. |
 | `data/releases/active.json` | Current release ID and schema major. | Mutable activation pointer only. |
+| `data/reports/country-coverage/AUDIT_ID/` | Candidate universe, canonical registry, coverage dimensions, exclusions, sources, and raw checksums. | Non-publishing discovery evidence. |
 
 See [release format](../data/release-format.md) for field and checksum relationships.
 

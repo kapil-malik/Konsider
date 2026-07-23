@@ -13,6 +13,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from konsider.ingestion.countries import COUNTRY_CODES
+from konsider.ingestion.country_coverage import audit_coverage
 from konsider.ingestion.models import RawArtifact, SourceAttempt, SourceRegistration
 from konsider.ingestion.parsers import PARSERS
 from konsider.ingestion.registry import SOURCES
@@ -414,6 +415,17 @@ def main() -> int:
     stabilize_parser.add_argument("--release-id", required=True)
     replay_parser = subparsers.add_parser("replay")
     replay_parser.add_argument("release_path")
+    audit_parser = subparsers.add_parser(
+        "audit-coverage",
+        help="Build or replay a country coverage audit without activating a release.",
+    )
+    audit_parser.add_argument("--universe", required=True)
+    audit_parser.add_argument("--audit-id", required=True)
+    audit_parser.add_argument("--mode", required=True, choices=("online", "offline"))
+    audit_parser.add_argument("--output-root", default="data/reports/country-coverage")
+    audit_parser.add_argument("--raw-root", default="data/raw")
+    audit_parser.add_argument("--artifacts")
+    audit_parser.add_argument("--candidate-limit", type=int)
     args = parser.parse_args()
     if args.command == "list-sources":
         for source_id in sorted(SOURCES):
@@ -426,6 +438,24 @@ def main() -> int:
     if args.command == "stabilize-baseline":
         print(stabilize_baseline(args.previous_path, args.release_id))
         return 0
+    if args.command == "audit-coverage":
+        path, summary = audit_coverage(
+            args.universe,
+            args.audit_id,
+            mode=args.mode,
+            output_root=args.output_root,
+            raw_root=args.raw_root,
+            artifact_manifest=args.artifacts,
+            candidate_limit=args.candidate_limit,
+        )
+        print(f"Universe: {summary['universe_id']}")
+        print(f"Candidate countries: {summary['candidate_country_count']}")
+        print(f"Enabled criteria: {len(summary['enabled_criteria'])}")
+        print("Complete publishable countries: " f"{summary['complete_publishable_country_count']}")
+        print(f"Minimum required: {summary['minimum_required_country_count']}")
+        print(f"Status: {summary['status']}")
+        print(path)
+        return 0 if summary["status"] == "PASS" else 2
     passed = replay(args.release_path)
     print("replay passed" if passed else "replay failed")
     return 0 if passed else 1

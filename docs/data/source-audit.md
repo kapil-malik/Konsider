@@ -3,7 +3,7 @@
 Status: audited for the data published in `2026-07-20.2` and unchanged in active packaging release
 `2026-07-21.1`; not legal advice
 
-Last checked: 2026-07-20
+Last checked: 2026-07-23
 
 A public endpoint is not a licence. This audit relies on dataset/indicator-specific metadata and the
 [World Bank public licence terms](https://datacatalog.worldbank.org/public-licenses), not privacy
@@ -36,6 +36,24 @@ URLs, HTTP metadata, checksums, versions, attribution, and exact record referenc
   licence evidence, redistribution decision, permitted usage, attribution, and limitations used by a
 release. Replay reads those embedded registrations rather than silently substituting the current
   registry.
+- The Phase 2D coverage audit uses the World Bank API's documented `downloadformat=csv` ZIP form for
+  the same registered WDI indicator codes, then filters canonical candidates locally. This is a
+  discovery retrieval optimization only; it does not change publisher, series, source version,
+  criterion meaning, or scoring. Exact ZIP bytes and checksums are retained.
+
+## Phase 2D broad-coverage finding
+
+The 2026-07-23 audit found 91 complete countries even after expanding to all 195 policy-eligible
+entities. Homicide is the binding criterion: 114 are valid, 63 are stale, 18 are missing, and 30
+otherwise-complete countries fail only homicide. The direct UNODC intentional-homicide portal is a
+same-construct candidate, but reproducible bulk retrieval and redistribution terms have not yet
+been established. It was not substituted.
+
+The 2023 Logistics Performance Index covers 139 countries, so direct LPI use does not remove the
+infrastructure component's structural ceiling. Replacing LPI would change the experimental
+criterion. ICP 2021 covers 176 participating economies and publishes imputed estimates for others;
+those imputed results are prohibited for Phase 2D. See the
+[full coverage report](country-coverage-phase-2d.md).
 
 ## Product-readiness interpretation
 

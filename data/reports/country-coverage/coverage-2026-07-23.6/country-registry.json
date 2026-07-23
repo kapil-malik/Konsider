@@ -1,0 +1,3244 @@
+[
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ABW",
+    "display_name": "Aruba",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "533",
+      "un_migrant_stock": "533",
+      "world_bank": "ABW"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "533"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "AFG",
+    "display_name": "Afghanistan",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "004",
+      "un_migrant_stock": "004",
+      "world_bank": "AFG"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "004"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "AGO",
+    "display_name": "Angola",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "024",
+      "un_migrant_stock": "024",
+      "world_bank": "AGO"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "024"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ALB",
+    "display_name": "Albania",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "008",
+      "un_migrant_stock": "008",
+      "world_bank": "ALB"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "008"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "AND",
+    "display_name": "Andorra",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "020",
+      "un_migrant_stock": "020",
+      "world_bank": "AND"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "020"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ARE",
+    "display_name": "United Arab Emirates",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "784",
+      "un_migrant_stock": "784",
+      "world_bank": "ARE"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "784"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ARG",
+    "display_name": "Argentina",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "032",
+      "un_migrant_stock": "032",
+      "world_bank": "ARG"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "032"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ARM",
+    "display_name": "Armenia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "051",
+      "un_migrant_stock": "051",
+      "world_bank": "ARM"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "051"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ASM",
+    "display_name": "American Samoa",
+    "entity_type": "excluded_entity",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "016",
+      "un_migrant_stock": "016",
+      "world_bank": "ASM"
+    },
+    "subregion": "Polynesia",
+    "un_m49": "016"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ATG",
+    "display_name": "Antigua and Barbuda",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "028",
+      "un_migrant_stock": "028",
+      "world_bank": "ATG"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "028"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "AUS",
+    "display_name": "Australia",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "036",
+      "un_migrant_stock": "036",
+      "world_bank": "AUS"
+    },
+    "subregion": "Australia and New Zealand",
+    "un_m49": "036"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "AUT",
+    "display_name": "Austria",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "040",
+      "un_migrant_stock": "040",
+      "world_bank": "AUT"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "040"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "AZE",
+    "display_name": "Azerbaijan",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "031",
+      "un_migrant_stock": "031",
+      "world_bank": "AZE"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "031"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BDI",
+    "display_name": "Burundi",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "108",
+      "un_migrant_stock": "108",
+      "world_bank": "BDI"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "108"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BEL",
+    "display_name": "Belgium",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "056",
+      "un_migrant_stock": "056",
+      "world_bank": "BEL"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "056"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BEN",
+    "display_name": "Benin",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "204",
+      "un_migrant_stock": "204",
+      "world_bank": "BEN"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "204"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BFA",
+    "display_name": "Burkina Faso",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "854",
+      "un_migrant_stock": "854",
+      "world_bank": "BFA"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "854"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BGD",
+    "display_name": "Bangladesh",
+    "entity_type": "country",
+    "region": "South Asia",
+    "source_codes": {
+      "un_m49": "050",
+      "un_migrant_stock": "050",
+      "world_bank": "BGD"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "050"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BGR",
+    "display_name": "Bulgaria",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "100",
+      "un_migrant_stock": "100",
+      "world_bank": "BGR"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "100"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BHR",
+    "display_name": "Bahrain",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "048",
+      "un_migrant_stock": "048",
+      "world_bank": "BHR"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "048"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BHS",
+    "display_name": "Bahamas, The",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "044",
+      "un_migrant_stock": "044",
+      "world_bank": "BHS"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "044"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BIH",
+    "display_name": "Bosnia and Herzegovina",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "070",
+      "un_migrant_stock": "070",
+      "world_bank": "BIH"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "070"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BLR",
+    "display_name": "Belarus",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "112",
+      "un_migrant_stock": "112",
+      "world_bank": "BLR"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "112"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BLZ",
+    "display_name": "Belize",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "084",
+      "un_migrant_stock": "084",
+      "world_bank": "BLZ"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "084"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BMU",
+    "display_name": "Bermuda",
+    "entity_type": "excluded_entity",
+    "region": "North America",
+    "source_codes": {
+      "un_m49": "060",
+      "un_migrant_stock": "060",
+      "world_bank": "BMU"
+    },
+    "subregion": "Northern America",
+    "un_m49": "060"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BOL",
+    "display_name": "Bolivia",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "068",
+      "un_migrant_stock": "068",
+      "world_bank": "BOL"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "068"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BRA",
+    "display_name": "Brazil",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "076",
+      "un_migrant_stock": "076",
+      "world_bank": "BRA"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "076"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BRB",
+    "display_name": "Barbados",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "052",
+      "un_migrant_stock": "052",
+      "world_bank": "BRB"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "052"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BRN",
+    "display_name": "Brunei Darussalam",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "096",
+      "un_migrant_stock": "096",
+      "world_bank": "BRN"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "096"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BTN",
+    "display_name": "Bhutan",
+    "entity_type": "country",
+    "region": "South Asia",
+    "source_codes": {
+      "un_m49": "064",
+      "un_migrant_stock": "064",
+      "world_bank": "BTN"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "064"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "BWA",
+    "display_name": "Botswana",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "072",
+      "un_migrant_stock": "072",
+      "world_bank": "BWA"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "072"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CAF",
+    "display_name": "Central African Republic",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "140",
+      "un_migrant_stock": "140",
+      "world_bank": "CAF"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "140"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CAN",
+    "display_name": "Canada",
+    "entity_type": "country",
+    "region": "North America",
+    "source_codes": {
+      "un_m49": "124",
+      "un_migrant_stock": "124",
+      "world_bank": "CAN"
+    },
+    "subregion": "Northern America",
+    "un_m49": "124"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CHE",
+    "display_name": "Switzerland",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "756",
+      "un_migrant_stock": "756",
+      "world_bank": "CHE"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "756"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CHL",
+    "display_name": "Chile",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "152",
+      "un_migrant_stock": "152",
+      "world_bank": "CHL"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "152"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CHN",
+    "display_name": "China",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "156",
+      "un_migrant_stock": "156",
+      "world_bank": "CHN"
+    },
+    "subregion": "Eastern Asia",
+    "un_m49": "156"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CIV",
+    "display_name": "Cote d'Ivoire",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "384",
+      "un_migrant_stock": "384",
+      "world_bank": "CIV"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "384"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CMR",
+    "display_name": "Cameroon",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "120",
+      "un_migrant_stock": "120",
+      "world_bank": "CMR"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "120"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "COD",
+    "display_name": "Congo, Dem. Rep.",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "180",
+      "un_migrant_stock": "180",
+      "world_bank": "COD"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "180"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "COG",
+    "display_name": "Congo, Rep.",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "178",
+      "un_migrant_stock": "178",
+      "world_bank": "COG"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "178"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "COL",
+    "display_name": "Colombia",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "170",
+      "un_migrant_stock": "170",
+      "world_bank": "COL"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "170"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "COM",
+    "display_name": "Comoros",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "174",
+      "un_migrant_stock": "174",
+      "world_bank": "COM"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "174"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CPV",
+    "display_name": "Cabo Verde",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "132",
+      "un_migrant_stock": "132",
+      "world_bank": "CPV"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "132"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CRI",
+    "display_name": "Costa Rica",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "188",
+      "un_migrant_stock": "188",
+      "world_bank": "CRI"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "188"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CUB",
+    "display_name": "Cuba",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "192",
+      "un_migrant_stock": "192",
+      "world_bank": "CUB"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "192"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CUW",
+    "display_name": "Curacao",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "531",
+      "un_migrant_stock": "531",
+      "world_bank": "CUW"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "531"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CYM",
+    "display_name": "Cayman Islands",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "136",
+      "un_migrant_stock": "136",
+      "world_bank": "CYM"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "136"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "CYP",
+    "display_name": "Cyprus",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "196",
+      "un_migrant_stock": "196",
+      "world_bank": "CYP"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "196"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "Czech Republic"
+    ],
+    "code": "CZE",
+    "display_name": "Czechia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "203",
+      "un_migrant_stock": "203",
+      "world_bank": "CZE"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "203"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "DEU",
+    "display_name": "Germany",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "276",
+      "un_migrant_stock": "276",
+      "world_bank": "DEU"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "276"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "DJI",
+    "display_name": "Djibouti",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "262",
+      "un_migrant_stock": "262",
+      "world_bank": "DJI"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "262"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "DMA",
+    "display_name": "Dominica",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "212",
+      "un_migrant_stock": "212",
+      "world_bank": "DMA"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "212"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "DNK",
+    "display_name": "Denmark",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "208",
+      "un_migrant_stock": "208",
+      "world_bank": "DNK"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "208"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "DOM",
+    "display_name": "Dominican Republic",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "214",
+      "un_migrant_stock": "214",
+      "world_bank": "DOM"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "214"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "DZA",
+    "display_name": "Algeria",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "012",
+      "un_migrant_stock": "012",
+      "world_bank": "DZA"
+    },
+    "subregion": "Northern Africa",
+    "un_m49": "012"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ECU",
+    "display_name": "Ecuador",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "218",
+      "un_migrant_stock": "218",
+      "world_bank": "ECU"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "218"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "EGY",
+    "display_name": "Egypt, Arab Rep.",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "818",
+      "un_migrant_stock": "818",
+      "world_bank": "EGY"
+    },
+    "subregion": "Northern Africa",
+    "un_m49": "818"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ERI",
+    "display_name": "Eritrea",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "232",
+      "un_migrant_stock": "232",
+      "world_bank": "ERI"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "232"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ESP",
+    "display_name": "Spain",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "724",
+      "un_migrant_stock": "724",
+      "world_bank": "ESP"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "724"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "EST",
+    "display_name": "Estonia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "233",
+      "un_migrant_stock": "233",
+      "world_bank": "EST"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "233"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ETH",
+    "display_name": "Ethiopia",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "231",
+      "un_migrant_stock": "231",
+      "world_bank": "ETH"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "231"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "FIN",
+    "display_name": "Finland",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "246",
+      "un_migrant_stock": "246",
+      "world_bank": "FIN"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "246"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "FJI",
+    "display_name": "Fiji",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "242",
+      "un_migrant_stock": "242",
+      "world_bank": "FJI"
+    },
+    "subregion": "Melanesia",
+    "un_m49": "242"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "FRA",
+    "display_name": "France",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "250",
+      "un_migrant_stock": "250",
+      "world_bank": "FRA"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "250"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "FRO",
+    "display_name": "Faroe Islands",
+    "entity_type": "excluded_entity",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "234",
+      "un_migrant_stock": "234",
+      "world_bank": "FRO"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "234"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "FSM",
+    "display_name": "Micronesia, Fed. Sts.",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "583",
+      "un_migrant_stock": "583",
+      "world_bank": "FSM"
+    },
+    "subregion": "Micronesia",
+    "un_m49": "583"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GAB",
+    "display_name": "Gabon",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "266",
+      "un_migrant_stock": "266",
+      "world_bank": "GAB"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "266"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "United Kingdom"
+    ],
+    "code": "GBR",
+    "display_name": "United Kingdom",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "826",
+      "un_migrant_stock": "826",
+      "world_bank": "GBR"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "826"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GEO",
+    "display_name": "Georgia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "268",
+      "un_migrant_stock": "268",
+      "world_bank": "GEO"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "268"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GHA",
+    "display_name": "Ghana",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "288",
+      "un_migrant_stock": "288",
+      "world_bank": "GHA"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "288"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GIB",
+    "display_name": "Gibraltar",
+    "entity_type": "excluded_entity",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "292",
+      "un_migrant_stock": "292",
+      "world_bank": "GIB"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "292"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GIN",
+    "display_name": "Guinea",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "324",
+      "un_migrant_stock": "324",
+      "world_bank": "GIN"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "324"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GMB",
+    "display_name": "Gambia, The",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "270",
+      "un_migrant_stock": "270",
+      "world_bank": "GMB"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "270"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GNB",
+    "display_name": "Guinea-Bissau",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "624",
+      "un_migrant_stock": "624",
+      "world_bank": "GNB"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "624"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GNQ",
+    "display_name": "Equatorial Guinea",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "226",
+      "un_migrant_stock": "226",
+      "world_bank": "GNQ"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "226"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GRC",
+    "display_name": "Greece",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "300",
+      "un_migrant_stock": "300",
+      "world_bank": "GRC"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "300"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GRD",
+    "display_name": "Grenada",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "308",
+      "un_migrant_stock": "308",
+      "world_bank": "GRD"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "308"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GRL",
+    "display_name": "Greenland",
+    "entity_type": "excluded_entity",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "304",
+      "un_migrant_stock": "304",
+      "world_bank": "GRL"
+    },
+    "subregion": "Northern America",
+    "un_m49": "304"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GTM",
+    "display_name": "Guatemala",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "320",
+      "un_migrant_stock": "320",
+      "world_bank": "GTM"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "320"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GUM",
+    "display_name": "Guam",
+    "entity_type": "excluded_entity",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "316",
+      "un_migrant_stock": "316",
+      "world_bank": "GUM"
+    },
+    "subregion": "Micronesia",
+    "un_m49": "316"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "GUY",
+    "display_name": "Guyana",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "328",
+      "un_migrant_stock": "328",
+      "world_bank": "GUY"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "328"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "HKG",
+    "display_name": "Hong Kong SAR, China",
+    "entity_type": "excluded_entity",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "344",
+      "un_migrant_stock": "344",
+      "world_bank": "HKG"
+    },
+    "subregion": "Eastern Asia",
+    "un_m49": "344"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "HND",
+    "display_name": "Honduras",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "340",
+      "un_migrant_stock": "340",
+      "world_bank": "HND"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "340"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "HRV",
+    "display_name": "Croatia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "191",
+      "un_migrant_stock": "191",
+      "world_bank": "HRV"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "191"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "HTI",
+    "display_name": "Haiti",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "332",
+      "un_migrant_stock": "332",
+      "world_bank": "HTI"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "332"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "HUN",
+    "display_name": "Hungary",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "348",
+      "un_migrant_stock": "348",
+      "world_bank": "HUN"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "348"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "IDN",
+    "display_name": "Indonesia",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "360",
+      "un_migrant_stock": "360",
+      "world_bank": "IDN"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "360"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "IMN",
+    "display_name": "Isle of Man",
+    "entity_type": "excluded_entity",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "833",
+      "un_migrant_stock": "833",
+      "world_bank": "IMN"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "833"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "IND",
+    "display_name": "India",
+    "entity_type": "country",
+    "region": "South Asia",
+    "source_codes": {
+      "un_m49": "356",
+      "un_migrant_stock": "356",
+      "world_bank": "IND"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "356"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "IRL",
+    "display_name": "Ireland",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "372",
+      "un_migrant_stock": "372",
+      "world_bank": "IRL"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "372"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "IRN",
+    "display_name": "Iran, Islamic Rep.",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "364",
+      "un_migrant_stock": "364",
+      "world_bank": "IRN"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "364"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "IRQ",
+    "display_name": "Iraq",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "368",
+      "un_migrant_stock": "368",
+      "world_bank": "IRQ"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "368"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ISL",
+    "display_name": "Iceland",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "352",
+      "un_migrant_stock": "352",
+      "world_bank": "ISL"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "352"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ISR",
+    "display_name": "Israel",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "376",
+      "un_migrant_stock": "376",
+      "world_bank": "ISR"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "376"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ITA",
+    "display_name": "Italy",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "380",
+      "un_migrant_stock": "380",
+      "world_bank": "ITA"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "380"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "JAM",
+    "display_name": "Jamaica",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "388",
+      "un_migrant_stock": "388",
+      "world_bank": "JAM"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "388"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "JOR",
+    "display_name": "Jordan",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "400",
+      "un_migrant_stock": "400",
+      "world_bank": "JOR"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "400"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "JPN",
+    "display_name": "Japan",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "392",
+      "un_migrant_stock": "392",
+      "world_bank": "JPN"
+    },
+    "subregion": "Eastern Asia",
+    "un_m49": "392"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "KAZ",
+    "display_name": "Kazakhstan",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "398",
+      "un_migrant_stock": "398",
+      "world_bank": "KAZ"
+    },
+    "subregion": "Central Asia",
+    "un_m49": "398"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "KEN",
+    "display_name": "Kenya",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "404",
+      "un_migrant_stock": "404",
+      "world_bank": "KEN"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "404"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "KGZ",
+    "display_name": "Kyrgyz Republic",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "417",
+      "un_migrant_stock": "417",
+      "world_bank": "KGZ"
+    },
+    "subregion": "Central Asia",
+    "un_m49": "417"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "KHM",
+    "display_name": "Cambodia",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "116",
+      "un_migrant_stock": "116",
+      "world_bank": "KHM"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "116"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "KIR",
+    "display_name": "Kiribati",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "296",
+      "un_migrant_stock": "296",
+      "world_bank": "KIR"
+    },
+    "subregion": "Micronesia",
+    "un_m49": "296"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "KNA",
+    "display_name": "St. Kitts and Nevis",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "659",
+      "un_migrant_stock": "659",
+      "world_bank": "KNA"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "659"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "Korea, Rep.",
+      "Republic of Korea"
+    ],
+    "code": "KOR",
+    "display_name": "Korea, Rep.",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "410",
+      "un_migrant_stock": "410",
+      "world_bank": "KOR"
+    },
+    "subregion": "Eastern Asia",
+    "un_m49": "410"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "KWT",
+    "display_name": "Kuwait",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "414",
+      "un_migrant_stock": "414",
+      "world_bank": "KWT"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "414"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LAO",
+    "display_name": "Lao PDR",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "418",
+      "un_migrant_stock": "418",
+      "world_bank": "LAO"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "418"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LBN",
+    "display_name": "Lebanon",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "422",
+      "un_migrant_stock": "422",
+      "world_bank": "LBN"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "422"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LBR",
+    "display_name": "Liberia",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "430",
+      "un_migrant_stock": "430",
+      "world_bank": "LBR"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "430"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LBY",
+    "display_name": "Libya",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "434",
+      "un_migrant_stock": "434",
+      "world_bank": "LBY"
+    },
+    "subregion": "Northern Africa",
+    "un_m49": "434"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LCA",
+    "display_name": "St. Lucia",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "662",
+      "un_migrant_stock": "662",
+      "world_bank": "LCA"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "662"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LIE",
+    "display_name": "Liechtenstein",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "438",
+      "un_migrant_stock": "438",
+      "world_bank": "LIE"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "438"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LKA",
+    "display_name": "Sri Lanka",
+    "entity_type": "country",
+    "region": "South Asia",
+    "source_codes": {
+      "un_m49": "144",
+      "un_migrant_stock": "144",
+      "world_bank": "LKA"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "144"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LSO",
+    "display_name": "Lesotho",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "426",
+      "un_migrant_stock": "426",
+      "world_bank": "LSO"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "426"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LTU",
+    "display_name": "Lithuania",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "440",
+      "un_migrant_stock": "440",
+      "world_bank": "LTU"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "440"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LUX",
+    "display_name": "Luxembourg",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "442",
+      "un_migrant_stock": "442",
+      "world_bank": "LUX"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "442"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "LVA",
+    "display_name": "Latvia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "428",
+      "un_migrant_stock": "428",
+      "world_bank": "LVA"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "428"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MAC",
+    "display_name": "Macao SAR, China",
+    "entity_type": "excluded_entity",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "446",
+      "un_migrant_stock": "446",
+      "world_bank": "MAC"
+    },
+    "subregion": "Eastern Asia",
+    "un_m49": "446"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MAF",
+    "display_name": "St. Martin (French part)",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "663",
+      "un_migrant_stock": "663",
+      "world_bank": "MAF"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "663"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MAR",
+    "display_name": "Morocco",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "504",
+      "un_migrant_stock": "504",
+      "world_bank": "MAR"
+    },
+    "subregion": "Northern Africa",
+    "un_m49": "504"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MCO",
+    "display_name": "Monaco",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "492",
+      "un_migrant_stock": "492",
+      "world_bank": "MCO"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "492"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MDA",
+    "display_name": "Moldova",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "498",
+      "un_migrant_stock": "498",
+      "world_bank": "MDA"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "498"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MDG",
+    "display_name": "Madagascar",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "450",
+      "un_migrant_stock": "450",
+      "world_bank": "MDG"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "450"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MDV",
+    "display_name": "Maldives",
+    "entity_type": "country",
+    "region": "South Asia",
+    "source_codes": {
+      "un_m49": "462",
+      "un_migrant_stock": "462",
+      "world_bank": "MDV"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "462"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MEX",
+    "display_name": "Mexico",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "484",
+      "un_migrant_stock": "484",
+      "world_bank": "MEX"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "484"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MHL",
+    "display_name": "Marshall Islands",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "584",
+      "un_migrant_stock": "584",
+      "world_bank": "MHL"
+    },
+    "subregion": "Micronesia",
+    "un_m49": "584"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MKD",
+    "display_name": "North Macedonia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "807",
+      "un_migrant_stock": "807",
+      "world_bank": "MKD"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "807"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MLI",
+    "display_name": "Mali",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "466",
+      "un_migrant_stock": "466",
+      "world_bank": "MLI"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "466"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MLT",
+    "display_name": "Malta",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "470",
+      "un_migrant_stock": "470",
+      "world_bank": "MLT"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "470"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MMR",
+    "display_name": "Myanmar",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "104",
+      "un_migrant_stock": "104",
+      "world_bank": "MMR"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "104"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MNE",
+    "display_name": "Montenegro",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "499",
+      "un_migrant_stock": "499",
+      "world_bank": "MNE"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "499"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MNG",
+    "display_name": "Mongolia",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "496",
+      "un_migrant_stock": "496",
+      "world_bank": "MNG"
+    },
+    "subregion": "Eastern Asia",
+    "un_m49": "496"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MNP",
+    "display_name": "Northern Mariana Islands",
+    "entity_type": "excluded_entity",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "580",
+      "un_migrant_stock": "580",
+      "world_bank": "MNP"
+    },
+    "subregion": "Micronesia",
+    "un_m49": "580"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MOZ",
+    "display_name": "Mozambique",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "508",
+      "un_migrant_stock": "508",
+      "world_bank": "MOZ"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "508"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MRT",
+    "display_name": "Mauritania",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "478",
+      "un_migrant_stock": "478",
+      "world_bank": "MRT"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "478"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MUS",
+    "display_name": "Mauritius",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "480",
+      "un_migrant_stock": "480",
+      "world_bank": "MUS"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "480"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MWI",
+    "display_name": "Malawi",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "454",
+      "un_migrant_stock": "454",
+      "world_bank": "MWI"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "454"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "MYS",
+    "display_name": "Malaysia",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "458",
+      "un_migrant_stock": "458",
+      "world_bank": "MYS"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "458"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NAM",
+    "display_name": "Namibia",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "516",
+      "un_migrant_stock": "516",
+      "world_bank": "NAM"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "516"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NCL",
+    "display_name": "New Caledonia",
+    "entity_type": "excluded_entity",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "540",
+      "un_migrant_stock": "540",
+      "world_bank": "NCL"
+    },
+    "subregion": "Melanesia",
+    "un_m49": "540"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NER",
+    "display_name": "Niger",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "562",
+      "un_migrant_stock": "562",
+      "world_bank": "NER"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "562"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NGA",
+    "display_name": "Nigeria",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "566",
+      "un_migrant_stock": "566",
+      "world_bank": "NGA"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "566"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NIC",
+    "display_name": "Nicaragua",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "558",
+      "un_migrant_stock": "558",
+      "world_bank": "NIC"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "558"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NLD",
+    "display_name": "Netherlands",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "528",
+      "un_migrant_stock": "528",
+      "world_bank": "NLD"
+    },
+    "subregion": "Western Europe",
+    "un_m49": "528"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NOR",
+    "display_name": "Norway",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "578",
+      "un_migrant_stock": "578",
+      "world_bank": "NOR"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "578"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NPL",
+    "display_name": "Nepal",
+    "entity_type": "country",
+    "region": "South Asia",
+    "source_codes": {
+      "un_m49": "524",
+      "un_migrant_stock": "524",
+      "world_bank": "NPL"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "524"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NRU",
+    "display_name": "Naoero",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "520",
+      "un_migrant_stock": "520",
+      "world_bank": "NRU"
+    },
+    "subregion": "Micronesia",
+    "un_m49": "520"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "NZL",
+    "display_name": "New Zealand",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "554",
+      "un_migrant_stock": "554",
+      "world_bank": "NZL"
+    },
+    "subregion": "Australia and New Zealand",
+    "un_m49": "554"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "OMN",
+    "display_name": "Oman",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "512",
+      "un_migrant_stock": "512",
+      "world_bank": "OMN"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "512"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PAK",
+    "display_name": "Pakistan",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "586",
+      "un_migrant_stock": "586",
+      "world_bank": "PAK"
+    },
+    "subregion": "Southern Asia",
+    "un_m49": "586"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PAN",
+    "display_name": "Panama",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "591",
+      "un_migrant_stock": "591",
+      "world_bank": "PAN"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "591"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PER",
+    "display_name": "Peru",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "604",
+      "un_migrant_stock": "604",
+      "world_bank": "PER"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "604"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PHL",
+    "display_name": "Philippines",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "608",
+      "un_migrant_stock": "608",
+      "world_bank": "PHL"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "608"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PLW",
+    "display_name": "Palau",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "585",
+      "un_migrant_stock": "585",
+      "world_bank": "PLW"
+    },
+    "subregion": "Micronesia",
+    "un_m49": "585"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PNG",
+    "display_name": "Papua New Guinea",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "598",
+      "un_migrant_stock": "598",
+      "world_bank": "PNG"
+    },
+    "subregion": "Melanesia",
+    "un_m49": "598"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "POL",
+    "display_name": "Poland",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "616",
+      "un_migrant_stock": "616",
+      "world_bank": "POL"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "616"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PRI",
+    "display_name": "Puerto Rico (US)",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "630",
+      "un_migrant_stock": "630",
+      "world_bank": "PRI"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "630"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PRK",
+    "display_name": "Korea, Dem. People's Rep.",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "408",
+      "un_migrant_stock": "408",
+      "world_bank": "PRK"
+    },
+    "subregion": "Eastern Asia",
+    "un_m49": "408"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PRT",
+    "display_name": "Portugal",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "620",
+      "un_migrant_stock": "620",
+      "world_bank": "PRT"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "620"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PRY",
+    "display_name": "Paraguay",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "600",
+      "un_migrant_stock": "600",
+      "world_bank": "PRY"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "600"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PSE",
+    "display_name": "West Bank and Gaza",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "275",
+      "un_migrant_stock": "275",
+      "world_bank": "PSE"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "275"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "PYF",
+    "display_name": "French Polynesia",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "258",
+      "un_migrant_stock": "258",
+      "world_bank": "PYF"
+    },
+    "subregion": "Polynesia",
+    "un_m49": "258"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "QAT",
+    "display_name": "Qatar",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "634",
+      "un_migrant_stock": "634",
+      "world_bank": "QAT"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "634"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ROU",
+    "display_name": "Romania",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "642",
+      "un_migrant_stock": "642",
+      "world_bank": "ROU"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "642"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "Russian Federation"
+    ],
+    "code": "RUS",
+    "display_name": "Russian Federation",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "643",
+      "un_migrant_stock": "643",
+      "world_bank": "RUS"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "643"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "RWA",
+    "display_name": "Rwanda",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "646",
+      "un_migrant_stock": "646",
+      "world_bank": "RWA"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "646"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SAU",
+    "display_name": "Saudi Arabia",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "682",
+      "un_migrant_stock": "682",
+      "world_bank": "SAU"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "682"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SDN",
+    "display_name": "Sudan",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "729",
+      "un_migrant_stock": "729",
+      "world_bank": "SDN"
+    },
+    "subregion": "Northern Africa",
+    "un_m49": "729"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SEN",
+    "display_name": "Senegal",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "686",
+      "un_migrant_stock": "686",
+      "world_bank": "SEN"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "686"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SGP",
+    "display_name": "Singapore",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "702",
+      "un_migrant_stock": "702",
+      "world_bank": "SGP"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "702"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SLB",
+    "display_name": "Solomon Islands",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "090",
+      "un_migrant_stock": "090",
+      "world_bank": "SLB"
+    },
+    "subregion": "Melanesia",
+    "un_m49": "090"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SLE",
+    "display_name": "Sierra Leone",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "694",
+      "un_migrant_stock": "694",
+      "world_bank": "SLE"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "694"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SLV",
+    "display_name": "El Salvador",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "222",
+      "un_migrant_stock": "222",
+      "world_bank": "SLV"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "222"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SMR",
+    "display_name": "San Marino",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "674",
+      "un_migrant_stock": "674",
+      "world_bank": "SMR"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "674"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SOM",
+    "display_name": "Somalia, Fed. Rep.",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "706",
+      "un_migrant_stock": "706",
+      "world_bank": "SOM"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "706"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SRB",
+    "display_name": "Serbia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "688",
+      "un_migrant_stock": "688",
+      "world_bank": "SRB"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "688"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SSD",
+    "display_name": "South Sudan",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "728",
+      "un_migrant_stock": "728",
+      "world_bank": "SSD"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "728"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "STP",
+    "display_name": "Sao Tome and Principe",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "678",
+      "un_migrant_stock": "678",
+      "world_bank": "STP"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "678"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SUR",
+    "display_name": "Suriname",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "740",
+      "un_migrant_stock": "740",
+      "world_bank": "SUR"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "740"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "Slovak Republic"
+    ],
+    "code": "SVK",
+    "display_name": "Slovak Republic",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "703",
+      "un_migrant_stock": "703",
+      "world_bank": "SVK"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "703"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SVN",
+    "display_name": "Slovenia",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "705",
+      "un_migrant_stock": "705",
+      "world_bank": "SVN"
+    },
+    "subregion": "Southern Europe",
+    "un_m49": "705"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SWE",
+    "display_name": "Sweden",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "752",
+      "un_migrant_stock": "752",
+      "world_bank": "SWE"
+    },
+    "subregion": "Northern Europe",
+    "un_m49": "752"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SWZ",
+    "display_name": "Eswatini",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "748",
+      "un_migrant_stock": "748",
+      "world_bank": "SWZ"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "748"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SXM",
+    "display_name": "Sint Maarten (Dutch part)",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "534",
+      "un_migrant_stock": "534",
+      "world_bank": "SXM"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "534"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SYC",
+    "display_name": "Seychelles",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "690",
+      "un_migrant_stock": "690",
+      "world_bank": "SYC"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "690"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "SYR",
+    "display_name": "Syrian Arab Republic",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "760",
+      "un_migrant_stock": "760",
+      "world_bank": "SYR"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "760"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TCA",
+    "display_name": "Turks and Caicos Islands",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "796",
+      "un_migrant_stock": "796",
+      "world_bank": "TCA"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "796"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TCD",
+    "display_name": "Chad",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "148",
+      "un_migrant_stock": "148",
+      "world_bank": "TCD"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "148"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TGO",
+    "display_name": "Togo",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "768",
+      "un_migrant_stock": "768",
+      "world_bank": "TGO"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "768"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "THA",
+    "display_name": "Thailand",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "764",
+      "un_migrant_stock": "764",
+      "world_bank": "THA"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "764"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TJK",
+    "display_name": "Tajikistan",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "762",
+      "un_migrant_stock": "762",
+      "world_bank": "TJK"
+    },
+    "subregion": "Central Asia",
+    "un_m49": "762"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TKM",
+    "display_name": "Turkmenistan",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "795",
+      "un_migrant_stock": "795",
+      "world_bank": "TKM"
+    },
+    "subregion": "Central Asia",
+    "un_m49": "795"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TLS",
+    "display_name": "Timor-Leste",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "626",
+      "un_migrant_stock": "626",
+      "world_bank": "TLS"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "626"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TON",
+    "display_name": "Tonga",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "776",
+      "un_migrant_stock": "776",
+      "world_bank": "TON"
+    },
+    "subregion": "Polynesia",
+    "un_m49": "776"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TTO",
+    "display_name": "Trinidad and Tobago",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "780",
+      "un_migrant_stock": "780",
+      "world_bank": "TTO"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "780"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TUN",
+    "display_name": "Tunisia",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "788",
+      "un_migrant_stock": "788",
+      "world_bank": "TUN"
+    },
+    "subregion": "Northern Africa",
+    "un_m49": "788"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "T\u00fcrkiye"
+    ],
+    "code": "TUR",
+    "display_name": "Turkiye",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "792",
+      "un_migrant_stock": "792",
+      "world_bank": "TUR"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "792"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TUV",
+    "display_name": "Tuvalu",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "798",
+      "un_migrant_stock": "798",
+      "world_bank": "TUV"
+    },
+    "subregion": "Polynesia",
+    "un_m49": "798"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "TZA",
+    "display_name": "Tanzania",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "834",
+      "un_migrant_stock": "834",
+      "world_bank": "TZA"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "834"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "UGA",
+    "display_name": "Uganda",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "800",
+      "un_migrant_stock": "800",
+      "world_bank": "UGA"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "800"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "UKR",
+    "display_name": "Ukraine",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "804",
+      "un_migrant_stock": "804",
+      "world_bank": "UKR"
+    },
+    "subregion": "Eastern Europe",
+    "un_m49": "804"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "URY",
+    "display_name": "Uruguay",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "858",
+      "un_migrant_stock": "858",
+      "world_bank": "URY"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "858"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "United States of America"
+    ],
+    "code": "USA",
+    "display_name": "United States",
+    "entity_type": "country",
+    "region": "North America",
+    "source_codes": {
+      "un_m49": "840",
+      "un_migrant_stock": "840",
+      "world_bank": "USA"
+    },
+    "subregion": "Northern America",
+    "un_m49": "840"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "UZB",
+    "display_name": "Uzbekistan",
+    "entity_type": "country",
+    "region": "Europe & Central Asia",
+    "source_codes": {
+      "un_m49": "860",
+      "un_migrant_stock": "860",
+      "world_bank": "UZB"
+    },
+    "subregion": "Central Asia",
+    "un_m49": "860"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "VCT",
+    "display_name": "St. Vincent and the Grenadines",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "670",
+      "un_migrant_stock": "670",
+      "world_bank": "VCT"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "670"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "VEN",
+    "display_name": "Venezuela, RB",
+    "entity_type": "country",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "862",
+      "un_migrant_stock": "862",
+      "world_bank": "VEN"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "862"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "VGB",
+    "display_name": "British Virgin Islands",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "092",
+      "un_migrant_stock": "092",
+      "world_bank": "VGB"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "092"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "VIR",
+    "display_name": "Virgin Islands (U.S.)",
+    "entity_type": "excluded_entity",
+    "region": "Latin America & Caribbean",
+    "source_codes": {
+      "un_m49": "850",
+      "un_migrant_stock": "850",
+      "world_bank": "VIR"
+    },
+    "subregion": "Latin America and the Caribbean",
+    "un_m49": "850"
+  },
+  {
+    "active": true,
+    "aliases": [
+      "Viet Nam"
+    ],
+    "code": "VNM",
+    "display_name": "Viet Nam",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "704",
+      "un_migrant_stock": "704",
+      "world_bank": "VNM"
+    },
+    "subregion": "South-eastern Asia",
+    "un_m49": "704"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "VUT",
+    "display_name": "Vanuatu",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "548",
+      "un_migrant_stock": "548",
+      "world_bank": "VUT"
+    },
+    "subregion": "Melanesia",
+    "un_m49": "548"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "WSM",
+    "display_name": "Samoa",
+    "entity_type": "country",
+    "region": "East Asia & Pacific",
+    "source_codes": {
+      "un_m49": "882",
+      "un_migrant_stock": "882",
+      "world_bank": "WSM"
+    },
+    "subregion": "Polynesia",
+    "un_m49": "882"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "YEM",
+    "display_name": "Yemen, Rep.",
+    "entity_type": "country",
+    "region": "Middle East, North Africa, Afghanistan & Pakistan",
+    "source_codes": {
+      "un_m49": "887",
+      "un_migrant_stock": "887",
+      "world_bank": "YEM"
+    },
+    "subregion": "Western Asia",
+    "un_m49": "887"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ZAF",
+    "display_name": "South Africa",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "710",
+      "un_migrant_stock": "710",
+      "world_bank": "ZAF"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "710"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ZMB",
+    "display_name": "Zambia",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "894",
+      "un_migrant_stock": "894",
+      "world_bank": "ZMB"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "894"
+  },
+  {
+    "active": true,
+    "aliases": [],
+    "code": "ZWE",
+    "display_name": "Zimbabwe",
+    "entity_type": "country",
+    "region": "Sub-Saharan Africa",
+    "source_codes": {
+      "un_m49": "716",
+      "un_migrant_stock": "716",
+      "world_bank": "ZWE"
+    },
+    "subregion": "Sub-Saharan Africa",
+    "un_m49": "716"
+  }
+]

@@ -1,0 +1,152 @@
+{
+  "audit_id": "coverage-2026-07-23.6",
+  "audit_timestamp": "2026-07-23T14:31:34.940395+00:00",
+  "candidate_country_count": 150,
+  "candidate_counts_by_region": {
+    "East Asia & Pacific": 16,
+    "Europe & Central Asia": 46,
+    "Latin America & Caribbean": 20,
+    "Middle East, North Africa, Afghanistan & Pakistan": 23,
+    "North America": 2,
+    "South Asia": 5,
+    "Sub-Saharan Africa": 38
+  },
+  "complete_case_rule": true,
+  "complete_publishable_country_count": 79,
+  "criterion_coverage": {
+    "ambient_pm25_population_weighted": {
+      "available": 150,
+      "candidate": 150,
+      "found": 150,
+      "fresh": 150,
+      "missing": 0,
+      "otherwise_valid_excluded_only_by_this_criterion": 0,
+      "parsed": 150,
+      "scored": 150,
+      "status_counts": {
+        "available": 150
+      },
+      "validated": 150
+    },
+    "household_consumption_price_level_us_100": {
+      "available": 129,
+      "candidate": 150,
+      "found": 148,
+      "fresh": 130,
+      "missing": 21,
+      "otherwise_valid_excluded_only_by_this_criterion": 4,
+      "parsed": 147,
+      "scored": 129,
+      "status_counts": {
+        "available": 129,
+        "invalid_value": 4,
+        "missing": 2,
+        "stale": 15
+      },
+      "validated": 129
+    },
+    "infrastructure_readiness_composite": {
+      "available": 116,
+      "candidate": 150,
+      "found": 145,
+      "fresh": 116,
+      "missing": 34,
+      "otherwise_valid_excluded_only_by_this_criterion": 9,
+      "parsed": 145,
+      "scored": 116,
+      "status_counts": {
+        "available": 116,
+        "missing": 5,
+        "stale": 29
+      },
+      "validated": 116
+    },
+    "intentional_homicide_rate": {
+      "available": 94,
+      "candidate": 150,
+      "found": 135,
+      "fresh": 94,
+      "missing": 56,
+      "otherwise_valid_excluded_only_by_this_criterion": 26,
+      "parsed": 135,
+      "scored": 94,
+      "status_counts": {
+        "available": 94,
+        "missing": 15,
+        "stale": 41
+      },
+      "validated": 94
+    },
+    "women_legal_economic_equality": {
+      "available": 148,
+      "candidate": 150,
+      "found": 148,
+      "fresh": 148,
+      "missing": 2,
+      "otherwise_valid_excluded_only_by_this_criterion": 0,
+      "parsed": 148,
+      "scored": 148,
+      "status_counts": {
+        "available": 148,
+        "missing": 2
+      },
+      "validated": 148
+    }
+  },
+  "enabled_criteria": [
+    "ambient_pm25_population_weighted",
+    "intentional_homicide_rate",
+    "household_consumption_price_level_us_100",
+    "women_legal_economic_equality",
+    "infrastructure_readiness_composite"
+  ],
+  "excluded_country_count": 71,
+  "exclusion_reason_counts": {
+    "household_consumption_price_level_us_100:invalid_value": 4,
+    "household_consumption_price_level_us_100:missing": 2,
+    "household_consumption_price_level_us_100:stale": 15,
+    "infrastructure_readiness_composite:missing": 5,
+    "infrastructure_readiness_composite:stale": 29,
+    "intentional_homicide_rate:missing": 15,
+    "intentional_homicide_rate:stale": 41,
+    "women_legal_economic_equality:missing": 2
+  },
+  "minimum_required_country_count": 100,
+  "mode": "online",
+  "publishable_counts_by_region": {
+    "East Asia & Pacific": 8,
+    "Europe & Central Asia": 40,
+    "Latin America & Caribbean": 15,
+    "Middle East, North Africa, Afghanistan & Pakistan": 7,
+    "North America": 2,
+    "South Asia": 1,
+    "Sub-Saharan Africa": 6
+  },
+  "raw_artifact_checksums": {
+    "un_desa_migrant_stock:https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2024_ims_stock_by_sex_and_destination.xlsx": "sha256:894fe0637f649e9eb2555915e7f5d6e9818a913b7653c8d7b5e3803fc236ce82",
+    "un_m49_country_registry:https://unstats.un.org/unsd/methodology/m49/overview/": "sha256:748f6ff7380c8a50ea9448f068b79e3a1ee31be63207249e8cc89bf1eb969d11",
+    "unodc_homicide:https://api.worldbank.org/v2/country/all/indicator/VC.IHR.PSRC.P5?downloadformat=csv": "sha256:f324c18567f8296205a509c31f9236845bb38e35fa7ab74efa03082a97bce06b",
+    "world_bank_country_metadata:https://api.worldbank.org/v2/country?format=json&per_page=400": "sha256:d29d57f8adf954c5e2a1520a02fb2c7b45575d8db3bd327a9dff47d66914231c",
+    "world_bank_icp:https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?downloadformat=csv": "sha256:cf66417caf8c21a3f49b146815cace60f1d92fe9fba37932cb4dfb4c680c30c0",
+    "world_bank_icp:https://api.worldbank.org/v2/country/all/indicator/PA.NUS.PRVT.PP?downloadformat=csv": "sha256:b2262fcf98195403fdf9d708fb9dd2e7447bca29141bc13966804f7395808065",
+    "world_bank_infrastructure:https://api.worldbank.org/v2/country/all/indicator/IT.NET.BBND.P2?downloadformat=csv": "sha256:c2321480d11c53f51671390305a00821500760b3896be04ff6b5767c571ace60",
+    "world_bank_infrastructure:https://api.worldbank.org/v2/country/all/indicator/IT.NET.USER.ZS?downloadformat=csv": "sha256:6e8059e7adf0e849c3f5626be830ba2a7fda3e2ad92f6bb59315e37fbec61ecb",
+    "world_bank_infrastructure:https://api.worldbank.org/v2/country/all/indicator/LP.LPI.INFR.XQ?downloadformat=csv": "sha256:4256067225314e5ae24e10758c45942137df29ce8ae94292ba00251d905f94ee",
+    "world_bank_pm25:https://api.worldbank.org/v2/country/all/indicator/EN.ATM.PM25.MC.M3?downloadformat=csv": "sha256:94f85bcf7acffe9799bd7b19786719685f862fa658200d8ba2ab2f65a06fb888",
+    "world_bank_wbl:https://wbl.worldbank.org/content/dam/sites/wbl/documents/2026/WBL26_FINAL_ALL.xlsx": "sha256:6c3cf161d0798b847de909e12eeacc99501b017294c50dee387d39ca75200d57"
+  },
+  "schema_version": "country-coverage-audit-1.0",
+  "selection_policy_version": "popular-relocation-policy-v1",
+  "source_versions": {
+    "un_desa_migrant_stock": "International Migrant Stock 2024",
+    "un_m49_country_registry": "UN M49 online standard retrieved 2026-07-23",
+    "unodc_homicide": "VC.IHR.PSRC.P5@WDI-2026-07-13",
+    "world_bank_country_metadata": "World Bank Country API retrieved 2026-07-23",
+    "world_bank_icp": "PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13",
+    "world_bank_infrastructure": "INFRA-3@WDI-2026-07-13",
+    "world_bank_pm25": "EN.ATM.PM25.MC.M3@WDI-2026-07-13",
+    "world_bank_wbl": "WBL26_FINAL_ALL@2026-02-23"
+  },
+  "status": "FAIL",
+  "universe_id": "popular_relocation_v1"
+}

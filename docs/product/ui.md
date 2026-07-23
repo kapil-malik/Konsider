@@ -48,3 +48,11 @@ Apply/Undo requests, dynamic ranking detail, country evidence, comparison limits
 results, and structured/network errors. Playwright covers the main guest, update, detail, comparison,
 source-help, unavailable-release, and mobile flows. Commands and local startup are documented in
 [the web guide](../../web/README.md).
+
+## Phase 2D scale status
+
+Country search, API-derived region filters, filtered result counts, selected-country trays, and
+100-country mobile verification are intentionally not implemented yet. The Phase 2D discovery gate
+found only 91 complete countries across the full eligible universe, so there is no valid expanded
+release to drive or verify those changes. The existing UI remains catalog-driven and continues to
+serve the unchanged 20-country active release.

@@ -1,0 +1,80 @@
+{
+  "ambient_pm25_population_weighted": {
+    "available": 150,
+    "candidate": 150,
+    "found": 150,
+    "fresh": 150,
+    "missing": 0,
+    "otherwise_valid_excluded_only_by_this_criterion": 0,
+    "parsed": 150,
+    "scored": 150,
+    "status_counts": {
+      "available": 150
+    },
+    "validated": 150
+  },
+  "household_consumption_price_level_us_100": {
+    "available": 129,
+    "candidate": 150,
+    "found": 148,
+    "fresh": 130,
+    "missing": 21,
+    "otherwise_valid_excluded_only_by_this_criterion": 4,
+    "parsed": 147,
+    "scored": 129,
+    "status_counts": {
+      "available": 129,
+      "invalid_value": 4,
+      "missing": 2,
+      "stale": 15
+    },
+    "validated": 129
+  },
+  "infrastructure_readiness_composite": {
+    "available": 116,
+    "candidate": 150,
+    "found": 145,
+    "fresh": 116,
+    "missing": 34,
+    "otherwise_valid_excluded_only_by_this_criterion": 9,
+    "parsed": 145,
+    "scored": 116,
+    "status_counts": {
+      "available": 116,
+      "missing": 5,
+      "stale": 29
+    },
+    "validated": 116
+  },
+  "intentional_homicide_rate": {
+    "available": 94,
+    "candidate": 150,
+    "found": 135,
+    "fresh": 94,
+    "missing": 56,
+    "otherwise_valid_excluded_only_by_this_criterion": 26,
+    "parsed": 135,
+    "scored": 94,
+    "status_counts": {
+      "available": 94,
+      "missing": 15,
+      "stale": 41
+    },
+    "validated": 94
+  },
+  "women_legal_economic_equality": {
+    "available": 148,
+    "candidate": 150,
+    "found": 148,
+    "fresh": 148,
+    "missing": 2,
+    "otherwise_valid_excluded_only_by_this_criterion": 0,
+    "parsed": 148,
+    "scored": 148,
+    "status_counts": {
+      "available": 148,
+      "missing": 2
+    },
+    "validated": 148
+  }
+}

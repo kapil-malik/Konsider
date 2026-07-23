@@ -18,6 +18,11 @@ The repository implements a local data worker, immutable release artifacts, a fr
 recommendation service, a typed FastAPI v1 API, and the Phase 2C responsive React UI. Active release
 `2026-07-21.1` contains 20 countries and six criteria; five are enabled. UHC is non-ready.
 Infrastructure is experimental. The browser remains catalog-driven and guest state is not saved.
+Phase 2D country-universe and coverage-audit infrastructure is implemented. The official-source
+audit produced 79 complete countries from the initial 150 candidates and 91 from all 195 eligible
+countries, below the required 100. Do not implement publication or UI scale changes until a
+same-construct homicide source/freshness decision or an explicitly approved criterion change
+provides a valid path. See the [coverage report](../docs/data/country-coverage-phase-2d.md).
 
 ## Non-negotiable boundaries
 

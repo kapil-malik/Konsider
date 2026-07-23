@@ -1,8 +1,8 @@
 # Product roadmap
 
-Status: Phase 2C responsive comparison UI implemented locally; Phase 2D is next
+Status: Phase 2C implemented; Phase 2D discovery implemented and publication blocked
 
-Last updated: 2026-07-22
+Last updated: 2026-07-23
 
 ## Current position
 
@@ -11,6 +11,10 @@ deterministic recommendation service, five-route FastAPI v1 transport, and respo
 implemented. Active release `2026-07-21.1` exposes 20 countries and six available criteria; five
 are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure is enabled but
 experimental.
+Phase 2D now has a reproducible country universe and online/offline coverage audit. The initial 150
+candidates yield 79 complete countries; all 195 eligible countries yield 91. The required 100-country
+release, API/UI scale work, and activation are blocked pending a valid same-construct homicide data
+path or an explicitly approved product-definition decision.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -41,14 +45,25 @@ Delivered exit criteria:
 
 See the [implemented UI guide](ui.md) and [React/Vite decision](../architecture/decisions/004-react-vite-ui.md).
 
-## Phase 2D: deterministic evidence and explanations
+## Phase 2D: country coverage expansion — discovery implemented, publication blocked
+
+- Implemented official UN migrant-stock candidate ranking, UN M49/World Bank reconciliation,
+  explicit entity exclusions, online capture, offline replay, and detailed complete-case reports.
+- Retained all current release countries and proved candidate ordering/replay determinism.
+- Did not publish because the complete intersection is 79/150 and 91/195, below 100.
+- Next decision: validate a reproducible/licensable fresher UNODC homicide feed without changing the
+  construct; do not weaken freshness or redefine infrastructure without explicit approval.
+
+See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md).
+
+## Phase 2E: deterministic evidence and explanations
 
 - Add structured source/observation lookup and citation-ready provenance.
 - Generate deterministic strengths, trade-offs, and comparison explanations from contributions.
 - Add metadata and simple lexical lookup only if measured product needs require it.
 - Do not introduce a vector database without evidence volume and retrieval-quality measurements.
 
-## Phase 2E: conversational exploration
+## Phase 2F: conversational exploration
 
 - Add LLM assistance only after deterministic ranking and explanations are proven.
 - Require numerical and factual claims to come from typed deterministic tools.

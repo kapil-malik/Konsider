@@ -7,6 +7,9 @@ FastAPI v1 API, and a responsive catalog-driven React comparison UI.
 Active release `2026-07-21.1` contains 20 countries and six available criteria. Five are enabled for
 ranking. UHC is unavailable because its latest official observation is stale; infrastructure is
 enabled but explicitly experimental. Legacy fixtures are tests only and never fill product data.
+Phase 2D discovery has audited a reproducible 150-country candidate universe and the broader
+195-country eligible set. Only 79 and 91 countries respectively pass strict complete-case rules, so
+the 100-country publication gate is blocked and the active release remains unchanged.
 
 ```text
 official sources -> worker -> immutable local releases -> RecommendationService -> FastAPI /api/v1
@@ -63,6 +66,7 @@ new release ID plus every printed source-version acknowledgement:
 ```powershell
 python -m konsider.ingestion.worker list-sources
 python -m konsider.ingestion.worker replay data\releases\2026-07-21.1
+python -m konsider.ingestion.worker audit-coverage --universe data\country-universes\popular-relocation-v1.json --audit-id AUDIT_ID --mode offline --artifacts data\reports\country-coverage\coverage-2026-07-23.6\raw-artifacts.json
 ```
 
 See the [worker guide](docs/operations/worker.md) for the complete refresh command and publication
@@ -90,5 +94,6 @@ Start at the [documentation index](docs/README.md).
 - [Worker operations](docs/operations/worker.md)
 - [API operations and reference](docs/operations/api.md)
 - [Release format](docs/data/release-format.md)
+- [Phase 2D country coverage audit](docs/data/country-coverage-phase-2d.md)
 - [Roadmap](docs/product/roadmap.md)
 - [Active release report](docs/history/releases/2026-07-21.1.md)
