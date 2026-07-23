@@ -45,6 +45,43 @@ Exit is `0` for PASS and `2` when the complete intersection is below 100. A FAIL
 result, not permission to publish. The command compares `active.json` before and after and raises if
 it changes.
 
+## `audit-homicide-sources`
+
+Phase 2D.4 source feasibility is separate from production ingestion. The command reads an existing
+all-eligible coverage report, evaluates Direct UNODC and UNSD first, and conditionally evaluates
+Eurostat and OECD only when both primary channels remain below the required complete-country count.
+It never changes the registered production source or activates a release.
+
+Online example:
+
+```bash
+python -m konsider.ingestion.worker audit-homicide-sources \
+  --coverage-report data/reports/country-coverage/coverage-2026-07-23.6-all-eligible \
+  --study-id homicide-source-YYYY-MM-DD.N-online \
+  --mode online
+```
+
+Offline replay:
+
+```bash
+python -m konsider.ingestion.worker audit-homicide-sources \
+  --coverage-report data/reports/country-coverage/coverage-2026-07-23.6-all-eligible \
+  --study-id homicide-source-YYYY-MM-DD.N-replay \
+  --mode replay \
+  --artifacts \
+    data/reports/homicide-source-feasibility/homicide-source-YYYY-MM-DD.N-online/raw-artifacts.json
+```
+
+Online mode retains exact official payloads under ignored `data/raw`. Replay requires those bytes,
+makes no network calls, and applies the same country mapping, dimensions, duplicate rejection,
+freshness, reconciliation, and fallback gate. Both modes write `summary.json`,
+`source-comparison.json`, `country-comparison.jsonl`, `discrepancies.jsonl`, `licensing.md`,
+`report.md`, `raw-artifacts.json`, and `sources.json`. Exit is `0` only when an evaluated path
+reaches the coverage target; `2` is the expected diagnostic exit for a valid FAIL study.
+
+See the [Phase 2D.4 findings](../data/homicide-source-feasibility-phase-2d4.md) before interpreting
+or rerunning the committed study.
+
 ## Prerequisites
 
 - Python 3.11 or newer and the installation in [local setup](local-setup.md).
@@ -183,6 +220,7 @@ source registration
 | `scoring-sensitivity.json` | Distribution and alternative-method diagnostics. | Diagnostic review record. |
 | `data/releases/active.json` | Current release ID and schema major. | Mutable activation pointer only. |
 | `data/reports/country-coverage/AUDIT_ID/` | Candidate universe, canonical registry, coverage dimensions, exclusions, sources, and raw checksums. | Non-publishing discovery evidence. |
+| `data/reports/homicide-source-feasibility/STUDY_ID/` | Source equivalence, coverage, discrepancies, licensing, and replay evidence. | Non-publishing discovery evidence. |
 
 See [release format](../data/release-format.md) for field and checksum relationships.
 

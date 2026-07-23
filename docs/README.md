@@ -14,6 +14,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 2C UI](product/ui.md) - implemented product behavior and technical boundaries.
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md) - reproducible universe,
   complete-case results, blocker analysis, and required source decision.
+- [Phase 2D.4 homicide source feasibility](data/homicide-source-feasibility-phase-2d4.md) -
+  authoritative-source equivalence, coverage, licensing, and replay findings.
 
 ## Architecture decisions
 
@@ -36,6 +38,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Scoring methodology](data/scoring-methodology.md)
 - [Release format](data/release-format.md)
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md)
+- [Phase 2D.4 homicide source feasibility](data/homicide-source-feasibility-phase-2d4.md)
 
 ## Historical records
 

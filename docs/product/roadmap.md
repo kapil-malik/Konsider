@@ -51,10 +51,13 @@ See the [implemented UI guide](ui.md) and [React/Vite decision](../architecture/
   explicit entity exclusions, online capture, offline replay, and detailed complete-case reports.
 - Retained all current release countries and proved candidate ordering/replay determinism.
 - Did not publish because the complete intersection is 79/150 and 91/195, below 100.
-- Next decision: validate a reproducible/licensable fresher UNODC homicide feed without changing the
-  construct; do not weaken freshness or redefine infrastructure without explicit approval.
+- Phase 2D.4 evaluated Direct UNODC, UNSD, Eurostat, and OECD. The primary channels each raise the
+  complete intersection only to 95; fallbacks add none, and UN redistribution terms remain unclear.
+- Next decision: do not weaken freshness, change the homicide construct, or redefine infrastructure
+  without explicit product approval.
 
-See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md).
+See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md) and
+[Phase 2D.4 source study](../data/homicide-source-feasibility-phase-2d4.md).
 
 ## Phase 2E: deterministic evidence and explanations
 

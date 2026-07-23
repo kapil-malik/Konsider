@@ -45,15 +45,17 @@ release. Replay reads those embedded registrations rather than silently substitu
 
 The 2026-07-23 audit found 91 complete countries even after expanding to all 195 policy-eligible
 entities. Homicide is the binding criterion: 114 are valid, 63 are stale, 18 are missing, and 30
-otherwise-complete countries fail only homicide. The direct UNODC intentional-homicide portal is a
-same-construct candidate, but reproducible bulk retrieval and redistribution terms have not yet
-been established. It was not substituted.
+otherwise-complete countries fail only homicide. Phase 2D.4 established reproducible Direct UNODC
+and UNSD retrieval, but each adds only the same four fresh countries and reaches 95 complete
+countries. Conditional Eurostat and OECD evaluation adds none. General UN terms do not establish
+redistribution compatibility for the retained primary payloads. No source was substituted.
 
 The 2023 Logistics Performance Index covers 139 countries, so direct LPI use does not remove the
 infrastructure component's structural ceiling. Replacing LPI would change the experimental
 criterion. ICP 2021 covers 176 participating economies and publishes imputed estimates for others;
 those imputed results are prohibited for Phase 2D. See the
-[full coverage report](country-coverage-phase-2d.md).
+[full coverage report](country-coverage-phase-2d.md) and
+[homicide-source study](homicide-source-feasibility-phase-2d4.md).
 
 ## Product-readiness interpretation
 
