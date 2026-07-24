@@ -412,8 +412,7 @@ def replay(release_path: Path | str) -> bool:
     ]
     release_country_codes = tuple(
         dict.fromkeys(
-            str(item["country_code"])
-            for item in (expected_attempts or expected_observations)
+            str(item["country_code"]) for item in (expected_attempts or expected_observations)
         )
     )
     observations, attempts = _parse_artifacts(

@@ -6,9 +6,7 @@ import json
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-COUNTRY_UNIVERSE_PATH = (
-    PROJECT_ROOT / "data" / "country-universes" / "stable-supported-v1.json"
-)
+COUNTRY_UNIVERSE_PATH = PROJECT_ROOT / "data" / "country-universes" / "stable-supported-v1.json"
 COUNTRY_UNIVERSE = json.loads(COUNTRY_UNIVERSE_PATH.read_text(encoding="utf-8"))
 COUNTRY_RECORDS = tuple(COUNTRY_UNIVERSE["countries"])
 COUNTRIES = {item["code"]: item["display_name"] for item in COUNTRY_RECORDS}

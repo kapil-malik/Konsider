@@ -104,9 +104,7 @@ class ReleaseRepository:
                 "country_universe": {
                     "universe_id": COUNTRY_UNIVERSE["universe_id"],
                     "policy_version": COUNTRY_UNIVERSE["policy_version"],
-                    "source_coverage_audit_id": COUNTRY_UNIVERSE[
-                        "source_coverage_audit_id"
-                    ],
+                    "source_coverage_audit_id": COUNTRY_UNIVERSE["source_coverage_audit_id"],
                     "licensing_decision": COUNTRY_UNIVERSE["licensing_decision"],
                 },
                 "criteria": sorted(validation.criterion_coverage),

@@ -107,9 +107,7 @@ def validate_release(
     as_of_year: int | None = None,
     clock: Callable[[], datetime] | None = None,
 ) -> ValidationReport:
-    min_country_coverage = (
-        len(COUNTRIES) if min_country_coverage is None else min_country_coverage
-    )
+    min_country_coverage = len(COUNTRIES) if min_country_coverage is None else min_country_coverage
     product_country_coverage = (
         len(COUNTRIES) if product_country_coverage is None else product_country_coverage
     )

@@ -45,26 +45,19 @@ def test_final_universe_is_the_validated_91_country_intersection() -> None:
 
 def test_consumer_catalog_uses_the_authoritative_country_universe() -> None:
     catalog = json.loads(
-        (ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json").read_text(
-            encoding="utf-8"
-        )
+        (ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json").read_text(encoding="utf-8")
     )
     assert catalog["countries"] == COUNTRY_UNIVERSE["countries"]
 
 
 def test_wdi_is_the_only_production_homicide_channel() -> None:
     homicide_sources = [
-        source
-        for source in SOURCES.values()
-        if source.criterion_id == "intentional_homicide_rate"
+        source for source in SOURCES.values() if source.criterion_id == "intentional_homicide_rate"
     ]
     assert len(homicide_sources) == 1
     assert homicide_sources[0].source_id == "unodc_homicide"
     assert homicide_sources[0].distributor == "World Bank World Development Indicators"
     assert all(
-        url.startswith("https://api.worldbank.org/")
-        for url in homicide_sources[0].download_urls
+        url.startswith("https://api.worldbank.org/") for url in homicide_sources[0].download_urls
     )
-    assert all(
-        rejected not in SOURCES for rejected in ("direct_unodc", "unsd", "eurostat", "oecd")
-    )
+    assert all(rejected not in SOURCES for rejected in ("direct_unodc", "unsd", "eurostat", "oecd"))
