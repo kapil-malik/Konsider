@@ -41,46 +41,14 @@ Online mode fetches official UN M49, UN migrant-stock, World Bank country metada
 workbook, and official CSV ZIP representations of the registered WDI indicators. Offline mode makes
 no network calls and requires the retained content-addressed bytes. Both modes produce candidate,
 registry, per-criterion, per-country, exclusion, source, artifact, summary, and Markdown reports.
-Exit is `0` for PASS and `2` when the complete intersection is below 100. A FAIL is a diagnostic
-result, not permission to publish. The command compares `active.json` before and after and raises if
-it changes.
+Exit is `0` for PASS and `2` when the complete intersection is below the universe policy minimum,
+currently 91. A FAIL is a diagnostic result, not permission to publish. The command compares
+`active.json` before and after and raises if it changes.
 
-## `audit-homicide-sources`
-
-Phase 2D.4 source feasibility is separate from production ingestion. The command reads an existing
-all-eligible coverage report, evaluates Direct UNODC and UNSD first, and conditionally evaluates
-Eurostat and OECD only when both primary channels remain below the required complete-country count.
-It never changes the registered production source or activates a release.
-
-Online example:
-
-```bash
-python -m konsider.ingestion.worker audit-homicide-sources \
-  --coverage-report data/reports/country-coverage/coverage-2026-07-23.6-all-eligible \
-  --study-id homicide-source-YYYY-MM-DD.N-online \
-  --mode online
-```
-
-Offline replay:
-
-```bash
-python -m konsider.ingestion.worker audit-homicide-sources \
-  --coverage-report data/reports/country-coverage/coverage-2026-07-23.6-all-eligible \
-  --study-id homicide-source-YYYY-MM-DD.N-replay \
-  --mode replay \
-  --artifacts \
-    data/reports/homicide-source-feasibility/homicide-source-YYYY-MM-DD.N-online/raw-artifacts.json
-```
-
-Online mode retains exact official payloads under ignored `data/raw`. Replay requires those bytes,
-makes no network calls, and applies the same country mapping, dimensions, duplicate rejection,
-freshness, reconciliation, and fallback gate. Both modes write `summary.json`,
-`source-comparison.json`, `country-comparison.jsonl`, `discrepancies.jsonl`, `licensing.md`,
-`report.md`, `raw-artifacts.json`, and `sources.json`. Exit is `0` only when an evaluated path
-reaches the coverage target; `2` is the expected diagnostic exit for a valid FAIL study.
-
-See the [Phase 2D.4 findings](../data/homicide-source-feasibility-phase-2d4.md) before interpreting
-or rerunning the committed study.
+The Phase 2D.4 `audit-homicide-sources` command was intentionally removed after the final licensing
+decision. Its Direct UNODC, UNSD, Eurostat, and OECD adapters were study-only runtime paths. The
+committed [Phase 2D.4 findings](../data/homicide-source-feasibility-phase-2d4.md) and machine-readable
+reports preserve the investigation.
 
 ## Prerequisites
 
@@ -136,7 +104,7 @@ Arguments:
 Complete Bash example:
 
 ```bash
-python -m konsider.ingestion.worker refresh --release-id 2026-07-22.1 \
+python -m konsider.ingestion.worker refresh --release-id NEXT_RELEASE_ID \
   --source-version unodc_homicide=VC.IHR.PSRC.P5@WDI-2026-07-13 \
   --source-version world_bank_icp=PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13 \
   --source-version world_bank_infrastructure=INFRA-3@WDI-2026-07-13 \
@@ -148,7 +116,7 @@ python -m konsider.ingestion.worker refresh --release-id 2026-07-22.1 \
 Complete PowerShell example:
 
 ```powershell
-python -m konsider.ingestion.worker refresh --release-id 2026-07-22.1 `
+python -m konsider.ingestion.worker refresh --release-id NEXT_RELEASE_ID `
   --source-version unodc_homicide=VC.IHR.PSRC.P5@WDI-2026-07-13 `
   --source-version world_bank_icp=PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13 `
   --source-version world_bank_infrastructure=INFRA-3@WDI-2026-07-13 `
@@ -193,7 +161,7 @@ prints `replay passed` and exits `0`, or prints `replay failed` and exits `1`. M
 bytes make replay fail even when the committed normalized release is valid for API consumption.
 
 ```bash
-python -m konsider.ingestion.worker replay data/releases/2026-07-21.1
+python -m konsider.ingestion.worker replay data/releases/2026-07-24.1
 ```
 
 ## Outputs and lineage
@@ -239,18 +207,18 @@ PowerShell:
 
 ```powershell
 Get-Content data\releases\active.json
-Get-Content data\releases\2026-07-21.1\manifest.json
-Get-Content data\releases\2026-07-21.1\validation.json
-python -m konsider.ingestion.worker replay data\releases\2026-07-21.1
+Get-Content data\releases\2026-07-24.1\manifest.json
+Get-Content data\releases\2026-07-24.1\validation.json
+python -m konsider.ingestion.worker replay data\releases\2026-07-24.1
 ```
 
 Bash:
 
 ```bash
 python -m json.tool data/releases/active.json
-python -m json.tool data/releases/2026-07-21.1/manifest.json
-python -m json.tool data/releases/2026-07-21.1/validation.json
-python -m konsider.ingestion.worker replay data/releases/2026-07-21.1
+python -m json.tool data/releases/2026-07-24.1/manifest.json
+python -m json.tool data/releases/2026-07-24.1/validation.json
+python -m konsider.ingestion.worker replay data/releases/2026-07-24.1
 ```
 
 API startup performs schema and payload-checksum validation through `PublishedReleaseRepository`

@@ -27,15 +27,16 @@ not rewrite a historical directory.
 
 Country-universe and coverage-audit outputs live under `data/reports/country-coverage/AUDIT_ID`.
 They are diagnostic artifacts, not releases, are never selected by `active.json`, and do not relax
-the publication contract. A future expanded release may add compact universe metadata only after
-the 100-country gate passes and its schema change is implemented.
+the publication contract. The authoritative stable list and its audit/licensing decision live in
+`data/country-universes/stable-supported-v1.json`; release manifests embed the universe ID, policy
+version, source audit ID, country count/codes, and licensing decision.
 
 ## Files
 
 | File | Role | Classification |
 | --- | --- | --- |
 | `active.json` | Selects release ID and compatible release schema. | Mutable activation pointer. |
-| `manifest.json` | Publication status, counts, criteria, timestamps, previous ID, source/parser/observation/scoring versions, payload and aggregate checksums, validation summary, replay metadata. | Authoritative release envelope. |
+| `manifest.json` | Publication status, country count/codes and universe metadata, observation/score/attempt counts, criteria, timestamps, previous ID, source/parser/observation/scoring versions, payload and aggregate checksums, validation summary, replay metadata. | Authoritative release envelope. |
 | `observations.jsonl` | Source-backed values, units, periods, scope, flags, exact artifact/record provenance, and component lineage. | Authoritative normalized observations. |
 | `scores.jsonl` | Canonical versioned 1-10 score, direction, transform, and input observation IDs for every country/criterion pair. | Authoritative derived scores. |
 | `attempts.jsonl` | Expected acquisition result per source/country/criterion. | Authoritative completeness record. |

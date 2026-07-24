@@ -1,6 +1,6 @@
 # System architecture
 
-Status: authoritative architecture as of 2026-07-23
+Status: authoritative architecture as of 2026-07-24
 
 Konsider separates data acquisition, immutable publication, deterministic recommendation logic,
 HTTP transport, and the browser UI. Scoring and readiness rules have one server-side owner.
@@ -39,7 +39,7 @@ PublishedReleaseRepository ---> RecommendationService ---> FastAPI /api/v1 ---> 
 - The responsive React UI derives profiles, priority controls, ranking columns, sources, flags, and
   release labels from `/api/v1`. TanStack Query owns API work; local state owns guest edits.
 
-The active release is `2026-07-21.1`: 20 countries, six available criteria, and five enabled
+The active release is `2026-07-24.1`: 91 countries, six available criteria, and five enabled
 criteria. UHC is non-ready and cannot be weighted. Infrastructure remains experimental.
 Country-universe discovery and complete-case auditing are implemented as a separate safe worker
 flow. They use UN migrant-stock/M49 inputs plus the registered criterion sources, write diagnostic
@@ -88,8 +88,9 @@ release or the active pointer.
 The worker builds a canonical ISO3 registry from official UN M49 and World Bank metadata, ranks
 eligible destinations using official UN migrant stock, evaluates every catalog-enabled criterion,
 and writes candidate, coverage, exclusion, source, and checksum reports. Online mode captures bytes;
-offline mode deterministically replays them. Only a PASS at 100 complete countries authorizes later
-publication work.
+offline mode deterministically replays them. The final stable universe is the 91-country
+complete-case intersection under the approved WDI-only homicide licensing policy. Future country
+count changes require a deliberate source and data review.
 
 ### API startup and request
 

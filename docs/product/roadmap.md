@@ -1,20 +1,18 @@
 # Product roadmap
 
-Status: Phase 2C implemented; Phase 2D discovery implemented and publication blocked
+Status: Phase 2C and Phase 2D complete
 
-Last updated: 2026-07-23
+Last updated: 2026-07-24
 
 ## Current position
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v1 transport, and responsive React UI are
-implemented. Active release `2026-07-21.1` exposes 20 countries and six available criteria; five
-are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure is enabled but
-experimental.
-Phase 2D now has a reproducible country universe and online/offline coverage audit. The initial 150
-candidates yield 79 complete countries; all 195 eligible countries yield 91. The required 100-country
-release, API/UI scale work, and activation are blocked pending a valid same-construct homicide data
-path or an explicitly approved product-definition decision.
+implemented. Active release `2026-07-24.1` exposes the stable 91-country universe and six available
+criteria; five are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure
+is enabled but experimental. Phase 2D is closed: the universe is the audited complete-case
+intersection under the approved WDI-only homicide source policy, and the UI supports search, region
+filters, and the long list.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -27,7 +25,7 @@ Deliver a small React/TypeScript/Vite interface that:
 
 - derives controls, countries, criteria, profiles, labels, caveats, readiness, experimental flags,
   and source metadata from the API;
-- provides five editable criterion weights and a ranked 20-country table;
+- provides five editable criterion weights and a ranked, searchable country table;
 - shows country metric details, observations, reference periods, source links, and caveats;
 - supports 2-4 country comparisons in the UI while retaining the API's 2-10 contract;
 - marks infrastructure experimental and never enables UHC as a weight;
@@ -45,22 +43,30 @@ Delivered exit criteria:
 
 See the [implemented UI guide](ui.md) and [React/Vite decision](../architecture/decisions/004-react-vite-ui.md).
 
-## Phase 2D: country coverage expansion — discovery implemented, publication blocked
+## Phase 2D: stable country coverage — complete
 
 - Implemented official UN migrant-stock candidate ranking, UN M49/World Bank reconciliation,
   explicit entity exclusions, online capture, offline replay, and detailed complete-case reports.
 - Retained all current release countries and proved candidate ordering/replay determinism.
-- Did not publish because the complete intersection is 79/150 and 91/195, below 100.
-- Phase 2D.4 evaluated Direct UNODC, UNSD, Eurostat, and OECD. The primary channels each raise the
-  complete intersection only to 95; fallbacks add none, and UN redistribution terms remain unclear.
-- Next decision: do not weaken freshness, change the homicide construct, or redefine infrastructure
-  without explicit product approval.
+- Replaced the arbitrary 100-country target with the supported-universe rule: Konsider supports the
+  countries for which complete and sufficiently fresh data is available across every enabled
+  ranking criterion under the approved source and licensing policy.
+- Phase 2D.4 proved that Direct UNODC and UNSD could technically add Bangladesh, Belarus, Kuwait,
+  and Saudi Arabia, but neither channel states sufficiently clear production reuse rights.
+- Selected World Bank WDI as the only production homicide channel and published the 91-country
+  complete-case intersection without weakening freshness, imputing values, or partially scoring.
+- Removed the Direct UNODC, UNSD, Eurostat, and OECD runtime study paths while preserving their
+  committed reports and rejection rationale.
+- Published immutable release `2026-07-24.1`, retained the prior 20-country release, verified replay,
+  and added country search, region filters, visible/total counts, and mobile long-list coverage.
 
 See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md) and
 [Phase 2D.4 source study](../data/homicide-source-feasibility-phase-2d4.md).
 
 ## Phase 2E: deterministic evidence and explanations
 
+- Prioritize additional criteria, fresher source editions, and stronger evidence quality while
+  preserving complete-case publication.
 - Add structured source/observation lookup and citation-ready provenance.
 - Generate deterministic strengths, trade-offs, and comparison explanations from contributions.
 - Add metadata and simple lexical lookup only if measured product needs require it.
@@ -68,7 +74,7 @@ See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md) and
 
 ## Phase 2F: conversational exploration
 
-- Add LLM assistance only after deterministic ranking and explanations are proven.
+- Add AI explanations and chat only after deterministic ranking and explanations are proven.
 - Require numerical and factual claims to come from typed deterministic tools.
 - Provide non-LLM fallbacks and explicit rate, token, session, and tool limits.
 - Add agents, LangGraph, or MCP only for demonstrated workflows.

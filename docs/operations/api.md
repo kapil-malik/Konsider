@@ -131,7 +131,7 @@ Representative complete response:
 
 ```json
 {
-  "release_id": "2026-07-21.1",
+  "release_id": "2026-07-24.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [
@@ -142,7 +142,7 @@ Representative complete response:
     "wbl_legal_equality_bands_v1"
   ],
   "status": "ok",
-  "country_count": 20,
+  "country_count": 91,
   "enabled_criterion_count": 5,
   "ready_for_rankings": true
 }
@@ -178,7 +178,7 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-21.1",
+  "release_id": "2026-07-24.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [six available method versions],
@@ -203,7 +203,7 @@ Request fields:
 | --- | --- |
 | `weights` | Optional object of criterion ID to JSON number. Values must be finite and non-negative. Unknown and non-ready criteria are rejected. |
 | `profile_id` | Optional non-empty catalog profile ID. Cannot be supplied with `weights`. |
-| `top_k` | Optional strict integer from 1 through 20. Defaults to all eligible countries. |
+| `top_k` | Optional strict integer from 1 through the active eligible count (currently 91). Defaults to all eligible countries. |
 
 If neither selector is supplied, `equal_weight_mvp` is used. With explicit weights, omitted enabled
 criteria receive zero. If every explicit weight is zero (including an empty object), the service
@@ -231,7 +231,7 @@ Carefully abbreviated `200` response:
 
 ```text
 {
-  "release_id": "2026-07-21.1",
+  "release_id": "2026-07-24.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [five enabled method versions],
@@ -240,7 +240,7 @@ Carefully abbreviated `200` response:
   "all_zero_behavior": "equal_weights_across_all_enabled_criteria",
   "country_tie_breaker": "ascending_iso3_country_code",
   "rounding_tolerance": 1e-8,
-  "total_eligible_country_count": 20,
+  "total_eligible_country_count": 91,
   "returned_result_count": 3,
   "rankings": [{
     "rank": 1,
@@ -285,7 +285,7 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-21.1",
+  "release_id": "2026-07-24.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [five enabled method versions],
@@ -311,7 +311,7 @@ Unknown country example (`404`):
 
 The body requires `country_codes` plus the same mutually exclusive `weights`/`profile_id` selector
 used by rankings. Supply 2-10 unique known ISO-3 codes. Input is normalized to uppercase. Returned
-countries preserve request order, while each row's `rank` remains its rank among all 20 eligible
+countries preserve request order, while each row's `rank` remains its rank among all 91 eligible
 countries under the selected weights.
 
 ```json
@@ -329,10 +329,10 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-21.1",
+  "release_id": "2026-07-24.1",
   "resolved_profile_id": "equal_weight_mvp",
   "normalized_weights": {five enabled criterion IDs},
-  "total_eligible_country_count": 20,
+  "total_eligible_country_count": 91,
   "returned_result_count": 3,
   "countries": [three RankedCountryResponse objects in requested order]
 }

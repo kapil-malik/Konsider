@@ -7,6 +7,9 @@ component coverage, and Playwright for focused browser flows.
 
 The browser never scores, normalizes, sorts, decides readiness, or supplies fallback product data.
 Countries, criteria, profiles, sources, flags, and release IDs come from the API.
+The current 91-country release is shown in a bounded desktop table and complete mobile cards.
+Country-name/ISO search and API-derived region filtering are client-side because the bounded global
+response remains small enough that server pagination is not justified.
 
 ## Requirements
 

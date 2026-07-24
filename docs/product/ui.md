@@ -13,6 +13,8 @@ It is implemented as one responsive React, TypeScript, and Vite application unde
   successfully applied profile or custom weights.
 - The ranking shows every API result in a bounded sticky-header desktop table or full-page mobile
   cards. Detailed mode adds one API-driven score for each enabled criterion.
+- Country-name/ISO search and an API-result-derived region filter keep all 91 countries accessible.
+  The footer announces visible and total result counts, including explicit no-match states.
 - Selecting a country loads its enabled metric observations, period, public source, caveat, quality
   limitation, and scoring context.
 - The UI selects two to four countries for comparison. The API remains capable of two to ten, but
@@ -44,15 +46,15 @@ announced; reduced-motion preferences are respected; zoom is not disabled.
 ## Verification
 
 Component tests cover catalog rendering, readiness and experimental states, slider/profile behavior,
-Apply/Undo requests, dynamic ranking detail, country evidence, comparison limits, guest help, empty
-results, and structured/network errors. Playwright covers the main guest, update, detail, comparison,
-source-help, unavailable-release, and mobile flows. Commands and local startup are documented in
+Apply/Undo requests, search, region filtering, result counts, dynamic ranking detail, country
+evidence, comparison limits, guest help, empty results, and structured/network errors. Playwright
+covers the main guest, update, filtering, detail, comparison, source-help, unavailable-release, and
+91-country mobile long-list flows. Commands and local startup are documented in
 [the web guide](../../web/README.md).
 
 ## Phase 2D scale status
 
-Country search, API-derived region filters, filtered result counts, selected-country trays, and
-100-country mobile verification are intentionally not implemented yet. The Phase 2D discovery gate
-found only 91 complete countries across the full eligible universe, so there is no valid expanded
-release to drive or verify those changes. The existing UI remains catalog-driven and continues to
-serve the unchanged 20-country active release.
+Phase 2D is complete. The catalog-driven UI serves active release `2026-07-24.1` with 91 countries,
+bounded desktop scrolling, complete mobile cards, search, region filtering, visible/total counts,
+details, comparisons, sources, and an always-visible release ID. No server pagination or
+virtualization was needed for the measured response and rendering size.

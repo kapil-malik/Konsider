@@ -1,13 +1,19 @@
 # Phase 2D country coverage audit
 
-Status: discovery infrastructure complete; publication target blocked
+Status: Phase 2D complete; stable 91-country release published
 
-Audit date: 2026-07-23
+Audit date: 2026-07-23; final decision and publication: 2026-07-24
 
-Phase 2D requires at least 100 countries with complete, valid data for all five enabled ranking
-criteria. The audit found 79 complete countries in the initial 150-country universe and 91 after
-expanding to all 195 entities eligible under the public-country policy. No release was created or
-activated. Active release `2026-07-21.1` remains unchanged at 20 countries.
+The discovery audit found 79 complete countries in the initial 150-country universe and 91 after
+expanding to all 195 entities eligible under the public-country policy. The original 100-country
+target was a discovery gate, not a defensible product-quality boundary. Phase 2D now uses this
+statement:
+
+> Konsider supports the countries for which complete and sufficiently fresh data is available
+> across every enabled ranking criterion under the approved source and licensing policy.
+
+The validated 91-country complete-case intersection is universe `stable_supported_v1`. Immutable
+release `2026-07-24.1` is active; the previous 20-country release remains recoverable.
 
 ## Candidate selection
 
@@ -26,10 +32,10 @@ Country identity and regions are reconciled through:
 - non-aggregate World Bank Country API metadata; and
 - explicit source-controlled exclusions for non-sovereign territories and special areas.
 
-All 20 countries in the active release remain candidates. Remaining slots are filled in descending
-official migrant-stock order. Popularity selects candidates only; it never enters scoring or
-ranking. The initial pool contains 150 countries. The expanded diagnostic uses every one of the 195
-eligible countries available through the same policy and retained source bytes.
+All 20 countries in the previous active release remained candidates. Remaining slots were filled
+in descending official migrant-stock order. Popularity selects candidates only; it never enters
+scoring or ranking. The initial pool contains 150 countries. The expanded diagnostic uses every one
+of the 195 eligible countries available through the same policy and retained source bytes.
 
 Exact source bytes are retained content-addressed under ignored `data/raw/`. Checksums, versions,
 record locators, candidate ranks, the canonical registry, and coverage outputs are preserved in:
@@ -49,7 +55,7 @@ Initial 150-country audit:
 | Women's legal and economic equality | 148 | 148 | 148 | 148 | 2 | 0 |
 | Infrastructure readiness composite | 145 | 116 | 145 | 116 | 34 | 9 |
 
-Complete intersection: **79 of 150**. Required: **100**. Status: **FAIL**.
+Historical discovery result: **79 of 150** against the original 100-country target (**FAIL**).
 
 Expanded 195-country diagnostic:
 
@@ -61,7 +67,8 @@ Expanded 195-country diagnostic:
 | Women's legal and economic equality | 186 | 186 | 186 | 186 | 9 | 0 |
 | Infrastructure readiness composite | 168 | 134 | 168 | 134 | 61 | 13 |
 
-Complete intersection: **91 of 195**. Required: **100**. Status: **FAIL**.
+Validated complete intersection: **91 of 195**. This became the final supported universe after the
+licensing decision.
 
 `Only blocker` counts an otherwise-complete country excluded solely by that criterion.
 
@@ -108,11 +115,10 @@ The current source remains World Bank WDI `VC.IHR.PSRC.P5`, an explicitly CC BY 
 representation of UNODC data. It is the binding constraint: 63 of 195 values are stale under the
 five-year rule, 18 are missing, and 30 otherwise-complete countries fail only this criterion.
 
-The official UNODC Data Portal exposes the same intentional-homicide construct (ICCS 0101 / SDG
-16.1.1) and is the first alternative to evaluate. Before adoption it needs a reproducible bulk
-retrieval, ISO mapping, reference-period comparison, explicit redistribution/licence review, and a
-country-by-country semantic comparison with the WDI representation. Those conditions were not
-established by this audit, so the source was not changed.
+Phase 2D.4 subsequently evaluated Direct UNODC and the UNSD SDG API. Each provided the same four
+fresh, equivalent additions—Bangladesh, Belarus, Kuwait, and Saudi Arabia—but neither provides a
+clear production reuse grant covering retained, transformed, and redistributed artifacts. The
+source was therefore not changed.
 
 Extending homicide freshness from five to eight years would raise the all-eligible complete
 intersection from 91 to exactly 100 by accepting values as old as 2018. That would weaken the
@@ -133,23 +139,29 @@ materials identify imputed results for additional non-participating economies. P
 imputation, so those estimates are not an acceptable way to increase coverage. The existing WDI
 PPP/exchange-rate derivation remains unchanged.
 
-## Recommendation and decision required
+## Final decision and publication
 
-Do not publish an expanded release from the current source snapshot.
+The final production homicide strategy is World Bank WDI `VC.IHR.PSRC.P5` only. Its representation
+is explicitly CC BY 4.0. Direct UNODC and UNSD remain rejected for production because their reuse
+rights are ambiguous; Eurostat adds none of the residual countries and OECD is not a national-total
+equivalent series. Their investigation remains in the
+[Phase 2D.4 report](homicide-source-feasibility-phase-2d4.md), while their runtime adapters and CLI
+were removed.
 
-The least semantically disruptive path is to evaluate a reproducible, licensable, fresher UNODC
-intentional-homicide feed using the same ICCS/SDG construct. At least nine of the 30 countries
-excluded solely by homicide would need to become fresh and otherwise valid for the complete
-intersection to reach 100. If that cannot be proven, the next available paths require either:
+The final list is generated from this audit and recorded at
+`data/country-universes/stable-supported-v1.json`. It records:
 
-1. weakening the homicide freshness rule; or
-2. replacing an infrastructure component and therefore redefining the experimental criterion.
+- universe ID `stable_supported_v1` and policy `complete-case-approved-sources-v1`;
+- 91 unique ISO alpha-3 country codes and regions;
+- source audit `coverage-2026-07-23.6-all-eligible` and source versions;
+- the complete-case inclusion rule and link to all 104 detailed exclusions; and
+- the final licensing decision, including the four technically recoverable exclusions.
 
-Both require explicit product approval. Until then:
-
-```text
-Phase 2D discovery infrastructure is complete, but the publication target is blocked.
-```
+The five-year homicide freshness rule is unchanged. No imputation, manually copied value, partial
+scoring, unsupported territory, or popularity signal enters affinity scoring. Each of the six
+published criteria has 91/91 observations and scores; UHC remains non-ready because all 2021
+observations fail its separate three-year readiness rule. The five enabled criteria are complete
+and ready for all 91 countries.
 
 ## Reproducibility and limitations
 
