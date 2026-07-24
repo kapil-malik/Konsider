@@ -14,7 +14,6 @@ from types import SimpleNamespace
 
 from konsider.ingestion.countries import COUNTRY_CODES
 from konsider.ingestion.country_coverage import audit_coverage
-from konsider.ingestion.homicide_source_feasibility import audit_homicide_sources
 from konsider.ingestion.models import RawArtifact, SourceAttempt, SourceRegistration
 from konsider.ingestion.parsers import PARSERS
 from konsider.ingestion.registry import SOURCES
@@ -427,18 +426,6 @@ def main() -> int:
     audit_parser.add_argument("--raw-root", default="data/raw")
     audit_parser.add_argument("--artifacts")
     audit_parser.add_argument("--candidate-limit", type=int)
-    homicide_parser = subparsers.add_parser(
-        "audit-homicide-sources",
-        help="Evaluate homicide sources without changing production sources or releases.",
-    )
-    homicide_parser.add_argument("--coverage-report", required=True)
-    homicide_parser.add_argument("--study-id", required=True)
-    homicide_parser.add_argument("--mode", required=True, choices=("online", "replay"))
-    homicide_parser.add_argument(
-        "--output-root", default="data/reports/homicide-source-feasibility"
-    )
-    homicide_parser.add_argument("--raw-root", default="data/raw")
-    homicide_parser.add_argument("--artifacts")
     args = parser.parse_args()
     if args.command == "list-sources":
         for source_id in sorted(SOURCES):
@@ -466,27 +453,6 @@ def main() -> int:
         print(f"Enabled criteria: {len(summary['enabled_criteria'])}")
         print("Complete publishable countries: " f"{summary['complete_publishable_country_count']}")
         print(f"Minimum required: {summary['minimum_required_country_count']}")
-        print(f"Status: {summary['status']}")
-        print(path)
-        return 0 if summary["status"] == "PASS" else 2
-    if args.command == "audit-homicide-sources":
-        path, summary = audit_homicide_sources(
-            args.coverage_report,
-            args.study_id,
-            mode=args.mode,
-            output_root=args.output_root,
-            raw_root=args.raw_root,
-            artifact_manifest=args.artifacts,
-        )
-        print(
-            "Homicide-only countries evaluated: "
-            f"{summary['homicide_only_excluded_country_count']}"
-        )
-        print(
-            "Direct UNODC complete countries: " f"{summary['direct_unodc_complete_country_count']}"
-        )
-        print(f"UNSD complete countries: {summary['unsd_complete_country_count']}")
-        print("Fallback complete countries: " f"{summary['mixed_fallback_complete_country_count']}")
         print(f"Status: {summary['status']}")
         print(path)
         return 0 if summary["status"] == "PASS" else 2
