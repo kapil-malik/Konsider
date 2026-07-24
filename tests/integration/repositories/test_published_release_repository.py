@@ -15,11 +15,11 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
     release_root = tmp_path / "releases"
-    shutil.copytree(ROOT / "data" / "releases" / "2026-07-21.1", release_root / "2026-07-21.1")
+    shutil.copytree(ROOT / "data" / "releases" / "2026-07-24.1", release_root / "2026-07-24.1")
     shutil.copy2(ROOT / "data" / "releases" / "active.json", release_root / "active.json")
     catalog = tmp_path / "consumer-catalog.json"
     shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json", catalog)
-    return PublishedReleaseRepository(release_root, catalog), release_root / "2026-07-21.1"
+    return PublishedReleaseRepository(release_root, catalog), release_root / "2026-07-24.1"
 
 
 def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
@@ -40,12 +40,12 @@ def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
 def test_active_release_loads_complete_ready_matrix() -> None:
     release = PublishedReleaseRepository().load_active()
 
-    assert release.release_id == "2026-07-21.1"
-    assert len(release.catalog["countries"]) == 20
+    assert release.release_id == "2026-07-24.1"
+    assert len(release.catalog["countries"]) == 91
     assert len(release.available_criterion_ids) == 6
     assert len(release.enabled_criterion_ids) == 5
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
-    assert len(release.records) == 100
+    assert len(release.records) == 455
     assert len(release.sources) == 6
     assert all(record.observations and record.source for record in release.records)
     infrastructure = next(
@@ -63,13 +63,13 @@ def test_default_repository_paths_do_not_depend_on_working_directory(
 
     release = PublishedReleaseRepository().load_active()
 
-    assert release.release_id == "2026-07-21.1"
+    assert release.release_id == "2026-07-24.1"
 
 
 def test_diagnostic_mode_exposes_non_ready_records_without_enabling_them() -> None:
     release = PublishedReleaseRepository().load_active(diagnostic_read_only=True)
 
-    assert len(release.records) == 120
+    assert len(release.records) == 546
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
 
 

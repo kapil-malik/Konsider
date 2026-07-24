@@ -99,14 +99,20 @@ def validate_release(
     sources: list[SourceRegistration] | None = None,
     *,
     min_criteria: int = 5,
-    min_country_coverage: int = 18,
-    product_country_coverage: int = 20,
+    min_country_coverage: int | None = None,
+    product_country_coverage: int | None = None,
     product_min_ready: int = 5,
     schema_version: str = RELEASE_SCHEMA_VERSION,
     previous_observations: list[MetricObservation] | None = None,
     as_of_year: int | None = None,
     clock: Callable[[], datetime] | None = None,
 ) -> ValidationReport:
+    min_country_coverage = (
+        len(COUNTRIES) if min_country_coverage is None else min_country_coverage
+    )
+    product_country_coverage = (
+        len(COUNTRIES) if product_country_coverage is None else product_country_coverage
+    )
     if as_of_year is None:
         as_of_year = (clock or (lambda: datetime.now(UTC)))().year
     attempts, sources = attempts or [], sources or []
@@ -385,12 +391,17 @@ def validate_release(
         )
     for metric, countries in sorted(coverage.items()):
         if len(countries) < min_country_coverage:
-            issue("insufficient_coverage", "error", f"Coverage {len(countries)}/20.", metric=metric)
+            issue(
+                "insufficient_coverage",
+                "error",
+                f"Coverage {len(countries)}/{min_country_coverage}.",
+                metric=metric,
+            )
         elif len(countries) < product_country_coverage:
             issue(
                 "partial_product_coverage",
                 "blocker",
-                f"Product coverage {len(countries)}/20.",
+                f"Product coverage {len(countries)}/{product_country_coverage}.",
                 scope="product_readiness",
                 metric=metric,
             )

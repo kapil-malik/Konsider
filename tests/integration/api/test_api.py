@@ -27,8 +27,8 @@ def test_health_reports_validated_snapshot(client) -> None:
 
     assert response.status_code == 200
     assert body.status == "ok"
-    assert body.release_id == "2026-07-21.1"
-    assert body.country_count == 20
+    assert body.release_id == "2026-07-24.1"
+    assert body.country_count == 91
     assert body.enabled_criterion_count == 5
     assert body.ready_for_rankings is True
     assert len(body.scoring_method_versions) == 5
@@ -39,7 +39,7 @@ def test_catalog_has_available_and_enabled_contracts(client) -> None:
     body = CatalogResponse.model_validate(response.json())
 
     assert response.status_code == 200
-    assert len(body.countries) == 20
+    assert len(body.countries) == 91
     assert len(body.criteria) == 6
     assert sum(item.default_enabled for item in body.criteria) == 5
     uhc = next(item for item in body.criteria if item.id == "uhc_service_coverage_index")
@@ -115,7 +115,7 @@ def test_rankings_default_profile_and_top_k(client) -> None:
 
     assert response.status_code == 200
     assert body.resolved_profile_id == "equal_weight_mvp"
-    assert body.total_eligible_country_count == 20
+    assert body.total_eligible_country_count == 91
     assert body.returned_result_count == 3
     assert len(body.rankings) == 3
     assert set(body.normalized_weights.values()) == {0.2}
@@ -185,7 +185,7 @@ def test_omitted_and_all_zero_weights_keep_service_semantics(client) -> None:
             "invalid_weight",
         ),
         ({"top_k": 0}, "invalid_top_k"),
-        ({"top_k": 21}, "invalid_top_k"),
+        ({"top_k": 92}, "invalid_top_k"),
     ],
 )
 def test_structured_ranking_failures(client, payload, code) -> None:
@@ -300,7 +300,7 @@ def test_default_paths_do_not_depend_on_current_working_directory(tmp_path, monk
         response = other_client.get("/api/v1/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-21.1"
+    assert response.json()["release_id"] == "2026-07-24.1"
 
 
 def test_service_is_constructed_once_per_app_lifecycle() -> None:
@@ -369,7 +369,7 @@ def test_temporary_release_and_catalog_paths_are_injectable(tmp_path) -> None:
         response = other_client.get("/api/v1/catalog")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-21.1"
+    assert response.json()["release_id"] == "2026-07-24.1"
 
 
 def test_unexpected_failure_returns_safe_500() -> None:

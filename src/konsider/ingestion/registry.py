@@ -81,7 +81,7 @@ SOURCES = {
         parser="world_bank_uhc",
         parser_version="world_bank_uhc_v1",
         official_or_independent="official_secondary_distribution",
-        notes="20/20 coverage, but 2021 is beyond the candidate freshness threshold and remains non-ready unless refreshed upstream.",
+        notes="Complete supported-universe coverage, but 2021 is beyond the freshness threshold and remains non-ready unless refreshed upstream.",
     ),
     "unodc_homicide": SourceRegistration(
         source_id="unodc_homicide",

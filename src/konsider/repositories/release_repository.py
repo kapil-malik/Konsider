@@ -9,6 +9,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Iterable
 
+from konsider.ingestion.countries import COUNTRY_UNIVERSE
 from konsider.ingestion.models import (
     MetricObservation,
     MetricScore,
@@ -85,6 +86,7 @@ class ReleaseRepository:
         source_versions = {
             str(source["source_id"]): str(source["source_version"]) for source in sources
         }
+        country_codes = sorted({score.country_code for score in scores})
         _write_json(
             draft / "manifest.json",
             {
@@ -97,6 +99,16 @@ class ReleaseRepository:
                 "observation_count": len(observations),
                 "score_count": len(scores),
                 "attempt_count": len(attempts),
+                "country_count": len(country_codes),
+                "country_codes": country_codes,
+                "country_universe": {
+                    "universe_id": COUNTRY_UNIVERSE["universe_id"],
+                    "policy_version": COUNTRY_UNIVERSE["policy_version"],
+                    "source_coverage_audit_id": COUNTRY_UNIVERSE[
+                        "source_coverage_audit_id"
+                    ],
+                    "licensing_decision": COUNTRY_UNIVERSE["licensing_decision"],
+                },
                 "criteria": sorted(validation.criterion_coverage),
                 "source_versions": source_versions,
                 "scoring_method_versions": method_versions,

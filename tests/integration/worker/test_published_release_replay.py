@@ -125,6 +125,21 @@ class PublishedReleaseReplayTests(TestCase):
         self._require_local_raw(release)
         self.assertTrue(replay(release))
 
+    def test_final_91_country_release_contract_and_replay(self):
+        release = Path("data/releases/2026-07-24.1")
+        manifest = json.loads((release / "manifest.json").read_text(encoding="utf-8"))
+        validation = json.loads((release / "validation.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(manifest["country_count"], 91)
+        self.assertEqual(manifest["country_universe"]["universe_id"], "stable_supported_v1")
+        self.assertEqual(manifest["observation_count"], 546)
+        self.assertEqual(manifest["score_count"], 546)
+        self.assertEqual(set(validation["criterion_coverage"].values()), {91})
+        self.assertTrue(validation["structural_passed"])
+        self.assertTrue(validation["product_ready"])
+        self._require_local_raw(release)
+        self.assertTrue(replay(release))
+
     def test_replay_rejects_tampered_release_payload(self):
         release = Path("data/releases/2026-07-18.2")
         if not release.exists():

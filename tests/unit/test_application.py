@@ -13,7 +13,7 @@ def service() -> RecommendationService:
 
 def test_catalog_has_only_five_enabled_criteria(service) -> None:
     catalog = service.get_catalog()
-    assert len(catalog["countries"]) == 20
+    assert len(catalog["countries"]) == 91
     assert len(catalog["criteria"]) == 6
     assert sum(item["default_enabled"] for item in catalog["criteria"]) == 5
 
@@ -28,7 +28,7 @@ def test_ranking_is_deterministic_and_contributions_sum(service) -> None:
     second = service.rank(weights)
 
     assert json.dumps(first, sort_keys=True) == json.dumps(second, sort_keys=True)
-    assert len(first["rankings"]) == 20
+    assert len(first["rankings"]) == 91
     for row in first["rankings"]:
         assert (
             abs(sum(item["contribution"] for item in row["contributions"]) - row["total_score"])
@@ -78,6 +78,6 @@ def test_compare_and_breakdown_are_release_pinned(service) -> None:
     comparison = service.compare(["IND", "SGP"], {})
     breakdown = service.country_breakdown("IND")
 
-    assert comparison["release_id"] == breakdown["release_id"] == "2026-07-21.1"
+    assert comparison["release_id"] == breakdown["release_id"] == "2026-07-24.1"
     assert [item["country_code"] for item in comparison["countries"]] == ["IND", "SGP"]
     assert len(breakdown["criteria"]) == 5

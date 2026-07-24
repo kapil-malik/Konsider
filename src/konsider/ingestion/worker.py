@@ -121,10 +121,17 @@ def _artifact_order(registration, artifacts: list[RawArtifact]) -> list[RawArtif
     return sorted(artifacts, key=lambda item: order.get(item.requested_url, 9999))
 
 
-def _attempts_for(registration, observations, attempted_at, fallback_artifacts=(), failure=None):
+def _attempts_for(
+    registration,
+    observations,
+    attempted_at,
+    fallback_artifacts=(),
+    failure=None,
+    country_codes=COUNTRY_CODES,
+):
     by_country = {item.country_code: item for item in observations}
     attempts = []
-    for code in COUNTRY_CODES:
+    for code in country_codes:
         observation = by_country.get(code)
         if failure:
             attempts.append(
@@ -172,6 +179,7 @@ def _parse_artifacts(
     artifacts: list[RawArtifact],
     raw_repository: RawArtifactRepository,
     registrations: list[SourceRegistration] | None = None,
+    country_codes: tuple[str, ...] | None = None,
 ):
     observations, attempts = [], []
     attempted_at = max(
@@ -185,12 +193,32 @@ def _parse_artifacts(
             parsed = PARSERS[registration.parser](
                 ordered, [raw_repository.load(item) for item in ordered]
             )
+            if country_codes is not None:
+                allowed_country_codes = set(country_codes)
+                parsed = [
+                    observation
+                    for observation in parsed
+                    if observation.country_code in allowed_country_codes
+                ]
             observations.extend(parsed)
-            attempts.extend(_attempts_for(registration, parsed, attempted_at, ordered))
+            attempts.extend(
+                _attempts_for(
+                    registration,
+                    parsed,
+                    attempted_at,
+                    ordered,
+                    country_codes=country_codes or COUNTRY_CODES,
+                )
+            )
         except Exception as exc:
             attempts.extend(
                 _attempts_for(
-                    registration, [], attempted_at, ordered, f"{type(exc).__name__}: {exc}"
+                    registration,
+                    [],
+                    attempted_at,
+                    ordered,
+                    f"{type(exc).__name__}: {exc}",
+                    country_codes=country_codes or COUNTRY_CODES,
                 )
             )
     observations.sort(key=lambda item: (item.metric_id, item.country_code, item.reference_end))
@@ -370,9 +398,6 @@ def replay(release_path: Path | str) -> bool:
         return False
     source_items = json.loads((release / "sources.json").read_text(encoding="utf-8"))
     registrations = [SourceRegistration(**item) for item in source_items]
-    observations, attempts = _parse_artifacts(artifacts, raw_repository, registrations)
-    score_profile = "legacy" if schema_version == "konsider-release-2.0" else "current"
-    scores = score_observations(observations, profile=score_profile)
     expected_observations = [
         json.loads(line)
         for line in (release / "observations.jsonl").read_text(encoding="utf-8").splitlines()
@@ -385,6 +410,20 @@ def replay(release_path: Path | str) -> bool:
         json.loads(line)
         for line in (release / "attempts.jsonl").read_text(encoding="utf-8").splitlines()
     ]
+    release_country_codes = tuple(
+        dict.fromkeys(
+            str(item["country_code"])
+            for item in (expected_attempts or expected_observations)
+        )
+    )
+    observations, attempts = _parse_artifacts(
+        artifacts,
+        raw_repository,
+        registrations,
+        country_codes=release_country_codes,
+    )
+    score_profile = "legacy" if schema_version == "konsider-release-2.0" else "current"
+    scores = score_observations(observations, profile=score_profile)
     return (
         [item.to_dict() for item in observations] == expected_observations
         and [item.to_dict() for item in scores] == expected_scores

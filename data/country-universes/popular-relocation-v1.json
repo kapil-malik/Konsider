@@ -3,7 +3,7 @@
   "universe_id": "popular_relocation_v1",
   "description": "Candidate countries for a broad relocation comparison product, selected reproducibly from official international migrant-stock data.",
   "selection_policy_version": "popular-relocation-policy-v1",
-  "minimum_publishable_country_count": 100,
+  "minimum_publishable_country_count": 91,
   "candidate_pool_target": 150,
   "canonical_identifier": "ISO 3166-1 alpha-3",
   "primary_signal": {
