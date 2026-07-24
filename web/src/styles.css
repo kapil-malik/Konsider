@@ -517,6 +517,39 @@ select {
   font-weight: 750;
 }
 
+.ranking-filters {
+  display: grid;
+  grid-template-columns: minmax(12rem, 2fr) minmax(10rem, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.ranking-filters label {
+  display: grid;
+  gap: 0.35rem;
+  color: #475953;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.ranking-filters input,
+.ranking-filters select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.58rem 0.7rem;
+  border: 1px solid #cbd5d1;
+  border-radius: 0.55rem;
+  background: white;
+  color: var(--text);
+  font: inherit;
+}
+
+.ranking-filters input:focus,
+.ranking-filters select:focus {
+  border-color: var(--accent);
+  outline: 3px solid rgb(35 112 89 / 18%);
+}
+
 .ranking-toolbar {
   display: flex;
   align-items: center;
@@ -675,6 +708,10 @@ input[type="checkbox"] {
   padding: 3rem 1rem;
   border: 1px dashed #b9c5c2;
   border-radius: 0.8rem;
+}
+
+.filter-empty-state {
+  margin-top: 0.65rem;
 }
 
 .loading-panel {
@@ -1120,6 +1157,10 @@ input[type="checkbox"] {
   .ranking-toolbar {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .ranking-filters {
+    grid-template-columns: 1fr;
   }
 
   .ranking-table-scroll,

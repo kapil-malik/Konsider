@@ -11,13 +11,17 @@ async function json(route: Route, body: unknown, status = 200) {
   await route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
 }
 
-async function mockApi(page: Page, requests: Array<{ path: string; body?: unknown }> = []) {
+async function mockApi(
+  page: Page,
+  requests: Array<{ path: string; body?: unknown }> = [],
+  ranking = rankingFixture,
+) {
   await page.route('**/api/v1/**', async (route) => {
     const request = route.request()
     const url = new URL(request.url())
     requests.push({ path: url.pathname, body: request.postDataJSON() })
     if (url.pathname.endsWith('/catalog')) return json(route, catalogFixture)
-    if (url.pathname.endsWith('/rankings')) return json(route, rankingFixture)
+    if (url.pathname.endsWith('/rankings')) return json(route, ranking)
     if (url.pathname.includes('/countries/')) return json(route, countryMetricFixture)
     if (url.pathname.endsWith('/comparisons')) return json(route, comparisonFixture)
     return json(route, { error: { code: 'not_found', message: 'Not found' } }, 404)
@@ -87,6 +91,19 @@ test('opens and closes Data & Sources from the Guest menu', async ({ page }) => 
   await expect(dialog).toBeHidden()
 })
 
+test('search and region filters update visible and total result counts', async ({ page }) => {
+  await mockApi(page)
+  await page.goto('/')
+
+  await page.getByRole('searchbox', { name: 'Search countries' }).fill('C03')
+  await expect(page.getByText('Showing 1 of 5 ranked countries')).toBeVisible()
+  await expect(page.locator('.ranking-table tbody tr[data-country-code="C03"]')).toBeVisible()
+
+  await page.getByRole('combobox', { name: 'Region' }).selectOption('Region 2')
+  await expect(page.getByRole('heading', { name: 'No countries match these filters' })).toBeVisible()
+  await expect(page.getByText('Showing 0 of 5 ranked countries')).toBeVisible()
+})
+
 test('shows a controlled unavailable-release state', async ({ page }) => {
   await page.route('**/api/v1/catalog', (route) =>
     json(
@@ -128,4 +145,26 @@ test('mobile keeps detailed scores, details, and comparison complete', async ({ 
   await page.getByRole('button', { name: 'Compare selected (2)' }).click()
   await expect(page.getByRole('heading', { name: 'Overall affinity' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Air quality' })).toBeVisible()
+})
+
+test('mobile long list keeps the final country accessible through search', async ({ page }) => {
+  const longRanking = {
+    ...rankingFixture,
+    total_eligible_country_count: 91,
+    returned_result_count: 91,
+    rankings: Array.from({ length: 91 }, (_, index) => ({
+      ...rankingFixture.rankings[0],
+      rank: index + 1,
+      country_code: `X${String(index).padStart(2, '0')}`,
+      country_name: `Long list country ${index + 1}`,
+      region: index % 2 ? 'Region A' : 'Region B',
+    })),
+  }
+  await page.setViewportSize({ width: 390, height: 844 })
+  await mockApi(page, [], longRanking)
+  await page.goto('/')
+
+  await page.getByRole('searchbox', { name: 'Search countries' }).fill('Long list country 91')
+  await expect(page.locator('.ranking-card[data-country-code="X90"]')).toBeVisible()
+  await expect(page.getByText('Showing 1 of 91 ranked countries')).toBeVisible()
 })

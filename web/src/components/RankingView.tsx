@@ -1,4 +1,4 @@
-import type { KeyboardEvent, RefObject } from 'react'
+import { useMemo, useState, type KeyboardEvent, type RefObject } from 'react'
 
 import type { CatalogCriterion, Contribution, RankedCountry, Ranking } from '../api/types'
 import { formatScore } from '../preferences'
@@ -41,6 +41,23 @@ export function RankingView({
   onCompare,
   onOpenSources,
 }: RankingViewProps) {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [region, setRegion] = useState('')
+  const regions = useMemo(
+    () => [...new Set(ranking.rankings.map((country) => country.region))].sort(),
+    [ranking.rankings],
+  )
+  const visibleRankings = useMemo(() => {
+    const query = searchTerm.trim().toLocaleLowerCase()
+    return ranking.rankings.filter(
+      (country) =>
+        (!region || country.region === region) &&
+        (!query ||
+          country.country_name.toLocaleLowerCase().includes(query) ||
+          country.country_code.toLocaleLowerCase().includes(query)),
+    )
+  }, [ranking.rankings, region, searchTerm])
+
   const handleRowKey = (event: KeyboardEvent<HTMLTableRowElement>, countryCode: string) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
@@ -60,6 +77,29 @@ export function RankingView({
             Updating ranking…
           </span>
         )}
+      </div>
+
+      <div className="ranking-filters" role="search" aria-label="Filter country ranking">
+        <label>
+          <span>Search countries</span>
+          <input
+            type="search"
+            value={searchTerm}
+            placeholder="Country name or code"
+            onChange={(event) => setSearchTerm(event.currentTarget.value)}
+          />
+        </label>
+        <label>
+          <span>Region</span>
+          <select value={region} onChange={(event) => setRegion(event.currentTarget.value)}>
+            <option value="">All regions</option>
+            {regions.map((item) => (
+              <option value={item} key={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
 
       <div className="ranking-toolbar">
@@ -89,6 +129,11 @@ export function RankingView({
           <h3>No ranking results</h3>
           <p>The API returned no eligible countries for the current data release.</p>
         </div>
+      ) : !visibleRankings.length ? (
+        <div className="empty-state filter-empty-state" role="status">
+          <h3>No countries match these filters</h3>
+          <p>Try another country name, code, or region.</p>
+        </div>
       ) : (
         <>
           <div className="ranking-table-scroll" ref={scrollRef}>
@@ -115,7 +160,7 @@ export function RankingView({
                 </tr>
               </thead>
               <tbody>
-                {ranking.rankings.map((country) => {
+                {visibleRankings.map((country) => {
                   const checked = comparisonCountries.includes(country.country_code)
                   const selected = selectedCountry === country.country_code
                   return (
@@ -158,7 +203,7 @@ export function RankingView({
           </div>
 
           <div className="ranking-cards" role="list" aria-label="Ranked countries">
-            {ranking.rankings.map((country) => {
+            {visibleRankings.map((country) => {
               const checked = comparisonCountries.includes(country.country_code)
               const selected = selectedCountry === country.country_code
               return (
@@ -214,8 +259,8 @@ export function RankingView({
       )}
 
       <footer className="ranking-footer">
-        <span>
-          Showing all {ranking.returned_result_count} ranked{' '}
+        <span aria-live="polite">
+          Showing {visibleRankings.length} of {ranking.returned_result_count} ranked{' '}
           {ranking.returned_result_count === 1 ? 'country' : 'countries'}
         </span>
         <button className="release-link" onClick={onOpenSources}>

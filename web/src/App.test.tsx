@@ -148,6 +148,31 @@ test('renders an empty ranking response without inventing countries', async () =
   expect(screen.queryByText('Country 1')).not.toBeInTheDocument()
 })
 
+test('filters the catalog-driven ranking by country name, code, and region with visible counts', async () => {
+  installHappyApi()
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  const search = screen.getByRole('searchbox', { name: 'Search countries' })
+  const region = screen.getByRole('combobox', { name: 'Region' })
+  expect(screen.getByText('Showing 5 of 5 ranked countries')).toBeInTheDocument()
+
+  await user.type(search, 'C03')
+  expect(screen.getAllByText('Country 4').length).toBeGreaterThan(0)
+  expect(screen.queryByText('Country 1')).not.toBeInTheDocument()
+  expect(screen.getByText('Showing 1 of 5 ranked countries')).toBeInTheDocument()
+
+  await user.selectOptions(region, 'Region 2')
+  expect(screen.getByRole('heading', { name: 'No countries match these filters' })).toBeInTheDocument()
+  expect(screen.getByText('Showing 0 of 5 ranked countries')).toBeInTheDocument()
+
+  await user.clear(search)
+  expect(screen.getAllByText('Country 2').length).toBeGreaterThan(0)
+  expect(screen.queryByText('Country 4')).not.toBeInTheDocument()
+  expect(screen.getByText('Showing 1 of 5 ranked countries')).toBeInTheDocument()
+})
+
 test('uses structured 503 and network-safe catalog errors', async () => {
   const fetchMock = vi
     .fn()
