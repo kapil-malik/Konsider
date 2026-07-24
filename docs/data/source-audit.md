@@ -1,9 +1,8 @@
 # Data source and licence audit
 
-Status: audited for the data published in `2026-07-20.2` and unchanged in active packaging release
-`2026-07-21.1`; not legal advice
+Status: Phase 2D production-source decision finalized; not legal advice
 
-Last checked: 2026-07-23
+Last checked: 2026-07-24
 
 A public endpoint is not a licence. This audit relies on dataset/indicator-specific metadata and the
 [World Bank public licence terms](https://datacatalog.worldbank.org/public-licenses), not privacy
@@ -56,6 +55,22 @@ criterion. ICP 2021 covers 176 participating economies and publishes imputed est
 those imputed results are prohibited for Phase 2D. See the
 [full coverage report](country-coverage-phase-2d.md) and
 [homicide-source study](homicide-source-feasibility-phase-2d4.md).
+
+## Final homicide licensing decision
+
+Direct UNODC's official homicide metadata provides provenance and a suggested citation but no
+dataset-specific production reuse grant. Its linked United Nations terms limit copying to personal,
+non-commercial use and do not allow redistribution or derivative compilations without permission.
+The UNSD SDG API documents public machine access, but its own catalogue says to consult the
+respective API and the API does not clearly incorporate the permissive UNdata conditions. The
+generic United Nations restriction therefore remains the applicable conservative reading.
+
+Konsider needs to fetch, retain, normalize, score, publicly display, and redistribute derived
+release artifacts. Neither UN channel clearly authorizes that complete operation. Under the Phase
+2D finalization rule, ambiguous permission is a rejection for production. The final production
+homicide source is therefore only the World Bank WDI representation of `VC.IHR.PSRC.P5`, which is
+explicitly CC BY 4.0. The stable complete-case universe contains 91 countries; the four technically
+recoverable countries remain excluded because their WDI records are stale.
 
 ## Product-readiness interpretation
 

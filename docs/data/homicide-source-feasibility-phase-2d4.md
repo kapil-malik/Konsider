@@ -1,6 +1,6 @@
 # Phase 2D.4 homicide source feasibility
 
-Status: discovery complete; no evaluated source path reaches 100 complete countries
+Status: historical discovery complete; final production decision is WDI-only
 
 Study date: 2026-07-23
 
@@ -130,7 +130,24 @@ The Direct UNODC portal and UNSD API link to the general United Nations website 
 permit personal, non-commercial downloading and copying but, absent more specific permission,
 prohibit redistribution and derivative compilations. No more permissive data-specific licence was
 confirmed for the retained homicide payloads. Production redistribution compatibility is therefore
-unresolved and would block adoption even if coverage were sufficient.
+unresolved and blocks production adoption.
+
+The final review on 2026-07-24 checked the most specific official material available:
+
+- the Direct UNODC data-report page, dated homicide workbook, metadata PDF, suggested citation, and
+  portal terms link;
+- the UNSD API catalogue, SDG API Swagger surface, SDG data portal terms link, and UNdata
+  conditions; and
+- the United Nations website terms that the two services expose when no dataset-specific licence is
+  stated.
+
+The UNODC metadata establishes authority, definitions, provenance, and citation, but it does not
+grant the right to retain, transform, publicly display, or redistribute the workbook in a public or
+potentially commercial product. The UNSD API documents machine access but does not state that its
+SDG payload is governed by the more permissive UNdata conditions. Public access and a suggested
+citation are not a production reuse licence. Because neither channel has a clear affirmative grant
+covering Konsider's production operations, the Phase 2D finalization rule selects the 91-country
+WDI-only release. This is a conservative product-source decision, not legal advice.
 
 Eurostat permits commercial and non-commercial reuse of statistical data and metadata with
 attribution, subject to identified third-party exceptions. OECD generally permits extraction,
@@ -162,7 +179,7 @@ their checksums and retrieval metadata. The active pointer remained:
 }
 ```
 
-## Recommendation and decision
+## Historical recommendation
 
 This is **Outcome D**:
 
@@ -180,3 +197,21 @@ recommended or implemented by Phase 2D.4.
 Known limitations are the UN redistribution ambiguity, absent provisional/final flags in both
 primary disseminations, no explicit age dimension in the UNSD sex-only series, mutable upstream
 revisions, and limited regional scope of the fallback sources.
+
+## Final Phase 2D decision
+
+Phase 2D no longer uses 100 countries as an acceptance target. The product supports the countries
+for which complete and sufficiently fresh data is available across every enabled ranking criterion
+under the approved source and licensing policy.
+
+The final production homicide policy is:
+
+```text
+World Bank WDI VC.IHR.PSRC.P5 is the only production homicide source.
+```
+
+Bangladesh, Belarus, Kuwait, and Saudi Arabia remain excluded because their WDI observations fail
+the unchanged five-year freshness rule. They are technically recoverable from Direct UNODC or
+UNSD, but those payloads are not approved for production reuse. No value was manually copied, no
+freshness rule was relaxed, and no imputation or partial scoring was introduced. Eurostat and OECD
+remain documented rejected research only.
