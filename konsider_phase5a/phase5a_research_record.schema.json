@@ -1,0 +1,512 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.ai/schemas/phase5-criterion-research-record-v1.json",
+  "title": "Konsider Phase 5 Criterion Research Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase_id",
+    "criterion_id",
+    "name",
+    "category",
+    "classification_tags",
+    "natural_granularity",
+    "research_rank",
+    "research_wave",
+    "status",
+    "coverage",
+    "source_candidates",
+    "blocker_codes",
+    "caveat_codes",
+    "evidence"
+  ],
+  "properties": {
+    "phase_id": {
+      "type": "string",
+      "pattern": "^5[A-H]$"
+    },
+    "criterion_id": {
+      "type": "string",
+      "pattern": "^C[0-9]{2}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "classification_tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "IC",
+          "SC",
+          "PC",
+          "DO",
+          "CR",
+          "PF",
+          "LF"
+        ]
+      }
+    },
+    "natural_granularity": {
+      "enum": [
+        "NATIONAL",
+        "NATIONAL_WITH_CITY_CAVEAT",
+        "CITY_OR_REGIONAL",
+        "PREFERENCE_MODEL",
+        "PROFILE_ONLY"
+      ]
+    },
+    "decision_pillars": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "LEGAL_MOBILITY",
+          "WORK_AND_STUDY",
+          "FINANCIAL_VIABILITY",
+          "SAFETY_AND_HEALTH",
+          "INTEGRATION",
+          "DAILY_RELIABILITY",
+          "ENVIRONMENT_AND_LIFESTYLE"
+        ]
+      }
+    },
+    "relocation_question": {
+      "type": "string"
+    },
+    "definition": {
+      "type": "string"
+    },
+    "target_profiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "decision_value": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 5
+    },
+    "profile_dependence": {
+      "enum": [
+        "NONE",
+        "MODERATE",
+        "HIGH",
+        "PROFILE_ONLY",
+        "NOT_ASSESSED"
+      ]
+    },
+    "research_rank": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "research_wave": {
+      "enum": [
+        "BATCH_1",
+        "BATCH_2",
+        "WAVE_3",
+        "DEFER_OR_SPECIAL_STUDY",
+        "EXISTING_MONITOR",
+        "PROFILE_LAYER"
+      ]
+    },
+    "research_priority_score": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "status": {
+      "enum": [
+        "NOT_SCREENED",
+        "SCREENED_PROMISING",
+        "SCREENED_POSSIBLE",
+        "SCREENED_LOW_FEASIBILITY",
+        "DEEP_RESEARCH_APPROVED",
+        "PROBE_APPROVED",
+        "PROBE_MEASURED_PASS",
+        "PROBE_MEASURED_FAIL",
+        "PRODUCTION_CANDIDATE",
+        "EXPERIMENTAL_CANDIDATE",
+        "RESERVE_CANDIDATE",
+        "DEFERRED_CITY_LAYER",
+        "DEFERRED_PROFILE_LAYER",
+        "DEFERRED",
+        "REJECTED",
+        "IMPLEMENTED_READY",
+        "IMPLEMENTED_EXPERIMENTAL"
+      ]
+    },
+    "freshness_class": {
+      "enum": [
+        "CURRENT_POLICY",
+        "FAST_MOVING",
+        "STANDARD_SOCIOECONOMIC",
+        "SLOW_STRUCTURAL",
+        "CLIMATE_NORMAL",
+        "EVENT_RISK_MODEL",
+        "STATIC_OR_LEGAL_ASOF",
+        "NOT_ASSESSED"
+      ]
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "universe_id",
+        "denominator",
+        "measured"
+      ],
+      "properties": {
+        "universe_id": {
+          "type": "string"
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expected_band": {
+          "enum": [
+            "FULL",
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "measured": {
+          "type": "boolean"
+        },
+        "found": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "fresh": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "parsed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "validated": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "missing": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "stale": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "invalid": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "rejected": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "unmapped": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "only_blocker": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "source_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_candidate_id",
+          "publisher",
+          "dataset",
+          "evidence_level"
+        ],
+        "properties": {
+          "source_candidate_id": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "dataset": {
+            "type": "string"
+          },
+          "series_or_table": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "access_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "methodology_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "licence_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "authority_grade": {
+            "enum": [
+              "A4",
+              "A3",
+              "A2",
+              "A1",
+              "A0",
+              "NOT_ASSESSED"
+            ]
+          },
+          "licence_grade": {
+            "enum": [
+              "L4",
+              "L3",
+              "L2",
+              "L1",
+              "L0",
+              "NOT_ASSESSED"
+            ]
+          },
+          "comparability_grade": {
+            "enum": [
+              "C4",
+              "C3",
+              "C2",
+              "C1",
+              "C0",
+              "NOT_ASSESSED"
+            ]
+          },
+          "mapping_grade": {
+            "enum": [
+              "M3",
+              "M2",
+              "M1",
+              "M0",
+              "NOT_ASSESSED"
+            ]
+          },
+          "evidence_level": {
+            "enum": [
+              "VERIFIED",
+              "MEASURED",
+              "ESTIMATED",
+              "HYPOTHESIS"
+            ]
+          }
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "HIGHER_BETTER",
+            "LOWER_BETTER",
+            "TARGET_RANGE",
+            "PREFERENCE_MATCH",
+            "PROFILE_DERIVED",
+            "INFORMATIONAL_ONLY",
+            "NOT_ASSESSED"
+          ]
+        },
+        "grade": {
+          "enum": [
+            "S4",
+            "S3",
+            "S2",
+            "S1",
+            "S0",
+            "NOT_ASSESSED"
+          ]
+        },
+        "proposed_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sensitivity_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "comparability_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "country_mapping_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "licensing_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "redundancy_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "maintenance_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocker_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "caveat_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "recommendation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim",
+          "source",
+          "evidence_level"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "locator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "checked_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "evidence_level": {
+            "enum": [
+              "VERIFIED",
+              "MEASURED",
+              "ESTIMATED",
+              "HYPOTHESIS"
+            ]
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
