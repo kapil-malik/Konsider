@@ -87,13 +87,17 @@ class WorldBankMultiIndicatorJsonAdapterTests(TestCase):
                 ],
             ),
         )
-        record = WorldBankMultiIndicatorJsonAdapter().parse(
-            artifacts,
-            {
-                "indicator_components": {"INFLATION": "inflation", "FX": "fx"},
-                "minimum_observations": {"inflation": 3, "fx": 3},
-            },
-        ).records[0]
+        record = (
+            WorldBankMultiIndicatorJsonAdapter()
+            .parse(
+                artifacts,
+                {
+                    "indicator_components": {"INFLATION": "inflation", "FX": "fx"},
+                    "minimum_observations": {"inflation": 3, "fx": 3},
+                },
+            )
+            .records[0]
+        )
         self.assertNotIn("inflation", record.values)
         self.assertEqual(record.values["fx"], 1.2)
 
@@ -130,15 +134,19 @@ class HciPlusStataAdapterTests(TestCase):
             requested_url="https://example.test/hci.dta",
             body=body.getvalue(),
         )
-        record = HciPlusStataAdapter().parse(
-            (artifact,),
-            {
-                "field_components": {
-                    "hlo_mf": "hlo",
-                    "lays_mf": "lays",
-                    "hcip_schooling_component_mf": "schooling",
-                }
-            },
-        ).records[0]
+        record = (
+            HciPlusStataAdapter()
+            .parse(
+                (artifact,),
+                {
+                    "field_components": {
+                        "hlo_mf": "hlo",
+                        "lays_mf": "lays",
+                        "hcip_schooling_component_mf": "schooling",
+                    }
+                },
+            )
+            .records[0]
+        )
         self.assertEqual(record.reference_end, "2025")
         self.assertEqual(record.values, {"hlo": 420.0, "lays": 8.5})

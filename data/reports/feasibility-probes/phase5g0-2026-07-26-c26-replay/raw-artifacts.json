@@ -1,0 +1,19 @@
+[
+  {
+    "artifact_id": "sha256:8cf7c04ede53281ab9003353806b55329068a090d32a68e8df1766676a886b3c",
+    "byte_length": 38924260,
+    "content_length_header": "38924260",
+    "dataset_version": "GHED all data, March 2026",
+    "etag": null,
+    "final_url": "https://apps.who.int/nha/database/Home/IndicatorsDownload/en",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "text/plain",
+    "parser_version": "ghed_xlsx_v1",
+    "path": "data/raw/feasibility-probes/C26-WHO-GHED-2026-03/8cf7c04ede53281ab9003353806b55329068a090d32a68e8df1766676a886b3c.bin",
+    "requested_url": "https://apps.who.int/nha/database/Home/IndicatorsDownload/en",
+    "retrieved_at": "2026-07-26T17:39:23.316444+00:00",
+    "sha256": "8cf7c04ede53281ab9003353806b55329068a090d32a68e8df1766676a886b3c",
+    "source_id": "C26-WHO-GHED-2026-03"
+  }
+]

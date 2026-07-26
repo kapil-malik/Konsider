@@ -33,6 +33,21 @@ and [API operations](../operations/api.md).
 - Limitation: fixture outcomes prove framework behaviour only; they are not evidence of live source
   coverage or licensing suitability.
 
+## Phase 5G-0 and 5G-1: portfolio expansion
+
+- Goal: resolve the final conditional source questions and implement only approved, deterministic
+  additions without weakening the stable 91-country contract.
+- Delivered: exact-source online/offline probes for four candidates; production ingestion,
+  provenance, uncertainty retention, versioned scoring, validation, sensitivity diagnostics, API
+  catalog integration, immutable publication, and replay for three additions.
+- Major decisions: health spending stays conditional at 90/91; disaster risk stays experimental;
+  working hours fails current coverage; citizenship access awaits a stable archive. Political
+  stability, rule of law, and established immigrant presence are ready at 91/91. Immigrant presence
+  is preference-based, and WGI overlap is measured and disclosed.
+- Completed: 2026-07-26 with active release `2026-07-26.3`.
+- Remaining limitations: UHC remains stale; infrastructure remains experimental; refresh remains
+  manual; raw third-party bytes remain local and ignored.
+
 ## Worker-first real-data milestone
 
 - Goal: replace fixture-first product assumptions with audited, reproducible official data.

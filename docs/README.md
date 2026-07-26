@@ -17,6 +17,8 @@ readable schemas, and published release manifests take precedence if prose ever 
   results for seven approved candidates, aggregate recommendations, and replay evidence.
 - [Phase 5F portfolio decision](research/konsider_phase5f_portfolio_decision.md) - approved
   portfolio, guardrails, fallback hierarchy, and Phase 5G implementation order.
+- [Phase 5G-0 final probes](research/phase5g0-final-probes.md) - exact-source coverage,
+  freshness, replay evidence, and final dispositions for four unresolved candidates.
 - [Phase 2C UI](product/ui.md) - implemented product behavior and technical boundaries.
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md) - reproducible universe,
   complete-case results, final 91-country universe, and closure decision.
@@ -48,6 +50,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 5D feasibility probes](research/phase5d-feasibility-probes.md)
 - [Phase 5E deterministic probes](research/phase5e-deterministic-probes.md)
 - [Phase 5F portfolio decision](research/konsider_phase5f_portfolio_decision.md)
+- [Phase 5G-0 final probes](research/phase5g0-final-probes.md)
 
 ## Historical records
 
@@ -55,4 +58,4 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Release history](history/releases/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active release is `2026-07-24.1`.
+instructions. The active release is `2026-07-26.3`.

@@ -2,18 +2,18 @@
 
 from __future__ import annotations
 
-import io
 import csv
+import io
 import json
 import math
 import re
 import zipfile
 from collections import Counter
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass, replace
 from datetime import UTC, datetime
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import Callable, Iterable
 
 from openpyxl import load_workbook
 
@@ -37,6 +37,9 @@ SUPPORTED_CRITERION_SOURCE_IDS = {
     "household_consumption_price_level_us_100": "world_bank_icp",
     "women_legal_economic_equality": "world_bank_wbl",
     "infrastructure_readiness_composite": "world_bank_infrastructure",
+    "established_immigrant_presence": "world_bank_migrant_stock",
+    "political_stability": "world_bank_wgi_political_stability",
+    "rule_of_law": "world_bank_wgi_rule_of_law",
 }
 
 
@@ -620,9 +623,7 @@ def _criterion_result(
         status = "parse_failed"
     elif not raw_record_present:
         status = "missing"
-    elif not raw_value_non_null:
-        status = "invalid_value"
-    elif not finite or not range_valid:
+    elif not raw_value_non_null or not finite or not range_valid:
         status = "invalid_value"
     elif not fresh:
         status = "stale"
@@ -848,6 +849,61 @@ def _infrastructure_criterion(
     return output
 
 
+def _wgi_criterion(
+    criterion_id: str,
+    source_id: str,
+    body: bytes,
+    sheet_name: str,
+    candidate_codes: set[str],
+    as_of_year: int,
+) -> dict[str, dict[str, object]]:
+    values: dict[str, tuple[int, float]] = {}
+    raw_codes: set[str] = set()
+    try:
+        workbook = load_workbook(io.BytesIO(body), read_only=True, data_only=True)
+        rows = workbook[sheet_name].iter_rows(values_only=True)
+        headers = list(next(rows))
+        code_column = headers.index("Economy (code)")
+        year_column = headers.index("Year")
+        estimate_column = headers.index("Governance estimate (approx. -2.5 to +2.5)")
+        for row in rows:
+            code = str(row[code_column] or "").strip().upper()
+            if code not in candidate_codes:
+                continue
+            raw_codes.add(code)
+            if isinstance(row[estimate_column], (int, float)):
+                candidate = int(row[year_column]), float(row[estimate_column])
+                if code not in values or candidate[0] > values[code][0]:
+                    values[code] = candidate
+    except Exception as exc:
+        error = f"{type(exc).__name__}: {exc}"
+        return {
+            code: _criterion_result(
+                criterion_id=criterion_id,
+                source_id=source_id,
+                raw_record_present=False,
+                raw_value_non_null=False,
+                value=None,
+                reference_years=[],
+                as_of_year=as_of_year,
+                parse_error=error,
+            )
+            for code in candidate_codes
+        }
+    return {
+        code: _criterion_result(
+            criterion_id=criterion_id,
+            source_id=source_id,
+            raw_record_present=code in raw_codes,
+            raw_value_non_null=code in values,
+            value=values[code][1] if code in values else None,
+            reference_years=[values[code][0]] if code in values else [],
+            as_of_year=as_of_year,
+        )
+        for code in candidate_codes
+    }
+
+
 def _piecewise(value: float, anchors: tuple[tuple[float, float], ...]) -> float:
     if value <= anchors[0][0]:
         return anchors[0][1]
@@ -1019,6 +1075,29 @@ def audit_coverage(
         ),
         "infrastructure_readiness_composite": _infrastructure_criterion(
             bodies["world_bank_infrastructure"], candidate_codes, now.year
+        ),
+        "established_immigrant_presence": _wdi_single_criterion(
+            "established_immigrant_presence",
+            "world_bank_migrant_stock",
+            bodies["world_bank_migrant_stock"],
+            candidate_codes,
+            now.year,
+        ),
+        "political_stability": _wgi_criterion(
+            "political_stability",
+            "world_bank_wgi_political_stability",
+            bodies["world_bank_wgi_political_stability"][0],
+            "pv",
+            candidate_codes,
+            now.year,
+        ),
+        "rule_of_law": _wgi_criterion(
+            "rule_of_law",
+            "world_bank_wgi_rule_of_law",
+            bodies["world_bank_wgi_rule_of_law"][0],
+            "rl",
+            candidate_codes,
+            now.year,
         ),
     }
     criterion_results = {

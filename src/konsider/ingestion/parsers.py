@@ -556,6 +556,125 @@ def parse_world_bank_infrastructure(
     return output
 
 
+def _parse_world_bank_wgi(
+    artifacts: list[RawArtifact],
+    bodies: list[bytes],
+    *,
+    source_id: str,
+    metric_id: str,
+    parser_version: str,
+    sheet_name: str,
+) -> list[MetricObservation]:
+    workbook = load_workbook(io.BytesIO(bodies[0]), read_only=True, data_only=True)
+    sheet = workbook[sheet_name]
+    rows = sheet.iter_rows(values_only=True)
+    headers = list(next(rows))
+    code_col = headers.index("Economy (code)")
+    year_col = headers.index("Year")
+    estimate_col = headers.index("Governance estimate (approx. -2.5 to +2.5)")
+    stderr_col = headers.index("Standard error (estimate)")
+    lower_col = headers.index("Lower threshold (90% conf. int. estimate)")
+    upper_col = headers.index("Upper threshold (90% conf. int. estimate)")
+    latest = {}
+    for row_number, row in enumerate(rows, start=2):
+        code = str(row[code_col] or "").strip()
+        if code not in COUNTRIES or not isinstance(row[estimate_col], (int, float)):
+            continue
+        year = int(row[year_col])
+        if code not in latest or year > latest[code][0]:
+            latest[code] = (year, row_number, row)
+    output = []
+    for code in sorted(COUNTRIES):
+        if code not in latest:
+            continue
+        year, row_number, row = latest[code]
+        value = float(row[estimate_col])
+        reference = SourceRecordReference(
+            artifacts[0].artifact_id,
+            f"{sheet_name}!R{row_number}",
+            f"{code}|{sheet_name}|{year}",
+        )
+        output.append(
+            _annual_observation(
+                records=(reference,),
+                source_id=source_id,
+                country=code,
+                metric=metric_id,
+                value=value,
+                unit="estimate_minus_2_5_to_2_5",
+                year=year,
+                observation_type="perception_based_composite",
+                parser_version=parser_version,
+                method="wgi_estimate_with_uncertainty_v1",
+                flags=(
+                    "world_bank_primary_dataset",
+                    "perception_based",
+                    "published_standard_error_retained",
+                    "broad_band_only",
+                ),
+                lower=float(row[lower_col]),
+                upper=float(row[upper_col]),
+                components=(
+                    ObservationComponent(
+                        "published_standard_error",
+                        float(row[stderr_col]),
+                        "standard_error",
+                        year,
+                        reference,
+                    ),
+                ),
+            )
+        )
+    return output
+
+
+def parse_world_bank_wgi_political_stability(artifacts, bodies):
+    return _parse_world_bank_wgi(
+        artifacts,
+        bodies,
+        source_id="world_bank_wgi_political_stability",
+        metric_id="political_stability",
+        parser_version="world_bank_wgi_xlsx_v1",
+        sheet_name="pv",
+    )
+
+
+def parse_world_bank_wgi_rule_of_law(artifacts, bodies):
+    return _parse_world_bank_wgi(
+        artifacts,
+        bodies,
+        source_id="world_bank_wgi_rule_of_law",
+        metric_id="rule_of_law",
+        parser_version="world_bank_wgi_xlsx_v1",
+        sheet_name="rl",
+    )
+
+
+def parse_world_bank_migrant_stock(artifacts, bodies):
+    latest = _latest_wdi_rows(artifacts[0], bodies[0])
+    return [
+        _annual_observation(
+            records=(ref,),
+            source_id="world_bank_migrant_stock",
+            country=code,
+            metric="established_immigrant_presence",
+            value=row["value"],
+            unit="percent_population",
+            year=int(row["year"]),
+            observation_type="estimated_stock",
+            parser_version="world_bank_migrant_stock_v1",
+            method="wdi_migrant_stock_share_v1",
+            flags=(
+                "wdi_distribution",
+                "un_population_division_upstream",
+                "preference_property_not_universal_quality",
+                "not_integration_or_visa_access",
+            ),
+        )
+        for code, (row, ref) in sorted(latest.items())
+    ]
+
+
 PARSERS = {
     "who_air_quality": parse_who_air_quality,
     "who_uhc": parse_who_uhc,
@@ -568,4 +687,7 @@ PARSERS = {
     "world_bank_icp_current": parse_world_bank_icp_current,
     "world_bank_wbl": parse_world_bank_wbl,
     "world_bank_infrastructure": parse_world_bank_infrastructure,
+    "world_bank_wgi_political_stability": parse_world_bank_wgi_political_stability,
+    "world_bank_wgi_rule_of_law": parse_world_bank_wgi_rule_of_law,
+    "world_bank_migrant_stock": parse_world_bank_migrant_stock,
 }

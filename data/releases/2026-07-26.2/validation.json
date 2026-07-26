@@ -1,0 +1,765 @@
+{
+  "attempt_count": 819,
+  "criterion_coverage": {
+    "ambient_pm25_population_weighted": 91,
+    "established_immigrant_presence": 91,
+    "household_consumption_price_level_us_100": 91,
+    "infrastructure_readiness_composite": 91,
+    "intentional_homicide_rate": 91,
+    "political_stability": 91,
+    "rule_of_law": 91,
+    "uhc_service_coverage_index": 91,
+    "women_legal_economic_equality": 91
+  },
+  "criterion_readiness": {
+    "ambient_pm25_population_weighted": true,
+    "established_immigrant_presence": true,
+    "household_consumption_price_level_us_100": true,
+    "infrastructure_readiness_composite": true,
+    "intentional_homicide_rate": true,
+    "political_stability": true,
+    "rule_of_law": true,
+    "uhc_service_coverage_index": false,
+    "women_legal_economic_equality": true
+  },
+  "issues": [
+    {
+      "code": "source_stale",
+      "country_code": "ALB",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ARE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ARM",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ATG",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "AUS",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "AUT",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BEL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BGR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BHR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BHS",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BIH",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BOL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BRA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "BWA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CAN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CHE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CHL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CMR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "COL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CRI",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CYP",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "CZE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "DEU",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "DNK",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "DOM",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "DZA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ESP",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "EST",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "FIN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "FJI",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "FRA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "GBR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "GHA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "GRC",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "GRD",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "GTM",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "GUY",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "HND",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "HRV",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "HTI",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "HUN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "IDN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "IND",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "IRL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ISL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ISR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ITA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "JAM",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "JPN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "KAZ",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "KOR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "LTU",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "LUX",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "LVA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MDA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MEX",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MKD",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MLT",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MNE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MNG",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MUS",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "MYS",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NAM",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NGA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NIC",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NLD",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NOR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "NZL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "OMN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "PAN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "PER",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "PHL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "POL",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "PRT",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "PRY",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "QAT",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ROU",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "RUS",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SGP",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SLV",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SRB",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SVK",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SVN",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "SWE",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "TTO",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "TUR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "UKR",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "URY",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "USA",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "UZB",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    },
+    {
+      "code": "source_stale",
+      "country_code": "ZAF",
+      "message": "Source year(s) [2021] exceed 3-year freshness limit.",
+      "metric_id": "uhc_service_coverage_index",
+      "scope": "product_readiness",
+      "severity": "blocker"
+    }
+  ],
+  "observation_count": 819,
+  "passed": true,
+  "product_ready": true,
+  "ready_criterion_count": 8,
+  "schema_version": "validation-3.0",
+  "score_count": 819,
+  "status_counts": {
+    "success": 819
+  },
+  "structural_passed": true
+}

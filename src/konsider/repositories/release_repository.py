@@ -5,9 +5,9 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+from collections.abc import Iterable
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Iterable
 
 from konsider.ingestion.countries import COUNTRY_UNIVERSE
 from konsider.ingestion.models import (
@@ -34,8 +34,13 @@ def _sha256(path: Path) -> str:
 
 
 class ReleaseRepository:
-    def __init__(self, root: Path | str = "data/releases") -> None:
+    def __init__(
+        self,
+        root: Path | str = "data/releases",
+        catalog_path: Path | str = "data/catalogs/consumer-catalog-1.0.json",
+    ) -> None:
         self.root = Path(root)
+        self.catalog_path = Path(catalog_path)
 
     def write_draft(
         self,
@@ -145,6 +150,19 @@ class ReleaseRepository:
             raise ValueError(
                 "A release with fewer than five product-ready criteria cannot be promoted."
             )
+        if require_product_ready:
+            catalog = json.loads(self.catalog_path.read_text(encoding="utf-8"))
+            required = {
+                str(item["id"])
+                for item in catalog["criteria"]
+                if item.get("ready") and item.get("default_enabled")
+            }
+            readiness = validation["criterion_readiness"]
+            failed = sorted(criterion for criterion in required if not readiness.get(criterion))
+            if failed:
+                raise ValueError(
+                    "Catalog-ready criteria failed release validation: " + ", ".join(failed)
+                )
         published = self.root / release_id
         if published.exists():
             raise FileExistsError(f"Published release is immutable: {release_id}")

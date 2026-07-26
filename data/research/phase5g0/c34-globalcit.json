@@ -1,0 +1,36 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C34",
+  "name": "Naturalisation accessibility",
+  "adapter_id": "ilostat_indicator_csv_v1",
+  "adapter_options": {
+    "component_id": "not_executed",
+    "sex_code": "NOT_APPLICABLE"
+  },
+  "source": {
+    "source_candidate_id": "C34-GLOBALCIT-V3",
+    "publisher": "European University Institute / GLOBALCIT",
+    "dataset": "GLOBALCIT Citizenship Law Dataset v3.0",
+    "canonical_page_url": "https://globalcit.eu/databases/globalcit-citizenship-law-dataset/",
+    "access_urls": ["https://hdl.handle.net/1814/73190"],
+    "methodology_url": "https://globalcit.eu/databases/globalcit-citizenship-law-dataset/",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://cadmus.eui.eu/handle/1814/73190",
+    "licence_evidence": "The EUI repository records CC BY 4.0 for the dataset.",
+    "redistribution": "No retrieval or redistribution approved until a version-pinned archive URL is stable.",
+    "attribution": "Vink et al. (2025), GLOBALCIT Citizenship Law Dataset v3.0.",
+    "dataset_version": "v3.0, laws in force 1 January 2024",
+    "source_version": "repository version 3, 13 June 2025",
+    "update_frequency": "periodic",
+    "parser_version": "not_implemented"
+  },
+  "observation_type": "national de jure legal coding",
+  "geographic_scope": "national",
+  "freshness_min_year": 2024,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {"component_id": "not_executed", "minimum": 0, "maximum": 1}
+  ],
+  "blocker_codes": ["SRC_VERSION_PIN_UNRESOLVED", "SCO_NORMATIVE_WEIGHTS_REQUIRED"],
+  "rejection_reason_codes": ["SRC_NO_STABLE_MACHINE_DOWNLOAD"]
+}

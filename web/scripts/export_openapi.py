@@ -10,7 +10,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from konsider.api.app import create_app  # noqa: E402
+from konsider.api.app import create_app
 
 
 def type_script_type(schema: dict[str, Any]) -> str:

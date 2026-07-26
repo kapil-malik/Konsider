@@ -1,15 +1,15 @@
 # Product roadmap
 
-Status: Phase 2C and Phase 2D complete
+Status: Phase 5G-0 and Phase 5G-1 complete
 
-Last updated: 2026-07-24
+Last updated: 2026-07-26
 
 ## Current position
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v1 transport, and responsive React UI are
-implemented. Active release `2026-07-24.1` exposes the stable 91-country universe and six available
-criteria; five are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure
+implemented. Active release `2026-07-26.3` exposes the stable 91-country universe and nine available
+criteria; eight are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure
 is enabled but experimental. Phase 2D is closed: the universe is the audited complete-case
 intersection under the approved WDI-only homicide source policy, and the UI supports search, region
 filters, and the long list.
@@ -62,6 +62,19 @@ See the [implemented UI guide](ui.md) and [React/Vite decision](../architecture/
 
 See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md) and
 [Phase 2D.4 source study](../data/homicide-source-feasibility-phase-2d4.md).
+
+## Phase 5G: portfolio implementation — complete
+
+- Completed exact-source, non-publishing probes for health spending, disaster-risk resilience,
+  working hours, and citizenship access.
+- Added political stability, rule of law, and established immigrant presence with 91/91 coverage,
+  versioned scoring, provenance, validation, diagnostics, and replay.
+- Published immutable release `2026-07-26.3`; eight criteria are now enabled.
+- Retained WGI uncertainty, disclosed governance overlap, and kept immigrant presence
+  preference-based rather than treating it as universal quality.
+
+See the [Phase 5G-0 probe report](../research/phase5g0-final-probes.md) and
+[active release report](../history/releases/2026-07-26.3.md).
 
 ## Phase 2E: deterministic evidence and explanations
 

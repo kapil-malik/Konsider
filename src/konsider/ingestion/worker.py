@@ -32,9 +32,7 @@ def fetch_url(url: str) -> tuple[bytes, str, str, dict[str, object]]:
             "Accept": "application/json, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, */*",
         },
     )
-    with urllib.request.urlopen(
-        request, timeout=120
-    ) as response:  # noqa: S310 - registered URLs only
+    with urllib.request.urlopen(request, timeout=120) as response:
         return (
             response.read(),
             response.geturl(),

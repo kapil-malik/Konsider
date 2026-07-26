@@ -1,0 +1,29 @@
+[
+  {
+    "access_method": "Phase 5 deterministic research probe",
+    "attribution": "World Health Organization, Global Health Expenditure Database, March 2026.",
+    "canonical_page_url": "https://apps.who.int/nha/database/DocumentationCentre/Index/en",
+    "criterion_id": "C26",
+    "dataset_version": "GHED all data, March 2026",
+    "distributor": null,
+    "download_urls": [
+      "https://apps.who.int/nha/database/Home/IndicatorsDownload/en"
+    ],
+    "license_evidence": "WHO publishes GHED for open public access; production redistribution remains subject to the WHO data terms.",
+    "license_name": "WHO data terms and conditions",
+    "license_url": "https://data.who.int/about/data/terms-and-conditions",
+    "methodology_url": "https://www.who.int/publications/b/80101",
+    "notes": "Research probe registration; not an approved production source registration.",
+    "official_or_independent": "official",
+    "pagination": "adapter-specific",
+    "parser": "ghed_xlsx_v1",
+    "parser_version": "ghed_xlsx_v1",
+    "permitted_usage": "Non-publishing source-feasibility research only.",
+    "publisher": "World Health Organization",
+    "redistribution": "Retain raw workbook locally only; commit compact derived research outcomes with attribution.",
+    "reference_period": "fresh when observation year >= 2023",
+    "source_id": "C26-WHO-GHED-2026-03",
+    "source_version": "OOPS%CHE_SHA2011; observations through 2023",
+    "update_frequency": "annual"
+  }
+]

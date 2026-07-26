@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from konsider.api.settings import ApiSettings, PROJECT_ROOT
+from konsider.api.settings import PROJECT_ROOT, ApiSettings
 
 
 def test_default_settings_are_absolute_and_project_relative() -> None:

@@ -105,24 +105,21 @@ class WorldBankMultiIndicatorJsonAdapter:
         self, artifacts: tuple[ArtifactInput, ...], options: dict[str, object]
     ) -> AdapterResult:
         indicator_components = {
-            str(key): str(value)
-            for key, value in dict(options["indicator_components"]).items()
+            str(key): str(value) for key, value in dict(options["indicator_components"]).items()
         }
         minimum_observations = {
             str(key): int(value)
             for key, value in dict(options.get("minimum_observations", {})).items()
         }
-        observations: dict[
-            str, dict[str, list[tuple[int, float, str, str]]]
-        ] = defaultdict(lambda: defaultdict(list))
+        observations: dict[str, dict[str, list[tuple[int, float, str, str]]]] = defaultdict(
+            lambda: defaultdict(list)
+        )
         names: dict[str, str] = {}
         parse_failures: dict[str, tuple[str, str, int, str]] = {}
         for artifact in artifacts:
             for index, row in _world_bank_rows(artifact):
                 indicator = row.get("indicator")
-                indicator_id = (
-                    str(indicator.get("id") or "") if isinstance(indicator, dict) else ""
-                )
+                indicator_id = str(indicator.get("id") or "") if isinstance(indicator, dict) else ""
                 component = indicator_components.get(indicator_id)
                 if component is None:
                     continue
@@ -144,9 +141,7 @@ class WorldBankMultiIndicatorJsonAdapter:
                         component,
                     )
                     continue
-                observations[code][component].append(
-                    (year, number, artifact.artifact_id, locator)
-                )
+                observations[code][component].append((year, number, artifact.artifact_id, locator))
 
         records = []
         for code in sorted(set(observations) | set(parse_failures)):
@@ -298,8 +293,7 @@ class HciPlusStataAdapter:
         country_name_field = str(options.get("country_name_field", "wbcountryname"))
         year_field = str(options.get("year_field", "year"))
         field_components = {
-            str(key): str(value)
-            for key, value in dict(options["field_components"]).items()
+            str(key): str(value) for key, value in dict(options["field_components"]).items()
         }
         frame = pd.read_stata(io.BytesIO(artifacts[0].body))
         required_fields = {
@@ -344,9 +338,146 @@ class HciPlusStataAdapter:
             )
             if code not in latest or year > latest[code][0]:
                 latest[code] = (year, record)
-        return AdapterResult(
-            tuple(latest[code][1] for code in sorted(latest))
+        return AdapterResult(tuple(latest[code][1] for code in sorted(latest)))
+
+
+class GhedXlsxAdapter:
+    """Read one indicator from the WHO GHED all-data workbook."""
+
+    def parse(
+        self, artifacts: tuple[ArtifactInput, ...], options: dict[str, object]
+    ) -> AdapterResult:
+        if len(artifacts) != 1:
+            raise ValueError("GHED XLSX adapter requires exactly one artifact.")
+        import openpyxl
+
+        field = str(options["value_field"])
+        component_id = str(options["component_id"])
+        workbook = openpyxl.load_workbook(
+            io.BytesIO(artifacts[0].body), read_only=True, data_only=True
         )
+        sheet = workbook[str(options.get("sheet_name", "Data"))]
+        rows = sheet.iter_rows(values_only=True)
+        headers = [str(value) for value in next(rows)]
+        required = {"location", "code", "year", field}
+        if not required.issubset(headers):
+            raise ValueError(f"GHED workbook is missing fields: {sorted(required - set(headers))}")
+        index = {name: headers.index(name) for name in required}
+        latest: dict[str, tuple[int, ParsedProbeRecord]] = {}
+        for row_number, row in enumerate(rows, start=2):
+            code = str(row[index["code"]] or "").strip()
+            value = row[index[field]]
+            if not code or value is None:
+                continue
+            try:
+                year = int(row[index["year"]])
+                number = _finite_float(value)
+            except (TypeError, ValueError):
+                continue
+            record = ParsedProbeRecord(
+                source_country_id=code,
+                source_country_name=str(row[index["location"]] or code),
+                values={component_id: number},
+                reference_start=str(year),
+                reference_end=str(year),
+                artifact_ids=(artifacts[0].artifact_id,),
+                record_locators=(f"{sheet.title}!row={row_number}",),
+            )
+            if code not in latest or year > latest[code][0]:
+                latest[code] = (year, record)
+        return AdapterResult(tuple(latest[code][1] for code in sorted(latest)))
+
+
+class InformRiskXlsxAdapter:
+    """Read selected published 0-10 hazard components from INFORM Risk."""
+
+    def parse(
+        self, artifacts: tuple[ArtifactInput, ...], options: dict[str, object]
+    ) -> AdapterResult:
+        if len(artifacts) != 1:
+            raise ValueError("INFORM XLSX adapter requires exactly one artifact.")
+        import openpyxl
+
+        workbook = openpyxl.load_workbook(
+            io.BytesIO(artifacts[0].body), read_only=True, data_only=True
+        )
+        sheet = workbook[str(options.get("sheet_name", "INFORM Risk 2026 (a-z)"))]
+        header_row = int(options.get("header_row", 2))
+        headers = [
+            str(cell.value or "").strip()
+            for cell in next(sheet.iter_rows(min_row=header_row, max_row=header_row))
+        ]
+        field_components = {
+            str(field): str(component)
+            for field, component in dict(options["field_components"]).items()
+        }
+        required = {"COUNTRY", "ISO3", *field_components}
+        if not required.issubset(headers):
+            raise ValueError(
+                f"INFORM workbook is missing fields: {sorted(required - set(headers))}"
+            )
+        index = {name: headers.index(name) for name in required}
+        records = []
+        for row_number, row in enumerate(
+            sheet.iter_rows(min_row=header_row + 2, values_only=True),
+            start=header_row + 2,
+        ):
+            code = str(row[index["ISO3"]] or "").strip()
+            if not code:
+                continue
+            values = {}
+            for field, component in field_components.items():
+                if row[index[field]] is not None:
+                    values[component] = _finite_float(row[index[field]])
+            records.append(
+                ParsedProbeRecord(
+                    source_country_id=code,
+                    source_country_name=str(row[index["COUNTRY"]] or code),
+                    values=values,
+                    reference_start=str(options["reference_year"]),
+                    reference_end=str(options["reference_year"]),
+                    artifact_ids=(artifacts[0].artifact_id,),
+                    record_locators=(f"{sheet.title}!row={row_number}",),
+                )
+            )
+        return AdapterResult(tuple(records))
+
+
+class IlostatIndicatorCsvAdapter:
+    """Read one national annual ILOSTAT indicator and select its latest value."""
+
+    def parse(
+        self, artifacts: tuple[ArtifactInput, ...], options: dict[str, object]
+    ) -> AdapterResult:
+        if len(artifacts) != 1:
+            raise ValueError("ILOSTAT indicator adapter requires exactly one artifact.")
+        component_id = str(options["component_id"])
+        sex_code = str(options.get("sex_code", "SEX_T"))
+        latest: dict[str, tuple[int, ParsedProbeRecord]] = {}
+        rows = csv.DictReader(io.StringIO(artifacts[0].body.decode("utf-8-sig")))
+        for line_number, row in enumerate(rows, start=2):
+            if row.get("sex") != sex_code:
+                continue
+            code = str(row.get("ref_area") or "").strip()
+            if not code:
+                continue
+            try:
+                year = int(row["time"])
+                number = _finite_float(row["obs_value"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            record = ParsedProbeRecord(
+                source_country_id=code,
+                source_country_name=str(row.get("ref_area.label") or code),
+                values={component_id: number},
+                reference_start=str(year),
+                reference_end=str(year),
+                artifact_ids=(artifacts[0].artifact_id,),
+                record_locators=(f"{artifacts[0].requested_url}#row={line_number}",),
+            )
+            if code not in latest or year > latest[code][0]:
+                latest[code] = (year, record)
+        return AdapterResult(tuple(latest[code][1] for code in sorted(latest)))
 
 
 ADAPTERS: dict[str, ProbeAdapter] = {
@@ -354,4 +485,7 @@ ADAPTERS: dict[str, ProbeAdapter] = {
     "world_bank_multi_indicator_json_v1": WorldBankMultiIndicatorJsonAdapter(),
     "ilostat_labour_composite_csv_v1": IlostatLabourCompositeCsvAdapter(),
     "hci_plus_stata_v1": HciPlusStataAdapter(),
+    "ghed_xlsx_v1": GhedXlsxAdapter(),
+    "inform_risk_xlsx_v1": InformRiskXlsxAdapter(),
+    "ilostat_indicator_csv_v1": IlostatIndicatorCsvAdapter(),
 }

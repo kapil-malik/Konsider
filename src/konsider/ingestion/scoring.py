@@ -50,6 +50,18 @@ CURRENT_THRESHOLD_METHODS = {
         "infrastructure_readiness_bands_v1",
         ((30, 1), (45, 3), (60, 5.5), (75, 8), (90, 10)),
     ),
+    "political_stability": (
+        "wgi_political_stability_bands_v1",
+        ((-2, 1), (-1, 3), (0, 5.5), (1, 8), (2, 10)),
+    ),
+    "rule_of_law": (
+        "wgi_rule_of_law_bands_v1",
+        ((-2, 1), (-1, 3), (0, 5.5), (1, 8), (2, 10)),
+    ),
+    "established_immigrant_presence": (
+        "migrant_presence_bands_v1",
+        ((0, 1), (5, 3), (15, 5.5), (30, 8), (50, 10)),
+    ),
 }
 
 
@@ -60,6 +72,21 @@ def _percentile(values: list[float], fraction: float) -> float:
     upper = min(lower + 1, len(ordered) - 1)
     weight = position - lower
     return ordered[lower] * (1 - weight) + ordered[upper] * weight
+
+
+def _average_ranks(values: list[float]) -> list[float]:
+    ordered = sorted(enumerate(values), key=lambda item: item[1])
+    ranks = [0.0] * len(values)
+    start = 0
+    while start < len(ordered):
+        end = start + 1
+        while end < len(ordered) and ordered[end][1] == ordered[start][1]:
+            end += 1
+        rank = (start + end - 1) / 2 + 1
+        for original_index, _ in ordered[start:end]:
+            ranks[original_index] = rank
+        start = end
+    return ranks
 
 
 def _threshold_score(value: float, anchors: tuple[tuple[float, float], ...]) -> float:
@@ -250,4 +277,29 @@ def sensitivity_experiments(observations: list[MetricObservation]) -> dict[str, 
         if metric_id == "infrastructure_readiness_composite":
             result["component_experiment"] = _infrastructure_experiment(rows)
         results[metric_id] = result
-    return {"schema_version": "scoring-sensitivity-2.0", "criteria": results}
+    redundancy = {}
+    governance_ids = ("political_stability", "rule_of_law")
+    if all(metric in grouped for metric in governance_ids):
+        aligned = {
+            metric: {row.country_code: row.value for row in grouped[metric]}
+            for metric in governance_ids
+        }
+        countries = sorted(set(aligned[governance_ids[0]]) & set(aligned[governance_ids[1]]))
+        left = [aligned[governance_ids[0]][country] for country in countries]
+        right = [aligned[governance_ids[1]][country] for country in countries]
+        spearman = correlation(_average_ranks(left), _average_ranks(right))
+        redundancy["political_stability__rule_of_law"] = {
+            "country_count": len(countries),
+            "spearman_correlation": round(spearman, 4),
+            "review_threshold": 0.9,
+            "review_required": abs(spearman) > 0.9,
+            "decision": (
+                "Retain both with distinct labels and inspect ranking contribution; "
+                "high correlation alone is not an automatic rejection."
+            ),
+        }
+    return {
+        "schema_version": "scoring-sensitivity-2.0",
+        "criteria": results,
+        "redundancy": redundancy,
+    }

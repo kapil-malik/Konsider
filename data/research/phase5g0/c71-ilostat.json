@@ -1,0 +1,40 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C71",
+  "name": "Working-time burden",
+  "adapter_id": "ilostat_indicator_csv_v1",
+  "adapter_options": {
+    "component_id": "average_weekly_hours_actually_worked",
+    "sex_code": "SEX_T"
+  },
+  "source": {
+    "source_candidate_id": "C71-ILOSTAT-HOW-2026",
+    "publisher": "International Labour Organization (ILOSTAT)",
+    "dataset": "Average weekly hours actually worked per employed person by sex",
+    "canonical_page_url": "https://ilostat.ilo.org/data/bulk/",
+    "access_urls": ["https://rplumber.ilo.org/data/indicator/?id=HOW_TEMP_SEX_NB_A&format=csv"],
+    "methodology_url": "https://ilostat.ilo.org/methods/concepts-and-definitions/description-wages-and-working-time-statistics/",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://www.ilo.org/rights-and-permissions",
+    "licence_evidence": "ILOSTAT datasets and referential metadata published from 3 May 2023 are CC BY 4.0.",
+    "redistribution": "Raw bytes are retained locally; compact derived research outcomes may be committed with attribution.",
+    "attribution": "International Labour Organization, ILOSTAT, Wages and Working Time Statistics.",
+    "dataset_version": "HOW_TEMP_SEX_NB_A",
+    "source_version": "ILOSTAT table of contents updated 7 July 2026",
+    "update_frequency": "weekly bulk refresh; national observations vary",
+    "parser_version": "ilostat_indicator_csv_v1"
+  },
+  "observation_type": "national annual labour-statistics estimate",
+  "geographic_scope": "national",
+  "freshness_min_year": 2023,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {
+      "component_id": "average_weekly_hours_actually_worked",
+      "minimum": 0,
+      "maximum": 100
+    }
+  ],
+  "blocker_codes": ["CMP_NATIONAL_SOURCE_HETEROGENEITY"],
+  "rejection_reason_codes": []
+}

@@ -11,11 +11,11 @@ def service() -> RecommendationService:
     return RecommendationService()
 
 
-def test_catalog_has_only_five_enabled_criteria(service) -> None:
+def test_catalog_has_eight_enabled_criteria(service) -> None:
     catalog = service.get_catalog()
     assert len(catalog["countries"]) == 91
-    assert len(catalog["criteria"]) == 6
-    assert sum(item["default_enabled"] for item in catalog["criteria"]) == 5
+    assert len(catalog["criteria"]) == 9
+    assert sum(item["default_enabled"] for item in catalog["criteria"]) == 8
 
 
 def test_ranking_is_deterministic_and_contributions_sum(service) -> None:
@@ -39,10 +39,10 @@ def test_ranking_is_deterministic_and_contributions_sum(service) -> None:
 def test_omitted_weights_are_zero_and_all_zero_is_equal(service) -> None:
     one = service.rank({"intentional_homicide_rate": 2})
     assert one["normalized_weights"]["intentional_homicide_rate"] == 1
-    assert sum(value == 0 for value in one["normalized_weights"].values()) == 4
+    assert sum(value == 0 for value in one["normalized_weights"].values()) == 7
 
     zero = service.rank({})
-    assert set(zero["normalized_weights"].values()) == {0.2}
+    assert set(zero["normalized_weights"].values()) == {0.125}
 
 
 @pytest.mark.parametrize(
@@ -78,6 +78,6 @@ def test_compare_and_breakdown_are_release_pinned(service) -> None:
     comparison = service.compare(["IND", "SGP"], {})
     breakdown = service.country_breakdown("IND")
 
-    assert comparison["release_id"] == breakdown["release_id"] == "2026-07-24.1"
+    assert comparison["release_id"] == breakdown["release_id"] == "2026-07-26.3"
     assert [item["country_code"] for item in comparison["countries"]] == ["IND", "SGP"]
-    assert len(breakdown["criteria"]) == 5
+    assert len(breakdown["criteria"]) == 8

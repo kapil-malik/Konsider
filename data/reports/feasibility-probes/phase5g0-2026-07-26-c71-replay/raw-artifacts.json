@@ -1,0 +1,19 @@
+[
+  {
+    "artifact_id": "sha256:f13e4d9804d6f41736cc2ef1627d5ad58611cbcc3611fc37d5a72697e2642618",
+    "byte_length": 855898,
+    "content_length_header": null,
+    "dataset_version": "HOW_TEMP_SEX_NB_A",
+    "etag": null,
+    "final_url": "https://rplumber.ilo.org/data/indicator/?id=HOW_TEMP_SEX_NB_A&format=csv",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "application/octet-stream",
+    "parser_version": "ilostat_indicator_csv_v1",
+    "path": "data/raw/feasibility-probes/C71-ILOSTAT-HOW-2026/f13e4d9804d6f41736cc2ef1627d5ad58611cbcc3611fc37d5a72697e2642618.bin",
+    "requested_url": "https://rplumber.ilo.org/data/indicator/?id=HOW_TEMP_SEX_NB_A&format=csv",
+    "retrieved_at": "2026-07-26T17:40:00.087218+00:00",
+    "sha256": "f13e4d9804d6f41736cc2ef1627d5ad58611cbcc3611fc37d5a72697e2642618",
+    "source_id": "C71-ILOSTAT-HOW-2026"
+  }
+]

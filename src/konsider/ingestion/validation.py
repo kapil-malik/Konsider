@@ -28,6 +28,9 @@ RANGES = {
     "women_peace_security_index": (0, 1),
     "women_legal_economic_equality": (0, 100),
     "infrastructure_readiness_composite": (0, 100),
+    "political_stability": (-3, 3),
+    "rule_of_law": (-3, 3),
+    "established_immigrant_presence": (0, 100),
 }
 REQUIRED_UNITS = {
     "ambient_pm25_population_weighted": "micrograms_per_cubic_metre",
@@ -37,6 +40,9 @@ REQUIRED_UNITS = {
     "women_peace_security_index": "index_0_1",
     "women_legal_economic_equality": "index_0_100",
     "infrastructure_readiness_composite": "index_0_100",
+    "political_stability": "estimate_minus_2_5_to_2_5",
+    "rule_of_law": "estimate_minus_2_5_to_2_5",
+    "established_immigrant_presence": "percent_population",
 }
 SOURCE_RULES = {
     "ambient_pm25_population_weighted": (
@@ -72,6 +78,32 @@ SOURCE_RULES = {
         {"composite"},
         {"mixed_reference_years", "possible_underlying_imputation"},
     ),
+    "political_stability": (
+        {"perception_based_composite"},
+        {
+            "world_bank_primary_dataset",
+            "perception_based",
+            "published_standard_error_retained",
+            "broad_band_only",
+        },
+    ),
+    "rule_of_law": (
+        {"perception_based_composite"},
+        {
+            "world_bank_primary_dataset",
+            "perception_based",
+            "published_standard_error_retained",
+            "broad_band_only",
+        },
+    ),
+    "established_immigrant_presence": (
+        {"estimated_stock"},
+        {
+            "wdi_distribution",
+            "preference_property_not_universal_quality",
+            "not_integration_or_visa_access",
+        },
+    ),
 }
 FRESHNESS_MAX_AGE = {
     "ambient_pm25_population_weighted": 3,
@@ -80,6 +112,9 @@ FRESHNESS_MAX_AGE = {
     "household_consumption_price_level_us_100": 2,
     "women_legal_economic_equality": 2,
     "infrastructure_readiness_composite": 4,
+    "political_stability": 3,
+    "rule_of_law": 3,
+    "established_immigrant_presence": 3,
 }
 EXPECTED_SCORING_METHODS = {
     "ambient_pm25_population_weighted": "pm25_health_bands_v1",
@@ -88,6 +123,9 @@ EXPECTED_SCORING_METHODS = {
     "household_consumption_price_level_us_100": "icp_relative_cost_bands_v2",
     "women_legal_economic_equality": "wbl_legal_equality_bands_v1",
     "infrastructure_readiness_composite": "infrastructure_readiness_bands_v1",
+    "political_stability": "wgi_political_stability_bands_v1",
+    "rule_of_law": "wgi_rule_of_law_bands_v1",
+    "established_immigrant_presence": "migrant_presence_bands_v1",
 }
 
 

@@ -1,7 +1,7 @@
-from pathlib import Path
 import hashlib
 import json
 import shutil
+from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
@@ -126,14 +126,14 @@ class PublishedReleaseReplayTests(TestCase):
         self.assertTrue(replay(release))
 
     def test_final_91_country_release_contract_and_replay(self):
-        release = Path("data/releases/2026-07-24.1")
+        release = Path("data/releases/2026-07-26.3")
         manifest = json.loads((release / "manifest.json").read_text(encoding="utf-8"))
         validation = json.loads((release / "validation.json").read_text(encoding="utf-8"))
 
         self.assertEqual(manifest["country_count"], 91)
         self.assertEqual(manifest["country_universe"]["universe_id"], "stable_supported_v1")
-        self.assertEqual(manifest["observation_count"], 546)
-        self.assertEqual(manifest["score_count"], 546)
+        self.assertEqual(manifest["observation_count"], 819)
+        self.assertEqual(manifest["score_count"], 819)
         self.assertEqual(set(validation["criterion_coverage"].values()), {91})
         self.assertTrue(validation["structural_passed"])
         self.assertTrue(validation["product_ready"])

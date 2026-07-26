@@ -1,0 +1,41 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C26",
+  "name": "Financial protection from health costs",
+  "adapter_id": "ghed_xlsx_v1",
+  "adapter_options": {
+    "sheet_name": "Data",
+    "value_field": "oops_che",
+    "component_id": "out_of_pocket_share_of_current_health_expenditure"
+  },
+  "source": {
+    "source_candidate_id": "C26-WHO-GHED-2026-03",
+    "publisher": "World Health Organization",
+    "dataset": "Global Health Expenditure Database — all data",
+    "canonical_page_url": "https://apps.who.int/nha/database/DocumentationCentre/Index/en",
+    "access_urls": ["https://apps.who.int/nha/database/Home/IndicatorsDownload/en"],
+    "methodology_url": "https://www.who.int/publications/b/80101",
+    "licence_name": "WHO data terms and conditions",
+    "licence_url": "https://data.who.int/about/data/terms-and-conditions",
+    "licence_evidence": "WHO publishes GHED for open public access; production redistribution remains subject to the WHO data terms.",
+    "redistribution": "Retain raw workbook locally only; commit compact derived research outcomes with attribution.",
+    "attribution": "World Health Organization, Global Health Expenditure Database, March 2026.",
+    "dataset_version": "GHED all data, March 2026",
+    "source_version": "OOPS%CHE_SHA2011; observations through 2023",
+    "update_frequency": "annual",
+    "parser_version": "ghed_xlsx_v1"
+  },
+  "observation_type": "national health-expenditure estimate",
+  "geographic_scope": "national",
+  "freshness_min_year": 2023,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {
+      "component_id": "out_of_pocket_share_of_current_health_expenditure",
+      "minimum": 0,
+      "maximum": 100
+    }
+  ],
+  "blocker_codes": ["CMP_ESTIMATED_VALUES", "LIC_REDISTRIBUTION_REVIEW"],
+  "rejection_reason_codes": []
+}

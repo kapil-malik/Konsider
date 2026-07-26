@@ -11,15 +11,19 @@ from konsider.repositories.published_release_repository import (
 )
 
 ROOT = Path(__file__).resolve().parents[3]
+ACTIVE_RELEASE_ID = "2026-07-26.3"
 
 
 def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
     release_root = tmp_path / "releases"
-    shutil.copytree(ROOT / "data" / "releases" / "2026-07-24.1", release_root / "2026-07-24.1")
+    shutil.copytree(
+        ROOT / "data" / "releases" / ACTIVE_RELEASE_ID,
+        release_root / ACTIVE_RELEASE_ID,
+    )
     shutil.copy2(ROOT / "data" / "releases" / "active.json", release_root / "active.json")
     catalog = tmp_path / "consumer-catalog.json"
     shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json", catalog)
-    return PublishedReleaseRepository(release_root, catalog), release_root / "2026-07-24.1"
+    return PublishedReleaseRepository(release_root, catalog), release_root / ACTIVE_RELEASE_ID
 
 
 def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
@@ -40,13 +44,13 @@ def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
 def test_active_release_loads_complete_ready_matrix() -> None:
     release = PublishedReleaseRepository().load_active()
 
-    assert release.release_id == "2026-07-24.1"
+    assert release.release_id == ACTIVE_RELEASE_ID
     assert len(release.catalog["countries"]) == 91
-    assert len(release.available_criterion_ids) == 6
-    assert len(release.enabled_criterion_ids) == 5
+    assert len(release.available_criterion_ids) == 9
+    assert len(release.enabled_criterion_ids) == 8
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
-    assert len(release.records) == 455
-    assert len(release.sources) == 6
+    assert len(release.records) == 728
+    assert len(release.sources) == 9
     assert all(record.observations and record.source for record in release.records)
     infrastructure = next(
         item
@@ -63,13 +67,13 @@ def test_default_repository_paths_do_not_depend_on_working_directory(
 
     release = PublishedReleaseRepository().load_active()
 
-    assert release.release_id == "2026-07-24.1"
+    assert release.release_id == ACTIVE_RELEASE_ID
 
 
 def test_diagnostic_mode_exposes_non_ready_records_without_enabling_them() -> None:
     release = PublishedReleaseRepository().load_active(diagnostic_read_only=True)
 
-    assert len(release.records) == 546
+    assert len(release.records) == 819
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
 
 

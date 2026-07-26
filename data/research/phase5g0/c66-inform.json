@@ -1,0 +1,46 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C66",
+  "name": "Extreme-weather risk",
+  "adapter_id": "inform_risk_xlsx_v1",
+  "adapter_options": {
+    "sheet_name": "INFORM Risk 2026 (a-z)",
+    "header_row": 2,
+    "reference_year": 2026,
+    "field_components": {
+      "River Flood": "river_flood",
+      "Tropical Cyclone": "tropical_cyclone",
+      "Coastal flood": "coastal_flood",
+      "Drought": "drought"
+    }
+  },
+  "source": {
+    "source_candidate_id": "C66-INFORM-RISK-2026-V072",
+    "publisher": "INFORM / European Commission Joint Research Centre",
+    "dataset": "INFORM Risk Index 2026",
+    "canonical_page_url": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data",
+    "access_urls": ["https://drmkc.jrc.ec.europa.eu/inform-index/Portals/0/InfoRM/2026/INFORM_Risk_2026_v072.xlsx"],
+    "methodology_url": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Methodology",
+    "licence_name": "European Commission reuse policy; upstream terms vary",
+    "licence_url": "https://commission.europa.eu/legal-notice_en",
+    "licence_evidence": "INFORM states results and underlying data are open; workbook components retain documented upstream source chains.",
+    "redistribution": "Retain raw workbook locally only; commit compact derived research outcomes pending component-level licence review.",
+    "attribution": "INFORM Risk Index 2026, version 0.7.2; EC JRC scientific lead.",
+    "dataset_version": "INFORM Risk Index 2026 v0.7.2",
+    "source_version": "31 March 2026 workbook",
+    "update_frequency": "annual",
+    "parser_version": "inform_risk_xlsx_v1"
+  },
+  "observation_type": "national modelled hazard and population-exposure composite components",
+  "geographic_scope": "national",
+  "freshness_min_year": 2026,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {"component_id": "river_flood", "minimum": 0, "maximum": 10},
+    {"component_id": "tropical_cyclone", "minimum": 0, "maximum": 10},
+    {"component_id": "coastal_flood", "minimum": 0, "maximum": 10},
+    {"component_id": "drought", "minimum": 0, "maximum": 10}
+  ],
+  "blocker_codes": ["LIC_COMPONENT_SOURCE_CHAIN", "SCO_WEIGHTS_REQUIRED", "CMP_LOCAL_VARIATION"],
+  "rejection_reason_codes": []
+}

@@ -27,11 +27,11 @@ def test_health_reports_validated_snapshot(client) -> None:
 
     assert response.status_code == 200
     assert body.status == "ok"
-    assert body.release_id == "2026-07-24.1"
+    assert body.release_id == "2026-07-26.3"
     assert body.country_count == 91
-    assert body.enabled_criterion_count == 5
+    assert body.enabled_criterion_count == 8
     assert body.ready_for_rankings is True
-    assert len(body.scoring_method_versions) == 5
+    assert len(body.scoring_method_versions) == 8
 
 
 def test_catalog_has_available_and_enabled_contracts(client) -> None:
@@ -40,8 +40,8 @@ def test_catalog_has_available_and_enabled_contracts(client) -> None:
 
     assert response.status_code == 200
     assert len(body.countries) == 91
-    assert len(body.criteria) == 6
-    assert sum(item.default_enabled for item in body.criteria) == 5
+    assert len(body.criteria) == 9
+    assert sum(item.default_enabled for item in body.criteria) == 8
     uhc = next(item for item in body.criteria if item.id == "uhc_service_coverage_index")
     infrastructure = next(
         item for item in body.criteria if item.id == "infrastructure_readiness_composite"
@@ -67,30 +67,42 @@ def test_catalog_profiles_are_exact_enabled_raw_weights(client) -> None:
     expected = {
         "equal_weight_mvp": {
             "ambient_pm25_population_weighted": 1.0,
+            "established_immigrant_presence": 1.0,
             "household_consumption_price_level_us_100": 1.0,
             "infrastructure_readiness_composite": 1.0,
             "intentional_homicide_rate": 1.0,
+            "political_stability": 1.0,
+            "rule_of_law": 1.0,
             "women_legal_economic_equality": 1.0,
         },
         "safety_and_stability": {
             "ambient_pm25_population_weighted": 0.6,
+            "established_immigrant_presence": 0.3,
             "household_consumption_price_level_us_100": 0.4,
-            "infrastructure_readiness_composite": 0.8,
+            "infrastructure_readiness_composite": 0.6,
             "intentional_homicide_rate": 1.0,
+            "political_stability": 1.0,
+            "rule_of_law": 0.8,
             "women_legal_economic_equality": 0.6,
         },
         "affordability_first": {
             "ambient_pm25_population_weighted": 0.4,
+            "established_immigrant_presence": 0.3,
             "household_consumption_price_level_us_100": 1.0,
             "infrastructure_readiness_composite": 0.4,
             "intentional_homicide_rate": 0.6,
+            "political_stability": 0.5,
+            "rule_of_law": 0.5,
             "women_legal_economic_equality": 0.4,
         },
         "quality_of_life": {
             "ambient_pm25_population_weighted": 1.0,
+            "established_immigrant_presence": 0.5,
             "household_consumption_price_level_us_100": 0.4,
             "infrastructure_readiness_composite": 0.8,
             "intentional_homicide_rate": 0.8,
+            "political_stability": 0.8,
+            "rule_of_law": 0.8,
             "women_legal_economic_equality": 0.8,
         },
     }
@@ -106,7 +118,7 @@ def test_added_profiles_use_existing_ranking_semantics(client) -> None:
     assert response.status_code == 200
     assert body.resolved_profile_id == "safety_and_stability"
     assert sum(body.normalized_weights.values()) == pytest.approx(1)
-    assert body.normalized_weights["intentional_homicide_rate"] == pytest.approx(1 / 3.4)
+    assert body.normalized_weights["intentional_homicide_rate"] == pytest.approx(1 / 5.3)
 
 
 def test_rankings_default_profile_and_top_k(client) -> None:
@@ -118,8 +130,8 @@ def test_rankings_default_profile_and_top_k(client) -> None:
     assert body.total_eligible_country_count == 91
     assert body.returned_result_count == 3
     assert len(body.rankings) == 3
-    assert set(body.normalized_weights.values()) == {0.2}
-    assert all(len(item.contributions) == 5 for item in body.rankings)
+    assert set(body.normalized_weights.values()) == {0.125}
+    assert all(len(item.contributions) == 8 for item in body.rankings)
 
 
 def test_explicit_ranking_is_deterministic_and_reconciles(client) -> None:
@@ -162,8 +174,8 @@ def test_omitted_and_all_zero_weights_keep_service_semantics(client) -> None:
     )
 
     assert omitted.normalized_weights["intentional_homicide_rate"] == 1
-    assert sum(value == 0 for value in omitted.normalized_weights.values()) == 4
-    assert set(zero.normalized_weights.values()) == {0.2}
+    assert sum(value == 0 for value in omitted.normalized_weights.values()) == 7
+    assert set(zero.normalized_weights.values()) == {0.125}
 
 
 @pytest.mark.parametrize(
@@ -241,7 +253,7 @@ def test_country_metrics_are_enabled_public_records(client) -> None:
 
     assert response.status_code == 200
     assert body.country.code == "IND"
-    assert len(body.criteria) == 5
+    assert len(body.criteria) == 8
     assert all(item.criterion.ready for item in body.criteria)
     assert all(item.observations and item.source.canonical_page_url for item in body.criteria)
     assert "uhc_service_coverage_index" not in {item.criterion.id for item in body.criteria}
@@ -269,7 +281,7 @@ def test_comparison_uses_ranking_semantics(client) -> None:
     assert [item.country_code for item in body.countries] == ["IND", "SGP", "CAN"]
     assert body.returned_result_count == 3
     assert body.normalized_weights["intentional_homicide_rate"] == 1
-    assert all(len(item.contributions) == 5 for item in body.countries)
+    assert all(len(item.contributions) == 8 for item in body.countries)
 
 
 @pytest.mark.parametrize(
@@ -300,7 +312,7 @@ def test_default_paths_do_not_depend_on_current_working_directory(tmp_path, monk
         response = other_client.get("/api/v1/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-24.1"
+    assert response.json()["release_id"] == "2026-07-26.3"
 
 
 def test_service_is_constructed_once_per_app_lifecycle() -> None:
@@ -369,7 +381,7 @@ def test_temporary_release_and_catalog_paths_are_injectable(tmp_path) -> None:
         response = other_client.get("/api/v1/catalog")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-24.1"
+    assert response.json()["release_id"] == "2026-07-26.3"
 
 
 def test_unexpected_failure_returns_safe_500() -> None:

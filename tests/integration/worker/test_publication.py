@@ -140,3 +140,38 @@ class PublicationTests(TestCase):
 
             with self.assertRaisesRegex(ValueError, "fewer than five"):
                 repository.publish("not-ready")
+
+    def test_catalog_ready_criterion_must_pass_before_pointer_activation(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            catalog = root / "catalog.json"
+            catalog.write_text(
+                json.dumps(
+                    {
+                        "criteria": [
+                            {
+                                "id": "required_metric",
+                                "ready": True,
+                                "default_enabled": True,
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            repository = ReleaseRepository(root / "releases", catalog)
+            (root / "releases" / ".draft" / "candidate").mkdir(parents=True)
+            (root / "releases" / ".draft" / "candidate" / "validation.json").write_text(
+                json.dumps(
+                    {
+                        "structural_passed": True,
+                        "product_ready": True,
+                        "criterion_readiness": {"required_metric": False},
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "required_metric"):
+                repository.publish("candidate")
+            self.assertFalse((root / "releases" / "active.json").exists())

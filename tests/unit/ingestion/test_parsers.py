@@ -8,7 +8,9 @@ from konsider.ingestion.models import RawArtifact
 from konsider.ingestion.parsers import (
     parse_who_air_quality,
     parse_world_bank_icp,
+    parse_world_bank_migrant_stock,
     parse_world_bank_wbl,
+    parse_world_bank_wgi_political_stability,
     parse_wps_index,
 )
 
@@ -114,3 +116,50 @@ class ParserTests(TestCase):
         self.assertEqual(
             observations[0].source_records[0].record_id, "IND|WBL_LF_INDEX|report-2026"
         )
+
+    def test_wgi_retains_published_uncertainty(self):
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.title = "pv"
+        sheet.append(
+            [
+                "Economy (code)",
+                "Year",
+                "Governance estimate (approx. -2.5 to +2.5)",
+                "Standard error (estimate)",
+                "Lower threshold (90% conf. int. estimate)",
+                "Upper threshold (90% conf. int. estimate)",
+            ]
+        )
+        sheet.append(["IND", 2024, 0.25, 0.1, 0.08, 0.42])
+        output = io.BytesIO()
+        workbook.save(output)
+
+        observations = parse_world_bank_wgi_political_stability(
+            [artifact("world_bank_wgi_political_stability")], [output.getvalue()]
+        )
+
+        self.assertEqual((observations[0].country_code, observations[0].value), ("IND", 0.25))
+        self.assertEqual(
+            (observations[0].lower_bound, observations[0].upper_bound),
+            (0.08, 0.42),
+        )
+        self.assertEqual(observations[0].components[0].value, 0.1)
+
+    def test_migrant_stock_selects_latest_value(self):
+        body = json.dumps(
+            [
+                {},
+                [
+                    {"countryiso3code": "IND", "date": "2023", "value": 1.4},
+                    {"countryiso3code": "IND", "date": "2024", "value": 1.6},
+                ],
+            ]
+        ).encode()
+
+        observations = parse_world_bank_migrant_stock(
+            [artifact("world_bank_migrant_stock")], [body]
+        )
+
+        self.assertEqual((observations[0].country_code, observations[0].value), ("IND", 1.6))
+        self.assertIn("preference_property_not_universal_quality", observations[0].quality_flags)

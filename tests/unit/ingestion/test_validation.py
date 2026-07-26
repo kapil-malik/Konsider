@@ -2,9 +2,9 @@ from dataclasses import replace
 from unittest import TestCase
 
 from konsider.ingestion.models import MetricObservation, RawArtifact, SourceRecordReference
+from konsider.ingestion.registry import SOURCES
 from konsider.ingestion.scoring import score_observations
 from konsider.ingestion.validation import validate_release
-from konsider.ingestion.registry import SOURCES
 
 
 class ValidationTests(TestCase):

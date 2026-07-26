@@ -1,0 +1,29 @@
+[
+  {
+    "access_method": "Phase 5 deterministic research probe",
+    "attribution": "INFORM Risk Index 2026, version 0.7.2; EC JRC scientific lead.",
+    "canonical_page_url": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data",
+    "criterion_id": "C66",
+    "dataset_version": "INFORM Risk Index 2026 v0.7.2",
+    "distributor": null,
+    "download_urls": [
+      "https://drmkc.jrc.ec.europa.eu/inform-index/Portals/0/InfoRM/2026/INFORM_Risk_2026_v072.xlsx"
+    ],
+    "license_evidence": "INFORM states results and underlying data are open; workbook components retain documented upstream source chains.",
+    "license_name": "European Commission reuse policy; upstream terms vary",
+    "license_url": "https://commission.europa.eu/legal-notice_en",
+    "methodology_url": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Methodology",
+    "notes": "Research probe registration; not an approved production source registration.",
+    "official_or_independent": "official",
+    "pagination": "adapter-specific",
+    "parser": "inform_risk_xlsx_v1",
+    "parser_version": "inform_risk_xlsx_v1",
+    "permitted_usage": "Non-publishing source-feasibility research only.",
+    "publisher": "INFORM / European Commission Joint Research Centre",
+    "redistribution": "Retain raw workbook locally only; commit compact derived research outcomes pending component-level licence review.",
+    "reference_period": "fresh when observation year >= 2026",
+    "source_id": "C66-INFORM-RISK-2026-V072",
+    "source_version": "31 March 2026 workbook",
+    "update_frequency": "annual"
+  }
+]

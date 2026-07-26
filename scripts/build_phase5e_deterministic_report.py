@@ -157,20 +157,15 @@ def _offline_replay(candidate: dict[str, object], online_path: Path) -> dict[str
             release_root=RELEASE_ROOT,
             artifact_manifest=online_path / "raw-artifacts.json",
         )
-        country_results_match = (
-            (online_path / "country-results.jsonl").read_bytes()
-            == (replay_path / "country-results.jsonl").read_bytes()
-        )
+        country_results_match = (online_path / "country-results.jsonl").read_bytes() == (
+            replay_path / "country-results.jsonl"
+        ).read_bytes()
         online_summary = _read_json(online_path / "summary.json")
         normalized_online = {
-            key: value
-            for key, value in online_summary.items()
-            if key not in {"run_id", "mode"}
+            key: value for key, value in online_summary.items() if key not in {"run_id", "mode"}
         }
         normalized_replay = {
-            key: value
-            for key, value in replay_summary.items()
-            if key not in {"run_id", "mode"}
+            key: value for key, value in replay_summary.items() if key not in {"run_id", "mode"}
         }
         return {
             "criterion_id": candidate["criterion_id"],
@@ -178,8 +173,7 @@ def _offline_replay(candidate: dict[str, object], online_path: Path) -> dict[str
             "country_results_byte_match": country_results_match,
             "normalized_summary_match": normalized_online == normalized_replay,
             "raw_artifact_checksums_match": (
-                online_summary["raw_artifact_checksums"]
-                == replay_summary["raw_artifact_checksums"]
+                online_summary["raw_artifact_checksums"] == replay_summary["raw_artifact_checksums"]
             ),
             "passed": (
                 country_results_match
@@ -296,9 +290,7 @@ def main() -> int:
         "superseded_diagnostic_runs": ["phase5e-2026-07-26-c08-online"],
         "recommendation_summary": {
             category: [
-                entry["criterion_id"]
-                for entry in entries
-                if entry["recommendation"] == category
+                entry["criterion_id"] for entry in entries if entry["recommendation"] == category
             ]
             for category in (
                 "PRODUCTION_CANDIDATE",
@@ -340,15 +332,8 @@ def main() -> int:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for entry in entries:
-            writer.writerow(
-                {
-                    key: entry["measured"].get(key, entry.get(key))
-                    for key in fields
-                }
-            )
-    with (OUTPUT / "country-status-matrix.csv").open(
-        "w", newline="", encoding="utf-8"
-    ) as handle:
+            writer.writerow({key: entry["measured"].get(key, entry.get(key)) for key in fields})
+    with (OUTPUT / "country-status-matrix.csv").open("w", newline="", encoding="utf-8") as handle:
         fields = ["country_code", *result_index, "nonvalid_count"]
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()

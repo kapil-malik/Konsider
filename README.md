@@ -4,9 +4,9 @@ Konsider is an evidence-backed country-suitability project. It implements a loca
 refresh worker, immutable versioned releases, a deterministic recommendation service, a typed
 FastAPI v1 API, and a responsive catalog-driven React comparison UI.
 
-Active release `2026-07-24.1` contains 91 countries and six available criteria. Five are enabled for
-ranking. UHC is unavailable because its latest official observation is stale; infrastructure is
-enabled but explicitly experimental. Legacy fixtures are tests only and never fill product data.
+Active release `2026-07-26.3` contains 91 countries and nine available criteria. Eight are enabled
+for ranking. UHC is unavailable because its latest official observation is stale; infrastructure
+is enabled but explicitly experimental. Legacy fixtures are tests only and never fill product data.
 Phase 2D is complete. Konsider supports the countries for which complete and sufficiently fresh data
 is available across every enabled ranking criterion under the approved source and licensing policy.
 The stable universe is generated from the audited complete-case intersection; no imputation or
@@ -66,7 +66,7 @@ new release ID plus every printed source-version acknowledgement:
 
 ```powershell
 python -m konsider.ingestion.worker list-sources
-python -m konsider.ingestion.worker replay data\releases\2026-07-24.1
+python -m konsider.ingestion.worker replay data\releases\2026-07-26.3
 python -m konsider.ingestion.worker audit-coverage --universe data\country-universes\popular-relocation-v1.json --audit-id AUDIT_ID --mode offline --artifacts data\reports\country-coverage\coverage-2026-07-23.6\raw-artifacts.json
 ```
 
@@ -98,4 +98,4 @@ Start at the [documentation index](docs/README.md).
 - [Phase 2D country coverage audit](docs/data/country-coverage-phase-2d.md)
 - [Phase 2D.4 homicide source feasibility](docs/data/homicide-source-feasibility-phase-2d4.md)
 - [Roadmap](docs/product/roadmap.md)
-- [Active release report](docs/history/releases/2026-07-24.1.md)
+- [Active release report](docs/history/releases/2026-07-26.3.md)

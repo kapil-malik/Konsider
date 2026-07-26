@@ -6,8 +6,8 @@ from datetime import UTC, datetime
 from openpyxl import Workbook
 
 from konsider.ingestion.country_coverage import (
-    _world_bank_rows,
     _wdi_single_criterion,
+    _world_bank_rows,
     audit_coverage,
     enabled_criteria_from_catalog,
     parse_m49_registry,
@@ -68,6 +68,24 @@ def _wbl_workbook(codes):
     sheet.append(["Economy", "ISO Code", "Report Year", "I. Economy LF Index"])
     for code in codes:
         sheet.append([code, code, 2026, 75])
+    output = io.BytesIO()
+    workbook.save(output)
+    return output.getvalue()
+
+
+def _wgi_workbook(codes):
+    workbook = Workbook()
+    workbook.remove(workbook.active)
+    headers = [
+        "Economy (code)",
+        "Year",
+        "Governance estimate (approx. -2.5 to +2.5)",
+    ]
+    for name in ("pv", "rl"):
+        sheet = workbook.create_sheet(name)
+        sheet.append(headers)
+        for code in codes:
+            sheet.append([code, 2024, 0.5])
     output = io.BytesIO()
     workbook.save(output)
     return output.getvalue()
@@ -200,6 +218,7 @@ def test_online_and_offline_audits_match_and_do_not_activate_release(tmp_path, m
             ]
         ).encode(),
         "WBL26": _wbl_workbook(codes),
+        "wgidataset_with_sourcedata": _wgi_workbook(codes),
     }
 
     def fetcher(url):

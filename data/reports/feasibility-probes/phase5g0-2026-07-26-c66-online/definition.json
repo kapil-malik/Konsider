@@ -1,0 +1,68 @@
+{
+  "adapter_id": "inform_risk_xlsx_v1",
+  "adapter_options": {
+    "field_components": {
+      "Coastal flood": "coastal_flood",
+      "Drought": "drought",
+      "River Flood": "river_flood",
+      "Tropical Cyclone": "tropical_cyclone"
+    },
+    "header_row": 2,
+    "reference_year": 2026,
+    "sheet_name": "INFORM Risk 2026 (a-z)"
+  },
+  "blocker_codes": [
+    "LIC_COMPONENT_SOURCE_CHAIN",
+    "SCO_WEIGHTS_REQUIRED",
+    "CMP_LOCAL_VARIATION"
+  ],
+  "component_rules": [
+    {
+      "component_id": "river_flood",
+      "maximum": 10.0,
+      "minimum": 0.0
+    },
+    {
+      "component_id": "tropical_cyclone",
+      "maximum": 10.0,
+      "minimum": 0.0
+    },
+    {
+      "component_id": "coastal_flood",
+      "maximum": 10.0,
+      "minimum": 0.0
+    },
+    {
+      "component_id": "drought",
+      "maximum": 10.0,
+      "minimum": 0.0
+    }
+  ],
+  "criterion_id": "C66",
+  "freshness_min_year": 2026,
+  "geographic_scope": "national",
+  "minimum_coverage_count": 82,
+  "name": "Extreme-weather risk",
+  "observation_type": "national modelled hazard and population-exposure composite components",
+  "rejection_reason_codes": [],
+  "schema_version": "feasibility-probe-definition-1.0",
+  "source": {
+    "access_urls": [
+      "https://drmkc.jrc.ec.europa.eu/inform-index/Portals/0/InfoRM/2026/INFORM_Risk_2026_v072.xlsx"
+    ],
+    "attribution": "INFORM Risk Index 2026, version 0.7.2; EC JRC scientific lead.",
+    "canonical_page_url": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data",
+    "dataset": "INFORM Risk Index 2026",
+    "dataset_version": "INFORM Risk Index 2026 v0.7.2",
+    "licence_evidence": "INFORM states results and underlying data are open; workbook components retain documented upstream source chains.",
+    "licence_name": "European Commission reuse policy; upstream terms vary",
+    "licence_url": "https://commission.europa.eu/legal-notice_en",
+    "methodology_url": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Methodology",
+    "parser_version": "inform_risk_xlsx_v1",
+    "publisher": "INFORM / European Commission Joint Research Centre",
+    "redistribution": "Retain raw workbook locally only; commit compact derived research outcomes pending component-level licence review.",
+    "source_candidate_id": "C66-INFORM-RISK-2026-V072",
+    "source_version": "31 March 2026 workbook",
+    "update_frequency": "annual"
+  }
+}

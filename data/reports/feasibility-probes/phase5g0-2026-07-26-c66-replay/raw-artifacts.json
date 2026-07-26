@@ -1,0 +1,19 @@
+[
+  {
+    "artifact_id": "sha256:5e40444b3b0070b6452be19ae504f68d9835fb729053cf57397959f81208b0e8",
+    "byte_length": 2547847,
+    "content_length_header": "2547847",
+    "dataset_version": "INFORM Risk Index 2026 v0.7.2",
+    "etag": "\"01cd2222c8dc1:0\"",
+    "final_url": "https://drmkc.jrc.ec.europa.eu/inform-index/Portals/0/InfoRM/2026/INFORM_Risk_2026_v072.xlsx",
+    "http_status": 200,
+    "last_modified": "Thu, 09 Apr 2026 13:09:44 GMT",
+    "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "parser_version": "inform_risk_xlsx_v1",
+    "path": "data/raw/feasibility-probes/C66-INFORM-RISK-2026-V072/5e40444b3b0070b6452be19ae504f68d9835fb729053cf57397959f81208b0e8.bin",
+    "requested_url": "https://drmkc.jrc.ec.europa.eu/inform-index/Portals/0/InfoRM/2026/INFORM_Risk_2026_v072.xlsx",
+    "retrieved_at": "2026-07-26T17:39:53.936659+00:00",
+    "sha256": "5e40444b3b0070b6452be19ae504f68d9835fb729053cf57397959f81208b0e8",
+    "source_id": "C66-INFORM-RISK-2026-V072"
+  }
+]

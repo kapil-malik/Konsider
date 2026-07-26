@@ -2,7 +2,7 @@
 
 Status: Phase 2D production-source decision finalized; not legal advice
 
-Last checked: 2026-07-24
+Last checked: 2026-07-26
 
 A public endpoint is not a licence. This audit relies on dataset/indicator-specific metadata and the
 [World Bank public licence terms](https://datacatalog.worldbank.org/public-licenses), not privacy
@@ -22,6 +22,19 @@ URLs, HTTP metadata, checksums, versions, attribution, and exact record referenc
 | Household-consumption relative cost | WDI API `PA.NUS.PRVT.PP` and `PA.NUS.FCRF`; [PPP metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.PRVT.PP), [exchange-rate metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/PA.NUS.FCRF) | 91/91 latest common year 2025; 2021 ICP benchmark with WDI extrapolations | Both inputs say CC BY 4.0. Attribute World Bank ICP/WDI and identify the derived price-level calculation and banding. | Ready only as broad relative-cost bands. ICP cautions against precise strict country ranking; the value is national, not a city or household budget. |
 | Women’s legal and economic equality | Official [WBL 2026 download](https://wbl.worldbank.org/en/data/download-data), workbook `WBL26_FINAL_ALL.xlsx`; [methodology](https://wbl.worldbank.org/en/data/methodology), [catalog record](https://datacatalog.worldbank.org/search/dataset/0038489/women-business-and-the-law) | 91/91; report year 2026, law/data cutoff 2025-10-01; 190-economy dataset | The catalog and [reproducibility package](https://reproducibility.worldbank.org/catalog/459) say CC BY 4.0. Use the World Bank citation/DOI and identify transformations. | Ready. Uses the WBL Legal Framework economy index and therefore measures de jure law, not enforcement or lived outcomes. |
 | Infrastructure readiness experiment | WDI APIs `IT.NET.USER.ZS`, `IT.NET.BBND.P2`, `LP.LPI.INFR.XQ`; metadata for [internet use](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.USER.ZS), [fixed broadband](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.BBND.P2), and [LPI infrastructure](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/LP.LPI.INFR.XQ) | 91/91 for every component; internet 2024-2025, broadband 2023-2024, LPI 2022 | Each WDI representation says CC BY 4.0. Attribute World Bank WDI and ITU for the digital indicators; identify the equal-weight derived composite. | Provisionally ready, still labelled experimental. It covers digital access and trade/transport logistics, not all infrastructure; component years differ and LPI is survey-based. |
+
+### Phase 5G-1 additions
+
+| Criterion | Official source | Coverage and freshness | Decision |
+| --- | --- | --- | --- |
+| Political stability | World Bank Worldwide Governance Indicators 2025 workbook, `pv` sheet | 91/91; 2024 estimates, with published standard errors and 90% confidence bounds retained | Ready under the WGI aggregate-data CC BY 4.0 catalog record; perception-based and broad-band only. |
+| Rule of law | World Bank Worldwide Governance Indicators 2025 workbook, `rl` sheet | 91/91; 2024 estimates, with published standard errors and 90% confidence bounds retained | Ready under the same licence basis; reviewed for overlap with political stability. |
+| Established immigrant presence | World Bank WDI `SM.POP.TOTL.ZS`, with UN Population Division upstream | 91/91; 2024 | Ready as a preference property only; not acceptance, integration quality, or visa access. |
+
+The exact WGI workbook is version-pinned as
+`wgidataset_with_sourcedata-2025.xlsx` and both WGI criteria retain distinct sheet and reference-year
+identifiers. The WDI series is pinned as `SM.POP.TOTL.ZS@WDI-2026-07`. The
+[Phase 5G-0 report](../research/phase5g0-final-probes.md) records the candidates not promoted.
 
 ## Observed API/download behavior
 
@@ -76,6 +89,6 @@ recoverable countries remain excluded because their WDI records are stale.
 
 Licence adequacy is necessary but not sufficient. Each criterion also has source-specific range,
 unit, observation-type, quality-flag, coverage, freshness, attempt, provenance, schema, checksum, and
-replay checks. Active release `2026-07-24.1` has 91/91 coverage for all six published criteria and
-five ready criteria. UHC remains visible with blockers rather
+replay checks. Active release `2026-07-26.3` has 91/91 coverage for all nine published criteria and
+eight ready criteria. UHC remains visible with blockers rather
 than being redefined, imputed, or replaced by a fixture score.

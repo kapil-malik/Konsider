@@ -8,6 +8,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+
 from konsider.api.dependencies import get_recommendation_service
 from konsider.api.errors import error_response, register_exception_handlers
 from konsider.api.mappers import (

@@ -161,7 +161,7 @@ prints `replay passed` and exits `0`, or prints `replay failed` and exits `1`. M
 bytes make replay fail even when the committed normalized release is valid for API consumption.
 
 ```bash
-python -m konsider.ingestion.worker replay data/releases/2026-07-24.1
+python -m konsider.ingestion.worker replay data/releases/2026-07-26.3
 ```
 
 ## Outputs and lineage
@@ -207,18 +207,18 @@ PowerShell:
 
 ```powershell
 Get-Content data\releases\active.json
-Get-Content data\releases\2026-07-24.1\manifest.json
-Get-Content data\releases\2026-07-24.1\validation.json
-python -m konsider.ingestion.worker replay data\releases\2026-07-24.1
+Get-Content data\releases\2026-07-26.3\manifest.json
+Get-Content data\releases\2026-07-26.3\validation.json
+python -m konsider.ingestion.worker replay data\releases\2026-07-26.3
 ```
 
 Bash:
 
 ```bash
 python -m json.tool data/releases/active.json
-python -m json.tool data/releases/2026-07-24.1/manifest.json
-python -m json.tool data/releases/2026-07-24.1/validation.json
-python -m konsider.ingestion.worker replay data/releases/2026-07-24.1
+python -m json.tool data/releases/2026-07-26.3/manifest.json
+python -m json.tool data/releases/2026-07-26.3/validation.json
+python -m konsider.ingestion.worker replay data/releases/2026-07-26.3
 ```
 
 API startup performs schema and payload-checksum validation through `PublishedReleaseRepository`
