@@ -4,6 +4,35 @@ Historical records summarize completed milestones. Current behavior is documente
 [architecture](../architecture/system-architecture.md), [worker operations](../operations/worker.md),
 and [API operations](../operations/api.md).
 
+## Phase 5E deterministic measured probes
+
+- Goal: measure the actual stable-91 suitability of the seven deterministic candidates approved
+  after Phase 5C.
+- Delivered: exact live captures, source and licence records, 91 explicit country outcomes per
+  candidate, aggregate JSON/CSV/Markdown, country-status matrix, raw-artifact inventory, and
+  content-addressed offline replay.
+- Results: all seven passed the 82-country probe threshold. C30, C29, C48, and C49 reached 91/91;
+  C11 reached 88/91; C08 reached 87/91 under its three-field rule; and C53 reached 86/91.
+- Recommendations: production candidate for C11, C30, C48, and C49; experimental candidate for C08
+  and C29; reserve candidate for C53; no rejection.
+- Completed: 2026-07-26. All seven offline replays passed. No active release, production ingestion,
+  scoring, API, or UI was modified.
+
+## Phase 5D feasibility-probe framework
+
+- Goal: prove a minimal, generic, deterministic way to test candidate sources without entering
+  production ingestion or publishing.
+- Delivered: stable-91 country mapping, source-specific adapters, content-addressed raw capture,
+  independent presence/freshness/parse/validation states, explicit reason codes, Markdown and
+  machine-readable reports, and offline replay.
+- Framework proofs: schema-faithful synthetic C30 World Bank JSON at 91/91, and C11 ILOSTAT CSV at
+  88/91 with ATG, GRD, and UKR explicitly missing.
+- Verification covers mapping, freshness, validation, count reconciliation, reason codes,
+  deterministic output, offline replay, and active-release isolation.
+- Completed: 2026-07-26. No active release, production ingestion, API, scoring, or UI was modified.
+- Limitation: fixture outcomes prove framework behaviour only; they are not evidence of live source
+  coverage or licensing suitability.
+
 ## Worker-first real-data milestone
 
 - Goal: replace fixture-first product assumptions with audited, reproducible official data.

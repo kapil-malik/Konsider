@@ -11,6 +11,10 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Worker operations](operations/worker.md) - refresh, publish, replay, inspect, and roll back data.
 - [API operations and reference](operations/api.md) - configure, start, and use all five routes.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
+- [Phase 5D feasibility probes](research/phase5d-feasibility-probes.md) - deterministic,
+  non-publishing source feasibility checks and offline replay.
+- [Phase 5E deterministic probes](research/phase5e-deterministic-probes.md) - live measured
+  results for seven approved candidates, aggregate recommendations, and replay evidence.
 - [Phase 2C UI](product/ui.md) - implemented product behavior and technical boundaries.
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md) - reproducible universe,
   complete-case results, final 91-country universe, and closure decision.
@@ -39,6 +43,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Release format](data/release-format.md)
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md)
 - [Phase 2D.4 homicide source feasibility](data/homicide-source-feasibility-phase-2d4.md)
+- [Phase 5D feasibility probes](research/phase5d-feasibility-probes.md)
+- [Phase 5E deterministic probes](research/phase5e-deterministic-probes.md)
 
 ## Historical records
 

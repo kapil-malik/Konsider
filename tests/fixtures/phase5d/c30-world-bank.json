@@ -1,0 +1,1468 @@
+[
+  {
+    "lastupdated": "2026-07-13",
+    "page": 1,
+    "pages": 1,
+    "per_page": 20000,
+    "sourceid": "2",
+    "total": 91
+  },
+  [
+    {
+      "country": {
+        "id": "ALB",
+        "value": "Albania"
+      },
+      "countryiso3code": "ALB",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 1.5
+    },
+    {
+      "country": {
+        "id": "ARE",
+        "value": "United Arab Emirates"
+      },
+      "countryiso3code": "ARE",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 2.2
+    },
+    {
+      "country": {
+        "id": "ARM",
+        "value": "Armenia"
+      },
+      "countryiso3code": "ARM",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 2.9
+    },
+    {
+      "country": {
+        "id": "ATG",
+        "value": "Antigua and Barbuda"
+      },
+      "countryiso3code": "ATG",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 3.6
+    },
+    {
+      "country": {
+        "id": "AUS",
+        "value": "Australia"
+      },
+      "countryiso3code": "AUS",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 4.3
+    },
+    {
+      "country": {
+        "id": "AUT",
+        "value": "Austria"
+      },
+      "countryiso3code": "AUT",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 5.0
+    },
+    {
+      "country": {
+        "id": "BEL",
+        "value": "Belgium"
+      },
+      "countryiso3code": "BEL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 5.7
+    },
+    {
+      "country": {
+        "id": "BGR",
+        "value": "Bulgaria"
+      },
+      "countryiso3code": "BGR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 6.4
+    },
+    {
+      "country": {
+        "id": "BHR",
+        "value": "Bahrain"
+      },
+      "countryiso3code": "BHR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 7.1
+    },
+    {
+      "country": {
+        "id": "BHS",
+        "value": "Bahamas, The"
+      },
+      "countryiso3code": "BHS",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 7.8
+    },
+    {
+      "country": {
+        "id": "BIH",
+        "value": "Bosnia and Herzegovina"
+      },
+      "countryiso3code": "BIH",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 8.5
+    },
+    {
+      "country": {
+        "id": "BOL",
+        "value": "Bolivia"
+      },
+      "countryiso3code": "BOL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 9.2
+    },
+    {
+      "country": {
+        "id": "BRA",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 9.9
+    },
+    {
+      "country": {
+        "id": "BWA",
+        "value": "Botswana"
+      },
+      "countryiso3code": "BWA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 10.6
+    },
+    {
+      "country": {
+        "id": "CAN",
+        "value": "Canada"
+      },
+      "countryiso3code": "CAN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 11.3
+    },
+    {
+      "country": {
+        "id": "CHE",
+        "value": "Switzerland"
+      },
+      "countryiso3code": "CHE",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 12.0
+    },
+    {
+      "country": {
+        "id": "CHL",
+        "value": "Chile"
+      },
+      "countryiso3code": "CHL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 12.7
+    },
+    {
+      "country": {
+        "id": "CMR",
+        "value": "Cameroon"
+      },
+      "countryiso3code": "CMR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 13.4
+    },
+    {
+      "country": {
+        "id": "COL",
+        "value": "Colombia"
+      },
+      "countryiso3code": "COL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 14.1
+    },
+    {
+      "country": {
+        "id": "CRI",
+        "value": "Costa Rica"
+      },
+      "countryiso3code": "CRI",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 14.8
+    },
+    {
+      "country": {
+        "id": "CYP",
+        "value": "Cyprus"
+      },
+      "countryiso3code": "CYP",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 15.5
+    },
+    {
+      "country": {
+        "id": "CZE",
+        "value": "Czechia"
+      },
+      "countryiso3code": "CZE",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 16.2
+    },
+    {
+      "country": {
+        "id": "DEU",
+        "value": "Germany"
+      },
+      "countryiso3code": "DEU",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 16.9
+    },
+    {
+      "country": {
+        "id": "DNK",
+        "value": "Denmark"
+      },
+      "countryiso3code": "DNK",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 17.6
+    },
+    {
+      "country": {
+        "id": "DOM",
+        "value": "Dominican Republic"
+      },
+      "countryiso3code": "DOM",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 18.3
+    },
+    {
+      "country": {
+        "id": "DZA",
+        "value": "Algeria"
+      },
+      "countryiso3code": "DZA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 19.0
+    },
+    {
+      "country": {
+        "id": "ESP",
+        "value": "Spain"
+      },
+      "countryiso3code": "ESP",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 19.7
+    },
+    {
+      "country": {
+        "id": "EST",
+        "value": "Estonia"
+      },
+      "countryiso3code": "EST",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 20.4
+    },
+    {
+      "country": {
+        "id": "FIN",
+        "value": "Finland"
+      },
+      "countryiso3code": "FIN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 21.1
+    },
+    {
+      "country": {
+        "id": "FJI",
+        "value": "Fiji"
+      },
+      "countryiso3code": "FJI",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 21.8
+    },
+    {
+      "country": {
+        "id": "FRA",
+        "value": "France"
+      },
+      "countryiso3code": "FRA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 22.5
+    },
+    {
+      "country": {
+        "id": "GBR",
+        "value": "United Kingdom"
+      },
+      "countryiso3code": "GBR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 23.2
+    },
+    {
+      "country": {
+        "id": "GHA",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 23.9
+    },
+    {
+      "country": {
+        "id": "GRC",
+        "value": "Greece"
+      },
+      "countryiso3code": "GRC",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 24.6
+    },
+    {
+      "country": {
+        "id": "GRD",
+        "value": "Grenada"
+      },
+      "countryiso3code": "GRD",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 25.3
+    },
+    {
+      "country": {
+        "id": "GTM",
+        "value": "Guatemala"
+      },
+      "countryiso3code": "GTM",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 1.5
+    },
+    {
+      "country": {
+        "id": "GUY",
+        "value": "Guyana"
+      },
+      "countryiso3code": "GUY",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 2.2
+    },
+    {
+      "country": {
+        "id": "HND",
+        "value": "Honduras"
+      },
+      "countryiso3code": "HND",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 2.9
+    },
+    {
+      "country": {
+        "id": "HRV",
+        "value": "Croatia"
+      },
+      "countryiso3code": "HRV",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 3.6
+    },
+    {
+      "country": {
+        "id": "HTI",
+        "value": "Haiti"
+      },
+      "countryiso3code": "HTI",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 4.3
+    },
+    {
+      "country": {
+        "id": "HUN",
+        "value": "Hungary"
+      },
+      "countryiso3code": "HUN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 5.0
+    },
+    {
+      "country": {
+        "id": "IDN",
+        "value": "Indonesia"
+      },
+      "countryiso3code": "IDN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 5.7
+    },
+    {
+      "country": {
+        "id": "IND",
+        "value": "India"
+      },
+      "countryiso3code": "IND",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 6.4
+    },
+    {
+      "country": {
+        "id": "IRL",
+        "value": "Ireland"
+      },
+      "countryiso3code": "IRL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 7.1
+    },
+    {
+      "country": {
+        "id": "ISL",
+        "value": "Iceland"
+      },
+      "countryiso3code": "ISL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 7.8
+    },
+    {
+      "country": {
+        "id": "ISR",
+        "value": "Israel"
+      },
+      "countryiso3code": "ISR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 8.5
+    },
+    {
+      "country": {
+        "id": "ITA",
+        "value": "Italy"
+      },
+      "countryiso3code": "ITA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 9.2
+    },
+    {
+      "country": {
+        "id": "JAM",
+        "value": "Jamaica"
+      },
+      "countryiso3code": "JAM",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 9.9
+    },
+    {
+      "country": {
+        "id": "JPN",
+        "value": "Japan"
+      },
+      "countryiso3code": "JPN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 10.6
+    },
+    {
+      "country": {
+        "id": "KAZ",
+        "value": "Kazakhstan"
+      },
+      "countryiso3code": "KAZ",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 11.3
+    },
+    {
+      "country": {
+        "id": "KOR",
+        "value": "Korea, Rep."
+      },
+      "countryiso3code": "KOR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 12.0
+    },
+    {
+      "country": {
+        "id": "LTU",
+        "value": "Lithuania"
+      },
+      "countryiso3code": "LTU",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 12.7
+    },
+    {
+      "country": {
+        "id": "LUX",
+        "value": "Luxembourg"
+      },
+      "countryiso3code": "LUX",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 13.4
+    },
+    {
+      "country": {
+        "id": "LVA",
+        "value": "Latvia"
+      },
+      "countryiso3code": "LVA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 14.1
+    },
+    {
+      "country": {
+        "id": "MDA",
+        "value": "Moldova"
+      },
+      "countryiso3code": "MDA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 14.8
+    },
+    {
+      "country": {
+        "id": "MEX",
+        "value": "Mexico"
+      },
+      "countryiso3code": "MEX",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 15.5
+    },
+    {
+      "country": {
+        "id": "MKD",
+        "value": "North Macedonia"
+      },
+      "countryiso3code": "MKD",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 16.2
+    },
+    {
+      "country": {
+        "id": "MLT",
+        "value": "Malta"
+      },
+      "countryiso3code": "MLT",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 16.9
+    },
+    {
+      "country": {
+        "id": "MNE",
+        "value": "Montenegro"
+      },
+      "countryiso3code": "MNE",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 17.6
+    },
+    {
+      "country": {
+        "id": "MNG",
+        "value": "Mongolia"
+      },
+      "countryiso3code": "MNG",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 18.3
+    },
+    {
+      "country": {
+        "id": "MUS",
+        "value": "Mauritius"
+      },
+      "countryiso3code": "MUS",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 19.0
+    },
+    {
+      "country": {
+        "id": "MYS",
+        "value": "Malaysia"
+      },
+      "countryiso3code": "MYS",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 19.7
+    },
+    {
+      "country": {
+        "id": "NAM",
+        "value": "Namibia"
+      },
+      "countryiso3code": "NAM",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 20.4
+    },
+    {
+      "country": {
+        "id": "NGA",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 21.1
+    },
+    {
+      "country": {
+        "id": "NIC",
+        "value": "Nicaragua"
+      },
+      "countryiso3code": "NIC",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 21.8
+    },
+    {
+      "country": {
+        "id": "NLD",
+        "value": "Netherlands"
+      },
+      "countryiso3code": "NLD",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 22.5
+    },
+    {
+      "country": {
+        "id": "NOR",
+        "value": "Norway"
+      },
+      "countryiso3code": "NOR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 23.2
+    },
+    {
+      "country": {
+        "id": "NZL",
+        "value": "New Zealand"
+      },
+      "countryiso3code": "NZL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 23.9
+    },
+    {
+      "country": {
+        "id": "OMN",
+        "value": "Oman"
+      },
+      "countryiso3code": "OMN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 24.6
+    },
+    {
+      "country": {
+        "id": "PAN",
+        "value": "Panama"
+      },
+      "countryiso3code": "PAN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 25.3
+    },
+    {
+      "country": {
+        "id": "PER",
+        "value": "Peru"
+      },
+      "countryiso3code": "PER",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 1.5
+    },
+    {
+      "country": {
+        "id": "PHL",
+        "value": "Philippines"
+      },
+      "countryiso3code": "PHL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 2.2
+    },
+    {
+      "country": {
+        "id": "POL",
+        "value": "Poland"
+      },
+      "countryiso3code": "POL",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 2.9
+    },
+    {
+      "country": {
+        "id": "PRT",
+        "value": "Portugal"
+      },
+      "countryiso3code": "PRT",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 3.6
+    },
+    {
+      "country": {
+        "id": "PRY",
+        "value": "Paraguay"
+      },
+      "countryiso3code": "PRY",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 4.3
+    },
+    {
+      "country": {
+        "id": "QAT",
+        "value": "Qatar"
+      },
+      "countryiso3code": "QAT",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 5.0
+    },
+    {
+      "country": {
+        "id": "ROU",
+        "value": "Romania"
+      },
+      "countryiso3code": "ROU",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 5.7
+    },
+    {
+      "country": {
+        "id": "RUS",
+        "value": "Russian Federation"
+      },
+      "countryiso3code": "RUS",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 6.4
+    },
+    {
+      "country": {
+        "id": "SGP",
+        "value": "Singapore"
+      },
+      "countryiso3code": "SGP",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 7.1
+    },
+    {
+      "country": {
+        "id": "SLV",
+        "value": "El Salvador"
+      },
+      "countryiso3code": "SLV",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 7.8
+    },
+    {
+      "country": {
+        "id": "SRB",
+        "value": "Serbia"
+      },
+      "countryiso3code": "SRB",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 8.5
+    },
+    {
+      "country": {
+        "id": "SVK",
+        "value": "Slovak Republic"
+      },
+      "countryiso3code": "SVK",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 9.2
+    },
+    {
+      "country": {
+        "id": "SVN",
+        "value": "Slovenia"
+      },
+      "countryiso3code": "SVN",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 9.9
+    },
+    {
+      "country": {
+        "id": "SWE",
+        "value": "Sweden"
+      },
+      "countryiso3code": "SWE",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 10.6
+    },
+    {
+      "country": {
+        "id": "TTO",
+        "value": "Trinidad and Tobago"
+      },
+      "countryiso3code": "TTO",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 11.3
+    },
+    {
+      "country": {
+        "id": "TUR",
+        "value": "Turkiye"
+      },
+      "countryiso3code": "TUR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 12.0
+    },
+    {
+      "country": {
+        "id": "UKR",
+        "value": "Ukraine"
+      },
+      "countryiso3code": "UKR",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 12.7
+    },
+    {
+      "country": {
+        "id": "URY",
+        "value": "Uruguay"
+      },
+      "countryiso3code": "URY",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 13.4
+    },
+    {
+      "country": {
+        "id": "USA",
+        "value": "United States"
+      },
+      "countryiso3code": "USA",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 14.1
+    },
+    {
+      "country": {
+        "id": "UZB",
+        "value": "Uzbekistan"
+      },
+      "countryiso3code": "UZB",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 14.8
+    },
+    {
+      "country": {
+        "id": "ZAF",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2024",
+      "decimal": 1,
+      "indicator": {
+        "id": "SM.POP.TOTL.ZS",
+        "value": "International migrant stock (% of population)"
+      },
+      "obs_status": "",
+      "unit": "",
+      "value": 15.5
+    }
+  ]
+]

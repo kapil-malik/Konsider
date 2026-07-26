@@ -1,0 +1,62 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C08",
+  "name": "School education quality",
+  "adapter_id": "hci_plus_stata_v1",
+  "adapter_options": {
+    "country_code_field": "iso3c",
+    "country_name_field": "wbcountryname",
+    "year_field": "year",
+    "field_components": {
+      "hlo_mf": "harmonized_learning_outcome",
+      "lays_mf": "learning_adjusted_years_schooling",
+      "hcip_schooling_component_mf": "hci_plus_schooling_component"
+    }
+  },
+  "source": {
+    "source_candidate_id": "C08-HCIPLUS-V3",
+    "publisher": "World Bank",
+    "dataset": "Human Capital Index Plus",
+    "canonical_page_url": "https://datacatalog.worldbank.org/search/dataset/0067030/human-capital-index-plus",
+    "access_urls": [
+      "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/hci_plus_index_panel.dta"
+    ],
+    "methodology_url": "https://humancapital.worldbank.org/hciplus/methodology/",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+    "licence_evidence": "The HCI+ catalogue record identifies the dataset licence as CC BY 4.0.",
+    "redistribution": "Raw Stata bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "attribution": "World Bank, Human Capital Index Plus, version 3.",
+    "dataset_version": "HCI+ version 3; hci_plus_index_panel.dta",
+    "source_version": "File updated 2026-02-11; panel labels through 2025",
+    "update_frequency": "periodic",
+    "parser_version": "hci_plus_stata_v1"
+  },
+  "observation_type": "national modelled and harmonized schooling outcomes",
+  "geographic_scope": "national with local-school caveat",
+  "freshness_min_year": 2024,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {
+      "component_id": "harmonized_learning_outcome",
+      "minimum": 0,
+      "maximum": 1000
+    },
+    {
+      "component_id": "learning_adjusted_years_schooling",
+      "minimum": 0,
+      "maximum": 20
+    },
+    {
+      "component_id": "hci_plus_schooling_component",
+      "minimum": 0,
+      "maximum": null
+    }
+  ],
+  "blocker_codes": [
+    "COV_NOT_FULL_91",
+    "FRS_FILE_CATALOGUE_YEAR_DISCREPANCY",
+    "GRA_LOCAL_SCHOOL_VARIATION"
+  ],
+  "rejection_reason_codes": []
+}

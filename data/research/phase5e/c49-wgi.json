@@ -1,0 +1,45 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C49",
+  "name": "Rule of law",
+  "adapter_id": "world_bank_indicator_json_v1",
+  "adapter_options": {
+    "component_id": "wgi_rule_of_law_estimate"
+  },
+  "source": {
+    "source_candidate_id": "C49-WGI-RL-2025",
+    "publisher": "World Bank",
+    "dataset": "Worldwide Governance Indicators 2025 revision",
+    "canonical_page_url": "https://data.worldbank.org/indicator/GOV_WGI_RL_EST",
+    "access_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_RL_EST?date=2024:2024&format=json&per_page=20000"
+    ],
+    "methodology_url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators/documentation",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://datacatalog.worldbank.org/search/dataset/0038026/worldwide-governance-indicators",
+    "licence_evidence": "The World Bank WGI catalogue record identifies CC BY 4.0 for the published aggregate dataset.",
+    "redistribution": "Raw aggregate API bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "attribution": "World Bank, Worldwide Governance Indicators, 2025 revision.",
+    "dataset_version": "WGI 2025 revision; GOV_WGI_RL_EST",
+    "source_version": "Recalculated 1996-2024 series; 2024 observation",
+    "update_frequency": "annual",
+    "parser_version": "world_bank_indicator_json_v1"
+  },
+  "observation_type": "national perception-based composite estimate",
+  "geographic_scope": "national",
+  "freshness_min_year": 2024,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {
+      "component_id": "wgi_rule_of_law_estimate",
+      "minimum": -3,
+      "maximum": 3
+    }
+  ],
+  "blocker_codes": [
+    "CMP_PERCEPTION_BASED",
+    "SCO_UNCERTAINTY_REQUIRED",
+    "RED_POTENTIAL_GOVERNANCE_OVERLAP"
+  ],
+  "rejection_reason_codes": []
+}

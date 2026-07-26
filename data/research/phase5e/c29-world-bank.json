@@ -1,0 +1,58 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C29",
+  "name": "Currency and macroeconomic stability",
+  "adapter_id": "world_bank_multi_indicator_json_v1",
+  "adapter_options": {
+    "indicator_components": {
+      "FP.CPI.TOTL.ZG": "consumer_price_inflation",
+      "PA.NUS.FCRF": "official_exchange_rate"
+    },
+    "minimum_observations": {
+      "consumer_price_inflation": 3,
+      "official_exchange_rate": 3
+    }
+  },
+  "source": {
+    "source_candidate_id": "C29-WDI-INFLATION-FXRATE",
+    "publisher": "World Bank distribution / IMF IFS upstream",
+    "dataset": "World Development Indicators — inflation and official exchange rate",
+    "canonical_page_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+    "access_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?date=2020:2024&format=json&per_page=20000",
+      "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?date=2020:2024&format=json&per_page=20000"
+    ],
+    "methodology_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets",
+    "licence_evidence": "The exact WDI indicator pages identify the distributed series as CC BY 4.0.",
+    "redistribution": "Raw API bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "attribution": "World Bank, World Development Indicators; upstream IMF International Financial Statistics.",
+    "dataset_version": "FP.CPI.TOTL.ZG+PA.NUS.FCRF@WDI-2026-07",
+    "source_version": "Annual observations for 2020-2024 retrieved in July 2026",
+    "update_frequency": "annual",
+    "parser_version": "world_bank_multi_indicator_json_v1"
+  },
+  "observation_type": "national official annual macroeconomic time series",
+  "geographic_scope": "national",
+  "freshness_min_year": 2023,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {
+      "component_id": "consumer_price_inflation",
+      "minimum": -100,
+      "maximum": 10000
+    },
+    {
+      "component_id": "official_exchange_rate",
+      "minimum": 0,
+      "maximum": null
+    }
+  ],
+  "blocker_codes": [
+    "CMP_CURRENCY_REGIME",
+    "SCO_COMPOSITE_SENSITIVITY_REQUIRED",
+    "OPS_CURRENCY_BREAK_HANDLING_REQUIRED"
+  ],
+  "rejection_reason_codes": []
+}

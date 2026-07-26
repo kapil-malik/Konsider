@@ -1,0 +1,53 @@
+[
+  {
+    "artifact_id": "sha256:0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d",
+    "byte_length": 7565147,
+    "content_length_header": null,
+    "dataset_version": "UNE+EMP+EAP modelled estimates, November 2025",
+    "etag": null,
+    "final_url": "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "application/octet-stream",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "path": "data/raw/feasibility-probes/C11-ILO-MODEL-2025/0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d.bin",
+    "requested_url": "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+    "retrieved_at": "2026-07-26T16:40:55.615165+00:00",
+    "sha256": "0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d",
+    "source_id": "C11-ILO-MODEL-2025"
+  },
+  {
+    "artifact_id": "sha256:af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000",
+    "byte_length": 7451393,
+    "content_length_header": null,
+    "dataset_version": "UNE+EMP+EAP modelled estimates, November 2025",
+    "etag": null,
+    "final_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "application/octet-stream",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "path": "data/raw/feasibility-probes/C11-ILO-MODEL-2025/af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000.bin",
+    "requested_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+    "retrieved_at": "2026-07-26T16:40:55.615165+00:00",
+    "sha256": "af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000",
+    "source_id": "C11-ILO-MODEL-2025"
+  },
+  {
+    "artifact_id": "sha256:f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589",
+    "byte_length": 23558617,
+    "content_length_header": null,
+    "dataset_version": "UNE+EMP+EAP modelled estimates, November 2025",
+    "etag": null,
+    "final_url": "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "application/octet-stream",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "path": "data/raw/feasibility-probes/C11-ILO-MODEL-2025/f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589.bin",
+    "requested_url": "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv",
+    "retrieved_at": "2026-07-26T16:40:55.615165+00:00",
+    "sha256": "f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589",
+    "source_id": "C11-ILO-MODEL-2025"
+  }
+]

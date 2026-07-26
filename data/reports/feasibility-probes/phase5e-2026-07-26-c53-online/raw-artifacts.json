@@ -1,0 +1,36 @@
+[
+  {
+    "artifact_id": "sha256:dcbf60e18733814c8f27ab9523d730686e5e5021bd4e80aff3a31b7cb209e990",
+    "byte_length": 208573,
+    "content_length_header": null,
+    "dataset_version": "SH.H2O.BASW.ZS+SH.STA.BASS.ZS@WDI-2026-07",
+    "etag": null,
+    "final_url": "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.BASW.ZS?date=2022:2024&format=json&per_page=20000",
+    "http_status": 200,
+    "last_modified": "Sun, 26 Jul 2026 16:26:00 GMT",
+    "media_type": "application/json",
+    "parser_version": "world_bank_multi_indicator_json_v1",
+    "path": "data/raw/feasibility-probes/C53-JMP-WDI-BASIC/dcbf60e18733814c8f27ab9523d730686e5e5021bd4e80aff3a31b7cb209e990.bin",
+    "requested_url": "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.BASW.ZS?date=2022:2024&format=json&per_page=20000",
+    "retrieved_at": "2026-07-26T16:41:09.278199+00:00",
+    "sha256": "dcbf60e18733814c8f27ab9523d730686e5e5021bd4e80aff3a31b7cb209e990",
+    "source_id": "C53-JMP-WDI-BASIC"
+  },
+  {
+    "artifact_id": "sha256:c64eaf46d27c1d6a2d9eb2d48601622f50d0217dba4ac79eda1cb5164b5b4c1a",
+    "byte_length": 205623,
+    "content_length_header": null,
+    "dataset_version": "SH.H2O.BASW.ZS+SH.STA.BASS.ZS@WDI-2026-07",
+    "etag": null,
+    "final_url": "https://api.worldbank.org/v2/country/all/indicator/SH.STA.BASS.ZS?date=2022:2024&format=json&per_page=20000",
+    "http_status": 200,
+    "last_modified": "Sun, 26 Jul 2026 16:26:01 GMT",
+    "media_type": "application/json",
+    "parser_version": "world_bank_multi_indicator_json_v1",
+    "path": "data/raw/feasibility-probes/C53-JMP-WDI-BASIC/c64eaf46d27c1d6a2d9eb2d48601622f50d0217dba4ac79eda1cb5164b5b4c1a.bin",
+    "requested_url": "https://api.worldbank.org/v2/country/all/indicator/SH.STA.BASS.ZS?date=2022:2024&format=json&per_page=20000",
+    "retrieved_at": "2026-07-26T16:41:09.278199+00:00",
+    "sha256": "c64eaf46d27c1d6a2d9eb2d48601622f50d0217dba4ac79eda1cb5164b5b4c1a",
+    "source_id": "C53-JMP-WDI-BASIC"
+  }
+]

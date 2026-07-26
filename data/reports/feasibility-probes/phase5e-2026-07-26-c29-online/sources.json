@@ -1,0 +1,30 @@
+[
+  {
+    "access_method": "Phase 5 deterministic research probe",
+    "attribution": "World Bank, World Development Indicators; upstream IMF International Financial Statistics.",
+    "canonical_page_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+    "criterion_id": "C29",
+    "dataset_version": "FP.CPI.TOTL.ZG+PA.NUS.FCRF@WDI-2026-07",
+    "distributor": null,
+    "download_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?date=2020:2024&format=json&per_page=20000",
+      "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?date=2020:2024&format=json&per_page=20000"
+    ],
+    "license_evidence": "The exact WDI indicator pages identify the distributed series as CC BY 4.0.",
+    "license_name": "Creative Commons Attribution 4.0 International",
+    "license_url": "https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets",
+    "methodology_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+    "notes": "Research probe registration; not an approved production source registration.",
+    "official_or_independent": "official",
+    "pagination": "adapter-specific",
+    "parser": "world_bank_multi_indicator_json_v1",
+    "parser_version": "world_bank_multi_indicator_json_v1",
+    "permitted_usage": "Non-publishing source-feasibility research only.",
+    "publisher": "World Bank distribution / IMF IFS upstream",
+    "redistribution": "Raw API bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "reference_period": "fresh when observation year >= 2023",
+    "source_id": "C29-WDI-INFLATION-FXRATE",
+    "source_version": "Annual observations for 2020-2024 retrieved in July 2026",
+    "update_frequency": "annual"
+  }
+]

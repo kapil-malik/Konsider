@@ -1,0 +1,19 @@
+[
+  {
+    "artifact_id": "sha256:29ddbd35bff04e564d4c44e8cf323b1057a5fbb01c5d193ba8f213a258558a61",
+    "byte_length": 67012,
+    "content_length_header": null,
+    "dataset_version": "WGI 2025 revision; GOV_WGI_PV_EST",
+    "etag": null,
+    "final_url": "https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_PV_EST?date=2024:2024&format=json&per_page=20000",
+    "http_status": 200,
+    "last_modified": "Sun, 26 Jul 2026 16:05:50 GMT",
+    "media_type": "application/json",
+    "parser_version": "world_bank_indicator_json_v1",
+    "path": "data/raw/feasibility-probes/C48-WGI-PV-2025/29ddbd35bff04e564d4c44e8cf323b1057a5fbb01c5d193ba8f213a258558a61.bin",
+    "requested_url": "https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_PV_EST?date=2024:2024&format=json&per_page=20000",
+    "retrieved_at": "2026-07-26T16:41:06.771265+00:00",
+    "sha256": "29ddbd35bff04e564d4c44e8cf323b1057a5fbb01c5d193ba8f213a258558a61",
+    "source_id": "C48-WGI-PV-2025"
+  }
+]

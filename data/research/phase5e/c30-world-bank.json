@@ -1,0 +1,44 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C30",
+  "name": "Existing immigrant share",
+  "adapter_id": "world_bank_indicator_json_v1",
+  "adapter_options": {
+    "component_id": "international_migrant_stock_percent"
+  },
+  "source": {
+    "source_candidate_id": "C30-WDI-MIGRANT",
+    "publisher": "World Bank distribution / UN Population Division upstream",
+    "dataset": "World Development Indicators",
+    "canonical_page_url": "https://data.worldbank.org/indicator/SM.POP.TOTL.ZS",
+    "access_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/SM.POP.TOTL.ZS?date=2024:2024&format=json&per_page=20000"
+    ],
+    "methodology_url": "https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SM.POP.TOTL",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+    "licence_evidence": "The WDI metadata representation identifies licence type CC BY 4.0.",
+    "redistribution": "Raw bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "attribution": "World Bank, World Development Indicators; International Migrant Stock, United Nations Population Division.",
+    "dataset_version": "SM.POP.TOTL.ZS@WDI-2026-07",
+    "source_version": "2024 observations retrieved in July 2026",
+    "update_frequency": "annual",
+    "parser_version": "world_bank_indicator_json_v1"
+  },
+  "observation_type": "national stock estimate",
+  "geographic_scope": "national",
+  "freshness_min_year": 2024,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {
+      "component_id": "international_migrant_stock_percent",
+      "minimum": 0,
+      "maximum": 100
+    }
+  ],
+  "blocker_codes": [
+    "CMP_DEFINITION_AND_IMPUTATION_VARIATION",
+    "SCO_DIRECTION_PREFERENCE_UNRESOLVED"
+  ],
+  "rejection_reason_codes": []
+}

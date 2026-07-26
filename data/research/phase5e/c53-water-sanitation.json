@@ -1,0 +1,58 @@
+{
+  "schema_version": "feasibility-probe-definition-1.0",
+  "criterion_id": "C53",
+  "name": "Basic water and sanitation service access",
+  "adapter_id": "world_bank_multi_indicator_json_v1",
+  "adapter_options": {
+    "indicator_components": {
+      "SH.H2O.BASW.ZS": "basic_drinking_water_access",
+      "SH.STA.BASS.ZS": "basic_sanitation_access"
+    },
+    "minimum_observations": {
+      "basic_drinking_water_access": 1,
+      "basic_sanitation_access": 1
+    }
+  },
+  "source": {
+    "source_candidate_id": "C53-JMP-WDI-BASIC",
+    "publisher": "WHO/UNICEF JMP via World Bank WDI",
+    "dataset": "World Development Indicators — basic drinking water and sanitation",
+    "canonical_page_url": "https://washdata.org/report/jmp-2025-wash-households",
+    "access_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.BASW.ZS?date=2022:2024&format=json&per_page=20000",
+      "https://api.worldbank.org/v2/country/all/indicator/SH.STA.BASS.ZS?date=2022:2024&format=json&per_page=20000"
+    ],
+    "methodology_url": "https://washdata.org/monitoring",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets",
+    "licence_evidence": "The World Bank-distributed WDI indicators are CC BY 4.0; WHO/UNICEF JMP upstream attribution is retained.",
+    "redistribution": "Raw API bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "attribution": "WHO/UNICEF Joint Monitoring Programme, distributed through World Bank World Development Indicators.",
+    "dataset_version": "SH.H2O.BASW.ZS+SH.STA.BASS.ZS@WDI-2026-07",
+    "source_version": "JMP 2025 release; observations queried for 2022-2024",
+    "update_frequency": "annual",
+    "parser_version": "world_bank_multi_indicator_json_v1"
+  },
+  "observation_type": "national modelled household service estimates",
+  "geographic_scope": "national with city and network caveat",
+  "freshness_min_year": 2022,
+  "minimum_coverage_count": 82,
+  "component_rules": [
+    {
+      "component_id": "basic_drinking_water_access",
+      "minimum": 0,
+      "maximum": 100
+    },
+    {
+      "component_id": "basic_sanitation_access",
+      "minimum": 0,
+      "maximum": 100
+    }
+  ],
+  "blocker_codes": [
+    "CMP_BASIC_NOT_SAFELY_MANAGED",
+    "GRA_LOCAL_VARIATION",
+    "COV_NOT_FULL_91"
+  ],
+  "rejection_reason_codes": []
+}

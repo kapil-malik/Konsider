@@ -1,0 +1,19 @@
+[
+  {
+    "artifact_id": "sha256:767ca082c49484b8b2c1e86d35dc649a159a41bc485a2bc1db01ecd96e967234",
+    "byte_length": 64887,
+    "content_length_header": null,
+    "dataset_version": "WGI 2025 revision; GOV_WGI_RL_EST",
+    "etag": null,
+    "final_url": "https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_RL_EST?date=2024:2024&format=json&per_page=20000",
+    "http_status": 200,
+    "last_modified": "Sun, 26 Jul 2026 16:05:50 GMT",
+    "media_type": "application/json",
+    "parser_version": "world_bank_indicator_json_v1",
+    "path": "data/raw/feasibility-probes/C49-WGI-RL-2025/767ca082c49484b8b2c1e86d35dc649a159a41bc485a2bc1db01ecd96e967234.bin",
+    "requested_url": "https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_RL_EST?date=2024:2024&format=json&per_page=20000",
+    "retrieved_at": "2026-07-26T16:41:07.923792+00:00",
+    "sha256": "767ca082c49484b8b2c1e86d35dc649a159a41bc485a2bc1db01ecd96e967234",
+    "source_id": "C49-WGI-RL-2025"
+  }
+]

@@ -1,0 +1,115 @@
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][57]"],"source_country_id":"ABW","source_country_name":"Aruba"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][48]"],"source_country_id":"AFG","source_country_name":"Afghanistan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][53]"],"source_country_id":"AGO","source_country_name":"Angola"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][55]"],"source_country_id":"ARG","source_country_name":"Argentina"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][51]"],"source_country_id":"ASM","source_country_name":"American Samoa"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][60]"],"source_country_id":"AZE","source_country_name":"Azerbaijan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][79]"],"source_country_id":"BDI","source_country_name":"Burundi"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][68]"],"source_country_id":"BEN","source_country_name":"Benin"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][78]"],"source_country_id":"BFA","source_country_name":"Burkina Faso"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][63]"],"source_country_id":"BGD","source_country_name":"Bangladesh"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][65]"],"source_country_id":"BLR","source_country_name":"Belarus"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][67]"],"source_country_id":"BLZ","source_country_name":"Belize"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][69]"],"source_country_id":"BMU","source_country_name":"Bermuda"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][64]"],"source_country_id":"BRB","source_country_name":"Barbados"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][76]"],"source_country_id":"BRN","source_country_name":"Brunei Darussalam"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][70]"],"source_country_id":"BTN","source_country_name":"Bhutan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][85]"],"source_country_id":"CAF","source_country_name":"Central African Republic"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][89]"],"source_country_id":"CHN","source_country_name":"China"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][95]"],"source_country_id":"CIV","source_country_name":"Cote d'Ivoire"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][92]"],"source_country_id":"COD","source_country_name":"Congo, Dem. Rep."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][93]"],"source_country_id":"COG","source_country_name":"Congo, Rep."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][91]"],"source_country_id":"COM","source_country_name":"Comoros"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][80]"],"source_country_id":"CPV","source_country_name":"Cabo Verde"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][97]"],"source_country_id":"CUB","source_country_name":"Cuba"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][84]"],"source_country_id":"CYM","source_country_name":"Cayman Islands"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][102]"],"source_country_id":"DJI","source_country_name":"Djibouti"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][103]"],"source_country_id":"DMA","source_country_name":"Dominica"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][105]"],"source_country_id":"ECU","source_country_name":"Ecuador"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][106]"],"source_country_id":"EGY","source_country_name":"Egypt, Arab Rep."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][109]"],"source_country_id":"ERI","source_country_name":"Eritrea"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][112]"],"source_country_id":"ETH","source_country_name":"Ethiopia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][176]"],"source_country_id":"FSM","source_country_name":"Micronesia, Fed. Sts."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][118]"],"source_country_id":"GAB","source_country_name":"Gabon"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][120]"],"source_country_id":"GEO","source_country_name":"Georgia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][129]"],"source_country_id":"GIN","source_country_name":"Guinea"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][119]"],"source_country_id":"GMB","source_country_name":"Gambia, The"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][130]"],"source_country_id":"GNB","source_country_name":"Guinea-Bissau"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][108]"],"source_country_id":"GNQ","source_country_name":"Equatorial Guinea"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][125]"],"source_country_id":"GRL","source_country_name":"Greenland"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][127]"],"source_country_id":"GUM","source_country_name":"Guam"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][134]"],"source_country_id":"HKG","source_country_name":"Hong Kong SAR, China"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][139]"],"source_country_id":"IRN","source_country_name":"Iran, Islamic Rep."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][140]"],"source_country_id":"IRQ","source_country_name":"Iraq"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][147]"],"source_country_id":"JOR","source_country_name":"Jordan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][149]"],"source_country_id":"KEN","source_country_name":"Kenya"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][155]"],"source_country_id":"KGZ","source_country_name":"Kyrgyz Republic"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][81]"],"source_country_id":"KHM","source_country_name":"Cambodia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][150]"],"source_country_id":"KIR","source_country_name":"Kiribati"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][229]"],"source_country_id":"KNA","source_country_name":"St. Kitts and Nevis"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][154]"],"source_country_id":"KWT","source_country_name":"Kuwait"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][156]"],"source_country_id":"LAO","source_country_name":"Lao PDR"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][158]"],"source_country_id":"LBN","source_country_name":"Lebanon"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][160]"],"source_country_id":"LBR","source_country_name":"Liberia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][161]"],"source_country_id":"LBY","source_country_name":"Libya"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][230]"],"source_country_id":"LCA","source_country_name":"St. Lucia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][162]"],"source_country_id":"LIE","source_country_name":"Liechtenstein"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][228]"],"source_country_id":"LKA","source_country_name":"Sri Lanka"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][159]"],"source_country_id":"LSO","source_country_name":"Lesotho"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][165]"],"source_country_id":"MAC","source_country_name":"Macao SAR, China"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][181]"],"source_country_id":"MAR","source_country_name":"Morocco"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][178]"],"source_country_id":"MCO","source_country_name":"Monaco"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][166]"],"source_country_id":"MDG","source_country_name":"Madagascar"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][169]"],"source_country_id":"MDV","source_country_name":"Maldives"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][172]"],"source_country_id":"MHL","source_country_name":"Marshall Islands"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][170]"],"source_country_id":"MLI","source_country_name":"Mali"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][183]"],"source_country_id":"MMR","source_country_name":"Myanmar"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][182]"],"source_country_id":"MOZ","source_country_name":"Mozambique"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][173]"],"source_country_id":"MRT","source_country_name":"Mauritania"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][167]"],"source_country_id":"MWI","source_country_name":"Malawi"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][188]"],"source_country_id":"NCL","source_country_name":"New Caledonia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][191]"],"source_country_id":"NER","source_country_name":"Niger"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][186]"],"source_country_id":"NPL","source_country_name":"Nepal"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][185]"],"source_country_id":"NRU","source_country_name":"Naoero"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][197]"],"source_country_id":"PAK","source_country_name":"Pakistan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][198]"],"source_country_id":"PLW","source_country_name":"Palau"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][200]"],"source_country_id":"PNG","source_country_name":"Papua New Guinea"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][206]"],"source_country_id":"PRI","source_country_name":"Puerto Rico (US)"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][151]"],"source_country_id":"PRK","source_country_name":"Korea, Dem. People's Rep."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][261]"],"source_country_id":"PSE","source_country_name":"West Bank and Gaza"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][117]"],"source_country_id":"PYF","source_country_name":"French Polynesia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][210]"],"source_country_id":"RWA","source_country_name":"Rwanda"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][214]"],"source_country_id":"SAU","source_country_name":"Saudi Arabia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][233]"],"source_country_id":"SDN","source_country_name":"Sudan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][215]"],"source_country_id":"SEN","source_country_name":"Senegal"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][223]"],"source_country_id":"SLB","source_country_name":"Solomon Islands"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][218]"],"source_country_id":"SLE","source_country_name":"Sierra Leone"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][212]"],"source_country_id":"SMR","source_country_name":"San Marino"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][224]"],"source_country_id":"SOM","source_country_name":"Somalia, Fed. Rep."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][226]"],"source_country_id":"SSD","source_country_name":"South Sudan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][213]"],"source_country_id":"STP","source_country_name":"Sao Tome and Principe"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][234]"],"source_country_id":"SUR","source_country_name":"Suriname"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][111]"],"source_country_id":"SWZ","source_country_name":"Eswatini"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][217]"],"source_country_id":"SYC","source_country_name":"Seychelles"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][237]"],"source_country_id":"SYR","source_country_name":"Syrian Arab Republic"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][86]"],"source_country_id":"TCD","source_country_name":"Chad"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][242]"],"source_country_id":"TGO","source_country_name":"Togo"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][240]"],"source_country_id":"THA","source_country_name":"Thailand"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][238]"],"source_country_id":"TJK","source_country_name":"Tajikistan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][247]"],"source_country_id":"TKM","source_country_name":"Turkmenistan"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][241]"],"source_country_id":"TLS","source_country_name":"Timor-Leste"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][243]"],"source_country_id":"TON","source_country_name":"Tonga"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][245]"],"source_country_id":"TUN","source_country_name":"Tunisia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][249]"],"source_country_id":"TUV","source_country_name":"Tuvalu"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][239]"],"source_country_id":"TZA","source_country_name":"Tanzania"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][250]"],"source_country_id":"UGA","source_country_name":"Uganda"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][232]"],"source_country_id":"VCT","source_country_name":"St. Vincent and the Grenadines"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][258]"],"source_country_id":"VEN","source_country_name":"Venezuela, RB"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][260]"],"source_country_id":"VIR","source_country_name":"Virgin Islands (U.S.)"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][259]"],"source_country_id":"VNM","source_country_name":"Viet Nam"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][257]"],"source_country_id":"VUT","source_country_name":"Vanuatu"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][211]"],"source_country_id":"WSM","source_country_name":"Samoa"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][153]"],"source_country_id":"XKX","source_country_name":"Kosovo"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][262]"],"source_country_id":"YEM","source_country_name":"Yemen, Rep."}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][263]"],"source_country_id":"ZMB","source_country_name":"Zambia"}
+{"reason_codes":["MAP_NO_STABLE_COUNTRY_ID"],"record_locators":["response[1][264]"],"source_country_id":"ZWE","source_country_name":"Zimbabwe"}

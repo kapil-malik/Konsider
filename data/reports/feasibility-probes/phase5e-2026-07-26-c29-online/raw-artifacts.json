@@ -1,0 +1,36 @@
+[
+  {
+    "artifact_id": "sha256:402e703c2103909a4e675d64885ab617027f176af8bde3b4384dea362dfa62f7",
+    "byte_length": 305740,
+    "content_length_header": null,
+    "dataset_version": "FP.CPI.TOTL.ZG+PA.NUS.FCRF@WDI-2026-07",
+    "etag": null,
+    "final_url": "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?date=2020:2024&format=json&per_page=20000",
+    "http_status": 200,
+    "last_modified": "Sat, 25 Jul 2026 18:09:52 GMT",
+    "media_type": "application/json",
+    "parser_version": "world_bank_multi_indicator_json_v1",
+    "path": "data/raw/feasibility-probes/C29-WDI-INFLATION-FXRATE/402e703c2103909a4e675d64885ab617027f176af8bde3b4384dea362dfa62f7.bin",
+    "requested_url": "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?date=2020:2024&format=json&per_page=20000",
+    "retrieved_at": "2026-07-26T16:41:05.328194+00:00",
+    "sha256": "402e703c2103909a4e675d64885ab617027f176af8bde3b4384dea362dfa62f7",
+    "source_id": "C29-WDI-INFLATION-FXRATE"
+  },
+  {
+    "artifact_id": "sha256:452d56b16ef0ac07038f69e098c3cdc04d6f71122a387bda235da53da5c43d0a",
+    "byte_length": 317222,
+    "content_length_header": null,
+    "dataset_version": "FP.CPI.TOTL.ZG+PA.NUS.FCRF@WDI-2026-07",
+    "etag": null,
+    "final_url": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?date=2020:2024&format=json&per_page=20000",
+    "http_status": 200,
+    "last_modified": "Sun, 26 Jul 2026 16:05:49 GMT",
+    "media_type": "application/json",
+    "parser_version": "world_bank_multi_indicator_json_v1",
+    "path": "data/raw/feasibility-probes/C29-WDI-INFLATION-FXRATE/452d56b16ef0ac07038f69e098c3cdc04d6f71122a387bda235da53da5c43d0a.bin",
+    "requested_url": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?date=2020:2024&format=json&per_page=20000",
+    "retrieved_at": "2026-07-26T16:41:05.328194+00:00",
+    "sha256": "452d56b16ef0ac07038f69e098c3cdc04d6f71122a387bda235da53da5c43d0a",
+    "source_id": "C29-WDI-INFLATION-FXRATE"
+  }
+]

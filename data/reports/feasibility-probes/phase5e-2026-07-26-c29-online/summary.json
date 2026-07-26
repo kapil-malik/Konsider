@@ -1,0 +1,43 @@
+{
+  "blocker_codes": [
+    "CMP_CURRENCY_REGIME",
+    "SCO_COMPOSITE_SENSITIVITY_REQUIRED",
+    "OPS_CURRENCY_BREAK_HANDLING_REQUIRED"
+  ],
+  "criterion_id": "C29",
+  "criterion_name": "Currency and macroeconomic stability",
+  "dataset": "World Development Indicators \u2014 inflation and official exchange rate",
+  "dataset_version": "FP.CPI.TOTL.ZG+PA.NUS.FCRF@WDI-2026-07",
+  "denominator": 91,
+  "found": 91,
+  "fresh": 91,
+  "freshness_min_year": 2023,
+  "full_91_passed": true,
+  "invalid": 0,
+  "minimum_probe_coverage_count": 82,
+  "missing": 0,
+  "mode": "online",
+  "parse_failed": 0,
+  "parsed": 91,
+  "probe_threshold_passed": true,
+  "publisher": "World Bank distribution / IMF IFS upstream",
+  "raw_artifact_checksums": {
+    "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?date=2020:2024&format=json&per_page=20000": "sha256:402e703c2103909a4e675d64885ab617027f176af8bde3b4384dea362dfa62f7",
+    "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?date=2020:2024&format=json&per_page=20000": "sha256:452d56b16ef0ac07038f69e098c3cdc04d6f71122a387bda235da53da5c43d0a"
+  },
+  "rejected": 0,
+  "rejection_reason_codes": [],
+  "retrieval_time": "2026-07-26T16:41:05.328194+00:00",
+  "run_id": "phase5e-2026-07-26-c29-online",
+  "schema_version": "feasibility-probe-report-1.0",
+  "source_candidate_id": "C29-WDI-INFLATION-FXRATE",
+  "source_version": "Annual observations for 2020-2024 retrieved in July 2026",
+  "stale": 0,
+  "status_counts": {
+    "valid": 91
+  },
+  "universe_id": "stable_supported_v1",
+  "unmapped": 163,
+  "valid": 91,
+  "validated": 91
+}

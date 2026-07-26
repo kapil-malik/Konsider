@@ -1,0 +1,19 @@
+[
+  {
+    "artifact_id": "sha256:7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265",
+    "byte_length": 490475,
+    "content_length_header": "490475",
+    "dataset_version": "HCI+ version 3; hci_plus_index_panel.dta",
+    "etag": "\"0x8DE7622FA514F60\"",
+    "final_url": "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/hci_plus_index_panel.dta",
+    "http_status": 200,
+    "last_modified": "Fri, 27 Feb 2026 17:09:33 GMT",
+    "media_type": "application/octet-stream",
+    "parser_version": "hci_plus_stata_v1",
+    "path": "data/raw/feasibility-probes/C08-HCIPLUS-V3/7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265.bin",
+    "requested_url": "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/hci_plus_index_panel.dta",
+    "retrieved_at": "2026-07-26T16:42:28.407644+00:00",
+    "sha256": "7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265",
+    "source_id": "C08-HCIPLUS-V3"
+  }
+]

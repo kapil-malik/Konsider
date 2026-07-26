@@ -1,0 +1,30 @@
+[
+  {
+    "access_method": "Phase 5 deterministic research probe",
+    "attribution": "WHO/UNICEF Joint Monitoring Programme, distributed through World Bank World Development Indicators.",
+    "canonical_page_url": "https://washdata.org/report/jmp-2025-wash-households",
+    "criterion_id": "C53",
+    "dataset_version": "SH.H2O.BASW.ZS+SH.STA.BASS.ZS@WDI-2026-07",
+    "distributor": null,
+    "download_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.BASW.ZS?date=2022:2024&format=json&per_page=20000",
+      "https://api.worldbank.org/v2/country/all/indicator/SH.STA.BASS.ZS?date=2022:2024&format=json&per_page=20000"
+    ],
+    "license_evidence": "The World Bank-distributed WDI indicators are CC BY 4.0; WHO/UNICEF JMP upstream attribution is retained.",
+    "license_name": "Creative Commons Attribution 4.0 International",
+    "license_url": "https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets",
+    "methodology_url": "https://washdata.org/monitoring",
+    "notes": "Research probe registration; not an approved production source registration.",
+    "official_or_independent": "official",
+    "pagination": "adapter-specific",
+    "parser": "world_bank_multi_indicator_json_v1",
+    "parser_version": "world_bank_multi_indicator_json_v1",
+    "permitted_usage": "Non-publishing source-feasibility research only.",
+    "publisher": "WHO/UNICEF JMP via World Bank WDI",
+    "redistribution": "Raw API bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "reference_period": "fresh when observation year >= 2022",
+    "source_id": "C53-JMP-WDI-BASIC",
+    "source_version": "JMP 2025 release; observations queried for 2022-2024",
+    "update_frequency": "annual"
+  }
+]

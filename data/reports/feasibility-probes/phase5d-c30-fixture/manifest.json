@@ -1,0 +1,14 @@
+{
+  "files": {
+    "country-results.jsonl": "sha256:712dd9953317f6ed8c4a35680667570d7cab9d694495be0dfbf3978408bed3b5",
+    "definition.json": "sha256:9f123a80e35f33d25cec38ba13c251f24f1f2c7024f2809d5030fa0cf623fe8f",
+    "raw-artifacts.json": "sha256:47cae68241421a608a2978f266c5d17a89c6950b97a8b88a5f4f506d4f3e5752",
+    "report.md": "sha256:5c6ee2324624332a5cd28aeba40bc4d085436170f8b8e9f830be24ebf2fc053c",
+    "sources.json": "sha256:43444e39c9e328a026850dedc198a44e317ca49dec50f45933d97230c108f592",
+    "summary.json": "sha256:db33fd9909474bd14128b1476a5bec5a6fdea7aafcbf8a843781e9513381c58e",
+    "unmapped-records.jsonl": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "non_publishing": true,
+  "run_id": "phase5d-c30-fixture",
+  "schema_version": "feasibility-probe-manifest-1.0"
+}

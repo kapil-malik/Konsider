@@ -1,0 +1,62 @@
+{
+  "adapter_id": "hci_plus_stata_v1",
+  "adapter_options": {
+    "country_code_field": "iso3c",
+    "country_name_field": "wbcountryname",
+    "field_components": {
+      "hcip_schooling_component_mf": "hci_plus_schooling_component",
+      "hlo_mf": "harmonized_learning_outcome",
+      "lays_mf": "learning_adjusted_years_schooling"
+    },
+    "year_field": "year"
+  },
+  "blocker_codes": [
+    "COV_NOT_FULL_91",
+    "FRS_FILE_CATALOGUE_YEAR_DISCREPANCY",
+    "GRA_LOCAL_SCHOOL_VARIATION"
+  ],
+  "component_rules": [
+    {
+      "component_id": "harmonized_learning_outcome",
+      "maximum": 1000.0,
+      "minimum": 0.0
+    },
+    {
+      "component_id": "learning_adjusted_years_schooling",
+      "maximum": 20.0,
+      "minimum": 0.0
+    },
+    {
+      "component_id": "hci_plus_schooling_component",
+      "maximum": null,
+      "minimum": 0.0
+    }
+  ],
+  "criterion_id": "C08",
+  "freshness_min_year": 2024,
+  "geographic_scope": "national with local-school caveat",
+  "minimum_coverage_count": 82,
+  "name": "School education quality",
+  "observation_type": "national modelled and harmonized schooling outcomes",
+  "rejection_reason_codes": [],
+  "schema_version": "feasibility-probe-definition-1.0",
+  "source": {
+    "access_urls": [
+      "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/hci_plus_index_panel.dta"
+    ],
+    "attribution": "World Bank, Human Capital Index Plus, version 3.",
+    "canonical_page_url": "https://datacatalog.worldbank.org/search/dataset/0067030/human-capital-index-plus",
+    "dataset": "Human Capital Index Plus",
+    "dataset_version": "HCI+ version 3; hci_plus_index_panel.dta",
+    "licence_evidence": "The HCI+ catalogue record identifies the dataset licence as CC BY 4.0.",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+    "methodology_url": "https://humancapital.worldbank.org/hciplus/methodology/",
+    "parser_version": "hci_plus_stata_v1",
+    "publisher": "World Bank",
+    "redistribution": "Raw Stata bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "source_candidate_id": "C08-HCIPLUS-V3",
+    "source_version": "File updated 2026-02-11; panel labels through 2025",
+    "update_frequency": "periodic"
+  }
+}

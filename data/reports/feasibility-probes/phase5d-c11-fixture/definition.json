@@ -1,0 +1,61 @@
+{
+  "adapter_id": "ilostat_labour_composite_csv_v1",
+  "adapter_options": {
+    "age_code": "AGE_YTHADULT_YGE15",
+    "indicator_components": {
+      "EAP_2WAP_SEX_AGE_RT": "labour_force_participation_rate",
+      "EMP_2WAP_SEX_AGE_RT": "employment_to_population_ratio",
+      "UNE_2EAP_SEX_AGE_RT": "unemployment_rate"
+    },
+    "sex_code": "SEX_T"
+  },
+  "blocker_codes": [
+    "COV_NOT_FULL_91"
+  ],
+  "component_rules": [
+    {
+      "component_id": "unemployment_rate",
+      "maximum": 100.0,
+      "minimum": 0.0
+    },
+    {
+      "component_id": "employment_to_population_ratio",
+      "maximum": 100.0,
+      "minimum": 0.0
+    },
+    {
+      "component_id": "labour_force_participation_rate",
+      "maximum": 100.0,
+      "minimum": 0.0
+    }
+  ],
+  "criterion_id": "C11",
+  "freshness_min_year": 2025,
+  "geographic_scope": "national",
+  "minimum_coverage_count": 82,
+  "name": "Overall job-market opportunity",
+  "observation_type": "national modelled annual estimate composite",
+  "rejection_reason_codes": [],
+  "schema_version": "feasibility-probe-definition-1.0",
+  "source": {
+    "access_urls": [
+      "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+      "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+      "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv"
+    ],
+    "attribution": "International Labour Organization, ILOSTAT, ILO modelled estimates, November 2025 edition.",
+    "canonical_page_url": "https://ilostat.ilo.org/data/bulk/",
+    "dataset": "ILOSTAT bulk download \u2014 modelled labour estimates",
+    "dataset_version": "UNE+EMP+EAP modelled estimates, Nov. 2025",
+    "licence_evidence": "ILOSTAT datasets and referential metadata published from 3 May 2023 are CC BY 4.0; restricted partner microdata are excluded.",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://www.ilo.org/rights-and-permissions",
+    "methodology_url": "https://ilostat.ilo.org/resources/concepts-and-definitions/ilo-modelled-estimates/",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "publisher": "International Labour Organization (ILOSTAT)",
+    "redistribution": "Raw bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "source_candidate_id": "C11-ILO-MODEL-2025",
+    "source_version": "ILOSTAT catalogue updated 2025-12-02",
+    "update_frequency": "annual model edition"
+  }
+}

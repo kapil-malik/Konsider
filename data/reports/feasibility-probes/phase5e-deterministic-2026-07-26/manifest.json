@@ -1,0 +1,14 @@
+{
+  "batch_id": "PHASE5E_DETERMINISTIC_2026-07-26",
+  "files": {
+    "aggregate.csv": "sha256:ed5b9ff7060ae4134d2d7e6cccac0e8b30caed289f764618c3ebd64af2b8a5ab",
+    "aggregate.json": "sha256:93ed1631d7a276a021fd5ccae0429bea8b8ec5209e9adcdec8a6af409771da2e",
+    "country-status-matrix.csv": "sha256:8c6e87b5b381159efb5ec18adca44c362939803df5b8f5695271939a88c7fae2",
+    "country-status-matrix.json": "sha256:bb5a8b85e1dccfd3cc99a47bb16cd4e3490d8ce41baa512f2d5600cd64e46ed2",
+    "offline-replay-verification.json": "sha256:7e787da7121dbc821f2beee453c3dbcb58acad4a9e8dcf9dd15e14fd9c93ab8c",
+    "raw-artifact-inventory.json": "sha256:2a93c0f8b443a69f5d5fc945cceb54c94f11a221dd92662c6bac6be34989cb1a",
+    "report.md": "sha256:f262bf89430903c165e91c26953b89ac51ac89bfb22ec7ca1b57df9e35684db7"
+  },
+  "research_only": true,
+  "schema_version": "phase5e-deterministic-manifest-1.0"
+}

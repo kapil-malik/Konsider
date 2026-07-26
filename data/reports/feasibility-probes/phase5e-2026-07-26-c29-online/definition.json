@@ -1,0 +1,58 @@
+{
+  "adapter_id": "world_bank_multi_indicator_json_v1",
+  "adapter_options": {
+    "indicator_components": {
+      "FP.CPI.TOTL.ZG": "consumer_price_inflation",
+      "PA.NUS.FCRF": "official_exchange_rate"
+    },
+    "minimum_observations": {
+      "consumer_price_inflation": 3,
+      "official_exchange_rate": 3
+    }
+  },
+  "blocker_codes": [
+    "CMP_CURRENCY_REGIME",
+    "SCO_COMPOSITE_SENSITIVITY_REQUIRED",
+    "OPS_CURRENCY_BREAK_HANDLING_REQUIRED"
+  ],
+  "component_rules": [
+    {
+      "component_id": "consumer_price_inflation",
+      "maximum": 10000.0,
+      "minimum": -100.0
+    },
+    {
+      "component_id": "official_exchange_rate",
+      "maximum": null,
+      "minimum": 0.0
+    }
+  ],
+  "criterion_id": "C29",
+  "freshness_min_year": 2023,
+  "geographic_scope": "national",
+  "minimum_coverage_count": 82,
+  "name": "Currency and macroeconomic stability",
+  "observation_type": "national official annual macroeconomic time series",
+  "rejection_reason_codes": [],
+  "schema_version": "feasibility-probe-definition-1.0",
+  "source": {
+    "access_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?date=2020:2024&format=json&per_page=20000",
+      "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?date=2020:2024&format=json&per_page=20000"
+    ],
+    "attribution": "World Bank, World Development Indicators; upstream IMF International Financial Statistics.",
+    "canonical_page_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+    "dataset": "World Development Indicators \u2014 inflation and official exchange rate",
+    "dataset_version": "FP.CPI.TOTL.ZG+PA.NUS.FCRF@WDI-2026-07",
+    "licence_evidence": "The exact WDI indicator pages identify the distributed series as CC BY 4.0.",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets",
+    "methodology_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+    "parser_version": "world_bank_multi_indicator_json_v1",
+    "publisher": "World Bank distribution / IMF IFS upstream",
+    "redistribution": "Raw API bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "source_candidate_id": "C29-WDI-INFLATION-FXRATE",
+    "source_version": "Annual observations for 2020-2024 retrieved in July 2026",
+    "update_frequency": "annual"
+  }
+}

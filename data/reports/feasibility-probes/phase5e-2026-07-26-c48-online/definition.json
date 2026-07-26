@@ -1,0 +1,44 @@
+{
+  "adapter_id": "world_bank_indicator_json_v1",
+  "adapter_options": {
+    "component_id": "wgi_political_stability_estimate"
+  },
+  "blocker_codes": [
+    "CMP_PERCEPTION_BASED",
+    "SCO_UNCERTAINTY_REQUIRED"
+  ],
+  "component_rules": [
+    {
+      "component_id": "wgi_political_stability_estimate",
+      "maximum": 3.0,
+      "minimum": -3.0
+    }
+  ],
+  "criterion_id": "C48",
+  "freshness_min_year": 2024,
+  "geographic_scope": "national",
+  "minimum_coverage_count": 82,
+  "name": "Political stability and civil peace",
+  "observation_type": "national perception-based composite estimate",
+  "rejection_reason_codes": [],
+  "schema_version": "feasibility-probe-definition-1.0",
+  "source": {
+    "access_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_PV_EST?date=2024:2024&format=json&per_page=20000"
+    ],
+    "attribution": "World Bank, Worldwide Governance Indicators, 2025 revision.",
+    "canonical_page_url": "https://datacatalog.worldbank.org/search/dataset/0038026/worldwide-governance-indicators",
+    "dataset": "Worldwide Governance Indicators 2025 revision",
+    "dataset_version": "WGI 2025 revision; GOV_WGI_PV_EST",
+    "licence_evidence": "The World Bank WGI catalogue record identifies CC BY 4.0 for the published aggregate dataset.",
+    "licence_name": "Creative Commons Attribution 4.0 International",
+    "licence_url": "https://datacatalog.worldbank.org/search/dataset/0038026/worldwide-governance-indicators",
+    "methodology_url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators/documentation",
+    "parser_version": "world_bank_indicator_json_v1",
+    "publisher": "World Bank",
+    "redistribution": "Raw aggregate API bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "source_candidate_id": "C48-WGI-PV-2025",
+    "source_version": "Recalculated 1996-2024 series; 2024 observation",
+    "update_frequency": "annual"
+  }
+}

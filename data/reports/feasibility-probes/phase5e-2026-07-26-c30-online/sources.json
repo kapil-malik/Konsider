@@ -1,0 +1,29 @@
+[
+  {
+    "access_method": "Phase 5 deterministic research probe",
+    "attribution": "World Bank, World Development Indicators; International Migrant Stock, United Nations Population Division.",
+    "canonical_page_url": "https://data.worldbank.org/indicator/SM.POP.TOTL.ZS",
+    "criterion_id": "C30",
+    "dataset_version": "SM.POP.TOTL.ZS@WDI-2026-07",
+    "distributor": null,
+    "download_urls": [
+      "https://api.worldbank.org/v2/country/all/indicator/SM.POP.TOTL.ZS?date=2024:2024&format=json&per_page=20000"
+    ],
+    "license_evidence": "The WDI metadata representation identifies licence type CC BY 4.0.",
+    "license_name": "Creative Commons Attribution 4.0 International",
+    "license_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+    "methodology_url": "https://databank.worldbank.org/metadataglossary/world-development-indicators/series/SM.POP.TOTL",
+    "notes": "Research probe registration; not an approved production source registration.",
+    "official_or_independent": "official",
+    "pagination": "adapter-specific",
+    "parser": "world_bank_indicator_json_v1",
+    "parser_version": "world_bank_indicator_json_v1",
+    "permitted_usage": "Non-publishing source-feasibility research only.",
+    "publisher": "World Bank distribution / UN Population Division upstream",
+    "redistribution": "Raw bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "reference_period": "fresh when observation year >= 2024",
+    "source_id": "C30-WDI-MIGRANT",
+    "source_version": "2024 observations retrieved in July 2026",
+    "update_frequency": "annual"
+  }
+]

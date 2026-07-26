@@ -1,0 +1,41 @@
+{
+  "blocker_codes": [
+    "CMP_PERCEPTION_BASED",
+    "SCO_UNCERTAINTY_REQUIRED"
+  ],
+  "criterion_id": "C48",
+  "criterion_name": "Political stability and civil peace",
+  "dataset": "Worldwide Governance Indicators 2025 revision",
+  "dataset_version": "WGI 2025 revision; GOV_WGI_PV_EST",
+  "denominator": 91,
+  "found": 91,
+  "fresh": 91,
+  "freshness_min_year": 2024,
+  "full_91_passed": true,
+  "invalid": 0,
+  "minimum_probe_coverage_count": 82,
+  "missing": 0,
+  "mode": "online",
+  "parse_failed": 0,
+  "parsed": 91,
+  "probe_threshold_passed": true,
+  "publisher": "World Bank",
+  "raw_artifact_checksums": {
+    "https://api.worldbank.org/v2/country/all/indicator/GOV_WGI_PV_EST?date=2024:2024&format=json&per_page=20000": "sha256:29ddbd35bff04e564d4c44e8cf323b1057a5fbb01c5d193ba8f213a258558a61"
+  },
+  "rejected": 0,
+  "rejection_reason_codes": [],
+  "retrieval_time": "2026-07-26T16:41:06.771265+00:00",
+  "run_id": "phase5e-2026-07-26-c48-online",
+  "schema_version": "feasibility-probe-report-1.0",
+  "source_candidate_id": "C48-WGI-PV-2025",
+  "source_version": "Recalculated 1996-2024 series; 2024 observation",
+  "stale": 0,
+  "status_counts": {
+    "valid": 91
+  },
+  "universe_id": "stable_supported_v1",
+  "unmapped": 115,
+  "valid": 91,
+  "validated": 91
+}

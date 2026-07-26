@@ -1,0 +1,19 @@
+[
+  {
+    "artifact_id": "sha256:5b194d1e68a30e7a9975ab1f62f0df03df4625ea498c2ee4ea5c6d1d94a19183",
+    "byte_length": 32272,
+    "content_length_header": null,
+    "dataset_version": "SM.POP.TOTL.ZS@WDI-2026-07",
+    "etag": null,
+    "final_url": "https://api.worldbank.org/v2/country/all/indicator/SM.POP.TOTL.ZS?date=2024:2024&format=json&per_page=20000",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "application/json",
+    "parser_version": "world_bank_indicator_json_v1",
+    "path": "data/raw/feasibility-probes/C30-WDI-MIGRANT/5b194d1e68a30e7a9975ab1f62f0df03df4625ea498c2ee4ea5c6d1d94a19183.bin",
+    "requested_url": "https://api.worldbank.org/v2/country/all/indicator/SM.POP.TOTL.ZS?date=2024:2024&format=json&per_page=20000",
+    "retrieved_at": "2026-07-26T15:49:40.470548+00:00",
+    "sha256": "5b194d1e68a30e7a9975ab1f62f0df03df4625ea498c2ee4ea5c6d1d94a19183",
+    "source_id": "C30-WDI-MIGRANT"
+  }
+]
