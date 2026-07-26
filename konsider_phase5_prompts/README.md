@@ -44,3 +44,9 @@ Run 5A, then 5B. Review both before finalising the first 5C batch. Start 5D only
 - Shift later forward-looking phases accordingly
 
 Do not renumber historical completed phases or release records.
+
+## Completion
+
+Phase 5 was closed on 2026-07-26. The authoritative outcome is the
+[Phase 5 closure report](../docs/research/phase5-closure-report.md). Prompt files remain unchanged as
+historical workflow instructions.

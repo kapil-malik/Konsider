@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 5G-0 and Phase 5G-1 complete
+Status: Phase 5 complete; Phase 6 recommended next
 
 Last updated: 2026-07-26
 
@@ -63,7 +63,7 @@ See the [implemented UI guide](ui.md) and [React/Vite decision](../architecture/
 See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md) and
 [Phase 2D.4 source study](../data/homicide-source-feasibility-phase-2d4.md).
 
-## Phase 5G: portfolio implementation — complete
+## Phase 5: criteria expansion and source feasibility — complete
 
 - Completed exact-source, non-publishing probes for health spending, disaster-risk resilience,
   working hours, and citizenship access.
@@ -72,20 +72,25 @@ See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md) and
 - Published immutable release `2026-07-26.3`; eight criteria are now enabled.
 - Retained WGI uncertainty, disclosed governance overlap, and kept immigrant presence
   preference-based rather than treating it as universal quality.
+- Closed the 84-item research funnel with all screening and rejection evidence preserved.
 
-See the [Phase 5G-0 probe report](../research/phase5g0-final-probes.md) and
+See the [Phase 5 closure report](../research/phase5-closure-report.md),
+[Phase 5G-0 probe report](../research/phase5g0-final-probes.md), and
 [active release report](../history/releases/2026-07-26.3.md).
 
-## Phase 2E: deterministic evidence and explanations
+## Phase 6: deterministic evidence and explanations — recommended next
 
-- Prioritize additional criteria, fresher source editions, and stronger evidence quality while
-  preserving complete-case publication.
 - Add structured source/observation lookup and citation-ready provenance.
 - Generate deterministic strengths, trade-offs, and comparison explanations from contributions.
 - Add metadata and simple lexical lookup only if measured product needs require it.
 - Do not introduce a vector database without evidence volume and retrieval-quality measurements.
 
-## Phase 2F: conversational exploration
+Recommended first slice: produce release-pinned, template-based country and comparison explanations
+from the existing eight enabled criteria. Every statement should resolve to published observations,
+scores, contributions, caveats, and source links; snapshot tests should prove deterministic wording
+and numerical reconciliation before any generative layer is considered.
+
+## Phase 7: conversational exploration
 
 - Add AI explanations and chat only after deterministic ranking and explanations are proven.
 - Require numerical and factual claims to come from typed deterministic tools.

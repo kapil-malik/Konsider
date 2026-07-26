@@ -19,6 +19,8 @@ readable schemas, and published release manifests take precedence if prose ever 
   portfolio, guardrails, fallback hierarchy, and Phase 5G implementation order.
 - [Phase 5G-0 final probes](research/phase5g0-final-probes.md) - exact-source coverage,
   freshness, replay evidence, and final dispositions for four unresolved candidates.
+- [Phase 5 closure report](research/phase5-closure-report.md) - the complete 84-item funnel,
+  final dispositions, production outcome, guardrails, limitations, and refresh recommendations.
 - [Phase 2C UI](product/ui.md) - implemented product behavior and technical boundaries.
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md) - reproducible universe,
   complete-case results, final 91-country universe, and closure decision.
@@ -51,6 +53,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 5E deterministic probes](research/phase5e-deterministic-probes.md)
 - [Phase 5F portfolio decision](research/konsider_phase5f_portfolio_decision.md)
 - [Phase 5G-0 final probes](research/phase5g0-final-probes.md)
+- [Phase 5 closure report](research/phase5-closure-report.md)
 
 ## Historical records
 

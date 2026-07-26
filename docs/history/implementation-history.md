@@ -4,6 +4,21 @@ Historical records summarize completed milestones. Current behavior is documente
 [architecture](../architecture/system-architecture.md), [worker operations](../operations/worker.md),
 and [API operations](../operations/api.md).
 
+## Phase 5: criteria expansion and source feasibility
+
+- Goal: screen the full 84-item search space, deeply research the strongest or most strategically
+  important candidates, measure exact source feasibility, select a guarded portfolio, and implement
+  only production-ready additions.
+- Delivered: 84 screening rows; three 15-criterion deep-research batches; a generic feasibility
+  framework; ten exact live candidate probes; an approved portfolio decision; three new 91/91
+  production criteria; active release `2026-07-26.3`; and a consolidated closure report.
+- Major decisions: preserve the complete 91-country production universe; distinguish research
+  thresholds from publication readiness; defer city, occupation, household, and legal-profile
+  questions to their natural layers; retain uncertainty; prohibit imputation and partial-country
+  scoring; and preserve rejected evidence.
+- Completed: 2026-07-26. The portfolio has nine published criteria and eight enabled criteria.
+- Next: Phase 6 deterministic, citation-ready evidence and explanations.
+
 ## Phase 5E deterministic measured probes
 
 - Goal: measure the actual stable-91 suitability of the seven deterministic candidates approved
