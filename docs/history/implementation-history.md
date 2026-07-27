@@ -4,7 +4,7 @@ Historical records summarize completed milestones. Current behavior is documente
 [architecture](../architecture/system-architecture.md), [worker operations](../operations/worker.md),
 and [API operations](../operations/api.md).
 
-## Phase 5: criteria expansion and source feasibility
+## Phase 3: criteria expansion and source feasibility
 
 - Goal: screen the full 84-item search space, deeply research the strongest or most strategically
   important candidates, measure exact source feasibility, select a guarded portfolio, and implement
@@ -17,12 +17,12 @@ and [API operations](../operations/api.md).
   questions to their natural layers; retain uncertainty; prohibit imputation and partial-country
   scoring; and preserve rejected evidence.
 - Completed: 2026-07-26. The portfolio has nine published criteria and eight enabled criteria.
-- Next: Phase 6 deterministic, citation-ready evidence and explanations.
+- Next: Phase 4 deterministic, citation-ready evidence and explanations.
 
-## Phase 5E deterministic measured probes
+## Phase 3E deterministic measured probes
 
 - Goal: measure the actual stable-91 suitability of the seven deterministic candidates approved
-  after Phase 5C.
+  after Phase 3C.
 - Delivered: exact live captures, source and licence records, 91 explicit country outcomes per
   candidate, aggregate JSON/CSV/Markdown, country-status matrix, raw-artifact inventory, and
   content-addressed offline replay.
@@ -33,7 +33,7 @@ and [API operations](../operations/api.md).
 - Completed: 2026-07-26. All seven offline replays passed. No active release, production ingestion,
   scoring, API, or UI was modified.
 
-## Phase 5D feasibility-probe framework
+## Phase 3D feasibility-probe framework
 
 - Goal: prove a minimal, generic, deterministic way to test candidate sources without entering
   production ingestion or publishing.
@@ -48,7 +48,7 @@ and [API operations](../operations/api.md).
 - Limitation: fixture outcomes prove framework behaviour only; they are not evidence of live source
   coverage or licensing suitability.
 
-## Phase 5G-0 and 5G-1: portfolio expansion
+## Phase 3G-0 and 3G-1: portfolio expansion
 
 - Goal: resolve the final conditional source questions and implement only approved, deterministic
   additions without weakening the stable 91-country contract.

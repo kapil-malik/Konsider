@@ -1,0 +1,14 @@
+{
+    "batch_id":  "PHASE3E_DETERMINISTIC_2026-07-26",
+    "files":  {
+                  "aggregate.csv":  "8c6dbc10bd7a5f609bbc7640676b70f664592f5c472692a9538f5695fd590bfa",
+                  "aggregate.json":  "2ab77d66ab1819775d32f2f8bce9c91d43e067c43857c1dba13d2e39ee23e5ea",
+                  "country-status-matrix.csv":  "95653da10f25f89fc6829f3909a5bd0a37d004939305bb1069d51a235fc8416c",
+                  "country-status-matrix.json":  "47774585dacd87f9d3f1923dc5daf48d1bd9059b715fb5b2dfe70473d07f33c2",
+                  "offline-replay-verification.json":  "fd7069f2b4b5d619cc23c6bad69a3cee9b1adfd9ddbc2fca827a7cc2bc20a1bc",
+                  "raw-artifact-inventory.json":  "8c53c521170ec6597fdbdc31f4bd96c01cebcb76529bc6d2192b29852692eb87",
+                  "report.md":  "8e28a88f7770e423d721292d0dea2d0be2752aaa19d5bcb80cfcdda56c5f13e3"
+              },
+    "research_only":  true,
+    "schema_version":  "phase3e-deterministic-manifest-1.0"
+}

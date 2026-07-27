@@ -1,0 +1,46 @@
+{
+  "blocker_codes": [
+    "COV_NOT_FULL_91",
+    "RED_SHARED_COMPONENTS",
+    "CMP_MODELLED_ESTIMATES"
+  ],
+  "criterion_id": "C11",
+  "criterion_name": "Overall job-market opportunity",
+  "dataset": "ILOSTAT bulk download \u2014 modelled labour estimates",
+  "dataset_version": "UNE+EMP+EAP modelled estimates, November 2025",
+  "denominator": 91,
+  "found": 89,
+  "fresh": 88,
+  "freshness_min_year": 2025,
+  "full_91_passed": false,
+  "invalid": 0,
+  "minimum_probe_coverage_count": 82,
+  "missing": 2,
+  "mode": "online",
+  "parse_failed": 0,
+  "parsed": 89,
+  "probe_threshold_passed": true,
+  "publisher": "International Labour Organization (ILOSTAT)",
+  "raw_artifact_checksums": {
+    "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv": "sha256:f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589",
+    "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv": "sha256:af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000",
+    "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv": "sha256:0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d"
+  },
+  "rejected": 0,
+  "rejection_reason_codes": [],
+  "retrieval_time": "2026-07-26T16:40:55.615165+00:00",
+  "run_id": "phase3e-2026-07-26-c11-online",
+  "schema_version": "feasibility-probe-report-1.0",
+  "source_candidate_id": "C11-ILO-MODEL-2025",
+  "source_version": "ILOSTAT catalogue updated 2025-12-02",
+  "stale": 1,
+  "status_counts": {
+    "missing": 2,
+    "stale": 1,
+    "valid": 88
+  },
+  "universe_id": "stable_supported_v1",
+  "unmapped": 187,
+  "valid": 88,
+  "validated": 89
+}

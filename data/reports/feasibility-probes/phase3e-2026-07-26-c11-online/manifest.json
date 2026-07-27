@@ -1,0 +1,14 @@
+{
+    "files":  {
+                  "country-results.jsonl":  "5d871d43f7a69aedb07e5d3febb9146df84c695c9d64f42504e66556bbf66e71",
+                  "definition.json":  "6d959a558cbdb88d5f0eda8c9a584479e9b37630d74260d0c22f93e2f4f57824",
+                  "raw-artifacts.json":  "f808e4a8aee3209fcf3f2cff4d52a9899db0659fcd86ea3b9fd27f141c3b7c3b",
+                  "report.md":  "768f1ae2967f9fee9e1ba6943c7c7ffbfadf757c3b6508dcd520e049eb2a26a1",
+                  "sources.json":  "46123756b888a1868417a52906cd33445ebfbe025caa21eda9d5784f344d66b3",
+                  "summary.json":  "21b754d9ad657001b390a09ae5cd8b6bf27e4ede3cdc5cc9d1f1a8ddcc445b70",
+                  "unmapped-records.jsonl":  "8cda6c341733142ca11a6adf692074c43a5cc67b8c7e5703e802f08bee0e57da"
+              },
+    "non_publishing":  true,
+    "run_id":  "phase3e-2026-07-26-c11-online",
+    "schema_version":  "feasibility-probe-manifest-1.0"
+}

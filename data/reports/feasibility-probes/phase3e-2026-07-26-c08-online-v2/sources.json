@@ -1,0 +1,29 @@
+[
+  {
+    "access_method": "Phase 3 deterministic research probe",
+    "attribution": "World Bank, Human Capital Index Plus, version 3.",
+    "canonical_page_url": "https://datacatalog.worldbank.org/search/dataset/0067030/human-capital-index-plus",
+    "criterion_id": "C08",
+    "dataset_version": "HCI+ version 3; hci_plus_index_panel.dta",
+    "distributor": null,
+    "download_urls": [
+      "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/hci_plus_index_panel.dta"
+    ],
+    "license_evidence": "The HCI+ catalogue record identifies the dataset licence as CC BY 4.0.",
+    "license_name": "Creative Commons Attribution 4.0 International",
+    "license_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+    "methodology_url": "https://humancapital.worldbank.org/hciplus/methodology/",
+    "notes": "Research probe registration; not an approved production source registration.",
+    "official_or_independent": "official",
+    "pagination": "adapter-specific",
+    "parser": "hci_plus_stata_v1",
+    "parser_version": "hci_plus_stata_v1",
+    "permitted_usage": "Non-publishing source-feasibility research only.",
+    "publisher": "World Bank",
+    "redistribution": "Raw Stata bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "reference_period": "fresh when observation year >= 2024",
+    "source_id": "C08-HCIPLUS-V3",
+    "source_version": "File updated 2026-02-11; panel labels through 2025",
+    "update_frequency": "periodic"
+  }
+]

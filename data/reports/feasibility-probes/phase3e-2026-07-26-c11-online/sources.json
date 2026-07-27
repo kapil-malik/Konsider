@@ -1,0 +1,31 @@
+[
+  {
+    "access_method": "Phase 3 deterministic research probe",
+    "attribution": "International Labour Organization, ILOSTAT, ILO modelled estimates, November 2025 edition.",
+    "canonical_page_url": "https://ilostat.ilo.org/data/bulk/",
+    "criterion_id": "C11",
+    "dataset_version": "UNE+EMP+EAP modelled estimates, November 2025",
+    "distributor": null,
+    "download_urls": [
+      "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+      "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+      "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv"
+    ],
+    "license_evidence": "ILOSTAT datasets and referential metadata published from 3 May 2023 are CC BY 4.0; restricted partner microdata are excluded.",
+    "license_name": "Creative Commons Attribution 4.0 International",
+    "license_url": "https://www.ilo.org/rights-and-permissions",
+    "methodology_url": "https://ilostat.ilo.org/methods/concepts-and-definitions/ilo-modelled-estimates/",
+    "notes": "Research probe registration; not an approved production source registration.",
+    "official_or_independent": "official",
+    "pagination": "adapter-specific",
+    "parser": "ilostat_labour_composite_csv_v1",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "permitted_usage": "Non-publishing source-feasibility research only.",
+    "publisher": "International Labour Organization (ILOSTAT)",
+    "redistribution": "Raw bytes are retained locally; compact derived probe results may be committed with attribution.",
+    "reference_period": "fresh when observation year >= 2025",
+    "source_id": "C11-ILO-MODEL-2025",
+    "source_version": "ILOSTAT catalogue updated 2025-12-02",
+    "update_frequency": "annual model edition"
+  }
+]

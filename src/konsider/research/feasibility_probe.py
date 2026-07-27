@@ -1,4 +1,4 @@
-"""Generic deterministic source-feasibility probes for Phase 5 research."""
+"""Generic deterministic source-feasibility probes for Phase 3 research."""
 
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ def _source_registration(definition: ProbeDefinition) -> SourceRegistration:
         distributor=None,
         canonical_page_url=source.canonical_page_url,
         download_urls=source.access_urls,
-        access_method="Phase 5 deterministic research probe",
+        access_method="Phase 3 deterministic research probe",
         pagination="adapter-specific",
         dataset_version=source.dataset_version,
         source_version=source.source_version,
@@ -285,7 +285,7 @@ def _render_report(summary: dict[str, object]) -> str:
             "## Decision gates",
             "",
             (
-                f"- Phase 5 probe threshold ({summary['minimum_probe_coverage_count']}): "
+                f"- Phase 3 probe threshold ({summary['minimum_probe_coverage_count']}): "
                 f"**{'PASS' if summary['probe_threshold_passed'] else 'FAIL'}**"
             ),
             (

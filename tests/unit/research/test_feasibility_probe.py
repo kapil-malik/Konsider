@@ -8,8 +8,8 @@ from unittest import TestCase
 from konsider.research.feasibility_probe import load_definition, run_probe
 
 ROOT = Path(__file__).resolve().parents[3]
-FIXTURES = ROOT / "tests" / "fixtures" / "phase5d"
-DEFINITIONS = ROOT / "data" / "research" / "phase5d"
+FIXTURES = ROOT / "tests" / "fixtures" / "phase3d"
+DEFINITIONS = ROOT / "data" / "research" / "phase3d"
 UNIVERSE = ROOT / "data" / "country-universes" / "stable-supported-v1.json"
 NOW = datetime(2026, 7, 24, tzinfo=UTC)
 

@@ -1,0 +1,14 @@
+{
+    "files":  {
+                  "country-results.jsonl":  "ab5345ed2fd2f66ed65c9e89c6c4c52550631c626482f9451c1cc38410642d48",
+                  "definition.json":  "bb3b3842c95e5a76a9759f7b0257146608d8b6c1c36ab23aa836bd8bc39aaff5",
+                  "raw-artifacts.json":  "390259f374cbae1e12491600e8ec15f81ca66131ae77616253d719b348d40647",
+                  "report.md":  "d0b6ea06e2bd63c7bd79174d6a29cbc82df5af78e36f259b40d305b83e325851",
+                  "sources.json":  "93aba4fb64f9e11480d7c727f32f75c94f8a109391176ecb61d2da386c7c084f",
+                  "summary.json":  "2d17f4ff74b0cdedf68203441b1ad75c8b99f567892fc4fb142708f876a42741",
+                  "unmapped-records.jsonl":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+    "non_publishing":  true,
+    "run_id":  "phase3d-c30-fixture",
+    "schema_version":  "feasibility-probe-manifest-1.0"
+}

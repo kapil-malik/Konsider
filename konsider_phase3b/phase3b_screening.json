@@ -1,0 +1,4040 @@
+{
+  "phase_id": "3B",
+  "version": "1.0-preliminary-screen",
+  "date": "2026-07-24",
+  "universe_id": "stable_supported_v1",
+  "universe_size": 91,
+  "screening_threshold": {
+    "minimum_validated": 82,
+    "percentage": 90
+  },
+  "scope_note": "Lightweight Gate A screening only. No exhaustive licensing audit, no measured 91-country coverage audit, and no production approval.",
+  "fact_estimate_legend": {
+    "VERIFIED_FROM_USER_SEARCH_SPACE": "Criterion construct is taken from the supplied 84-item search space.",
+    "VERIFIED_WHERE_CITED": "A cited official/primary page confirms that the publisher or dataset family exists and supports the stated scope/freshness fact.",
+    "PRELIMINARY_ESTIMATE": "Fit, comparability, stable-universe coverage, licensing fit, and priority remain hypotheses for Phase 3C unless explicitly stated otherwise."
+  },
+  "deep_research_ranked_ids": [
+    "C11",
+    "C32",
+    "C33",
+    "C17",
+    "C21",
+    "C25",
+    "C50",
+    "C40",
+    "C01",
+    "C30",
+    "C12",
+    "C58",
+    "C56",
+    "C08",
+    "C66",
+    "C38",
+    "C35",
+    "C36",
+    "C34",
+    "C05",
+    "C15",
+    "C13",
+    "C14",
+    "C16",
+    "C19",
+    "C22",
+    "C26",
+    "C29",
+    "C48",
+    "C49",
+    "C53",
+    "C57",
+    "C62",
+    "C67",
+    "C68",
+    "C70",
+    "C71",
+    "C72",
+    "C06",
+    "C07",
+    "C42",
+    "C45"
+  ],
+  "recommended_batches": {
+    "first": [
+      "C11",
+      "C32",
+      "C33",
+      "C17",
+      "C21",
+      "C25",
+      "C50",
+      "C40",
+      "C01",
+      "C30",
+      "C12",
+      "C58",
+      "C56",
+      "C08",
+      "C66"
+    ],
+    "second": [
+      "C38",
+      "C35",
+      "C36",
+      "C34",
+      "C05",
+      "C15",
+      "C13",
+      "C14",
+      "C16",
+      "C19",
+      "C22",
+      "C26",
+      "C29",
+      "C48",
+      "C49"
+    ]
+  },
+  "evidence_register": {
+    "E01": {
+      "claim": "UNESCO UIS describes itself as the official source of cross-nationally comparable education data; its browser offers APIs, bulk downloads, metadata, and a February 2026 release.",
+      "url": "https://databrowser.uis.unesco.org/resources",
+      "checked": "2026-07-24"
+    },
+    "E02": {
+      "claim": "ILOSTAT provides bulk/API-style access to harmonised labour indicators, dictionaries, metadata, and modelled estimates.",
+      "url": "https://ilostat.ilo.org/data/bulk/",
+      "checked": "2026-07-24"
+    },
+    "E03": {
+      "claim": "UN DESA International Migrant Stock 2024 covers 233 countries and areas for 1990–2024, but many 2024 values are extrapolations rather than full reassessments.",
+      "url": "https://www.un.org/development/desa/pd/content/international-migrant-stock",
+      "checked": "2026-07-24"
+    },
+    "E04": {
+      "claim": "WHO Global Health Observatory exposes country and indicator data through an OData API.",
+      "url": "https://www.who.int/data/gho/info/gho-odata-api",
+      "checked": "2026-07-24"
+    },
+    "E05": {
+      "claim": "ITU DataHub contains hundreds of ICT indicators and data for nearly 200 economies, including access, use, coverage, affordability, and quality-of-service indicators.",
+      "url": "https://datahub.itu.int/",
+      "checked": "2026-07-24"
+    },
+    "E06": {
+      "claim": "WHO/UNICEF JMP's 2025 household WASH release reports estimates through 2024.",
+      "url": "https://washdata.org/reports/jmp-2025-wash-households",
+      "checked": "2026-07-24"
+    },
+    "E07": {
+      "claim": "World Bank WGI 2025 reports six annual governance dimensions for more than 200 economies through 2024 and publishes uncertainty; it is a perception-based composite.",
+      "url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators",
+      "checked": "2026-07-24"
+    },
+    "E08": {
+      "claim": "World Bank WBL 2026 covers 190 economies, is current to 1 October 2025, and its catalog records CC BY 4.0.",
+      "url": "https://datacatalog.worldbank.org/search/dataset/0038489/women-business-and-the-law",
+      "checked": "2026-07-24"
+    },
+    "E09": {
+      "claim": "World Bank ICP 2021 has observed results for 176 economies plus imputed results for 19; it provides PPPs and price-level indexes.",
+      "url": "https://www.worldbank.org/en/programs/icp/data",
+      "checked": "2026-07-24"
+    },
+    "E10": {
+      "claim": "IMF WEO April 2026 includes inflation, unemployment, growth, fiscal and external indicators and is published twice yearly, with some country-series gaps.",
+      "url": "https://data.imf.org/Datasets/WEO",
+      "checked": "2026-07-24"
+    },
+    "E11": {
+      "claim": "OECD Taxing Wages 2026 reports effective tax wedges for 38 member countries and selected household cases, well below the 91-country universe.",
+      "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/04/taxing-wages-2026_d1f39986/3a5169ef-en.pdf",
+      "checked": "2026-07-24"
+    },
+    "E12": {
+      "claim": "World Bank CCKP offers country, subnational, watershed and gridded climate data, including API access and World Bank dataset terms.",
+      "url": "https://climateknowledgeportal.worldbank.org/download-data",
+      "checked": "2026-07-24"
+    },
+    "E13": {
+      "claim": "Copernicus ERA5 is a globally complete, consistent reanalysis from 1940 onward with continuing updates.",
+      "url": "https://climate.copernicus.eu/climate-reanalysis",
+      "checked": "2026-07-24"
+    },
+    "E14": {
+      "claim": "EU/JRC INFORM Risk 2026 is openly downloadable with source data and calculation steps for global country risk.",
+      "url": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data/moduleId/1782/id/453/controller/Admin/a",
+      "checked": "2026-07-24"
+    },
+    "E15": {
+      "claim": "ILO NATLEX/NORMLEX provide large official corpora of national labour and social-security legislation, but not a ready-made relocation score.",
+      "url": "https://natlex.ilo.org/dyn/natlex2/r/natlex/fe/home",
+      "checked": "2026-07-24"
+    },
+    "E16": {
+      "claim": "ILGA World's 2024 Laws on Us covers 11 LGBTQ+ legal categories but is licensed CC BY-NC 4.0.",
+      "url": "https://ilga.org/laws-on-us-report/",
+      "checked": "2026-07-24"
+    },
+    "E17": {
+      "claim": "World Happiness Report 2026 uses harmonised Gallup life-evaluation responses averaged over 2023–2025 and makes the published three-year averages downloadable.",
+      "url": "https://www.worldhappiness.report/data-sharing/",
+      "checked": "2026-07-24"
+    },
+    "E18": {
+      "claim": "World Bank Logistics Performance Index 2023 is an official cross-country measure of trade-logistics speed and reliability.",
+      "url": "https://www.worldbank.org/en/news/press-release/2023/04/21/world-bank-releases-logistics-performance-index-2023",
+      "checked": "2026-07-24"
+    }
+  },
+  "criteria": [
+    {
+      "criterion_id": "C01",
+      "source_item_number": 1,
+      "name": "Overall higher-education opportunity",
+      "category": "Education and human capital",
+      "measures": "National breadth, participation, completion and credible quality signals in tertiary education.",
+      "classification_tags": [
+        "IC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "World Bank",
+        "national education ministries",
+        "OECD as a supplement"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS tertiary enrolment/graduation/ISCED indicators",
+        "World Bank EdStats",
+        "OECD Education at a Glance"
+      ],
+      "evidence_refs": [
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: annual/0–3y likely",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 9,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "Quality is not captured by availability alone; rankings are commercially licensed and institution-weighted.",
+      "reason_codes": [
+        "SEM_QUESTION_TOO_BROAD",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C02",
+      "source_item_number": 2,
+      "name": "Technology and engineering education",
+      "category": "Education and human capital",
+      "measures": "Strength and availability of tertiary programmes and graduates in engineering, ICT and related fields.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "national education/accreditation bodies",
+        "OECD",
+        "commercial ranking publishers"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS graduates/enrolment by ISCED field",
+        "national programme registers",
+        "subject rankings for discovery"
+      ],
+      "evidence_refs": [
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: 0–3y likely",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Global field-of-study counts are plausible, but comparable programme quality and institution location are not.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C03",
+      "source_item_number": 3,
+      "name": "Medical and health-sciences education",
+      "category": "Education and human capital",
+      "measures": "Availability and quality of medicine, dentistry, nursing, pharmacy and allied-health education.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "WHO",
+        "World Directory of Medical Schools",
+        "national accreditors"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS health-field graduates",
+        "WDOMS",
+        "national accredited programme registers"
+      ],
+      "evidence_refs": [
+        "E01",
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: mixed 0–5y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Programme quality, recognition and seat access vary by profession and institution; WDOMS is not a quality ranking.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "CMP_DEFINITION_DIFFERS",
+        "GRA_PROFESSION_SPECIFIC"
+      ]
+    },
+    {
+      "criterion_id": "C04",
+      "source_item_number": 4,
+      "name": "Business, commerce, and management education",
+      "category": "Education and human capital",
+      "measures": "Availability and quality of business, finance, economics, accounting and management education.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "national accreditors",
+        "OECD",
+        "commercial ranking/accreditation bodies"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS business-field graduates",
+        "official programme registers",
+        "AACSB/EQUIS and subject rankings for discovery"
+      ],
+      "evidence_refs": [
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: mixed 0–5y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Accreditation and rankings cover a selective institution set and carry licensing and selection bias.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS",
+        "GRA_CITY_LEVEL_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C05",
+      "source_item_number": 5,
+      "name": "Research and innovation ecosystem",
+      "category": "Education and human capital",
+      "measures": "National research intensity, outputs, patents, doctoral capacity and university–industry links.",
+      "classification_tags": [
+        "IC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "WIPO",
+        "World Bank",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS R&D expenditure/researchers",
+        "WIPO IP Statistics",
+        "doctoral graduates",
+        "Global Innovation Index components"
+      ],
+      "evidence_refs": [
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: 0–3y with lag",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 20,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "A composite must avoid mixing inputs and outputs or importing opaque GII weights.",
+      "reason_codes": [
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C06",
+      "source_item_number": 6,
+      "name": "International-student accessibility",
+      "category": "Education and human capital",
+      "measures": "Practical accessibility for international students: enrolment openness, English-taught options, visas and support.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "OECD",
+        "national immigration and education authorities"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS inbound student mobility",
+        "OECD international students",
+        "official student-visa and post-study rules"
+      ],
+      "evidence_refs": [
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "CURRENT_POLICY plus annual mobility data",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 39,
+      "recommended_batch": null,
+      "downgrade_rationale": "Mobility stock is comparable; admissions, English-taught programmes and visa rules need manual current-policy coding.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "CMP_DEFINITION_DIFFERS",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE"
+      ]
+    },
+    {
+      "criterion_id": "C07",
+      "source_item_number": 7,
+      "name": "Tuition affordability",
+      "category": "Education and human capital",
+      "measures": "Tuition cost faced by representative domestic/international students relative to income or PPP.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "OECD",
+        "national ministries and institution fee schedules"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS education finance",
+        "OECD tertiary fees",
+        "official fee schedules",
+        "ICP PPP denominators"
+      ],
+      "evidence_refs": [
+        "E01",
+        "E09"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: latest 0–2y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 40,
+      "recommended_batch": null,
+      "downgrade_rationale": "Fees vary by institution, programme, residency and scholarship; global harmonised international-student prices are unlikely.",
+      "reason_codes": [
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "CMP_POPULATION_DIFFERS",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C08",
+      "source_item_number": 8,
+      "name": "School education quality",
+      "category": "Education and human capital",
+      "measures": "Primary/secondary learning outcomes, completion and system quality.",
+      "classification_tags": [
+        "IC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UNESCO UIS",
+        "World Bank",
+        "OECD",
+        "IEA"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UIS SDG4 completion/proficiency",
+        "World Bank Learning Poverty/HCI",
+        "PISA",
+        "TIMSS/PIRLS"
+      ],
+      "evidence_refs": [
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: 0–3y, assessments periodic",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 14,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "Administrative completion is broad, but common learning assessments miss many stable-universe countries and cycles.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "FRS_MIXED_REFERENCE_PERIODS"
+      ]
+    },
+    {
+      "criterion_id": "C09",
+      "source_item_number": 9,
+      "name": "International-school availability",
+      "category": "Education and human capital",
+      "measures": "Availability and affordability of recognised international schools in likely destinations.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "IB",
+        "Cambridge International",
+        "national school registries",
+        "international-school directories"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "IB World Schools",
+        "Cambridge school finder",
+        "official school lists",
+        "fee schedules"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "FAST_MOVING: annual/current directories",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "A city-level institution inventory and commercial-directory licensing would be required.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C10",
+      "source_item_number": 10,
+      "name": "Recognition and portability of qualifications",
+      "category": "Education and human capital",
+      "measures": "Ease of academic/professional recognition and portability of foreign qualifications.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "UNESCO",
+        "ENIC-NARIC networks",
+        "national recognition and professional bodies"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Global/Regional Recognition Conventions",
+        "WHED",
+        "ENIC-NARIC country procedures",
+        "regulated-profession rules"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STATIC_OR_LEGAL_ASOF: current",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Outcome depends on origin, destination, qualification and profession; no single country score is defensible.",
+      "reason_codes": [
+        "GRA_ORIGIN_SPECIFIC",
+        "GRA_PROFESSION_SPECIFIC",
+        "SCO_NO_CLEAR_DIRECTION"
+      ]
+    },
+    {
+      "criterion_id": "C11",
+      "source_item_number": 11,
+      "name": "Overall job-market opportunity",
+      "category": "Employment, income and economic opportunity",
+      "measures": "National employment opportunity using employment, unemployment, participation and labour-underutilisation signals.",
+      "classification_tags": [
+        "IC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "World Bank",
+        "national statistical offices"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT modelled estimates and harmonised labour-force indicators",
+        "World Bank WDI representations"
+      ],
+      "evidence_refs": [
+        "E02"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "FAST_MOVING: annual/quarterly, latest 0–2y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 1,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "Vacancies are not globally comparable, so the first version should stay with harmonised labour outcomes.",
+      "reason_codes": [
+        "CMP_DEFINITION_DIFFERS"
+      ]
+    },
+    {
+      "criterion_id": "C12",
+      "source_item_number": 12,
+      "name": "Software and technology jobs",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Depth of software, ICT, data, AI and cybersecurity employment.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "national statistical offices",
+        "official vacancy services",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT employment by ISCO/industry",
+        "official vacancies",
+        "OECD ICT employment",
+        "online-job data for discovery"
+      ],
+      "evidence_refs": [
+        "E02"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: latest 0–2y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 11,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "Global occupation aggregates are broad; granular tech vacancies are platform-dependent and concentrated in cities.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C13",
+      "source_item_number": 13,
+      "name": "Medical and healthcare jobs",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Demand and employment opportunity for health professionals, separate from licensing access.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "WHO",
+        "national health-workforce observatories"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT occupation/industry employment",
+        "WHO health workforce density",
+        "official shortage lists"
+      ],
+      "evidence_refs": [
+        "E02",
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING/STANDARD: 0–3y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 22,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Provider shortage is not equivalent to accessible jobs, and licensing must remain a separate gate.",
+      "reason_codes": [
+        "GRA_PROFESSION_SPECIFIC",
+        "SEM_CAUSALITY_OVERCLAIM"
+      ]
+    },
+    {
+      "criterion_id": "C14",
+      "source_item_number": 14,
+      "name": "Business, finance, and professional-services jobs",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Demand for finance, consulting, accounting, marketing, operations, sales and management roles.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "national statistical offices",
+        "official vacancy services"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT ISCO/industry employment",
+        "labour force surveys",
+        "official vacancies"
+      ],
+      "evidence_refs": [
+        "E02"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: latest 0–2y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 23,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Occupational groupings are broad and vacancy data are uneven; major-city concentration is material.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C15",
+      "source_item_number": 15,
+      "name": "Engineering and skilled technical jobs",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Demand for civil, mechanical, electrical, industrial, energy and skilled technical roles.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "national statistical offices",
+        "official vacancy/shortage lists"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT ISCO/industry employment",
+        "labour force surveys",
+        "official shortage occupation lists"
+      ],
+      "evidence_refs": [
+        "E02"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: latest 0–2y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 21,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Broad ISCO groups are comparable, but specialisms, licensing and regional projects are not.",
+      "reason_codes": [
+        "GRA_PROFESSION_SPECIFIC",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C16",
+      "source_item_number": 16,
+      "name": "Entrepreneurship and startup opportunity",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Business formation, firm entry, startup activity, finance access and survival conditions.",
+      "classification_tags": [
+        "IC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "World Bank",
+        "OECD",
+        "national business registries",
+        "Global Entrepreneurship Monitor"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "World Bank Entrepreneurship Database",
+        "Enterprise Surveys",
+        "GEM",
+        "venture databases for discovery"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: 0–3y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 24,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Startup funding/activity sources often have selective coverage or commercial terms; formation counts are not survival quality.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS",
+        "SEM_QUESTION_TOO_BROAD"
+      ]
+    },
+    {
+      "criterion_id": "C17",
+      "source_item_number": 17,
+      "name": "Average earning potential",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Representative gross/net earnings, ideally occupation- and cost-adjusted.",
+      "classification_tags": [
+        "IC",
+        "DO",
+        "CR"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "World Bank",
+        "OECD",
+        "national statistical offices"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT earnings",
+        "ILO modelled labour income",
+        "OECD average wages",
+        "ICP PPP conversion"
+      ],
+      "evidence_refs": [
+        "E02",
+        "E09"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: latest 0–2y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 4,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "National averages mask occupation, tax and city-cost differences; net pay requires household scenarios.",
+      "reason_codes": [
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "CMP_GROSS_NET_MISMATCH",
+        "GRA_CITY_LEVEL_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C18",
+      "source_item_number": 18,
+      "name": "Income growth and career mobility",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Wage growth, promotion prospects and occupational mobility over time.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "OECD",
+        "national longitudinal and labour-force surveys"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT wage growth",
+        "OECD earnings mobility",
+        "harmonised panel/microdata where available"
+      ],
+      "evidence_refs": [
+        "E02"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: latest 0–3y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Promotion and mobility require longitudinal microdata that are not globally harmonised or broadly reusable.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "CMP_SURVEY_NOT_HARMONISED",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C19",
+      "source_item_number": 19,
+      "name": "Employment protection and worker rights",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Formal and effective protection on hours, leave, dismissal, bargaining and core labour rights.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "national labour ministries"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILO NATLEX/NORMLEX/EPLex",
+        "ILOSTAT working time",
+        "convention ratification",
+        "official statutes"
+      ],
+      "evidence_refs": [
+        "E15",
+        "E02"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STATIC_OR_LEGAL_ASOF plus annual outcomes",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 25,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Law, ratification and enforcement are distinct; comparable coding requires current legal review.",
+      "reason_codes": [
+        "CMP_LEGAL_NOT_LIVED_OUTCOME",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE"
+      ]
+    },
+    {
+      "criterion_id": "C20",
+      "source_item_number": 20,
+      "name": "Remote-work suitability",
+      "category": "Employment, income and economic opportunity",
+      "measures": "Digital and legal practicality of remote work, including connectivity, visas, coworking and time-zone fit.",
+      "classification_tags": [
+        "IC",
+        "DO",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "ITU",
+        "official immigration authorities",
+        "commercial coworking/latency providers"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ITU connectivity",
+        "digital-nomad visa rules",
+        "coworking directories",
+        "time-zone calculation"
+      ],
+      "evidence_refs": [
+        "E05"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "CURRENT_POLICY/FAST_MOVING",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "It overlaps internet and visas, while time zone and legal fit depend on employer and user origin.",
+      "reason_codes": [
+        "RED_SHARED_COMPONENTS",
+        "PRF_PROFILE_ONLY",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C21",
+      "source_item_number": 21,
+      "name": "Personal income-tax burden",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Effective personal income-tax burden for representative income and household cases.",
+      "classification_tags": [
+        "IC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "National tax authorities",
+        "OECD",
+        "IMF/World Bank for denominators"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official tax schedules/calculators",
+        "OECD Taxing Wages",
+        "PwC/KPMG summaries for discovery"
+      ],
+      "evidence_refs": [
+        "E11"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "CURRENT_POLICY: current tax year",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 5,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "OECD's comparable effective-tax model covers only 38 countries; global extension requires maintained official-rule coding.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C22",
+      "source_item_number": 22,
+      "name": "Social-security and mandatory contribution burden",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Employee/employer payroll, pension and other compulsory contribution burden.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "National social-security/tax authorities",
+        "OECD",
+        "ILO"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official contribution schedules",
+        "OECD Taxing Wages",
+        "ILO Social Security Inquiry"
+      ],
+      "evidence_refs": [
+        "E11",
+        "E15"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "CURRENT_POLICY: current contribution year",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 26,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Global comparability is constrained by ceilings, benefit entitlements and the same OECD coverage limit.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "CMP_DEFINITION_DIFFERS",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C23",
+      "source_item_number": 23,
+      "name": "Consumption and indirect-tax burden",
+      "category": "Tax, cost and financial conditions",
+      "measures": "VAT/GST/sales-tax rates and household exposure to indirect taxation.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "National tax authorities",
+        "IMF",
+        "OECD",
+        "World Bank"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official VAT/GST schedules",
+        "IMF tax databases",
+        "OECD Consumption Tax Trends",
+        "household expenditure weights"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "CURRENT_POLICY: current tax year",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Headline rates are broad but effective burden needs country-specific exemptions and household consumption baskets.",
+      "reason_codes": [
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "COV_BELOW_90_PERCENT",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE"
+      ]
+    },
+    {
+      "criterion_id": "C24",
+      "source_item_number": 24,
+      "name": "Overall affordability",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Relative household-consumption price level against a common benchmark.",
+      "classification_tags": [
+        "IC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "unsuitable independent",
+      "likely_authoritative_publisher_families": [
+        "World Bank ICP"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ICP household-consumption PPP and price-level indexes"
+      ],
+      "evidence_refs": [
+        "E09"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "SLOW_STRUCTURAL/annual extrapolation",
+      "licensing_uncertainty": "LOW",
+      "finding_status": "DEFERRED",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Already represented in Konsider; retain as an existing monitor, not a new Phase 3 research target.",
+      "reason_codes": [
+        "RED_EXISTING_CRITERION"
+      ]
+    },
+    {
+      "criterion_id": "C25",
+      "source_item_number": 25,
+      "name": "Housing affordability",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Rent/home-price burden relative to income and availability in likely migrant destinations.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "National statistical offices",
+        "OECD",
+        "Eurostat",
+        "central banks",
+        "city housing observatories"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "OECD affordable housing",
+        "official rent/price indexes",
+        "housing-cost-overburden",
+        "city rent datasets"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: latest 0–2y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 6,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "High decision value justifies strategic research, but a national average is misleading and global city rent data are often commercial.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C26",
+      "source_item_number": 26,
+      "name": "Healthcare affordability",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Out-of-pocket spending, insurance burden and financial-protection risk.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "WHO",
+        "World Bank",
+        "national health accounts"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WHO GHO out-of-pocket share",
+        "catastrophic health spending",
+        "UHC financial protection",
+        "national insurance rules"
+      ],
+      "evidence_refs": [
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: 0–3y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 27,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Aggregate out-of-pocket shares do not describe immigrant eligibility, premiums or point-of-care prices.",
+      "reason_codes": [
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "CMP_POPULATION_DIFFERS"
+      ]
+    },
+    {
+      "criterion_id": "C27",
+      "source_item_number": 27,
+      "name": "Childcare and family-cost burden",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Childcare fees and other recurring family costs for representative households.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "OECD",
+        "UNICEF",
+        "national ministries/statistical offices",
+        "city providers"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "OECD net childcare costs",
+        "UNICEF family policies",
+        "official childcare fee/coverage schedules"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "FAST_MOVING: latest 0–2y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Fees depend on age, city, income, subsidies and immigration status; OECD-style comparisons do not approach global coverage.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C28",
+      "source_item_number": 28,
+      "name": "Savings and disposable-income potential",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Net income remaining after taxes and essential household costs.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved earnings, tax, housing, health and childcare components"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile calculator",
+        "no independent dataset"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from component vintages",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "This is a profile-derived composite with shared inputs and scenario weights, not an independent criterion.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "RED_SHARED_COMPONENTS",
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY"
+      ]
+    },
+    {
+      "criterion_id": "C29",
+      "source_item_number": 29,
+      "name": "Currency and macroeconomic stability",
+      "category": "Tax, cost and financial conditions",
+      "measures": "Inflation, exchange-rate volatility and broad macro/sovereign stability.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "IMF",
+        "World Bank",
+        "BIS",
+        "national central banks"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "IMF WEO/IFS",
+        "World Bank WDI inflation/exchange rates",
+        "sovereign risk only as supplement"
+      ],
+      "evidence_refs": [
+        "E10"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "FAST_MOVING: monthly/biannual, latest 0–1y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 28,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "A transparent small indicator set is preferable to a proprietary sovereign-risk composite.",
+      "reason_codes": [
+        "LIC_AMBIGUOUS",
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY"
+      ]
+    },
+    {
+      "criterion_id": "C30",
+      "source_item_number": 30,
+      "name": "Existing immigrant share",
+      "category": "Migration, visa and settlement",
+      "measures": "International migrant or foreign-born stock as a share of resident population.",
+      "classification_tags": [
+        "IC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UN DESA Population Division",
+        "World Bank representation",
+        "national censuses"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "International Migrant Stock 2024 total destination and population denominator"
+      ],
+      "evidence_refs": [
+        "E03"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "SLOW_STRUCTURAL: 2024 edition; census-driven updates",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 10,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "The source mixes country-of-birth and citizenship definitions and many 2024 values are extrapolated.",
+      "reason_codes": [
+        "CMP_DEFINITION_DIFFERS",
+        "CMP_IMPUTED_VALUES_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C31",
+      "source_item_number": 31,
+      "name": "Immigrant community depth",
+      "category": "Migration, visa and settlement",
+      "measures": "Size, origin diversity and local concentration of established migrant communities.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UN DESA",
+        "national censuses/statistical offices"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UN migrant stock by origin/destination",
+        "census foreign-born by origin",
+        "city population tables"
+      ],
+      "evidence_refs": [
+        "E03"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "SLOW_STRUCTURAL: census/2024 stock",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Origin-specific usefulness and city concentration make a single national diversity score weak.",
+      "reason_codes": [
+        "GRA_ORIGIN_SPECIFIC",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "SCO_NO_CLEAR_DIRECTION"
+      ]
+    },
+    {
+      "criterion_id": "C32",
+      "source_item_number": 32,
+      "name": "Skilled-work visa accessibility",
+      "category": "Migration, visa and settlement",
+      "measures": "Accessibility of skilled-worker routes under a fixed worker profile and policy date.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "National immigration authorities",
+        "EU Immigration Portal",
+        "OECD/ILO as cross-checks"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official visa statutes, occupation lists, salary thresholds, quotas, processing guidance"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "CURRENT_POLICY: current as-of snapshot",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 2,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "No global ready-made dataset; eligibility depends on occupation, salary, origin, sponsor and changing rules.",
+      "reason_codes": [
+        "GRA_ORIGIN_SPECIFIC",
+        "GRA_PROFESSION_SPECIFIC",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C33",
+      "source_item_number": 33,
+      "name": "Permanent-residency accessibility",
+      "category": "Migration, visa and settlement",
+      "measures": "Time, eligibility and predictability of permanent residence under defined scenarios.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "National immigration authorities",
+        "EU Immigration Portal",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official residence statutes/guidance",
+        "long-term residence rules",
+        "policy coding"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "CURRENT_POLICY: current as-of snapshot",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 3,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "PR eligibility is route-, origin- and family-dependent and needs maintained legal coding.",
+      "reason_codes": [
+        "GRA_ORIGIN_SPECIFIC",
+        "PRF_PROFILE_ONLY",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE"
+      ]
+    },
+    {
+      "criterion_id": "C34",
+      "source_item_number": 34,
+      "name": "Citizenship accessibility",
+      "category": "Migration, visa and settlement",
+      "measures": "Time and restrictions for naturalisation, including dual citizenship and tests.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "National citizenship authorities",
+        "UNHCR/Global Citizenship Observatory",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official nationality laws",
+        "GLOBALCIT modes/law databases",
+        "dual-citizenship rules"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STATIC_OR_LEGAL_ASOF: current",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 19,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Formal law is codable, but discretion, residence counting and policy updates complicate a scalar score.",
+      "reason_codes": [
+        "CMP_LEGAL_NOT_LIVED_OUTCOME",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE"
+      ]
+    },
+    {
+      "criterion_id": "C35",
+      "source_item_number": 35,
+      "name": "Post-study migration pathway",
+      "category": "Migration, visa and settlement",
+      "measures": "Ability of international graduates to stay, work and transition after study.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "National immigration authorities",
+        "OECD",
+        "UNESCO/OECD student-mobility systems"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official post-study work rules",
+        "OECD retention indicators",
+        "student-to-work transition rules"
+      ],
+      "evidence_refs": [
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "CURRENT_POLICY: current as-of snapshot",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 17,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Pathways depend on credential level, institution, occupation and policy date.",
+      "reason_codes": [
+        "GRA_PROFESSION_SPECIFIC",
+        "PRF_PROFILE_ONLY",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C36",
+      "source_item_number": 36,
+      "name": "Family reunification support",
+      "category": "Migration, visa and settlement",
+      "measures": "Ability to sponsor spouses, children, parents and other dependants.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "National immigration authorities",
+        "EU Immigration Portal",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official family-reunification statutes, sponsor thresholds, waiting periods and dependant work rights"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "CURRENT_POLICY: current as-of snapshot",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 18,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Family definitions, income thresholds and sponsor status differ materially; parent sponsorship is especially non-comparable.",
+      "reason_codes": [
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "GRA_ORIGIN_SPECIFIC",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE"
+      ]
+    },
+    {
+      "criterion_id": "C37",
+      "source_item_number": 37,
+      "name": "Government stance toward immigrants",
+      "category": "Migration, visa and settlement",
+      "measures": "Formal immigration-policy direction, integration supports and stability of migrant access.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UN DESA",
+        "OECD",
+        "national governments",
+        "MIPEX research consortium"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UN World Population Policies",
+        "OECD integration indicators",
+        "MIPEX",
+        "legal anti-discrimination components"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "CURRENT_POLICY/SLOW_STRUCTURAL",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "It conflates policy intent, rights, implementation and attitudes; leading indexes have limited coverage or licensing uncertainty.",
+      "reason_codes": [
+        "SEM_QUESTION_TOO_BROAD",
+        "COV_BELOW_90_PERCENT",
+        "CMP_LEGAL_NOT_LIVED_OUTCOME"
+      ]
+    },
+    {
+      "criterion_id": "C38",
+      "source_item_number": 38,
+      "name": "Professional-licensing accessibility for immigrants",
+      "category": "Migration, visa and settlement",
+      "measures": "Ease of foreign-qualification recognition and entry to a specified regulated profession.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "National professional regulators",
+        "WHO",
+        "UNESCO/ENIC-NARIC",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official licensing rules",
+        "WHO health-worker regulation",
+        "recognition databases",
+        "profession-specific pathways"
+      ],
+      "evidence_refs": [
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "CURRENT_POLICY: current as-of snapshot",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 16,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "Origin, profession, credential and language dependence prevent a universal score; deep research should test scenario templates.",
+      "reason_codes": [
+        "GRA_ORIGIN_SPECIFIC",
+        "GRA_PROFESSION_SPECIFIC",
+        "PRF_PROFILE_ONLY"
+      ]
+    },
+    {
+      "criterion_id": "C39",
+      "source_item_number": 39,
+      "name": "Visa and immigration processing efficiency",
+      "category": "Migration, visa and settlement",
+      "measures": "Transparency, speed and predictability of visa/immigration administration.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "National immigration authorities",
+        "OECD",
+        "audit/ombudsman bodies"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official service standards and processing-time dashboards",
+        "refusal data",
+        "digitisation indicators"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "CURRENT_POLICY: current/quarterly",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Published clocks use different case types and exclude paused/incomplete cases; rejection rates reflect applicant mix.",
+      "reason_codes": [
+        "CMP_DEFINITION_DIFFERS",
+        "COV_BELOW_90_PERCENT",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE"
+      ]
+    },
+    {
+      "criterion_id": "C40",
+      "source_item_number": 40,
+      "name": "English usability",
+      "category": "Language, culture and integration",
+      "measures": "Extent to which work, education, health, government and daily life can be navigated in English.",
+      "classification_tags": [
+        "IC",
+        "CR"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "National census/statistical offices",
+        "UNESCO",
+        "EF for discovery"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Census language ability/use",
+        "official-language law",
+        "education language",
+        "EF EPI only as discovery"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "SLOW_STRUCTURAL: census plus current legal status",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 8,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "Commercial proficiency rankings are not enough; usability varies strongly by city and domain.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "LIC_AMBIGUOUS",
+        "CMP_SURVEY_NOT_HARMONISED"
+      ]
+    },
+    {
+      "criterion_id": "C41",
+      "source_item_number": 41,
+      "name": "Local-language difficulty and learning burden",
+      "category": "Language, culture and integration",
+      "measures": "User-specific burden of learning and needing the local language.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "PF"
+      ],
+      "phase3a_granularity": "PREFERENCE_MODEL",
+      "natural_granularity": "preference-based",
+      "likely_authoritative_publisher_families": [
+        "Official language sources",
+        "linguistic research",
+        "FSI-style difficulty evidence"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Official-language requirements",
+        "script/linguistic distance",
+        "training availability"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "STATIC with policy updates",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Difficulty depends on the user's known languages, profession and destination; no universal direction exists.",
+      "reason_codes": [
+        "PRF_PREFERENCE_MATCH_REQUIRED",
+        "GRA_ORIGIN_SPECIFIC",
+        "SCO_NO_CLEAR_DIRECTION"
+      ]
+    },
+    {
+      "criterion_id": "C42",
+      "source_item_number": 42,
+      "name": "Social inclusion and acceptance of immigrants",
+      "category": "Language, culture and integration",
+      "measures": "Surveyed acceptance of immigrants, discrimination experience and social trust.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "Gallup",
+        "World Values Survey",
+        "regional barometers",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "World Poll migrant acceptance",
+        "WVS/EVS attitudes",
+        "OECD integration survey indicators",
+        "discrimination surveys"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "SLOW_STRUCTURAL: survey waves 2–5y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 41,
+      "recommended_batch": null,
+      "downgrade_rationale": "Global surveys differ in years and samples, and small states are often absent; lived experience varies locally.",
+      "reason_codes": [
+        "CMP_SURVEY_NOT_HARMONISED",
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C43",
+      "source_item_number": 43,
+      "name": "Cultural openness and diversity",
+      "category": "Language, culture and integration",
+      "measures": "Religious, ethnic, cultural and lifestyle diversity and practical openness.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UN agencies",
+        "WVS/regional surveys",
+        "national censuses",
+        "rights datasets"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Census diversity",
+        "religious freedom",
+        "attitude surveys",
+        "migration diversity components"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "SLOW_STRUCTURAL: mixed waves",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "The construct mixes diversity, tolerance and freedom; direction and weights are contestable and city effects large.",
+      "reason_codes": [
+        "SEM_QUESTION_TOO_BROAD",
+        "SCO_NO_CLEAR_DIRECTION",
+        "GRA_CITY_LEVEL_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C44",
+      "source_item_number": 44,
+      "name": "Gender equality",
+      "category": "Language, culture and integration",
+      "measures": "Legal and economic equality for women.",
+      "classification_tags": [
+        "IC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "unsuitable independent",
+      "likely_authoritative_publisher_families": [
+        "World Bank Women, Business and the Law"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WBL 2026 legal, supportive-framework and enforcement-perception pillars"
+      ],
+      "evidence_refs": [
+        "E08"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "STATIC_OR_LEGAL_ASOF: 2025-10-01",
+      "licensing_uncertainty": "LOW",
+      "finding_status": "DEFERRED",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Already represented in Konsider; monitor the verified WBL source rather than duplicate research.",
+      "reason_codes": [
+        "RED_EXISTING_CRITERION"
+      ]
+    },
+    {
+      "criterion_id": "C45",
+      "source_item_number": 45,
+      "name": "LGBTQ+ legal and social inclusion",
+      "category": "Language, culture and integration",
+      "measures": "Legal protection, recognition and safety for LGBTQ+ people.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UN human-rights bodies",
+        "ILGA World",
+        "national legal authorities"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILGA Laws on Us/Database",
+        "UN legal findings",
+        "official statutes"
+      ],
+      "evidence_refs": [
+        "E16"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "STATIC_OR_LEGAL_ASOF: current legal snapshot",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 42,
+      "recommended_batch": null,
+      "downgrade_rationale": "ILGA has strong scope but its 2024 report is CC BY-NC; social acceptance/safety needs separate survey evidence.",
+      "reason_codes": [
+        "LIC_NONCOMMERCIAL_ONLY",
+        "CMP_LEGAL_NOT_LIVED_OUTCOME"
+      ]
+    },
+    {
+      "criterion_id": "C46",
+      "source_item_number": 46,
+      "name": "Violent-crime and homicide safety",
+      "category": "Safety, health and public services",
+      "measures": "Intentional-homicide risk, with broader violence only where genuinely comparable.",
+      "classification_tags": [
+        "IC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "unsuitable independent",
+      "likely_authoritative_publisher_families": [
+        "World Bank WDI/UNODC",
+        "national justice systems"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WDI intentional homicide series",
+        "UNODC homicide data"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: latest approved year",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "DEFERRED",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Homicide is already represented; reported violent crime should not be appended without comparability evidence.",
+      "reason_codes": [
+        "RED_EXISTING_CRITERION",
+        "CMP_REPORTING_CAPACITY_BIAS"
+      ]
+    },
+    {
+      "criterion_id": "C47",
+      "source_item_number": 47,
+      "name": "Property-crime and everyday safety",
+      "category": "Safety, health and public services",
+      "measures": "Day-to-day risk of theft, burglary, robbery, fraud and victimisation.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UNODC",
+        "national police",
+        "harmonised victimisation surveys",
+        "city safety surveys"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UN-CTS recorded crime",
+        "victimisation surveys",
+        "police open data"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "FAST_MOVING: 0–2y desirable",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Recorded crime is dominated by reporting/legal differences; globally harmonised victim surveys and city coverage are sparse.",
+      "reason_codes": [
+        "CMP_REPORTING_CAPACITY_BIAS",
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C48",
+      "source_item_number": 48,
+      "name": "Political stability and civil peace",
+      "category": "Safety, health and public services",
+      "measures": "Conflict, political violence, unrest and continuity of normal civic life.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "World Bank",
+        "UN",
+        "EU/JRC",
+        "UCDP/ACLED research sources"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WGI Political Stability",
+        "INFORM human hazard",
+        "UCDP conflict data",
+        "official travel/security alerts"
+      ],
+      "evidence_refs": [
+        "E07",
+        "E14"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "SLOW_STRUCTURAL/EVENT_RISK_MODEL: annual/current edition",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 29,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "WGI is perception-based and conflict-event data may have licensing or reporting asymmetries.",
+      "reason_codes": [
+        "CMP_MODEL_ASSUMPTIONS_OPAQUE",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C49",
+      "source_item_number": 49,
+      "name": "Rule of law and institutional trust",
+      "category": "Safety, health and public services",
+      "measures": "Rule of law, corruption control, judicial confidence and institutional performance.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "World Bank",
+        "UN",
+        "World Justice Project for discovery"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WGI Rule of Law/Control of Corruption/Government Effectiveness",
+        "UN SDG16 indicators"
+      ],
+      "evidence_refs": [
+        "E07"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "SLOW_STRUCTURAL: annual, through 2024",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 30,
+      "recommended_batch": "BATCH_2",
+      "downgrade_rationale": "WGI is a composite of perceptions with margins of error; institutional trust is not identical to rule of law.",
+      "reason_codes": [
+        "SEM_QUESTION_TOO_BROAD",
+        "SCO_UNCERTAINTY_TOO_HIGH"
+      ]
+    },
+    {
+      "criterion_id": "C50",
+      "source_item_number": 50,
+      "name": "Healthcare system capacity and quality",
+      "category": "Safety, health and public services",
+      "measures": "Health-service capacity, coverage and quality using workforce, service and outcome indicators.",
+      "classification_tags": [
+        "IC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "WHO",
+        "World Bank",
+        "IHME as research supplement"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WHO GHO/UHC service coverage, workforce and beds",
+        "avoidable mortality",
+        "World Bank indicators"
+      ],
+      "evidence_refs": [
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: 0–3y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 7,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "No single indicator captures access, quality and waiting time; mixed years and modelled values are likely.",
+      "reason_codes": [
+        "SEM_QUESTION_TOO_BROAD",
+        "FRS_MIXED_REFERENCE_PERIODS",
+        "CMP_IMPUTED_VALUES_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C51",
+      "source_item_number": 51,
+      "name": "Emergency-care readiness",
+      "category": "Safety, health and public services",
+      "measures": "Ambulance access, trauma/emergency capacity and response readiness.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "WHO",
+        "national emergency/health authorities",
+        "disaster agencies"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WHO emergency-care system assessments",
+        "ambulance/trauma registries",
+        "Joint External Evaluation components"
+      ],
+      "evidence_refs": [
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: irregular assessments",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Global emergency-care assessments are sparse and national averages cannot represent response time.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C52",
+      "source_item_number": 52,
+      "name": "Air pollution",
+      "category": "Safety, health and public services",
+      "measures": "Population-weighted exposure to ambient PM2.5.",
+      "classification_tags": [
+        "IC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "unsuitable independent",
+      "likely_authoritative_publisher_families": [
+        "World Bank/WHO",
+        "satellite-model consortia"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WDI PM2.5 mean annual exposure"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: latest approved model edition",
+      "licensing_uncertainty": "LOW",
+      "finding_status": "DEFERRED",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Already represented in Konsider; city exposure may be a later layer but not a duplicate national criterion.",
+      "reason_codes": [
+        "RED_EXISTING_CRITERION"
+      ]
+    },
+    {
+      "criterion_id": "C53",
+      "source_item_number": 53,
+      "name": "Water quality and sanitation",
+      "category": "Safety, health and public services",
+      "measures": "Safely managed drinking water/sanitation access and related service quality.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "WHO/UNICEF JMP",
+        "World Bank",
+        "national utilities"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "JMP safely managed drinking water, sanitation and hygiene",
+        "wastewater indicators"
+      ],
+      "evidence_refs": [
+        "E06"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: estimates through 2024",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 31,
+      "recommended_batch": null,
+      "downgrade_rationale": "JMP access is broad, but continuity, taste/contaminants and migrant-city reliability are separate constructs.",
+      "reason_codes": [
+        "SEM_QUESTION_TOO_BROAD",
+        "GRA_CITY_LEVEL_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C54",
+      "source_item_number": 54,
+      "name": "Food safety and public-health protection",
+      "category": "Safety, health and public services",
+      "measures": "Strength of food regulation, inspection and outbreak prevention/response.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "WHO",
+        "FAO",
+        "national food-safety authorities"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WHO IHR capacities",
+        "Codex participation",
+        "foodborne disease estimates",
+        "official inspection systems"
+      ],
+      "evidence_refs": [
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: irregular/annual mixed",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Inputs and outbreak counts reflect surveillance capacity; comparable inspection-performance data are fragmented.",
+      "reason_codes": [
+        "CMP_REPORTING_CAPACITY_BIAS",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C55",
+      "source_item_number": 55,
+      "name": "Mental-health support",
+      "category": "Safety, health and public services",
+      "measures": "Availability, affordability and acceptability of mental-health services.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "WHO",
+        "national health systems",
+        "IHME"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WHO Mental Health Atlas",
+        "provider density",
+        "service coverage",
+        "financial protection"
+      ],
+      "evidence_refs": [
+        "E04"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: periodic 2–5y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Provider counts do not measure affordability or stigma, and access is local with substantial missingness.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "SEM_QUESTION_TOO_BROAD"
+      ]
+    },
+    {
+      "criterion_id": "C56",
+      "source_item_number": 56,
+      "name": "Electricity access and reliability",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Household electricity access plus outage frequency/duration and reliability.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "World Bank",
+        "IEA",
+        "national regulators/utilities",
+        "Enterprise Surveys"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "WDI electricity access",
+        "Enterprise Surveys outages",
+        "SAIDI/SAIFI",
+        "RISE policy indicators"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: 0–3y",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 13,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "Access is near-global, but outage metrics lack harmonised 90% coverage; current experimental composite overlaps access.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "CMP_DEFINITION_DIFFERS",
+        "RED_EXISTING_CRITERION"
+      ]
+    },
+    {
+      "criterion_id": "C57",
+      "source_item_number": 57,
+      "name": "Water-supply reliability",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Continuity, shortage risk and resilience of household/urban water supply.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "WHO/UNICEF JMP",
+        "national utilities",
+        "World Bank",
+        "WRI for stress"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "JMP availability-when-needed",
+        "utility continuity",
+        "water stress/drought indicators"
+      ],
+      "evidence_refs": [
+        "E06"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD/EVENT_RISK: 0–3y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 32,
+      "recommended_batch": null,
+      "downgrade_rationale": "JMP access does not ensure 24/7 supply; utility-level continuity is not globally standardised.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT",
+        "CMP_DEFINITION_DIFFERS"
+      ]
+    },
+    {
+      "criterion_id": "C58",
+      "source_item_number": 58,
+      "name": "Internet access, speed, and reliability",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Internet adoption, mobile/fixed coverage, performance, affordability and reliability.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "ITU",
+        "World Bank",
+        "national telecom regulators",
+        "measurement firms for speed"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ITU DataHub/IDI components",
+        "WDI internet use",
+        "regulator QoS",
+        "Ookla/M-Lab for discovery"
+      ],
+      "evidence_refs": [
+        "E05"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "FAST_MOVING: annual/near-current",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 12,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "ITU access/coverage is broad, but speed/outage measures may be commercial or incomplete; avoid duplicating the existing composite.",
+      "reason_codes": [
+        "LIC_AMBIGUOUS",
+        "RED_EXISTING_CRITERION"
+      ]
+    },
+    {
+      "criterion_id": "C59",
+      "source_item_number": 59,
+      "name": "Transport and logistics infrastructure",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Road, rail, port, airport and trade-logistics performance.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "World Bank",
+        "UN transport agencies",
+        "national infrastructure ministries"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Logistics Performance Index",
+        "WDI transport",
+        "UN road/rail/aviation/port indicators"
+      ],
+      "evidence_refs": [
+        "E18"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "SLOW_STRUCTURAL: LPI 2023/other annual",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "LPI has limited country coverage and is perception-based; a broad composite would overlap existing infrastructure readiness.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "RED_EXISTING_CRITERION",
+        "SEM_QUESTION_TOO_BROAD"
+      ]
+    },
+    {
+      "criterion_id": "C60",
+      "source_item_number": 60,
+      "name": "Urban public transport",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Coverage, affordability, safety and reliability of public transport in destination cities.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UN-Habitat",
+        "city transit agencies",
+        "GTFS publishers",
+        "OECD/ITF"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "SDG 11.2.1",
+        "GTFS feeds",
+        "city route/stop/service data",
+        "fare schedules"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "FAST_MOVING: current feeds/annual",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Country scores are invalid; a fixed city universe and reusable feed policy are prerequisites.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C61",
+      "source_item_number": 61,
+      "name": "International connectivity",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Direct-flight access, airport connectivity and travel time to relevant origins/centres.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "ICAO",
+        "IATA/OAG for discovery",
+        "airport authorities",
+        "OpenFlights for discovery"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ICAO air transport statistics",
+        "scheduled route data",
+        "airport connectivity indexes"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "FAST_MOVING: seasonal/monthly",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Route schedules are city/airport and origin-specific; comprehensive timetable data are usually commercial.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "GRA_ORIGIN_SPECIFIC",
+        "LIC_REDISTRIBUTION_RESTRICTED"
+      ]
+    },
+    {
+      "criterion_id": "C62",
+      "source_item_number": 62,
+      "name": "Digital-government readiness",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Availability and maturity of online services, digital ID and digital public administration.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UN DESA",
+        "World Bank",
+        "ITU",
+        "OECD"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UN E-Government Development Index/Online Service Index",
+        "World Bank GovTech Maturity Index",
+        "ID4D"
+      ],
+      "evidence_refs": [
+        "E05"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "SLOW_STRUCTURAL: biennial/current edition",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 33,
+      "recommended_batch": null,
+      "downgrade_rationale": "Composite editions and weights require sensitivity review; user experience can diverge from formal availability.",
+      "reason_codes": [
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY",
+        "CMP_LEGAL_NOT_LIVED_OUTCOME"
+      ]
+    },
+    {
+      "criterion_id": "C63",
+      "source_item_number": 63,
+      "name": "Infrastructure readiness composite",
+      "category": "Infrastructure and daily-life reliability",
+      "measures": "Combined digital and logistics readiness.",
+      "classification_tags": [
+        "IC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "unsuitable independent",
+      "likely_authoritative_publisher_families": [
+        "Existing Konsider inputs",
+        "World Bank/ITU"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Existing experimental infrastructure readiness composite"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "Existing release cadence",
+      "licensing_uncertainty": "LOW",
+      "finding_status": "DEFERRED",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Already available experimentally; Phase 3 should research its components rather than duplicate the composite.",
+      "reason_codes": [
+        "RED_EXISTING_CRITERION",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C64",
+      "source_item_number": 64,
+      "name": "Temperature comfort",
+      "category": "Climate, environment and location",
+      "measures": "Climatological heat, cold, humidity and seasonal exposure at likely destinations.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "PF",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "Copernicus/ECMWF",
+        "World Bank CCKP",
+        "national meteorological agencies"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ERA5/ERA5-Land normals",
+        "CCKP ERA5/CRU aggregations",
+        "humidity/heat-index metrics"
+      ],
+      "evidence_refs": [
+        "E12",
+        "E13"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "CLIMATE_NORMAL: fixed normal period/current dataset",
+      "licensing_uncertainty": "LOW",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Global data are excellent, but national averages are misleading and comfort has no universal direction.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "PRF_PREFERENCE_MATCH_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C65",
+      "source_item_number": 65,
+      "name": "Climate preference fit",
+      "category": "Climate, environment and location",
+      "measures": "Match between a user's preferred warm/cold/dry/humid/four-season climate and destination conditions.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "PF",
+        "LF"
+      ],
+      "phase3a_granularity": "PREFERENCE_MODEL",
+      "natural_granularity": "preference-based",
+      "likely_authoritative_publisher_families": [
+        "Copernicus/ECMWF",
+        "World Bank CCKP"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Derived preference model over ERA5/CCKP temperature, precipitation and humidity"
+      ],
+      "evidence_refs": [
+        "E12",
+        "E13"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "FULL",
+      "likely_freshness": "CLIMATE_NORMAL",
+      "licensing_uncertainty": "LOW",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Data coverage is strong, but this belongs in a transparent preference model, not a higher-is-better criterion.",
+      "reason_codes": [
+        "PRF_PREFERENCE_MATCH_REQUIRED",
+        "PRF_PROFILE_ONLY"
+      ]
+    },
+    {
+      "criterion_id": "C66",
+      "source_item_number": 66,
+      "name": "Extreme-weather risk",
+      "category": "Climate, environment and location",
+      "measures": "Exposure to heatwaves, floods, storms, wildfire, drought and severe cold.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "EU/JRC INFORM",
+        "World Bank CCKP",
+        "WMO",
+        "UNDRR"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "INFORM hazard/exposure components",
+        "CCKP extreme indices",
+        "hazard-specific global datasets"
+      ],
+      "evidence_refs": [
+        "E12",
+        "E14"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "EVENT_RISK_MODEL: current 2026/model edition",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "HIGH",
+      "deep_research_rank": 15,
+      "recommended_batch": "BATCH_1",
+      "downgrade_rationale": "Hazard components have different scales and city exposure; avoid double counting vulnerability/coping capacity.",
+      "reason_codes": [
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY",
+        "GRA_CITY_LEVEL_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C67",
+      "source_item_number": 67,
+      "name": "Long-term climate-change exposure",
+      "category": "Climate, environment and location",
+      "measures": "Future physical exposure to sea-level rise, heat/water stress and ecosystem pressures.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "World Bank CCKP",
+        "IPCC/WCRP CMIP",
+        "NASA/ESA",
+        "WRI as supplement"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "CCKP CMIP6 scenarios",
+        "sea-level projections",
+        "water-stress and heat-exposure datasets"
+      ],
+      "evidence_refs": [
+        "E12"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "EVENT_RISK_MODEL: current scenario/model edition",
+      "licensing_uncertainty": "LOW",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 34,
+      "recommended_batch": null,
+      "downgrade_rationale": "Results depend on scenario, horizon, model ensemble and population exposure assumptions.",
+      "reason_codes": [
+        "CMP_MODEL_ASSUMPTIONS_OPAQUE",
+        "SCO_NO_DEFENSIBLE_THRESHOLDS"
+      ]
+    },
+    {
+      "criterion_id": "C68",
+      "source_item_number": 68,
+      "name": "Natural-disaster risk",
+      "category": "Climate, environment and location",
+      "measures": "Expected loss/exposure from geophysical and weather-related natural hazards.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "EU/JRC INFORM",
+        "UNDRR",
+        "World Bank",
+        "GEM/USGS"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "INFORM natural hazard/exposure",
+        "Global Assessment Report datasets",
+        "global earthquake/cyclone/flood layers"
+      ],
+      "evidence_refs": [
+        "E14"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "EVENT_RISK_MODEL: 2026/current edition",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 35,
+      "recommended_batch": null,
+      "downgrade_rationale": "Overlaps extreme-weather risk; geophysical hazards should be separable and composite weights tested.",
+      "reason_codes": [
+        "RED_CANDIDATE_OVERLAP",
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY"
+      ]
+    },
+    {
+      "criterion_id": "C69",
+      "source_item_number": 69,
+      "name": "Environmental quality beyond PM2.5",
+      "category": "Climate, environment and location",
+      "measures": "Waste, water pollution, green space, noise, biodiversity and other environmental conditions.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UNEP",
+        "Yale/Columbia EPI consortium",
+        "WHO",
+        "city agencies"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "SDG environment indicators",
+        "EPI components",
+        "city green-space/noise/waste data"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD_SOCIOECONOMIC: mixed 0–5y",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "The construct is too broad, city-sensitive and dependent on composite weighting; EPI licensing must be checked.",
+      "reason_codes": [
+        "SEM_QUESTION_TOO_BROAD",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C70",
+      "source_item_number": 70,
+      "name": "Climate resilience and adaptation readiness",
+      "category": "Climate, environment and location",
+      "measures": "Institutional and infrastructure capacity to adapt to and recover from climate shocks.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "EU/JRC INFORM",
+        "World Bank",
+        "UNDRR",
+        "ND-GAIN consortium"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "INFORM lack-of-coping-capacity",
+        "ND-GAIN readiness",
+        "adaptation policy indicators"
+      ],
+      "evidence_refs": [
+        "E14"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "EVENT_RISK_MODEL/SLOW_STRUCTURAL: annual edition",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_PROMISING",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 36,
+      "recommended_batch": null,
+      "downgrade_rationale": "Readiness indexes are composite/modelled and overlap governance, infrastructure and disaster risk.",
+      "reason_codes": [
+        "RED_SHARED_COMPONENTS",
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY"
+      ]
+    },
+    {
+      "criterion_id": "C71",
+      "source_item_number": 71,
+      "name": "Work-life balance",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Working hours, paid leave, parental leave and commute burden.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "OECD",
+        "national labour authorities"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILOSTAT actual hours",
+        "ILO NATLEX leave law",
+        "OECD work-life indicators",
+        "commute surveys"
+      ],
+      "evidence_refs": [
+        "E02",
+        "E15"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD/CURRENT_POLICY: 0–3y plus current law",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 37,
+      "recommended_batch": null,
+      "downgrade_rationale": "Leave law is not take-up; commute is city-level and survey coverage is weak, so start with hours/leave components.",
+      "reason_codes": [
+        "CMP_LEGAL_NOT_LIVED_OUTCOME",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C72",
+      "source_item_number": 72,
+      "name": "Family friendliness",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Family-support environment spanning leave, childcare, schools, safety and recreation.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "UNICEF",
+        "World Bank WBL",
+        "UNESCO",
+        "WHO"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Parental-leave law",
+        "childcare support",
+        "school/health/safety component criteria"
+      ],
+      "evidence_refs": [
+        "E08",
+        "E01"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from component vintages",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "MEDIUM",
+      "deep_research_rank": 38,
+      "recommended_batch": null,
+      "downgrade_rationale": "This is best as a transparent family profile assembled from approved components, not a new opaque dataset.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "RED_SHARED_COMPONENTS",
+        "SCO_COMPOSITE_WEIGHTS_ARBITRARY"
+      ]
+    },
+    {
+      "criterion_id": "C73",
+      "source_item_number": 73,
+      "name": "Quality of urban life",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Urban public space, walkability, cleanliness, congestion, amenities and design.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "CR",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UN-Habitat",
+        "city governments",
+        "satellite/open mapping providers"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "SDG 11 urban indicators",
+        "city prosperity",
+        "OpenStreetMap-derived amenities",
+        "congestion datasets"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C2",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "STANDARD/FAST_MOVING mixed",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Requires a city universe, geospatial methodology and multiple sources with uneven licensing.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C74",
+      "source_item_number": 74,
+      "name": "Recreation, culture, and leisure",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Access to sports, arts, libraries, dining, nature and community activity.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "CR",
+        "PF",
+        "LF"
+      ],
+      "phase3a_granularity": "CITY_OR_REGIONAL",
+      "natural_granularity": "city/regional",
+      "likely_authoritative_publisher_families": [
+        "UNESCO",
+        "city cultural agencies",
+        "open mapping",
+        "commercial POI providers"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Cultural participation statistics",
+        "protected-area access",
+        "POI/amenity inventories"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "NO",
+      "expected_coverage_band_estimate": "LOW",
+      "likely_freshness": "STANDARD/FAST_MOVING mixed",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_CITY_LAYER",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Amenity value is preference-based, highly local and usually reliant on commercial or volunteered POI data.",
+      "reason_codes": [
+        "GRA_CITY_LEVEL_REQUIRED",
+        "PRF_PREFERENCE_MATCH_REQUIRED",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C75",
+      "source_item_number": 75,
+      "name": "Religious freedom and freedom of expression",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Formal and practical religious freedom, expression and civic participation.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "UN human-rights mechanisms",
+        "OHCHR",
+        "national law",
+        "V-Dem/Freedom House for research"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "UN treaty/UPR evidence",
+        "official constitutional law",
+        "V-Dem freedom indicators",
+        "WGI Voice"
+      ],
+      "evidence_refs": [
+        "E07"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "YES",
+      "expected_coverage_band_estimate": "HIGH",
+      "likely_freshness": "STATIC_OR_LEGAL_ASOF/SLOW_STRUCTURAL",
+      "licensing_uncertainty": "MEDIUM",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Legal guarantees and lived freedom diverge; prominent indices mix expert judgments and may have reuse restrictions.",
+      "reason_codes": [
+        "CMP_LEGAL_NOT_LIVED_OUTCOME",
+        "LIC_AMBIGUOUS"
+      ]
+    },
+    {
+      "criterion_id": "C76",
+      "source_item_number": 76,
+      "name": "Social protection and welfare support",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Eligibility and adequacy of unemployment, pension, disability and family benefits.",
+      "classification_tags": [
+        "IC",
+        "SC"
+      ],
+      "phase3a_granularity": "NATIONAL",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "ILO",
+        "World Bank",
+        "OECD",
+        "national social-security authorities"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "ILO World Social Protection Database",
+        "NATLEX",
+        "ASPIRE",
+        "OECD SOCX"
+      ],
+      "evidence_refs": [
+        "E15"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C3",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "STANDARD/CURRENT_POLICY mixed",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_POSSIBLE",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Benefit access and value depend on contributions, residence, immigration status and household scenario.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "COV_BELOW_90_PERCENT"
+      ]
+    },
+    {
+      "criterion_id": "C77",
+      "source_item_number": 77,
+      "name": "Retirement suitability",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Combined suitability for older migrants: health, cost, pensions, residency, safety and lifestyle.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "PF",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved component criteria",
+        "national retirement visa authorities"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile composite plus official retirement-residence rules"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived/current policy",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Overlaps C84 and combines incompatible profile inputs; retain only one retirement profile after component approval.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "RED_CANDIDATE_OVERLAP",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C78",
+      "source_item_number": 78,
+      "name": "Overall life satisfaction",
+      "category": "Family, lifestyle and long-term liveability",
+      "measures": "Average self-reported life evaluation of residents.",
+      "classification_tags": [
+        "IC",
+        "SC",
+        "DO",
+        "CR",
+        "PF",
+        "LF"
+      ],
+      "phase3a_granularity": "NATIONAL_WITH_CITY_CAVEAT",
+      "natural_granularity": "national",
+      "likely_authoritative_publisher_families": [
+        "Gallup",
+        "World Happiness Report",
+        "OECD as supplement"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Gallup World Poll Cantril Ladder",
+        "WHR 2026 three-year averages"
+      ],
+      "evidence_refs": [
+        "E17"
+      ],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "VERIFIED_WHERE_CITED; CANDIDATE_FIT_PRELIMINARY",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C4",
+      "coverage_90_percent_plausible_estimate": "UNCERTAIN",
+      "expected_coverage_band_estimate": "MEDIUM",
+      "likely_freshness": "SLOW_STRUCTURAL: 2023–2025 average",
+      "licensing_uncertainty": "HIGH",
+      "finding_status": "SCREENED_LOW_FEASIBILITY",
+      "deep_research_priority": "LOW",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "The measure is comparable but misses some small states, is an outcome rather than an actionable lever, and Gallup reuse terms need audit.",
+      "reason_codes": [
+        "COV_BELOW_90_PERCENT",
+        "LIC_AMBIGUOUS",
+        "SEM_NOT_ACTIONABLE"
+      ]
+    },
+    {
+      "criterion_id": "C79",
+      "source_item_number": 79,
+      "name": "Suitability for a software professional",
+      "category": "Profile-dependent composites",
+      "measures": "Profile score for a software professional using jobs, pay, tax, English, visas and ecosystem.",
+      "classification_tags": [
+        "PC",
+        "DO"
+      ],
+      "phase3a_granularity": "PROFILE_ONLY",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved component criteria"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile calculation only"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from components",
+      "licensing_uncertainty": "N/A",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Explicit profile composite; no independent source search is warranted.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C80",
+      "source_item_number": 80,
+      "name": "Suitability for a medical professional",
+      "category": "Profile-dependent composites",
+      "measures": "Profile score for a medical professional using demand, licensing, language, pay and visas.",
+      "classification_tags": [
+        "PC",
+        "DO"
+      ],
+      "phase3a_granularity": "PROFILE_ONLY",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved component criteria"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile calculation only"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from components",
+      "licensing_uncertainty": "N/A",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Explicit profession/profile composite; research its components instead.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "GRA_PROFESSION_SPECIFIC",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C81",
+      "source_item_number": 81,
+      "name": "Suitability for a student",
+      "category": "Profile-dependent composites",
+      "measures": "Student profile score using education, tuition, access, safety and post-study routes.",
+      "classification_tags": [
+        "PC",
+        "DO"
+      ],
+      "phase3a_granularity": "PROFILE_ONLY",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved component criteria"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile calculation only"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from components",
+      "licensing_uncertainty": "N/A",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Explicit profile composite; no independent criterion dataset exists.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C82",
+      "source_item_number": 82,
+      "name": "Suitability for a family with school-age children",
+      "category": "Profile-dependent composites",
+      "measures": "Family-with-children profile score using schools, safety, health, housing and migration rules.",
+      "classification_tags": [
+        "PC",
+        "DO"
+      ],
+      "phase3a_granularity": "PROFILE_ONLY",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved component criteria"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile calculation only"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from components",
+      "licensing_uncertainty": "N/A",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Explicit household profile; component evidence and weights must remain visible.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C83",
+      "source_item_number": 83,
+      "name": "Suitability for an entrepreneur",
+      "category": "Profile-dependent composites",
+      "measures": "Entrepreneur profile score using formation, finance, tax, immigration, markets and digital government.",
+      "classification_tags": [
+        "PC",
+        "DO"
+      ],
+      "phase3a_granularity": "PROFILE_ONLY",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved component criteria"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile calculation only"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from components",
+      "licensing_uncertainty": "N/A",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Explicit profile composite; research component criteria rather than seek a single index.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "RED_SHARED_COMPONENTS"
+      ]
+    },
+    {
+      "criterion_id": "C84",
+      "source_item_number": 84,
+      "name": "Suitability for retirement",
+      "category": "Profile-dependent composites",
+      "measures": "Retiree profile score using health, affordability, climate, residency, safety and life quality.",
+      "classification_tags": [
+        "PC",
+        "DO",
+        "PF"
+      ],
+      "phase3a_granularity": "PROFILE_ONLY",
+      "natural_granularity": "profile-derived",
+      "likely_authoritative_publisher_families": [
+        "Derived from approved component criteria"
+      ],
+      "likely_dataset_or_indicator_families": [
+        "Profile calculation only"
+      ],
+      "evidence_refs": [],
+      "fact_estimate_boundary": {
+        "measures": "VERIFIED_FROM_USER_SEARCH_SPACE",
+        "publisher_dataset_family_existence": "PRELIMINARY_HYPOTHESIS",
+        "comparability_coverage_freshness_licensing": "PRELIMINARY_ESTIMATE_NOT_AUDITED"
+      },
+      "cross_country_comparability_estimate": "C1",
+      "coverage_90_percent_plausible_estimate": "N/A",
+      "expected_coverage_band_estimate": "N/A",
+      "likely_freshness": "Derived from components",
+      "licensing_uncertainty": "N/A",
+      "finding_status": "DEFERRED_PROFILE_LAYER",
+      "deep_research_priority": "NO FURTHER WORK",
+      "deep_research_rank": null,
+      "recommended_batch": null,
+      "downgrade_rationale": "Explicit preference/profile composite and duplicate of C77's intended decision.",
+      "reason_codes": [
+        "PRF_PROFILE_ONLY",
+        "RED_CANDIDATE_OVERLAP",
+        "RED_SHARED_COMPONENTS"
+      ]
+    }
+  ]
+}

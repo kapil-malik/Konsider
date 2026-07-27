@@ -23,7 +23,7 @@ URLs, HTTP metadata, checksums, versions, attribution, and exact record referenc
 | Women’s legal and economic equality | Official [WBL 2026 download](https://wbl.worldbank.org/en/data/download-data), workbook `WBL26_FINAL_ALL.xlsx`; [methodology](https://wbl.worldbank.org/en/data/methodology), [catalog record](https://datacatalog.worldbank.org/search/dataset/0038489/women-business-and-the-law) | 91/91; report year 2026, law/data cutoff 2025-10-01; 190-economy dataset | The catalog and [reproducibility package](https://reproducibility.worldbank.org/catalog/459) say CC BY 4.0. Use the World Bank citation/DOI and identify transformations. | Ready. Uses the WBL Legal Framework economy index and therefore measures de jure law, not enforcement or lived outcomes. |
 | Infrastructure readiness experiment | WDI APIs `IT.NET.USER.ZS`, `IT.NET.BBND.P2`, `LP.LPI.INFR.XQ`; metadata for [internet use](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.USER.ZS), [fixed broadband](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.BBND.P2), and [LPI infrastructure](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/LP.LPI.INFR.XQ) | 91/91 for every component; internet 2024-2025, broadband 2023-2024, LPI 2022 | Each WDI representation says CC BY 4.0. Attribute World Bank WDI and ITU for the digital indicators; identify the equal-weight derived composite. | Provisionally ready, still labelled experimental. It covers digital access and trade/transport logistics, not all infrastructure; component years differ and LPI is survey-based. |
 
-### Phase 5G-1 additions
+### Phase 3G-1 additions
 
 | Criterion | Official source | Coverage and freshness | Decision |
 | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ URLs, HTTP metadata, checksums, versions, attribution, and exact record referenc
 The exact WGI workbook is version-pinned as
 `wgidataset_with_sourcedata-2025.xlsx` and both WGI criteria retain distinct sheet and reference-year
 identifiers. The WDI series is pinned as `SM.POP.TOTL.ZS@WDI-2026-07`. The
-[Phase 5G-0 report](../research/phase5g0-final-probes.md) records the candidates not promoted.
+[Phase 3G-0 report](../research/phase3g0-final-probes.md) records the candidates not promoted.
 
 ## Observed API/download behavior
 

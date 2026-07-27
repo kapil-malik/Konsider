@@ -97,6 +97,6 @@ Start at the [documentation index](docs/README.md).
 - [Release format](docs/data/release-format.md)
 - [Phase 2D country coverage audit](docs/data/country-coverage-phase-2d.md)
 - [Phase 2D.4 homicide source feasibility](docs/data/homicide-source-feasibility-phase-2d4.md)
-- [Phase 5 closure report](docs/research/phase5-closure-report.md)
+- [Phase 3 closure report](docs/research/phase3-closure-report.md)
 - [Roadmap](docs/product/roadmap.md)
 - [Active release report](docs/history/releases/2026-07-26.3.md)

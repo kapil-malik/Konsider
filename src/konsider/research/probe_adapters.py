@@ -1,4 +1,4 @@
-"""Small source-specific parsers used by Phase 5 feasibility probes."""
+"""Small source-specific parsers used by Phase 3 feasibility probes."""
 
 from __future__ import annotations
 

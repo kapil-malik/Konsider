@@ -1,8 +1,0 @@
-criterion_id,run_id,recommendation,phase5c_expected_valid,valid,phase5c_delta_valid,found,fresh,missing,stale,invalid,unmapped,probe_threshold_passed,full_91_passed,offline_replay_verified,licensing_conclusion
-C08,phase5e-2026-07-26-c08-online-v2,EXPERIMENTAL_CANDIDATE,88,87,-1,89,88,2,1,1,96,True,False,True,PASS_CC_BY_4_0_WITH_ATTRIBUTION
-C11,phase5e-2026-07-26-c11-online,PRODUCTION_CANDIDATE,88,88,0,89,88,2,1,0,187,True,False,True,PASS_CC_BY_4_0_WITH_ATTRIBUTION
-C30,phase5e-2026-07-26-c30-online,PRODUCTION_CANDIDATE,91,91,0,91,91,0,0,0,168,True,True,True,PASS_CC_BY_4_0_WITH_ATTRIBUTION
-C29,phase5e-2026-07-26-c29-online,EXPERIMENTAL_CANDIDATE,91,91,0,91,91,0,0,0,163,True,True,True,PASS_CC_BY_4_0_WITH_ATTRIBUTION
-C48,phase5e-2026-07-26-c48-online,PRODUCTION_CANDIDATE,91,91,0,91,91,0,0,0,115,True,True,True,PASS_CC_BY_4_0_FOR_PUBLISHED_AGGREGATES
-C49,phase5e-2026-07-26-c49-online,PRODUCTION_CANDIDATE,91,91,0,91,91,0,0,0,115,True,True,True,PASS_CC_BY_4_0_FOR_PUBLISHED_AGGREGATES
-C53,phase5e-2026-07-26-c53-online,RESERVE_CANDIDATE,86,86,0,89,89,2,0,3,159,True,False,True,PASS_CC_BY_4_0_WITH_WHO_UNICEF_ATTRIBUTION

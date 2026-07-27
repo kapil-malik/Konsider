@@ -1,0 +1,53 @@
+[
+  {
+    "artifact_id": "sha256:b675b89b996c4fd0c3e5fe0d39f4ff03c09f49cceb6e43879bd2fede8a54f3b4",
+    "byte_length": 7835,
+    "content_length_header": null,
+    "dataset_version": "UNE+EMP+EAP modelled estimates, Nov. 2025",
+    "etag": null,
+    "final_url": "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "text/csv",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "path": "data/raw/feasibility-probes/C11-ILO-MODEL-2025/b675b89b996c4fd0c3e5fe0d39f4ff03c09f49cceb6e43879bd2fede8a54f3b4.bin",
+    "requested_url": "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+    "retrieved_at": "2026-07-26T15:49:40.963334+00:00",
+    "sha256": "b675b89b996c4fd0c3e5fe0d39f4ff03c09f49cceb6e43879bd2fede8a54f3b4",
+    "source_id": "C11-ILO-MODEL-2025"
+  },
+  {
+    "artifact_id": "sha256:306608d6eed21c37a5798b444b19a6b502491b4a235a4bb3813989d69ecf4d34",
+    "byte_length": 7907,
+    "content_length_header": null,
+    "dataset_version": "UNE+EMP+EAP modelled estimates, Nov. 2025",
+    "etag": null,
+    "final_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "text/csv",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "path": "data/raw/feasibility-probes/C11-ILO-MODEL-2025/306608d6eed21c37a5798b444b19a6b502491b4a235a4bb3813989d69ecf4d34.bin",
+    "requested_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+    "retrieved_at": "2026-07-26T15:49:40.963334+00:00",
+    "sha256": "306608d6eed21c37a5798b444b19a6b502491b4a235a4bb3813989d69ecf4d34",
+    "source_id": "C11-ILO-MODEL-2025"
+  },
+  {
+    "artifact_id": "sha256:7b00398bd9241c0d20918ddbc192d8c66970ea0edfe1606ceb3056717488be7f",
+    "byte_length": 7907,
+    "content_length_header": null,
+    "dataset_version": "UNE+EMP+EAP modelled estimates, Nov. 2025",
+    "etag": null,
+    "final_url": "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv",
+    "http_status": 200,
+    "last_modified": null,
+    "media_type": "text/csv",
+    "parser_version": "ilostat_labour_composite_csv_v1",
+    "path": "data/raw/feasibility-probes/C11-ILO-MODEL-2025/7b00398bd9241c0d20918ddbc192d8c66970ea0edfe1606ceb3056717488be7f.bin",
+    "requested_url": "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv",
+    "retrieved_at": "2026-07-26T15:49:40.963334+00:00",
+    "sha256": "7b00398bd9241c0d20918ddbc192d8c66970ea0edfe1606ceb3056717488be7f",
+    "source_id": "C11-ILO-MODEL-2025"
+  }
+]

@@ -11,15 +11,15 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Worker operations](operations/worker.md) - refresh, publish, replay, inspect, and roll back data.
 - [API operations and reference](operations/api.md) - configure, start, and use all five routes.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
-- [Phase 5D feasibility probes](research/phase5d-feasibility-probes.md) - deterministic,
+- [Phase 3D feasibility probes](research/phase3d-feasibility-probes.md) - deterministic,
   non-publishing source feasibility checks and offline replay.
-- [Phase 5E deterministic probes](research/phase5e-deterministic-probes.md) - live measured
+- [Phase 3E deterministic probes](research/phase3e-deterministic-probes.md) - live measured
   results for seven approved candidates, aggregate recommendations, and replay evidence.
-- [Phase 5F portfolio decision](research/konsider_phase5f_portfolio_decision.md) - approved
-  portfolio, guardrails, fallback hierarchy, and Phase 5G implementation order.
-- [Phase 5G-0 final probes](research/phase5g0-final-probes.md) - exact-source coverage,
+- [Phase 3F portfolio decision](research/konsider_phase3f_portfolio_decision.md) - approved
+  portfolio, guardrails, fallback hierarchy, and Phase 3G implementation order.
+- [Phase 3G-0 final probes](research/phase3g0-final-probes.md) - exact-source coverage,
   freshness, replay evidence, and final dispositions for four unresolved candidates.
-- [Phase 5 closure report](research/phase5-closure-report.md) - the complete 84-item funnel,
+- [Phase 3 closure report](research/phase3-closure-report.md) - the complete 84-item funnel,
   final dispositions, production outcome, guardrails, limitations, and refresh recommendations.
 - [Phase 2C UI](product/ui.md) - implemented product behavior and technical boundaries.
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md) - reproducible universe,
@@ -49,11 +49,11 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Release format](data/release-format.md)
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md)
 - [Phase 2D.4 homicide source feasibility](data/homicide-source-feasibility-phase-2d4.md)
-- [Phase 5D feasibility probes](research/phase5d-feasibility-probes.md)
-- [Phase 5E deterministic probes](research/phase5e-deterministic-probes.md)
-- [Phase 5F portfolio decision](research/konsider_phase5f_portfolio_decision.md)
-- [Phase 5G-0 final probes](research/phase5g0-final-probes.md)
-- [Phase 5 closure report](research/phase5-closure-report.md)
+- [Phase 3D feasibility probes](research/phase3d-feasibility-probes.md)
+- [Phase 3E deterministic probes](research/phase3e-deterministic-probes.md)
+- [Phase 3F portfolio decision](research/konsider_phase3f_portfolio_decision.md)
+- [Phase 3G-0 final probes](research/phase3g0-final-probes.md)
+- [Phase 3 closure report](research/phase3-closure-report.md)
 
 ## Historical records
 

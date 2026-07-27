@@ -72,15 +72,15 @@ def test_current_documents_name_the_active_release() -> None:
         assert active["release_id"] in (ROOT / relative_path).read_text(encoding="utf-8")
 
 
-def test_phase_5_closure_and_forward_roadmap_are_linked() -> None:
-    closure = ROOT / "docs" / "research" / "phase5-closure-report.md"
+def test_phase_3_closure_and_forward_roadmap_are_linked() -> None:
+    closure = ROOT / "docs" / "research" / "phase3-closure-report.md"
     roadmap = (ROOT / "docs" / "product" / "roadmap.md").read_text(encoding="utf-8")
     index = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
 
     assert closure.exists()
-    assert "Phase 5: criteria expansion and source feasibility — complete" in roadmap
-    assert "Phase 6: deterministic evidence and explanations — recommended next" in roadmap
-    assert "Phase 7: conversational exploration" in roadmap
+    assert "Phase 3: criteria expansion and source feasibility — complete" in roadmap
+    assert "Phase 4: deterministic evidence and explanations — recommended next" in roadmap
+    assert "Phase 5: conversational exploration" in roadmap
     assert "Phase 2E:" not in roadmap
     assert "Phase 2F:" not in roadmap
-    assert "research/phase5-closure-report.md" in index
+    assert "research/phase3-closure-report.md" in index

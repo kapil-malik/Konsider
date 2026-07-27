@@ -19,7 +19,7 @@ the selected country set.
 | Women’s legal and economic equality, higher better | `wbl_legal_equality_bands_v1`: 40→1, 55→3, 70→5.5, 85→8, 100→10 | WBL legal-framework index only; not a score of lived equality or enforcement. |
 | Infrastructure readiness, higher better | `infrastructure_readiness_bands_v1`: composite 30→1, 45→3, 60→5.5, 75→8, 90→10 | Experimental equal-weight composite after fixed transforms of internet use, fixed broadband, and LPI infrastructure quality. |
 
-The three Phase 5G-1 additions use fixed, versioned broad-band transformations:
+The three Phase 3G-1 additions use fixed, versioned broad-band transformations:
 
 - `wgi_political_stability_bands_v1` and `wgi_rule_of_law_bands_v1` map the WGI estimate range to
   broad 1-10 bands. Published uncertainty is retained; fine-grained rank claims are inappropriate.

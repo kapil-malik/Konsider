@@ -1,0 +1,381 @@
+{
+  "all_offline_replays_passed": true,
+  "all_probe_thresholds_passed": true,
+  "batch_id": "PHASE3E_DETERMINISTIC_2026-07-26",
+  "candidates": [
+    {
+      "criterion_id": "C08",
+      "dataset_version": "HCI+ version 3; hci_plus_index_panel.dta",
+      "definition": "data/research/phase3e/c08-hciplus.json",
+      "licensing_conclusion": "PASS_CC_BY_4_0_WITH_ATTRIBUTION",
+      "measured": {
+        "denominator": 91,
+        "found": 89,
+        "fresh": 88,
+        "full_91_passed": false,
+        "invalid": 1,
+        "missing": 2,
+        "parse_failed": 0,
+        "parsed": 89,
+        "probe_threshold_passed": true,
+        "rejected": 0,
+        "stale": 1,
+        "unmapped": 96,
+        "valid": 87,
+        "validated": 88
+      },
+      "nonvalid_country_outcomes": [
+        {
+          "country_code": "ATG",
+          "display_name": "Antigua and Barbuda",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+          ],
+          "status": "invalid"
+        },
+        {
+          "country_code": "BHS",
+          "display_name": "Bahamas, The",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "status": "missing"
+        },
+        {
+          "country_code": "BOL",
+          "display_name": "Bolivia",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "status": "missing"
+        },
+        {
+          "country_code": "GUY",
+          "display_name": "Guyana",
+          "reason_codes": [
+            "FRS_STALE"
+          ],
+          "status": "stale"
+        }
+      ],
+      "offline_replay_verified": true,
+      "only_blocker_countries": [
+        "BOL",
+        "GUY"
+      ],
+      "phase3c_delta_valid": -1,
+      "phase3c_expectation": "89 countries with HLO/LAYS, of which 88 had a 2024+ label; BHS and BOL missing.",
+      "phase3c_expected_valid": 88,
+      "raw_artifact_count": 1,
+      "recommendation": "EXPERIMENTAL_CANDIDATE",
+      "recommendation_rationale": "Coverage passes, but ATG lacks the schooling component, GUY is stale, the published schooling component is not a 0-100 percentage, and the primary HLO/LAYS/component choice must be settled before production scoring.",
+      "run_id": "phase3e-2026-07-26-c08-online-v2",
+      "source_version": "File updated 2026-02-11; panel labels through 2025",
+      "superseded_runs": [
+        "phase3e-2026-07-26-c08-online"
+      ]
+    },
+    {
+      "criterion_id": "C11",
+      "dataset_version": "UNE+EMP+EAP modelled estimates, November 2025",
+      "definition": "data/research/phase3e/c11-ilostat.json",
+      "licensing_conclusion": "PASS_CC_BY_4_0_WITH_ATTRIBUTION",
+      "measured": {
+        "denominator": 91,
+        "found": 89,
+        "fresh": 88,
+        "full_91_passed": false,
+        "invalid": 0,
+        "missing": 2,
+        "parse_failed": 0,
+        "parsed": 89,
+        "probe_threshold_passed": true,
+        "rejected": 0,
+        "stale": 1,
+        "unmapped": 187,
+        "valid": 88,
+        "validated": 89
+      },
+      "nonvalid_country_outcomes": [
+        {
+          "country_code": "ATG",
+          "display_name": "Antigua and Barbuda",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "status": "missing"
+        },
+        {
+          "country_code": "GRD",
+          "display_name": "Grenada",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "status": "missing"
+        },
+        {
+          "country_code": "UKR",
+          "display_name": "Ukraine",
+          "reason_codes": [
+            "FRS_STALE"
+          ],
+          "status": "stale"
+        }
+      ],
+      "offline_replay_verified": true,
+      "only_blocker_countries": [
+        "UKR"
+      ],
+      "phase3c_delta_valid": 0,
+      "phase3c_expectation": "88/91 current intersection; ATG, GRD and UKR previously absent.",
+      "phase3c_expected_valid": 88,
+      "raw_artifact_count": 3,
+      "recommendation": "PRODUCTION_CANDIDATE",
+      "recommendation_rationale": "The exact three-component ILOSTAT source passes at 88/91 with deterministic mapping and favourable reuse. Production consideration requires an explicit missing/stale policy and scoring sensitivity review.",
+      "run_id": "phase3e-2026-07-26-c11-online",
+      "source_version": "ILOSTAT catalogue updated 2025-12-02",
+      "superseded_runs": []
+    },
+    {
+      "criterion_id": "C30",
+      "dataset_version": "SM.POP.TOTL.ZS@WDI-2026-07",
+      "definition": "data/research/phase3e/c30-world-bank.json",
+      "licensing_conclusion": "PASS_CC_BY_4_0_WITH_ATTRIBUTION",
+      "measured": {
+        "denominator": 91,
+        "found": 91,
+        "fresh": 91,
+        "full_91_passed": true,
+        "invalid": 0,
+        "missing": 0,
+        "parse_failed": 0,
+        "parsed": 91,
+        "probe_threshold_passed": true,
+        "rejected": 0,
+        "stale": 0,
+        "unmapped": 168,
+        "valid": 91,
+        "validated": 91
+      },
+      "nonvalid_country_outcomes": [],
+      "offline_replay_verified": true,
+      "only_blocker_countries": [],
+      "phase3c_delta_valid": 0,
+      "phase3c_expectation": "91/91 current WDI observations.",
+      "phase3c_expected_valid": 91,
+      "raw_artifact_count": 1,
+      "recommendation": "PRODUCTION_CANDIDATE",
+      "recommendation_rationale": "The exact source is fresh, valid and complete for 91/91. Keep the construct label narrow and resolve whether immigrant share is scored higher-better or treated as preference/context.",
+      "run_id": "phase3e-2026-07-26-c30-online",
+      "source_version": "2024 observations retrieved in July 2026",
+      "superseded_runs": []
+    },
+    {
+      "criterion_id": "C29",
+      "dataset_version": "FP.CPI.TOTL.ZG+PA.NUS.FCRF@WDI-2026-07",
+      "definition": "data/research/phase3e/c29-world-bank.json",
+      "licensing_conclusion": "PASS_CC_BY_4_0_WITH_ATTRIBUTION",
+      "measured": {
+        "denominator": 91,
+        "found": 91,
+        "fresh": 91,
+        "full_91_passed": true,
+        "invalid": 0,
+        "missing": 0,
+        "parse_failed": 0,
+        "parsed": 91,
+        "probe_threshold_passed": true,
+        "rejected": 0,
+        "stale": 0,
+        "unmapped": 163,
+        "valid": 91,
+        "validated": 91
+      },
+      "nonvalid_country_outcomes": [],
+      "offline_replay_verified": true,
+      "only_blocker_countries": [],
+      "phase3c_delta_valid": 0,
+      "phase3c_expectation": "91/91 with at least three 2020-2024 observations in both components and a 2023+ latest year.",
+      "phase3c_expected_valid": 91,
+      "raw_artifact_count": 2,
+      "recommendation": "EXPERIMENTAL_CANDIDATE",
+      "recommendation_rationale": "Both exact time series pass for 91/91, but exchange-rate regime flags, currency breaks, log-return construction and component weighting remain criterion-level methodology decisions.",
+      "run_id": "phase3e-2026-07-26-c29-online",
+      "source_version": "Annual observations for 2020-2024 retrieved in July 2026",
+      "superseded_runs": []
+    },
+    {
+      "criterion_id": "C48",
+      "dataset_version": "WGI 2025 revision; GOV_WGI_PV_EST",
+      "definition": "data/research/phase3e/c48-wgi.json",
+      "licensing_conclusion": "PASS_CC_BY_4_0_FOR_PUBLISHED_AGGREGATES",
+      "measured": {
+        "denominator": 91,
+        "found": 91,
+        "fresh": 91,
+        "full_91_passed": true,
+        "invalid": 0,
+        "missing": 0,
+        "parse_failed": 0,
+        "parsed": 91,
+        "probe_threshold_passed": true,
+        "rejected": 0,
+        "stale": 0,
+        "unmapped": 115,
+        "valid": 91,
+        "validated": 91
+      },
+      "nonvalid_country_outcomes": [],
+      "offline_replay_verified": true,
+      "only_blocker_countries": [],
+      "phase3c_delta_valid": 0,
+      "phase3c_expectation": "91/91 for GOV_WGI_PV_EST in 2024.",
+      "phase3c_expected_valid": 91,
+      "raw_artifact_count": 1,
+      "recommendation": "PRODUCTION_CANDIDATE",
+      "recommendation_rationale": "The published aggregate estimate is fresh and valid for 91/91. A production implementation must retain or separately capture WGI uncertainty and avoid treating small rank differences as precise.",
+      "run_id": "phase3e-2026-07-26-c48-online",
+      "source_version": "Recalculated 1996-2024 series; 2024 observation",
+      "superseded_runs": []
+    },
+    {
+      "criterion_id": "C49",
+      "dataset_version": "WGI 2025 revision; GOV_WGI_RL_EST",
+      "definition": "data/research/phase3e/c49-wgi.json",
+      "licensing_conclusion": "PASS_CC_BY_4_0_FOR_PUBLISHED_AGGREGATES",
+      "measured": {
+        "denominator": 91,
+        "found": 91,
+        "fresh": 91,
+        "full_91_passed": true,
+        "invalid": 0,
+        "missing": 0,
+        "parse_failed": 0,
+        "parsed": 91,
+        "probe_threshold_passed": true,
+        "rejected": 0,
+        "stale": 0,
+        "unmapped": 115,
+        "valid": 91,
+        "validated": 91
+      },
+      "nonvalid_country_outcomes": [],
+      "offline_replay_verified": true,
+      "only_blocker_countries": [],
+      "phase3c_delta_valid": 0,
+      "phase3c_expectation": "91/91 for GOV_WGI_RL_EST in 2024.",
+      "phase3c_expected_valid": 91,
+      "raw_artifact_count": 1,
+      "recommendation": "PRODUCTION_CANDIDATE",
+      "recommendation_rationale": "The narrowed Rule of law source is fresh and valid for 91/91. Production consideration requires uncertainty handling and an overlap decision against other governance criteria.",
+      "run_id": "phase3e-2026-07-26-c49-online",
+      "source_version": "Recalculated 1996-2024 series; 2024 observation",
+      "superseded_runs": []
+    },
+    {
+      "criterion_id": "C53",
+      "dataset_version": "SH.H2O.BASW.ZS+SH.STA.BASS.ZS@WDI-2026-07",
+      "definition": "data/research/phase3e/c53-water-sanitation.json",
+      "licensing_conclusion": "PASS_CC_BY_4_0_WITH_WHO_UNICEF_ATTRIBUTION",
+      "measured": {
+        "denominator": 91,
+        "found": 89,
+        "fresh": 89,
+        "full_91_passed": false,
+        "invalid": 3,
+        "missing": 2,
+        "parse_failed": 0,
+        "parsed": 89,
+        "probe_threshold_passed": true,
+        "rejected": 0,
+        "stale": 0,
+        "unmapped": 159,
+        "valid": 86,
+        "validated": 86
+      },
+      "nonvalid_country_outcomes": [
+        {
+          "country_code": "BHS",
+          "display_name": "Bahamas, The",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "status": "missing"
+        },
+        {
+          "country_code": "BIH",
+          "display_name": "Bosnia and Herzegovina",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:basic_sanitation_access"
+          ],
+          "status": "invalid"
+        },
+        {
+          "country_code": "GRD",
+          "display_name": "Grenada",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+          ],
+          "status": "invalid"
+        },
+        {
+          "country_code": "HRV",
+          "display_name": "Croatia",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:basic_sanitation_access"
+          ],
+          "status": "invalid"
+        },
+        {
+          "country_code": "NIC",
+          "display_name": "Nicaragua",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "status": "missing"
+        }
+      ],
+      "offline_replay_verified": true,
+      "only_blocker_countries": [
+        "BIH",
+        "HRV",
+        "NIC"
+      ],
+      "phase3c_delta_valid": 0,
+      "phase3c_expectation": "86/91 had both basic-water and basic-sanitation observations from 2022-2024.",
+      "phase3c_expected_valid": 86,
+      "raw_artifact_count": 2,
+      "recommendation": "RESERVE_CANDIDATE",
+      "recommendation_rationale": "The exact pair reproduces 86 valid countries and passes the threshold, but basic service access is not water safety or continuity and is highly saturated across many likely destinations. Retain as a reserve/foundation indicator unless Phase 3F shows meaningful ranking discrimination.",
+      "run_id": "phase3e-2026-07-26-c53-online",
+      "source_version": "JMP 2025 release; observations queried for 2022-2024",
+      "superseded_runs": []
+    }
+  ],
+  "denominator": 91,
+  "generated_at": "2026-07-26",
+  "phase_id": "3E",
+  "production_release_modified": false,
+  "recommendation_summary": {
+    "EXPERIMENTAL_CANDIDATE": [
+      "C08",
+      "C29"
+    ],
+    "PRODUCTION_CANDIDATE": [
+      "C11",
+      "C30",
+      "C48",
+      "C49"
+    ],
+    "REJECT": [],
+    "RESERVE_CANDIDATE": [
+      "C53"
+    ]
+  },
+  "research_only": true,
+  "schema_version": "phase3e-deterministic-aggregate-1.0",
+  "superseded_diagnostic_runs": [
+    "phase3e-2026-07-26-c08-online"
+  ],
+  "universe_id": "stable_supported_v1"
+}

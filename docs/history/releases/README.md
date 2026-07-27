@@ -11,7 +11,7 @@ ever disagrees.
 | `2026-07-20.2` | Schema-v3 six-criterion publication; five criteria ready. | [Report](2026-07-20.2.md) |
 | `2026-07-21.1` | LF packaging correction and prior 20-country release. | [Report](2026-07-21.1.md) |
 | `2026-07-24.1` | Stable 91-country Phase 2D predecessor. | [Report](2026-07-24.1.md) |
-| `2026-07-26.3` | Active Phase 5G-1 eight-criterion release. | [Report](2026-07-26.3.md) |
+| `2026-07-26.3` | Active Phase 3G-1 eight-criterion release. | [Report](2026-07-26.3.md) |
 
 `2026-07-21.1` exists separately because `2026-07-20.2` checksummed CRLF working-tree bytes while
 Git stores LF blobs. The correction preserves parsed observations, scores, attempts, readiness,
