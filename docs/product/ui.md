@@ -54,7 +54,7 @@ covers the main guest, update, filtering, detail, comparison, source-help, unava
 
 ## Phase 2D scale status
 
-Phase 2D is complete. The catalog-driven UI serves active release `2026-07-26.3` with 91 countries,
+Phase 2D is complete. The catalog-driven UI serves active release `2026-07-27.1` with 91 countries,
 bounded desktop scrolling, complete mobile cards, search, region filtering, visible/total counts,
 details, comparisons, sources, and an always-visible release ID. No server pagination or
 virtualization was needed for the measured response and rendering size.

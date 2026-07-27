@@ -11,7 +11,7 @@ from konsider.repositories.published_release_repository import (
 )
 
 ROOT = Path(__file__).resolve().parents[3]
-ACTIVE_RELEASE_ID = "2026-07-26.3"
+ACTIVE_RELEASE_ID = "2026-07-27.1"
 
 
 def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
@@ -68,6 +68,26 @@ def test_default_repository_paths_do_not_depend_on_working_directory(
     release = PublishedReleaseRepository().load_active()
 
     assert release.release_id == ACTIVE_RELEASE_ID
+
+
+def test_active_release_loads_after_git_style_lf_normalization(tmp_path: Path) -> None:
+    release_root = tmp_path / "releases"
+    source = ROOT / "data" / "releases" / ACTIVE_RELEASE_ID
+    target = release_root / ACTIVE_RELEASE_ID
+    target.mkdir(parents=True)
+    for source_path in source.iterdir():
+        target_path = target / source_path.name
+        target_path.write_bytes(source_path.read_bytes().replace(b"\r\n", b"\n"))
+    pointer = ROOT / "data" / "releases" / "active.json"
+    release_root.mkdir(parents=True, exist_ok=True)
+    (release_root / "active.json").write_bytes(pointer.read_bytes().replace(b"\r\n", b"\n"))
+    catalog = tmp_path / "consumer-catalog.json"
+    shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json", catalog)
+
+    release = PublishedReleaseRepository(release_root, catalog).load_active()
+
+    assert release.release_id == ACTIVE_RELEASE_ID
+    assert len(release.records) == 728
 
 
 def test_diagnostic_mode_exposes_non_ready_records_without_enabling_them() -> None:

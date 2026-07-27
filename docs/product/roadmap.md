@@ -8,7 +8,7 @@ Last updated: 2026-07-26
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v1 transport, and responsive React UI are
-implemented. Active release `2026-07-26.3` exposes the stable 91-country universe and nine available
+implemented. Active release `2026-07-27.1` exposes the stable 91-country universe and nine available
 criteria; eight are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure
 is enabled but experimental. Phase 2D is closed: the universe is the audited complete-case
 intersection under the approved WDI-only homicide source policy, and the UI supports search, region
@@ -69,14 +69,14 @@ See the [Phase 2D coverage report](../data/country-coverage-phase-2d.md) and
   working hours, and citizenship access.
 - Added political stability, rule of law, and established immigrant presence with 91/91 coverage,
   versioned scoring, provenance, validation, diagnostics, and replay.
-- Published immutable release `2026-07-26.3`; eight criteria are now enabled.
+- Published immutable release `2026-07-27.1`; eight criteria are now enabled.
 - Retained WGI uncertainty, disclosed governance overlap, and kept immigrant presence
   preference-based rather than treating it as universal quality.
 - Closed the 84-item research funnel with all screening and rejection evidence preserved.
 
 See the [Phase 3 closure report](../research/phase3-closure-report.md),
 [Phase 3G-0 probe report](../research/phase3g0-final-probes.md), and
-[active release report](../history/releases/2026-07-26.3.md).
+[active release report](../history/releases/2026-07-27.1.md).
 
 ## Phase 4: deterministic evidence and explanations — recommended next
 

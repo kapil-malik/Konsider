@@ -9,6 +9,7 @@ import tempfile
 from pathlib import Path
 
 from konsider.research.feasibility_probe import load_definition, run_probe
+from konsider.text_io import write_text_lf
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_ROOT = ROOT / "data" / "reports" / "feasibility-probes"
@@ -141,7 +142,7 @@ def _read_jsonl(path: Path):
 
 
 def _write_json(path: Path, value) -> None:
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_text_lf(path, json.dumps(value, indent=2, sort_keys=True) + "\n")
 
 
 def _offline_replay(candidate: dict[str, object], online_path: Path) -> dict[str, object]:
@@ -329,13 +330,13 @@ def main() -> int:
             "offline_replay_verified",
             "licensing_conclusion",
         ]
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for entry in entries:
             writer.writerow({key: entry["measured"].get(key, entry.get(key)) for key in fields})
     with (OUTPUT / "country-status-matrix.csv").open("w", newline="", encoding="utf-8") as handle:
         fields = ["country_code", *result_index, "nonvalid_count"]
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(matrix)
 
@@ -457,7 +458,7 @@ def main() -> int:
             "",
         ]
     )
-    (OUTPUT / "report.md").write_text("\n".join(lines), encoding="utf-8")
+    write_text_lf(OUTPUT / "report.md", "\n".join(lines))
 
     payload_names = (
         "aggregate.json",

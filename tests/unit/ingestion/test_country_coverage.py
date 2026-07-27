@@ -253,6 +253,8 @@ def test_online_and_offline_audits_match_and_do_not_activate_release(tmp_path, m
     )
     assert online["status"] == "PASS"
     assert online["complete_publishable_country_count"] == 150
+    for path in [*online_path.glob("*.json"), *online_path.glob("*.jsonl")]:
+        assert b"\r\n" not in path.read_bytes()
     assert active.read_text(encoding="utf-8") == '{"release_id":"before"}\n'
 
     bodies["WBL26"] = _wbl_workbook(codes[:99])

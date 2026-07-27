@@ -1,3 +1,7 @@
 data/releases/*.json text eol=lf
 data/releases/**/*.json text eol=lf
 data/releases/**/*.jsonl text eol=lf
+data/reports/**/*.csv text eol=lf
+data/reports/**/*.json text eol=lf
+data/reports/**/*.jsonl text eol=lf
+data/reports/**/*.md text eol=lf

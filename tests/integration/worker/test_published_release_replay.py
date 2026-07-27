@@ -126,10 +126,11 @@ class PublishedReleaseReplayTests(TestCase):
         self.assertTrue(replay(release))
 
     def test_final_91_country_release_contract_and_replay(self):
-        release = Path("data/releases/2026-07-26.3")
+        release = Path("data/releases/2026-07-27.1")
         manifest = json.loads((release / "manifest.json").read_text(encoding="utf-8"))
         validation = json.loads((release / "validation.json").read_text(encoding="utf-8"))
 
+        self.assertEqual(manifest["previous_release_id"], "2026-07-26.3")
         self.assertEqual(manifest["country_count"], 91)
         self.assertEqual(manifest["country_universe"]["universe_id"], "stable_supported_v1")
         self.assertEqual(manifest["observation_count"], 819)

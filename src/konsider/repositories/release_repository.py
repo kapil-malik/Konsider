@@ -18,15 +18,16 @@ from konsider.ingestion.models import (
     ValidationReport,
 )
 from konsider.ingestion.validation import RELEASE_SCHEMA_VERSION
+from konsider.text_io import write_text_lf
 
 
 def _write_json(path: Path, value: object) -> None:
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_text_lf(path, json.dumps(value, indent=2, sort_keys=True) + "\n")
 
 
 def _write_jsonl(path: Path, values: Iterable[dict[str, object]]) -> None:
     rows = [json.dumps(value, sort_keys=True, separators=(",", ":")) for value in values]
-    path.write_text("\n".join(rows) + ("\n" if rows else ""), encoding="utf-8")
+    write_text_lf(path, "\n".join(rows) + ("\n" if rows else ""))
 
 
 def _sha256(path: Path) -> str:

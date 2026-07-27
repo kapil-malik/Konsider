@@ -61,4 +61,4 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Release history](history/releases/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active release is `2026-07-26.3`.
+instructions. The active release is `2026-07-27.1`.

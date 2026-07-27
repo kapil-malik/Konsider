@@ -13,7 +13,7 @@ statement:
 > across every enabled ranking criterion under the approved source and licensing policy.
 
 The validated 91-country complete-case intersection is universe `stable_supported_v1`. Immutable
-release `2026-07-26.3` is active; previous releases remain recoverable.
+release `2026-07-27.1` is active; previous releases remain recoverable.
 
 ## Candidate selection
 

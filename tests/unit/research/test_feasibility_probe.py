@@ -1,3 +1,4 @@
+import hashlib
 import json
 from dataclasses import replace
 from datetime import UTC, datetime
@@ -220,6 +221,12 @@ class FeasibilityProbeTests(TestCase):
             self.assertEqual(first_summary, second_summary)
             for name in ("country-results.jsonl", "summary.json", "report.md"):
                 self.assertEqual((first / name).read_bytes(), (second / name).read_bytes())
+            manifest = json.loads((first / "manifest.json").read_text(encoding="utf-8"))
+            for path in [*first.glob("*.json"), *first.glob("*.jsonl")]:
+                self.assertNotIn(b"\r\n", path.read_bytes())
+            for name, expected in manifest["files"].items():
+                actual = hashlib.sha256((first / name).read_bytes()).hexdigest()
+                self.assertEqual(expected, f"sha256:{actual}")
 
             root = Path(directory)
             replay_release = root / "releases-replay"

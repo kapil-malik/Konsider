@@ -21,6 +21,7 @@ from konsider.research.probe_models import (
     ParsedProbeRecord,
     ProbeDefinition,
 )
+from konsider.text_io import write_text_lf
 
 PROBE_SCHEMA_VERSION = "feasibility-probe-report-1.0"
 DEFAULT_UNIVERSE_PATH = Path("data/country-universes/stable-supported-v1.json")
@@ -68,12 +69,12 @@ def _active_pointer_bytes(release_root: Path) -> bytes | None:
 
 
 def _write_json(path: Path, value: object) -> None:
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_text_lf(path, json.dumps(value, indent=2, sort_keys=True) + "\n")
 
 
 def _write_jsonl(path: Path, rows: Iterable[dict[str, object]]) -> None:
     encoded = [json.dumps(row, sort_keys=True, separators=(",", ":")) for row in rows]
-    path.write_text("\n".join(encoded) + ("\n" if encoded else ""), encoding="utf-8")
+    write_text_lf(path, "\n".join(encoded) + ("\n" if encoded else ""))
 
 
 def _load_universe(path: Path) -> tuple[str, list[dict[str, object]]]:
@@ -466,7 +467,7 @@ def run_probe(
     _write_jsonl(output / "country-results.jsonl", [item.to_dict() for item in results])
     _write_jsonl(output / "unmapped-records.jsonl", unmapped)
     _write_json(output / "summary.json", summary)
-    (output / "report.md").write_text(_render_report(summary), encoding="utf-8")
+    write_text_lf(output / "report.md", _render_report(summary))
     payload_names = (
         "definition.json",
         "sources.json",

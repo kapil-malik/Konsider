@@ -22,6 +22,7 @@ from konsider.ingestion.registry import SOURCES
 from konsider.ingestion.scoring import CURRENT_THRESHOLD_METHODS, _algorithm_scores
 from konsider.ingestion.validation import FRESHNESS_MAX_AGE, RANGES
 from konsider.repositories.raw_artifact_repository import RawArtifactRepository
+from konsider.text_io import write_text_lf
 
 UN_M49_URL = "https://unstats.un.org/unsd/methodology/m49/overview/"
 UN_MIGRANT_STOCK_URL = (
@@ -937,12 +938,12 @@ def _artifact_bodies(
 
 
 def _write_json(path: Path, value: object) -> None:
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_text_lf(path, json.dumps(value, indent=2, sort_keys=True) + "\n")
 
 
 def _write_jsonl(path: Path, rows: Iterable[dict[str, object]]) -> None:
     values = [json.dumps(row, sort_keys=True, separators=(",", ":")) for row in rows]
-    path.write_text("\n".join(values) + ("\n" if values else ""), encoding="utf-8")
+    write_text_lf(path, "\n".join(values) + ("\n" if values else ""))
 
 
 def _read_json(path: Path) -> object:
@@ -1207,7 +1208,7 @@ def audit_coverage(
         output / "sources.json",
         [registration.to_dict() for registration in registrations.values()],
     )
-    (output / "report.md").write_text(_render_report(summary), encoding="utf-8")
+    write_text_lf(output / "report.md", _render_report(summary))
     if _active_pointer_bytes(Path(release_root)) != active_before:
         raise RuntimeError("Coverage audit changed the active release pointer.")
     return output, summary

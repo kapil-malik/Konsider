@@ -131,7 +131,7 @@ Representative complete response:
 
 ```json
 {
-  "release_id": "2026-07-26.3",
+  "release_id": "2026-07-27.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [
@@ -178,7 +178,7 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-26.3",
+  "release_id": "2026-07-27.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [six available method versions],
@@ -231,7 +231,7 @@ Carefully abbreviated `200` response:
 
 ```text
 {
-  "release_id": "2026-07-26.3",
+  "release_id": "2026-07-27.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [five enabled method versions],
@@ -285,7 +285,7 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-26.3",
+  "release_id": "2026-07-27.1",
   "release_schema_version": "konsider-release-3.0",
   "catalog_schema_version": "consumer-catalog-1.0",
   "scoring_method_versions": [five enabled method versions],
@@ -329,7 +329,7 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-26.3",
+  "release_id": "2026-07-27.1",
   "resolved_profile_id": "equal_weight_mvp",
   "normalized_weights": {five enabled criterion IDs},
   "total_eligible_country_count": 91,

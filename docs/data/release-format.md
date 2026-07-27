@@ -22,8 +22,10 @@ data/
       validation.json
 ```
 
-Published files are LF-normalized by `.gitattributes`. Corrections create a new release ID; they do
-not rewrite a historical directory.
+Release and report writers emit UTF-8 JSON, JSONL, and Markdown with explicit LF newlines on every
+operating system. Payload checksums are calculated only after those final bytes are closed on disk;
+`.gitattributes` independently enforces LF for committed release JSON and JSONL. Corrections create
+a new release ID and never rewrite a historical directory.
 
 Country-universe and coverage-audit outputs live under `data/reports/country-coverage/AUDIT_ID`.
 They are diagnostic artifacts, not releases, are never selected by `active.json`, and do not relax

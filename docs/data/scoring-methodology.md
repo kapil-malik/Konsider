@@ -1,6 +1,6 @@
 # Scoring methodology and sensitivity
 
-Status: versioned provisional transformations for active release `2026-07-26.3`
+Status: versioned provisional transformations for active release `2026-07-27.1`
 
 Last updated: 2026-07-26
 

@@ -39,7 +39,7 @@ PublishedReleaseRepository ---> RecommendationService ---> FastAPI /api/v1 ---> 
 - The responsive React UI derives profiles, priority controls, ranking columns, sources, flags, and
   release labels from `/api/v1`. TanStack Query owns API work; local state owns guest edits.
 
-The active release is `2026-07-26.3`: 91 countries, nine available criteria, and eight enabled
+The active release is `2026-07-27.1`: 91 countries, nine available criteria, and eight enabled
 criteria. UHC is non-ready and cannot be weighted. Infrastructure remains experimental.
 Country-universe discovery and complete-case auditing are implemented as a separate safe worker
 flow. They use UN migrant-stock/M49 inputs plus the registered criterion sources, write diagnostic

@@ -1,3 +1,4 @@
+import hashlib
 import json
 from dataclasses import replace
 from pathlib import Path
@@ -10,52 +11,71 @@ from konsider.ingestion.validation import validate_release
 from konsider.repositories.release_repository import ReleaseRepository
 
 
+def _publish_sample_release(root: Path, release_id: str) -> tuple[ReleaseRepository, Path]:
+    artifact = RawArtifact(
+        "sha256:a",
+        "source",
+        "u",
+        "u",
+        "2026-01-01T00:00:00+00:00",
+        "json",
+        1,
+        "a",
+        "v",
+        "p",
+        "path",
+    )
+    observation = MetricObservation(
+        "obs",
+        "IND",
+        "uhc_service_coverage_index",
+        75,
+        "index_0_100",
+        "2023-01-01",
+        "2023-12-31",
+        "source",
+        ("sha256:a",),
+        (SourceRecordReference("sha256:a", "$[0]", "IND|2023"),),
+        "estimated",
+        "national",
+        "parser-v",
+        "method-v",
+        ("wdi_distribution", "population_level_not_expat_access"),
+    )
+    scores = score_observations([observation])
+    report = validate_release(
+        [observation], scores, [artifact], min_criteria=1, min_country_coverage=1
+    )
+    repository = ReleaseRepository(root)
+    repository.write_draft(release_id, [observation], scores, [artifact], [], report)
+    return repository, repository.publish(release_id, require_product_ready=False)
+
+
 class PublicationTests(TestCase):
     def test_published_release_is_immutable_and_pointer_is_atomic(self):
         with TemporaryDirectory() as directory:
-            artifact = RawArtifact(
-                "sha256:a",
-                "source",
-                "u",
-                "u",
-                "2026-01-01T00:00:00+00:00",
-                "json",
-                1,
-                "a",
-                "v",
-                "p",
-                "path",
-            )
-            observation = MetricObservation(
-                "obs",
-                "IND",
-                "uhc_service_coverage_index",
-                75,
-                "index_0_100",
-                "2023-01-01",
-                "2023-12-31",
-                "source",
-                ("sha256:a",),
-                (SourceRecordReference("sha256:a", "$[0]", "IND|2023"),),
-                "estimated",
-                "national",
-                "parser-v",
-                "method-v",
-                ("wdi_distribution", "population_level_not_expat_access"),
-            )
-            scores = score_observations([observation])
-            report = validate_release(
-                [observation], scores, [artifact], min_criteria=1, min_country_coverage=1
-            )
-            repository = ReleaseRepository(Path(directory))
-            repository.write_draft("r1", [observation], scores, [artifact], [], report)
-            published = repository.publish("r1", require_product_ready=False)
+            repository, published = _publish_sample_release(Path(directory), "r1")
             self.assertTrue(published.exists())
             self.assertEqual(
                 json.loads((Path(directory) / "active.json").read_text())["release_id"], "r1"
             )
             with self.assertRaises(FileExistsError):
-                repository.write_draft("r1", [observation], scores, [artifact], [], report)
+                repository.write_draft("r1", [], [], [], [], validate_release([], [], []))
+
+    def test_generated_release_text_is_lf_and_checksums_match_final_bytes(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            _, published = _publish_sample_release(root, "lf-release")
+            manifest = json.loads((published / "manifest.json").read_text(encoding="utf-8"))
+
+            for path in [*published.glob("*.json"), *published.glob("*.jsonl")]:
+                payload = path.read_bytes()
+                self.assertNotIn(b"\r\n", payload)
+                self.assertEqual(payload.replace(b"\r\n", b"\n"), payload)
+
+            for filename, expected in manifest["file_checksums"].items():
+                actual = hashlib.sha256((published / filename).read_bytes()).hexdigest()
+                self.assertEqual(expected, f"sha256:{actual}")
 
     def test_structural_validation_error_blocks_publication(self):
         with TemporaryDirectory() as directory:

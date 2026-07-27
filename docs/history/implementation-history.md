@@ -11,7 +11,7 @@ and [API operations](../operations/api.md).
   only production-ready additions.
 - Delivered: 84 screening rows; three 15-criterion deep-research batches; a generic feasibility
   framework; ten exact live candidate probes; an approved portfolio decision; three new 91/91
-  production criteria; active release `2026-07-26.3`; and a consolidated closure report.
+  production criteria; active release `2026-07-27.1`; and a consolidated closure report.
 - Major decisions: preserve the complete 91-country production universe; distinguish research
   thresholds from publication readiness; defer city, occupation, household, and legal-profile
   questions to their natural layers; retain uncertainty; prohibit imputation and partial-country
@@ -59,7 +59,7 @@ and [API operations](../operations/api.md).
   working hours fails current coverage; citizenship access awaits a stable archive. Political
   stability, rule of law, and established immigrant presence are ready at 91/91. Immigrant presence
   is preference-based, and WGI overlap is measured and disclosed.
-- Completed: 2026-07-26 with active release `2026-07-26.3`.
+- Completed: 2026-07-26 with active release `2026-07-27.1`.
 - Remaining limitations: UHC remains stale; infrastructure remains experimental; refresh remains
   manual; raw third-party bytes remain local and ignored.
 

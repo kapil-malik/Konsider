@@ -7,7 +7,7 @@ Closed: 2026-07-26
 Phase 3 expanded Konsider's evidence base while preserving the stable 91-country universe,
 deterministic scoring, immutable releases, explicit missing-data outcomes, and conservative source
 and licensing rules. It began with an 84-item search space and ended with three new
-production-ready criteria. Active release `2026-07-26.3` publishes nine criteria, eight of which
+production-ready criteria. Active release `2026-07-27.1` publishes nine criteria, eight of which
 are enabled for ranking.
 
 This report distinguishes measured results from policy decisions. Measured coverage, freshness,
@@ -94,7 +94,7 @@ synthetic or substitute probe was reported.
 - Established immigrant presence: international migrant stock as a share of population, presented
   as a user preference rather than universal country quality.
 
-All three have 91/91 valid observations in active release `2026-07-26.3`.
+All three have 91/91 valid observations in active release `2026-07-27.1`.
 
 ### Experimental or conditional future candidates
 
@@ -141,7 +141,7 @@ may justify a future re-evaluation.
 
 ## Production result
 
-Active release `2026-07-26.3` has:
+Active release `2026-07-27.1` has:
 
 - 91 countries;
 - nine published criteria;
@@ -215,7 +215,7 @@ material enough to disclose but below the pre-set 0.90 redundancy-review thresho
 - [Phase 3E measured probes](phase3e-deterministic-probes.md)
 - [Approved Phase 3F decision](konsider_phase3f_portfolio_decision.md)
 - [Phase 3G-0 final probes](phase3g0-final-probes.md)
-- [Active release report](../history/releases/2026-07-26.3.md)
+- [Active release report](../history/releases/2026-07-27.1.md)
 
 Machine-readable screening, batch, probe, source, country-outcome, checksum, and replay artifacts
 remain beside those reports. No rejected evidence was removed during closure.

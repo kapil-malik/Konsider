@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from konsider.ingestion.models import RawArtifact, SourceRegistration
+from konsider.text_io import write_text_lf
 
 
 class RawArtifactRepository:
@@ -61,7 +62,7 @@ class RawArtifactRepository:
         ):
             raise ValueError(f"Immutable artifact metadata collision: {artifact_id}")
         if not metadata_path.exists():
-            metadata_path.write_text(encoded, encoding="utf-8")
+            write_text_lf(metadata_path, encoded)
         return artifact
 
     def load(self, artifact: RawArtifact) -> bytes:

@@ -11,13 +11,19 @@ ever disagrees.
 | `2026-07-20.2` | Schema-v3 six-criterion publication; five criteria ready. | [Report](2026-07-20.2.md) |
 | `2026-07-21.1` | LF packaging correction and prior 20-country release. | [Report](2026-07-21.1.md) |
 | `2026-07-24.1` | Stable 91-country Phase 2D predecessor. | [Report](2026-07-24.1.md) |
-| `2026-07-26.3` | Active Phase 3G-1 eight-criterion release. | [Report](2026-07-26.3.md) |
+| `2026-07-26.3` | Immutable Windows-packaging artifact; invalid after Git LF normalisation. | [Report](2026-07-26.3.md) |
+| `2026-07-27.1` | Active LF-packaged correction; semantics unchanged. | [Report](2026-07-27.1.md) |
 
 `2026-07-21.1` exists separately because `2026-07-20.2` checksummed CRLF working-tree bytes while
 Git stores LF blobs. The correction preserves parsed observations, scores, attempts, readiness,
 scoring behavior, and API contracts but uses portable LF payload checksums. The old release remains
 immutable and must not be silently rewritten.
 
-`data/releases/active.json` currently selects `2026-07-26.3`. Historical releases are not current
+`2026-07-27.1` applies the same packaging correction to `2026-07-26.3`. All seven payload checksums
+in the old manifest describe pre-normalised Windows bytes rather than the committed LF blobs. The
+successor was rebuilt from the retained raw artifacts and preserves observations, scores, attempts,
+sources, sensitivity results, readiness, and API behavior.
+
+`data/releases/active.json` currently selects `2026-07-27.1`. Historical releases are not current
 operational references. See [release format](../../data/release-format.md) and the
 [worker guide](../../operations/worker.md).
