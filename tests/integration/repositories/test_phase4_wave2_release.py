@@ -1,28 +1,42 @@
 import json
 from pathlib import Path
 
+import pytest
+
 from konsider.ingestion.phase4_wave2 import build_wave2_release
 from konsider.ingestion.worker import replay
 from konsider.repositories.published_release_repository import PublishedReleaseRepository
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
+BASE_RELEASE = PROJECT_ROOT / "data" / "releases" / "2026-07-28.1"
+SCHOOL_PROBE_ARTIFACT_MANIFEST = (
+    PROJECT_ROOT
+    / "data"
+    / "reports"
+    / "feasibility-probes"
+    / "phase3e-2026-07-26-c08-online-v2"
+    / "raw-artifacts.json"
+)
+WIPO_RAW_PATH = PROJECT_ROOT / "data" / "raw" / "wave2-probes" / "wipo-gii-2025.xlsx"
+
+
+@pytest.fixture(autouse=True)
+def _require_production_raw_artifacts(require_local_raw_artifacts):
+    require_local_raw_artifacts(
+        PROJECT_ROOT,
+        manifests=(BASE_RELEASE / "raw-artifacts.json", SCHOOL_PROBE_ARTIFACT_MANIFEST),
+        additional_paths=(WIPO_RAW_PATH,),
+    )
 
 
 def _build(root: Path, release_id: str):
     return build_wave2_release(
         release_id=release_id,
-        base_release_path=PROJECT_ROOT / "data" / "releases" / "2026-07-28.1",
+        base_release_path=BASE_RELEASE,
         base_catalog_path=PROJECT_ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json",
         catalog_output_path=root / "consumer-catalog-2.0.json",
-        school_probe_artifact_manifest=(
-            PROJECT_ROOT
-            / "data"
-            / "reports"
-            / "feasibility-probes"
-            / "phase3e-2026-07-26-c08-online-v2"
-            / "raw-artifacts.json"
-        ),
-        wipo_raw_path=PROJECT_ROOT / "data" / "raw" / "wave2-probes" / "wipo-gii-2025.xlsx",
+        school_probe_artifact_manifest=SCHOOL_PROBE_ARTIFACT_MANIFEST,
+        wipo_raw_path=WIPO_RAW_PATH,
         release_root=root / "releases",
         report_root=root / "report",
         publish=True,

@@ -1,6 +1,6 @@
 # Phase 4 closure report
 
-Status: complete locally; first remote Linux/Windows CI observation pending
+Status: complete; remote clean-checkout CI design corrected after the first matrix observation
 
 Closed: 2026-07-28
 
@@ -126,10 +126,13 @@ evidence but displays no partial aggregate score or final rank.
 
 Release payload checksums and offline replay pass for `2026-07-28.2`. Release-scoped catalog
 snapshots make `2026-07-27.1`, `2026-07-28.1`, and `2026-07-28.2` loadable without reinterpreting
-their criterion sets. CI is configured to run backend gates from clean Ubuntu and Windows
-checkouts; the frontend contract and browser gates run from a clean Ubuntu checkout. Local clean
-Windows export validation passed. This workstation has no WSL or Docker runtime, so the first
-remote matrix run remains the external cross-platform confirmation.
+their criterion sets. The first remote matrix run exposed two production-rebuild test modules that
+did not apply the repository's clean-checkout policy for intentionally uncommitted licensed raw
+bytes. Those tests now run fully when their exact local artifacts exist and skip only when the raw
+files are absent; committed release integrity, synthetic parser coverage, structural invariants,
+and runtime behavior remain mandatory. CI runs the backend gates independently on clean Ubuntu and
+Windows checkouts, without matrix fail-fast cancellation, while the frontend contract and browser
+gates run from a clean Ubuntu checkout.
 
 Historical Phase 3 and Phase 4 working directories now live under
 [`project-history/phases`](../../project-history/phases), leaving the repository root for current

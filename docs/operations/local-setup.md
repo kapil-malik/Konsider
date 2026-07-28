@@ -39,5 +39,7 @@ black --check .
 python -m compileall -q src tests
 ```
 
-GitHub Actions runs these four gates on Ubuntu for pushes and pull requests. See the
-[worker guide](worker.md), [API guide](api.md), and [local deployment guide](deployment-local.md).
+GitHub Actions runs these four backend gates independently on Ubuntu and Windows for pushes and
+pull requests. The frontend contract, type, lint, component, build, and browser gates run on
+Ubuntu. See the [worker guide](worker.md), [API guide](api.md), and
+[local deployment guide](deployment-local.md).
