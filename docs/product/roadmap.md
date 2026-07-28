@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 4 complete
+Status: Phase 5A research complete
 
 Last updated: 2026-07-28
 
@@ -14,6 +14,10 @@ education quality, and Research and innovation ecosystem are conditional criteri
 diagnostic-only. Infrastructure and the two Wave 2 additions are experimental. Phase 4's ranking
 and API contracts preserve missing/stale outcomes without
 imputation and provide complete-case robustness diagnostics.
+
+Phase 5A has classified all 45 deeply researched locality-related criteria, measured a stable
+urban-centre universe, and approved one deliberately narrow first-wave candidate: Extreme heat
+exposure. No Phase 5 runtime, API, UI, release, catalog, or scoring changes have been made.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -104,7 +108,23 @@ See the [Phase 3 closure report](../research/phase3-closure-report.md),
 Held Wave 2 criteria remain future onboarding candidates, not unfinished Phase 4 behavior. They
 must clear commercial reuse, construct, coverage, scoring, and replay requirements independently.
 
-## Phase 5: conversational exploration
+## Phase 5: locality-aware criteria and structured assessments
+
+Phase 5 will add carefully bounded locality evidence without converting Konsider into a city-ranking
+product or weakening its country-level comparison contract.
+
+- Keep criterion definitions separate from source implementations and locality aggregation policy.
+- Use a frozen, reproducible GHSL urban-centre universe selected independently of criterion values.
+- Start with at most three criteria; Phase 5A currently approves only Extreme heat exposure.
+- Keep sparse applicant/household-specific questions in a later structured-profile phase.
+- Require every candidate to clear construct, licensing, coverage, aggregation, validation, and
+  replay gates before production onboarding.
+- Preserve missingness and uncertainty; never fill locality gaps with fixtures or silent proxies.
+
+Phase 5A is documented in the
+[locality criteria discovery report](../research/phase5a-locality-criteria-discovery.md).
+
+## Future phase: conversational exploration
 
 - Add AI explanations and chat only after deterministic ranking and explanations are proven.
 - Require numerical and factual claims to come from typed deterministic tools.
@@ -113,9 +133,10 @@ must clear commercial reuse, construct, coverage, scoring, and replay requiremen
 
 ## Deliberately deferred platform work
 
-AWS infrastructure, scheduled refreshes, S3 adapters, authentication, saved profiles, persistent
-sessions, chat, LLMs, retrieval, vector/relational stores, and multi-agent orchestration remain
-unimplemented. The [AWS document](../operations/deployment-aws.md) is a design only.
+AWS infrastructure, scheduled refreshes, S3 adapters, authentication, saved applicant/household
+profiles, persistent sessions, chat, LLMs, retrieval, vector/relational stores, and multi-agent
+orchestration remain unimplemented. The [AWS document](../operations/deployment-aws.md) is a design
+only.
 
 ## Delivery rules
 

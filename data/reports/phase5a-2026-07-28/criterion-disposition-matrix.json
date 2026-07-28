@@ -1,0 +1,3038 @@
+{
+  "schema_version": "konsider-phase5a-locality-disposition-matrix-1.0",
+  "generated_at": "2026-07-28T00:00:00+05:30",
+  "evidence_cutoff": "2026-07-28",
+  "stable_universe_id": "stable_supported_v1",
+  "criterion_count": 45,
+  "recommendation_counts": {
+    "FIRST_WAVE": 1,
+    "SECOND_WAVE": 3,
+    "RESEARCH_ONLY": 7,
+    "PROFILE_PHASE": 21,
+    "REJECT_LOCALITY_PROXY": 13
+  },
+  "first_wave_ids": [
+    "C66"
+  ],
+  "matrix": [
+    {
+      "criterion_id": "C01",
+      "exact_name": "Overall higher-education opportunity",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": null,
+        "recommendation": "Experimental/recovery probe only. Overall coverage is 88/91, but only 77/91 have 2023+ data and 81/91 have 2021+ data.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "INSTITUTION",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "INSTITUTION",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C01-WDI-TER",
+          "publisher": "World Bank (distribution) / UNESCO UIS (upstream)",
+          "distributor": "World Bank (distribution) / UNESCO UIS (upstream)",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "SE.TER.ENRR",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/SE.TER.ENRR?format=json",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "UIS Feb. 2026 release",
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "SE.TER.ENRR",
+      "source_publisher": "World Bank (distribution) / UNESCO UIS (upstream)",
+      "source_distributor": "World Bank (distribution) / UNESCO UIS (upstream)",
+      "access_method": "https://api.worldbank.org/v2/country/all/indicator/SE.TER.ENRR?format=json",
+      "licensing_and_redistribution_evidence": "World Bank representation is CC BY 4.0; direct UIS browser data are CC BY-SA 4.0.",
+      "freshness": "UIS Feb. 2026 release",
+      "estimated_country_coverage": "77/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Gross enrolment can exceed 100 and reflects system participation, not teaching quality, places for foreigners, tuition or field availability.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "SEM_QUESTION_TOO_BROAD",
+        "FRS_MIXED_REFERENCE_PERIODS"
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C05",
+      "exact_name": "Research and innovation ecosystem",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run a conditional Phase 3E probe to measure stable-91 coverage, capture the exact data licence and compare overall/output-only variants.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "INSTITUTION"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C05-OPENALEX-SNAPSHOT",
+          "publisher": "OurResearch",
+          "distributor": "OpenAlex public S3 snapshot",
+          "dataset": "OpenAlex data snapshot",
+          "exact_asset_or_api": "s3://openalex/data/institutions and s3://openalex/data/works; exact quarterly manifest not yet frozen",
+          "access_method": "Anonymous S3 snapshot; gzip-compressed JSON Lines",
+          "licence": "CC0",
+          "licence_url": "https://help.openalex.org/hc/en-us/articles/24397762024087-Pricing",
+          "commercial_use": "permitted",
+          "redistribution": "permitted",
+          "freshness": "Quarterly public snapshot; API updates more frequently",
+          "evidence_level": "EXACT_FAMILY_NOT_PINNED_ASSET"
+        },
+        {
+          "source_candidate_id": "C05-WIPO-GII-2025",
+          "publisher": "World Intellectual Property Organization",
+          "distributor": "World Intellectual Property Organization",
+          "dataset": "Global Innovation Index 2025 database",
+          "exact_asset_or_api": "Overall score; Innovation Input and Output sub-indices; 78 indicators",
+          "access_method": "https://www.wipo.int/en/web/global-innovation-index/2025/index",
+          "licence": null,
+          "licence_url": "https://www.wipo.int/web-publications/global-innovation-index-2025/en/copyright.html",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025; 139 economies",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C05-WDI-RD",
+          "publisher": "World Bank / UNESCO UIS",
+          "distributor": "World Bank / UNESCO UIS",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "SP.POP.SCIE.RD.P6 researchers in R&D per million",
+          "access_method": "https://data.worldbank.org/indicator/SP.POP.SCIE.RD.P6",
+          "licence": null,
+          "licence_url": "https://data.worldbank.org/indicator/SP.POP.SCIE.RD.P6",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "1996-2024; source published 2025-02",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "s3://openalex/data/institutions and s3://openalex/data/works; exact quarterly manifest not yet frozen",
+      "source_publisher": "OurResearch",
+      "source_distributor": "OpenAlex public S3 snapshot",
+      "access_method": "Anonymous S3 snapshot; gzip-compressed JSON Lines",
+      "licensing_and_redistribution_evidence": "CC0",
+      "freshness": "Quarterly public snapshot; API updates more frequently",
+      "estimated_country_coverage": "Expected broad coverage; not measured against stable_supported_v1",
+      "estimated_locality_coverage_within_covered_countries": "Unknown until a pinned snapshot is spatially mapped from institution coordinates to the frozen locality universe",
+      "cross_country_comparability": [
+        "GII 2025 uses 78 indicators: 63 hard, 10 composite and five survey measures.",
+        "The index applies minimum data-coverage rules, uses the most recent value from a multi-year window and changes some indicators between editions."
+      ],
+      "major_construct_risks": [
+        "Bibliometric output is not the whole innovation ecosystem.",
+        "Institution disambiguation, multi-campus lineage, field mix, and citation-age bias require controls.",
+        "The public snapshot is roughly 330 GB compressed, creating high replay and refresh cost."
+      ],
+      "possible_aggregation_method": "Top-two mean of a field-normalised, size-aware metro research-output score; minimum one valid metro; expose institution and work lineage.",
+      "recommendation": "SECOND_WAVE",
+      "precise_blockers": [
+        "COV_EXACT_JOIN_REQUIRED",
+        "RED_SHARED_COMPONENTS",
+        "SCO_COMPOSITE_SENSITIVITY_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C06",
+      "exact_name": "International-student accessibility",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Experimental only after renaming to International-student presence; otherwise defer.",
+        "natural_granularity": "NATIONAL_WITH_PROFILE_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "INSTITUTION",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "INSTITUTION",
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "UNESCO Institute for Statistics",
+          "distributor": "UNESCO Institute for Statistics",
+          "dataset": "UIS global education database",
+          "exact_asset_or_api": "Inbound internationally mobile students; inbound mobility rate",
+          "access_method": "https://uis.unesco.org/en/news/uis-launches-september-2025-global-education-data-release-0",
+          "licence": null,
+          "licence_url": "https://www.unesco.org/en/open-access/cc-sa",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "September 2025 release; February 2026 background update",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Inbound internationally mobile students; inbound mobility rate",
+      "source_publisher": "UNESCO Institute for Statistics",
+      "source_distributor": "UNESCO Institute for Statistics",
+      "access_method": "https://uis.unesco.org/en/news/uis-launches-september-2025-global-education-data-release-0",
+      "licensing_and_redistribution_evidence": "Exact UIS bulk-download licence and third-party restrictions need capture; do not infer from general UNESCO pages.",
+      "freshness": "September 2025 release; February 2026 background update",
+      "estimated_country_coverage": "At least 82/91 appears plausible; exact series join not measured",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Internationally mobile students are identified by prior residence or education where available.",
+        "Observed inbound stock reflects attractiveness and capacity as well as accessibility.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Does not measure tuition, visas, language or selectivity.",
+        "May reward destinations with capacity constraints and high fees."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "DEF_OUTCOME_NOT_ACCESS",
+        "LIC_EXACT_ASSET_UNCLEAR",
+        "COV_EXACT_JOIN_REQUIRED",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C08",
+      "exact_name": "School education quality",
+      "original_phase3_disposition": {
+        "status": "PROBE_APPROVED",
+        "decision": null,
+        "recommendation": "Proceed to deterministic Phase 3E probe; measured field coverage is 89/91 and the source is current, official and reusable.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "REGION_STATE",
+        "CITY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "REGION_STATE",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C08-HCIPLUS",
+          "publisher": "World Bank",
+          "distributor": "World Bank",
+          "dataset": "Human Capital Index Plus",
+          "exact_asset_or_api": "hlo_mf; lays_mf; hcip_schooling_component_mf in hci_plus_index_panel.dta",
+          "access_method": "https://datacatalog.worldbank.org/search/dataset/0067030/human-capital-index-plus",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "version 3; file updated 2026-02-11",
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "hlo_mf; lays_mf; hcip_schooling_component_mf in hci_plus_index_panel.dta",
+      "source_publisher": "World Bank",
+      "source_distributor": "World Bank",
+      "access_method": "https://datacatalog.worldbank.org/search/dataset/0067030/human-capital-index-plus",
+      "licensing_and_redistribution_evidence": "Dataset catalogue assigns CC BY 4.0.",
+      "freshness": "version 3; file updated 2026-02-11",
+      "estimated_country_coverage": "88/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Harmonized learning outcomes bridge different assessments through a common scale and modelling.",
+        "National averages mask region, school sector, language and migrant-child access.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "CMP_MODEL_ASSUMPTIONS_OPAQUE",
+        "FRS_MIXED_REFERENCE_PERIODS"
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_NOT_FULL_91",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C11",
+      "exact_name": "Overall job-market opportunity",
+      "original_phase3_disposition": {
+        "status": "PROBE_APPROVED",
+        "decision": null,
+        "recommendation": "Proceed to a deterministic Phase 3E probe. The measured 88/91 intersection clears the 82-country threshold but requires an explicit missing-country policy.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "METRO"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C11-OECD-FUA-LABOUR",
+          "publisher": "OECD",
+          "distributor": "OECD Data Explorer",
+          "dataset": "Labour market - functional urban areas",
+          "exact_asset_or_api": "OECD.CFE.EDS,DSD_FUA_LAB@DF_LABOUR via OECD SDMX API",
+          "access_method": "Public SDMX REST API",
+          "licence": "OECD open-access policy; exact dataflow notice must be frozen",
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "expected permitted; exact dataflow verification required",
+          "redistribution": "expected permitted; exact dataflow verification required",
+          "freshness": "Dataflow updated 2026-01-27",
+          "evidence_level": "EXACT_API_FAMILY"
+        },
+        {
+          "source_candidate_id": "C11-ILO-MODEL-2025",
+          "publisher": "International Labour Organization (ILOSTAT)",
+          "distributor": "International Labour Organization (ILOSTAT)",
+          "dataset": "ILOSTAT bulk download",
+          "exact_asset_or_api": "UNE_2EAP_SEX_AGE_RT_A; EMP_2WAP_SEX_AGE_RT_A; EAP_2WAP_SEX_AGE_RT_A",
+          "access_method": "https://rplumber.ilo.org/data/indicator/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "ILO modelled estimates, Nov. 2025",
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "OECD.CFE.EDS,DSD_FUA_LAB@DF_LABOUR via OECD SDMX API",
+      "source_publisher": "OECD",
+      "source_distributor": "OECD Data Explorer",
+      "access_method": "Public SDMX REST API",
+      "licensing_and_redistribution_evidence": "OECD open-access policy; exact dataflow notice must be frozen",
+      "freshness": "Dataflow updated 2026-01-27",
+      "estimated_country_coverage": "OECD FUA data cover OECD members and selected accessions, not the 91-country universe",
+      "estimated_locality_coverage_within_covered_countries": "1,285 FUAs are described for OECD members except Costa Rica plus three accession countries; exact stable-universe intersection not measured",
+      "cross_country_comparability": [
+        "[VERIFIED] ILO modelled estimates use a common statistical system and identical age/sex dimensions.",
+        "[ESTIMATED] The three components partly duplicate one latent labour-utilisation factor."
+      ],
+      "major_construct_risks": [
+        "Published FUA values may be modelled from regional values using population shares.",
+        "A broad metro labour market remains occupation-neutral.",
+        "Coverage is concentrated in OECD economies."
+      ],
+      "possible_aggregation_method": "Top-two mean of metro employment/participation/unemployment composite after an exact FUA coverage probe; minimum one valid metro.",
+      "recommendation": "RESEARCH_ONLY",
+      "precise_blockers": [
+        "COV_NOT_FULL_91",
+        "NO_PRODUCTION_READY_LOCALITY_SOURCE"
+      ]
+    },
+    {
+      "criterion_id": "C12",
+      "exact_name": "Software and technology jobs",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_CITY_LAYER",
+        "decision": null,
+        "recommendation": "Defer to a city/occupation layer. Recent two-digit occupation data cover only 66/91 and remain semantically too broad.",
+        "natural_granularity": "CITY_OR_REGIONAL"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": true,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C12-ILO-ISCO2",
+          "publisher": "International Labour Organization (ILOSTAT)",
+          "distributor": "International Labour Organization (ILOSTAT)",
+          "dataset": "ILOSTAT bulk download",
+          "exact_asset_or_api": "EMP_TEMP_SEX_OC2_NB_A; ISCO-08 level 2",
+          "access_method": "https://rplumber.ilo.org/data/indicator/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "accessed 2026-07-24",
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "EMP_TEMP_SEX_OC2_NB_A; ISCO-08 level 2",
+      "source_publisher": "International Labour Organization (ILOSTAT)",
+      "source_distributor": "International Labour Organization (ILOSTAT)",
+      "access_method": "https://rplumber.ilo.org/data/indicator/",
+      "licensing_and_redistribution_evidence": "ILOSTAT data are CC BY 4.0.",
+      "freshness": "accessed 2026-07-24",
+      "estimated_country_coverage": "66/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Two-digit occupation groups are broader than software jobs and miss tech-industry roles outside selected occupations.",
+        "National employment stocks do not measure vacancies, hiring friction or city clusters.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "CMP_DEFINITION_DIFFERS",
+        "FRS_MIXED_REFERENCE_PERIODS"
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "GRA_PROFESSION_SPECIFIC",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C13",
+      "exact_name": "Medical and healthcare jobs",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer to a regulated-profession profile module; retain WHO and ILOSTAT as contextual evidence.",
+        "natural_granularity": "CITY_OR_REGIONAL_PROFILE"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "REGION_STATE",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": true,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C13-WHO-NHWA",
+          "publisher": "World Health Organization",
+          "distributor": "World Health Organization",
+          "dataset": "National Health Workforce Accounts / Global Health Workforce statistics",
+          "exact_asset_or_api": "Health-worker density and distribution; foreign-trained/foreign-born indicators",
+          "access_method": "https://www.who.int/data/gho/data/themes/topics/health-workforce",
+          "licence": null,
+          "licence_url": "https://data.who.int/about/data/terms-and-conditions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Current WHO workforce releases",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C13-ILO-CARE",
+          "publisher": "International Labour Organization",
+          "distributor": "International Labour Organization",
+          "dataset": "ILOSTAT worker and sector profiles",
+          "exact_asset_or_api": "Care employment by occupation, including ISCO level 2",
+          "access_method": "https://ilostat.ilo.org/methods/concepts-and-definitions/description-worker-and-sector-profiles/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Latest harmonised microdata observations",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Health-worker density and distribution; foreign-trained/foreign-born indicators",
+      "source_publisher": "World Health Organization",
+      "source_distributor": "World Health Organization",
+      "access_method": "https://www.who.int/data/gho/data/themes/topics/health-workforce",
+      "licensing_and_redistribution_evidence": "WHO datasets are generally CC BY 4.0 with additional terms; ILOSTAT data are generally CC BY 4.0. Licensing is not the principal blocker.",
+      "freshness": "Current WHO workforce releases",
+      "estimated_country_coverage": "Below 82 for accessible jobs",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "WHO/NHWA measures workforce supply and migration, not vacancies accessible to a foreign-qualified applicant.",
+        "ILOSTAT care profiles may estimate missing 4-digit detail using income-group shares, which weakens specialty interpretation.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Shortage may coexist with hiring freezes or licensing barriers.",
+        "Country aggregates obscure rural/urban maldistribution."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "GRA_PROFESSION_SPECIFIC",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "PRF_PROFILE_ONLY",
+        "CMP_SHORTAGE_NOT_JOB_ACCESS",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C14",
+      "exact_name": "Business, finance, and professional-services jobs",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_CITY_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer to the occupation/city layer.",
+        "natural_granularity": "CITY_OR_REGIONAL_PROFILE"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": true,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C14-ILOSTAT-ISCO-ISIC",
+          "publisher": "International Labour Organization",
+          "distributor": "International Labour Organization",
+          "dataset": "ILOSTAT employment tables",
+          "exact_asset_or_api": "Employment by occupation and economic activity, annual",
+          "access_method": "https://ilostat.ilo.org/topics/employment/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Latest annual national observations",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Employment by occupation and economic activity, annual",
+      "source_publisher": "International Labour Organization",
+      "source_distributor": "International Labour Organization",
+      "access_method": "https://ilostat.ilo.org/topics/employment/",
+      "licensing_and_redistribution_evidence": "ILOSTAT reuse terms are favourable; no global official vacancy dataset was identified.",
+      "freshness": "Latest annual national observations",
+      "estimated_country_coverage": "Below 82 for recent exact construct",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "ISCO and ISIC support harmonised broad classifications.",
+        "Crossing occupation and industry substantially reduces coverage and still measures incumbents, not openings.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Jobs cluster in financial and corporate centres.",
+        "A large sector can have weak current hiring."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "GRA_PROFESSION_SPECIFIC",
+        "CMP_STOCK_NOT_OPPORTUNITY",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C15",
+      "exact_name": "Engineering and skilled technical jobs",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_CITY_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer. Use ILOSTAT only as contextual sector size in a later occupation/city module.",
+        "natural_granularity": "CITY_OR_REGIONAL_PROFILE"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "REGION_STATE",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": true,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C15-ILOSTAT-ISCO",
+          "publisher": "International Labour Organization",
+          "distributor": "International Labour Organization",
+          "dataset": "ILOSTAT employment by occupation",
+          "exact_asset_or_api": "Employment by sex and occupation, ISCO level 2, annual",
+          "access_method": "https://ilostat.ilo.org/topics/employment/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Latest country survey observations; annual",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Employment by sex and occupation, ISCO level 2, annual",
+      "source_publisher": "International Labour Organization",
+      "source_distributor": "International Labour Organization",
+      "access_method": "https://ilostat.ilo.org/topics/employment/",
+      "licensing_and_redistribution_evidence": "ILOSTAT datasets published since 3 May 2023 are generally CC BY 4.0; source microdata are not redistributed.",
+      "freshness": "Latest country survey observations; annual",
+      "estimated_country_coverage": "Below 82 for recent specialty-level data",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "ISCO-08 creates an internationally comparable occupational framework.",
+        "Occupation stock is not vacancies, wage opportunity, shortage, migrant access or engineering-specialty demand.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "National employment shares can reward mature sectors without indicating openings.",
+        "Engineering projects and jobs are geographically concentrated."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "GRA_PROFESSION_SPECIFIC",
+        "CMP_STOCK_NOT_OPPORTUNITY",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C16",
+      "exact_name": "Entrepreneurship and startup opportunity",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run only a conditional Phase 3E recovery probe. The measured 79/91 result misses the 82-country threshold before partial-geography exclusions.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "METRO"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C16-WB-ENTREPRENEURSHIP",
+          "publisher": "World Bank",
+          "distributor": "World Bank",
+          "dataset": "Entrepreneurship Database / World Development Indicators",
+          "exact_asset_or_api": "IC.BUS.NDNS.ZS new business density",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/IC.BUS.NDNS.ZS?format=json&per_page=20000",
+          "licence": null,
+          "licence_url": "https://databank.worldbank.org/metadataglossary/sustainable-development-goals-%28sdgs%29/series/IC.BUS.NDNS.ZS",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "8th edition; annual 2006-2024",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "IC.BUS.NDNS.ZS new business density",
+      "source_publisher": "World Bank",
+      "source_distributor": "World Bank",
+      "access_method": "https://api.worldbank.org/v2/country/all/indicator/IC.BUS.NDNS.ZS?format=json&per_page=20000",
+      "licensing_and_redistribution_evidence": "World Bank metadata marks the exact series CC BY 4.0.",
+      "freshness": "8th edition; annual 2006-2024",
+      "estimated_country_coverage": "79/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "A consistent concept—new limited-liability registrations per 1,000 people ages 15-64—is collected mainly from national registries.",
+        "The measure excludes informal firms and does not capture formation quality, survival or venture funding."
+      ],
+      "major_construct_risks": [
+        "Formal registration can reflect regulatory or tax structures.",
+        "New-firm density is not startup employment or success."
+      ],
+      "possible_aggregation_method": "Top-two mean of comparable metro new-firm density only if a reproducible registration denominator exists.",
+      "recommendation": "RESEARCH_ONLY",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "CMP_PARTIAL_GEOGRAPHY",
+        "SCO_OUTLIER_POLICY_REQUIRED",
+        "NO_PRODUCTION_READY_LOCALITY_SOURCE"
+      ]
+    },
+    {
+      "criterion_id": "C17",
+      "exact_name": "Average earning potential",
+      "original_phase3_disposition": {
+        "status": "DEFERRED",
+        "decision": null,
+        "recommendation": "Defer. Measured recent PPP earnings coverage is 60/91 for 2023+ and 76/91 for 2021+, below the Phase 3A threshold.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C17-ILO-EARN",
+          "publisher": "International Labour Organization (ILOSTAT)",
+          "distributor": "International Labour Organization (ILOSTAT)",
+          "dataset": "ILOSTAT bulk download",
+          "exact_asset_or_api": "EAR_EMTA_SEX_CUR_NB_A; CUR_TYPE_PPP; SEX_T",
+          "access_method": "https://rplumber.ilo.org/data/indicator/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "updated 2026-07-19",
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "EAR_EMTA_SEX_CUR_NB_A; CUR_TYPE_PPP; SEX_T",
+      "source_publisher": "International Labour Organization (ILOSTAT)",
+      "source_distributor": "International Labour Organization (ILOSTAT)",
+      "access_method": "https://rplumber.ilo.org/data/indicator/",
+      "licensing_and_redistribution_evidence": "ILOSTAT dataset and metadata are CC BY 4.0.",
+      "freshness": "updated 2026-07-19",
+      "estimated_country_coverage": "60/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Employee coverage, informal work, hours and source instruments vary.",
+        "PPP improves price comparability but does not remove occupation or city composition effects.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "CMP_POPULATION_DIFFERS",
+        "FRS_MIXED_REFERENCE_PERIODS"
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "GRA_PROFESSION_SPECIFIC",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C19",
+      "exact_name": "Employment protection and worker rights",
+      "original_phase3_disposition": {
+        "status": "REJECTED",
+        "decision": "REJECT",
+        "recommendation": "Reject as an independent scored criterion. Retain only as descriptive research evidence if the product later adds unranked labour-rights profiles.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C19-ILO-SDG-882",
+          "publisher": "International Labour Organization",
+          "distributor": "International Labour Organization",
+          "dataset": "ILOSTAT SDG indicator 8.8.2",
+          "exact_asset_or_api": "National compliance with labour rights: freedom of association and collective bargaining",
+          "access_method": "https://ilostat.ilo.org/methods/concepts-and-definitions/description-sustainable-development-labour-market-indicators/about-sdg-indicator-8-8-2/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Methodology amended 2022; current ILO textual sources",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "National compliance with labour rights: freedom of association and collective bargaining",
+      "source_publisher": "International Labour Organization",
+      "source_distributor": "International Labour Organization",
+      "access_method": "https://ilostat.ilo.org/methods/concepts-and-definitions/description-sustainable-development-labour-market-indicators/about-sdg-indicator-8-8-2/",
+      "licensing_and_redistribution_evidence": "ILOSTAT reuse is generally CC BY 4.0; methodological unsuitability, not licence, is decisive.",
+      "freshness": "Methodology amended 2022; current ILO textual sources",
+      "estimated_country_coverage": "Broad nominal coverage is plausible",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "The ILO states that SDG 8.8.2 measures freedom of association and collective bargaining using six supervisory textual sources and national law.",
+        "The ILO explicitly says the indicator is not intended to compare compliance among member states because reporting obligations differ."
+      ],
+      "major_construct_risks": [
+        "Covers only two fundamental labour-right domains.",
+        "Textual-source intensity and reporting obligations differ across states."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "CMP_SOURCE_PROHIBITS_COUNTRY_COMPARISON",
+        "CMP_DEFINITION_TOO_NARROW",
+        "SCO_INDEFENSIBLE",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C21",
+      "exact_name": "Personal income-tax burden",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": null,
+        "recommendation": "Defer to a profile-based affordability calculator; do not use the OECD-only series as a 91-country ranking criterion.",
+        "natural_granularity": "PROFILE_ONLY"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C21-OECD-TW-2026",
+          "publisher": "OECD",
+          "distributor": "OECD",
+          "dataset": "Taxing Wages 2026 / OECD Data Explorer",
+          "exact_asset_or_api": "OECD.CTP.TPS,DSD_TAX_WAGES_COMP@DF_TW_COMP",
+          "access_method": "https://data-explorer.oecd.org/",
+          "licence": null,
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 tax year",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "OECD.CTP.TPS,DSD_TAX_WAGES_COMP@DF_TW_COMP",
+      "source_publisher": "OECD",
+      "source_distributor": "OECD",
+      "access_method": "https://data-explorer.oecd.org/",
+      "licensing_and_redistribution_evidence": "OECD content from July 2024 is generally CC BY 4.0, subject to exact-page exceptions and third-party material.",
+      "freshness": "2025 tax year",
+      "estimated_country_coverage": "LOW",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "OECD methodology is highly comparable inside 38 OECD members but not globally representative.",
+        "Results change by earnings level, household type and social-contribution treatment.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "CMP_DEFINITION_DIFFERS",
+        "FRS_MIXED_REFERENCE_PERIODS"
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "PRF_PROFILE_ONLY",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C22",
+      "exact_name": "Social-security and mandatory contribution burden",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer to a future tax-benefit calculator; reject as a universal national criterion.",
+        "natural_granularity": "PROFILE_ONLY"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C22-OECD-TW-2026",
+          "publisher": "OECD",
+          "distributor": "OECD",
+          "dataset": "Taxing Wages 2026",
+          "exact_asset_or_api": "Employee/employer social-security contributions by eight household types",
+          "access_method": "https://www.oecd.org/en/publications/taxing-wages-2026_3a5169ef-en.html",
+          "licence": null,
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 tax year; 38 countries",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Employee/employer social-security contributions by eight household types",
+      "source_publisher": "OECD",
+      "source_distributor": "OECD",
+      "access_method": "https://www.oecd.org/en/publications/taxing-wages-2026_3a5169ef-en.html",
+      "licensing_and_redistribution_evidence": "OECD-owned post-July-2024 content is generally CC BY 4.0, subject to exceptions.",
+      "freshness": "2025 tax year; 38 countries",
+      "estimated_country_coverage": "Far below 82",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "OECD calculates comparable effective burdens for specified earnings and household types.",
+        "Contributions have ceilings, benefit entitlements and employee/employer incidence that make a headline statutory rate misleading.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "OECD-only coverage.",
+        "Burden without benefit entitlement is incomplete for relocation decisions."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "PRF_PROFILE_ONLY",
+        "SCO_DIRECTION_AMBIGUOUS",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C25",
+      "exact_name": "Housing affordability",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_CITY_LAYER",
+        "decision": null,
+        "recommendation": "Defer to the city and profile layers. National OECD ratios are useful validation data, not the independent criterion.",
+        "natural_granularity": "CITY_OR_REGIONAL"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C25-OECD-REGIONAL-HOUSING",
+          "publisher": "OECD and national statistical agencies",
+          "distributor": "OECD Data Explorer",
+          "dataset": "National and regional house price indices",
+          "exact_asset_or_api": "OECD.SDD.TPS,DSD_RHPI@DF_RHPI_ALL via OECD SDMX API",
+          "access_method": "Public SDMX REST API",
+          "licence": "OECD open-access policy; third-party component boundary remains",
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "not established for every upstream series",
+          "redistribution": "not established for every upstream series",
+          "freshness": "Dataflow updated 2026-07-23",
+          "evidence_level": "EXACT_API_BUT_INSUFFICIENT_CONSTRUCT"
+        },
+        {
+          "source_candidate_id": "C25-OECD-AHD",
+          "publisher": "OECD",
+          "distributor": "OECD",
+          "dataset": "Affordable Housing Database",
+          "exact_asset_or_api": "HC1.2 Housing costs over income",
+          "access_method": "https://www.oecd.org/en/data/datasets/oecd-affordable-housing-database.html",
+          "licence": null,
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "files current 2025-10",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "OECD.SDD.TPS,DSD_RHPI@DF_RHPI_ALL via OECD SDMX API",
+      "source_publisher": "OECD and national statistical agencies",
+      "source_distributor": "OECD Data Explorer",
+      "access_method": "Public SDMX REST API",
+      "licensing_and_redistribution_evidence": "OECD open-access policy; third-party component boundary remains",
+      "freshness": "Dataflow updated 2026-07-23",
+      "estimated_country_coverage": "Mainly OECD and selected non-OECD economies; insufficient for stable_supported_v1",
+      "estimated_locality_coverage_within_covered_countries": "Regional observations are uneven and are not a comparable rent-to-household-income measure",
+      "cross_country_comparability": [
+        "HC1.2 total housing costs are available mainly for European countries plus New Zealand and definitions differ.",
+        "National ratios conceal metropolitan rent dispersion.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Affordability requires rent or purchase specification, dwelling size, tenure, household income, and tax context.",
+        "Regional house-price indices measure change, not a comparable price-to-income level."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "COV_REGIONALLY_BIASED",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C26",
+      "exact_name": "Healthcare affordability",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run a conditional Phase 3E probe for stable-91 recency and licensing capture; keep the criterion explicitly labelled financial-protection proxy.",
+        "natural_granularity": "NATIONAL_WITH_PROFILE_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C26-WHO-GHED-OOP",
+          "publisher": "World Health Organization",
+          "distributor": "World Health Organization",
+          "dataset": "Global Health Expenditure Database",
+          "exact_asset_or_api": "OOP%CHE; household out-of-pocket payment / current health expenditure",
+          "access_method": "https://apps.who.int/nha/database/DocumentationCentre/Index/en",
+          "licence": null,
+          "licence_url": "https://data.who.int/about/data/terms-and-conditions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "GHED all data March 2026; series commonly through 2023/2024",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "OOP%CHE; household out-of-pocket payment / current health expenditure",
+      "source_publisher": "World Health Organization",
+      "source_distributor": "World Health Organization",
+      "access_method": "https://apps.who.int/nha/database/DocumentationCentre/Index/en",
+      "licensing_and_redistribution_evidence": "WHO dataset terms generally provide CC BY 4.0 with additional terms. The 2025 methodology publication itself is CC BY-NC-SA 3.0 IGO; publication and dataset licences must not be conflated.",
+      "freshness": "GHED all data March 2026; series commonly through 2023/2024",
+      "estimated_country_coverage": "91/91 appears plausible",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "GHED uses the SHA 2011 framework and defines OOP%CHE consistently.",
+        "The ratio measures financing structure, not immigrant eligibility, insurance premiums, prices, unmet need or catastrophic-spending incidence.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "A low share may reflect high total pooled spending or suppressed access.",
+        "Migrant coverage rules can differ from citizen coverage."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_EXACT_JOIN_REQUIRED",
+        "CMP_PROXY_ONLY",
+        "GRA_MIGRANT_ELIGIBILITY_MISSING",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C29",
+      "exact_name": "Currency and macroeconomic stability",
+      "original_phase3_disposition": {
+        "status": "PROBE_APPROVED",
+        "decision": "PROCEED_DETERMINISTIC_PROBE",
+        "recommendation": "Proceed to a deterministic Phase 3E probe using pinned 2020-2024 observations and explicit currency-break handling.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C29-WDI-INFLATION",
+          "publisher": "World Bank distribution / IMF IFS upstream",
+          "distributor": "World Bank distribution / IMF IFS upstream",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "FP.CPI.TOTL.ZG consumer-price inflation",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000",
+          "licence": null,
+          "licence_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Annual through 2024",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C29-WDI-FXRATE",
+          "publisher": "World Bank distribution / IMF IFS upstream",
+          "distributor": "World Bank distribution / IMF IFS upstream",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "PA.NUS.FCRF official exchange rate, LCU per USD",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?format=json&per_page=20000",
+          "licence": null,
+          "licence_url": "https://data.worldbank.org/indicator/PA.NUS.FCRF",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Annual through 2024",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "FP.CPI.TOTL.ZG consumer-price inflation",
+      "source_publisher": "World Bank distribution / IMF IFS upstream",
+      "source_distributor": "World Bank distribution / IMF IFS upstream",
+      "access_method": "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000",
+      "licensing_and_redistribution_evidence": "The exact WDI indicator pages mark the distributed data CC BY 4.0.",
+      "freshness": "Annual through 2024",
+      "estimated_country_coverage": "91/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Inflation is comparable as annual CPI change; exchange-rate volatility requires log returns over several years.",
+        "Official exchange rates can diverge from market rates, and a fixed peg can show low volatility despite reserve or convertibility risk."
+      ],
+      "major_construct_risks": [
+        "Macroeconomic stability is broader than inflation and FX.",
+        "Using USD as the sole reference may not match the user's income currency."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "CMP_CURRENCY_REGIME",
+        "SCO_COMPOSITE_SENSITIVITY_REQUIRED",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C30",
+      "exact_name": "Existing immigrant share",
+      "original_phase3_disposition": {
+        "status": "PROBE_APPROVED",
+        "decision": null,
+        "recommendation": "Proceed to deterministic Phase 3E probe; measured current coverage is 91/91.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C30-WDI-MIGRANT",
+          "publisher": "World Bank (distribution) / UN Population Division (upstream)",
+          "distributor": "World Bank (distribution) / UN Population Division (upstream)",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "SM.POP.TOTL.ZS",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/SM.POP.TOTL.ZS?format=json",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2024",
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "SM.POP.TOTL.ZS",
+      "source_publisher": "World Bank (distribution) / UN Population Division (upstream)",
+      "source_distributor": "World Bank (distribution) / UN Population Division (upstream)",
+      "access_method": "https://api.worldbank.org/v2/country/all/indicator/SM.POP.TOTL.ZS?format=json",
+      "licensing_and_redistribution_evidence": "The exact WDI representation is CC BY 4.0, avoiding restrictive generic UN website terms.",
+      "freshness": "2024",
+      "estimated_country_coverage": "91/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Foreign-born is used where possible; citizenship is substituted in some countries and missing countries are imputed.",
+        "Stock reflects history and geography, not current visa openness or lived inclusion."
+      ],
+      "major_construct_risks": [
+        "CMP_IMPUTED_VALUES_REQUIRED",
+        "CMP_DEFINITION_DIFFERS",
+        "SEM_CAUSALITY_OVERCLAIM"
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C32",
+      "exact_name": "Skilled-work visa accessibility",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": null,
+        "recommendation": "Defer to a future profile/legal-mobility layer. Reject it as an independent destination criterion.",
+        "natural_granularity": "PROFILE_ONLY"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C32-OECD-ITA-2023",
+          "publisher": "OECD",
+          "distributor": "OECD",
+          "dataset": "Indicators of Talent Attractiveness 2023",
+          "exact_asset_or_api": "Highly educated workers; migration-policy dimension",
+          "access_method": "https://www.oecd.org/en/data/tools/talent-attractiveness-2023.html",
+          "licence": null,
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2023",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C32-EU-PORTAL",
+          "publisher": "European Commission",
+          "distributor": "European Commission",
+          "dataset": "EU Immigration Portal",
+          "exact_asset_or_api": "Highly-qualified worker country pages",
+          "access_method": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/what-category-do-i-fit_en",
+          "licence": null,
+          "licence_url": "https://commission.europa.eu/legal-notice_en",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "accessed 2026-07-24",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Highly educated workers; migration-policy dimension",
+      "source_publisher": "OECD",
+      "source_distributor": "OECD",
+      "access_method": "https://www.oecd.org/en/data/tools/talent-attractiveness-2023.html",
+      "licensing_and_redistribution_evidence": "OECD default open-access policy is not a substitute for checking the exact 2023 tool export; EC-owned portal content is CC BY 4.0 unless otherwise indicated.",
+      "freshness": "2023",
+      "estimated_country_coverage": "LOW",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "[VERIFIED] EU rules depend on job offer, salary threshold, qualifications and member-state implementation.",
+        "[ESTIMATED] OECD ITA is useful discovery evidence but OECD-only and broader than visa accessibility.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "CMP_LEGAL_NOT_LIVED_OUTCOME",
+        "FRS_UPDATE_CADENCE_UNKNOWN"
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_ORIGIN_SPECIFIC",
+        "GRA_PROFESSION_SPECIFIC",
+        "PRF_PROFILE_ONLY",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C33",
+      "exact_name": "Permanent-residency accessibility",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": null,
+        "recommendation": "Defer to a route-aware profile layer; reject a single national accessibility score.",
+        "natural_granularity": "PROFILE_ONLY"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C33-UNDESA-1072",
+          "publisher": "UN DESA / IOM",
+          "distributor": "UN DESA / IOM",
+          "dataset": "SDG indicator 10.7.2",
+          "exact_asset_or_api": "Country migration-policy data, 2021 update",
+          "access_method": "https://www.un.org/development/desa/pd/data/sdg-indicator-1072",
+          "licence": null,
+          "licence_url": "https://www.un.org/en/about-us/terms-of-use",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2021",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C33-NATIONAL-PORTALS",
+          "publisher": "National immigration authorities",
+          "distributor": "National immigration authorities",
+          "dataset": "Residence and settlement rules",
+          "exact_asset_or_api": null,
+          "access_method": null,
+          "licence": null,
+          "licence_url": null,
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": null,
+          "evidence_level": "HYPOTHESIS"
+        }
+      ],
+      "exact_source_asset_or_api": "Country migration-policy data, 2021 update",
+      "source_publisher": "UN DESA / IOM",
+      "source_distributor": "UN DESA / IOM",
+      "access_method": "https://www.un.org/development/desa/pd/data/sdg-indicator-1072",
+      "licensing_and_redistribution_evidence": "UN website terms permit personal non-commercial use and prohibit redistribution/derivatives absent a specific licence.",
+      "freshness": "2021",
+      "estimated_country_coverage": "LOW",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "SDG 10.7.2 measures broad well-managed migration policy, not personal permanent-residence eligibility.",
+        "National terminology and qualifying residence rules are not harmonised.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "CMP_LEGAL_NOT_LIVED_OUTCOME",
+        "FRS_POLICY_SNAPSHOT_OUTDATED"
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "SRC_NO_AUTHORITATIVE_SOURCE",
+        "LIC_REDISTRIBUTION_RESTRICTED",
+        "GRA_ORIGIN_SPECIFIC",
+        "PRF_PROFILE_ONLY",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C34",
+      "exact_name": "Citizenship accessibility",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run an experimental Phase 3E probe on the exact v3 archive, stable-91 mapping and a deliberately narrow naturalisation-rule subset.",
+        "natural_granularity": "NATIONAL_WITH_PROFILE_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C34-GLOBALCIT-V3",
+          "publisher": "European University Institute / GLOBALCIT",
+          "distributor": "European University Institute / GLOBALCIT",
+          "dataset": "GLOBALCIT Citizenship Law Dataset",
+          "exact_asset_or_api": "v3.0 country-year-mode acquisition/loss; A06 residence naturalisation and dual-citizenship modes",
+          "access_method": "https://globalcit.eu/databases/globalcit-citizenship-law-dataset/",
+          "licence": null,
+          "licence_url": "https://cadmus.eui.eu/handle/1814/73190",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "v3.0; laws in force 2020-2024; 191 states",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "v3.0 country-year-mode acquisition/loss; A06 residence naturalisation and dual-citizenship modes",
+      "source_publisher": "European University Institute / GLOBALCIT",
+      "source_distributor": "European University Institute / GLOBALCIT",
+      "access_method": "https://globalcit.eu/databases/globalcit-citizenship-law-dataset/",
+      "licensing_and_redistribution_evidence": "The EUI repository identifies CC BY 4.0 for the dataset. Exact v3 archive and codebook should be captured together in a probe.",
+      "freshness": "v3.0; laws in force 2020-2024; 191 states",
+      "estimated_country_coverage": "At least 90% appears highly plausible",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "The dataset uses a comprehensive typology: 28 acquisition and 15 loss modes with qualitative descriptions and quantitative categories.",
+        "Formal law does not capture discretion, backlogs, residence interruptions, language-test difficulty or approval probability.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "A legal inclusiveness score needs normative weights.",
+        "Ordinary residence naturalisation is only one citizenship route."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "CMP_LEGAL_NOT_LIVED_OUTCOME",
+        "SCO_NORMATIVE_WEIGHTS_REQUIRED",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C35",
+      "exact_name": "Post-study migration pathway",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer to the legal/profile layer; retain OECD and the EU portal as discovery and cross-check sources.",
+        "natural_granularity": "PROFILE_ONLY"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "INSTITUTION",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C35-OECD-IMO-2025",
+          "publisher": "OECD",
+          "distributor": "OECD",
+          "dataset": "International Migration Outlook 2025",
+          "exact_asset_or_api": "Recent post-study and migration-policy changes",
+          "access_method": "https://www.oecd.org/en/publications/international-migration-outlook-2025_ae26c893-en.html",
+          "licence": null,
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C35-EU-PORTAL",
+          "publisher": "European Commission",
+          "distributor": "European Commission",
+          "dataset": "EU Immigration Portal",
+          "exact_asset_or_api": "Student and highly-qualified worker country pages",
+          "access_method": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/what-category-do-i-fit_en",
+          "licence": null,
+          "licence_url": "https://commission.europa.eu/legal-notice_en",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Pages current in 2025; 25 EU countries",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Recent post-study and migration-policy changes",
+      "source_publisher": "OECD",
+      "source_distributor": "OECD",
+      "access_method": "https://www.oecd.org/en/publications/international-migration-outlook-2025_ae26c893-en.html",
+      "licensing_and_redistribution_evidence": "OECD post-July-2024 content is generally CC BY 4.0 subject to page exceptions. Commission-owned portal content is generally CC BY 4.0 under the EC legal notice.",
+      "freshness": "2025",
+      "estimated_country_coverage": "Well below 82 for a maintained exact ruleset",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "OECD provides current comparative policy narrative but not a global applicant-level eligibility table.",
+        "Rules vary by qualification level, course length, institution recognition, nationality and later job conditions.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Published policy changes can precede implementation guidance.",
+        "A long nominal permit may still impose job, salary or sponsorship constraints."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_ORIGIN_SPECIFIC",
+        "PRF_PROFILE_ONLY",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C36",
+      "exact_name": "Family reunification support",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer to a family/profile legal module. Do not create an independent national score.",
+        "natural_granularity": "PROFILE_ONLY"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C36-EU-PORTAL",
+          "publisher": "European Commission",
+          "distributor": "European Commission",
+          "dataset": "EU Immigration Portal",
+          "exact_asset_or_api": "Family-member country pages",
+          "access_method": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/already-eu_en",
+          "licence": null,
+          "licence_url": "https://commission.europa.eu/legal-notice_en",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Country pages dated 2025; 25 EU countries",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C36-OECD-IMO-2025",
+          "publisher": "OECD",
+          "distributor": "OECD",
+          "dataset": "International Migration Outlook 2025",
+          "exact_asset_or_api": "Recent family-reunification policy changes",
+          "access_method": "https://www.oecd.org/en/publications/international-migration-outlook-2025_ae26c893-en.html",
+          "licence": null,
+          "licence_url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Family-member country pages",
+      "source_publisher": "European Commission",
+      "source_distributor": "European Commission",
+      "access_method": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/already-eu_en",
+      "licensing_and_redistribution_evidence": "EC-owned portal content and OECD-owned content have favourable reuse terms, but neither is a global structured rules dataset.",
+      "freshness": "Country pages dated 2025; 25 EU countries",
+      "estimated_country_coverage": "Below 82 for exact current rules",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "EC pages distinguish sponsor status, family relationship and member-state implementation.",
+        "OECD documents changing requirements, demonstrating that a static scalar quickly becomes stale.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Legal entitlement differs from processing time and practical approval.",
+        "Humanitarian, EU-citizen and third-country sponsor regimes are materially different."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_HOUSEHOLD_SCENARIO_REQUIRED",
+        "GRA_ORIGIN_SPECIFIC",
+        "PRF_PROFILE_ONLY",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C38",
+      "exact_name": "Professional-licensing accessibility for immigrants",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_PROFILE_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer to a later profile/legal pathway module. A Phase 3E national criterion probe would test the wrong unit of analysis.",
+        "natural_granularity": "PROFILE_ONLY"
+      },
+      "natural_evidence_level": [
+        "REGION_STATE",
+        "INSTITUTION",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": true,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "REGION_STATE",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C38-WHO-NRI",
+          "publisher": "World Health Organization",
+          "distributor": "World Health Organization",
+          "dataset": "National Reporting Instrument reports database",
+          "exact_asset_or_api": "WHO Global Code health-personnel migration reporting",
+          "access_method": "https://www.who.int/teams/health-workforce/migration/practice/reports-database",
+          "licence": null,
+          "licence_url": "https://data.who.int/about/data/terms-and-conditions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Reports and consolidated evidence current through the latest NRI cycle",
+          "evidence_level": "VERIFIED"
+        },
+        {
+          "source_candidate_id": "C38-ENIC-NARIC",
+          "publisher": "European Commission / Council of Europe / UNESCO",
+          "distributor": "European Commission / Council of Europe / UNESCO",
+          "dataset": "ENIC-NARIC networks",
+          "exact_asset_or_api": "Country recognition authorities and regulated-profession guidance",
+          "access_method": "https://www.enic-naric.net/",
+          "licence": null,
+          "licence_url": "https://commission.europa.eu/legal-notice_en",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Current country pages",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "WHO Global Code health-personnel migration reporting",
+      "source_publisher": "World Health Organization",
+      "source_distributor": "World Health Organization",
+      "access_method": "https://www.who.int/teams/health-workforce/migration/practice/reports-database",
+      "licensing_and_redistribution_evidence": "WHO dataset terms are generally CC BY 4.0 with additional terms; linked national regulator material needs page-specific review. ENIC-NARIC is a discovery network, not one reusable harmonised dataset.",
+      "freshness": "Reports and consolidated evidence current through the latest NRI cycle",
+      "estimated_country_coverage": "Below 82 for the exact construct",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "WHO NRI provides a common reporting framework for health-worker mobility, not applicant-level licensing outcomes.",
+        "Recognition depends on profession, regulator, qualification country, curriculum, language and supervised-practice requirements.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "No global comparable processing-time, exam, fee or success-rate series.",
+        "Health-profession evidence cannot be generalized to engineering, law, teaching or trades."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "GRA_PROFESSION_SPECIFIC",
+        "GRA_ORIGIN_SPECIFIC",
+        "PRF_PROFILE_ONLY",
+        "SRC_NO_AUTHORITATIVE_GLOBAL_SCORE",
+        "OPS_EXCESSIVE_MANUAL_MAINTENANCE",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C40",
+      "exact_name": "English usability",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_CITY_LAYER",
+        "decision": null,
+        "recommendation": "Defer to a city/preference layer. Do not use EF EPI as a production country criterion.",
+        "natural_granularity": "CITY_OR_REGIONAL"
+      },
+      "natural_evidence_level": [
+        "CITY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "CITY",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C40-EF-EPI-2025",
+          "publisher": "EF Education First",
+          "distributor": "EF",
+          "dataset": "EF English Proficiency Index 2025",
+          "exact_asset_or_api": "Published country, region, and city reports; no reusable raw dataset",
+          "access_method": "Website/report",
+          "licence": "No dataset-specific production licence verified",
+          "licence_url": "https://www.ef.com/wwen/epi/about-epi/",
+          "commercial_use": "not established",
+          "redistribution": "not established; raw data are not shared",
+          "freshness": "2025 edition using 2024 tests",
+          "evidence_level": "CONCEPTUAL_NOT_REPRODUCIBLE"
+        },
+        {
+          "source_candidate_id": "C40-EF-EPI-2025",
+          "publisher": "EF Education First",
+          "distributor": "EF Education First",
+          "dataset": "EF English Proficiency Index 2025",
+          "exact_asset_or_api": "Country, region and city scores",
+          "access_method": "https://www.ef.com/wwen/epi/",
+          "licence": null,
+          "licence_url": null,
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Published country, region, and city reports; no reusable raw dataset",
+      "source_publisher": "EF Education First",
+      "source_distributor": "EF",
+      "access_method": "Website/report",
+      "licensing_and_redistribution_evidence": "No dataset-specific production licence verified",
+      "freshness": "2025 edition using 2024 tests",
+      "estimated_country_coverage": "116 countries/regions in EF EPI 2025; stable-universe intersection not measured",
+      "estimated_locality_coverage_within_covered_countries": "Thresholded, self-selected city samples; native-English destinations are not symmetrically observed",
+      "cross_country_comparability": [
+        "EF test takers are self-selected, young-skewed and internet-only.",
+        "Adult proficiency is not the same as service or workplace usability; native-English destinations are not symmetrically observed.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Self-selected online test takers are not representative.",
+        "Proficiency is not institutional or daily-life usability.",
+        "Native-English destinations and cities are not symmetrically measured."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "LIC_NO_EVIDENCE",
+        "CMP_SURVEY_NOT_HARMONISED",
+        "GRA_CITY_LEVEL_REQUIRED",
+        "SCO_SAMPLE_RELATIVE_DISTORTION",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C42",
+      "exact_name": "Social inclusion and acceptance of immigrants",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_COVERAGE",
+        "decision": "DEFER",
+        "recommendation": "Defer; revisit only with a licensed recurring global attitude source.",
+        "natural_granularity": "NATIONAL_SURVEY"
+      },
+      "natural_evidence_level": [
+        "CITY",
+        "REGION_STATE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "CITY",
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "World Values Survey Association",
+          "distributor": "World Values Survey Association",
+          "dataset": "World Values Survey Wave 7",
+          "exact_asset_or_api": "Immigrants/foreign workers as neighbours and related attitudes",
+          "access_method": "https://www.worldvaluessurvey.org/WVSEventsShow.jsp?ID=413",
+          "licence": null,
+          "licence_url": "https://www.worldvaluessurvey.org/WVSContents.jsp",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Wave 7, 2017-2021",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Immigrants/foreign workers as neighbours and related attitudes",
+      "source_publisher": "World Values Survey Association",
+      "source_distributor": "World Values Survey Association",
+      "access_method": "https://www.worldvaluessurvey.org/WVSEventsShow.jsp?ID=413",
+      "licensing_and_redistribution_evidence": "Data are free for academic use; production/commercial redistribution terms require explicit permission.",
+      "freshness": "Wave 7, 2017-2021",
+      "estimated_country_coverage": "Below 82/91 is likely",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "National probability samples are typically 1,000-3,200 respondents.",
+        "Question wording and social desirability limit interpretation as lived immigrant experience."
+      ],
+      "major_construct_risks": [
+        "Below threshold and stale for fast-moving sentiment.",
+        "Attitudes do not measure discrimination outcomes."
+      ],
+      "possible_aggregation_method": "No production aggregation until an exact comparable locality source clears feasibility, coverage, freshness, and licensing gates.",
+      "recommendation": "RESEARCH_ONLY",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "STA_MIXED_FIELD_YEARS",
+        "LIC_COMMERCIAL_REUSE_UNCLEAR",
+        "NO_PRODUCTION_READY_LOCALITY_SOURCE"
+      ]
+    },
+    {
+      "criterion_id": "C45",
+      "exact_name": "LGBTQ+ legal and social inclusion",
+      "original_phase3_disposition": {
+        "status": "REJECTED_LICENCE",
+        "decision": "REJECT",
+        "recommendation": "Reject for Phase 3E production candidacy unless ILGA grants suitable reuse permission.",
+        "natural_granularity": "NATIONAL_LEGAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "CITY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": "CITY",
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "ILGA World",
+          "distributor": "ILGA World",
+          "dataset": "Laws on Us",
+          "exact_asset_or_api": "11 legal categories",
+          "access_method": "https://ilga.org/laws-on-us-report/",
+          "licence": null,
+          "licence_url": "https://ilga.org/laws-on-us-report/",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "30 May 2024",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "11 legal categories",
+      "source_publisher": "ILGA World",
+      "source_distributor": "ILGA World",
+      "access_method": "https://ilga.org/laws-on-us-report/",
+      "licensing_and_redistribution_evidence": "The current report page states CC BY-NC 4.0, incompatible with an unrestricted commercial production dataset. A conflicting asset snippet makes conservative treatment necessary; obtain written permission before reconsideration.",
+      "freshness": "30 May 2024",
+      "estimated_country_coverage": "Global coverage appears plausible",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Legal categories are comparable but do not capture social acceptance, enforcement or subnational variation.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Law is not lived inclusion.",
+        "Combining 11 categories requires normative choices."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "LIC_NONCOMMERCIAL",
+        "SCO_NORMATIVE_WEIGHTS_REQUIRED",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C48",
+      "exact_name": "Political stability and civil peace",
+      "original_phase3_disposition": {
+        "status": "PROBE_APPROVED",
+        "decision": "PROCEED_DETERMINISTIC_PROBE",
+        "recommendation": "Proceed to a deterministic Phase 3E probe on the 2025-revision aggregate and its uncertainty fields.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C48-WGI-PV-2025",
+          "publisher": "World Bank",
+          "distributor": "World Bank",
+          "dataset": "Worldwide Governance Indicators 2025 revision",
+          "exact_asset_or_api": "Political Stability and Absence of Violence/Terrorism; estimate and absolute 0-100 score",
+          "access_method": "https://datacatalog.worldbank.org/search/dataset/0038026/worldwide-governance-indicators",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/search/dataset/0038026/worldwide-governance-indicators",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 revision; 1996-2024 recalculated",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Political Stability and Absence of Violence/Terrorism; estimate and absolute 0-100 score",
+      "source_publisher": "World Bank",
+      "source_distributor": "World Bank",
+      "access_method": "https://datacatalog.worldbank.org/search/dataset/0038026/worldwide-governance-indicators",
+      "licensing_and_redistribution_evidence": "The World Bank catalogue marks WGI CC BY 4.0. Underlying commercial source data have separate constraints, but published aggregate estimates are the candidate input.",
+      "freshness": "2025 revision; 1996-2024 recalculated",
+      "estimated_country_coverage": "91/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "WGI aggregates perception data from 35 cross-country sources using an unobserved-components model.",
+        "The 2025 revision recalculates history, adds an anchored 0-100 scale and supplies uncertainty intervals."
+      ],
+      "major_construct_risks": [
+        "Perception composite is not an event forecast.",
+        "Margins of error make small rank differences non-substantive."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "CMP_PERCEPTION_BASED",
+        "SCO_UNCERTAINTY_REQUIRED",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C49",
+      "exact_name": "Rule of law and institutional trust",
+      "original_phase3_disposition": {
+        "status": "PROBE_APPROVED",
+        "decision": "PROCEED_DETERMINISTIC_PROBE",
+        "recommendation": "Proceed to a deterministic Phase 3E probe after narrowing the label to Rule of Law and checking overlap with the active catalog.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C49-WGI-RL-2025",
+          "publisher": "World Bank",
+          "distributor": "World Bank",
+          "dataset": "Worldwide Governance Indicators 2025 revision",
+          "exact_asset_or_api": "Rule of Law estimate and absolute 0-100 score; GOV_WGI_RL_EST",
+          "access_method": "https://data.worldbank.org/indicator/GOV_WGI_RL_EST",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/search/dataset/0038026/worldwide-governance-indicators",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 revision; 2024 observations",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Rule of Law estimate and absolute 0-100 score; GOV_WGI_RL_EST",
+      "source_publisher": "World Bank",
+      "source_distributor": "World Bank",
+      "access_method": "https://data.worldbank.org/indicator/GOV_WGI_RL_EST",
+      "licensing_and_redistribution_evidence": "The exact WGI dataset is CC BY 4.0.",
+      "freshness": "2025 revision; 2024 observations",
+      "estimated_country_coverage": "91/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "WGI Rule of Law captures perceptions of confidence in and adherence to societal rules, including contracts, property rights, police, courts, crime and violence.",
+        "Institutional trust is related but not identical; the criterion name should be narrowed in production."
+      ],
+      "major_construct_risks": [
+        "Perception sources and source availability vary by economy.",
+        "Small differences are often within confidence intervals."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "CMP_PERCEPTION_BASED",
+        "SCO_UNCERTAINTY_REQUIRED",
+        "RED_POTENTIAL_GOVERNANCE_OVERLAP",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C50",
+      "exact_name": "Healthcare system capacity and quality",
+      "original_phase3_disposition": {
+        "status": "DEFERRED",
+        "decision": null,
+        "recommendation": "Defer now. The reusable World Bank representation is complete but remains at 2021; the fresh 2023 WHO release has unresolved commercial reuse for direct ingestion.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "REGION_STATE",
+        "METRO"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C50-WB-HNP-UHC",
+          "publisher": "World Bank (distribution) / WHO (upstream)",
+          "distributor": "World Bank (distribution) / WHO (upstream)",
+          "dataset": "Health Nutrition and Population Statistics",
+          "exact_asset_or_api": "SH.UHC.SRVS.CV.XD",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/SH.UHC.SRVS.CV.XD?source=16&format=json",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "World Bank source 16; latest 2021",
+          "evidence_level": "MEASURED"
+        },
+        {
+          "source_candidate_id": "C50-WHO-UHC-2025",
+          "publisher": "World Health Organization / World Bank",
+          "distributor": "World Health Organization / World Bank",
+          "dataset": "Tracking UHC 2025 full dataset",
+          "exact_asset_or_api": "UHC service coverage index, 2023",
+          "access_method": "https://www.who.int/data/uhc-2025-technical-appendices-and-regional-data-tables",
+          "licence": null,
+          "licence_url": "https://www.who.int/about/policies/publishing/copyright",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 release; 2023 reference",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "SH.UHC.SRVS.CV.XD",
+      "source_publisher": "World Bank (distribution) / WHO (upstream)",
+      "source_distributor": "World Bank (distribution) / WHO (upstream)",
+      "access_method": "https://api.worldbank.org/v2/country/all/indicator/SH.UHC.SRVS.CV.XD?source=16&format=json",
+      "licensing_and_redistribution_evidence": "World Bank representation is CC BY 4.0; direct WHO commercial reuse requires permission or a dataset-specific compatible licence.",
+      "freshness": "World Bank source 16; latest 2021",
+      "estimated_country_coverage": "0/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "The index is a geometric mean of 14 tracers; not every tracer directly measures service coverage.",
+        "National population coverage does not establish migrant entitlement or local access."
+      ],
+      "major_construct_risks": [
+        "SEM_QUESTION_TOO_BROAD",
+        "CMP_IMPUTED_VALUES_REQUIRED",
+        "LIC_NONCOMMERCIAL_ONLY"
+      ],
+      "possible_aggregation_method": "No production aggregation until an exact comparable locality source clears feasibility, coverage, freshness, and licensing gates.",
+      "recommendation": "RESEARCH_ONLY",
+      "precise_blockers": [
+        "FRS_STALE",
+        "NO_PRODUCTION_READY_LOCALITY_SOURCE"
+      ]
+    },
+    {
+      "criterion_id": "C53",
+      "exact_name": "Water quality and sanitation",
+      "original_phase3_disposition": {
+        "status": "PROBE_APPROVED",
+        "decision": "PROCEED_DETERMINISTIC_PROBE",
+        "recommendation": "Proceed to Phase 3E with the narrow basic-service definition and explicit missing-country outcomes; keep safely managed services as optional metadata.",
+        "natural_granularity": "NATIONAL_WITH_LOCAL_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "WHO/UNICEF JMP via World Bank WDI",
+          "distributor": "WHO/UNICEF JMP via World Bank WDI",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "SH.H2O.BASW.ZS; SH.STA.BASS.ZS",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.BASW.ZS?format=json",
+          "licence": null,
+          "licence_url": "https://www.worldbank.org/en/about/legal/terms-of-use-for-datasets",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 JMP release; observations through 2024",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "SH.H2O.BASW.ZS; SH.STA.BASS.ZS",
+      "source_publisher": "WHO/UNICEF JMP via World Bank WDI",
+      "source_distributor": "WHO/UNICEF JMP via World Bank WDI",
+      "access_method": "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.BASW.ZS?format=json",
+      "licensing_and_redistribution_evidence": "World Bank-distributed WDI data are CC BY 4.0; pin exact indicator metadata and attribution. WHO/UNICEF source attribution should be retained.",
+      "freshness": "2025 JMP release; observations through 2024",
+      "estimated_country_coverage": "86/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "JMP applies harmonised service ladders to household survey, census and administrative inputs.",
+        "Basic service is not equivalent to contaminant-free, continuously available household tap water."
+      ],
+      "major_construct_risks": [
+        "Weak proxy for water quality in high-income destinations.",
+        "Country estimates may be modelled and lag local infrastructure changes."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "CMP_BASIC_NOT_SAFELY_MANAGED",
+        "GRA_LOCAL_VARIATION",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C54",
+      "exact_name": "Food safety and public-health protection",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run an experimental Phase 3E probe; label it Food-safety system capacity.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "World Health Organization",
+          "distributor": "World Health Organization",
+          "dataset": "State Party Self-Assessment Annual Reporting Tool (SPAR)",
+          "exact_asset_or_api": "C13 Food Safety capacity; 2025 dashboard",
+          "access_method": "https://extranet.who.int/e-spar/Home/CapacityScoreDetails",
+          "licence": null,
+          "licence_url": "https://data.who.int/about/data/terms-and-conditions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 data; dashboard updated 15 May 2026",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "C13 Food Safety capacity; 2025 dashboard",
+      "source_publisher": "World Health Organization",
+      "source_distributor": "World Health Organization",
+      "access_method": "https://extranet.who.int/e-spar/Home/CapacityScoreDetails",
+      "licensing_and_redistribution_evidence": "WHO data terms generally use CC BY 4.0 with dataset-specific notices; verify the dashboard export.",
+      "freshness": "2025 data; dashboard updated 15 May 2026",
+      "estimated_country_coverage": "At least 82/91 appears highly plausible; exact 2025 download not joined",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "SPAR is a structured annual self-assessment against IHR capacities.",
+        "It measures national capacity, not inspections, outbreak incidence or restaurant-level safety."
+      ],
+      "major_construct_risks": [
+        "Self-reporting may inflate capacity.",
+        "National capacity may not predict day-to-day food safety."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "CMP_SELF_REPORTED",
+        "DEF_CAPACITY_NOT_OUTCOME",
+        "COV_EXACT_JOIN_REQUIRED",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C56",
+      "exact_name": "Electricity access and reliability",
+      "original_phase3_disposition": {
+        "status": "DEFERRED",
+        "decision": null,
+        "recommendation": "Defer. Access measured 91/91 for 2024, but the WDI API returned no observations for IC.ELC.OUTG; access alone does not answer reliability.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "UTILITY_SERVICE_AREA"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "UTILITY_SERVICE_AREA",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C56-WDI-ACCESS",
+          "publisher": "World Bank / WHO-UNICEF tracking partners",
+          "distributor": "World Bank / WHO-UNICEF tracking partners",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "EG.ELC.ACCS.ZS",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/EG.ELC.ACCS.ZS?format=json",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2024",
+          "evidence_level": "MEASURED"
+        },
+        {
+          "source_candidate_id": "C56-WB-OUTAGES",
+          "publisher": "World Bank Enterprise Surveys",
+          "distributor": "World Bank Enterprise Surveys",
+          "dataset": "Enterprise Surveys / WDI metadata",
+          "exact_asset_or_api": "IC.ELC.OUTG",
+          "access_method": "https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IC.ELC.OUTG",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/int/public-licenses#cc-by",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": null,
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "EG.ELC.ACCS.ZS",
+      "source_publisher": "World Bank / WHO-UNICEF tracking partners",
+      "source_distributor": "World Bank / WHO-UNICEF tracking partners",
+      "access_method": "https://api.worldbank.org/v2/country/all/indicator/EG.ELC.ACCS.ZS?format=json",
+      "licensing_and_redistribution_evidence": "World Bank series are CC BY 4.0.",
+      "freshness": "2024",
+      "estimated_country_coverage": "0/91 measured fresh/valid at Phase 3 cutoff",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Access is near-ceiling in much of the stable universe and is not reliability.",
+        "Enterprise Survey outages reflect sampled firms, subnational survey locations and heterogeneous survey years."
+      ],
+      "major_construct_risks": [
+        "CMP_SURVEY_NOT_HARMONISED",
+        "FRS_MIXED_REFERENCE_PERIODS",
+        "RED_SHARED_COMPONENTS"
+      ],
+      "possible_aggregation_method": "No aggregation until measured outage/reliability observations can be attached to validated utility service areas.",
+      "recommendation": "RESEARCH_ONLY",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "SEM_QUESTION_TOO_BROAD",
+        "NO_PRODUCTION_READY_LOCALITY_SOURCE"
+      ]
+    },
+    {
+      "criterion_id": "C57",
+      "exact_name": "Water-supply reliability",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_CITY_LAYER",
+        "decision": "DEFER",
+        "recommendation": "Defer to a city/utility data programme and keep C53 as the national service proxy.",
+        "natural_granularity": "CITY_OR_UTILITY"
+      },
+      "natural_evidence_level": [
+        "UTILITY_SERVICE_AREA"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "UTILITY_SERVICE_AREA",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C57-WB-IBNET-UTILITY",
+          "publisher": "World Bank / participating utilities",
+          "distributor": "IBNET and World Bank reproducibility catalog",
+          "dataset": "IBNET utility performance data",
+          "exact_asset_or_api": "IBNET_2023.xlsx and New_IBNET_2024.xlsx referenced by World Bank reproducibility catalog entry 484",
+          "access_method": "Catalog/workbook; parts are limited-access",
+          "licence": "No complete production redistribution conclusion for utility submissions",
+          "licence_url": "https://reproducibility.worldbank.org/catalog/484",
+          "commercial_use": "not established for all records",
+          "redistribution": "some data explicitly omitted as limited-access",
+          "freshness": "Historical through 2022; pilot/revised records through 2024",
+          "evidence_level": "EXACT_ASSETS_PARTLY_LIMITED"
+        },
+        {
+          "source_candidate_id": null,
+          "publisher": "WHO/UNICEF JMP",
+          "distributor": "WHO/UNICEF JMP",
+          "dataset": "JMP household WASH estimates",
+          "exact_asset_or_api": "Drinking water available when needed",
+          "access_method": "https://washdata.org/report/jmp-2025-wash-households",
+          "licence": null,
+          "licence_url": "https://washdata.org/terms-use",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 report; 2024 estimates",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "IBNET_2023.xlsx and New_IBNET_2024.xlsx referenced by World Bank reproducibility catalog entry 484",
+      "source_publisher": "World Bank / participating utilities",
+      "source_distributor": "IBNET and World Bank reproducibility catalog",
+      "access_method": "Catalog/workbook; parts are limited-access",
+      "licensing_and_redistribution_evidence": "No complete production redistribution conclusion for utility submissions",
+      "freshness": "Historical through 2022; pilot/revised records through 2024",
+      "estimated_country_coverage": "Historical IBNET described more than 150 countries, but current reproducible/open records are not complete",
+      "estimated_locality_coverage_within_covered_countries": "Utility submissions are voluntary, temporally uneven, and partly limited-access",
+      "cross_country_comparability": [
+        "Availability when needed is one safely managed service component.",
+        "Household responses do not provide utility outage frequency or neighbourhood reliability."
+      ],
+      "major_construct_risks": [
+        "Utility territories do not align cleanly with cities or metros.",
+        "Voluntary reporting creates selection, age, and survivorship bias.",
+        "Continuity hours do not establish potability, pressure, or household access."
+      ],
+      "possible_aggregation_method": "Top-two mean of utility continuity scores only after service territories are mapped to eligible localities and record selection is frozen.",
+      "recommendation": "RESEARCH_ONLY",
+      "precise_blockers": [
+        "COV_BELOW_90_PERCENT",
+        "GRA_CITY_UTILITY_REQUIRED",
+        "NO_PRODUCTION_READY_LOCALITY_SOURCE"
+      ]
+    },
+    {
+      "criterion_id": "C58",
+      "exact_name": "Internet access, speed, and reliability",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": null,
+        "recommendation": "Experimental/redundancy probe only for a narrowed access-and-penetration criterion. Do not claim speed or reliability.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "METRO",
+        "CITY"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "METRO",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C58-GHS-UCDB-OOKLA",
+          "publisher": "European Commission JRC; upstream Speedtest by Ookla",
+          "distributor": "JRC Open Data Portal",
+          "dataset": "GHS-UCDB R2024A v1.2 socioeconomic theme",
+          "exact_asset_or_api": "GHS_UCDB_THEME_SOCIOECONOMIC_GLOBE_R2024A_V1_2.zip; SC_CON_DSF_2023 and SC_CON_DSM_2023",
+          "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+          "licence": "JRC catalog marks the asset CC BY 4.0, but the documented upstream Ookla map tiles are CC BY-NC-SA 4.0",
+          "licence_url": "https://data.jrc.ec.europa.eu/dataset/1a338be6-7eaf-480c-9664-3a8ade88cbcd",
+          "commercial_use": "ambiguous because of the upstream non-commercial term",
+          "redistribution": "ambiguous component boundary; production gate fails pending clarification",
+          "freshness": "JRC asset updated 2026-05-15; metric reference year 2023",
+          "evidence_level": "EXACT_ASSET_LICENCE_CONFLICT"
+        },
+        {
+          "source_candidate_id": "C58-WDI-ICT",
+          "publisher": "World Bank (distribution) / ITU (upstream)",
+          "distributor": "World Bank (distribution) / ITU (upstream)",
+          "dataset": "World Development Indicators",
+          "exact_asset_or_api": "IT.NET.USER.ZS; IT.NET.BBND.P2",
+          "access_method": "https://api.worldbank.org/v2/country/all/indicator/IT.NET.USER.ZS?format=json",
+          "licence": null,
+          "licence_url": "https://data.worldbank.org/summary-terms-of-use",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "WDI 2026-07-13 snapshot",
+          "evidence_level": "MEASURED"
+        },
+        {
+          "source_candidate_id": "C58-ITU-DIRECT",
+          "publisher": "International Telecommunication Union",
+          "distributor": "International Telecommunication Union",
+          "dataset": "ITU DataHub",
+          "exact_asset_or_api": "Internet, broadband and quality-of-service indicators",
+          "access_method": "https://datahub.itu.int/",
+          "licence": null,
+          "licence_url": "https://beta.datahub.itu.int/about/",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "regular updates",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "GHS_UCDB_THEME_SOCIOECONOMIC_GLOBE_R2024A_V1_2.zip; SC_CON_DSF_2023 and SC_CON_DSM_2023",
+      "source_publisher": "European Commission JRC; upstream Speedtest by Ookla",
+      "source_distributor": "JRC Open Data Portal",
+      "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+      "licensing_and_redistribution_evidence": "JRC catalog marks the asset CC BY 4.0, but the documented upstream Ookla map tiles are CC BY-NC-SA 4.0",
+      "freshness": "JRC asset updated 2026-05-15; metric reference year 2023",
+      "estimated_country_coverage": "Measured 89/91 countries under the proposed top-five GHSL universe; ATG and GRD have no qualifying GHSL urban centre",
+      "estimated_locality_coverage_within_covered_countries": "Measured 388/388 selected urban centres with non-negative fixed and mobile 2023 values",
+      "cross_country_comparability": [
+        "Internet use and fixed-broadband subscriptions are comparable but are not throughput, latency, outages or affordability."
+      ],
+      "major_construct_risks": [
+        "Speedtest users are self-selected and missingness depends on test activity.",
+        "The JRC/upstream licence boundary is contradictory for commercial use.",
+        "2023 values are already fast-moving for a connectivity criterion."
+      ],
+      "possible_aggregation_method": "Top-two mean of fixed-network performance among eligible metros, minimum one valid locality; do not combine fixed and mobile without sensitivity analysis.",
+      "recommendation": "RESEARCH_ONLY",
+      "precise_blockers": [
+        "NO_PRODUCTION_READY_LOCALITY_SOURCE"
+      ]
+    },
+    {
+      "criterion_id": "C62",
+      "exact_name": "Digital-government readiness",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Experimental only; inspect components in Phase 3E and reject a direct GTMI rank.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "World Bank",
+          "distributor": "World Bank",
+          "dataset": "GovTech Dataset / GTMI 2025",
+          "exact_asset_or_api": "48 indicators across four focus areas",
+          "access_method": "https://datacatalog.worldbank.org/search/dataset/0037889/govtech-dataset",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/search/dataset/0037889/govtech-dataset",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2025 update",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "48 indicators across four focus areas",
+      "source_publisher": "World Bank",
+      "source_distributor": "World Bank",
+      "access_method": "https://datacatalog.worldbank.org/search/dataset/0037889/govtech-dataset",
+      "licensing_and_redistribution_evidence": "The dataset catalogue specifies CC BY 4.0.",
+      "freshness": "2025 update",
+      "estimated_country_coverage": "About 90/91 appears plausible; Nicaragua is the known publisher-scope exclusion",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "The World Bank explicitly says GTMI is not intended to rank or assess readiness/performance.",
+        "Mixed self-reported and public-web inputs can have different evidence quality."
+      ],
+      "major_construct_risks": [
+        "Practice adoption does not prove service usability for immigrants.",
+        "Triennial updates are adequate only for structural change."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "SCO_PUBLISHER_DISCLAIMS_RANKING",
+        "COV_EXACT_JOIN_REQUIRED",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C66",
+      "exact_name": "Extreme-weather risk",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": null,
+        "recommendation": "Experimental Phase 3E probe only. Coverage is complete, but a Konsider-specific weather subset and weighting need defensibility testing.",
+        "natural_granularity": "NATIONAL_WITH_CITY_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "CITY"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "CITY",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C66-GHS-UCDB-UTCI",
+          "publisher": "European Commission JRC / Copernicus Climate Change Service",
+          "distributor": "JRC Open Data Portal",
+          "dataset": "GHS-UCDB R2024A v1.2 climate theme",
+          "exact_asset_or_api": "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip; CL_UTC_T32_2020",
+          "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+          "licence": "CC BY 4.0 on the exact JRC downloadable asset",
+          "licence_url": "https://data.jrc.ec.europa.eu/dataset/1a338be6-7eaf-480c-9664-3a8ade88cbcd",
+          "commercial_use": "permitted with attribution",
+          "redistribution": "permitted with attribution",
+          "freshness": "JRC asset updated 2026-05-15; underlying decadal climate reference ends in 2020",
+          "evidence_level": "EXACT_ASSET_VERIFIED"
+        },
+        {
+          "source_candidate_id": "C66-INFORM-2026",
+          "publisher": "European Commission JRC / INFORM partners",
+          "distributor": "European Commission JRC / INFORM partners",
+          "dataset": "INFORM Risk Index 2026",
+          "exact_asset_or_api": "INFORM_Risk_2026_v072.xlsx: River Flood, Tropical Cyclone, Coastal flood, Drought",
+          "access_method": "https://drmkc.jrc.ec.europa.eu/inform-index/Portals/0/InfoRM/2026/INFORM_Risk_2026_v072.xlsx",
+          "licence": null,
+          "licence_url": "https://commission.europa.eu/legal-notice_en",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "INFORM Risk 2026 v072",
+          "evidence_level": "MEASURED"
+        }
+      ],
+      "exact_source_asset_or_api": "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip; CL_UTC_T32_2020",
+      "source_publisher": "European Commission JRC / Copernicus Climate Change Service",
+      "source_distributor": "JRC Open Data Portal",
+      "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+      "licensing_and_redistribution_evidence": "CC BY 4.0 on the exact JRC downloadable asset",
+      "freshness": "JRC asset updated 2026-05-15; underlying decadal climate reference ends in 2020",
+      "estimated_country_coverage": "Measured 89/91 countries under the proposed top-five GHSL universe; ATG and GRD have no qualifying GHSL urban centre",
+      "estimated_locality_coverage_within_covered_countries": "Measured 388/388 selected urban centres with a non-negative CL_UTC_T32_2020 value",
+      "cross_country_comparability": [
+        "The official Natural score also includes geophysical and epidemic hazards, so it is semantically too broad.",
+        "The selected subset omits heatwaves, wildfire, severe convective storms and local adaptation."
+      ],
+      "major_construct_risks": [
+        "This is extreme heat exposure, not broad extreme-weather risk.",
+        "The fact sheet description says days above the UTCI threshold while its methodology wording says pixel count; exact semantics require confirmation.",
+        "The latest decadal reference ends in 2020 and does not capture neighbourhood-scale heat."
+      ],
+      "possible_aggregation_method": "Lower-is-better mean of the two lowest-exposure eligible urban-centre scores, or the single score where only one qualifies; retain all locality evidence.",
+      "recommendation": "FIRST_WAVE",
+      "precise_blockers": []
+    },
+    {
+      "criterion_id": "C67",
+      "exact_name": "Long-term climate-change exposure",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run an experimental methodology probe, not a production score probe.",
+        "natural_granularity": "NATIONAL_DERIVED_FROM_GRID"
+      },
+      "natural_evidence_level": [
+        "CITY"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "CITY",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C67-GHS-UCDB-CLIMATE-PROJECTIONS",
+          "publisher": "European Commission JRC / Copernicus Climate Change Service",
+          "distributor": "JRC Open Data Portal",
+          "dataset": "GHS-UCDB R2024A v1.2 climate theme",
+          "exact_asset_or_api": "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip; scenario-specific CL_* projection fields",
+          "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+          "licence": "CC BY 4.0 on the exact JRC downloadable asset",
+          "licence_url": "https://data.jrc.ec.europa.eu/dataset/1a338be6-7eaf-480c-9664-3a8ade88cbcd",
+          "commercial_use": "permitted with attribution",
+          "redistribution": "permitted with attribution",
+          "freshness": "Current asset; scenario horizons include 2030-2070",
+          "evidence_level": "EXACT_ASSET_CONSTRUCT_NOT_FROZEN"
+        },
+        {
+          "source_candidate_id": null,
+          "publisher": "World Bank Climate Change Knowledge Portal",
+          "distributor": "World Bank Climate Change Knowledge Portal",
+          "dataset": "Projected Climate Data CMIP6",
+          "exact_asset_or_api": "Temperature and precipitation projections by SSP/horizon",
+          "access_method": "https://datacatalog.worldbank.org/search/dataset/0042297/climate-change-knowledge-portal-projected-climate-data-cmip6-0-25-degree",
+          "licence": null,
+          "licence_url": "https://datacatalog.worldbank.org/search/dataset/0042297/climate-change-knowledge-portal-projected-climate-data-cmip6-0-25-degree",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "CMIP6; 1950-2100",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip; scenario-specific CL_* projection fields",
+      "source_publisher": "European Commission JRC / Copernicus Climate Change Service",
+      "source_distributor": "JRC Open Data Portal",
+      "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+      "licensing_and_redistribution_evidence": "CC BY 4.0 on the exact JRC downloadable asset",
+      "freshness": "Current asset; scenario horizons include 2030-2070",
+      "estimated_country_coverage": "Potentially 89/91 under the proposed GHSL universe; scenario-field validity not fully measured",
+      "estimated_locality_coverage_within_covered_countries": "Potentially 388 selected urban centres; exact construct/scenario intersection not measured",
+      "cross_country_comparability": [
+        "Results depend on scenario, reference period, horizon, ensemble statistic and variable.",
+        "Country means can hide populated-coast and city exposure."
+      ],
+      "major_construct_risks": [
+        "Scenario choice, horizon, baseline, hazard weighting, and user climate preferences are normative.",
+        "A broad climate-exposure composite would obscure distinct hazards."
+      ],
+      "possible_aggregation_method": "No composite until one scenario, horizon, hazard, and direction are frozen; then apply a policy-driven top-N opportunity aggregation.",
+      "recommendation": "SECOND_WAVE",
+      "precise_blockers": [
+        "SCO_SCENARIO_CHOICE_REQUIRED",
+        "GRA_SPATIAL_AGGREGATION"
+      ]
+    },
+    {
+      "criterion_id": "C68",
+      "exact_name": "Natural-disaster risk",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Conditional Phase 3E probe focused on natural-hazard exposure, subject to exact licence capture.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "CITY",
+        "REGION_STATE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": true,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "CITY",
+      "candidate_sources": [
+        {
+          "source_candidate_id": "C68-GHS-UCDB-MULTIHAZARD",
+          "publisher": "European Commission JRC; upstream MYRIAD-HESA research",
+          "distributor": "JRC Open Data Portal",
+          "dataset": "GHS-UCDB R2024A v1.2 hazard/risk theme",
+          "exact_asset_or_api": "GHS_UCDB_THEME_HAZARD_RISK_GLOBE_R2024A_V1_2.zip; HZ_CEV_*_2015",
+          "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+          "licence": "CC BY 4.0 on the exact JRC downloadable asset",
+          "licence_url": "https://data.jrc.ec.europa.eu/dataset/1a338be6-7eaf-480c-9664-3a8ade88cbcd",
+          "commercial_use": "permitted with attribution",
+          "redistribution": "permitted with attribution",
+          "freshness": "Current asset, but event-set reference years stop at 2015",
+          "evidence_level": "EXACT_ASSET_STALE_FOR_RANKING"
+        },
+        {
+          "source_candidate_id": null,
+          "publisher": "European Commission JRC and INFORM partners",
+          "distributor": "European Commission JRC and INFORM partners",
+          "dataset": "INFORM Risk",
+          "exact_asset_or_api": "Natural hazard/exposure, vulnerability, lack of coping capacity",
+          "access_method": "https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk",
+          "licence": null,
+          "licence_url": "https://commission.europa.eu/legal-notice_en",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Current annual INFORM Risk release",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "GHS_UCDB_THEME_HAZARD_RISK_GLOBE_R2024A_V1_2.zip; HZ_CEV_*_2015",
+      "source_publisher": "European Commission JRC; upstream MYRIAD-HESA research",
+      "source_distributor": "JRC Open Data Portal",
+      "access_method": "Anonymous HTTPS ZIP containing CSV/XLSX/GPKG",
+      "licensing_and_redistribution_evidence": "CC BY 4.0 on the exact JRC downloadable asset",
+      "freshness": "Current asset, but event-set reference years stop at 2015",
+      "estimated_country_coverage": "Potentially 89/91 under the proposed GHSL universe; exact chosen hazard intersection not measured",
+      "estimated_locality_coverage_within_covered_countries": "Potentially 388 selected urban centres; historical event fields require construct and zero/missing validation",
+      "cross_country_comparability": [
+        "Composite structure is transparent, but broad vulnerability and coping inputs overlap governance and development criteria.",
+        "The full risk score is not a pure natural-hazard exposure measure."
+      ],
+      "major_construct_risks": [
+        "Occurrence is not expected loss, severity, vulnerability, or current risk.",
+        "The event-set reference stops at 2015.",
+        "Rare-event counts are unstable and sensitive to reporting and boundary choices."
+      ],
+      "possible_aggregation_method": "Top-two mean of the lowest comparable locality hazard scores only after severity, exposure, period, and zero/missing semantics are frozen.",
+      "recommendation": "SECOND_WAVE",
+      "precise_blockers": [
+        "LIC_EXACT_ASSET_UNCLEAR",
+        "RED_SHARED_COMPONENTS",
+        "GRA_LOCAL_VARIATION"
+      ]
+    },
+    {
+      "criterion_id": "C69",
+      "exact_name": "Environmental quality beyond PM2.5",
+      "original_phase3_disposition": {
+        "status": "REJECTED_LICENCE_REDUNDANCY",
+        "decision": "REJECT",
+        "recommendation": "Reject as an independent production criterion; use open, specific indicators instead.",
+        "natural_granularity": "NATIONAL_COMPOSITE"
+      },
+      "natural_evidence_level": [
+        "CITY",
+        "REGION_STATE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": "CITY",
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "Yale Center for Environmental Law & Policy",
+          "distributor": "Yale Center for Environmental Law & Policy",
+          "dataset": "Environmental Performance Index 2024",
+          "exact_asset_or_api": "Overall EPI and issue categories",
+          "access_method": "https://epi.yale.edu/about-epi",
+          "licence": null,
+          "licence_url": "https://epi.yale.edu/faq/2024-epi-faq",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2024 EPI",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Overall EPI and issue categories",
+      "source_publisher": "Yale Center for Environmental Law & Policy",
+      "source_distributor": "Yale Center for Environmental Law & Policy",
+      "access_method": "https://epi.yale.edu/about-epi",
+      "licensing_and_redistribution_evidence": "EPI 2024 is CC BY-NC-SA 4.0 and prohibits commercial use.",
+      "freshness": "2024 EPI",
+      "estimated_country_coverage": "At least 90% appears plausible",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Methodology and indicators change between editions; Yale warns against comparing scores across editions.",
+        "The composite overlaps air, climate, water, biodiversity and sanitation criteria."
+      ],
+      "major_construct_risks": [
+        "Composite is broad and version-unstable.",
+        "National score hides local exposures."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "LIC_NONCOMMERCIAL",
+        "RED_COMPOSITE_OVERLAP",
+        "CMP_VERSION_BREAKS",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C70",
+      "exact_name": "Climate resilience and adaptation readiness",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_REDUNDANT",
+        "decision": "DEFER",
+        "recommendation": "Defer until the active catalog is consolidated in Phase 3E; revive only if it replaces rather than duplicates multiple criteria.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "Notre Dame Global Adaptation Initiative",
+          "distributor": "Notre Dame Global Adaptation Initiative",
+          "dataset": "ND-GAIN Country Index",
+          "exact_asset_or_api": "Vulnerability (36 indicators) and readiness (9 indicators)",
+          "access_method": "https://gain-new.crc.nd.edu/about/download",
+          "licence": null,
+          "licence_url": "https://gain-new.crc.nd.edu/about/download",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Site updated 26 June 2026; data through 2024",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Vulnerability (36 indicators) and readiness (9 indicators)",
+      "source_publisher": "Notre Dame Global Adaptation Initiative",
+      "source_distributor": "Notre Dame Global Adaptation Initiative",
+      "access_method": "https://gain-new.crc.nd.edu/about/download",
+      "licensing_and_redistribution_evidence": "Download page specifies CC Attribution 3.0 Unported.",
+      "freshness": "Site updated 26 June 2026; data through 2024",
+      "estimated_country_coverage": "At least 90% appears plausible",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Readiness includes economic, governance and social inputs; vulnerability spans six sectors.",
+        "Many inputs overlap governance, innovation, education, infrastructure and ICT criteria."
+      ],
+      "major_construct_risks": [
+        "Composite score obscures drivers.",
+        "Current pages contain inconsistent historical-period wording."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "RED_SHARED_COMPONENTS",
+        "DEF_COMPOSITE_TOO_BROAD",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C71",
+      "exact_name": "Work-life balance",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run an experimental Phase 3E probe only after renaming to Working-time burden.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "International Labour Organization",
+          "distributor": "International Labour Organization",
+          "dataset": "ILOSTAT working-time indicators",
+          "exact_asset_or_api": "Average weekly hours actually worked per employed person by sex — ILO modelled estimates, Nov. 2025",
+          "access_method": "https://ilostat.ilo.org/topics/working-time/",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "November 2025 modelled estimates",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Average weekly hours actually worked per employed person by sex — ILO modelled estimates, Nov. 2025",
+      "source_publisher": "International Labour Organization",
+      "source_distributor": "International Labour Organization",
+      "access_method": "https://ilostat.ilo.org/topics/working-time/",
+      "licensing_and_redistribution_evidence": "ILO open data published after 3 May 2023 are generally CC BY 4.0; capture the exact bulk-file notice.",
+      "freshness": "November 2025 modelled estimates",
+      "estimated_country_coverage": "At least 82/91 appears plausible; exact indicator download not joined",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Actual hours exclude annual leave, public holidays, sickness, parental leave and commuting.",
+        "Modelled estimates improve coverage but depend on harmonisation and imputation."
+      ],
+      "major_construct_risks": [
+        "Cannot substantiate the broad work-life-balance label.",
+        "Informal work and multiple jobs may be measured unevenly."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "DEF_LABEL_TOO_BROAD",
+        "COV_EXACT_JOIN_REQUIRED",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C75",
+      "exact_name": "Religious freedom and freedom of expression",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Conditional experimental probe only after exact licence and variable selection are resolved.",
+        "natural_granularity": "NATIONAL"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "V-Dem Institute",
+          "distributor": "V-Dem Institute",
+          "dataset": "V-Dem Dataset v16",
+          "exact_asset_or_api": "Freedom of expression and religion-related indicators/indices",
+          "access_method": "https://www.v-dem.net/data/the-v-dem-dataset/",
+          "licence": null,
+          "licence_url": "https://www.v-dem.net/about/faq/",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "Version 16, March 2026",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Freedom of expression and religion-related indicators/indices",
+      "source_publisher": "V-Dem Institute",
+      "source_distributor": "V-Dem Institute",
+      "access_method": "https://www.v-dem.net/data/the-v-dem-dataset/",
+      "licensing_and_redistribution_evidence": "V-Dem says its data are open source and free to use, but an exact commercial redistribution licence was not verified for the v16 archive.",
+      "freshness": "Version 16, March 2026",
+      "estimated_country_coverage": "At least 90% appears plausible; exact variables not joined",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Expert-coded estimates include uncertainty and variable rater counts.",
+        "V-Dem recommends caution or filtering when an observation has three or fewer raters."
+      ],
+      "major_construct_risks": [
+        "Expert perception may not represent minority-specific lived experience.",
+        "Combining two freedoms introduces normative weighting."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "LIC_COMMERCIAL_REUSE_UNCLEAR",
+        "SCO_VARIABLE_SELECTION_REQUIRED",
+        "CMP_EXPERT_CODED",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    },
+    {
+      "criterion_id": "C76",
+      "exact_name": "Social protection and welfare support",
+      "original_phase3_disposition": {
+        "status": "EXPERIMENTAL_CANDIDATE",
+        "decision": "EXPERIMENTAL_ONLY",
+        "recommendation": "Run a conditional Phase 3E probe as a national welfare-system reach proxy.",
+        "natural_granularity": "NATIONAL_WITH_PROFILE_CAVEAT"
+      },
+      "natural_evidence_level": [
+        "COUNTRY",
+        "APPLICANT_PROFILE"
+      ],
+      "locality_materially_changes_relocation_usefulness": true,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": true,
+      "applicability_dimensions": [
+        "APPLICANT_OR_HOUSEHOLD_CONTEXT"
+      ],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "International Labour Organization",
+          "distributor": "International Labour Organization",
+          "dataset": "World Social Protection Database / WSPR 2024-26 annex",
+          "exact_asset_or_api": "SDG 1.3.1 effective coverage; modelled series 2009-2023",
+          "access_method": "https://webapps.ilo.org/static/english/reports/flagship/world_social_protection_report_2024-26/Annex.html",
+          "licence": null,
+          "licence_url": "https://www.ilo.org/rights-and-permissions",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "WSPR 2024-26; data through 2023",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "SDG 1.3.1 effective coverage; modelled series 2009-2023",
+      "source_publisher": "International Labour Organization",
+      "source_distributor": "International Labour Organization",
+      "access_method": "https://webapps.ilo.org/static/english/reports/flagship/world_social_protection_report_2024-26/Annex.html",
+      "licensing_and_redistribution_evidence": "ILO terms are favourable, but the exact downloadable database asset and attribution must be pinned.",
+      "freshness": "WSPR 2024-26; data through 2023",
+      "estimated_country_coverage": "At least 90% appears highly plausible; exact stable-91 join not performed",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "The complete series includes reported and imputed observations.",
+        "Coverage says whether a benefit is received, not its value or migrant eligibility.",
+        "Cannot be compared honestly without explicit profile parameters."
+      ],
+      "major_construct_risks": [
+        "Legal residents, temporary migrants and citizens can face different entitlements.",
+        "High coverage may coexist with low benefit adequacy."
+      ],
+      "possible_aggregation_method": "None in Phase 5; evaluate only after applicant/household parameters and any required co-location rule exist.",
+      "recommendation": "PROFILE_PHASE",
+      "precise_blockers": [
+        "PRF_ELIGIBILITY_NOT_MEASURED",
+        "CMP_MODELLED_VALUES",
+        "FUTURE_PROFILE_CONTEXT_REQUIRED"
+      ]
+    },
+    {
+      "criterion_id": "C78",
+      "exact_name": "Overall life satisfaction",
+      "original_phase3_disposition": {
+        "status": "DEFERRED_LICENCE",
+        "decision": "DEFER",
+        "recommendation": "Defer pending exact dataset licence and overlap policy.",
+        "natural_granularity": "NATIONAL_SURVEY"
+      },
+      "natural_evidence_level": [
+        "COUNTRY"
+      ],
+      "locality_materially_changes_relocation_usefulness": false,
+      "locality_derived_country_proxy_semantically_defensible": false,
+      "occupation_specific": false,
+      "requires_applicant_or_household_data": false,
+      "applicability_dimensions": [],
+      "recommended_locality_unit": null,
+      "candidate_sources": [
+        {
+          "source_candidate_id": null,
+          "publisher": "Wellbeing Research Centre / Gallup / UN SDSN",
+          "distributor": "Wellbeing Research Centre / Gallup / UN SDSN",
+          "dataset": "World Happiness Report 2026 data",
+          "exact_asset_or_api": "Life evaluation three-year averages",
+          "access_method": "https://www.worldhappiness.report/data-sharing/",
+          "licence": null,
+          "licence_url": "https://www.worldhappiness.report/data-sharing/",
+          "commercial_use": "Not separately established in this row",
+          "redistribution": "See retained Phase 3 licensing evidence",
+          "freshness": "2026 report",
+          "evidence_level": "VERIFIED"
+        }
+      ],
+      "exact_source_asset_or_api": "Life evaluation three-year averages",
+      "source_publisher": "Wellbeing Research Centre / Gallup / UN SDSN",
+      "source_distributor": "Wellbeing Research Centre / Gallup / UN SDSN",
+      "access_method": "https://www.worldhappiness.report/data-sharing/",
+      "licensing_and_redistribution_evidence": "Underlying Gallup World Poll microdata and extended data require institutional access; exact commercial reuse of report tables is unresolved.",
+      "freshness": "2026 report",
+      "estimated_country_coverage": "Likely below full coverage and potentially near the threshold; not measured",
+      "estimated_locality_coverage_within_covered_countries": "Not measured; no exact production locality asset was promoted in Phase 3",
+      "cross_country_comparability": [
+        "Life evaluation is a standard 0-10 Cantril Ladder measure.",
+        "Three-year pooling improves precision but reduces freshness and can straddle shocks."
+      ],
+      "major_construct_risks": [
+        "Broad outcome can double-count all domain-specific criteria.",
+        "Respondent adaptation and culture affect comparisons."
+      ],
+      "possible_aggregation_method": "DIRECT_COUNTRY_ONLY; locality aggregation would change or misstate the construct.",
+      "recommendation": "REJECT_LOCALITY_PROXY",
+      "precise_blockers": [
+        "LIC_COMMERCIAL_REUSE_UNCLEAR",
+        "RED_OUTCOME_UMBRELLA",
+        "COV_EXACT_JOIN_REQUIRED",
+        "LOCALITY_PROXY_CHANGES_CONSTRUCT"
+      ]
+    }
+  ]
+}

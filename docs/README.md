@@ -21,6 +21,8 @@ readable schemas, and published release manifests take precedence if prose ever 
   quality gates, remaining risks, and next phase.
 - [Phase 4H verification evidence](../data/reports/phase4h-2026-07-28/report.md) - local gate
   results and clean-checkout CI status.
+- [Phase 5A locality criteria discovery](research/phase5a-locality-criteria-discovery.md) - the
+  45-criterion disposition, measured locality universe, source gates, and first-wave decision.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
   validation, fixture, and compatibility contract.
 - [Phase 4D ranking engine](product/phase4d-ranking-engine.md) - typed complete-case ranking,
@@ -73,6 +75,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 3F portfolio decision](research/konsider_phase3f_portfolio_decision.md)
 - [Phase 3G-0 final probes](research/phase3g0-final-probes.md)
 - [Phase 3 closure report](research/phase3-closure-report.md)
+- [Phase 5A locality criteria discovery](research/phase5a-locality-criteria-discovery.md)
 
 ## Historical records
 

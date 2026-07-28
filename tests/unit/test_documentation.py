@@ -81,7 +81,8 @@ def test_phase_3_closure_and_forward_roadmap_are_linked() -> None:
     assert closure.exists()
     assert "Phase 3: criteria expansion and source feasibility — complete" in roadmap
     assert "Phase 4: uncertainty-aware partial coverage — complete" in roadmap
-    assert "Phase 5: conversational exploration" in roadmap
+    assert "Phase 5: locality-aware criteria and structured assessments" in roadmap
+    assert "Future phase: conversational exploration" in roadmap
     assert "Phase 2E:" not in roadmap
     assert "Phase 2F:" not in roadmap
     assert "research/phase3-closure-report.md" in index

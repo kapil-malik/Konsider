@@ -1,0 +1,48 @@
+{
+  "schema_version": "konsider-phase5a-decision-summary-1.0",
+  "date": "2026-07-28",
+  "decision": "APPROVE_ONE_CRITERION_FIRST_WAVE",
+  "first_wave": [
+    {
+      "research_id": "C66",
+      "target_product_name": "Extreme heat exposure",
+      "source_asset": "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip#CL_UTC_T32_2020",
+      "locality_unit": "GHSL urban centre",
+      "proposed_aggregation": "LOWEST_EXPOSURE_TOP_2_MEAN_MIN_1",
+      "measured_coverage": {
+        "countries": 89,
+        "stable_countries": 91,
+        "localities": 388,
+        "missing_countries": [
+          "ATG",
+          "GRD"
+        ]
+      },
+      "licence_conclusion": "PASS_FOR_EXACT_JRC_ASSET_WITH_ATTRIBUTION",
+      "pre_onboarding_blockers": [
+        "Confirm the fact sheet's day-count versus pixel-count methodology wording.",
+        "Freeze the final score transform and sensitivity analysis.",
+        "Decide in Phase 5B whether C66 remains research lineage only and the narrowed product construct receives a new runtime criterion ID."
+      ]
+    }
+  ],
+  "locality_universe_direction": {
+    "policy_id": "major-urban-opportunity-v1-draft",
+    "source": "GHS-UCDB R2024A v1.2",
+    "selection": "Up to five most-populous qualifying urban centres per country using frozen 2025 source population, selected before criterion values are observed.",
+    "measured_inventory": {
+      "countries_with_localities": 89,
+      "selected_localities": 388,
+      "countries_without_qualifying_locality": [
+        "ATG",
+        "GRD"
+      ]
+    }
+  },
+  "deferred_boundaries": {
+    "applicant_profile_engine": "OUT_OF_SCOPE",
+    "household_affordability_engine": "OUT_OF_SCOPE",
+    "visa_and_licensing_engine": "OUT_OF_SCOPE",
+    "conversational_exploration": "FUTURE_PHASE"
+  }
+}
