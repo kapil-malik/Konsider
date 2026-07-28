@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/geographic-score.schema.json",
+  "title": "Entity-neutral geographic score",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "score_id",
+    "criterion_id",
+    "subject",
+    "score",
+    "observation_ids",
+    "scoring_method_version",
+    "source_lineage_id",
+    "quality_flags"
+  ],
+  "properties": {
+    "score_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "$ref": "geographic-entity.schema.json#/$defs/entityReference"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "observation_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scoring_method_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_lineage_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "quality_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Z0-9_]*$"
+      }
+    }
+  }
+}

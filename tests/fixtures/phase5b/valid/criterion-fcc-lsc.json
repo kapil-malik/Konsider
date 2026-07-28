@@ -1,0 +1,53 @@
+{
+  "id": "TEST_LSC_FCC",
+  "display_name": "Synthetic global locality criterion",
+  "historical_names": [],
+  "category": "Synthetic contract evidence",
+  "description": "Fixture-only locality-derived criterion with complete country coverage.",
+  "direction": "higher_is_better",
+  "raw_unit": "synthetic index",
+  "interpretation": "Higher synthetic values are better.",
+  "caveats": [
+    "Fixture only; never production evidence."
+  ],
+  "quality_limitations": [],
+  "ready": true,
+  "default_enabled": false,
+  "experimental": true,
+  "scoring_method_version": "synthetic-lsc-fcc-1.0",
+  "coverage": {
+    "mode": "GLOBAL_CORE",
+    "stable_universe_id": "stable_supported_v1",
+    "stable_country_count": 91,
+    "valid_country_count": 91,
+    "minimum_valid_country_count": 91,
+    "outcome_counts": {
+      "valid": 91,
+      "missing": 0,
+      "stale": 0,
+      "invalid": 0,
+      "rejected": 0
+    },
+    "activation_threshold": null,
+    "score_range": {
+      "minimum": 0,
+      "maximum": 10
+    },
+    "source_lineage_ids": [
+      "lineage:test-lsc-fcc:1.0"
+    ]
+  },
+  "scope": {
+    "evidence_level": "LOCALITY",
+    "result_level": "COUNTRY",
+    "locality_type": "CITY",
+    "derivation": "AGGREGATED_FROM_LOCALITIES",
+    "locality_universe_id": "synthetic-city-universe",
+    "aggregation_policy_id": "test-lsc-fcc-top2",
+    "locality_analysis_threshold": 0.6
+  },
+  "applicability": {
+    "mode": "UNIVERSAL",
+    "dimensions": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "api_contract_version": "konsider-api-2.0",
+  "release_id": "phase5b-synthetic-5.0",
+  "release_schema_version": "konsider-release-5.0",
+  "catalog_schema_version": "consumer-catalog-3.0",
+  "resolved_preference_preset_id": null,
+  "normalized_weights": {
+    "C66": 1
+  },
+  "assessments": {
+    "coverage": {
+      "status": "PARTIAL_COMPLETE_CASE",
+      "policy_version": "uncertainty-aware-ranking-policy-1.0",
+      "active_global_core_criterion_ids": [],
+      "active_conditional_criterion_ids": [
+        "C66"
+      ],
+      "excluded_country_entity_ids": [],
+      "reasons": []
+    },
+    "locality": {
+      "status": "PCC_NO_COMMON_LOCALITY",
+      "active_criterion_ids": [
+        "C66"
+      ],
+      "analysis_triggered_criterion_ids": [
+        "C66"
+      ],
+      "analysis_threshold": 0.6,
+      "aggregation_policy_ids": [
+        "c66-extreme-heat-top2"
+      ],
+      "reasons": []
+    },
+    "profile": {
+      "status": "NO_PROFILE_CONTEXT",
+      "evaluated_dimensions": [],
+      "reasons": []
+    }
+  },
+  "rankings": []
+}

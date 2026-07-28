@@ -87,3 +87,5 @@ def test_phase_3_closure_and_forward_roadmap_are_linked() -> None:
     assert "Phase 2F:" not in roadmap
     assert "research/phase3-closure-report.md" in index
     assert "history/phase4-closure-report.md" in index
+    assert "research/phase5a-locality-criteria-discovery.md" in index
+    assert "architecture/phase5b-target-contracts.md" in index

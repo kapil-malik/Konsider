@@ -1,0 +1,97 @@
+{
+  "schema_version": "konsider-release-5.0",
+  "release_id": "phase5b-synthetic-5.0",
+  "status": "draft",
+  "catalog_schema_version": "consumer-catalog-3.0",
+  "validation_schema_version": "validation-5.0",
+  "stable_universe_id": "stable_supported_v1",
+  "country_entity_ids": [
+    "country:CAN"
+  ],
+  "criteria": [
+    "C48",
+    "C66"
+  ],
+  "criterion_coverage": {
+    "C48": {
+      "mode": "GLOBAL_CORE",
+      "stable_universe_id": "stable_supported_v1",
+      "stable_country_count": 91,
+      "valid_country_count": 91,
+      "minimum_valid_country_count": 91,
+      "outcome_counts": {
+        "valid": 91,
+        "missing": 0,
+        "stale": 0,
+        "invalid": 0,
+        "rejected": 0
+      },
+      "activation_threshold": null,
+      "score_range": {
+        "minimum": 0,
+        "maximum": 10
+      },
+      "source_lineage_ids": [
+        "lineage:c48-wgi:1.0"
+      ]
+    },
+    "C66": {
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "stable_universe_id": "stable_supported_v1",
+      "stable_country_count": 91,
+      "valid_country_count": 89,
+      "minimum_valid_country_count": 82,
+      "outcome_counts": {
+        "valid": 89,
+        "missing": 2,
+        "stale": 0,
+        "invalid": 0,
+        "rejected": 0
+      },
+      "activation_threshold": 0.6,
+      "score_range": {
+        "minimum": 0,
+        "maximum": 10
+      },
+      "source_lineage_ids": [
+        "lineage:c66-ghsl:1.0"
+      ]
+    }
+  },
+  "artifact_counts": {
+    "geographic_entities": 3,
+    "observations": 2,
+    "scores": 4,
+    "criterion_outcomes": 2,
+    "derived_country_evidence": 1,
+    "source_lineages": 3
+  },
+  "source_lineage_ids": [
+    "lineage:c48-wgi:1.0",
+    "lineage:c66-ghsl:1.0",
+    "lineage:major-urban-opportunity:1.0"
+  ],
+  "locality_universe_ids": [
+    "major-urban-opportunity-v1"
+  ],
+  "aggregation_policy_ids": [
+    "c66-extreme-heat-top2"
+  ],
+  "scoring_method_versions": [
+    "c48-wgi-1.0",
+    "c66-extreme-heat-draft-1.0"
+  ],
+  "file_checksums": {
+    "geographic-entities.jsonl": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "observations.jsonl": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "scores.jsonl": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "criterion-outcomes.jsonl": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "derived-country-evidence.jsonl": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "source-lineages.json": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "locality-universes.json": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "aggregation-policies.json": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "consumer-catalog.json": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "validation.json": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "release_checksum": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+}

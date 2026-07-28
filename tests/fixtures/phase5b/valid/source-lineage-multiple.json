@@ -1,0 +1,41 @@
+{
+  "lineage_id": "lineage:c66-ghsl:1.0",
+  "lineage_version": "1.0",
+  "sources": [
+    {
+      "source_id": "jrc-ghs-ucdb-climate",
+      "role": "PRIMARY_OBSERVATION",
+      "source_version": "R2024A-v1.2",
+      "asset_uri": "jrc:GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip#CL_UTC_T32_2020",
+      "checksum": null,
+      "licence_id": "CC-BY-4.0"
+    },
+    {
+      "source_id": "jrc-ghs-ucdb-entities",
+      "role": "ENTITY_UNIVERSE",
+      "source_version": "R2024A-v1.2",
+      "asset_uri": "jrc:GHS_UCDB_THEME_GENERAL_CHARACTERISTICS_GLOBE_R2024A_V1_2.zip",
+      "checksum": null,
+      "licence_id": "CC-BY-4.0"
+    }
+  ],
+  "transforms": [
+    {
+      "step_id": "select-independent-locality-universe",
+      "transform_version": "major-urban-opportunity-v1",
+      "input_refs": [
+        "jrc-ghs-ucdb-entities"
+      ],
+      "output_ref": "major-urban-opportunity-v1"
+    },
+    {
+      "step_id": "score-extreme-heat",
+      "transform_version": "c66-extreme-heat-draft-1.0",
+      "input_refs": [
+        "jrc-ghs-ucdb-climate",
+        "major-urban-opportunity-v1"
+      ],
+      "output_ref": "c66-locality-scores"
+    }
+  ]
+}

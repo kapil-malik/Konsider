@@ -1,0 +1,26 @@
+{
+  "locality_universe_id": "major-urban-opportunity-v1",
+  "locality_universe_version": "1.0",
+  "locality_type": "CITY",
+  "source_lineage_id": "lineage:major-urban-opportunity:1.0",
+  "selection": {
+    "method": "BOUNDED_POPULATION",
+    "minimum_population": 50000,
+    "maximum_per_country": 5,
+    "order_by": "GC_POP_TOT_2025",
+    "order_direction": "DESC",
+    "tie_breakers": [
+      "ID_UC_G0_ASC"
+    ],
+    "independent_of_criterion_values": true
+  },
+  "country_treatment": {
+    "no_qualifying_locality": "EXPLICIT_NO_LOCALITY_OUTCOME",
+    "single_locality": "ALLOW_POLICY_TO_DECIDE",
+    "cross_border": "SOURCE_PARENT_COUNTRY_V1"
+  },
+  "entity_ids": [
+    "ghsl-uc:10737",
+    "ghsl-uc:10739"
+  ]
+}

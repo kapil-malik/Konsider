@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/release-manifest.schema.json",
+  "title": "Phase 5 target release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "status",
+    "catalog_schema_version",
+    "validation_schema_version",
+    "stable_universe_id",
+    "country_entity_ids",
+    "criteria",
+    "criterion_coverage",
+    "artifact_counts",
+    "source_lineage_ids",
+    "locality_universe_ids",
+    "aggregation_policy_ids",
+    "scoring_method_versions",
+    "file_checksums",
+    "release_checksum"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^konsider-release-5\\.[0-9]+$"
+    },
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": ["draft", "published"]
+    },
+    "catalog_schema_version": {
+      "type": "string",
+      "pattern": "^consumer-catalog-3\\.[0-9]+$"
+    },
+    "validation_schema_version": {
+      "type": "string",
+      "pattern": "^validation-5\\.[0-9]+$"
+    },
+    "stable_universe_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "country_entity_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^country:[A-Z]{3}$"
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "criterion_coverage": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "criterion-definition.schema.json#/$defs/coverage"
+      }
+    },
+    "artifact_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geographic_entities",
+        "observations",
+        "scores",
+        "criterion_outcomes",
+        "derived_country_evidence",
+        "source_lineages"
+      ],
+      "properties": {
+        "geographic_entities": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "observations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scores": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "criterion_outcomes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "derived_country_evidence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_lineages": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "source_lineage_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "locality_universe_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "aggregation_policy_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scoring_method_versions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "file_checksums": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geographic-entities.jsonl",
+        "observations.jsonl",
+        "scores.jsonl",
+        "criterion-outcomes.jsonl",
+        "derived-country-evidence.jsonl",
+        "source-lineages.json",
+        "locality-universes.json",
+        "aggregation-policies.json",
+        "consumer-catalog.json",
+        "validation.json"
+      ],
+      "properties": {
+        "geographic-entities.jsonl": {
+          "$ref": "#/$defs/checksum"
+        },
+        "observations.jsonl": {
+          "$ref": "#/$defs/checksum"
+        },
+        "scores.jsonl": {
+          "$ref": "#/$defs/checksum"
+        },
+        "criterion-outcomes.jsonl": {
+          "$ref": "#/$defs/checksum"
+        },
+        "derived-country-evidence.jsonl": {
+          "$ref": "#/$defs/checksum"
+        },
+        "source-lineages.json": {
+          "$ref": "#/$defs/checksum"
+        },
+        "locality-universes.json": {
+          "$ref": "#/$defs/checksum"
+        },
+        "aggregation-policies.json": {
+          "$ref": "#/$defs/checksum"
+        },
+        "consumer-catalog.json": {
+          "$ref": "#/$defs/checksum"
+        },
+        "validation.json": {
+          "$ref": "#/$defs/checksum"
+        }
+      }
+    },
+    "release_checksum": {
+      "$ref": "#/$defs/checksum"
+    }
+  },
+  "$defs": {
+    "checksum": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  }
+}

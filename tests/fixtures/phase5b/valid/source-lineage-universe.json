@@ -1,0 +1,24 @@
+{
+  "lineage_id": "lineage:major-urban-opportunity:1.0",
+  "lineage_version": "1.0",
+  "sources": [
+    {
+      "source_id": "jrc-ghs-ucdb-entities",
+      "role": "ENTITY_UNIVERSE",
+      "source_version": "R2024A-v1.2",
+      "asset_uri": "jrc:GHS_UCDB_THEME_GENERAL_CHARACTERISTICS_GLOBE_R2024A_V1_2.zip",
+      "checksum": null,
+      "licence_id": "CC-BY-4.0"
+    }
+  ],
+  "transforms": [
+    {
+      "step_id": "select-independent-locality-universe",
+      "transform_version": "major-urban-opportunity-v1",
+      "input_refs": [
+        "jrc-ghs-ucdb-entities"
+      ],
+      "output_ref": "major-urban-opportunity-v1"
+    }
+  ]
+}

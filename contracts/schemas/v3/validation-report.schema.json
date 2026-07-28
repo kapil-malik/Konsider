@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/validation-report.schema.json",
+  "title": "Phase 5 target validation report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "structural_passed",
+    "product_ready",
+    "passed",
+    "stable_universe_id",
+    "country_count",
+    "geographic_entity_count",
+    "observation_count",
+    "score_count",
+    "criterion_outcome_count",
+    "derived_country_evidence_count",
+    "source_lineage_count",
+    "criterion_coverage",
+    "lineage_passed",
+    "locality_policy_passed",
+    "issues"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^validation-5\\.[0-9]+$"
+    },
+    "structural_passed": {
+      "type": "boolean"
+    },
+    "product_ready": {
+      "type": "boolean"
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "stable_universe_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "country_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "geographic_entity_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "observation_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "score_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "criterion_outcome_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "derived_country_evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_lineage_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "criterion_coverage": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "criterion-definition.schema.json#/$defs/coverage"
+      }
+    },
+    "lineage_passed": {
+      "type": "boolean"
+    },
+    "locality_policy_passed": {
+      "type": "boolean"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity", "message", "scope"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "severity": {
+            "enum": ["error", "blocker", "warning"]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity_id": {
+            "type": ["string", "null"]
+          },
+          "criterion_id": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    }
+  }
+}

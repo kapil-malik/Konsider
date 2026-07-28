@@ -1,0 +1,16 @@
+{
+  "entity_id": "country:CAN",
+  "entity_type": "COUNTRY",
+  "display_name": "Canada",
+  "country_codes": [
+    "CAN"
+  ],
+  "aliases": [],
+  "source_mappings": [
+    {
+      "source_id": "iso-3166",
+      "source_version": "2025",
+      "source_entity_id": "CAN"
+    }
+  ]
+}

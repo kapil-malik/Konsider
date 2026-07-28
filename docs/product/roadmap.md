@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 5A research complete
+Status: Phase 5B contract design complete
 
 Last updated: 2026-07-28
 
@@ -18,6 +18,11 @@ imputation and provide complete-case robustness diagnostics.
 Phase 5A has classified all 45 deeply researched locality-related criteria, measured a stable
 urban-centre universe, and approved one deliberately narrow first-wave candidate: Extreme heat
 exposure. No Phase 5 runtime, API, UI, release, catalog, or scoring changes have been made.
+
+Phase 5B has defined the clean major-version target for orthogonal coverage, locality scope,
+applicability, canonical geography, policy-driven locality aggregation, multiple-source lineage,
+structured assessments, and preference presets. These schemas and fixtures remain inactive design
+contracts; the active release and API are unchanged.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -123,6 +128,8 @@ product or weakening its country-level comparison contract.
 
 Phase 5A is documented in the
 [locality criteria discovery report](../research/phase5a-locality-criteria-discovery.md).
+Phase 5B is documented in the
+[target architecture and contracts report](../architecture/phase5b-target-contracts.md).
 
 ## Future phase: conversational exploration
 

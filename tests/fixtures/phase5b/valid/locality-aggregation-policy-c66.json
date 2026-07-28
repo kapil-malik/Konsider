@@ -1,0 +1,27 @@
+{
+  "policy_id": "c66-extreme-heat-top2",
+  "policy_version": "1.0",
+  "eligible_locality_universe": {
+    "locality_universe_id": "major-urban-opportunity-v1",
+    "locality_universe_version": "1.0"
+  },
+  "source_criterion_id": "C66",
+  "result_criterion_id": "C66",
+  "locality_type": "CITY",
+  "result_level": "COUNTRY",
+  "selection": {
+    "method": "TOP_N_MEAN",
+    "n": 2
+  },
+  "minimum_valid_localities": 1,
+  "score_range": {
+    "minimum": 0,
+    "maximum": 10
+  },
+  "tie_handling": "STABLE_ENTITY_ID",
+  "one_locality_treatment": "USE_AVAILABLE",
+  "required_lineage_roles": [
+    "PRIMARY_OBSERVATION",
+    "ENTITY_UNIVERSE"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "lineage_id": "lineage:invalid:1.0",
+  "lineage_version": "1.0",
+  "sources": "JRC climate plus GHSL city list",
+  "transforms": []
+}

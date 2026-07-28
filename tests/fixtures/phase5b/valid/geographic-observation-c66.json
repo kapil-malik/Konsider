@@ -1,0 +1,18 @@
+{
+  "observation_id": "obs:C66:ghsl-uc:10737:2020",
+  "criterion_id": "C66",
+  "subject": {
+    "entity_id": "ghsl-uc:10737",
+    "entity_type": "CITY"
+  },
+  "value": 18.4,
+  "unit": "annual mean days per decade",
+  "reference_period": {
+    "start": "2011-01-01",
+    "end": "2020-12-31"
+  },
+  "source_lineage_id": "lineage:c66-ghsl:1.0",
+  "quality_flags": [
+    "SOURCE_METHOD_CLARIFICATION_PENDING"
+  ]
+}

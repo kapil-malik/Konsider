@@ -1,0 +1,341 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/ranking-response.schema.json",
+  "title": "Target API v2 structured ranking response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "api_contract_version",
+    "release_id",
+    "release_schema_version",
+    "catalog_schema_version",
+    "resolved_preference_preset_id",
+    "normalized_weights",
+    "assessments",
+    "rankings"
+  ],
+  "properties": {
+    "api_contract_version": {
+      "const": "konsider-api-2.0"
+    },
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_schema_version": {
+      "type": "string",
+      "pattern": "^konsider-release-5\\.[0-9]+$"
+    },
+    "catalog_schema_version": {
+      "type": "string",
+      "pattern": "^consumer-catalog-3\\.[0-9]+$"
+    },
+    "resolved_preference_preset_id": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "normalized_weights": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "assessments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coverage", "locality", "profile"],
+      "properties": {
+        "coverage": {
+          "$ref": "#/$defs/coverageAssessment"
+        },
+        "locality": {
+          "$ref": "#/$defs/responseLocalityAssessment"
+        },
+        "profile": {
+          "$ref": "#/$defs/profileAssessment"
+        }
+      }
+    },
+    "rankings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rankedCountry"
+      }
+    }
+  },
+  "$defs": {
+    "reason": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "effect"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*(?::[A-Za-z0-9_.-]+)?$"
+        },
+        "severity": {
+          "enum": ["INFO", "WARNING", "BLOCKER"]
+        },
+        "effect": {
+          "enum": [
+            "NONE",
+            "ADVISORY",
+            "COUNTRY_EXCLUDED",
+            "RANKING_FALLBACK",
+            "NOT_EVALUATED"
+          ]
+        }
+      }
+    },
+    "coverageAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "policy_version",
+        "active_global_core_criterion_ids",
+        "active_conditional_criterion_ids",
+        "excluded_country_entity_ids",
+        "reasons"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NO_PARTIAL_CRITERIA_ACTIVE",
+            "FULL_COVERAGE",
+            "PARTIAL_COMPLETE_CASE",
+            "COVERAGE_LIMIT_FALLBACK"
+          ]
+        },
+        "policy_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active_global_core_criterion_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "active_conditional_criterion_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "excluded_country_entity_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^country:[A-Z]{3}$"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        }
+      }
+    },
+    "localityStatus": {
+      "enum": [
+        "NO_ACTIVE_LOCALITY_CRITERIA",
+        "BELOW_ANALYSIS_THRESHOLD",
+        "ONE_ACTIVE_LOCALITY_CRITERION",
+        "COMMON_LOCALITY_AVAILABLE",
+        "PARTIAL_OVERLAP",
+        "NO_COMMON_LOCALITY",
+        "INSUFFICIENT_LOCALITY_EVIDENCE",
+        "MIXED_COUNTRY_RESULTS"
+      ]
+    },
+    "responseLocalityAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "active_criterion_ids",
+        "analysis_triggered_criterion_ids",
+        "analysis_threshold",
+        "aggregation_policy_ids",
+        "reasons"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/responseLocalityStatus"
+        },
+        "active_criterion_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "analysis_triggered_criterion_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "analysis_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "aggregation_policy_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        }
+      }
+    },
+    "countryLocalityAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "eligible_locality_entity_ids",
+        "valid_locality_entity_ids",
+        "contributing_locality_entity_ids",
+        "common_locality_entity_ids",
+        "reasons"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/localityStatus"
+        },
+        "eligible_locality_entity_ids": {
+          "$ref": "#/$defs/localityIds"
+        },
+        "valid_locality_entity_ids": {
+          "$ref": "#/$defs/localityIds"
+        },
+        "contributing_locality_entity_ids": {
+          "$ref": "#/$defs/localityIds"
+        },
+        "common_locality_entity_ids": {
+          "$ref": "#/$defs/localityIds"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        }
+      }
+    },
+    "responseLocalityStatus": {
+      "enum": [
+        "NO_ACTIVE_LOCALITY_CRITERIA",
+        "BELOW_ANALYSIS_THRESHOLD",
+        "ONE_ACTIVE_LOCALITY_CRITERION",
+        "COMMON_LOCALITY_AVAILABLE",
+        "PARTIAL_OVERLAP",
+        "NO_COMMON_LOCALITY",
+        "INSUFFICIENT_LOCALITY_EVIDENCE",
+        "MIXED_COUNTRY_RESULTS"
+      ]
+    },
+    "profileAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evaluated_dimensions", "reasons"],
+      "properties": {
+        "status": {
+          "enum": ["NO_PROFILE_CONTEXT", "NOT_EVALUATED", "EVALUATED"]
+        },
+        "evaluated_dimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reason"
+          }
+        }
+      }
+    },
+    "rankedCountry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "country",
+        "total_score",
+        "assessments"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "country": {
+          "allOf": [
+            {
+              "$ref": "geographic-entity.schema.json#/$defs/entityReference"
+            },
+            {
+              "properties": {
+                "entity_type": {
+                  "const": "COUNTRY"
+                }
+              }
+            }
+          ]
+        },
+        "total_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "assessments": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["locality", "profile"],
+          "properties": {
+            "locality": {
+              "$ref": "#/$defs/countryLocalityAssessment"
+            },
+            "profile": {
+              "$ref": "#/$defs/profileAssessment"
+            }
+          }
+        }
+      }
+    },
+    "localityIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]+$"
+      }
+    }
+  }
+}

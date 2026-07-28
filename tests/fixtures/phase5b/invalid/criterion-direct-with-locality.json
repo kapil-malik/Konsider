@@ -1,0 +1,51 @@
+{
+  "id": "TEST_CONTRADICTORY_SCOPE",
+  "display_name": "Contradictory direct criterion",
+  "historical_names": [],
+  "category": "Synthetic contract evidence",
+  "description": "Invalid fixture with direct derivation and locality policy fields.",
+  "direction": "higher_is_better",
+  "raw_unit": "synthetic index",
+  "interpretation": "Invalid fixture.",
+  "caveats": [],
+  "quality_limitations": [],
+  "ready": false,
+  "default_enabled": false,
+  "experimental": true,
+  "scoring_method_version": "invalid-1.0",
+  "coverage": {
+    "mode": "GLOBAL_CORE",
+    "stable_universe_id": "stable_supported_v1",
+    "stable_country_count": 91,
+    "valid_country_count": 91,
+    "minimum_valid_country_count": 91,
+    "outcome_counts": {
+      "valid": 91,
+      "missing": 0,
+      "stale": 0,
+      "invalid": 0,
+      "rejected": 0
+    },
+    "activation_threshold": null,
+    "score_range": {
+      "minimum": 0,
+      "maximum": 10
+    },
+    "source_lineage_ids": [
+      "lineage:invalid:1.0"
+    ]
+  },
+  "scope": {
+    "evidence_level": "LOCALITY",
+    "result_level": "COUNTRY",
+    "locality_type": "CITY",
+    "derivation": "DIRECT",
+    "locality_universe_id": "invalid-universe",
+    "aggregation_policy_id": "invalid-policy",
+    "locality_analysis_threshold": 0.6
+  },
+  "applicability": {
+    "mode": "UNIVERSAL",
+    "dimensions": []
+  }
+}

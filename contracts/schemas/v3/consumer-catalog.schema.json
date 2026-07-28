@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/consumer-catalog.schema.json",
+  "title": "Phase 5 target consumer catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "compatible_release_schema_major",
+    "target_api_contract_version",
+    "coverage_policy_version",
+    "stable_universe_id",
+    "geographic_entities",
+    "criteria",
+    "locality_universes",
+    "aggregation_policies",
+    "preference_presets"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^consumer-catalog-3\\.[0-9]+$"
+    },
+    "compatible_release_schema_major": {
+      "const": 5
+    },
+    "target_api_contract_version": {
+      "const": "konsider-api-2.0"
+    },
+    "coverage_policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stable_universe_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "geographic_entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "geographic-entity.schema.json"
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "criterion-definition.schema.json"
+      }
+    },
+    "locality_universes": {
+      "type": "array",
+      "items": {
+        "$ref": "locality-universe.schema.json"
+      }
+    },
+    "aggregation_policies": {
+      "type": "array",
+      "items": {
+        "$ref": "locality-aggregation-policy.schema.json"
+      }
+    },
+    "preference_presets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/preferencePreset"
+      }
+    }
+  },
+  "$defs": {
+    "preferencePreset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "weights"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "weights": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

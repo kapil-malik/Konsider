@@ -1,0 +1,5 @@
+{
+  "api_contract_version": "konsider-api-2.0",
+  "preference_preset_id": "equal_weight_mvp",
+  "top_k": 10
+}

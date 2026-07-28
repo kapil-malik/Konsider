@@ -1,0 +1,72 @@
+{
+  "schema_version": "validation-5.0",
+  "structural_passed": true,
+  "product_ready": false,
+  "passed": true,
+  "stable_universe_id": "stable_supported_v1",
+  "country_count": 1,
+  "geographic_entity_count": 3,
+  "observation_count": 2,
+  "score_count": 4,
+  "criterion_outcome_count": 2,
+  "derived_country_evidence_count": 1,
+  "source_lineage_count": 3,
+  "criterion_coverage": {
+    "C48": {
+      "mode": "GLOBAL_CORE",
+      "stable_universe_id": "stable_supported_v1",
+      "stable_country_count": 91,
+      "valid_country_count": 91,
+      "minimum_valid_country_count": 91,
+      "outcome_counts": {
+        "valid": 91,
+        "missing": 0,
+        "stale": 0,
+        "invalid": 0,
+        "rejected": 0
+      },
+      "activation_threshold": null,
+      "score_range": {
+        "minimum": 0,
+        "maximum": 10
+      },
+      "source_lineage_ids": [
+        "lineage:c48-wgi:1.0"
+      ]
+    },
+    "C66": {
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "stable_universe_id": "stable_supported_v1",
+      "stable_country_count": 91,
+      "valid_country_count": 89,
+      "minimum_valid_country_count": 82,
+      "outcome_counts": {
+        "valid": 89,
+        "missing": 2,
+        "stale": 0,
+        "invalid": 0,
+        "rejected": 0
+      },
+      "activation_threshold": 0.6,
+      "score_range": {
+        "minimum": 0,
+        "maximum": 10
+      },
+      "source_lineage_ids": [
+        "lineage:c66-ghsl:1.0"
+      ]
+    }
+  },
+  "lineage_passed": true,
+  "locality_policy_passed": true,
+  "issues": [
+    {
+      "code": "C66_NOT_PRODUCTION_READY",
+      "severity": "warning",
+      "message": "Synthetic contract fixture only; C66 source semantics remain unresolved.",
+      "scope": "criterion",
+      "entity_id": null,
+      "criterion_id": "C66"
+    }
+  ]
+}

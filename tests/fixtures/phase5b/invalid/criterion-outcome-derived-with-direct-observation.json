@@ -1,0 +1,18 @@
+{
+  "criterion_id": "C66",
+  "subject": {
+    "entity_id": "country:CAN",
+    "entity_type": "COUNTRY"
+  },
+  "outcome": "valid",
+  "evidence_kind": "DERIVED_LOCALITIES",
+  "attempted_at": "2026-07-28T00:00:00Z",
+  "observation_id": "obs:C66:country:CAN:invalid",
+  "score_id": "score:C66:country:CAN:2020",
+  "derived_evidence_id": "derived:C66:country:CAN:fixture",
+  "source_lineage_ids": [
+    "lineage:c66-ghsl:1.0"
+  ],
+  "reason_codes": [],
+  "quality_flags": []
+}

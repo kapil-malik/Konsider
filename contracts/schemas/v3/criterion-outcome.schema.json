@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/criterion-outcome.schema.json",
+  "title": "Canonical country criterion outcome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "criterion_id",
+    "subject",
+    "outcome",
+    "evidence_kind",
+    "attempted_at",
+    "observation_id",
+    "score_id",
+    "derived_evidence_id",
+    "source_lineage_ids",
+    "reason_codes",
+    "quality_flags"
+  ],
+  "properties": {
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "allOf": [
+        {
+          "$ref": "geographic-entity.schema.json#/$defs/entityReference"
+        },
+        {
+          "properties": {
+            "entity_type": {
+              "const": "COUNTRY"
+            }
+          }
+        }
+      ]
+    },
+    "outcome": {
+      "enum": ["valid", "missing", "stale", "invalid", "rejected"]
+    },
+    "evidence_kind": {
+      "enum": ["DIRECT_OBSERVATION", "DERIVED_LOCALITIES", "NONE"]
+    },
+    "attempted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observation_id": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "score_id": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "derived_evidence_id": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "source_lineage_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "reason_codes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Z0-9_]*(?::[A-Za-z0-9_.-]+)?$"
+      }
+    },
+    "quality_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Z0-9_]*$"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "valid"
+          }
+        },
+        "required": ["outcome"]
+      },
+      "then": {
+        "properties": {
+          "score_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason_codes": {
+            "maxItems": 0
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "evidence_kind": {
+                  "const": "DIRECT_OBSERVATION"
+                }
+              },
+              "required": ["evidence_kind"]
+            },
+            "then": {
+              "properties": {
+                "observation_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "derived_evidence_id": {
+                  "type": "null"
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "evidence_kind": {
+                  "const": "DERIVED_LOCALITIES"
+                },
+                "observation_id": {
+                  "type": "null"
+                },
+                "derived_evidence_id": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "else": {
+        "properties": {
+          "evidence_kind": {
+            "const": "NONE"
+          },
+          "observation_id": {
+            "type": "null"
+          },
+          "score_id": {
+            "type": "null"
+          },
+          "derived_evidence_id": {
+            "type": "null"
+          },
+          "reason_codes": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

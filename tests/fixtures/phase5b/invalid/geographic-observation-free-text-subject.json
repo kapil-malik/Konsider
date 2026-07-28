@@ -1,0 +1,13 @@
+{
+  "observation_id": "obs:C66:invalid",
+  "criterion_id": "C66",
+  "subject": "Toronto",
+  "value": 18.4,
+  "unit": "annual mean days per decade",
+  "reference_period": {
+    "start": "2011-01-01",
+    "end": "2020-12-31"
+  },
+  "source_lineage_id": "lineage:c66-ghsl:1.0",
+  "quality_flags": []
+}

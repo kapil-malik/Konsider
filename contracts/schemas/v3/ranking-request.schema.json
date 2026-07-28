@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/ranking-request.schema.json",
+  "title": "Target API v2 ranking request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["api_contract_version"],
+  "properties": {
+    "api_contract_version": {
+      "const": "konsider-api-2.0"
+    },
+    "weights": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "preference_preset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "top_k": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "not": {
+    "required": ["weights", "preference_preset_id"]
+  }
+}

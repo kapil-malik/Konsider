@@ -1,0 +1,111 @@
+{
+  "api_contract_version": "konsider-api-2.0",
+  "release_id": "phase5b-synthetic-5.0",
+  "release_schema_version": "konsider-release-5.0",
+  "catalog_schema_version": "consumer-catalog-3.0",
+  "resolved_preference_preset_id": "equal_weight_mvp",
+  "normalized_weights": {
+    "C48": 0.4,
+    "C66": 0.6
+  },
+  "assessments": {
+    "coverage": {
+      "status": "PARTIAL_COMPLETE_CASE",
+      "policy_version": "uncertainty-aware-ranking-policy-1.0",
+      "active_global_core_criterion_ids": [
+        "C48"
+      ],
+      "active_conditional_criterion_ids": [
+        "C66"
+      ],
+      "excluded_country_entity_ids": [
+        "country:ATG",
+        "country:GRD"
+      ],
+      "reasons": [
+        {
+          "code": "PCC_ACTIVE:C66",
+          "severity": "INFO",
+          "effect": "NONE"
+        }
+      ]
+    },
+    "locality": {
+      "status": "ONE_ACTIVE_LOCALITY_CRITERION",
+      "active_criterion_ids": [
+        "C66"
+      ],
+      "analysis_triggered_criterion_ids": [
+        "C66"
+      ],
+      "analysis_threshold": 0.6,
+      "aggregation_policy_ids": [
+        "c66-extreme-heat-top2"
+      ],
+      "reasons": [
+        {
+          "code": "LOCALITY_ANALYSIS_SINGLE_CRITERION",
+          "severity": "INFO",
+          "effect": "ADVISORY"
+        }
+      ]
+    },
+    "profile": {
+      "status": "NO_PROFILE_CONTEXT",
+      "evaluated_dimensions": [],
+      "reasons": [
+        {
+          "code": "PROFILE_CONTEXT_NOT_SUPPLIED",
+          "severity": "INFO",
+          "effect": "NOT_EVALUATED"
+        }
+      ]
+    }
+  },
+  "rankings": [
+    {
+      "rank": 1,
+      "country": {
+        "entity_id": "country:CAN",
+        "entity_type": "COUNTRY"
+      },
+      "total_score": 8.4,
+      "assessments": {
+        "locality": {
+          "status": "ONE_ACTIVE_LOCALITY_CRITERION",
+          "eligible_locality_entity_ids": [
+            "ghsl-uc:10737",
+            "ghsl-uc:10739"
+          ],
+          "valid_locality_entity_ids": [
+            "ghsl-uc:10737",
+            "ghsl-uc:10739"
+          ],
+          "contributing_locality_entity_ids": [
+            "ghsl-uc:10737",
+            "ghsl-uc:10739"
+          ],
+          "common_locality_entity_ids": [],
+          "reasons": [
+            {
+              "code": "COMMON_LOCALITY_NOT_APPLICABLE_SINGLE_CRITERION",
+              "severity": "INFO",
+              "effect": "NONE"
+            }
+          ]
+        },
+        "profile": {
+          "status": "NO_PROFILE_CONTEXT",
+          "evaluated_dimensions": [],
+          "reasons": [
+            {
+              "code": "PROFILE_CONTEXT_NOT_SUPPLIED",
+              "severity": "INFO",
+              "effect": "NOT_EVALUATED"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "evidence_id": "derived:C66:country:CAN:invalid",
+  "result_criterion_id": "C66",
+  "country": {
+    "entity_id": "country:CAN",
+    "entity_type": "COUNTRY"
+  },
+  "derivation_method": "AGGREGATED_FROM_LOCALITIES",
+  "aggregation_policy": {
+    "policy_id": "c66-extreme-heat-top2",
+    "policy_version": "1.0"
+  },
+  "input_release_id": "phase5b-synthetic-5.0",
+  "contributing_localities": [
+    {
+      "locality": {
+        "entity_id": "ghsl-uc:10737",
+        "entity_type": "CITY"
+      },
+      "observation_ids": [
+        "obs:C66:ghsl-uc:10737:2020"
+      ],
+      "score_id": "score:C66:ghsl-uc:10737:2020",
+      "score": 8.2
+    }
+  ],
+  "eligible_locality_count": 1,
+  "valid_locality_count": 1,
+  "result_score": 8.2,
+  "source": "JRC climate and city data",
+  "quality_flags": [
+    "SINGLE_LOCALITY_RESULT"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/geographic-entity.schema.json",
+  "title": "Canonical geographic entity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "entity_id",
+    "entity_type",
+    "display_name",
+    "country_codes",
+    "aliases",
+    "source_mappings"
+  ],
+  "properties": {
+    "entity_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]+$"
+    },
+    "entity_type": {
+      "enum": ["COUNTRY", "CITY", "METRO", "REGION", "SERVICE_AREA"]
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "country_codes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}$"
+      }
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "source_version", "source_entity_id"],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_entity_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "entity_type": {
+            "const": "COUNTRY"
+          }
+        },
+        "required": ["entity_type"]
+      },
+      "then": {
+        "properties": {
+          "entity_id": {
+            "pattern": "^country:[A-Z]{3}$"
+          },
+          "country_codes": {
+            "maxItems": 1
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "entity_id": {
+            "not": {
+              "pattern": "^country:"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "entityReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_id", "entity_type"],
+      "properties": {
+        "entity_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]+$"
+        },
+        "entity_type": {
+          "enum": ["COUNTRY", "CITY", "METRO", "REGION", "SERVICE_AREA"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "entity_type": {
+                "const": "COUNTRY"
+              }
+            },
+            "required": ["entity_type"]
+          },
+          "then": {
+            "properties": {
+              "entity_id": {
+                "pattern": "^country:[A-Z]{3}$"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "entity_id": {
+                "not": {
+                  "pattern": "^country:"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "localityReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_id", "entity_type"],
+      "properties": {
+        "entity_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]+$"
+        },
+        "entity_type": {
+          "enum": ["CITY", "METRO", "REGION", "SERVICE_AREA"]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/criterion-definition.schema.json",
+  "title": "Phase 5 criterion definition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "display_name",
+    "historical_names",
+    "category",
+    "description",
+    "direction",
+    "raw_unit",
+    "interpretation",
+    "caveats",
+    "quality_limitations",
+    "ready",
+    "default_enabled",
+    "experimental",
+    "scoring_method_version",
+    "coverage",
+    "scope",
+    "applicability"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "historical_names": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "direction": {
+      "enum": ["higher_is_better", "lower_is_better"]
+    },
+    "raw_unit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "interpretation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "caveats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "quality_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ready": {
+      "type": "boolean"
+    },
+    "default_enabled": {
+      "type": "boolean"
+    },
+    "experimental": {
+      "type": "boolean"
+    },
+    "scoring_method_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "coverage": {
+      "$ref": "#/$defs/coverage"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "applicability": {
+      "$ref": "#/$defs/applicability"
+    }
+  },
+  "$defs": {
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "stable_universe_id",
+        "stable_country_count",
+        "valid_country_count",
+        "minimum_valid_country_count",
+        "outcome_counts",
+        "activation_threshold",
+        "score_range",
+        "source_lineage_ids"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "GLOBAL_CORE",
+            "CONDITIONAL_COMPLETE_CASE",
+            "DIAGNOSTIC_ONLY"
+          ]
+        },
+        "stable_universe_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stable_country_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "valid_country_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimum_valid_country_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "outcome_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["valid", "missing", "stale", "invalid", "rejected"],
+          "properties": {
+            "valid": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "missing": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stale": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "invalid": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rejected": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "activation_threshold": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "score_range": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "maximum"],
+          "properties": {
+            "minimum": {
+              "type": "number"
+            },
+            "maximum": {
+              "type": "number"
+            }
+          }
+        },
+        "source_lineage_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "CONDITIONAL_COMPLETE_CASE"
+              }
+            },
+            "required": ["mode"]
+          },
+          "then": {
+            "properties": {
+              "activation_threshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "activation_threshold": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_level",
+        "result_level",
+        "locality_type",
+        "derivation",
+        "locality_universe_id",
+        "aggregation_policy_id",
+        "locality_analysis_threshold"
+      ],
+      "properties": {
+        "evidence_level": {
+          "enum": ["COUNTRY", "LOCALITY"]
+        },
+        "result_level": {
+          "const": "COUNTRY"
+        },
+        "locality_type": {
+          "type": ["string", "null"],
+          "enum": ["CITY", "METRO", "REGION", "SERVICE_AREA", null]
+        },
+        "derivation": {
+          "enum": ["DIRECT", "AGGREGATED_FROM_LOCALITIES"]
+        },
+        "locality_universe_id": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "aggregation_policy_id": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "locality_analysis_threshold": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "derivation": {
+                "const": "DIRECT"
+              }
+            },
+            "required": ["derivation"]
+          },
+          "then": {
+            "properties": {
+              "evidence_level": {
+                "const": "COUNTRY"
+              },
+              "locality_type": {
+                "type": "null"
+              },
+              "locality_universe_id": {
+                "type": "null"
+              },
+              "aggregation_policy_id": {
+                "type": "null"
+              },
+              "locality_analysis_threshold": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "evidence_level": {
+                "const": "LOCALITY"
+              },
+              "locality_type": {
+                "enum": ["CITY", "METRO", "REGION", "SERVICE_AREA"]
+              },
+              "locality_universe_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "aggregation_policy_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "locality_analysis_threshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "dimensions"],
+      "properties": {
+        "mode": {
+          "enum": ["UNIVERSAL", "PARAMETERIZED", "FUTURE_PROFILE_REQUIRED"]
+        },
+        "dimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "UNIVERSAL"
+              }
+            },
+            "required": ["mode"]
+          },
+          "then": {
+            "properties": {
+              "dimensions": {
+                "maxItems": 0
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "dimensions": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "entity_id": "ghsl-uc:10737",
+  "entity_type": "CITY",
+  "display_name": "Toronto",
+  "country_codes": [
+    "CAN"
+  ],
+  "aliases": [
+    "Toronto urban centre"
+  ],
+  "source_mappings": [
+    {
+      "source_id": "jrc-ghs-ucdb",
+      "source_version": "R2024A-v1.2",
+      "source_entity_id": "10737"
+    }
+  ]
+}

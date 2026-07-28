@@ -23,6 +23,9 @@ readable schemas, and published release manifests take precedence if prose ever 
   results and clean-checkout CI status.
 - [Phase 5A locality criteria discovery](research/phase5a-locality-criteria-discovery.md) - the
   45-criterion disposition, measured locality universe, source gates, and first-wave decision.
+- [Phase 5B target architecture and contracts](architecture/phase5b-target-contracts.md) -
+  orthogonal criterion metadata, canonical geography, derived lineage, structured assessments,
+  target versions, fixtures, and migration plan.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
   validation, fixture, and compatibility contract.
 - [Phase 4D ranking engine](product/phase4d-ranking-engine.md) - typed complete-case ranking,
@@ -51,6 +54,9 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [ADR 002: Local files and S3](architecture/decisions/002-local-files-and-s3.md)
 - [ADR 003: FastAPI API engine](architecture/decisions/003-fastapi-api-engine.md)
 - [ADR 004: React and Vite UI](architecture/decisions/004-react-vite-ui.md)
+- [ADR 005: Orthogonal criterion and geography](architecture/decisions/005-orthogonal-criterion-geography.md)
+- [ADR 006: Canonical geography and derived lineage](architecture/decisions/006-canonical-geography-and-derived-lineage.md)
+- [ADR 007: Structured assessments and preference presets](architecture/decisions/007-structured-assessments-and-preference-presets.md)
 
 ## Operations
 
@@ -76,6 +82,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 3G-0 final probes](research/phase3g0-final-probes.md)
 - [Phase 3 closure report](research/phase3-closure-report.md)
 - [Phase 5A locality criteria discovery](research/phase5a-locality-criteria-discovery.md)
+- [Phase 5B target architecture and contracts](architecture/phase5b-target-contracts.md)
 
 ## Historical records
 

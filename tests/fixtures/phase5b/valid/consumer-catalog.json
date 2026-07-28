@@ -1,0 +1,188 @@
+{
+  "schema_version": "consumer-catalog-3.0",
+  "compatible_release_schema_major": 5,
+  "target_api_contract_version": "konsider-api-2.0",
+  "coverage_policy_version": "uncertainty-aware-ranking-policy-1.0",
+  "stable_universe_id": "stable_supported_v1",
+  "geographic_entities": [
+    {
+      "entity_id": "country:CAN",
+      "entity_type": "COUNTRY",
+      "display_name": "Canada",
+      "country_codes": [
+        "CAN"
+      ],
+      "aliases": [],
+      "source_mappings": [
+        {
+          "source_id": "iso-3166",
+          "source_version": "2025",
+          "source_entity_id": "CAN"
+        }
+      ]
+    },
+    {
+      "entity_id": "ghsl-uc:10737",
+      "entity_type": "CITY",
+      "display_name": "Toronto",
+      "country_codes": [
+        "CAN"
+      ],
+      "aliases": [
+        "Toronto urban centre"
+      ],
+      "source_mappings": [
+        {
+          "source_id": "jrc-ghs-ucdb",
+          "source_version": "R2024A-v1.2",
+          "source_entity_id": "10737"
+        }
+      ]
+    },
+    {
+      "entity_id": "ghsl-uc:10739",
+      "entity_type": "CITY",
+      "display_name": "Montréal",
+      "country_codes": [
+        "CAN"
+      ],
+      "aliases": [
+        "Montreal"
+      ],
+      "source_mappings": [
+        {
+          "source_id": "jrc-ghs-ucdb",
+          "source_version": "R2024A-v1.2",
+          "source_entity_id": "10739"
+        }
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C66",
+      "display_name": "Extreme heat exposure",
+      "historical_names": [
+        "Extreme-weather risk"
+      ],
+      "category": "Climate and environment",
+      "description": "Locality-derived exposure to days when daily maximum UTCI exceeds 32 degrees Celsius.",
+      "direction": "lower_is_better",
+      "raw_unit": "annual mean days per decade",
+      "interpretation": "Lower exposure is better; this does not represent broad extreme-weather risk.",
+      "caveats": [
+        "The decadal source field ends in 2020.",
+        "The JRC day-count versus pixel-count methodology wording must be resolved before production onboarding."
+      ],
+      "quality_limitations": [
+        "Does not measure floods, storms, drought, wildfire, adaptation, or household cooling access."
+      ],
+      "ready": false,
+      "default_enabled": false,
+      "experimental": true,
+      "scoring_method_version": "c66-extreme-heat-draft-1.0",
+      "coverage": {
+        "mode": "CONDITIONAL_COMPLETE_CASE",
+        "stable_universe_id": "stable_supported_v1",
+        "stable_country_count": 91,
+        "valid_country_count": 89,
+        "minimum_valid_country_count": 82,
+        "outcome_counts": {
+          "valid": 89,
+          "missing": 2,
+          "stale": 0,
+          "invalid": 0,
+          "rejected": 0
+        },
+        "activation_threshold": 0.6,
+        "score_range": {
+          "minimum": 0,
+          "maximum": 10
+        },
+        "source_lineage_ids": [
+          "lineage:c66-ghsl:1.0"
+        ]
+      },
+      "scope": {
+        "evidence_level": "LOCALITY",
+        "result_level": "COUNTRY",
+        "locality_type": "CITY",
+        "derivation": "AGGREGATED_FROM_LOCALITIES",
+        "locality_universe_id": "major-urban-opportunity-v1",
+        "aggregation_policy_id": "c66-extreme-heat-top2",
+        "locality_analysis_threshold": 0.6
+      },
+      "applicability": {
+        "mode": "UNIVERSAL",
+        "dimensions": []
+      }
+    }
+  ],
+  "locality_universes": [
+    {
+      "locality_universe_id": "major-urban-opportunity-v1",
+      "locality_universe_version": "1.0",
+      "locality_type": "CITY",
+      "source_lineage_id": "lineage:major-urban-opportunity:1.0",
+      "selection": {
+        "method": "BOUNDED_POPULATION",
+        "minimum_population": 50000,
+        "maximum_per_country": 5,
+        "order_by": "GC_POP_TOT_2025",
+        "order_direction": "DESC",
+        "tie_breakers": [
+          "ID_UC_G0_ASC"
+        ],
+        "independent_of_criterion_values": true
+      },
+      "country_treatment": {
+        "no_qualifying_locality": "EXPLICIT_NO_LOCALITY_OUTCOME",
+        "single_locality": "ALLOW_POLICY_TO_DECIDE",
+        "cross_border": "SOURCE_PARENT_COUNTRY_V1"
+      },
+      "entity_ids": [
+        "ghsl-uc:10737",
+        "ghsl-uc:10739"
+      ]
+    }
+  ],
+  "aggregation_policies": [
+    {
+      "policy_id": "c66-extreme-heat-top2",
+      "policy_version": "1.0",
+      "eligible_locality_universe": {
+        "locality_universe_id": "major-urban-opportunity-v1",
+        "locality_universe_version": "1.0"
+      },
+      "source_criterion_id": "C66",
+      "result_criterion_id": "C66",
+      "locality_type": "CITY",
+      "result_level": "COUNTRY",
+      "selection": {
+        "method": "TOP_N_MEAN",
+        "n": 2
+      },
+      "minimum_valid_localities": 1,
+      "score_range": {
+        "minimum": 0,
+        "maximum": 10
+      },
+      "tie_handling": "STABLE_ENTITY_ID",
+      "one_locality_treatment": "USE_AVAILABLE",
+      "required_lineage_roles": [
+        "PRIMARY_OBSERVATION",
+        "ENTITY_UNIVERSE"
+      ]
+    }
+  ],
+  "preference_presets": [
+    {
+      "id": "equal_weight_mvp",
+      "name": "Equal weight",
+      "description": "Synthetic Phase 5B preference preset.",
+      "weights": {
+        "C66": 1
+      }
+    }
+  ]
+}

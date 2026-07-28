@@ -1,0 +1,17 @@
+{
+  "score_id": "score:C66:ghsl-uc:10737:2020",
+  "criterion_id": "C66",
+  "subject": {
+    "entity_id": "ghsl-uc:10737",
+    "entity_type": "CITY"
+  },
+  "score": 8.2,
+  "observation_ids": [
+    "obs:C66:ghsl-uc:10737:2020"
+  ],
+  "scoring_method_version": "c66-extreme-heat-draft-1.0",
+  "source_lineage_id": "lineage:c66-ghsl:1.0",
+  "quality_flags": [
+    "SOURCE_METHOD_CLARIFICATION_PENDING"
+  ]
+}
