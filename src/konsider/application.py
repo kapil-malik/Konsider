@@ -6,6 +6,14 @@ from collections.abc import Mapping, Sequence
 from typing import Any
 
 from konsider.domain.scoring import ScoringError, normalize_weights
+from konsider.domain.uncertainty_comparison import (
+    compare_release_with_uncertainty,
+)
+from konsider.domain.uncertainty_models import (
+    UncertaintyComparisonResult,
+    UncertaintyRankingResult,
+)
+from konsider.domain.uncertainty_ranking import rank_release_with_uncertainty
 from konsider.exceptions import (
     CountryNotFoundError,
     CriterionNotReadyError,
@@ -48,17 +56,46 @@ class RecommendationService:
             ),
             "countries": self.release.catalog["countries"],
             "criteria": [
-                {
-                    **criterion,
-                    "sources": sorted(
-                        sources_by_criterion.get(criterion["id"], []),
-                        key=lambda item: item["source_id"],
-                    ),
-                }
+                self._catalog_criterion(criterion, sources_by_criterion)
                 for criterion in self.release.catalog["criteria"]
             ],
             "profiles": self.release.catalog["profiles"],
         }
+
+    def _catalog_criterion(
+        self,
+        criterion: dict[str, Any],
+        sources_by_criterion: dict[str, list[dict[str, Any]]],
+    ) -> dict[str, Any]:
+        stable_count = len(self.release.catalog["countries"])
+        coverage = criterion.get("coverage")
+        if coverage is None:
+            valid_count = self.release.validation["criterion_coverage"].get(criterion["id"], 0)
+            coverage_mode = "GLOBAL_CORE" if criterion["ready"] else "DIAGNOSTIC_ONLY"
+            activation_threshold = None
+        else:
+            valid_count = coverage["valid_country_count"]
+            stable_count = coverage["stable_country_count"]
+            coverage_mode = coverage["mode"]
+            activation_threshold = coverage["activation_threshold"]
+        public = {key: value for key, value in criterion.items() if key != "coverage"}
+        public.update(
+            {
+                "enabled": criterion["ready"],
+                "coverage_mode": coverage_mode,
+                "valid_country_count": valid_count,
+                "stable_country_count": stable_count,
+                "coverage_percentage": round(valid_count / stable_count * 100, 2),
+                "pcc_activation_threshold": activation_threshold,
+                "missing_country_count": stable_count - valid_count,
+                "concise_caveat": (criterion["caveats"][0] if criterion["caveats"] else None),
+                "sources": sorted(
+                    sources_by_criterion.get(criterion["id"], []),
+                    key=lambda item: item["source_id"],
+                ),
+            }
+        )
+        return public
 
     def _resolve_weights(
         self,
@@ -196,6 +233,51 @@ class RecommendationService:
             "returned_result_count": len(rankings),
             "rankings": rankings,
         }
+
+    def rank_with_uncertainty(
+        self,
+        weights: Mapping[str, float] | None = None,
+        *,
+        profile_id: str | None = None,
+        top_k: int | None = None,
+    ) -> UncertaintyRankingResult:
+        """Return the typed Phase 4 ranking result without changing the HTTP contract."""
+
+        resolved_weights, resolved_profile_id = self._resolve_weights(weights, profile_id)
+        return rank_release_with_uncertainty(
+            self.release,
+            resolved_weights,
+            resolved_profile_id=resolved_profile_id,
+            top_k=top_k,
+        )
+
+    def compare_with_uncertainty(
+        self,
+        country_codes: Sequence[str],
+        weights: Mapping[str, float] | None = None,
+        *,
+        profile_id: str | None = None,
+    ) -> UncertaintyComparisonResult:
+        """Compare available evidence while suppressing invalid partial totals."""
+
+        requested = tuple(country_codes)
+        if len(requested) < 2 or len(requested) > 10:
+            raise InvalidComparisonError("Comparisons require between 2 and 10 countries.")
+        if len(requested) != len(set(requested)):
+            raise InvalidComparisonError("Comparison country codes must be unique.")
+        ranking = self.rank_with_uncertainty(
+            weights,
+            profile_id=profile_id,
+        )
+        known = {item["code"] for item in self.release.catalog["countries"]}
+        unknown = sorted(set(requested) - known)
+        if unknown:
+            raise CountryNotFoundError(unknown)
+        return compare_release_with_uncertainty(
+            self.release,
+            ranking,
+            requested,
+        )
 
     def compare(
         self,

@@ -1,0 +1,313 @@
+{
+  "coverage": {
+    "research_innovation_ecosystem": {
+      "activation_threshold": 0.6,
+      "criterion_id": "research_innovation_ecosystem",
+      "experimental": true,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 6,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 85
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "wipo_innovation_outputs_bands_v1",
+      "source_versions": {
+        "wipo_innovation_outputs": "GII2025-INNOVATION-OUTPUTS"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 85
+    },
+    "school_education_quality": {
+      "activation_threshold": 0.6,
+      "criterion_id": "school_education_quality",
+      "experimental": true,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 2,
+        "rejected": 0,
+        "stale": 1,
+        "valid": 88
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "learning_adjusted_schooling_bands_v1",
+      "source_versions": {
+        "world_bank_hci_plus_schooling": "HCI+V3-LAYS@2026-02-11"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 88
+    }
+  },
+  "decisions": {
+    "financial_protection_from_health_costs": "HELD_LICENSING",
+    "food_safety_system_capacity": "HELD_EXACT_EXPORT_AND_CONSTRUCT_VALUE",
+    "freedom_expression_religion": "HELD_LICENSE_AND_VARIABLE_SELECTION",
+    "research_innovation_ecosystem": "EXPERIMENTAL_ONBOARDED",
+    "school_education_quality": "EXPERIMENTAL_ONBOARDED",
+    "social_protection_system_reach": "HELD_EXACT_SOURCE_AND_MODEL_POLICY"
+  },
+  "non_valid_outcomes": {
+    "research_innovation_ecosystem": [
+      {
+        "attempted_at": "2026-07-28T07:05:47+00:00",
+        "country_code": "ATG",
+        "criterion_id": "research_innovation_ecosystem",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "wipo_innovation_outputs"
+      },
+      {
+        "attempted_at": "2026-07-28T07:05:47+00:00",
+        "country_code": "BHS",
+        "criterion_id": "research_innovation_ecosystem",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "wipo_innovation_outputs"
+      },
+      {
+        "attempted_at": "2026-07-28T07:05:47+00:00",
+        "country_code": "FJI",
+        "criterion_id": "research_innovation_ecosystem",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "wipo_innovation_outputs"
+      },
+      {
+        "attempted_at": "2026-07-28T07:05:47+00:00",
+        "country_code": "GRD",
+        "criterion_id": "research_innovation_ecosystem",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "wipo_innovation_outputs"
+      },
+      {
+        "attempted_at": "2026-07-28T07:05:47+00:00",
+        "country_code": "GUY",
+        "criterion_id": "research_innovation_ecosystem",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "wipo_innovation_outputs"
+      },
+      {
+        "attempted_at": "2026-07-28T07:05:47+00:00",
+        "country_code": "HTI",
+        "criterion_id": "research_innovation_ecosystem",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "wipo_innovation_outputs"
+      }
+    ],
+    "school_education_quality": [
+      {
+        "attempted_at": "2026-07-26T16:42:28.407644+00:00",
+        "country_code": "BHS",
+        "criterion_id": "school_education_quality",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "world_bank_hci_plus_schooling"
+      },
+      {
+        "attempted_at": "2026-07-26T16:42:28.407644+00:00",
+        "country_code": "BOL",
+        "criterion_id": "school_education_quality",
+        "observation_id": null,
+        "outcome": "missing",
+        "reason_codes": [
+          "COV_SOURCE_RECORD_MISSING"
+        ],
+        "source_id": "world_bank_hci_plus_schooling"
+      },
+      {
+        "attempted_at": "2026-07-26T16:42:28.407644+00:00",
+        "country_code": "GUY",
+        "criterion_id": "school_education_quality",
+        "observation_id": null,
+        "outcome": "stale",
+        "reason_codes": [
+          "FRS_STALE"
+        ],
+        "source_id": "world_bank_hci_plus_schooling"
+      }
+    ]
+  },
+  "raw_artifacts": [
+    {
+      "artifact_id": "sha256:7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265",
+      "byte_length": 490475,
+      "requested_url": "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/hci_plus_index_panel.dta",
+      "sha256": "7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265",
+      "source_id": "world_bank_hci_plus_schooling"
+    },
+    {
+      "artifact_id": "sha256:29dac5fadb7c1ef3ae54044887db8eedd232a08f7cae930cf886e131afd55b81",
+      "byte_length": 935909,
+      "requested_url": "https://www.wipo.int/edocs/pubdocs/en/wipo-pub-2000-2025-tech1.xlsx",
+      "sha256": "29dac5fadb7c1ef3ae54044887db8eedd232a08f7cae930cf886e131afd55b81",
+      "source_id": "wipo_innovation_outputs"
+    }
+  ],
+  "release_id": "2026-07-28.2",
+  "schema_version": "phase4-wave2-onboarding-report-1.0",
+  "scoring": {
+    "research_innovation_ecosystem": {
+      "anchors": [
+        [
+          10,
+          1
+        ],
+        [
+          20,
+          3
+        ],
+        [
+          30,
+          5.5
+        ],
+        [
+          45,
+          8
+        ],
+        [
+          60,
+          10
+        ]
+      ],
+      "country_set_test": {
+        "scenario": "remove one minimum and one maximum raw observation",
+        "threshold_score_range_full": [
+          1,
+          10
+        ],
+        "threshold_score_range_trimmed": [
+          1,
+          9.878
+        ]
+      },
+      "observed_raw_range": [
+        7.29348108845904,
+        64.4527324885586
+      ],
+      "score_ranges": {
+        "percentile_rank": [
+          1.0,
+          10.0
+        ],
+        "threshold": [
+          1,
+          10
+        ],
+        "winsorized_minmax": [
+          1.0,
+          10.0
+        ]
+      },
+      "score_standard_deviation": {
+        "percentile_rank": 2.6288,
+        "threshold": 2.6303,
+        "winsorized_minmax": 2.6978
+      },
+      "selected_method_version": "wipo_innovation_outputs_bands_v1",
+      "selection_reason": "Fixed domain anchors are composition-stable and do not force small observed differences across the full score range.",
+      "tight_cluster_test_score_spread": {
+        "percentile_rank": 9.0,
+        "threshold": 0.1146,
+        "winsorized_minmax": 9.0
+      }
+    },
+    "school_education_quality": {
+      "anchors": [
+        [
+          4,
+          1
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          5.5
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          12,
+          10
+        ]
+      ],
+      "country_set_test": {
+        "scenario": "remove one minimum and one maximum raw observation",
+        "threshold_score_range_full": [
+          1.003,
+          10
+        ],
+        "threshold_score_range_trimmed": [
+          1.7,
+          9.705
+        ]
+      },
+      "observed_raw_range": [
+        4.003244269534937,
+        12.28072463105871
+      ],
+      "score_ranges": {
+        "percentile_rank": [
+          1.0,
+          10.0
+        ],
+        "threshold": [
+          1.003,
+          10
+        ],
+        "winsorized_minmax": [
+          1.0,
+          10.0
+        ]
+      },
+      "score_standard_deviation": {
+        "percentile_rank": 2.6278,
+        "threshold": 2.1327,
+        "winsorized_minmax": 2.8765
+      },
+      "selected_method_version": "learning_adjusted_schooling_bands_v1",
+      "selection_reason": "Fixed domain anchors are composition-stable and do not force small observed differences across the full score range.",
+      "tight_cluster_test_score_spread": {
+        "percentile_rank": 9.0,
+        "threshold": 0.1035,
+        "winsorized_minmax": 9.0
+      }
+    }
+  }
+}

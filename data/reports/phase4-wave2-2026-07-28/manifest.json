@@ -1,0 +1,8 @@
+{
+  "files": {
+    "report.json": "sha256:284ed749b9341785cae9a5cc7a6cc286414413925cc920c75b1a4baea1c47388",
+    "report.md": "sha256:2792a1e812d2c682d8bca6703b1abd83aa8e132e12c9affc2c4ad3f0f65cb67b"
+  },
+  "release_id": "2026-07-28.2",
+  "schema_version": "phase4-wave2-report-manifest-1.0"
+}

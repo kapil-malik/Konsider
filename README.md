@@ -4,13 +4,13 @@ Konsider is an evidence-backed country-suitability project. It implements a loca
 refresh worker, immutable versioned releases, a deterministic recommendation service, a typed
 FastAPI v1 API, and a responsive catalog-driven React comparison UI.
 
-Active release `2026-07-27.1` contains 91 countries and nine available criteria. Eight are enabled
-for ranking. UHC is unavailable because its latest official observation is stale; infrastructure
-is enabled but explicitly experimental. Legacy fixtures are tests only and never fill product data.
-Phase 2D is complete. Konsider supports the countries for which complete and sufficiently fresh data
-is available across every enabled ranking criterion under the approved source and licensing policy.
-The stable universe is generated from the audited complete-case intersection; no imputation or
-partial-country scoring is used.
+Active release `2026-07-28.2` contains 91 countries and twelve available criteria. Eight
+global-core criteria cover all countries; Overall job-market opportunity, School education
+quality, and Research and innovation ecosystem use conditional complete-case ranking. UHC is
+unavailable, while infrastructure and both Wave 2 criteria are explicitly experimental. Legacy
+fixtures never fill product data. Rankings use complete cases across active
+criteria, keep missing/stale outcomes explicit, and never impute or calculate partial country
+scores.
 
 ```text
 official sources -> worker -> immutable local releases -> RecommendationService -> FastAPI /api/v1
@@ -66,7 +66,7 @@ new release ID plus every printed source-version acknowledgement:
 
 ```powershell
 python -m konsider.ingestion.worker list-sources
-python -m konsider.ingestion.worker replay data\releases\2026-07-27.1
+python -m konsider.ingestion.worker replay data\releases\2026-07-28.2
 python -m konsider.ingestion.worker audit-coverage --universe data\country-universes\popular-relocation-v1.json --audit-id AUDIT_ID --mode offline --artifacts data\reports\country-coverage\coverage-2026-07-23.6\raw-artifacts.json
 ```
 
@@ -82,7 +82,7 @@ black --check .
 python -m compileall -q src tests
 ```
 
-GitHub Actions runs the same gates on Ubuntu.
+GitHub Actions runs the backend gates from clean Ubuntu and Windows checkouts.
 
 Frontend gates are documented in [web/README.md](web/README.md).
 
@@ -99,4 +99,9 @@ Start at the [documentation index](docs/README.md).
 - [Phase 2D.4 homicide source feasibility](docs/data/homicide-source-feasibility-phase-2d4.md)
 - [Phase 3 closure report](docs/research/phase3-closure-report.md)
 - [Roadmap](docs/product/roadmap.md)
-- [Active release report](docs/history/releases/2026-07-27.1.md)
+- [Phase 4F onboarding report](data/reports/phase4f-2026-07-28/report.md)
+- [Phase 4 Wave 2 onboarding report](data/reports/phase4-wave2-2026-07-28/report.md)
+- [Phase 4 Wave 2 PCC candidates](docs/research/phase4-wave2-pcc-candidates.md)
+- [Phase 4 closure report](docs/history/phase4-closure-report.md)
+- [Historical phase workspaces](project-history/README.md)
+- [Active release report](docs/history/releases/2026-07-28.2.md)

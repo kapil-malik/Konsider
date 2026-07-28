@@ -1,0 +1,24 @@
+{
+  "schema_version": "phase4d-golden-1.0",
+  "missing_union_scenarios": [
+    {"id": "union_0", "missing_count": 0, "expected_status": "FULL_COVERAGE", "expected_band": "PREFERRED"},
+    {"id": "union_3", "missing_count": 3, "expected_status": "ROBUST_TOP_K", "expected_band": "PREFERRED"},
+    {"id": "union_5", "missing_count": 5, "expected_status": "ROBUST_TOP_K", "expected_band": "PREFERRED"},
+    {"id": "union_6", "missing_count": 6, "expected_status": "ROBUST_TOP_K", "expected_band": "ELEVATED"},
+    {"id": "union_9", "missing_count": 9, "expected_status": "ROBUST_TOP_K", "expected_band": "ELEVATED"},
+    {"id": "union_10", "missing_count": 10, "expected_status": "COVERAGE_LIMIT_EXCEEDED", "expected_band": "BLOCKED"}
+  ],
+  "activation_weight_scenarios": [
+    {"id": "omitted", "weight": null, "ignored_count": 0, "active_count": 0, "expected_status": "NO_PARTIAL_CRITERIA_ACTIVE"},
+    {"id": "explicit_zero", "weight": 0.0, "ignored_count": 0, "active_count": 0, "expected_status": "NO_PARTIAL_CRITERIA_ACTIVE"},
+    {"id": "very_low", "weight": 0.2, "ignored_count": 1, "active_count": 0, "expected_status": "NO_PARTIAL_CRITERIA_ACTIVE"},
+    {"id": "low", "weight": 0.4, "ignored_count": 1, "active_count": 0, "expected_status": "NO_PARTIAL_CRITERIA_ACTIVE"},
+    {"id": "medium_boundary", "weight": 0.6, "ignored_count": 0, "active_count": 1, "expected_status": "ROBUST_TOP_K"}
+  ],
+  "optimistic_bound_scenarios": [
+    {"id": "below", "excluded_fcc_score": 1.0, "expected_status": "ROBUST_TOP_K", "could_enter": false},
+    {"id": "equal", "excluded_fcc_score": 2.0, "expected_status": "POTENTIALLY_AFFECTED", "could_enter": true},
+    {"id": "above", "excluded_fcc_score": 2.5, "expected_status": "POTENTIALLY_AFFECTED", "could_enter": true}
+  ],
+  "top_k_values": [5, 10, 20]
+}

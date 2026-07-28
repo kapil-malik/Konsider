@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v2/validation-report.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "structural_passed", "product_ready", "passed",
+    "observation_count", "score_count", "attempt_count", "criterion_coverage",
+    "criterion_readiness", "ready_criterion_count", "status_counts", "issues",
+    "coverage_policy_version", "stable_universe_id", "stable_country_count",
+    "criterion_coverage_details", "global_core_ready_count", "minimum_global_core_count"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^validation-4\\.[0-9]+$"},
+    "structural_passed": {"type": "boolean"},
+    "product_ready": {"type": "boolean"},
+    "passed": {"type": "boolean"},
+    "observation_count": {"type": "integer", "minimum": 0},
+    "score_count": {"type": "integer", "minimum": 0},
+    "attempt_count": {"type": "integer", "minimum": 0},
+    "criterion_coverage": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "criterion_readiness": {"type": "object", "additionalProperties": {"type": "boolean"}},
+    "ready_criterion_count": {"type": "integer", "minimum": 0},
+    "status_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "severity", "message", "scope"],
+        "properties": {
+          "code": {"type": "string"},
+          "severity": {"enum": ["error", "blocker", "warning"]},
+          "message": {"type": "string"},
+          "scope": {"type": "string"},
+          "country_code": {"type": ["string", "null"]},
+          "metric_id": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "coverage_policy_version": {"const": "uncertainty-aware-ranking-policy-1.0"},
+    "stable_universe_id": {"type": "string", "minLength": 1},
+    "stable_country_count": {"type": "integer", "minimum": 1},
+    "criterion_coverage_details": {
+      "type": "object", "minProperties": 1,
+      "additionalProperties": {"$ref": "release-manifest.schema.json#/$defs/coverage"}
+    },
+    "global_core_ready_count": {"type": "integer", "minimum": 0},
+    "minimum_global_core_count": {"type": "integer", "minimum": 0}
+  }
+}

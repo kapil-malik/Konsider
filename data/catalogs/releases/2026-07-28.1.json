@@ -1,0 +1,955 @@
+{
+    "compatible_release_schema_major":  4,
+    "countries":  [
+                      {
+                          "code":  "ALB",
+                          "display_name":  "Albania",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "ARE",
+                          "display_name":  "United Arab Emirates",
+                          "region":  "Middle East, North Africa, Afghanistan \u0026 Pakistan"
+                      },
+                      {
+                          "code":  "ARM",
+                          "display_name":  "Armenia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "ATG",
+                          "display_name":  "Antigua and Barbuda",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "AUS",
+                          "display_name":  "Australia",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "AUT",
+                          "display_name":  "Austria",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "BEL",
+                          "display_name":  "Belgium",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "BGR",
+                          "display_name":  "Bulgaria",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "BHR",
+                          "display_name":  "Bahrain",
+                          "region":  "Middle East, North Africa, Afghanistan \u0026 Pakistan"
+                      },
+                      {
+                          "code":  "BHS",
+                          "display_name":  "Bahamas, The",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "BIH",
+                          "display_name":  "Bosnia and Herzegovina",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "BOL",
+                          "display_name":  "Bolivia",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "BRA",
+                          "display_name":  "Brazil",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "BWA",
+                          "display_name":  "Botswana",
+                          "region":  "Sub-Saharan Africa"
+                      },
+                      {
+                          "code":  "CAN",
+                          "display_name":  "Canada",
+                          "region":  "North America"
+                      },
+                      {
+                          "code":  "CHE",
+                          "display_name":  "Switzerland",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "CHL",
+                          "display_name":  "Chile",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "CMR",
+                          "display_name":  "Cameroon",
+                          "region":  "Sub-Saharan Africa"
+                      },
+                      {
+                          "code":  "COL",
+                          "display_name":  "Colombia",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "CRI",
+                          "display_name":  "Costa Rica",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "CYP",
+                          "display_name":  "Cyprus",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "CZE",
+                          "display_name":  "Czechia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "DEU",
+                          "display_name":  "Germany",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "DNK",
+                          "display_name":  "Denmark",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "DOM",
+                          "display_name":  "Dominican Republic",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "DZA",
+                          "display_name":  "Algeria",
+                          "region":  "Middle East, North Africa, Afghanistan \u0026 Pakistan"
+                      },
+                      {
+                          "code":  "ESP",
+                          "display_name":  "Spain",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "EST",
+                          "display_name":  "Estonia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "FIN",
+                          "display_name":  "Finland",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "FJI",
+                          "display_name":  "Fiji",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "FRA",
+                          "display_name":  "France",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "GBR",
+                          "display_name":  "United Kingdom",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "GHA",
+                          "display_name":  "Ghana",
+                          "region":  "Sub-Saharan Africa"
+                      },
+                      {
+                          "code":  "GRC",
+                          "display_name":  "Greece",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "GRD",
+                          "display_name":  "Grenada",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "GTM",
+                          "display_name":  "Guatemala",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "GUY",
+                          "display_name":  "Guyana",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "HND",
+                          "display_name":  "Honduras",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "HRV",
+                          "display_name":  "Croatia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "HTI",
+                          "display_name":  "Haiti",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "HUN",
+                          "display_name":  "Hungary",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "IDN",
+                          "display_name":  "Indonesia",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "IND",
+                          "display_name":  "India",
+                          "region":  "South Asia"
+                      },
+                      {
+                          "code":  "IRL",
+                          "display_name":  "Ireland",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "ISL",
+                          "display_name":  "Iceland",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "ISR",
+                          "display_name":  "Israel",
+                          "region":  "Middle East, North Africa, Afghanistan \u0026 Pakistan"
+                      },
+                      {
+                          "code":  "ITA",
+                          "display_name":  "Italy",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "JAM",
+                          "display_name":  "Jamaica",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "JPN",
+                          "display_name":  "Japan",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "KAZ",
+                          "display_name":  "Kazakhstan",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "KOR",
+                          "display_name":  "Korea, Rep.",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "LTU",
+                          "display_name":  "Lithuania",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "LUX",
+                          "display_name":  "Luxembourg",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "LVA",
+                          "display_name":  "Latvia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "MDA",
+                          "display_name":  "Moldova",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "MEX",
+                          "display_name":  "Mexico",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "MKD",
+                          "display_name":  "North Macedonia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "MLT",
+                          "display_name":  "Malta",
+                          "region":  "Middle East, North Africa, Afghanistan \u0026 Pakistan"
+                      },
+                      {
+                          "code":  "MNE",
+                          "display_name":  "Montenegro",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "MNG",
+                          "display_name":  "Mongolia",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "MUS",
+                          "display_name":  "Mauritius",
+                          "region":  "Sub-Saharan Africa"
+                      },
+                      {
+                          "code":  "MYS",
+                          "display_name":  "Malaysia",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "NAM",
+                          "display_name":  "Namibia",
+                          "region":  "Sub-Saharan Africa"
+                      },
+                      {
+                          "code":  "NGA",
+                          "display_name":  "Nigeria",
+                          "region":  "Sub-Saharan Africa"
+                      },
+                      {
+                          "code":  "NIC",
+                          "display_name":  "Nicaragua",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "NLD",
+                          "display_name":  "Netherlands",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "NOR",
+                          "display_name":  "Norway",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "NZL",
+                          "display_name":  "New Zealand",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "OMN",
+                          "display_name":  "Oman",
+                          "region":  "Middle East, North Africa, Afghanistan \u0026 Pakistan"
+                      },
+                      {
+                          "code":  "PAN",
+                          "display_name":  "Panama",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "PER",
+                          "display_name":  "Peru",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "PHL",
+                          "display_name":  "Philippines",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "POL",
+                          "display_name":  "Poland",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "PRT",
+                          "display_name":  "Portugal",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "PRY",
+                          "display_name":  "Paraguay",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "QAT",
+                          "display_name":  "Qatar",
+                          "region":  "Middle East, North Africa, Afghanistan \u0026 Pakistan"
+                      },
+                      {
+                          "code":  "ROU",
+                          "display_name":  "Romania",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "RUS",
+                          "display_name":  "Russian Federation",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "SGP",
+                          "display_name":  "Singapore",
+                          "region":  "East Asia \u0026 Pacific"
+                      },
+                      {
+                          "code":  "SLV",
+                          "display_name":  "El Salvador",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "SRB",
+                          "display_name":  "Serbia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "SVK",
+                          "display_name":  "Slovak Republic",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "SVN",
+                          "display_name":  "Slovenia",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "SWE",
+                          "display_name":  "Sweden",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "TTO",
+                          "display_name":  "Trinidad and Tobago",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "TUR",
+                          "display_name":  "Turkiye",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "UKR",
+                          "display_name":  "Ukraine",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "URY",
+                          "display_name":  "Uruguay",
+                          "region":  "Latin America \u0026 Caribbean"
+                      },
+                      {
+                          "code":  "USA",
+                          "display_name":  "United States",
+                          "region":  "North America"
+                      },
+                      {
+                          "code":  "UZB",
+                          "display_name":  "Uzbekistan",
+                          "region":  "Europe \u0026 Central Asia"
+                      },
+                      {
+                          "code":  "ZAF",
+                          "display_name":  "South Africa",
+                          "region":  "Sub-Saharan Africa"
+                      }
+                  ],
+    "coverage_policy_version":  "uncertainty-aware-ranking-policy-1.0",
+    "criteria":  [
+                     {
+                         "category":  "Environment",
+                         "caveats":  [
+                                         "Comparative national exposure, not a local air-quality reading."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "ambient_pm25_population_weighted",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "pm25_health_bands_v1",
+                                          "source_versions":  {
+                                                                  "world_bank_pm25":  "EN.ATM.PM25.MC.M3@WDI-2026-07-13"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "National population-weighted modelled exposure to fine particulate matter.",
+                         "direction":  "lower_is_better",
+                         "display_name":  "Population-weighted PM2.5 exposure",
+                         "experimental":  false,
+                         "id":  "ambient_pm25_population_weighted",
+                         "interpretation":  "Lower exposure receives a higher 1-10 health-band score.",
+                         "quality_limitations":  [
+                                                     "Modelled population-weighted estimate; not local regulatory monitoring."
+                                                 ],
+                         "raw_unit":  "micrograms_per_cubic_metre",
+                         "ready":  true,
+                         "scoring_method_version":  "pm25_health_bands_v1"
+                     },
+                     {
+                         "category":  "Safety",
+                         "caveats":  [
+                                         "Legal classification and reporting capacity vary by country."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "intentional_homicide_rate",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "homicide_risk_bands_v1",
+                                          "source_versions":  {
+                                                                  "unodc_homicide":  "VC.IHR.PSRC.P5@WDI-2026-07-13"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "Intentional homicides per 100,000 people; it does not represent all crime.",
+                         "direction":  "lower_is_better",
+                         "display_name":  "Intentional homicide rate",
+                         "experimental":  false,
+                         "id":  "intentional_homicide_rate",
+                         "interpretation":  "Lower homicide rates receive a higher 1-10 risk-band score.",
+                         "quality_limitations":  [
+                                                     "Latest country reference years differ and the measure covers homicide only."
+                                                 ],
+                         "raw_unit":  "per_100000_people",
+                         "ready":  true,
+                         "scoring_method_version":  "homicide_risk_bands_v1"
+                     },
+                     {
+                         "category":  "Affordability",
+                         "caveats":  [
+                                         "Not a precise cost-of-living ranking and not city- or household-specific."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "household_consumption_price_level_us_100",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "icp_relative_cost_bands_v2",
+                                          "source_versions":  {
+                                                                  "world_bank_icp":  "PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "A broad national household-consumption price-level band relative to United States = 100.",
+                         "direction":  "lower_is_better",
+                         "display_name":  "Broad household-consumption relative cost",
+                         "experimental":  false,
+                         "id":  "household_consumption_price_level_us_100",
+                         "interpretation":  "Lower broad relative-cost bands receive higher 1-10 scores; equal bands are genuine ties.",
+                         "quality_limitations":  [
+                                                     "Derived from PPP and official exchange-rate inputs and intentionally scored in broad bands."
+                                                 ],
+                         "raw_unit":  "index_us_100",
+                         "ready":  true,
+                         "scoring_method_version":  "icp_relative_cost_bands_v2"
+                     },
+                     {
+                         "category":  "Equality",
+                         "caveats":  [
+                                         "Measures laws, not lived safety, enforcement, social norms, or outcomes."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "women_legal_economic_equality",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "wbl_legal_equality_bands_v1",
+                                          "source_versions":  {
+                                                                  "world_bank_wbl":  "WBL26_FINAL_ALL@2026-02-23"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "Women, Business and the Law legal-framework economy index measuring de jure equality.",
+                         "direction":  "higher_is_better",
+                         "display_name":  "Women\u0027s legal and economic equality",
+                         "experimental":  false,
+                         "id":  "women_legal_economic_equality",
+                         "interpretation":  "Higher legal-framework scores receive higher 1-10 equality-band scores.",
+                         "quality_limitations":  [
+                                                     "A national de jure framework indicator cannot establish individual lived experience."
+                                                 ],
+                         "raw_unit":  "index_0_100",
+                         "ready":  true,
+                         "scoring_method_version":  "wbl_legal_equality_bands_v1"
+                     },
+                     {
+                         "category":  "Infrastructure",
+                         "caveats":  [
+                                         "Experimental and not a complete measure of infrastructure."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "infrastructure_readiness_composite",
+                                          "experimental":  true,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "infrastructure_readiness_bands_v1",
+                                          "source_versions":  {
+                                                                  "world_bank_infrastructure":  "INFRA-3@WDI-2026-07-13"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "Experimental equal-weight composite of internet use, fixed broadband, and trade/transport infrastructure quality.",
+                         "direction":  "higher_is_better",
+                         "display_name":  "Infrastructure readiness — experimental",
+                         "experimental":  true,
+                         "id":  "infrastructure_readiness_composite",
+                         "interpretation":  "Higher composite values receive higher 1-10 readiness-band scores.",
+                         "quality_limitations":  [
+                                                     "Only three components with mixed reference years; omits housing, energy, transit, resilience, and local access."
+                                                 ],
+                         "raw_unit":  "index_0_100",
+                         "ready":  true,
+                         "scoring_method_version":  "infrastructure_readiness_bands_v1"
+                     },
+                     {
+                         "category":  "Safety",
+                         "caveats":  [
+                                         "Perception-based national aggregate; it does not directly measure crime, democracy, or immigration policy."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "political_stability",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "wgi_political_stability_bands_v1",
+                                          "source_versions":  {
+                                                                  "world_bank_wgi_political_stability":  "wgidataset_with_sourcedata-2025.xlsx#pv@2024"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "Perception-based estimate of political stability and absence of violence or terrorism.",
+                         "direction":  "higher_is_better",
+                         "display_name":  "Political stability",
+                         "experimental":  false,
+                         "id":  "political_stability",
+                         "interpretation":  "Higher estimates receive higher broad-band scores; published uncertainty is retained.",
+                         "quality_limitations":  [
+                                                     "Uncertainty intervals can overlap, so precise country ranks are not claimed."
+                                                 ],
+                         "raw_unit":  "estimate_minus_2_5_to_2_5",
+                         "ready":  true,
+                         "scoring_method_version":  "wgi_political_stability_bands_v1"
+                     },
+                     {
+                         "category":  "Institutions",
+                         "caveats":  [
+                                         "Perception-based national aggregate; it is not an individual legal-outcome prediction."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "rule_of_law",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "wgi_rule_of_law_bands_v1",
+                                          "source_versions":  {
+                                                                  "world_bank_wgi_rule_of_law":  "wgidataset_with_sourcedata-2025.xlsx#rl@2024"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "Perception-based estimate of confidence in and adherence to the rules of society.",
+                         "direction":  "higher_is_better",
+                         "display_name":  "Rule of law",
+                         "experimental":  false,
+                         "id":  "rule_of_law",
+                         "interpretation":  "Higher estimates receive higher broad-band scores; published uncertainty is retained.",
+                         "quality_limitations":  [
+                                                     "Uncertainty intervals can overlap and the measure may correlate strongly with political stability."
+                                                 ],
+                         "raw_unit":  "estimate_minus_2_5_to_2_5",
+                         "ready":  true,
+                         "scoring_method_version":  "wgi_rule_of_law_bands_v1"
+                     },
+                     {
+                         "category":  "Integration context",
+                         "caveats":  [
+                                         "Not a measure of acceptance, integration quality, government support, or visa accessibility."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "established_immigrant_presence",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  91,
+                                          "mode":  "GLOBAL_CORE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "migrant_presence_bands_v1",
+                                          "source_versions":  {
+                                                                  "world_bank_migrant_stock":  "SM.POP.TOTL.ZS@WDI-2026-07"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  true,
+                         "description":  "International migrant stock as a share of the national population.",
+                         "direction":  "higher_is_better",
+                         "display_name":  "Established immigrant presence",
+                         "experimental":  false,
+                         "id":  "established_immigrant_presence",
+                         "interpretation":  "Higher scores mean more established immigrant presence for users who value that property; they do not mean universal country quality.",
+                         "quality_limitations":  [
+                                                     "Publisher definitions may combine country-of-birth and citizenship concepts and may include estimates."
+                                                 ],
+                         "raw_unit":  "percent_population",
+                         "ready":  true,
+                         "scoring_method_version":  "migrant_presence_bands_v1"
+                     },
+                     {
+                         "category":  "Healthcare",
+                         "caveats":  [
+                                         "Latest official value is from 2021 and fails the release freshness threshold."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  null,
+                                          "criterion_id":  "uhc_service_coverage_index",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  0,
+                                          "mode":  "DIAGNOSTIC_ONLY",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  0,
+                                                                 "rejected":  0,
+                                                                 "stale":  0,
+                                                                 "valid":  91
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "uhc_coverage_bands_v1",
+                                          "source_versions":  {
+                                                                  "world_bank_uhc":  "SH.UHC.SRVS.CV.XD@HNP-2026-07-01"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  91
+                                      },
+                         "default_enabled":  false,
+                         "description":  "Population-level universal health coverage service-coverage index.",
+                         "direction":  "higher_is_better",
+                         "display_name":  "UHC service coverage — unavailable/non-ready",
+                         "experimental":  false,
+                         "id":  "uhc_service_coverage_index",
+                         "interpretation":  "Available for diagnostics only; it never contributes to normal rankings.",
+                         "quality_limitations":  [
+                                                     "Population-level coverage does not describe expat access, quality, waiting time, or individual affordability."
+                                                 ],
+                         "raw_unit":  "index_0_100",
+                         "ready":  false,
+                         "scoring_method_version":  "uhc_coverage_bands_v1"
+                     },
+                     {
+                         "category":  "Jobs and economic opportunity",
+                         "caveats":  [
+                                         "National modelled estimates may differ from local or occupation-specific conditions.",
+                                         "The score is distribution-relative within the 88 valid supported countries.",
+                                         "Antigua and Barbuda and Grenada have no eligible source record; Ukraine is stale."
+                                     ],
+                         "coverage":  {
+                                          "activation_threshold":  0.6,
+                                          "criterion_id":  "overall_job_market_opportunity",
+                                          "experimental":  false,
+                                          "minimum_valid_country_count":  82,
+                                          "mode":  "CONDITIONAL_COMPLETE_CASE",
+                                          "outcome_counts":  {
+                                                                 "invalid":  0,
+                                                                 "missing":  2,
+                                                                 "rejected":  0,
+                                                                 "stale":  1,
+                                                                 "valid":  88
+                                                             },
+                                          "score_max":  10.0,
+                                          "score_min":  1.0,
+                                          "scoring_method_version":  "job_market_equal_component_percentiles_v1",
+                                          "source_versions":  {
+                                                                  "ilostat_job_market_opportunity":  "UNE+EMP+EAP@ILOSTAT-MODEL-2025-11"
+                                                              },
+                                          "stable_country_count":  91,
+                                          "stable_universe_id":  "stable_supported_v1",
+                                          "valid_country_count":  88
+                                      },
+                         "default_enabled":  true,
+                         "description":  "Harmonised national labour-market conditions derived from employment, labour-force participation and unemployment modelled estimates.",
+                         "direction":  "higher_is_better",
+                         "display_name":  "Overall job-market opportunity",
+                         "experimental":  false,
+                         "id":  "overall_job_market_opportunity",
+                         "interpretation":  "Higher values indicate stronger broad national labour utilisation in the pinned 2025 ILOSTAT modelled estimates. This is occupation-neutral and is not a vacancy, wage, visa-access or city-level jobs measure.",
+                         "quality_limitations":  [
+                                                     "Employment and participation are related measures, so component redundancy is monitored.",
+                                                     "Equal component weights are a transparent product choice, not a publisher weighting.",
+                                                     "Future projections included in the source edition are excluded; only the 2025 cross-section is used."
+                                                 ],
+                         "raw_unit":  "equal_component_percentile_index_1_10",
+                         "ready":  true,
+                         "scoring_method_version":  "job_market_equal_component_percentiles_v1"
+                     }
+                 ],
+    "profiles":  [
+                     {
+                         "description":  "Provisional profile where all enabled criteria contribute equally; every priority remains user-editable.",
+                         "id":  "equal_weight_mvp",
+                         "name":  "Balanced",
+                         "weights":  {
+                                         "ambient_pm25_population_weighted":  1,
+                                         "established_immigrant_presence":  1,
+                                         "household_consumption_price_level_us_100":  1,
+                                         "infrastructure_readiness_composite":  1,
+                                         "intentional_homicide_rate":  1,
+                                         "overall_job_market_opportunity":  1.0,
+                                         "political_stability":  1,
+                                         "rule_of_law":  1,
+                                         "women_legal_economic_equality":  1
+                                     }
+                     },
+                     {
+                         "description":  "Provisional profile emphasizing personal safety and institutional stability while retaining environmental, equality, integration-context, infrastructure, and cost considerations.",
+                         "id":  "safety_and_stability",
+                         "name":  "Safety \u0026 Stability",
+                         "weights":  {
+                                         "ambient_pm25_population_weighted":  0.6,
+                                         "established_immigrant_presence":  0.3,
+                                         "household_consumption_price_level_us_100":  0.4,
+                                         "infrastructure_readiness_composite":  0.6,
+                                         "intentional_homicide_rate":  1,
+                                         "overall_job_market_opportunity":  0.6,
+                                         "political_stability":  1,
+                                         "rule_of_law":  0.8,
+                                         "women_legal_economic_equality":  0.6
+                                     }
+                     },
+                     {
+                         "description":  "Provisional profile centered on broad relative cost with secondary safety and stability considerations.",
+                         "id":  "affordability_first",
+                         "name":  "Affordability First",
+                         "weights":  {
+                                         "ambient_pm25_population_weighted":  0.4,
+                                         "established_immigrant_presence":  0.3,
+                                         "household_consumption_price_level_us_100":  1,
+                                         "infrastructure_readiness_composite":  0.4,
+                                         "intentional_homicide_rate":  0.6,
+                                         "overall_job_market_opportunity":  0.6,
+                                         "political_stability":  0.5,
+                                         "rule_of_law":  0.5,
+                                         "women_legal_economic_equality":  0.4
+                                     }
+                     },
+                     {
+                         "description":  "Provisional profile emphasizing air quality, safety, equality, institutions, and infrastructure while still considering broad relative cost and immigrant presence.",
+                         "id":  "quality_of_life",
+                         "name":  "Quality of Life",
+                         "weights":  {
+                                         "ambient_pm25_population_weighted":  1,
+                                         "established_immigrant_presence":  0.5,
+                                         "household_consumption_price_level_us_100":  0.4,
+                                         "infrastructure_readiness_composite":  0.8,
+                                         "intentional_homicide_rate":  0.8,
+                                         "overall_job_market_opportunity":  0.8,
+                                         "political_stability":  0.8,
+                                         "rule_of_law":  0.8,
+                                         "women_legal_economic_equality":  0.8
+                                     }
+                     }
+                 ],
+    "schema_version":  "consumer-catalog-2.0",
+    "stable_universe_id":  "stable_supported_v1"
+}

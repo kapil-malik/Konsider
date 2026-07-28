@@ -1,8 +1,41 @@
 # Implementation history
 
+## Phase 4H: end-to-end verification and closure
+
+- Goal: prove the uncertainty-aware ranking model end to end and close Phase 4.
+- Delivered: active-release structural/runtime invariants, complete scenario coverage, release-
+  scoped catalog snapshots, clean Windows/Linux backend CI, current architecture/API/UI/worker
+  documentation, a closure report, and an indexed historical workspace.
+- Major decisions: preserve the stable 91-country catalog separately from query eligibility; keep
+  optimistic bounds diagnostic-only; archive prompts and research artifacts under
+  `project-history` without moving operational or immutable release data.
+- Completed: 2026-07-28 against active release `2026-07-28.2`.
+- Remaining limitations: four Wave 2 candidates retain licensing/source/construct gates; city,
+  occupation, household, and applicant-specific ranking are not implemented.
+
 Historical records summarize completed milestones. Current behavior is documented in
 [architecture](../architecture/system-architecture.md), [worker operations](../operations/worker.md),
 and [API operations](../operations/api.md).
+
+## Phase 4A-G: uncertainty-aware ranking, first partial criterion, and UI
+
+- Goal: preserve the stable 91-country universe while allowing valuable criteria with bounded,
+  explicit source gaps to participate without imputation or misleading partial scores.
+- Delivered: the coverage policy, candidate simulations, schema-4 outcome matrix, conditional
+  complete-case ranking engine, robustness statuses and optimistic bounds, comparison-cell
+  availability, Phase 4E API contracts, and production onboarding of Overall job-market opportunity.
+- UI result: coverage-aware priority controls, status-specific warnings, eligible/stable rank scope,
+  expandable exclusion diagnostics, an API-fetched FCC baseline, unranked-country evidence, and
+  comparison cells that preserve available data while marking unavailable cells.
+- Production result: release `2026-07-28.1` publishes ten criteria and 910 explicit outcomes. The
+  eight global-core criteria remain 91/91; job-market opportunity is valid for 88 countries and is
+  active only at raw weight 0.6 or above.
+- Major decisions: keep the 91-country identity stable; never impute; exclude a country from a
+  conditional full score when any active partial criterion is non-ready; retain available
+  criterion-by-country comparison cells; include Kth-score ties in robustness analysis; and publish
+  schema changes only through a new immutable release.
+- Completed through Phase 4G: 2026-07-28. A named Wave 2 shortlist and its evidence gates are retained in
+  [Phase 4 Wave 2 candidates](../research/phase4-wave2-pcc-candidates.md).
 
 ## Phase 3: criteria expansion and source feasibility
 

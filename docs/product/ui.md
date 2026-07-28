@@ -1,6 +1,6 @@
-# Phase 2C responsive comparison UI
+# Responsive comparison and uncertainty-aware ranking UI
 
-Status: implemented locally
+Status: Phase 4G implemented locally
 
 The UI is a comparison and inspection surface over `/api/v1`, not a second recommendation engine.
 It is implemented as one responsive React, TypeScript, and Vite application under `web/`.
@@ -54,7 +54,58 @@ covers the main guest, update, filtering, detail, comparison, source-help, unava
 
 ## Phase 2D scale status
 
-Phase 2D is complete. The catalog-driven UI serves active release `2026-07-27.1` with 91 countries,
+Phase 2D is complete. The catalog-driven UI serves the active release with 91 countries,
 bounded desktop scrolling, complete mobile cards, search, region filtering, visible/total counts,
 details, comparisons, sources, and an always-visible release ID. No server pagination or
 virtualization was needed for the measured response and rendering size.
+
+## Phase 4G uncertainty-aware ranking
+
+The UI renders the Phase 4E API's coverage and robustness decisions without calculating scores,
+eligibility, missing-country unions, optimistic bounds, or statuses in the browser.
+
+- Every priority shows its exact `valid/stable countries` coverage. Conditional criteria use a
+  calm **Limited coverage** badge, state that Medium is the activation point, and visibly indicate
+  whether the current draft setting is active.
+- The result summary always shows ranked-of-stable countries, active limited-coverage criteria,
+  excluded-country count, uncertainty state, and robustness K.
+- `ROBUST_TOP_K` is informational, `POTENTIALLY_AFFECTED` is a prominent caution, and
+  `BASELINE_TOP_K_EXCLUDED` and `COVERAGE_LIMIT_EXCEEDED` receive the strongest treatment. Icons and
+  text accompany every colour treatment.
+- Excluded countries remain outside the conditional ranking. A collapsible section shows their R0
+  rank, baseline boundary membership, unavailable criteria and reason codes, optimistic upper
+  bound, and potential-entry result.
+- Opening an excluded country shows available national evidence and **Not ranked for this
+  profile**. No affinity score is fabricated.
+- When a partial-coverage criterion is active, **View full-coverage baseline** requests a second
+  server ranking with conditional criteria disabled and `top_k` equal to the stable universe. The
+  browser does not derive baseline scores or order. R1 remains the default view.
+- Comparisons use the API's criterion matrix and country summaries. Missing, stale, invalid, and
+  rejected cells show an em dash plus an accessible availability explanation. Available cells
+  remain comparable, while an ineligible country column is labelled and has no aggregate score.
+
+### Documented visual states
+
+| API state | Visual treatment |
+| --- | --- |
+| `NO_PARTIAL_CRITERIA_ACTIVE` | Compact neutral full-coverage notice; no baseline control or exclusion list. |
+| `FULL_COVERAGE` | Neutral confirmation; active PCC names remain visible. |
+| `ROBUST_TOP_K` | Mild teal information panel and expandable excluded-country evidence. |
+| `POTENTIALLY_AFFECTED` | Amber caution explaining that excluded countries could enter top K. |
+| `BASELINE_TOP_K_EXCLUDED` | Strong outlined warning and baseline-boundary badge on affected countries. |
+| `COVERAGE_LIMIT_EXCEEDED` | Strong warning; FCC-only table explicitly labelled as the baseline. |
+
+Desktop uses the existing sticky ranking table and four-column summary. At 760px and below, the
+summary becomes two columns, warnings and baseline controls stack, the table becomes full-featured
+country cards, excluded diagnostics collapse to one column, and comparison evidence becomes
+criterion cards. Browser QA covered the default desktop viewport and a 390-by-844 mobile viewport
+with no horizontal document overflow.
+
+Component fixtures cover all six statuses, zero/one/many excluded-country structures,
+baseline-toggle/API behavior, PCC/experimental/unavailable badges, missing comparison cells,
+unranked evidence access, and accessible status names.
+
+Phase 4 closure confirms that the UI treats the stable catalog, eligible universe, R0, R1, and
+robustness status as distinct API-owned concepts. It does not infer eligibility from blank cells or
+calculate partial country totals. City, occupation, household, visa, licensing, and
+applicant-specific suitability remain outside this interface.

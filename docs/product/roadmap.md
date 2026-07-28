@@ -1,18 +1,19 @@
 # Product roadmap
 
-Status: Phase 3 complete; Phase 4 recommended next
+Status: Phase 4 complete
 
-Last updated: 2026-07-26
+Last updated: 2026-07-28
 
 ## Current position
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v1 transport, and responsive React UI are
-implemented. Active release `2026-07-27.1` exposes the stable 91-country universe and nine available
-criteria; eight are enabled. UHC is non-ready because its latest observation is 2021. Infrastructure
-is enabled but experimental. Phase 2D is closed: the universe is the audited complete-case
-intersection under the approved WDI-only homicide source policy, and the UI supports search, region
-filters, and the long list.
+implemented. Active release `2026-07-28.2` exposes the stable 91-country universe and twelve
+available criteria. Eight are 91/91 global-core criteria; Overall job-market opportunity, School
+education quality, and Research and innovation ecosystem are conditional criteria, and UHC remains
+diagnostic-only. Infrastructure and the two Wave 2 additions are experimental. Phase 4's ranking
+and API contracts preserve missing/stale outcomes without
+imputation and provide complete-case robustness diagnostics.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -78,17 +79,30 @@ See the [Phase 3 closure report](../research/phase3-closure-report.md),
 [Phase 3G-0 probe report](../research/phase3g0-final-probes.md), and
 [active release report](../history/releases/2026-07-27.1.md).
 
-## Phase 4: deterministic evidence and explanations — recommended next
+## Phase 4: uncertainty-aware partial coverage — complete
 
-- Add structured source/observation lookup and citation-ready provenance.
-- Generate deterministic strengths, trade-offs, and comparison explanations from contributions.
-- Add metadata and simple lexical lookup only if measured product needs require it.
-- Do not introduce a vector database without evidence volume and retrieval-quality measurements.
+- Added release/catalog schema 4/2 with one explicit outcome per country and criterion.
+- Added complete-case conditional ranking, tie-inclusive robustness analysis, optimistic upper
+  bounds, and comparison cells that retain available data while marking unavailable data.
+- Onboarded Overall job-market opportunity from ILOSTAT at 88/91 without imputation.
+- Published immutable release `2026-07-28.1` after validation and offline replay.
+- Onboarded experimental School education quality at 88/91 using HCI+ learning-adjusted years and
+  Research and innovation ecosystem at 85/91 using WIPO's Innovation outputs sub-index.
+- Published immutable additive release `2026-07-28.2` after deterministic replay and coverage
+  validation.
+- Added coverage-aware controls, status-specific warnings, exclusion diagnostics, an API-fetched
+  full-coverage baseline, and comparison cells that retain available evidence without partial
+  aggregate scores.
+- Reassessed the Wave 2 shortlist and retained explicit source, licence, and construct gates for
+  Financial protection from health costs, Social-protection system reach, Food-safety system
+  capacity, and Freedom of expression and religion.
 
-Recommended first slice: produce release-pinned, template-based country and comparison explanations
-from the existing eight enabled criteria. Every statement should resolve to published observations,
-scores, contributions, caveats, and source links; snapshot tests should prove deterministic wording
-and numerical reconciliation before any generative layer is considered.
+- Closed Phase 4H with end-to-end scenario/invariant tests, release-scoped catalog snapshots,
+  Windows/Linux clean-checkout CI, offline replay, documentation, and the
+  [closure report](../history/phase4-closure-report.md).
+
+Held Wave 2 criteria remain future onboarding candidates, not unfinished Phase 4 behavior. They
+must clear commercial reuse, construct, coverage, scoring, and replay requirements independently.
 
 ## Phase 5: conversational exploration
 

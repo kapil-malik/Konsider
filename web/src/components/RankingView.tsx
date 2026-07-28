@@ -2,6 +2,7 @@ import { useMemo, useState, type KeyboardEvent, type RefObject } from 'react'
 
 import type { CatalogCriterion, Contribution, RankedCountry, Ranking } from '../api/types'
 import { formatScore } from '../preferences'
+import { UncertaintySummary } from './UncertaintySummary'
 
 const contributionFor = (country: RankedCountry, criterionId: string): Contribution | undefined =>
   country.contributions.find((item) => item.criterion_id === criterionId)
@@ -15,12 +16,16 @@ type RankingViewProps = {
   selectedCountry: string | null
   comparisonCountries: string[]
   comparisonNotice: string
+  baselineRanking: Ranking | null
+  showingBaseline: boolean
+  isLoadingBaseline: boolean
   scrollRef: RefObject<HTMLDivElement | null>
   compareButtonRef: RefObject<HTMLButtonElement | null>
   onDetailedChange: (value: boolean) => void
   onSelectCountry: (countryCode: string) => void
   onToggleComparison: (countryCode: string) => void
   onCompare: () => void
+  onToggleBaseline: () => void
   onOpenSources: () => void
 }
 
@@ -33,30 +38,40 @@ export function RankingView({
   selectedCountry,
   comparisonCountries,
   comparisonNotice,
+  baselineRanking,
+  showingBaseline,
+  isLoadingBaseline,
   scrollRef,
   compareButtonRef,
   onDetailedChange,
   onSelectCountry,
   onToggleComparison,
   onCompare,
+  onToggleBaseline,
   onOpenSources,
 }: RankingViewProps) {
+  const isBaselineView =
+    showingBaseline || ranking.uncertainty_status === 'COVERAGE_LIMIT_EXCEEDED'
+  const displayedRanking = showingBaseline && baselineRanking ? baselineRanking : ranking
+  const displayedCriteria = isBaselineView
+    ? criteria.filter((criterion) => displayedRanking.active_fcc_ids.includes(criterion.id))
+    : criteria
   const [searchTerm, setSearchTerm] = useState('')
   const [region, setRegion] = useState('')
   const regions = useMemo(
-    () => [...new Set(ranking.rankings.map((country) => country.region))].sort(),
-    [ranking.rankings],
+    () => [...new Set(displayedRanking.rankings.map((country) => country.region))].sort(),
+    [displayedRanking.rankings],
   )
   const visibleRankings = useMemo(() => {
     const query = searchTerm.trim().toLocaleLowerCase()
-    return ranking.rankings.filter(
+    return displayedRanking.rankings.filter(
       (country) =>
         (!region || country.region === region) &&
         (!query ||
           country.country_name.toLocaleLowerCase().includes(query) ||
           country.country_code.toLocaleLowerCase().includes(query)),
     )
-  }, [ranking.rankings, region, searchTerm])
+  }, [displayedRanking.rankings, region, searchTerm])
 
   const handleRowKey = (event: KeyboardEvent<HTMLTableRowElement>, countryCode: string) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -77,6 +92,29 @@ export function RankingView({
             Updating ranking…
           </span>
         )}
+      </div>
+
+      <UncertaintySummary
+        ranking={ranking}
+        criteria={criteria}
+        showingBaseline={showingBaseline}
+        baselineAvailable={baselineRanking !== null}
+        baselineLoading={isLoadingBaseline}
+        onToggleBaseline={onToggleBaseline}
+        onSelectCountry={onSelectCountry}
+      />
+
+      <div className={`rank-scope${isBaselineView ? ' is-baseline' : ''}`}>
+        <strong>
+          {isBaselineView
+            ? `Full-coverage baseline · Rank among ${ranking.stable_universe_size} countries`
+            : `Rank among ${ranking.eligible_universe_size} eligible countries`}
+        </strong>
+        <span>
+          {isBaselineView
+            ? 'Uses global-core criteria only'
+            : `Showing the score-boundary top ${ranking.robustness_k}`}
+        </span>
       </div>
 
       <div className="ranking-filters" role="search" aria-label="Filter country ranking">
@@ -124,7 +162,7 @@ export function RankingView({
         {comparisonNotice || 'Select 2–4 countries to compare.'}
       </p>
 
-      {!ranking.rankings.length ? (
+      {!displayedRanking.rankings.length ? (
         <div className="empty-state" role="status">
           <h3>No ranking results</h3>
           <p>The API returned no eligible countries for the current data release.</p>
@@ -151,7 +189,7 @@ export function RankingView({
                     </span>
                   </th>
                   {detailed &&
-                    criteria.map((criterion) => (
+                    displayedCriteria.map((criterion) => (
                       <th scope="col" key={criterion.id} title={criterion.display_name}>
                         <span>{criterion.category}</span>
                         {criterion.experimental && <span className="table-badge">Experimental</span>}
@@ -190,7 +228,7 @@ export function RankingView({
                       </td>
                       <td className="score-cell">{formatScore(country.total_score)}</td>
                       {detailed &&
-                        criteria.map((criterion) => (
+                        displayedCriteria.map((criterion) => (
                           <td key={criterion.id} className="criterion-score-cell">
                             {contributionFor(country, criterion.id)?.score.toFixed(1) ?? '—'}
                           </td>
@@ -232,7 +270,7 @@ export function RankingView({
                   </div>
                   {detailed && (
                     <dl className="mobile-score-list">
-                      {criteria.map((criterion) => (
+                      {displayedCriteria.map((criterion) => (
                         <div key={criterion.id}>
                           <dt>
                             {criterion.display_name}
@@ -260,8 +298,9 @@ export function RankingView({
 
       <footer className="ranking-footer">
         <span aria-live="polite">
-          Showing {visibleRankings.length} of {ranking.returned_result_count} ranked{' '}
-          {ranking.returned_result_count === 1 ? 'country' : 'countries'}
+          Showing {visibleRankings.length} of {displayedRanking.returned_result_count} returned{' '}
+          {displayedRanking.returned_result_count === 1 ? 'country' : 'countries'} ·{' '}
+          {displayedRanking.eligible_universe_size} of {displayedRanking.stable_universe_size} ranked
         </span>
         <button className="release-link" onClick={onOpenSources}>
           Data release: {ranking.release_id}

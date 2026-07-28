@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v2/consumer-catalog.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "compatible_release_schema_major", "coverage_policy_version", "stable_universe_id", "countries", "criteria", "profiles"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^consumer-catalog-2\\.[0-9]+$"},
+    "compatible_release_schema_major": {"const": 4},
+    "coverage_policy_version": {"const": "uncertainty-aware-ranking-policy-1.0"},
+    "stable_universe_id": {"type": "string", "minLength": 1},
+    "countries": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["code", "display_name", "region"],
+        "properties": {
+          "code": {"type": "string", "pattern": "^[A-Z]{3}$"},
+          "display_name": {"type": "string", "minLength": 1},
+          "region": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "criteria": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": [
+          "id", "display_name", "category", "description", "direction", "raw_unit",
+          "interpretation", "caveats", "quality_limitations", "ready",
+          "default_enabled", "experimental", "scoring_method_version", "coverage"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "display_name": {"type": "string"},
+          "category": {"type": "string"},
+          "description": {"type": "string"},
+          "direction": {"enum": ["higher_is_better", "lower_is_better"]},
+          "raw_unit": {"type": "string"},
+          "interpretation": {"type": "string"},
+          "caveats": {"type": "array", "items": {"type": "string"}},
+          "quality_limitations": {"type": "array", "items": {"type": "string"}},
+          "ready": {"type": "boolean"},
+          "default_enabled": {"type": "boolean"},
+          "experimental": {"type": "boolean"},
+          "scoring_method_version": {"type": "string"},
+          "coverage": {"$ref": "release-manifest.schema.json#/$defs/coverage"}
+        }
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description", "weights"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "description": {"type": "string"},
+          "weights": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}}
+        }
+      }
+    }
+  }
+}

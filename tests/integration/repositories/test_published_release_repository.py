@@ -11,7 +11,7 @@ from konsider.repositories.published_release_repository import (
 )
 
 ROOT = Path(__file__).resolve().parents[3]
-ACTIVE_RELEASE_ID = "2026-07-27.1"
+ACTIVE_RELEASE_ID = "2026-07-28.2"
 
 
 def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
@@ -22,7 +22,7 @@ def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
     )
     shutil.copy2(ROOT / "data" / "releases" / "active.json", release_root / "active.json")
     catalog = tmp_path / "consumer-catalog.json"
-    shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json", catalog)
+    shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json", catalog)
     return PublishedReleaseRepository(release_root, catalog), release_root / ACTIVE_RELEASE_ID
 
 
@@ -41,16 +41,16 @@ def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
     manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
 
 
-def test_active_release_loads_complete_ready_matrix() -> None:
+def test_active_release_loads_conditional_ready_matrix() -> None:
     release = PublishedReleaseRepository().load_active()
 
     assert release.release_id == ACTIVE_RELEASE_ID
     assert len(release.catalog["countries"]) == 91
-    assert len(release.available_criterion_ids) == 9
-    assert len(release.enabled_criterion_ids) == 8
+    assert len(release.available_criterion_ids) == 12
+    assert len(release.enabled_criterion_ids) == 11
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
-    assert len(release.records) == 728
-    assert len(release.sources) == 9
+    assert len(release.records) == 989
+    assert len(release.sources) == 12
     assert all(record.observations and record.source for record in release.records)
     infrastructure = next(
         item
@@ -82,18 +82,18 @@ def test_active_release_loads_after_git_style_lf_normalization(tmp_path: Path) -
     release_root.mkdir(parents=True, exist_ok=True)
     (release_root / "active.json").write_bytes(pointer.read_bytes().replace(b"\r\n", b"\n"))
     catalog = tmp_path / "consumer-catalog.json"
-    shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json", catalog)
+    shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json", catalog)
 
     release = PublishedReleaseRepository(release_root, catalog).load_active()
 
     assert release.release_id == ACTIVE_RELEASE_ID
-    assert len(release.records) == 728
+    assert len(release.records) == 989
 
 
 def test_diagnostic_mode_exposes_non_ready_records_without_enabling_them() -> None:
     release = PublishedReleaseRepository().load_active(diagnostic_read_only=True)
 
-    assert len(release.records) == 819
+    assert len(release.records) == 1080
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
 
 
@@ -110,7 +110,7 @@ def test_unsupported_schema_fails(tmp_path: Path) -> None:
     repository, _ = _repository(tmp_path)
     pointer_path = repository.release_root / "active.json"
     pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
-    pointer["schema_version"] = "konsider-release-4.0"
+    pointer["schema_version"] = "konsider-release-5.0"
     pointer_path.write_text(json.dumps(pointer), encoding="utf-8")
 
     with pytest.raises(PublishedReleaseError, match="Unsupported"):

@@ -1,0 +1,77 @@
+{
+  "attempt_count": 182,
+  "coverage_policy_version": "uncertainty-aware-ranking-policy-1.0",
+  "criterion_coverage": {
+    "fixture_global_core": 91,
+    "overall_job_market_opportunity_fixture": 88
+  },
+  "criterion_coverage_details": {
+    "fixture_global_core": {
+      "activation_threshold": null,
+      "criterion_id": "fixture_global_core",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "phase4c-fixture-fcc-score-v1",
+      "source_versions": {
+        "phase4c_fixture_fcc": "phase4c_fixture_fcc-v1"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "overall_job_market_opportunity_fixture": {
+      "activation_threshold": 0.6,
+      "criterion_id": "overall_job_market_opportunity_fixture",
+      "experimental": true,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 2,
+        "rejected": 0,
+        "stale": 1,
+        "valid": 88
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "phase4c-fixture-pcc-score-v1",
+      "source_versions": {
+        "phase4c_fixture_pcc": "phase4c_fixture_pcc-v1"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 88
+    }
+  },
+  "criterion_readiness": {
+    "fixture_global_core": true,
+    "overall_job_market_opportunity_fixture": true
+  },
+  "global_core_ready_count": 1,
+  "issues": [],
+  "minimum_global_core_count": 1,
+  "observation_count": 179,
+  "passed": true,
+  "product_ready": true,
+  "ready_criterion_count": 2,
+  "schema_version": "validation-4.0",
+  "score_count": 179,
+  "stable_country_count": 91,
+  "stable_universe_id": "stable_supported_v1",
+  "status_counts": {
+    "missing": 2,
+    "stale": 1,
+    "valid": 179
+  },
+  "structural_passed": true
+}

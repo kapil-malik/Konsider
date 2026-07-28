@@ -11,6 +11,22 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Worker operations](operations/worker.md) - refresh, publish, replay, inspect, and roll back data.
 - [API operations and reference](operations/api.md) - configure, start, and use all five routes.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
+- [Phase 4A uncertainty-aware ranking policy](product/uncertainty-aware-ranking.md) - approved
+  product and mathematical contract.
+- [Phase 4B PCC selection](research/phase4b-pcc-selection.md) - approved initial, second-wave,
+  reserve, and deferred dispositions with deterministic simulations.
+- [Phase 4 Wave 2 PCC shortlist](research/phase4-wave2-pcc-candidates.md) - named strong
+  conditional-coverage candidates, required gates, and explicit watchlist exclusions.
+- [Phase 4 closure report](history/phase4-closure-report.md) - end-to-end scenarios, invariants,
+  quality gates, remaining risks, and next phase.
+- [Phase 4H verification evidence](../data/reports/phase4h-2026-07-28/report.md) - local gate
+  results and clean-checkout CI status.
+- [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
+  validation, fixture, and compatibility contract.
+- [Phase 4D ranking engine](product/phase4d-ranking-engine.md) - typed complete-case ranking,
+  tie-inclusive robustness analysis, statuses, and golden scenarios.
+- [Phase 4E API contract](operations/phase4e-api-contract.md) - uncertainty-aware catalog,
+  ranking, comparison matrix, OpenAPI, and compatibility behavior.
 - [Phase 3D feasibility probes](research/phase3d-feasibility-probes.md) - deterministic,
   non-publishing source feasibility checks and offline replay.
 - [Phase 3E deterministic probes](research/phase3e-deterministic-probes.md) - live measured
@@ -39,6 +55,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Local setup](operations/local-setup.md)
 - [Worker guide](operations/worker.md)
 - [API guide](operations/api.md)
+- [Phase 4E API contract](operations/phase4e-api-contract.md)
 - [Local deployment](operations/deployment-local.md)
 - [AWS deployment design](operations/deployment-aws.md)
 
@@ -47,6 +64,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Source and licence audit](data/source-audit.md)
 - [Scoring methodology](data/scoring-methodology.md)
 - [Release format](data/release-format.md)
+- [Phase 4C coverage contract](data/phase4c-coverage-contract.md)
+- [Phase 4D ranking engine](product/phase4d-ranking-engine.md)
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md)
 - [Phase 2D.4 homicide source feasibility](data/homicide-source-feasibility-phase-2d4.md)
 - [Phase 3D feasibility probes](research/phase3d-feasibility-probes.md)
@@ -59,6 +78,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 
 - [Implementation history](history/implementation-history.md)
 - [Release history](history/releases/README.md)
+- [Phase 4 closure report](history/phase4-closure-report.md)
+- [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active release is `2026-07-27.1`.
+instructions. The active release is `2026-07-28.2`.

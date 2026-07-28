@@ -1,0 +1,585 @@
+{
+  "candidates": [
+    {
+      "authority_gate": "PASS",
+      "blocker_codes": [
+        "COV_NOT_FULL_91",
+        "FRS_FILE_CATALOGUE_YEAR_DISCREPANCY",
+        "GRA_LOCAL_SCHOOL_VARIATION"
+      ],
+      "coverage_gate": "PASS",
+      "coverage_percentage": 95.6043956,
+      "criterion_id": "C08",
+      "dataset": "Human Capital Index Plus",
+      "dataset_version": "HCI+ version 3; hci_plus_index_panel.dta",
+      "decision_status": "USER_APPROVED",
+      "deterministic_replay_gate": "PASS",
+      "freshness_min_year": 2024,
+      "invalid_count": 1,
+      "licence_evidence": "The HCI+ catalogue record identifies the dataset licence as CC BY 4.0.",
+      "licence_name": "Creative Commons Attribution 4.0 International",
+      "license_gate": "PASS_CC_BY_4_0",
+      "missing_count": 2,
+      "name": "School education quality",
+      "national_granularity_gate": "PASS_WITH_DOCUMENTED_CAVEAT",
+      "non_valid_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "outcome_code": "PCC_OBSERVATION_INVALID",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+          ],
+          "reference_end": "2025",
+          "reference_start": "2025",
+          "region": "Latin America & Caribbean",
+          "status": "invalid"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "outcome_code": "PCC_OBSERVATION_MISSING",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "reference_end": null,
+          "reference_start": null,
+          "region": "Latin America & Caribbean",
+          "status": "missing"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "outcome_code": "PCC_OBSERVATION_MISSING",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "reference_end": null,
+          "reference_start": null,
+          "region": "Latin America & Caribbean",
+          "status": "missing"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "outcome_code": "PCC_OBSERVATION_STALE",
+          "reason_codes": [
+            "FRS_STALE"
+          ],
+          "reference_end": "2015",
+          "reference_start": "2015",
+          "region": "Latin America & Caribbean",
+          "status": "stale"
+        }
+      ],
+      "other_non_ready_count": 0,
+      "parser_version": "hci_plus_stata_v1",
+      "publisher": "World Bank",
+      "recommendation_bucket": "SECOND_WAVE",
+      "recommendation_rationale": "High decision value and acceptable coverage, but the exact HLO/LAYS/published-component scoring construct must be frozen and remain experimental.",
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 4 of 4 exclusions (100.0%) versus 24.2% of the stable catalog; overrepresentation ratio 4.14.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 4,
+            "excluded_country_share": 1.0,
+            "excluded_rate_within_region": 0.18181818,
+            "overrepresentation_ratio": 4.13636364,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      },
+      "rejected_count": 0,
+      "semantic_scoring_gate": "EXPERIMENTAL_CONSTRUCT_REQUIRES_FREEZE",
+      "source_candidate_id": "C08-HCIPLUS-V3",
+      "source_version": "File updated 2026-02-11; panel labels through 2025",
+      "stable_country_count": 91,
+      "stale_count": 1,
+      "valid_count": 87
+    },
+    {
+      "authority_gate": "PASS",
+      "blocker_codes": [
+        "COV_NOT_FULL_91",
+        "RED_SHARED_COMPONENTS",
+        "CMP_MODELLED_ESTIMATES"
+      ],
+      "coverage_gate": "PASS",
+      "coverage_percentage": 96.7032967,
+      "criterion_id": "C11",
+      "dataset": "ILOSTAT bulk download — modelled labour estimates",
+      "dataset_version": "UNE+EMP+EAP modelled estimates, November 2025",
+      "decision_status": "USER_APPROVED",
+      "deterministic_replay_gate": "PASS",
+      "freshness_min_year": 2025,
+      "invalid_count": 0,
+      "licence_evidence": "ILOSTAT datasets and referential metadata published from 3 May 2023 are CC BY 4.0; restricted partner microdata are excluded.",
+      "licence_name": "Creative Commons Attribution 4.0 International",
+      "license_gate": "PASS_CC_BY_4_0",
+      "missing_count": 2,
+      "name": "Overall job-market opportunity",
+      "national_granularity_gate": "PASS_WITH_DOCUMENTED_CAVEAT",
+      "non_valid_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "outcome_code": "PCC_OBSERVATION_MISSING",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "reference_end": null,
+          "reference_start": null,
+          "region": "Latin America & Caribbean",
+          "status": "missing"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "outcome_code": "PCC_OBSERVATION_MISSING",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "reference_end": null,
+          "reference_start": null,
+          "region": "Latin America & Caribbean",
+          "status": "missing"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "outcome_code": "PCC_OBSERVATION_STALE",
+          "reason_codes": [
+            "FRS_STALE"
+          ],
+          "reference_end": "2021",
+          "reference_start": "2021",
+          "region": "Europe & Central Asia",
+          "status": "stale"
+        }
+      ],
+      "other_non_ready_count": 0,
+      "parser_version": "ilostat_labour_composite_csv_v1",
+      "publisher": "International Labour Organization (ILOSTAT)",
+      "recommendation_bucket": "INITIAL",
+      "recommendation_rationale": "Highest practical decision value, 88/91 coverage, deterministic replay, and clear CC BY 4.0 evidence; Phase 4F must freeze the composite and component weights.",
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 0.33333333,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 0.72222222,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 2,
+            "excluded_country_share": 0.66666667,
+            "excluded_rate_within_region": 0.09090909,
+            "overrepresentation_ratio": 2.75757576,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      },
+      "rejected_count": 0,
+      "semantic_scoring_gate": "CONDITIONAL_PASS_REQUIRES_COMPOSITE_FREEZE",
+      "source_candidate_id": "C11-ILO-MODEL-2025",
+      "source_version": "ILOSTAT catalogue updated 2025-12-02",
+      "stable_country_count": 91,
+      "stale_count": 1,
+      "valid_count": 88
+    },
+    {
+      "authority_gate": "PASS",
+      "blocker_codes": [
+        "CMP_ESTIMATED_VALUES",
+        "LIC_REDISTRIBUTION_REVIEW"
+      ],
+      "coverage_gate": "PASS",
+      "coverage_percentage": 98.9010989,
+      "criterion_id": "C26",
+      "dataset": "Global Health Expenditure Database — all data",
+      "dataset_version": "GHED all data, March 2026",
+      "decision_status": "USER_APPROVED",
+      "deterministic_replay_gate": "PASS",
+      "freshness_min_year": 2023,
+      "invalid_count": 0,
+      "licence_evidence": "WHO publishes GHED for open public access; production redistribution remains subject to the WHO data terms.",
+      "licence_name": "WHO data terms and conditions",
+      "license_gate": "REVIEW_REQUIRED_LIC_REDISTRIBUTION_REVIEW",
+      "missing_count": 0,
+      "name": "Financial protection from health costs",
+      "national_granularity_gate": "PASS_WITH_DOCUMENTED_CAVEAT",
+      "non_valid_countries": [
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "outcome_code": "PCC_OBSERVATION_STALE",
+          "reason_codes": [
+            "FRS_STALE"
+          ],
+          "reference_end": "2021",
+          "reference_start": "2021",
+          "region": "Europe & Central Asia",
+          "status": "stale"
+        }
+      ],
+      "other_non_ready_count": 0,
+      "parser_version": "ghed_xlsx_v1",
+      "publisher": "World Health Organization",
+      "recommendation_bucket": "DEFERRED",
+      "recommendation_rationale": "Excellent 90/91 coverage and useful national proxy, but committed evidence retains LIC_REDISTRIBUTION_REVIEW; production compatibility must be resolved before selection.",
+      "regional_bias": {
+        "evidence": "Europe & Central Asia contains 1 of 1 exclusions (100.0%) versus 46.2% of the stable catalog; overrepresentation ratio 2.17.",
+        "flag": "SOME_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 1.0,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 2.16666667,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      },
+      "rejected_count": 0,
+      "semantic_scoring_gate": "CONDITIONAL_PASS_PROXY_LABEL_AND_METHOD_REQUIRED",
+      "source_candidate_id": "C26-WHO-GHED-2026-03",
+      "source_version": "OOPS%CHE_SHA2011; observations through 2023",
+      "stable_country_count": 91,
+      "stale_count": 1,
+      "valid_count": 90
+    },
+    {
+      "authority_gate": "PASS",
+      "blocker_codes": [
+        "CMP_BASIC_NOT_SAFELY_MANAGED",
+        "GRA_LOCAL_VARIATION",
+        "COV_NOT_FULL_91"
+      ],
+      "coverage_gate": "PASS",
+      "coverage_percentage": 94.50549451,
+      "criterion_id": "C53",
+      "dataset": "World Development Indicators — basic drinking water and sanitation",
+      "dataset_version": "SH.H2O.BASW.ZS+SH.STA.BASS.ZS@WDI-2026-07",
+      "decision_status": "USER_APPROVED",
+      "deterministic_replay_gate": "PASS",
+      "freshness_min_year": 2022,
+      "invalid_count": 3,
+      "licence_evidence": "The World Bank-distributed WDI indicators are CC BY 4.0; WHO/UNICEF JMP upstream attribution is retained.",
+      "licence_name": "Creative Commons Attribution 4.0 International",
+      "license_gate": "PASS_CC_BY_4_0",
+      "missing_count": 2,
+      "name": "Basic water and sanitation service access",
+      "national_granularity_gate": "PASS_WITH_DOCUMENTED_CAVEAT",
+      "non_valid_countries": [
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "outcome_code": "PCC_OBSERVATION_MISSING",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "reference_end": null,
+          "reference_start": null,
+          "region": "Latin America & Caribbean",
+          "status": "missing"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "outcome_code": "PCC_OBSERVATION_INVALID",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:basic_sanitation_access"
+          ],
+          "reference_end": "2024",
+          "reference_start": "2022",
+          "region": "Europe & Central Asia",
+          "status": "invalid"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "outcome_code": "PCC_OBSERVATION_INVALID",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+          ],
+          "reference_end": "2024",
+          "reference_start": "2022",
+          "region": "Latin America & Caribbean",
+          "status": "invalid"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "outcome_code": "PCC_OBSERVATION_INVALID",
+          "reason_codes": [
+            "VAL_COMPONENT_MISSING:basic_sanitation_access"
+          ],
+          "reference_end": "2024",
+          "reference_start": "2022",
+          "region": "Europe & Central Asia",
+          "status": "invalid"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "outcome_code": "PCC_OBSERVATION_MISSING",
+          "reason_codes": [
+            "COV_SOURCE_RECORD_MISSING"
+          ],
+          "reference_end": null,
+          "reference_start": null,
+          "region": "Latin America & Caribbean",
+          "status": "missing"
+        }
+      ],
+      "other_non_ready_count": 0,
+      "parser_version": "world_bank_multi_indicator_json_v1",
+      "publisher": "WHO/UNICEF JMP via World Bank WDI",
+      "recommendation_bucket": "RESERVE",
+      "recommendation_rationale": "Coverage passes, but the construct is saturated, weakly discriminating among likely destinations, and does not measure safety, continuity, or local utility reliability.",
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 3 of 5 exclusions (60.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.48.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 2,
+            "excluded_country_share": 0.4,
+            "excluded_rate_within_region": 0.04761905,
+            "overrepresentation_ratio": 0.86666667,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.6,
+            "excluded_rate_within_region": 0.13636364,
+            "overrepresentation_ratio": 2.48181818,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      },
+      "rejected_count": 0,
+      "semantic_scoring_gate": "RESERVE_WEAK_DISCRIMINATION_AND_NARROW_PROXY",
+      "source_candidate_id": "C53-JMP-WDI-BASIC",
+      "source_version": "JMP 2025 release; observations queried for 2022-2024",
+      "stable_country_count": 91,
+      "stale_count": 0,
+      "valid_count": 86
+    }
+  ],
+  "policy_version": "uncertainty-aware-ranking-policy-1.0",
+  "schema_version": "phase4b-candidate-simulation-1.0"
+}

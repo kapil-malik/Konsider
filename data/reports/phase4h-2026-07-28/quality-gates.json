@@ -1,0 +1,78 @@
+{
+  "schema_version": "phase4h-quality-gates-1.0",
+  "checked_at": "2026-07-28",
+  "active_release_id": "2026-07-28.2",
+  "local_platform": "Windows",
+  "gates": [
+    {
+      "gate": "complete_pytest_suite",
+      "result": "passed",
+      "evidence": "189 passed in 117.49s"
+    },
+    {
+      "gate": "ruff",
+      "result": "passed",
+      "evidence": "All checks passed"
+    },
+    {
+      "gate": "black_check",
+      "result": "passed",
+      "evidence": "93 files would be left unchanged"
+    },
+    {
+      "gate": "python_compileall",
+      "result": "passed",
+      "evidence": "src and tests compiled without error"
+    },
+    {
+      "gate": "openapi_and_documentation_contracts",
+      "result": "passed",
+      "evidence": "Included in the complete pytest suite"
+    },
+    {
+      "gate": "frontend_contract_generation",
+      "result": "passed",
+      "evidence": "Checked-in OpenAPI and generated types are current"
+    },
+    {
+      "gate": "frontend_typecheck",
+      "result": "passed",
+      "evidence": "TypeScript project build completed without error"
+    },
+    {
+      "gate": "frontend_lint",
+      "result": "passed",
+      "evidence": "ESLint completed without error"
+    },
+    {
+      "gate": "frontend_component_tests",
+      "result": "passed",
+      "evidence": "17 tests passed"
+    },
+    {
+      "gate": "frontend_production_build",
+      "result": "passed",
+      "evidence": "Vite built 86 modules"
+    },
+    {
+      "gate": "focused_browser_tests",
+      "result": "passed",
+      "evidence": "8 Playwright Chromium tests passed"
+    },
+    {
+      "gate": "clean_windows_export",
+      "result": "passed",
+      "evidence": "23 closure, repository, and documentation checks passed without data/raw, caches, build output, or node_modules"
+    },
+    {
+      "gate": "offline_replay",
+      "result": "passed",
+      "evidence": "Release 2026-07-28.2 replay passed from local content-addressed raw artifacts"
+    },
+    {
+      "gate": "clean_linux_checkout",
+      "result": "configured_pending_remote_observation",
+      "evidence": "GitHub Actions backend matrix includes ubuntu-latest and windows-latest; no local WSL or Docker runtime is installed"
+    }
+  ]
+}

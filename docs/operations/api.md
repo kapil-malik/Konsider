@@ -42,7 +42,7 @@ All settings are optional.
 | --- | --- | --- | --- |
 | `KONSIDER_RELEASE_ROOT` | Directory containing release folders. | Repository `data/releases` | `/srv/konsider/releases` |
 | `KONSIDER_ACTIVE_RELEASE_PATH` | Active pointer JSON. | `RELEASE_ROOT/active.json` | `/srv/konsider/releases/active.json` |
-| `KONSIDER_CATALOG_PATH` | Versioned consumer catalog. | Repository `data/catalogs/consumer-catalog-1.0.json` | `/srv/konsider/catalog.json` |
+| `KONSIDER_CATALOG_PATH` | Optional catalog override. | Schema-matched repository catalog | `/srv/konsider/catalog.json` |
 | `KONSIDER_ENVIRONMENT` | Environment label exposed to application settings. | `development` | `staging` |
 | `KONSIDER_LOG_LEVEL` | `konsider.api` logger level; uppercased. | `INFO` | `DEBUG` |
 | `KONSIDER_CORS_ORIGINS` | Comma-separated exact browser origins. Empty disables CORS middleware. | empty | `http://localhost:5173` |
@@ -131,9 +131,9 @@ Representative complete response:
 
 ```json
 {
-  "release_id": "2026-07-27.1",
-  "release_schema_version": "konsider-release-3.0",
-  "catalog_schema_version": "consumer-catalog-1.0",
+  "release_id": "2026-07-28.2",
+  "release_schema_version": "konsider-release-4.0",
+  "catalog_schema_version": "consumer-catalog-2.0",
   "scoring_method_versions": [
     "homicide_risk_bands_v1",
     "icp_relative_cost_bands_v2",
@@ -143,7 +143,7 @@ Representative complete response:
   ],
   "status": "ok",
   "country_count": 91,
-  "enabled_criterion_count": 5,
+  "enabled_criterion_count": 9,
   "ready_for_rankings": true
 }
 ```
@@ -165,8 +165,8 @@ Initialization failure example (`503`):
 
 Returns `200`, `500`, or `503`. The response contains:
 
-- 20 ISO-3 countries with display names and regions;
-- six criteria with descriptions, direction, raw units, interpretation, caveats, quality limits,
+- 91 ISO-3 countries with display names and regions;
+- ten criteria with descriptions, direction, raw units, interpretation, caveats, quality limits,
   readiness, default-enabled state, experimental status, and scoring method version; and
 - four provisional, user-editable profiles, with `equal_weight_mvp` as the documented default; and
 - a public source mapping and source reference period for every criterion.
@@ -178,12 +178,12 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-27.1",
-  "release_schema_version": "konsider-release-3.0",
-  "catalog_schema_version": "consumer-catalog-1.0",
-  "scoring_method_versions": [six available method versions],
-  "countries": [20 CountryResponse objects],
-  "criteria": [six CriterionResponse objects],
+  "release_id": "2026-07-28.2",
+  "release_schema_version": "konsider-release-4.0",
+  "catalog_schema_version": "consumer-catalog-2.0",
+  "scoring_method_versions": [ten available method versions],
+  "countries": [91 CountryResponse objects],
+  "criteria": [ten CriterionResponse objects],
   "profiles": [four ProfileResponse objects]
 }
 ```
@@ -203,11 +203,12 @@ Request fields:
 | --- | --- |
 | `weights` | Optional object of criterion ID to JSON number. Values must be finite and non-negative. Unknown and non-ready criteria are rejected. |
 | `profile_id` | Optional non-empty catalog profile ID. Cannot be supplied with `weights`. |
-| `top_k` | Optional strict integer from 1 through the active eligible count (currently 91). Defaults to all eligible countries. |
+| `top_k` | Optional strict integer from 1 through the active eligible count. Defaults to 10. Score-boundary ties may make the returned collection larger than K. |
 
 If neither selector is supplied, `equal_weight_mvp` is used. With explicit weights, omitted enabled
 criteria receive zero. If every explicit weight is zero (including an empty object), the service
-uses equal weights across all five enabled criteria. Non-zero weights are normalized to sum to one.
+uses equal weights across the eight global-core criteria; a partial-coverage criterion remains
+inactive below its activation threshold. Non-zero active weights are normalized to sum to one.
 
 Canonical scores come from the release. A contribution is the published score multiplied by its
 normalized weight. Totals are sorted descending; ties use ascending ISO-3 country code. Strengths
@@ -231,12 +232,12 @@ Carefully abbreviated `200` response:
 
 ```text
 {
-  "release_id": "2026-07-27.1",
-  "release_schema_version": "konsider-release-3.0",
-  "catalog_schema_version": "consumer-catalog-1.0",
-  "scoring_method_versions": [five enabled method versions],
+  "release_id": "2026-07-28.2",
+  "release_schema_version": "konsider-release-4.0",
+  "catalog_schema_version": "consumer-catalog-2.0",
+  "scoring_method_versions": [nine enabled method versions],
   "resolved_profile_id": null,
-  "normalized_weights": {five enabled criterion IDs},
+  "normalized_weights": {nine enabled criterion IDs},
   "all_zero_behavior": "equal_weights_across_all_enabled_criteria",
   "country_tie_breaker": "ascending_iso3_country_code",
   "rounding_tolerance": 1e-8,
@@ -255,7 +256,9 @@ Carefully abbreviated `200` response:
 }
 ```
 
-Returns `200`, request/domain `422`, `500`, or `503`.
+Returns `200`, request/domain `422`, `500`, or `503`. Phase 4 uncertainty metadata and
+coverage-limit fallback behavior are documented in the
+[Phase 4E API contract](phase4e-api-contract.md).
 
 Non-ready weight example (`422`):
 
@@ -273,7 +276,7 @@ Non-ready weight example (`422`):
 ## `GET /api/v1/countries/{country_code}/metrics`
 
 `country_code` is case-insensitive ISO-3 input; output is canonical uppercase. A successful response
-contains the country and its five enabled criterion records. Each record contains catalog metadata,
+contains the country and each available enabled criterion record. Each record contains catalog metadata,
 canonical normalized score, transform and direction, observation IDs, raw values and units,
 reference periods, method/parser versions, quality flags, exact source-record locators, and public
 source metadata. Caveats, quality limitations, and experimental status come from the criterion.
@@ -285,12 +288,12 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-27.1",
-  "release_schema_version": "konsider-release-3.0",
-  "catalog_schema_version": "consumer-catalog-1.0",
-  "scoring_method_versions": [five enabled method versions],
+  "release_id": "2026-07-28.2",
+  "release_schema_version": "konsider-release-4.0",
+  "catalog_schema_version": "consumer-catalog-2.0",
+  "scoring_method_versions": [nine enabled method versions],
   "country": {"code": "IND", "display_name": "India", "region": "South Asia"},
-  "criteria": [five CountryCriterionMetricResponse objects]
+  "criteria": [available CountryCriterionMetricResponse objects]
 }
 ```
 
@@ -329,9 +332,9 @@ Carefully abbreviated response:
 
 ```text
 {
-  "release_id": "2026-07-27.1",
+  "release_id": "2026-07-28.2",
   "resolved_profile_id": "equal_weight_mvp",
-  "normalized_weights": {five enabled criterion IDs},
+  "normalized_weights": {nine enabled criterion IDs},
   "total_eligible_country_count": 91,
   "returned_result_count": 3,
   "countries": [three RankedCountryResponse objects in requested order]
@@ -380,3 +383,11 @@ All errors share this envelope. `request_id` echoes `X-Request-ID` when provided
 | `unsupported_release_contract` | 503 | Active release uses an unsupported schema major. |
 | `release_unavailable` | 503 | Active release is missing, corrupt, invalid, or failed startup validation. |
 | `internal_error` | 500 | An unexpected failure occurred; private details remain server-side. |
+
+## Phase 4 closure boundary
+
+The API exposes the stable 91-country catalog separately from a request's eligible ranking
+universe. `baseline_*` fields describe the full-coverage R0; `rankings` describes R1 when the
+coverage gate passes; `excluded_countries` never contains a final rank. Robustness status, Kth
+scores, ties, optimistic bounds, and normalized weights are supplied by the domain result. Routes
+and response mappers do not recalculate them.

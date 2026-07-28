@@ -1,8 +1,9 @@
 # Konsider contracts
 
-`contracts/schemas/v1` contains versioned Draft 2020-12 JSON Schemas for the active pointer, release
-manifest, validation report, source registration, metric observation, metric score, and consumer
-catalog. Producers own valid output; consumers reject incompatible major versions before joining or
+`contracts/schemas/v1` contains the immutable release-3/catalog-1 Draft 2020-12 contracts.
+`contracts/schemas/v2` adds release-4/catalog-2 mixed-coverage envelopes and explicit
+criterion-country outcomes. Unchanged source, observation, and score rows continue to validate
+against v1. Producers own valid output; consumers negotiate compatible majors before joining or
 serving records. Published schemas are not silently weakened to accept invalid historical data.
 
 FastAPI-generated `/openapi.json` is authoritative for HTTP request, response, and error shapes. It

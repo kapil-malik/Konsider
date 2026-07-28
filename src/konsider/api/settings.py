@@ -18,7 +18,7 @@ def _configured_path(value: str | None, default: Path) -> Path:
 class ApiSettings:
     release_root: Path
     active_release_path: Path
-    catalog_path: Path
+    catalog_path: Path | None
     environment: str = "development"
     log_level: str = "INFO"
     cors_origins: tuple[str, ...] = ()
@@ -39,9 +39,13 @@ class ApiSettings:
             active_release_path=_configured_path(
                 values.get("KONSIDER_ACTIVE_RELEASE_PATH"), release_root / "active.json"
             ),
-            catalog_path=_configured_path(
-                values.get("KONSIDER_CATALOG_PATH"),
-                PROJECT_ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json",
+            catalog_path=(
+                _configured_path(
+                    values.get("KONSIDER_CATALOG_PATH"),
+                    PROJECT_ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json",
+                )
+                if values.get("KONSIDER_CATALOG_PATH")
+                else None
             ),
             environment=values.get("KONSIDER_ENVIRONMENT", "development"),
             log_level=values.get("KONSIDER_LOG_LEVEL", "INFO").upper(),

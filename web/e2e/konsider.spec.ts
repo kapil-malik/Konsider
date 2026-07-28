@@ -45,7 +45,7 @@ test('initial guest ranking and explicit priority update', async ({ page }) => {
     .poll(() => requests.filter((item) => item.path.endsWith('/rankings')).length)
     .toBe(rankingCallsBeforeApply + 1)
   expect(requests.filter((item) => item.path.endsWith('/rankings')).at(-1)?.body).toEqual({
-    weights: { air: 0.6, infrastructure: 0.8 },
+    weights: { air: 0.6, infrastructure: 0.8, jobs: 0.4 },
   })
 })
 
@@ -96,12 +96,12 @@ test('search and region filters update visible and total result counts', async (
   await page.goto('/')
 
   await page.getByRole('searchbox', { name: 'Search countries' }).fill('C03')
-  await expect(page.getByText('Showing 1 of 5 ranked countries')).toBeVisible()
+  await expect(page.getByText(/Showing 1 of 5 returned countries/)).toBeVisible()
   await expect(page.locator('.ranking-table tbody tr[data-country-code="C03"]')).toBeVisible()
 
   await page.getByRole('combobox', { name: 'Region' }).selectOption('Region 2')
   await expect(page.getByRole('heading', { name: 'No countries match these filters' })).toBeVisible()
-  await expect(page.getByText('Showing 0 of 5 ranked countries')).toBeVisible()
+  await expect(page.getByText(/Showing 0 of 5 returned countries/)).toBeVisible()
 })
 
 test('shows a controlled unavailable-release state', async ({ page }) => {
@@ -166,5 +166,5 @@ test('mobile long list keeps the final country accessible through search', async
 
   await page.getByRole('searchbox', { name: 'Search countries' }).fill('Long list country 91')
   await expect(page.locator('.ranking-card[data-country-code="X90"]')).toBeVisible()
-  await expect(page.getByText('Showing 1 of 91 ranked countries')).toBeVisible()
+  await expect(page.getByText(/Showing 1 of 91 returned countries/)).toBeVisible()
 })

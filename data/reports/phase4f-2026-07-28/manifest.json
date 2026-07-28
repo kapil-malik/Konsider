@@ -1,0 +1,8 @@
+{
+  "files": {
+    "report.json": "sha256:5747b02c98938dcae1e24d9489cf8e998a5516950cde8d034e2ced881b785593",
+    "report.md": "sha256:10518290a45c119bde2c5fbfd385908f4ca7be9636e966d15a1aa3b855972887"
+  },
+  "release_id": "2026-07-28.1",
+  "schema_version": "phase4f-report-manifest-1.0"
+}

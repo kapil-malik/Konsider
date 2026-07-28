@@ -161,7 +161,7 @@ prints `replay passed` and exits `0`, or prints `replay failed` and exits `1`. M
 bytes make replay fail even when the committed normalized release is valid for API consumption.
 
 ```bash
-python -m konsider.ingestion.worker replay data/releases/2026-07-27.1
+python -m konsider.ingestion.worker replay data/releases/2026-07-28.2
 ```
 
 ## Outputs and lineage
@@ -207,18 +207,18 @@ PowerShell:
 
 ```powershell
 Get-Content data\releases\active.json
-Get-Content data\releases\2026-07-27.1\manifest.json
-Get-Content data\releases\2026-07-27.1\validation.json
-python -m konsider.ingestion.worker replay data\releases\2026-07-27.1
+Get-Content data\releases\2026-07-28.2\manifest.json
+Get-Content data\releases\2026-07-28.2\validation.json
+python -m konsider.ingestion.worker replay data\releases\2026-07-28.2
 ```
 
 Bash:
 
 ```bash
 python -m json.tool data/releases/active.json
-python -m json.tool data/releases/2026-07-27.1/manifest.json
-python -m json.tool data/releases/2026-07-27.1/validation.json
-python -m konsider.ingestion.worker replay data/releases/2026-07-27.1
+python -m json.tool data/releases/2026-07-28.2/manifest.json
+python -m json.tool data/releases/2026-07-28.2/validation.json
+python -m konsider.ingestion.worker replay data/releases/2026-07-28.2
 ```
 
 API startup performs schema and payload-checksum validation through `PublishedReleaseRepository`
@@ -250,3 +250,11 @@ immutable and is why packaging-corrected `2026-07-21.1` exists.
 | Fewer than five ready criteria | Publication must remain blocked and `active.json` unchanged. |
 | Existing release or draft ID | Choose a new `YYYY-MM-DD.N`; never overwrite or delete published history to reuse an ID. |
 | Windows/Linux checksum difference | Release files are LF-enforced by `.gitattributes`; use `2026-07-21.1` or later. |
+
+## Release-scoped catalog snapshots
+
+Every activated schema-3 or schema-4 release must have
+`data/catalogs/releases/{release_id}.json`. The snapshot is the catalog contract used to reopen
+that historical release after the current catalog evolves. Never rewrite an existing snapshot;
+publish a new release and snapshot together. Startup prefers the release-scoped snapshot and falls
+back to the schema-generation alias only for older releases that predate this rule.

@@ -206,11 +206,11 @@ material enough to disclose but below the pre-set 0.90 redundancy-review thresho
 
 ## Evidence retained
 
-- [Phase 3A framework](../../konsider_phase3a/phase3a_framework.md)
-- [Phase 3B screening](../../konsider_phase3b/phase3b_screening.md)
-- [Phase 3C Batch 1](../../konsider_phase3c_batch1/phase3c_batch1.md)
-- [Phase 3C Batch 2](../../konsider_phase3c_batch2/phase3c_batch2.md)
-- [Phase 3C Batch 3](../../konsider_phase3c_batch3/phase3c_batch3.md)
+- [Phase 3A framework](../../project-history/phases/phase-3/research/framework/phase3a_framework.md)
+- [Phase 3B screening](../../project-history/phases/phase-3/research/screening/phase3b_screening.md)
+- [Phase 3C Batch 1](../../project-history/phases/phase-3/research/candidate-batch-1/phase3c_batch1.md)
+- [Phase 3C Batch 2](../../project-history/phases/phase-3/research/candidate-batch-2/phase3c_batch2.md)
+- [Phase 3C Batch 3](../../project-history/phases/phase-3/research/candidate-batch-3/phase3c_batch3.md)
 - [Phase 3D framework proof](phase3d-feasibility-probes.md)
 - [Phase 3E measured probes](phase3e-deterministic-probes.md)
 - [Approved Phase 3F decision](konsider_phase3f_portfolio_decision.md)

@@ -142,7 +142,11 @@ def create_app(
         current: RecommendationService = Depends(get_recommendation_service),
     ):
         return ranking_response(
-            current.rank(payload.weights, profile_id=payload.profile_id, top_k=payload.top_k)
+            current.rank_with_uncertainty(
+                payload.weights,
+                profile_id=payload.profile_id,
+                top_k=payload.top_k,
+            )
         )
 
     @application.get(
@@ -168,7 +172,11 @@ def create_app(
         current: RecommendationService = Depends(get_recommendation_service),
     ):
         return comparison_response(
-            current.compare(payload.country_codes, payload.weights, profile_id=payload.profile_id)
+            current.compare_with_uncertainty(
+                payload.country_codes,
+                payload.weights,
+                profile_id=payload.profile_id,
+            )
         )
 
     return application

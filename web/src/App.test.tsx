@@ -7,7 +7,9 @@ import App from './App'
 import {
   catalogFixture,
   comparisonFixture,
+  comparisonWithUnavailableFixture,
   countryMetricFixture,
+  rankingForStatus,
   rankingFixture,
 } from './test/fixtures'
 
@@ -20,16 +22,24 @@ function jsonResponse(body: unknown, status = 200) {
   })
 }
 
-function installHappyApi(ranking = rankingFixture) {
+function installHappyApi(
+  ranking = rankingFixture,
+  comparison = comparisonFixture,
+  subsequentRanking = ranking,
+) {
   const requests: RecordedRequest[] = []
+  let rankingCalls = 0
   const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(typeof input === 'string' ? input : input instanceof URL ? input : input.url)
     const body = init?.body ? JSON.parse(String(init.body)) : undefined
     requests.push({ path: url.pathname, method: init?.method ?? 'GET', body })
     if (url.pathname.endsWith('/catalog')) return jsonResponse(catalogFixture)
-    if (url.pathname.endsWith('/rankings')) return jsonResponse(ranking)
+    if (url.pathname.endsWith('/rankings')) {
+      rankingCalls += 1
+      return jsonResponse(rankingCalls === 1 ? ranking : subsequentRanking)
+    }
     if (url.pathname.includes('/countries/')) return jsonResponse(countryMetricFixture)
-    if (url.pathname.endsWith('/comparisons')) return jsonResponse(comparisonFixture)
+    if (url.pathname.endsWith('/comparisons')) return jsonResponse(comparison)
     return jsonResponse({ error: { code: 'not_found', message: 'Not found' } }, 404)
   })
   vi.stubGlobal('fetch', fetchMock)
@@ -56,11 +66,15 @@ test('renders catalog-owned controls, profile options, flags, guest help, and al
   renderApp()
 
   expect(await screen.findByRole('heading', { name: 'What matters most?' })).toBeInTheDocument()
-  expect(screen.getAllByRole('slider')).toHaveLength(2)
+  expect(screen.getAllByRole('slider')).toHaveLength(3)
   expect(screen.getByRole('slider', { name: 'Air quality' })).toHaveValue('1')
+  expect(screen.getByRole('slider', { name: 'Overall job-market opportunity' })).toHaveValue('0.4')
   expect(screen.queryByRole('slider', { name: 'UHC service coverage' })).not.toBeInTheDocument()
   expect(screen.getByRole('option', { name: 'Safety profile' })).toBeInTheDocument()
   expect(screen.getByText('Experimental')).toBeInTheDocument()
+  expect(screen.getByText('Limited coverage')).toBeInTheDocument()
+  expect(screen.getByText('4/5 countries')).toBeInTheDocument()
+  expect(screen.getByText('Not active in the ranking at this setting.')).toBeInTheDocument()
 
   await user.click(screen.getByRole('button', { name: /Guest/ }))
   expect(screen.getByText('Your priorities and selections are not saved.')).toBeInTheDocument()
@@ -68,7 +82,7 @@ test('renders catalog-owned controls, profile options, flags, guest help, and al
   const dialog = screen.getByRole('dialog', { name: 'Data & Sources' })
   expect(within(dialog).getByText('UHC service coverage')).toBeInTheDocument()
   expect(within(dialog).getByText('Unavailable')).toBeInTheDocument()
-  expect(within(dialog).getAllByText('Public Data Publisher')).toHaveLength(3)
+  expect(within(dialog).getAllByText('Public Data Publisher')).toHaveLength(4)
   expect(within(dialog).getByText(/latest 2021/)).toBeInTheDocument()
   await user.click(within(dialog).getByRole('button', { name: 'Close Data and Sources' }))
   expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -99,7 +113,7 @@ test('uses profile IDs until a keyboard edit creates Custom, waits for Apply, an
   await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
   await waitFor(() => expect(requests.filter((item) => item.path.endsWith('/rankings'))).toHaveLength(3))
   expect(requests.filter((item) => item.path.endsWith('/rankings')).at(-1)?.body).toEqual({
-    weights: { air: 0.6, infrastructure: 0.8 },
+    weights: { air: 0.6, infrastructure: 0.8, jobs: 0.4 },
   })
 
   airSlider = screen.getByRole('slider', { name: 'Air quality' })
@@ -156,21 +170,126 @@ test('filters the catalog-driven ranking by country name, code, and region with 
 
   const search = screen.getByRole('searchbox', { name: 'Search countries' })
   const region = screen.getByRole('combobox', { name: 'Region' })
-  expect(screen.getByText('Showing 5 of 5 ranked countries')).toBeInTheDocument()
+  expect(screen.getByText(/Showing 5 of 5 returned countries · 5 of 5 ranked/)).toBeInTheDocument()
 
   await user.type(search, 'C03')
   expect(screen.getAllByText('Country 4').length).toBeGreaterThan(0)
   expect(screen.queryByText('Country 1')).not.toBeInTheDocument()
-  expect(screen.getByText('Showing 1 of 5 ranked countries')).toBeInTheDocument()
+  expect(screen.getByText(/Showing 1 of 5 returned countries · 5 of 5 ranked/)).toBeInTheDocument()
 
   await user.selectOptions(region, 'Region 2')
   expect(screen.getByRole('heading', { name: 'No countries match these filters' })).toBeInTheDocument()
-  expect(screen.getByText('Showing 0 of 5 ranked countries')).toBeInTheDocument()
+  expect(screen.getByText(/Showing 0 of 5 returned countries · 5 of 5 ranked/)).toBeInTheDocument()
 
   await user.clear(search)
   expect(screen.getAllByText('Country 2').length).toBeGreaterThan(0)
   expect(screen.queryByText('Country 4')).not.toBeInTheDocument()
-  expect(screen.getByText('Showing 1 of 5 ranked countries')).toBeInTheDocument()
+  expect(screen.getByText(/Showing 1 of 5 returned countries · 5 of 5 ranked/)).toBeInTheDocument()
+})
+
+test.each([
+  ['NO_PARTIAL_CRITERIA_ACTIVE', 'Full-coverage ranking'],
+  ['FULL_COVERAGE', 'Full coverage'],
+  ['ROBUST_TOP_K', 'Robust top results'],
+  ['POTENTIALLY_AFFECTED', 'Recommendations may be affected'],
+  ['BASELINE_TOP_K_EXCLUDED', 'A baseline top country is excluded'],
+  ['COVERAGE_LIMIT_EXCEEDED', 'Coverage limit reached'],
+] as const)('renders the %s uncertainty state from the API', async (status, label) => {
+  installHappyApi(rankingForStatus(status))
+  renderApp()
+
+  expect(
+    await screen.findByRole('status', { name: `Ranking coverage status: ${label}` }),
+  ).toBeInTheDocument()
+  expect(screen.getByText(label)).toBeInTheDocument()
+})
+
+test('shows excluded-country diagnostics and available evidence without inventing a score', async () => {
+  installHappyApi(rankingForStatus('ROBUST_TOP_K'))
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  expect(screen.queryByText('Country 5', { selector: '.ranking-table strong' })).not.toBeInTheDocument()
+  await user.click(screen.getByText('Review 1 excluded country'))
+  expect(screen.getByText('Rank 2, score 8.00')).toBeInTheDocument()
+  expect(screen.getByText(/Overall job-market opportunity: Missing/)).toBeInTheDocument()
+  expect(screen.getByText('No', { selector: '.excluded-country-card dd' })).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Country 5' }))
+  expect(await screen.findByRole('heading', { name: 'Country 5', level: 2 })).toBeInTheDocument()
+  expect(screen.getByText('Not ranked for this profile', { selector: '.unranked-country-notice strong' })).toBeInTheDocument()
+  expect(screen.queryByText(/Rank .*Country 5/)).not.toBeInTheDocument()
+})
+
+test('keeps multiple excluded countries collapsed and labels baseline-boundary membership', async () => {
+  const oneExcluded = rankingForStatus('BASELINE_TOP_K_EXCLUDED')
+  const template = oneExcluded.excluded_countries[0]
+  const manyExcluded = {
+    ...oneExcluded,
+    eligible_universe_size: 2,
+    total_eligible_country_count: 2,
+    excluded_country_count: 3,
+    rankings: oneExcluded.rankings.slice(0, 2),
+    returned_result_count: 2,
+    excluded_countries: ['C02', 'C03', 'C04'].map((countryCode, index) => ({
+      ...template,
+      country_code: countryCode,
+      country_name: `Country ${index + 3}`,
+      r0_rank: index + 2,
+      baseline_top_k_member: index === 0,
+    })),
+  }
+  installHappyApi(manyExcluded)
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  const details = screen.getByText('Review 3 excluded countries').closest('details')
+  expect(details).not.toHaveAttribute('open')
+  await user.click(screen.getByText('Review 3 excluded countries'))
+  expect(screen.getByText('Baseline top 5')).toBeInTheDocument()
+  expect(within(details as HTMLElement).getAllByText('Not ranked for this profile')).toHaveLength(3)
+})
+
+test('loads the 91-country-style baseline from the API without calculating it in the browser', async () => {
+  const requests = installHappyApi(
+    rankingForStatus('ROBUST_TOP_K'),
+    comparisonFixture,
+    rankingFixture,
+  )
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  await user.click(screen.getByRole('button', { name: 'View full-coverage baseline' }))
+  expect(await screen.findByText(/Full-coverage baseline · Rank among 5 countries/)).toBeInTheDocument()
+  await waitFor(() => expect(requests.filter((item) => item.path.endsWith('/rankings'))).toHaveLength(2))
+  expect(requests.filter((item) => item.path.endsWith('/rankings')).at(-1)?.body).toEqual({
+    weights: { air: 1, infrastructure: 1, jobs: 0 },
+    top_k: 5,
+  })
+  expect(screen.getByText(/Showing 5 of 5 returned countries · 5 of 5 ranked/)).toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Return to conditional ranking' }))
+  expect(screen.getByText(/Rank among 4 eligible countries/)).toBeInTheDocument()
+})
+
+test('comparison keeps available cells and marks missing data and aggregate scores', async () => {
+  installHappyApi(rankingFixture, comparisonWithUnavailableFixture)
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  const comparisonBoxes = screen.getAllByRole('checkbox', { name: /Select Country/ })
+  for (const checkbox of comparisonBoxes.slice(0, 4)) await user.click(checkbox)
+  await user.click(screen.getByRole('button', { name: 'Compare selected (4)' }))
+
+  expect(await screen.findByRole('heading', { name: 'Compare countries' })).toBeInTheDocument()
+  expect(screen.getAllByText('Not ranked for this profile').length).toBeGreaterThan(0)
+  expect(screen.getAllByText('Data not available').length).toBeGreaterThan(0)
+  expect(screen.getAllByLabelText(/Data not available: Cov source record missing/).length).toBeGreaterThan(0)
+  expect(screen.getByText(/no partial affinity score is fabricated/i)).toBeInTheDocument()
 })
 
 test('uses structured 503 and network-safe catalog errors', async () => {

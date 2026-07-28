@@ -1,12 +1,15 @@
 # Release format
 
 Konsider publishes immutable directories under `data/releases/RELEASE_ID`. The only mutable release
-file is the sibling `active.json` pointer. The current consumer schema major is 3.
+file is the sibling `active.json` pointer. Production currently uses release schema 4 and consumer
+catalog schema 2 for explicit mixed-coverage outcomes. Historical schema-3 releases remain
+immutable and loadable with their matching schema-1 catalogs.
 
 ```text
 data/
   catalogs/
     consumer-catalog-1.0.json
+    consumer-catalog-2.0.json
   raw/
     SOURCE_ID/              # ignored third-party bytes and capture metadata
   releases/
@@ -40,16 +43,20 @@ version, source audit ID, country count/codes, and licensing decision.
 | `active.json` | Selects release ID and compatible release schema. | Mutable activation pointer. |
 | `manifest.json` | Publication status, country count/codes and universe metadata, observation/score/attempt counts, criteria, timestamps, previous ID, source/parser/observation/scoring versions, payload and aggregate checksums, validation summary, replay metadata. | Authoritative release envelope. |
 | `observations.jsonl` | Source-backed values, units, periods, scope, flags, exact artifact/record provenance, and component lineage. | Authoritative normalized observations. |
-| `scores.jsonl` | Canonical versioned 1-10 score, direction, transform, and input observation IDs for every country/criterion pair. | Authoritative derived scores. |
-| `attempts.jsonl` | Expected acquisition result per source/country/criterion. | Authoritative completeness record. |
+| `scores.jsonl` | Canonical versioned 1-10 score, direction, transform, and input observation IDs. Schema 3 requires every pair; schema 4 permits rows only for explicit valid outcomes. | Authoritative derived scores. |
+| `attempts.jsonl` | Schema 3 acquisition attempts or schema 4's exact criterion/country outcome matrix with normalized reasons. | Authoritative completeness record. |
 | `raw-artifacts.json` | Capture URLs, response metadata, local raw path, source version, byte size, and SHA-256. | Authoritative raw inventory; bytes remain ignored. |
 | `sources.json` | Frozen publisher, methodology, licence, attribution, URL, parser, criterion, and source version. | Authoritative release source contract. |
 | `validation.json` | Structural issues, coverage, criterion readiness, blockers, warnings, and product gate. | Authoritative readiness decision. |
 | `scoring-sensitivity.json` | Alternative methods, distributions, component years/correlations, and perturbation results. | Diagnostic review artifact. |
-| consumer catalog | Countries, criterion labels/meaning/caveats/readiness, experimental flags, and provisional profiles. | Separately versioned consumer contract. |
+| consumer catalog | Countries, criterion labels/meaning/caveats/readiness, coverage policy, experimental flags, and provisional profiles. | Separately versioned consumer contract with a release-scoped snapshot. |
 
-The catalog remains outside immutable release directories. The repository validates its compatible
-schema major, exact country/criterion set, readiness, and scoring methods against the active release.
+The catalog remains outside immutable release directories. The current aliases are
+`consumer-catalog-1.0.json` and `consumer-catalog-2.0.json`; immutable release-scoped snapshots live
+under `data/catalogs/releases/{release_id}.json`. The repository prefers the matching snapshot and
+validates its compatible schema major, exact country/criterion set, readiness, coverage metadata,
+and scoring methods against the selected release. This allows historical releases to remain
+loadable after a later catalog adds criteria.
 
 ## Checksums
 
@@ -86,6 +93,8 @@ recommendation service from canonical scores and user weights.
 An aggregate pass does not make every criterion ready. Active UHC remains non-ready and is excluded
 at the repository/service boundary. Fixtures never fill release gaps.
 
-Machine-readable Draft 2020-12 schemas live in `contracts/schemas/v1`. See the
+Machine-readable Draft 2020-12 schemas live in `contracts/schemas/v1` for release 3/catalog 1 and
+`contracts/schemas/v2` for release 4/catalog 2. See the
 [worker guide](../operations/worker.md), [contracts README](../../contracts/README.md), and
-[release history](../history/releases/README.md).
+[release history](../history/releases/README.md). The schema-4 invariants and fixture boundary are
+documented in the [Phase 4C coverage contract](phase4c-coverage-contract.md).

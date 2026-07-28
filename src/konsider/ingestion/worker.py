@@ -15,6 +15,7 @@ from types import SimpleNamespace
 from konsider.ingestion.countries import COUNTRY_CODES
 from konsider.ingestion.country_coverage import audit_coverage
 from konsider.ingestion.models import RawArtifact, SourceAttempt, SourceRegistration
+from konsider.ingestion.outcomes import build_criterion_outcomes
 from konsider.ingestion.parsers import PARSERS
 from konsider.ingestion.registry import SOURCES
 from konsider.ingestion.scoring import score_observations, sensitivity_experiments
@@ -419,6 +420,15 @@ def replay(release_path: Path | str) -> bool:
         registrations,
         country_codes=release_country_codes,
     )
+    if schema_version.startswith("konsider-release-4."):
+        attempts = build_criterion_outcomes(
+            registrations=registrations,
+            artifacts=artifacts,
+            observations=observations,
+            raw_repository=raw_repository,
+            criterion_ids=manifest["criterion_coverage"],
+            country_codes=release_country_codes,
+        )
     score_profile = "legacy" if schema_version == "konsider-release-2.0" else "current"
     scores = score_observations(observations, profile=score_profile)
     return (

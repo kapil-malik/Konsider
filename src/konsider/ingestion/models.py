@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from enum import StrEnum
 from typing import Any
 
 
@@ -139,6 +140,56 @@ class SourceAttempt:
         return value
 
 
+class CoverageMode(StrEnum):
+    """How one criterion participates in a stable-country release."""
+
+    GLOBAL_CORE = "GLOBAL_CORE"
+    CONDITIONAL_COMPLETE_CASE = "CONDITIONAL_COMPLETE_CASE"
+    DIAGNOSTIC_ONLY = "DIAGNOSTIC_ONLY"
+
+
+@dataclass(frozen=True)
+class CriterionCoverage:
+    """Versioned coverage policy and its derived release counts."""
+
+    criterion_id: str
+    mode: CoverageMode
+    stable_universe_id: str
+    stable_country_count: int
+    valid_country_count: int
+    minimum_valid_country_count: int
+    outcome_counts: dict[str, int]
+    activation_threshold: float | None
+    experimental: bool
+    source_versions: dict[str, str]
+    scoring_method_version: str
+    score_min: float = 1.0
+    score_max: float = 10.0
+
+    def to_dict(self) -> dict[str, Any]:
+        value = asdict(self)
+        value["mode"] = self.mode.value
+        return value
+
+
+@dataclass(frozen=True)
+class CriterionOutcome:
+    """One explicit country outcome for one published criterion."""
+
+    criterion_id: str
+    country_code: str
+    outcome: str
+    source_id: str
+    attempted_at: str
+    observation_id: str | None = None
+    reason_codes: tuple[str, ...] = field(default_factory=tuple)
+
+    def to_dict(self) -> dict[str, Any]:
+        value = asdict(self)
+        value["reason_codes"] = list(self.reason_codes)
+        return value
+
+
 @dataclass(frozen=True)
 class MetricScore:
     country_code: str
@@ -180,6 +231,13 @@ class ValidationReport:
     ready_criterion_count: int
     status_counts: dict[str, int]
     issues: tuple[ValidationIssue, ...]
+    schema_version: str = "validation-3.0"
+    coverage_policy_version: str | None = None
+    stable_universe_id: str | None = None
+    stable_country_count: int | None = None
+    criterion_coverage_details: dict[str, CriterionCoverage] = field(default_factory=dict)
+    global_core_ready_count: int | None = None
+    minimum_global_core_count: int | None = None
 
     @property
     def passed(self) -> bool:
@@ -187,8 +245,8 @@ class ValidationReport:
         return self.structural_passed
 
     def to_dict(self) -> dict[str, Any]:
-        return {
-            "schema_version": "validation-3.0",
+        value = {
+            "schema_version": self.schema_version,
             "structural_passed": self.structural_passed,
             "product_ready": self.product_ready,
             "passed": self.structural_passed,
@@ -201,3 +259,18 @@ class ValidationReport:
             "status_counts": dict(sorted(self.status_counts.items())),
             "issues": [issue.to_dict() for issue in self.issues],
         }
+        if self.schema_version.startswith("validation-4."):
+            value.update(
+                {
+                    "coverage_policy_version": self.coverage_policy_version,
+                    "stable_universe_id": self.stable_universe_id,
+                    "stable_country_count": self.stable_country_count,
+                    "criterion_coverage_details": {
+                        key: item.to_dict()
+                        for key, item in sorted(self.criterion_coverage_details.items())
+                    },
+                    "global_core_ready_count": self.global_core_ready_count,
+                    "minimum_global_core_count": self.minimum_global_core_count,
+                }
+            )
+        return value

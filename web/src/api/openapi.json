@@ -15,6 +15,30 @@
             "title": "Caveats",
             "type": "array"
           },
+          "concise_caveat": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Concise Caveat"
+          },
+          "coverage_mode": {
+            "enum": [
+              "GLOBAL_CORE",
+              "CONDITIONAL_COMPLETE_CASE",
+              "DIAGNOSTIC_ONLY"
+            ],
+            "title": "Coverage Mode",
+            "type": "string"
+          },
+          "coverage_percentage": {
+            "title": "Coverage Percentage",
+            "type": "number"
+          },
           "default_enabled": {
             "title": "Default Enabled",
             "type": "boolean"
@@ -31,6 +55,10 @@
             "title": "Display Name",
             "type": "string"
           },
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean"
+          },
           "experimental": {
             "title": "Experimental",
             "type": "boolean"
@@ -42,6 +70,21 @@
           "interpretation": {
             "title": "Interpretation",
             "type": "string"
+          },
+          "missing_country_count": {
+            "title": "Missing Country Count",
+            "type": "integer"
+          },
+          "pcc_activation_threshold": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pcc Activation Threshold"
           },
           "quality_limitations": {
             "items": {
@@ -68,6 +111,14 @@
             },
             "title": "Sources",
             "type": "array"
+          },
+          "stable_country_count": {
+            "title": "Stable Country Count",
+            "type": "integer"
+          },
+          "valid_country_count": {
+            "title": "Valid Country Count",
+            "type": "integer"
           }
         },
         "required": [
@@ -84,6 +135,14 @@
           "default_enabled",
           "experimental",
           "scoring_method_version",
+          "enabled",
+          "coverage_mode",
+          "valid_country_count",
+          "stable_country_count",
+          "coverage_percentage",
+          "pcc_activation_threshold",
+          "missing_country_count",
+          "concise_caveat",
           "sources"
         ],
         "title": "CatalogCriterionResponse",
@@ -145,6 +204,246 @@
         "title": "CatalogResponse",
         "type": "object"
       },
+      "ComparisonCellResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "active_for_ranking": {
+            "title": "Active For Ranking",
+            "type": "boolean"
+          },
+          "availability": {
+            "enum": [
+              "AVAILABLE",
+              "MISSING",
+              "STALE",
+              "INVALID",
+              "REJECTED"
+            ],
+            "title": "Availability",
+            "type": "string"
+          },
+          "country_code": {
+            "title": "Country Code",
+            "type": "string"
+          },
+          "message_code": {
+            "title": "Message Code",
+            "type": "string"
+          },
+          "normalized_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Normalized Score"
+          },
+          "raw_observation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Raw Observation"
+          },
+          "raw_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Raw Unit"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reason Codes",
+            "type": "array"
+          },
+          "reference_end": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference End"
+          },
+          "reference_start": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Start"
+          },
+          "source": {
+            "$ref": "#/components/schemas/SourceResponse"
+          }
+        },
+        "required": [
+          "country_code",
+          "availability",
+          "message_code",
+          "active_for_ranking",
+          "normalized_score",
+          "raw_observation",
+          "raw_unit",
+          "reference_start",
+          "reference_end",
+          "source",
+          "reason_codes"
+        ],
+        "title": "ComparisonCellResponse",
+        "type": "object"
+      },
+      "ComparisonCountrySummaryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "aggregate_kind": {
+            "enum": [
+              "FINAL",
+              "FCC_BASELINE",
+              "NONE"
+            ],
+            "title": "Aggregate Kind",
+            "type": "string"
+          },
+          "comparison_data_complete": {
+            "title": "Comparison Data Complete",
+            "type": "boolean"
+          },
+          "country_code": {
+            "title": "Country Code",
+            "type": "string"
+          },
+          "country_name": {
+            "title": "Country Name",
+            "type": "string"
+          },
+          "message_code": {
+            "title": "Message Code",
+            "type": "string"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rank"
+          },
+          "ranking_eligible": {
+            "title": "Ranking Eligible",
+            "type": "boolean"
+          },
+          "ranking_status": {
+            "enum": [
+              "RANKED",
+              "NOT_RANKED_ACTIVE_DATA_GAP",
+              "FCC_BASELINE_ONLY"
+            ],
+            "title": "Ranking Status",
+            "type": "string"
+          },
+          "total_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Score"
+          },
+          "unavailable_active_criterion_count": {
+            "title": "Unavailable Active Criterion Count",
+            "type": "integer"
+          },
+          "unavailable_displayed_criterion_count": {
+            "title": "Unavailable Displayed Criterion Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "country_code",
+          "country_name",
+          "comparison_data_complete",
+          "ranking_eligible",
+          "unavailable_displayed_criterion_count",
+          "unavailable_active_criterion_count",
+          "aggregate_kind",
+          "ranking_status",
+          "message_code",
+          "total_score",
+          "rank"
+        ],
+        "title": "ComparisonCountrySummaryResponse",
+        "type": "object"
+      },
+      "ComparisonCriterionRowResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "cells": {
+            "items": {
+              "$ref": "#/components/schemas/ComparisonCellResponse"
+            },
+            "title": "Cells",
+            "type": "array"
+          },
+          "coverage_mode": {
+            "enum": [
+              "GLOBAL_CORE",
+              "CONDITIONAL_COMPLETE_CASE",
+              "DIAGNOSTIC_ONLY"
+            ],
+            "title": "Coverage Mode",
+            "type": "string"
+          },
+          "criterion_id": {
+            "title": "Criterion Id",
+            "type": "string"
+          },
+          "criterion_name": {
+            "title": "Criterion Name",
+            "type": "string"
+          },
+          "experimental": {
+            "title": "Experimental",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "criterion_id",
+          "criterion_name",
+          "coverage_mode",
+          "experimental",
+          "cells"
+        ],
+        "title": "ComparisonCriterionRowResponse",
+        "type": "object"
+      },
       "ComparisonRequest": {
         "additionalProperties": false,
         "properties": {
@@ -191,13 +490,50 @@
       "ComparisonResponse": {
         "additionalProperties": false,
         "properties": {
+          "active_fcc_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Active Fcc Ids",
+            "type": "array"
+          },
+          "active_pcc_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Active Pcc Ids",
+            "type": "array"
+          },
           "all_zero_behavior": {
             "title": "All Zero Behavior",
             "type": "string"
           },
+          "baseline_boundary_tie_count": {
+            "title": "Baseline Boundary Tie Count",
+            "type": "integer"
+          },
+          "baseline_kth_score": {
+            "title": "Baseline Kth Score",
+            "type": "number"
+          },
+          "baseline_returned_result_count": {
+            "title": "Baseline Returned Result Count",
+            "type": "integer"
+          },
+          "baseline_top_k_country_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Baseline Top K Country Codes",
+            "type": "array"
+          },
           "catalog_schema_version": {
             "title": "Catalog Schema Version",
             "type": "string"
+          },
+          "comparison_country_count": {
+            "title": "Comparison Country Count",
+            "type": "integer"
           },
           "countries": {
             "items": {
@@ -206,8 +542,68 @@
             "title": "Countries",
             "type": "array"
           },
+          "country_summaries": {
+            "items": {
+              "$ref": "#/components/schemas/ComparisonCountrySummaryResponse"
+            },
+            "title": "Country Summaries",
+            "type": "array"
+          },
           "country_tie_breaker": {
             "title": "Country Tie Breaker",
+            "type": "string"
+          },
+          "coverage_band": {
+            "enum": [
+              "PREFERRED",
+              "ELEVATED",
+              "BLOCKED"
+            ],
+            "title": "Coverage Band",
+            "type": "string"
+          },
+          "criterion_rows": {
+            "items": {
+              "$ref": "#/components/schemas/ComparisonCriterionRowResponse"
+            },
+            "title": "Criterion Rows",
+            "type": "array"
+          },
+          "eligible_universe_size": {
+            "title": "Eligible Universe Size",
+            "type": "integer"
+          },
+          "excluded_countries": {
+            "items": {
+              "$ref": "#/components/schemas/ExcludedCountryResponse"
+            },
+            "title": "Excluded Countries",
+            "type": "array"
+          },
+          "excluded_country_count": {
+            "title": "Excluded Country Count",
+            "type": "integer"
+          },
+          "ignored_pcc": {
+            "items": {
+              "$ref": "#/components/schemas/IgnoredPccResponse"
+            },
+            "title": "Ignored Pcc",
+            "type": "array"
+          },
+          "kth_eligible_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kth Eligible Score"
+          },
+          "message_code": {
+            "title": "Message Code",
             "type": "string"
           },
           "normalized_weights": {
@@ -217,6 +613,35 @@
             "title": "Normalized Weights",
             "type": "object"
           },
+          "policy_thresholds": {
+            "$ref": "#/components/schemas/PolicyThresholdsResponse"
+          },
+          "policy_version": {
+            "title": "Policy Version",
+            "type": "string"
+          },
+          "potential_excluded_entrants": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Potential Excluded Entrants",
+            "type": "array"
+          },
+          "ranking_coverage_mode": {
+            "enum": [
+              "GLOBAL_CORE",
+              "CONDITIONAL_COMPLETE_CASE"
+            ],
+            "title": "Ranking Coverage Mode",
+            "type": "string"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reason Codes",
+            "type": "array"
+          },
           "release_id": {
             "title": "Release Id",
             "type": "string"
@@ -224,6 +649,20 @@
           "release_schema_version": {
             "title": "Release Schema Version",
             "type": "string"
+          },
+          "requested_country_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Requested Country Codes",
+            "type": "array"
+          },
+          "requested_excluded_countries": {
+            "items": {
+              "$ref": "#/components/schemas/ExcludedCountryResponse"
+            },
+            "title": "Requested Excluded Countries",
+            "type": "array"
           },
           "resolved_profile_id": {
             "anyOf": [
@@ -240,6 +679,10 @@
             "title": "Returned Result Count",
             "type": "integer"
           },
+          "robustness_k": {
+            "title": "Robustness K",
+            "type": "integer"
+          },
           "rounding_tolerance": {
             "title": "Rounding Tolerance",
             "type": "number"
@@ -251,9 +694,25 @@
             "title": "Scoring Method Versions",
             "type": "array"
           },
+          "stable_universe_size": {
+            "title": "Stable Universe Size",
+            "type": "integer"
+          },
           "total_eligible_country_count": {
             "title": "Total Eligible Country Count",
             "type": "integer"
+          },
+          "uncertainty_status": {
+            "enum": [
+              "NO_PARTIAL_CRITERIA_ACTIVE",
+              "COVERAGE_LIMIT_EXCEEDED",
+              "FULL_COVERAGE",
+              "BASELINE_TOP_K_EXCLUDED",
+              "POTENTIALLY_AFFECTED",
+              "ROBUST_TOP_K"
+            ],
+            "title": "Uncertainty Status",
+            "type": "string"
           }
         },
         "required": [
@@ -268,6 +727,32 @@
           "rounding_tolerance",
           "total_eligible_country_count",
           "returned_result_count",
+          "stable_universe_size",
+          "eligible_universe_size",
+          "excluded_country_count",
+          "ranking_coverage_mode",
+          "uncertainty_status",
+          "coverage_band",
+          "reason_codes",
+          "message_code",
+          "active_fcc_ids",
+          "active_pcc_ids",
+          "ignored_pcc",
+          "robustness_k",
+          "kth_eligible_score",
+          "potential_excluded_entrants",
+          "baseline_top_k_country_codes",
+          "baseline_kth_score",
+          "baseline_boundary_tie_count",
+          "baseline_returned_result_count",
+          "policy_version",
+          "policy_thresholds",
+          "excluded_countries",
+          "requested_country_codes",
+          "comparison_country_count",
+          "country_summaries",
+          "criterion_rows",
+          "requested_excluded_countries",
           "countries"
         ],
         "title": "ComparisonResponse",
@@ -642,6 +1127,72 @@
         "title": "ErrorResponse",
         "type": "object"
       },
+      "ExcludedCountryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "baseline_top_k_member": {
+            "title": "Baseline Top K Member",
+            "type": "boolean"
+          },
+          "could_enter_top_k": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Could Enter Top K"
+          },
+          "country_code": {
+            "title": "Country Code",
+            "type": "string"
+          },
+          "country_name": {
+            "title": "Country Name",
+            "type": "string"
+          },
+          "non_ready_criteria": {
+            "items": {
+              "$ref": "#/components/schemas/NonReadyCriterionResponse"
+            },
+            "title": "Non Ready Criteria",
+            "type": "array"
+          },
+          "optimistic_upper_bound": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Optimistic Upper Bound"
+          },
+          "r0_rank": {
+            "title": "R0 Rank",
+            "type": "integer"
+          },
+          "r0_score": {
+            "title": "R0 Score",
+            "type": "number"
+          }
+        },
+        "required": [
+          "country_code",
+          "country_name",
+          "r0_rank",
+          "r0_score",
+          "baseline_top_k_member",
+          "non_ready_criteria",
+          "optimistic_upper_bound",
+          "could_enter_top_k"
+        ],
+        "title": "ExcludedCountryResponse",
+        "type": "object"
+      },
       "HealthResponse": {
         "additionalProperties": false,
         "properties": {
@@ -692,6 +1243,98 @@
           "ready_for_rankings"
         ],
         "title": "HealthResponse",
+        "type": "object"
+      },
+      "IgnoredPccResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "activation_threshold": {
+            "title": "Activation Threshold",
+            "type": "number"
+          },
+          "criterion_id": {
+            "title": "Criterion Id",
+            "type": "string"
+          },
+          "raw_weight": {
+            "title": "Raw Weight",
+            "type": "number"
+          },
+          "reason_code": {
+            "title": "Reason Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "criterion_id",
+          "raw_weight",
+          "reason_code",
+          "activation_threshold"
+        ],
+        "title": "IgnoredPccResponse",
+        "type": "object"
+      },
+      "NonReadyCriterionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "criterion_id": {
+            "title": "Criterion Id",
+            "type": "string"
+          },
+          "observation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observation Id"
+          },
+          "outcome": {
+            "enum": [
+              "missing",
+              "stale",
+              "invalid",
+              "rejected"
+            ],
+            "title": "Outcome",
+            "type": "string"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reason Codes",
+            "type": "array"
+          },
+          "scoring_method_version": {
+            "title": "Scoring Method Version",
+            "type": "string"
+          },
+          "source_id": {
+            "title": "Source Id",
+            "type": "string"
+          },
+          "source_versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Source Versions",
+            "type": "object"
+          }
+        },
+        "required": [
+          "criterion_id",
+          "outcome",
+          "reason_codes",
+          "source_id",
+          "source_versions",
+          "scoring_method_version",
+          "observation_id"
+        ],
+        "title": "NonReadyCriterionResponse",
         "type": "object"
       },
       "ObservationResponse": {
@@ -756,6 +1399,60 @@
         "title": "ObservationResponse",
         "type": "object"
       },
+      "PolicyThresholdsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "diagnostic_score_max": {
+            "title": "Diagnostic Score Max",
+            "type": "number"
+          },
+          "hard_missing_union_max": {
+            "title": "Hard Missing Union Max",
+            "type": "integer"
+          },
+          "min_eligible_country_count": {
+            "title": "Min Eligible Country Count",
+            "type": "integer"
+          },
+          "pcc_activation_raw_weight_min": {
+            "title": "Pcc Activation Raw Weight Min",
+            "type": "number"
+          },
+          "pcc_min_valid_country_count": {
+            "title": "Pcc Min Valid Country Count",
+            "type": "integer"
+          },
+          "preferred_missing_union_max": {
+            "title": "Preferred Missing Union Max",
+            "type": "integer"
+          },
+          "rounding_tolerance": {
+            "title": "Rounding Tolerance",
+            "type": "number"
+          },
+          "stable_country_count": {
+            "title": "Stable Country Count",
+            "type": "integer"
+          },
+          "stable_universe_id": {
+            "title": "Stable Universe Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "stable_universe_id",
+          "stable_country_count",
+          "pcc_min_valid_country_count",
+          "preferred_missing_union_max",
+          "hard_missing_union_max",
+          "min_eligible_country_count",
+          "pcc_activation_raw_weight_min",
+          "diagnostic_score_max",
+          "rounding_tolerance"
+        ],
+        "title": "PolicyThresholdsResponse",
+        "type": "object"
+      },
       "ProfileResponse": {
         "additionalProperties": false,
         "properties": {
@@ -806,6 +1503,10 @@
             "title": "Country Name",
             "type": "string"
           },
+          "eligible_country_count": {
+            "title": "Eligible Country Count",
+            "type": "integer"
+          },
           "rank": {
             "title": "Rank",
             "type": "integer"
@@ -839,6 +1540,7 @@
           "country_name",
           "region",
           "total_score",
+          "eligible_country_count",
           "contributions",
           "strengths",
           "tradeoffs"
@@ -862,15 +1564,9 @@
             "title": "Profile Id"
           },
           "top_k": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Top K"
+            "default": 10,
+            "title": "Top K",
+            "type": "integer"
           },
           "weights": {
             "anyOf": [
@@ -893,9 +1589,42 @@
       "RankingResponse": {
         "additionalProperties": false,
         "properties": {
+          "active_fcc_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Active Fcc Ids",
+            "type": "array"
+          },
+          "active_pcc_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Active Pcc Ids",
+            "type": "array"
+          },
           "all_zero_behavior": {
             "title": "All Zero Behavior",
             "type": "string"
+          },
+          "baseline_boundary_tie_count": {
+            "title": "Baseline Boundary Tie Count",
+            "type": "integer"
+          },
+          "baseline_kth_score": {
+            "title": "Baseline Kth Score",
+            "type": "number"
+          },
+          "baseline_returned_result_count": {
+            "title": "Baseline Returned Result Count",
+            "type": "integer"
+          },
+          "baseline_top_k_country_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Baseline Top K Country Codes",
+            "type": "array"
           },
           "catalog_schema_version": {
             "title": "Catalog Schema Version",
@@ -905,6 +1634,52 @@
             "title": "Country Tie Breaker",
             "type": "string"
           },
+          "coverage_band": {
+            "enum": [
+              "PREFERRED",
+              "ELEVATED",
+              "BLOCKED"
+            ],
+            "title": "Coverage Band",
+            "type": "string"
+          },
+          "eligible_universe_size": {
+            "title": "Eligible Universe Size",
+            "type": "integer"
+          },
+          "excluded_countries": {
+            "items": {
+              "$ref": "#/components/schemas/ExcludedCountryResponse"
+            },
+            "title": "Excluded Countries",
+            "type": "array"
+          },
+          "excluded_country_count": {
+            "title": "Excluded Country Count",
+            "type": "integer"
+          },
+          "ignored_pcc": {
+            "items": {
+              "$ref": "#/components/schemas/IgnoredPccResponse"
+            },
+            "title": "Ignored Pcc",
+            "type": "array"
+          },
+          "kth_eligible_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kth Eligible Score"
+          },
+          "message_code": {
+            "title": "Message Code",
+            "type": "string"
+          },
           "normalized_weights": {
             "additionalProperties": {
               "type": "number"
@@ -912,11 +1687,40 @@
             "title": "Normalized Weights",
             "type": "object"
           },
+          "policy_thresholds": {
+            "$ref": "#/components/schemas/PolicyThresholdsResponse"
+          },
+          "policy_version": {
+            "title": "Policy Version",
+            "type": "string"
+          },
+          "potential_excluded_entrants": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Potential Excluded Entrants",
+            "type": "array"
+          },
+          "ranking_coverage_mode": {
+            "enum": [
+              "GLOBAL_CORE",
+              "CONDITIONAL_COMPLETE_CASE"
+            ],
+            "title": "Ranking Coverage Mode",
+            "type": "string"
+          },
           "rankings": {
             "items": {
               "$ref": "#/components/schemas/RankedCountryResponse"
             },
             "title": "Rankings",
+            "type": "array"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reason Codes",
             "type": "array"
           },
           "release_id": {
@@ -942,6 +1746,10 @@
             "title": "Returned Result Count",
             "type": "integer"
           },
+          "robustness_k": {
+            "title": "Robustness K",
+            "type": "integer"
+          },
           "rounding_tolerance": {
             "title": "Rounding Tolerance",
             "type": "number"
@@ -953,9 +1761,25 @@
             "title": "Scoring Method Versions",
             "type": "array"
           },
+          "stable_universe_size": {
+            "title": "Stable Universe Size",
+            "type": "integer"
+          },
           "total_eligible_country_count": {
             "title": "Total Eligible Country Count",
             "type": "integer"
+          },
+          "uncertainty_status": {
+            "enum": [
+              "NO_PARTIAL_CRITERIA_ACTIVE",
+              "COVERAGE_LIMIT_EXCEEDED",
+              "FULL_COVERAGE",
+              "BASELINE_TOP_K_EXCLUDED",
+              "POTENTIALLY_AFFECTED",
+              "ROBUST_TOP_K"
+            ],
+            "title": "Uncertainty Status",
+            "type": "string"
           }
         },
         "required": [
@@ -970,6 +1794,27 @@
           "rounding_tolerance",
           "total_eligible_country_count",
           "returned_result_count",
+          "stable_universe_size",
+          "eligible_universe_size",
+          "excluded_country_count",
+          "ranking_coverage_mode",
+          "uncertainty_status",
+          "coverage_band",
+          "reason_codes",
+          "message_code",
+          "active_fcc_ids",
+          "active_pcc_ids",
+          "ignored_pcc",
+          "robustness_k",
+          "kth_eligible_score",
+          "potential_excluded_entrants",
+          "baseline_top_k_country_codes",
+          "baseline_kth_score",
+          "baseline_boundary_tie_count",
+          "baseline_returned_result_count",
+          "policy_version",
+          "policy_thresholds",
+          "excluded_countries",
           "rankings"
         ],
         "title": "RankingResponse",

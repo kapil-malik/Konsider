@@ -114,12 +114,23 @@ export function SourcesDialog({ catalog, onClose }: SourcesDialogProps) {
                     </div>
                     <div className="badge-row">
                       {!criterion.ready && <span className="badge badge-unavailable">Unavailable</span>}
+                      {criterion.coverage_mode === 'CONDITIONAL_COMPLETE_CASE' && (
+                        <span className="badge badge-limited">Limited coverage</span>
+                      )}
                       {criterion.experimental && (
                         <span className="badge badge-experimental">Experimental</span>
                       )}
                     </div>
                   </div>
                   <p>{criterion.description}</p>
+                  <p className="source-coverage">
+                    <strong>
+                      Coverage: {criterion.valid_country_count}/{criterion.stable_country_count}{' '}
+                      countries
+                    </strong>
+                    {criterion.coverage_mode === 'CONDITIONAL_COMPLETE_CASE' &&
+                      ' · Affects ranking only at Medium or above.'}
+                  </p>
                   {!criterion.ready && (
                     <p className="unavailable-explanation">
                       This criterion is not currently used in rankings because it does not meet the

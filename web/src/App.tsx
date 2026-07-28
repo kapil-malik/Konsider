@@ -149,6 +149,7 @@ function RankingWorkspace({
   const [comparisonCountries, setComparisonCountries] = useState<string[]>([])
   const [comparisonNotice, setComparisonNotice] = useState('')
   const [mode, setMode] = useState<'ranking' | 'comparison'>('ranking')
+  const [showingBaseline, setShowingBaseline] = useState(false)
   const rankingScrollRef = useRef<HTMLDivElement>(null)
   const compareButtonRef = useRef<HTMLButtonElement>(null)
   const rankingScrollTop = useRef(0)
@@ -167,8 +168,13 @@ function RankingWorkspace({
       setComparisonNotice('')
       setSelectedCountry(null)
       setMode('ranking')
+      setShowingBaseline(false)
+      baselineMutation.reset()
       comparisonMutation.reset()
     },
+  })
+  const baselineMutation = useMutation({
+    mutationFn: (request: RankingRequest) => createRanking(request),
   })
   const comparisonMutation = useMutation({
     mutationFn: (request: ComparisonRequest) => createComparison(request),
@@ -224,6 +230,26 @@ function RankingWorkspace({
     comparisonMutation.mutate({ country_codes: comparisonCountries, ...selector })
   }
 
+  const toggleBaseline = () => {
+    if (!ranking) return
+    if (showingBaseline) {
+      setShowingBaseline(false)
+      return
+    }
+    setShowingBaseline(true)
+    if (baselineMutation.data) return
+    const baselineWeights = Object.fromEntries(
+      Object.entries(applied.weights).map(([criterionId, weight]) => [
+        criterionId,
+        ranking.active_pcc_ids.includes(criterionId) ? 0 : weight,
+      ]),
+    )
+    baselineMutation.mutate({
+      weights: baselineWeights,
+      top_k: catalog.countries.length,
+    })
+  }
+
   const backToRankings = () => {
     setMode('ranking')
     window.requestAnimationFrame(() => {
@@ -238,6 +264,10 @@ function RankingWorkspace({
   }
 
   const rankingCountry = ranking?.rankings.find((item) => item.country_code === selectedCountry)
+  const selectedCatalogCountry = catalog.countries.find((item) => item.code === selectedCountry)
+  const excludedCountry = ranking?.excluded_countries.find(
+    (item) => item.country_code === selectedCountry,
+  )
 
   return (
     <main id="main-content" className="page-shell">
@@ -265,6 +295,7 @@ function RankingWorkspace({
 
         <div className="ranking-workspace">
           {applyMutation.error && <ErrorNotice error={applyMutation.error} />}
+          {baselineMutation.error && <ErrorNotice error={baselineMutation.error} />}
           {comparisonMutation.error && <ErrorNotice error={comparisonMutation.error} />}
           {initialRanking.isPending && !ranking && (
             <section className="results-panel loading-panel" aria-busy="true" aria-live="polite">
@@ -290,12 +321,16 @@ function RankingWorkspace({
               selectedCountry={selectedCountry}
               comparisonCountries={comparisonCountries}
               comparisonNotice={comparisonNotice}
+              baselineRanking={baselineMutation.data ?? null}
+              showingBaseline={showingBaseline}
+              isLoadingBaseline={baselineMutation.isPending}
               scrollRef={rankingScrollRef}
               compareButtonRef={compareButtonRef}
               onDetailedChange={setDetailed}
               onSelectCountry={setSelectedCountry}
               onToggleComparison={toggleComparison}
               onCompare={compareSelected}
+              onToggleBaseline={toggleBaseline}
               onOpenSources={onOpenSources}
             />
           )}
@@ -314,6 +349,8 @@ function RankingWorkspace({
         <CountryDetails
           countryCode={selectedCountry}
           rankingCountry={rankingCountry}
+          catalogCountry={selectedCatalogCountry}
+          excludedCountry={excludedCountry}
           onClose={() => setSelectedCountry(null)}
         />
       )}

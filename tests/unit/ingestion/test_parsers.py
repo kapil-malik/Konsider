@@ -6,6 +6,8 @@ from openpyxl import Workbook
 
 from konsider.ingestion.models import RawArtifact
 from konsider.ingestion.parsers import (
+    classify_ilostat_job_market_outcomes,
+    parse_ilostat_job_market_opportunity,
     parse_who_air_quality,
     parse_world_bank_icp,
     parse_world_bank_migrant_stock,
@@ -32,6 +34,62 @@ def artifact(source_id="test", index=0):
 
 
 class ParserTests(TestCase):
+    def test_job_market_parser_freezes_2025_and_classifies_stale_country(self):
+        def body(indicator, rows):
+            header = "ref_area,ref_area.label,indicator,sex,classif1,time,obs_value\n"
+            return (
+                header
+                + "".join(
+                    f"{code},{code},{indicator},SEX_T,AGE_YTHADULT_YGE15,{year},{value}\n"
+                    for code, year, value in rows
+                )
+            ).encode()
+
+        artifacts = [
+            artifact("ilostat_job_market_opportunity", 1),
+            artifact("ilostat_job_market_opportunity", 2),
+            artifact("ilostat_job_market_opportunity", 3),
+        ]
+        artifacts = [
+            RawArtifact(
+                **{
+                    **item.to_dict(),
+                    "requested_url": f"https://example.test/{index}.csv",
+                    "final_url": f"https://example.test/{index}.csv",
+                }
+            )
+            for index, item in enumerate(artifacts)
+        ]
+        bodies = [
+            body(
+                "UNE_2EAP_SEX_AGE_RT",
+                [("ALB", 2025, 4), ("CAN", 2025, 8), ("UKR", 2021, 9)],
+            ),
+            body(
+                "EMP_2WAP_SEX_AGE_RT",
+                [("ALB", 2025, 50), ("CAN", 2025, 70), ("UKR", 2021, 48)],
+            ),
+            body(
+                "EAP_2WAP_SEX_AGE_RT",
+                [("ALB", 2025, 60), ("CAN", 2025, 80), ("UKR", 2021, 54)],
+            ),
+        ]
+
+        observations = parse_ilostat_job_market_opportunity(artifacts, bodies)
+        outcomes = classify_ilostat_job_market_outcomes(artifacts, bodies)
+
+        self.assertEqual(
+            [(item.country_code, item.value) for item in observations],
+            [("ALB", 4.0), ("CAN", 7.0)],
+        )
+        self.assertTrue(all(item.reference_end == "2025-12-31" for item in observations))
+        self.assertEqual(outcomes["UKR"], ("stale", ("FRS_STALE",)))
+        self.assertEqual(
+            outcomes["ATG"],
+            ("missing", ("COV_SOURCE_RECORD_MISSING",)),
+        )
+        self.assertEqual(len(observations[0].components), 3)
+
     def test_who_air_selects_latest_all_area_country_value(self):
         body = json.dumps(
             {

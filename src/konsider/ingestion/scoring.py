@@ -62,6 +62,18 @@ CURRENT_THRESHOLD_METHODS = {
         "migrant_presence_bands_v1",
         ((0, 1), (5, 3), (15, 5.5), (30, 8), (50, 10)),
     ),
+    "overall_job_market_opportunity": (
+        "job_market_equal_component_percentiles_v1",
+        ((1, 1), (10, 10)),
+    ),
+    "school_education_quality": (
+        "learning_adjusted_schooling_bands_v1",
+        ((4, 1), (6, 3), (8, 5.5), (10, 8), (12, 10)),
+    ),
+    "research_innovation_ecosystem": (
+        "wipo_innovation_outputs_bands_v1",
+        ((10, 1), (20, 3), (30, 5.5), (45, 8), (60, 10)),
+    ),
 }
 
 
@@ -210,6 +222,119 @@ def _infrastructure_experiment(rows: list[MetricObservation]) -> dict[str, objec
     }
 
 
+def _average_rank_component_scores(values: list[float], *, higher_is_better: bool) -> list[float]:
+    ranks = _average_ranks(values)
+    if len(values) == 1:
+        return [5.5]
+    scores = [1 + 9 * (rank - 1) / (len(values) - 1) for rank in ranks]
+    return scores if higher_is_better else [11 - score for score in scores]
+
+
+def _job_market_experiment(rows: list[MetricObservation]) -> dict[str, object]:
+    component_ids = (
+        "employment_to_population_ratio",
+        "labour_force_participation_rate",
+        "unemployment_rate",
+    )
+    raw = {
+        component_id: [
+            next(
+                component.value
+                for component in row.components
+                if component.component_id == component_id
+            )
+            for row in rows
+        ]
+        for component_id in component_ids
+    }
+    scored = {
+        component_id: _average_rank_component_scores(
+            raw[component_id],
+            higher_is_better=component_id != "unemployment_rate",
+        )
+        for component_id in component_ids
+    }
+
+    def weighted(weights: tuple[float, float, float]) -> list[float]:
+        return [
+            sum(
+                weights[index] * scored[component_id][row_index]
+                for index, component_id in enumerate(component_ids)
+            )
+            for row_index in range(len(rows))
+        ]
+
+    equal = weighted((1 / 3, 1 / 3, 1 / 3))
+    variants = {
+        "equal_weight": equal,
+        "employment_heavy": weighted((0.50, 0.25, 0.25)),
+        "unemployment_heavy": weighted((0.25, 0.15, 0.60)),
+    }
+    pairwise = {}
+    for index, left in enumerate(component_ids):
+        for right in component_ids[index + 1 :]:
+            pairwise[f"{left}__{right}"] = {
+                "pearson_raw": round(correlation(raw[left], raw[right]), 4),
+                "spearman_direction_aligned": round(
+                    correlation(
+                        _average_ranks(scored[left]),
+                        _average_ranks(scored[right]),
+                    ),
+                    4,
+                ),
+            }
+    variant_sensitivity = {}
+    for name, values in variants.items():
+        variant_sensitivity[name] = {
+            "spearman_vs_equal": round(
+                correlation(_average_ranks(equal), _average_ranks(values)),
+                4,
+            ),
+            "maximum_absolute_score_change": round(
+                max(abs(left - right) for left, right in zip(equal, values, strict=True)),
+                4,
+            ),
+        }
+    removal_sensitivity = {}
+    for removed_index, removed in enumerate(component_ids):
+        retained = [index for index in range(3) if index != removed_index]
+        values = [
+            sum(scored[component_ids[index]][row_index] for index in retained) / 2
+            for row_index in range(len(rows))
+        ]
+        removal_sensitivity[f"without_{removed}"] = {
+            "spearman_vs_equal": round(
+                correlation(_average_ranks(equal), _average_ranks(values)),
+                4,
+            ),
+            "maximum_absolute_score_change": round(
+                max(abs(left - right) for left, right in zip(equal, values, strict=True)),
+                4,
+            ),
+        }
+    return {
+        "reference_year": 2025,
+        "components": list(component_ids),
+        "component_directions": {
+            "employment_to_population_ratio": "higher_is_better",
+            "labour_force_participation_rate": "higher_is_better",
+            "unemployment_rate": "lower_is_better",
+        },
+        "pairwise_component_correlations": pairwise,
+        "selected_weighting": {
+            "employment_to_population_ratio": 1 / 3,
+            "labour_force_participation_rate": 1 / 3,
+            "unemployment_rate": 1 / 3,
+        },
+        "weight_sensitivity": variant_sensitivity,
+        "component_removal_sensitivity": removal_sensitivity,
+        "decision": (
+            "Retain equal weights: the three components answer distinct labour-market questions; "
+            "employment-heavy and unemployment-heavy variants remain diagnostics only."
+        ),
+    }
+
+
 def sensitivity_experiments(observations: list[MetricObservation]) -> dict[str, object]:
     grouped: dict[str, list[MetricObservation]] = defaultdict(list)
     for observation in observations:
@@ -276,6 +401,13 @@ def sensitivity_experiments(observations: list[MetricObservation]) -> dict[str, 
             )
         if metric_id == "infrastructure_readiness_composite":
             result["component_experiment"] = _infrastructure_experiment(rows)
+        if metric_id == "overall_job_market_opportunity":
+            result["component_experiment"] = _job_market_experiment(rows)
+            result["selection_reason"] = (
+                "The published value is the equal mean of three direction-aligned average-rank "
+                "percentile components. Alternative weights and component removals are reported "
+                "explicitly; no country-specific renormalisation is used."
+            )
         results[metric_id] = result
     redundancy = {}
     governance_ids = ("political_stability", "rule_of_law")

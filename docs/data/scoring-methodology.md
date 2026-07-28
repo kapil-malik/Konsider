@@ -1,8 +1,8 @@
 # Scoring methodology and sensitivity
 
-Status: versioned provisional transformations for active release `2026-07-27.1`
+Status: versioned transformations for active release `2026-07-28.2`
 
-Last updated: 2026-07-26
+Last updated: 2026-07-28
 
 For each criterion the worker compares 5th/95th winsorized min-max, sample percentile rank, and a
 fixed domain transformation. Percentile and winsorized min-max can span the entire 1-10 range even
@@ -18,6 +18,28 @@ the selected country set.
 | Household price level, lower cost better | `icp_relative_cost_bands_v2`: ≤60→9, ≤80→8, ≤100→6, ≤125→4, ≤150→2, >150→1 | Deliberately discrete broad bands. Equal scores are expected; do not use the underlying index or band score for precise country ordering. |
 | Women’s legal and economic equality, higher better | `wbl_legal_equality_bands_v1`: 40→1, 55→3, 70→5.5, 85→8, 100→10 | WBL legal-framework index only; not a score of lived equality or enforcement. |
 | Infrastructure readiness, higher better | `infrastructure_readiness_bands_v1`: composite 30→1, 45→3, 60→5.5, 75→8, 90→10 | Experimental equal-weight composite after fixed transforms of internet use, fixed broadband, and LPI infrastructure quality. |
+
+Overall job-market opportunity uses `job_market_equal_component_percentiles_v1`. The pinned 2025
+ILOSTAT modelled estimates for total population age 15+ are transformed as follows:
+
+1. employment-to-population and labour-force participation become higher-is-better average-rank
+   percentile scores from 1 to 10;
+2. unemployment becomes a lower-is-better average-rank percentile score;
+3. the three component scores receive equal one-third weights; and
+4. the published composite is rounded to two decimal places.
+
+The source edition's 2026–2027 projections are excluded. The score is distribution-relative across
+the 88 valid supported countries. Employment-heavy, unemployment-heavy, and all three
+leave-one-component-out variants are diagnostics only. No missing value is imputed and no
+country-specific weight renormalisation occurs.
+
+School education quality uses `learning_adjusted_schooling_bands_v1` with fixed LAYS anchors:
+4→1, 6→3, 8→5.5, 10→8, and 12→10. The raw construct is learning-adjusted years of schooling, not a
+percentage and not a rating of an individual school.
+
+Research and innovation ecosystem uses `wipo_innovation_outputs_bands_v1` with fixed WIPO output
+anchors: 10→1, 20→3, 30→5.5, 45→8, and 60→10. Only the published Innovation outputs sub-index is
+used; the overall GII and input pillars are excluded.
 
 The three Phase 3G-1 additions use fixed, versioned broad-band transformations:
 
@@ -39,3 +61,9 @@ remain separately visible with the overlap disclosed.
 The selected methods are provisional policy choices, not source facts. Scores retain observation
 IDs, direction, transform parameters, and method versions. No scoring method can cure stale,
 incomparable, missing, or inadequately licensed observations; validation handles those separately.
+
+For a conditional ranking, canonical scores are never transformed again at request time. The
+engine excludes any country lacking a valid outcome for an active PCC and normalizes one weight
+vector over the same active criterion set for every remaining country. Score 10 substitution is
+used only for the named optimistic excluded-country diagnostic; it is never persisted as an
+observation, canonical score, total, or rank.

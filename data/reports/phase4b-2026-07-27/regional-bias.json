@@ -1,0 +1,1334 @@
+{
+  "candidate_analysis": {
+    "C08": {
+      "evidence": "Latin America & Caribbean contains 4 of 4 exclusions (100.0%) versus 24.2% of the stable catalog; overrepresentation ratio 4.14.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 4,
+          "excluded_country_share": 1.0,
+          "excluded_rate_within_region": 0.18181818,
+          "overrepresentation_ratio": 4.13636364,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C11": {
+      "evidence": "Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 0.33333333,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 0.72222222,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 2,
+          "excluded_country_share": 0.66666667,
+          "excluded_rate_within_region": 0.09090909,
+          "overrepresentation_ratio": 2.75757576,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C26": {
+      "evidence": "Europe & Central Asia contains 1 of 1 exclusions (100.0%) versus 46.2% of the stable catalog; overrepresentation ratio 2.17.",
+      "flag": "SOME_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 1.0,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 2.16666667,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C53": {
+      "evidence": "Latin America & Caribbean contains 3 of 5 exclusions (60.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.48.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 2,
+          "excluded_country_share": 0.4,
+          "excluded_rate_within_region": 0.04761905,
+          "overrepresentation_ratio": 0.86666667,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.6,
+          "excluded_rate_within_region": 0.13636364,
+          "overrepresentation_ratio": 2.48181818,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    }
+  },
+  "classification": "DESCRIPTIVE_RESEARCH_ONLY",
+  "combination_analysis": {
+    "C08": {
+      "evidence": "Latin America & Caribbean contains 4 of 4 exclusions (100.0%) versus 24.2% of the stable catalog; overrepresentation ratio 4.14.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 4,
+          "excluded_country_share": 1.0,
+          "excluded_rate_within_region": 0.18181818,
+          "overrepresentation_ratio": 4.13636364,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C08+C11": {
+      "evidence": "Latin America & Caribbean contains 5 of 6 exclusions (83.3%) versus 24.2% of the stable catalog; overrepresentation ratio 3.45.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 0.16666667,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 0.36111111,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 5,
+          "excluded_country_share": 0.83333333,
+          "excluded_rate_within_region": 0.22727273,
+          "overrepresentation_ratio": 3.4469697,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C08+C11+C26": {
+      "evidence": "Latin America & Caribbean contains 5 of 6 exclusions (83.3%) versus 24.2% of the stable catalog; overrepresentation ratio 3.45.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 0.16666667,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 0.36111111,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 5,
+          "excluded_country_share": 0.83333333,
+          "excluded_rate_within_region": 0.22727273,
+          "overrepresentation_ratio": 3.4469697,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C08+C11+C26+C53": {
+      "evidence": "Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.33333333,
+          "excluded_rate_within_region": 0.07142857,
+          "overrepresentation_ratio": 0.72222222,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 6,
+          "excluded_country_share": 0.66666667,
+          "excluded_rate_within_region": 0.27272727,
+          "overrepresentation_ratio": 2.75757576,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C08+C11+C53": {
+      "evidence": "Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.33333333,
+          "excluded_rate_within_region": 0.07142857,
+          "overrepresentation_ratio": 0.72222222,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 6,
+          "excluded_country_share": 0.66666667,
+          "excluded_rate_within_region": 0.27272727,
+          "overrepresentation_ratio": 2.75757576,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C08+C26": {
+      "evidence": "Latin America & Caribbean contains 4 of 5 exclusions (80.0%) versus 24.2% of the stable catalog; overrepresentation ratio 3.31.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 0.2,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 0.43333333,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 4,
+          "excluded_country_share": 0.8,
+          "excluded_rate_within_region": 0.18181818,
+          "overrepresentation_ratio": 3.30909091,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C08+C26+C53": {
+      "evidence": "Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.33333333,
+          "excluded_rate_within_region": 0.07142857,
+          "overrepresentation_ratio": 0.72222222,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 6,
+          "excluded_country_share": 0.66666667,
+          "excluded_rate_within_region": 0.27272727,
+          "overrepresentation_ratio": 2.75757576,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C08+C53": {
+      "evidence": "Latin America & Caribbean contains 6 of 8 exclusions (75.0%) versus 24.2% of the stable catalog; overrepresentation ratio 3.10.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 2,
+          "excluded_country_share": 0.25,
+          "excluded_rate_within_region": 0.04761905,
+          "overrepresentation_ratio": 0.54166667,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 6,
+          "excluded_country_share": 0.75,
+          "excluded_rate_within_region": 0.27272727,
+          "overrepresentation_ratio": 3.10227273,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C11": {
+      "evidence": "Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 0.33333333,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 0.72222222,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 2,
+          "excluded_country_share": 0.66666667,
+          "excluded_rate_within_region": 0.09090909,
+          "overrepresentation_ratio": 2.75757576,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C11+C26": {
+      "evidence": "Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 0.33333333,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 0.72222222,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 2,
+          "excluded_country_share": 0.66666667,
+          "excluded_rate_within_region": 0.09090909,
+          "overrepresentation_ratio": 2.75757576,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C11+C26+C53": {
+      "evidence": "Latin America & Caribbean contains 4 of 7 exclusions (57.1%) versus 24.2% of the stable catalog; overrepresentation ratio 2.36.",
+      "flag": "SOME_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.42857143,
+          "excluded_rate_within_region": 0.07142857,
+          "overrepresentation_ratio": 0.92857143,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 4,
+          "excluded_country_share": 0.57142857,
+          "excluded_rate_within_region": 0.18181818,
+          "overrepresentation_ratio": 2.36363636,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C11+C53": {
+      "evidence": "Latin America & Caribbean contains 4 of 7 exclusions (57.1%) versus 24.2% of the stable catalog; overrepresentation ratio 2.36.",
+      "flag": "SOME_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.42857143,
+          "excluded_rate_within_region": 0.07142857,
+          "overrepresentation_ratio": 0.92857143,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 4,
+          "excluded_country_share": 0.57142857,
+          "excluded_rate_within_region": 0.18181818,
+          "overrepresentation_ratio": 2.36363636,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C26": {
+      "evidence": "Europe & Central Asia contains 1 of 1 exclusions (100.0%) versus 46.2% of the stable catalog; overrepresentation ratio 2.17.",
+      "flag": "SOME_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 1,
+          "excluded_country_share": 1.0,
+          "excluded_rate_within_region": 0.02380952,
+          "overrepresentation_ratio": 2.16666667,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C26+C53": {
+      "evidence": "Latin America & Caribbean contains 3 of 6 exclusions (50.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.07.",
+      "flag": "SOME_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.5,
+          "excluded_rate_within_region": 0.07142857,
+          "overrepresentation_ratio": 1.08333333,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.5,
+          "excluded_rate_within_region": 0.13636364,
+          "overrepresentation_ratio": 2.06818182,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    },
+    "C53": {
+      "evidence": "Latin America & Caribbean contains 3 of 5 exclusions (60.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.48.",
+      "flag": "STRONG_REGIONAL_CONCENTRATION",
+      "regions": [
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "East Asia & Pacific",
+          "stable_catalog_share": 0.10989011,
+          "stable_country_count": 10
+        },
+        {
+          "excluded_count": 2,
+          "excluded_country_share": 0.4,
+          "excluded_rate_within_region": 0.04761905,
+          "overrepresentation_ratio": 0.86666667,
+          "region": "Europe & Central Asia",
+          "stable_catalog_share": 0.46153846,
+          "stable_country_count": 42
+        },
+        {
+          "excluded_count": 3,
+          "excluded_country_share": 0.6,
+          "excluded_rate_within_region": 0.13636364,
+          "overrepresentation_ratio": 2.48181818,
+          "region": "Latin America & Caribbean",
+          "stable_catalog_share": 0.24175824,
+          "stable_country_count": 22
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Middle East, North Africa, Afghanistan & Pakistan",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "North America",
+          "stable_catalog_share": 0.02197802,
+          "stable_country_count": 2
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "South Asia",
+          "stable_catalog_share": 0.01098901,
+          "stable_country_count": 1
+        },
+        {
+          "excluded_count": 0,
+          "excluded_country_share": 0.0,
+          "excluded_rate_within_region": 0.0,
+          "overrepresentation_ratio": 0.0,
+          "region": "Sub-Saharan Africa",
+          "stable_catalog_share": 0.07692308,
+          "stable_country_count": 7
+        }
+      ]
+    }
+  },
+  "flag_method": {
+    "NO_VISIBLE_CONCENTRATION": "No region has an overrepresentation ratio of at least 1.5.",
+    "SOME_REGIONAL_CONCENTRATION": "A region has an overrepresentation ratio of at least 1.5, but the strong descriptive condition is not met.",
+    "STRONG_REGIONAL_CONCENTRATION": "At least three countries are excluded and one region has at least 60% of exclusions with an overrepresentation ratio of at least 2.0.",
+    "policy_note": "These are descriptive Phase 4B labels, not automatic blocking thresholds."
+  },
+  "schema_version": "phase4b-candidate-simulation-1.0",
+  "stable_region_counts": {
+    "East Asia & Pacific": 10,
+    "Europe & Central Asia": 42,
+    "Latin America & Caribbean": 22,
+    "Middle East, North Africa, Afghanistan & Pakistan": 7,
+    "North America": 2,
+    "South Asia": 1,
+    "Sub-Saharan Africa": 7
+  }
+}

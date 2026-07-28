@@ -12,6 +12,7 @@ MARKDOWN_ROOTS = [
     ROOT / "apps",
     ROOT / "contracts",
     ROOT / "docs",
+    ROOT / "project-history",
     ROOT / "web",
 ]
 IGNORED_DIRECTORIES = {"node_modules", "dist", "coverage", "playwright-report", "test-results"}
@@ -79,8 +80,9 @@ def test_phase_3_closure_and_forward_roadmap_are_linked() -> None:
 
     assert closure.exists()
     assert "Phase 3: criteria expansion and source feasibility — complete" in roadmap
-    assert "Phase 4: deterministic evidence and explanations — recommended next" in roadmap
+    assert "Phase 4: uncertainty-aware partial coverage — complete" in roadmap
     assert "Phase 5: conversational exploration" in roadmap
     assert "Phase 2E:" not in roadmap
     assert "Phase 2F:" not in roadmap
     assert "research/phase3-closure-report.md" in index
+    assert "history/phase4-closure-report.md" in index

@@ -17,6 +17,10 @@ export function ImportanceControl({
   onChange,
 }: ImportanceControlProps) {
   const state = importanceState(value)
+  const isPartial = criterion.coverage_mode === 'CONDITIONAL_COMPLETE_CASE'
+  const activationThreshold = criterion.pcc_activation_threshold
+  const isActive =
+    isPartial && activationThreshold !== null && value >= activationThreshold
   const fillStyle = { '--importance-fill': `${value * 100}%` } as CSSProperties
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const currentIndex = IMPORTANCE_STATES.findIndex((item) => item.value === state.value)
@@ -40,7 +44,24 @@ export function ImportanceControl({
           {state.label}
         </span>
       </div>
-      {criterion.experimental && <span className="badge badge-experimental">Experimental</span>}
+      <div className="criterion-status-row">
+        <span className="coverage-count">
+          {criterion.valid_country_count}/{criterion.stable_country_count} countries
+        </span>
+        {isPartial && <span className="badge badge-limited">Limited coverage</span>}
+        {criterion.experimental && <span className="badge badge-experimental">Experimental</span>}
+      </div>
+      {isPartial && (
+        <p
+          className={`pcc-activation-state${isActive ? ' is-active' : ''}`}
+          aria-live="polite"
+        >
+          <span aria-hidden="true">{isActive ? '✓' : '○'}</span>{' '}
+          {isActive
+            ? 'Active in the ranking when applied.'
+            : 'Not active in the ranking at this setting.'}
+        </p>
+      )}
       <input
         className="importance-slider"
         id={`importance-${criterion.id}`}
@@ -60,6 +81,17 @@ export function ImportanceControl({
           <span key={item.value}>{item.shortLabel}</span>
         ))}
       </div>
+      {isPartial && (
+        <details className="coverage-details">
+          <summary>Coverage details</summary>
+          <p>
+            This criterion affects ranking only at Medium or above. Data is unavailable for{' '}
+            {criterion.missing_country_count}{' '}
+            {criterion.missing_country_count === 1 ? 'country' : 'countries'}.
+          </p>
+          {criterion.concise_caveat && <p>{criterion.concise_caveat}</p>}
+        </details>
+      )}
     </div>
   )
 }

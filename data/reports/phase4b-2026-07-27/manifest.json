@@ -1,0 +1,32 @@
+{
+  "classification": "NON_PUBLISHING_RESEARCH",
+  "generated_at": "2026-07-27",
+  "generator": "scripts/phase4b_candidate_simulation.py",
+  "inputs": {
+    "data/catalogs/consumer-catalog-1.0.json": "sha256:8d859d5b24b8db84d68006e33f0a70613270f345ed4ccf90a05051bc9b49d84c",
+    "data/releases/2026-07-27.1/scores.jsonl": "sha256:a4c71a067f56f48606a4313cf21484c873dbac54ba399a83ae1962bd38af6c3b",
+    "data/releases/active.json": "sha256:88e7118a4784d67ec39e54a1ca69fbb869c56fb25688530b99ede8991d7cd34a",
+    "data/reports/feasibility-probes/phase3e-2026-07-26-c08-online-v2/country-results.jsonl": "sha256:bae6c6a37a422fe39e5581832a3b2182326365a40d14cce12cd61ca5ad55f0ea",
+    "data/reports/feasibility-probes/phase3e-2026-07-26-c11-online/country-results.jsonl": "sha256:5d871d43f7a69aedb07e5d3febb9146df84c695c9d64f42504e66556bbf66e71",
+    "data/reports/feasibility-probes/phase3e-2026-07-26-c53-online/country-results.jsonl": "sha256:28cc4f606632df7c7d6c0b93888b1f8e2246ca09b6d675a33131dd6cc02f4db1",
+    "data/reports/feasibility-probes/phase3g0-2026-07-26-c26-online/country-results.jsonl": "sha256:07b2546f45325f2c8c5bd43b10d1b70df326c85bf7be696eacd1bb72228aa465",
+    "data/research/phase3e/c08-hciplus.json": "sha256:9f9b5a0dc9cf4e2dbb3661fb6b98a5d0df420d0f57e182c5c98cf718badce7e8",
+    "data/research/phase3e/c11-ilostat.json": "sha256:a0dcfee9c5d4a2f36e2af24b4517b30312473154ec67ccbc077aedd3901f3eb3",
+    "data/research/phase3e/c53-water-sanitation.json": "sha256:54b4a35e4aae8a3daff92622724a38c3331ab4bf99bee09f34adade94fcb2bfd",
+    "data/research/phase3g0/c26-ghed.json": "sha256:23d9b4ab7cc55863b97fe95272566e5aabc7291620137619c5a2fc7de6abe260",
+    "scripts/phase4b_candidate_simulation.py": "sha256:10598adcd8f9f4edc9dc97e803e2acf6d270d821251070b0f2221d25e66dd2c0"
+  },
+  "outputs": {
+    "data/reports/phase4b-2026-07-27/candidate-matrix.csv": "sha256:c53a15b816bea3c5e2427c256b7401e258d74a3a6d9ca081c0dd2e70cd5b7446",
+    "data/reports/phase4b-2026-07-27/candidate-matrix.json": "sha256:0b88a8b1f358730b84e859e65aea5c80e837afd66cf521dc5535661486367838",
+    "data/reports/phase4b-2026-07-27/combination-unions.csv": "sha256:0a7dbcc26e6802cd5fb3ded6684c80b34e9a22eeb4644af1d895fa8cdd9ca3c9",
+    "data/reports/phase4b-2026-07-27/combination-unions.json": "sha256:2b33b7193e2e6b8964d7fdeec98bdc36a68142eec9e07f2a2cc9c2eacbb86b98",
+    "data/reports/phase4b-2026-07-27/provisional-transforms.json": "sha256:0fd5272e0ebb91d818e9d75a6eb4863947ea6aa7fc4d229ff384ebc366f34c71",
+    "data/reports/phase4b-2026-07-27/regional-bias.json": "sha256:359e18edd5c5ad44e2798025d588a4ca83242937ba8f6aa0cc229bda262f6e05",
+    "data/reports/phase4b-2026-07-27/robustness-simulations.jsonl.gz": "sha256:0625e62cbb2aaae4c7ba1d26aeec4b217f1e2d99199df0e8b4ccfd391cc6fcbe",
+    "data/reports/phase4b-2026-07-27/robustness-summary.json": "sha256:27603f788a494286bb0092a3c67d7bcc68813c7f17d8cc891b03c2ff4e6e9d1c",
+    "data/reports/phase4b-2026-07-27/summary.json": "sha256:139987e72e8e5be02f8b5d1ffaafb5b251da4c20ad3a5933e37d57ea8084e7eb"
+  },
+  "policy_version": "uncertainty-aware-ranking-policy-1.0",
+  "schema_version": "phase4b-candidate-simulation-1.0"
+}

@@ -1,0 +1,49 @@
+{
+  "active_release_id": "2026-07-27.1",
+  "blocked_combination_count": 0,
+  "candidate_combination_count": 15,
+  "candidate_count": 4,
+  "decision_status": "USER_APPROVED",
+  "elevated_combination_count": 9,
+  "enabled_fcc_count": 8,
+  "full_coverage_future_candidates_not_pcc": [
+    "C29",
+    "C66"
+  ],
+  "policy_version": "uncertainty-aware-ranking-policy-1.0",
+  "preferred_combination_count": 6,
+  "recommended_deferred_pcc_ids": [
+    "C26"
+  ],
+  "recommended_initial_pcc_ids": [
+    "C11"
+  ],
+  "recommended_reserve_pcc_ids": [
+    "C53"
+  ],
+  "recommended_second_wave_pcc_ids": [
+    "C08"
+  ],
+  "schema_version": "phase4b-candidate-simulation-1.0",
+  "simulation_counts": {
+    "active_weight_case_count_per_profile": 73,
+    "control_weight_case_count_per_profile": 5,
+    "grouped_simulation_count": 936,
+    "profile_count": 4,
+    "transform_expanded_simulation_count": 8736,
+    "weight_case_count_per_profile": 78
+  },
+  "stable_country_count": 91,
+  "status_counts": {
+    "BASELINE_TOP_K_EXCLUDED": 399,
+    "NO_PARTIAL_CRITERIA_ACTIVE": 60,
+    "POTENTIALLY_AFFECTED": 91,
+    "ROBUST_TOP_K": 8186
+  },
+  "variant_classification_counts": {
+    "NOT_APPLICABLE_NO_ACTIVE_PCC": 60,
+    "POTENTIALLY_AFFECTED_ACROSS_VARIANTS": 52,
+    "ROBUST_ACROSS_VARIANTS": 786,
+    "TRANSFORM_SENSITIVE": 38
+  }
+}

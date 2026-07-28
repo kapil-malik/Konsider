@@ -54,3 +54,7 @@ class CountryNotFoundError(RecommendationError):
 
 class InvalidComparisonError(RecommendationError):
     pass
+
+
+class RankingIntegrityError(RecommendationError):
+    """Raised when a validated release cannot satisfy one ranking invariant."""

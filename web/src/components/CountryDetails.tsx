@@ -2,13 +2,15 @@ import { useQuery } from '@tanstack/react-query'
 import { useEffect, useRef } from 'react'
 
 import { fetchCountryMetric } from '../api/client'
-import type { RankedCountry } from '../api/types'
+import type { Catalog, ExcludedCountry, RankedCountry } from '../api/types'
 import { formatObservation, formatScore, humanizeUnit } from '../preferences'
 import { ErrorNotice } from './ErrorNotice'
 
 type CountryDetailsProps = {
   countryCode: string
   rankingCountry: RankedCountry | undefined
+  catalogCountry: Catalog['countries'][number] | undefined
+  excludedCountry: ExcludedCountry | undefined
   onClose: () => void
 }
 
@@ -16,7 +18,13 @@ function referencePeriod(start: string, end: string): string {
   return start === end ? start : `${start} to ${end}`
 }
 
-export function CountryDetails({ countryCode, rankingCountry, onClose }: CountryDetailsProps) {
+export function CountryDetails({
+  countryCode,
+  rankingCountry,
+  catalogCountry,
+  excludedCountry,
+  onClose,
+}: CountryDetailsProps) {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const metricQuery = useQuery({
     queryKey: ['country-metrics', countryCode],
@@ -33,7 +41,7 @@ export function CountryDetails({ countryCode, rankingCountry, onClose }: Country
         <div>
           <p className="eyebrow">Country details</p>
           <h2 id="country-details-heading" ref={headingRef} tabIndex={-1}>
-            {rankingCountry?.country_name ?? countryCode}
+            {rankingCountry?.country_name ?? catalogCountry?.display_name ?? countryCode}
           </h2>
           {rankingCountry && (
             <p>
@@ -41,11 +49,22 @@ export function CountryDetails({ countryCode, rankingCountry, onClose }: Country
               {rankingCountry.region}
             </p>
           )}
+          {!rankingCountry && catalogCountry && !excludedCountry && <p>{catalogCountry.region}</p>}
         </div>
         <button className="icon-button" aria-label="Close country details" onClick={onClose}>
           ×
         </button>
       </div>
+
+      {excludedCountry && (
+        <div className="unranked-country-notice" role="status">
+          <strong>Not ranked for this profile</strong>
+          <p>
+            One or more active criteria do not have usable data for this country. Available
+            full-coverage evidence is shown below without a partial affinity score.
+          </p>
+        </div>
+      )}
 
       {metricQuery.isPending && (
         <div className="loading-block" role="status">

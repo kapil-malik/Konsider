@@ -1,0 +1,2686 @@
+{
+  "combinations": [
+    {
+      "candidate_count": 1,
+      "combination_id": "C08",
+      "coverage_band": "PREFERRED",
+      "criterion_ids": [
+        "C08"
+      ],
+      "eligible_country_count": 87,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        }
+      ],
+      "excluded_country_count": 4,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 4 of 4 exclusions (100.0%) versus 24.2% of the stable catalog; overrepresentation ratio 4.14.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 4,
+            "excluded_country_share": 1.0,
+            "excluded_rate_within_region": 0.18181818,
+            "overrepresentation_ratio": 4.13636364,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 1,
+      "combination_id": "C11",
+      "coverage_band": "PREFERRED",
+      "criterion_ids": [
+        "C11"
+      ],
+      "eligible_country_count": 88,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 3,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 0.33333333,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 0.72222222,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 2,
+            "excluded_country_share": 0.66666667,
+            "excluded_rate_within_region": 0.09090909,
+            "overrepresentation_ratio": 2.75757576,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 1,
+      "combination_id": "C26",
+      "coverage_band": "PREFERRED",
+      "criterion_ids": [
+        "C26"
+      ],
+      "eligible_country_count": 90,
+      "excluded_countries": [
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 1,
+      "regional_bias": {
+        "evidence": "Europe & Central Asia contains 1 of 1 exclusions (100.0%) versus 46.2% of the stable catalog; overrepresentation ratio 2.17.",
+        "flag": "SOME_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 1.0,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 2.16666667,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 1,
+      "combination_id": "C53",
+      "coverage_band": "PREFERRED",
+      "criterion_ids": [
+        "C53"
+      ],
+      "eligible_country_count": 86,
+      "excluded_countries": [
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        }
+      ],
+      "excluded_country_count": 5,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 3 of 5 exclusions (60.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.48.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 2,
+            "excluded_country_share": 0.4,
+            "excluded_rate_within_region": 0.04761905,
+            "overrepresentation_ratio": 0.86666667,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.6,
+            "excluded_rate_within_region": 0.13636364,
+            "overrepresentation_ratio": 2.48181818,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 2,
+      "combination_id": "C08+C11",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C08",
+        "C11"
+      ],
+      "eligible_country_count": 85,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            },
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 6,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 5 of 6 exclusions (83.3%) versus 24.2% of the stable catalog; overrepresentation ratio 3.45.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 0.16666667,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 0.36111111,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 5,
+            "excluded_country_share": 0.83333333,
+            "excluded_rate_within_region": 0.22727273,
+            "overrepresentation_ratio": 3.4469697,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 2,
+      "combination_id": "C08+C26",
+      "coverage_band": "PREFERRED",
+      "criterion_ids": [
+        "C08",
+        "C26"
+      ],
+      "eligible_country_count": 86,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 5,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 4 of 5 exclusions (80.0%) versus 24.2% of the stable catalog; overrepresentation ratio 3.31.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 0.2,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 0.43333333,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 4,
+            "excluded_country_share": 0.8,
+            "excluded_rate_within_region": 0.18181818,
+            "overrepresentation_ratio": 3.30909091,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 2,
+      "combination_id": "C08+C53",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C08",
+        "C53"
+      ],
+      "eligible_country_count": 83,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        }
+      ],
+      "excluded_country_count": 8,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 6 of 8 exclusions (75.0%) versus 24.2% of the stable catalog; overrepresentation ratio 3.10.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 2,
+            "excluded_country_share": 0.25,
+            "excluded_rate_within_region": 0.04761905,
+            "overrepresentation_ratio": 0.54166667,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 6,
+            "excluded_country_share": 0.75,
+            "excluded_rate_within_region": 0.27272727,
+            "overrepresentation_ratio": 3.10227273,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 2,
+      "combination_id": "C11+C26",
+      "coverage_band": "PREFERRED",
+      "criterion_ids": [
+        "C11",
+        "C26"
+      ],
+      "eligible_country_count": 88,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            },
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 3,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 0.33333333,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 0.72222222,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 2,
+            "excluded_country_share": 0.66666667,
+            "excluded_rate_within_region": 0.09090909,
+            "overrepresentation_ratio": 2.75757576,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 2,
+      "combination_id": "C11+C53",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C11",
+        "C53"
+      ],
+      "eligible_country_count": 84,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 7,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 4 of 7 exclusions (57.1%) versus 24.2% of the stable catalog; overrepresentation ratio 2.36.",
+        "flag": "SOME_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.42857143,
+            "excluded_rate_within_region": 0.07142857,
+            "overrepresentation_ratio": 0.92857143,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 4,
+            "excluded_country_share": 0.57142857,
+            "excluded_rate_within_region": 0.18181818,
+            "overrepresentation_ratio": 2.36363636,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 2,
+      "combination_id": "C26+C53",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C26",
+        "C53"
+      ],
+      "eligible_country_count": 85,
+      "excluded_countries": [
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 6,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 3 of 6 exclusions (50.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.07.",
+        "flag": "SOME_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.5,
+            "excluded_rate_within_region": 0.07142857,
+            "overrepresentation_ratio": 1.08333333,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.5,
+            "excluded_rate_within_region": 0.13636364,
+            "overrepresentation_ratio": 2.06818182,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 3,
+      "combination_id": "C08+C11+C26",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C08",
+        "C11",
+        "C26"
+      ],
+      "eligible_country_count": 85,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            },
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            },
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 6,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 5 of 6 exclusions (83.3%) versus 24.2% of the stable catalog; overrepresentation ratio 3.45.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 1,
+            "excluded_country_share": 0.16666667,
+            "excluded_rate_within_region": 0.02380952,
+            "overrepresentation_ratio": 0.36111111,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 5,
+            "excluded_country_share": 0.83333333,
+            "excluded_rate_within_region": 0.22727273,
+            "overrepresentation_ratio": 3.4469697,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 3,
+      "combination_id": "C08+C11+C53",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C08",
+        "C11",
+        "C53"
+      ],
+      "eligible_country_count": 82,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            },
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 9,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.33333333,
+            "excluded_rate_within_region": 0.07142857,
+            "overrepresentation_ratio": 0.72222222,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 6,
+            "excluded_country_share": 0.66666667,
+            "excluded_rate_within_region": 0.27272727,
+            "overrepresentation_ratio": 2.75757576,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 3,
+      "combination_id": "C08+C26+C53",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C08",
+        "C26",
+        "C53"
+      ],
+      "eligible_country_count": 82,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 9,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.33333333,
+            "excluded_rate_within_region": 0.07142857,
+            "overrepresentation_ratio": 0.72222222,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 6,
+            "excluded_country_share": 0.66666667,
+            "excluded_rate_within_region": 0.27272727,
+            "overrepresentation_ratio": 2.75757576,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 3,
+      "combination_id": "C11+C26+C53",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C11",
+        "C26",
+        "C53"
+      ],
+      "eligible_country_count": 84,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            },
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 7,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 4 of 7 exclusions (57.1%) versus 24.2% of the stable catalog; overrepresentation ratio 2.36.",
+        "flag": "SOME_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.42857143,
+            "excluded_rate_within_region": 0.07142857,
+            "overrepresentation_ratio": 0.92857143,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 4,
+            "excluded_country_share": 0.57142857,
+            "excluded_rate_within_region": 0.18181818,
+            "overrepresentation_ratio": 2.36363636,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    },
+    {
+      "candidate_count": 4,
+      "combination_id": "C08+C11+C26+C53",
+      "coverage_band": "ELEVATED",
+      "criterion_ids": [
+        "C08",
+        "C11",
+        "C26",
+        "C53"
+      ],
+      "eligible_country_count": 82,
+      "excluded_countries": [
+        {
+          "country_code": "ATG",
+          "country_name": "Antigua and Barbuda",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:hci_plus_schooling_component"
+              ],
+              "status": "invalid"
+            },
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BHS",
+          "country_name": "Bahamas, The",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "BIH",
+          "country_name": "Bosnia and Herzegovina",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "BOL",
+          "country_name": "Bolivia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GRD",
+          "country_name": "Grenada",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            },
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_drinking_water_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "GUY",
+          "country_name": "Guyana",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C08",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "HRV",
+          "country_name": "Croatia",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_INVALID",
+              "reason_codes": [
+                "VAL_COMPONENT_MISSING:basic_sanitation_access"
+              ],
+              "status": "invalid"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        },
+        {
+          "country_code": "NIC",
+          "country_name": "Nicaragua",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C53",
+              "outcome_code": "PCC_OBSERVATION_MISSING",
+              "reason_codes": [
+                "COV_SOURCE_RECORD_MISSING"
+              ],
+              "status": "missing"
+            }
+          ],
+          "region": "Latin America & Caribbean"
+        },
+        {
+          "country_code": "UKR",
+          "country_name": "Ukraine",
+          "non_ready_criteria": [
+            {
+              "criterion_id": "C11",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            },
+            {
+              "criterion_id": "C26",
+              "outcome_code": "PCC_OBSERVATION_STALE",
+              "reason_codes": [
+                "FRS_STALE"
+              ],
+              "status": "stale"
+            }
+          ],
+          "region": "Europe & Central Asia"
+        }
+      ],
+      "excluded_country_count": 9,
+      "regional_bias": {
+        "evidence": "Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.",
+        "flag": "STRONG_REGIONAL_CONCENTRATION",
+        "regions": [
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "East Asia & Pacific",
+            "stable_catalog_share": 0.10989011,
+            "stable_country_count": 10
+          },
+          {
+            "excluded_count": 3,
+            "excluded_country_share": 0.33333333,
+            "excluded_rate_within_region": 0.07142857,
+            "overrepresentation_ratio": 0.72222222,
+            "region": "Europe & Central Asia",
+            "stable_catalog_share": 0.46153846,
+            "stable_country_count": 42
+          },
+          {
+            "excluded_count": 6,
+            "excluded_country_share": 0.66666667,
+            "excluded_rate_within_region": 0.27272727,
+            "overrepresentation_ratio": 2.75757576,
+            "region": "Latin America & Caribbean",
+            "stable_catalog_share": 0.24175824,
+            "stable_country_count": 22
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Middle East, North Africa, Afghanistan & Pakistan",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "North America",
+            "stable_catalog_share": 0.02197802,
+            "stable_country_count": 2
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "South Asia",
+            "stable_catalog_share": 0.01098901,
+            "stable_country_count": 1
+          },
+          {
+            "excluded_count": 0,
+            "excluded_country_share": 0.0,
+            "excluded_rate_within_region": 0.0,
+            "overrepresentation_ratio": 0.0,
+            "region": "Sub-Saharan Africa",
+            "stable_catalog_share": 0.07692308,
+            "stable_country_count": 7
+          }
+        ]
+      }
+    }
+  ],
+  "policy_version": "uncertainty-aware-ranking-policy-1.0",
+  "schema_version": "phase4b-candidate-simulation-1.0"
+}

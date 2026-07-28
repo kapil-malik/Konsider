@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v2/active-release-pointer.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["release_id", "schema_version"],
+  "properties": {
+    "release_id": {"type": "string", "minLength": 1},
+    "schema_version": {"type": "string", "pattern": "^konsider-release-4\\.[0-9]+$"}
+  }
+}

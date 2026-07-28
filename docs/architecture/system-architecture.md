@@ -1,6 +1,6 @@
 # System architecture
 
-Status: authoritative architecture as of 2026-07-26
+Status: authoritative architecture as of 2026-07-28
 
 Konsider separates data acquisition, immutable publication, deterministic recommendation logic,
 HTTP transport, and the browser UI. Scoring and readiness rules have one server-side owner.
@@ -25,7 +25,7 @@ PublishedReleaseRepository ---> RecommendationService ---> FastAPI /api/v1 ---> 
                           consumer catalog             OpenAPI + JSON responses
 ```
 
-- The worker downloads nine registered official-source distributions, captures exact raw bytes,
+- The worker downloads ten registered official-source distributions, captures exact raw bytes,
   parses observations, computes versioned canonical scores, validates readiness, and publishes an
   immutable release only when the gate passes.
 - `PublishedReleaseRepository` validates the active pointer, schema majors, payload checksums,
@@ -39,8 +39,10 @@ PublishedReleaseRepository ---> RecommendationService ---> FastAPI /api/v1 ---> 
 - The responsive React UI derives profiles, priority controls, ranking columns, sources, flags, and
   release labels from `/api/v1`. TanStack Query owns API work; local state owns guest edits.
 
-The active release is `2026-07-27.1`: 91 countries, nine available criteria, and eight enabled
-criteria. UHC is non-ready and cannot be weighted. Infrastructure remains experimental.
+The active release is `2026-07-28.2`: 91 countries, twelve available criteria, eleven ready criteria,
+and eight 91/91 global-core criteria. Overall job-market opportunity is conditionally scored for
+its 88 valid countries when its raw weight reaches 0.6. UHC is diagnostic-only and cannot be
+weighted. Infrastructure remains experimental.
 Country-universe discovery and complete-case auditing are implemented as a separate safe worker
 flow. They use UN migrant-stock/M49 inputs plus the registered criterion sources, write diagnostic
 reports, and assert that `active.json` is unchanged. They do not share publication authority.
@@ -100,10 +102,16 @@ product endpoints return safe `503` envelopes. Changing the pointer requires a r
 
 ### Ranking
 
-The catalog or explicit request selects weights. The service rejects unknown and non-ready
-criteria, normalizes enabled weights, calculates contributions from published scores, sums totals,
-and sorts by descending total then ascending ISO-3 code. Responses retain release, method,
-observation, source, caveat, and experimental metadata.
+The stable catalog remains 91 countries. The catalog or explicit request selects raw weights, and
+the domain service classifies ready criteria as full-coverage or conditional. It always creates
+the 91-country FCC baseline R0. When a conditional criterion reaches raw weight 0.6, the service
+builds the missing-country union, complete-case eligible universe, and R1 using one normalized
+vector for every eligible country. Excluded countries receive diagnostics but no R1 score or
+rank. Score-boundary top K includes every Kth-score tie.
+
+The repository owns canonical outcomes and scores, the domain owns activation, complete-case
+selection, weights, ranks, bounds, and status, the API maps typed results, and the UI renders them.
+Responses retain release, method, observation, source, caveat, and experimental metadata.
 
 ## Decision records
 

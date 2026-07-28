@@ -55,11 +55,11 @@ This decision is based on the repository state through commit `5215a28`:
 
 Primary repository evidence:
 
-- [`konsider_phase3a/phase3a_framework.md`](../../konsider_phase3a/phase3a_framework.md)
-- [`konsider_phase3b/phase3b_screening.md`](../../konsider_phase3b/phase3b_screening.md)
-- [`konsider_phase3c_batch1/phase3c_batch1.md`](../../konsider_phase3c_batch1/phase3c_batch1.md)
-- [`konsider_phase3c_batch2/phase3c_batch2.md`](../../konsider_phase3c_batch2/phase3c_batch2.md)
-- [`konsider_phase3c_batch3/phase3c_batch3.md`](../../konsider_phase3c_batch3/phase3c_batch3.md)
+- [Phase 3A framework](../../project-history/phases/phase-3/research/framework/phase3a_framework.md)
+- [Phase 3B screening](../../project-history/phases/phase-3/research/screening/phase3b_screening.md)
+- [Phase 3C Batch 1](../../project-history/phases/phase-3/research/candidate-batch-1/phase3c_batch1.md)
+- [Phase 3C Batch 2](../../project-history/phases/phase-3/research/candidate-batch-2/phase3c_batch2.md)
+- [Phase 3C Batch 3](../../project-history/phases/phase-3/research/candidate-batch-3/phase3c_batch3.md)
 - [`docs/research/phase3d-feasibility-probes.md`](phase3d-feasibility-probes.md)
 - [`docs/research/phase3e-deterministic-probes.md`](phase3e-deterministic-probes.md)
 - [`data/reports/feasibility-probes/phase3e-deterministic-2026-07-26/report.md`](../../data/reports/feasibility-probes/phase3e-deterministic-2026-07-26/report.md)

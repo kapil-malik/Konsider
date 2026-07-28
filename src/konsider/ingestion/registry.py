@@ -12,6 +12,15 @@ _WB_USAGE = (
     "CC BY 4.0 permits commercial and non-commercial copying, adaptation, and distribution with "
     "attribution and change indication, subject to the World Bank dataset terms."
 )
+_ILO_USAGE = (
+    "CC BY 4.0 permits commercial and non-commercial copying, adaptation, and distribution with "
+    "attribution and change indication; restricted partner microdata are not used."
+)
+_WIPO_USAGE = (
+    "CC BY 4.0 permits commercial and non-commercial copying, adaptation, and distribution with "
+    "attribution and change indication. Konsider uses only WIPO's published sub-index score, not "
+    "third-party indicator content."
+)
 
 
 def world_bank_query_range(start_year: int, as_of_year: int | None = None) -> str:
@@ -270,5 +279,144 @@ SOURCES = {
         parser_version="world_bank_migrant_stock_v1",
         official_or_independent="official_secondary_distribution",
         notes="Measures established immigrant presence only; not acceptance, integration quality, or visa accessibility.",
+    ),
+    "ilostat_job_market_opportunity": SourceRegistration(
+        source_id="ilostat_job_market_opportunity",
+        criterion_id="overall_job_market_opportunity",
+        publisher="International Labour Organization (ILOSTAT)",
+        distributor="ILOSTAT bulk download service",
+        canonical_page_url="https://ilostat.ilo.org/data/bulk/",
+        download_urls=(
+            "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+            "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+            "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv",
+        ),
+        access_method="ILOSTAT official annual-indicator CSV bulk downloads",
+        pagination="none",
+        dataset_version="ILO modelled estimates, November 2025 edition",
+        source_version="UNE+EMP+EAP@ILOSTAT-MODEL-2025-11",
+        reference_period=(
+            "2025 modelled national estimates for total population age 15+; "
+            "future projections in the edition are not used"
+        ),
+        update_frequency="annual model edition",
+        methodology_url=(
+            "https://ilostat.ilo.org/methods/concepts-and-definitions/" "ilo-modelled-estimates/"
+        ),
+        license_name="Creative Commons Attribution 4.0 International",
+        license_url="https://www.ilo.org/rights-and-permissions",
+        redistribution=(
+            "Derived observations and scores may be redistributed with attribution; retained "
+            "raw bulk files remain local and are not committed."
+        ),
+        permitted_usage=_ILO_USAGE,
+        attribution=(
+            "International Labour Organization, ILOSTAT, ILO modelled estimates, November 2025 "
+            "edition; 2025 UNE, EMP and EAP total-population age-15+ series; transformed by "
+            "Konsider."
+        ),
+        license_evidence=(
+            "ILOSTAT datasets and referential metadata published from 3 May 2023 are CC BY 4.0; "
+            "checked and recorded during Phase 3 on 2026-07-26."
+        ),
+        parser="ilostat_job_market_opportunity",
+        parser_version="ilostat_job_market_opportunity_v1",
+        official_or_independent="official_modelled_estimates",
+        notes=(
+            "National, occupation-neutral labour-market conditions. Equal-weight composite of "
+            "employment-to-population, labour-force participation and reverse unemployment "
+            "average-rank percentiles. Does not measure vacancies, wages, occupation fit, visa "
+            "access, or city-level opportunity."
+        ),
+    ),
+    "world_bank_hci_plus_schooling": SourceRegistration(
+        source_id="world_bank_hci_plus_schooling",
+        criterion_id="school_education_quality",
+        publisher="World Bank",
+        distributor="World Bank Data Catalog",
+        canonical_page_url=(
+            "https://datacatalog.worldbank.org/search/dataset/0067030/" "human-capital-index-plus"
+        ),
+        download_urls=(
+            "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/"
+            "hci_plus_index_panel.dta",
+        ),
+        access_method="Official HCI+ version 3 Stata panel",
+        pagination="none",
+        dataset_version="Human Capital Index Plus version 3",
+        source_version="HCI+V3-LAYS@2026-02-11",
+        reference_period="latest labelled country estimate; production freshness requires 2024+",
+        update_frequency="periodic",
+        methodology_url="https://humancapital.worldbank.org/hciplus/methodology/",
+        license_name="Creative Commons Attribution 4.0 International",
+        license_url=(
+            "https://datacatalog.worldbank.org/search/dataset/0067030/" "human-capital-index-plus"
+        ),
+        redistribution=(
+            "The official HCI+ dataset and derived observations may be redistributed with "
+            "attribution and change indication."
+        ),
+        permitted_usage=_WB_USAGE,
+        attribution=(
+            "World Bank, Human Capital Index Plus version 3, learning-adjusted years of "
+            "schooling; licence CC BY 4.0; transformed into fixed Konsider bands."
+        ),
+        license_evidence=(
+            "The World Bank Data Catalog explicitly identifies HCI+ as CC BY 4.0; "
+            "rechecked 2026-07-28."
+        ),
+        parser="world_bank_hci_plus_schooling",
+        parser_version="world_bank_hci_plus_schooling_v1",
+        official_or_independent="official_modelled_and_harmonized",
+        notes=(
+            "Learning-adjusted years of schooling combines expected schooling quantity with "
+            "harmonized learning outcomes. It is a national modelled condition, not a school, "
+            "city, curriculum, language-support, or migrant-access assessment."
+        ),
+    ),
+    "wipo_innovation_outputs": SourceRegistration(
+        source_id="wipo_innovation_outputs",
+        criterion_id="research_innovation_ecosystem",
+        publisher="World Intellectual Property Organization",
+        distributor=None,
+        canonical_page_url="https://www.wipo.int/en/web/global-innovation-index/2025/index",
+        download_urls=("https://www.wipo.int/edocs/pubdocs/en/wipo-pub-2000-2025-tech1.xlsx",),
+        access_method="Official Global Innovation Index 2025 data workbook",
+        pagination="none",
+        dataset_version="Global Innovation Index 2025",
+        source_version="GII2025-INNOVATION-OUTPUTS",
+        reference_period="GII 2025 edition using latest available inputs in its multi-year window",
+        update_frequency="annual",
+        methodology_url=(
+            "https://www.wipo.int/web-publications/global-innovation-index-2025/en/"
+            "appendix-i-conceptual-and-measurement-framework-of-the-global-innovation-index.html"
+        ),
+        license_name="Creative Commons Attribution 4.0 International",
+        license_url=(
+            "https://www.wipo.int/web-publications/global-innovation-index-2025/en/"
+            "copyright.html"
+        ),
+        redistribution=(
+            "Konsider redistributes WIPO's published Innovation outputs sub-index score only, "
+            "with attribution and change indication; third-party input columns are not published."
+        ),
+        permitted_usage=_WIPO_USAGE,
+        attribution=(
+            "World Intellectual Property Organization, Global Innovation Index 2025, "
+            "Innovation outputs sub-index; licence CC BY 4.0; transformed into fixed Konsider "
+            "bands."
+        ),
+        license_evidence=(
+            "WIPO licenses the GII 2025 publication for commercial reproduction and adaptation "
+            "under CC BY 4.0; exact workbook and third-party boundary rechecked 2026-07-28."
+        ),
+        parser="wipo_innovation_outputs",
+        parser_version="wipo_innovation_outputs_v1",
+        official_or_independent="official_composite",
+        notes=(
+            "Uses only WIPO's published Innovation outputs sub-index, not the overall GII or its "
+            "governance, infrastructure, education, and market input pillars. National results "
+            "can obscure city-level research clusters."
+        ),
     ),
 }

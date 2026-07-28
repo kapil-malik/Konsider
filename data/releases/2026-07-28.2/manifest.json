@@ -1,0 +1,523 @@
+{
+  "artifact_checksums": {
+    "sha256:0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d": "sha256:0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d",
+    "sha256:1265284a487fcdb20f40797892895f8cac9e285016ac78e986fd4a9d30d1c687": "sha256:1265284a487fcdb20f40797892895f8cac9e285016ac78e986fd4a9d30d1c687",
+    "sha256:25a2f9eabb90b0092973392c0b31571aa58b691cc5786292e504b52f693e1eb8": "sha256:25a2f9eabb90b0092973392c0b31571aa58b691cc5786292e504b52f693e1eb8",
+    "sha256:29dac5fadb7c1ef3ae54044887db8eedd232a08f7cae930cf886e131afd55b81": "sha256:29dac5fadb7c1ef3ae54044887db8eedd232a08f7cae930cf886e131afd55b81",
+    "sha256:588d2d1af1e58ea564169a4c0e199d649208bcc82940ef537a51095a769df698": "sha256:588d2d1af1e58ea564169a4c0e199d649208bcc82940ef537a51095a769df698",
+    "sha256:6c3cf161d0798b847de909e12eeacc99501b017294c50dee387d39ca75200d57": "sha256:6c3cf161d0798b847de909e12eeacc99501b017294c50dee387d39ca75200d57",
+    "sha256:6f422680fb7163c220507051a24bb7fdc12c23db831dfcfb8a38e9b364e6ce06": "sha256:6f422680fb7163c220507051a24bb7fdc12c23db831dfcfb8a38e9b364e6ce06",
+    "sha256:6fe76c5f272eaed341e5608dc632ab46786ea73c3311b6a7340f04b8c283cfd7": "sha256:6fe76c5f272eaed341e5608dc632ab46786ea73c3311b6a7340f04b8c283cfd7",
+    "sha256:7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265": "sha256:7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265",
+    "sha256:9903124b6fae098ec74c568dd17a081029cfc4f8733a230bdd28288fdea00936": "sha256:9903124b6fae098ec74c568dd17a081029cfc4f8733a230bdd28288fdea00936",
+    "sha256:9ff55481d22a2d8195cb7bfcae2e76927f5eb5040454476b84e28142fff25ddc": "sha256:9ff55481d22a2d8195cb7bfcae2e76927f5eb5040454476b84e28142fff25ddc",
+    "sha256:af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000": "sha256:af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000",
+    "sha256:b6c023272a6881c57a8a50a86b15fc59d66c502a0469203ffe933c2200c506fa": "sha256:b6c023272a6881c57a8a50a86b15fc59d66c502a0469203ffe933c2200c506fa",
+    "sha256:c5a247eeedd3284b4b157990861bd494067dc2fdb56e1c085724a871b018d945": "sha256:c5a247eeedd3284b4b157990861bd494067dc2fdb56e1c085724a871b018d945",
+    "sha256:e2526ee031d6d553959f9786f2fb8ab67ed03d605569634704822d8d5086c1e2": "sha256:e2526ee031d6d553959f9786f2fb8ab67ed03d605569634704822d8d5086c1e2",
+    "sha256:f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589": "sha256:f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589"
+  },
+  "attempt_count": 1092,
+  "country_codes": [
+    "ALB",
+    "ARE",
+    "ARM",
+    "ATG",
+    "AUS",
+    "AUT",
+    "BEL",
+    "BGR",
+    "BHR",
+    "BHS",
+    "BIH",
+    "BOL",
+    "BRA",
+    "BWA",
+    "CAN",
+    "CHE",
+    "CHL",
+    "CMR",
+    "COL",
+    "CRI",
+    "CYP",
+    "CZE",
+    "DEU",
+    "DNK",
+    "DOM",
+    "DZA",
+    "ESP",
+    "EST",
+    "FIN",
+    "FJI",
+    "FRA",
+    "GBR",
+    "GHA",
+    "GRC",
+    "GRD",
+    "GTM",
+    "GUY",
+    "HND",
+    "HRV",
+    "HTI",
+    "HUN",
+    "IDN",
+    "IND",
+    "IRL",
+    "ISL",
+    "ISR",
+    "ITA",
+    "JAM",
+    "JPN",
+    "KAZ",
+    "KOR",
+    "LTU",
+    "LUX",
+    "LVA",
+    "MDA",
+    "MEX",
+    "MKD",
+    "MLT",
+    "MNE",
+    "MNG",
+    "MUS",
+    "MYS",
+    "NAM",
+    "NGA",
+    "NIC",
+    "NLD",
+    "NOR",
+    "NZL",
+    "OMN",
+    "PAN",
+    "PER",
+    "PHL",
+    "POL",
+    "PRT",
+    "PRY",
+    "QAT",
+    "ROU",
+    "RUS",
+    "SGP",
+    "SLV",
+    "SRB",
+    "SVK",
+    "SVN",
+    "SWE",
+    "TTO",
+    "TUR",
+    "UKR",
+    "URY",
+    "USA",
+    "UZB",
+    "ZAF"
+  ],
+  "country_count": 91,
+  "country_universe": {
+    "licensing_decision": {
+      "decision_date": "2026-07-24",
+      "direct_unodc": "rejected_for_production_ambiguous_reuse_terms",
+      "eurostat": "rejected_no_residual_coverage_gain",
+      "homicide_policy": "World Bank WDI VC.IHR.PSRC.P5 only",
+      "oecd": "rejected_non_equivalent_regional_series",
+      "unsd_sdg_api": "rejected_for_production_ambiguous_reuse_terms"
+    },
+    "policy_version": "complete-case-approved-sources-v1",
+    "source_coverage_audit_id": "coverage-2026-07-23.6-all-eligible",
+    "universe_id": "stable_supported_v1"
+  },
+  "coverage_policy_version": "uncertainty-aware-ranking-policy-1.0",
+  "created_at": "2026-07-28T08:00:00+00:00",
+  "criteria": [
+    "ambient_pm25_population_weighted",
+    "established_immigrant_presence",
+    "household_consumption_price_level_us_100",
+    "infrastructure_readiness_composite",
+    "intentional_homicide_rate",
+    "overall_job_market_opportunity",
+    "political_stability",
+    "research_innovation_ecosystem",
+    "rule_of_law",
+    "school_education_quality",
+    "uhc_service_coverage_index",
+    "women_legal_economic_equality"
+  ],
+  "criterion_coverage": {
+    "ambient_pm25_population_weighted": {
+      "activation_threshold": null,
+      "criterion_id": "ambient_pm25_population_weighted",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "pm25_health_bands_v1",
+      "source_versions": {
+        "world_bank_pm25": "EN.ATM.PM25.MC.M3@WDI-2026-07-13"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "established_immigrant_presence": {
+      "activation_threshold": null,
+      "criterion_id": "established_immigrant_presence",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "migrant_presence_bands_v1",
+      "source_versions": {
+        "world_bank_migrant_stock": "SM.POP.TOTL.ZS@WDI-2026-07"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "household_consumption_price_level_us_100": {
+      "activation_threshold": null,
+      "criterion_id": "household_consumption_price_level_us_100",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "icp_relative_cost_bands_v2",
+      "source_versions": {
+        "world_bank_icp": "PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "infrastructure_readiness_composite": {
+      "activation_threshold": null,
+      "criterion_id": "infrastructure_readiness_composite",
+      "experimental": true,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "infrastructure_readiness_bands_v1",
+      "source_versions": {
+        "world_bank_infrastructure": "INFRA-3@WDI-2026-07-13"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "intentional_homicide_rate": {
+      "activation_threshold": null,
+      "criterion_id": "intentional_homicide_rate",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "homicide_risk_bands_v1",
+      "source_versions": {
+        "unodc_homicide": "VC.IHR.PSRC.P5@WDI-2026-07-13"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "overall_job_market_opportunity": {
+      "activation_threshold": 0.6,
+      "criterion_id": "overall_job_market_opportunity",
+      "experimental": false,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 2,
+        "rejected": 0,
+        "stale": 1,
+        "valid": 88
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "job_market_equal_component_percentiles_v1",
+      "source_versions": {
+        "ilostat_job_market_opportunity": "UNE+EMP+EAP@ILOSTAT-MODEL-2025-11"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 88
+    },
+    "political_stability": {
+      "activation_threshold": null,
+      "criterion_id": "political_stability",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "wgi_political_stability_bands_v1",
+      "source_versions": {
+        "world_bank_wgi_political_stability": "wgidataset_with_sourcedata-2025.xlsx#pv@2024"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "research_innovation_ecosystem": {
+      "activation_threshold": 0.6,
+      "criterion_id": "research_innovation_ecosystem",
+      "experimental": true,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 6,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 85
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "wipo_innovation_outputs_bands_v1",
+      "source_versions": {
+        "wipo_innovation_outputs": "GII2025-INNOVATION-OUTPUTS"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 85
+    },
+    "rule_of_law": {
+      "activation_threshold": null,
+      "criterion_id": "rule_of_law",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "wgi_rule_of_law_bands_v1",
+      "source_versions": {
+        "world_bank_wgi_rule_of_law": "wgidataset_with_sourcedata-2025.xlsx#rl@2024"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "school_education_quality": {
+      "activation_threshold": 0.6,
+      "criterion_id": "school_education_quality",
+      "experimental": true,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 2,
+        "rejected": 0,
+        "stale": 1,
+        "valid": 88
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "learning_adjusted_schooling_bands_v1",
+      "source_versions": {
+        "world_bank_hci_plus_schooling": "HCI+V3-LAYS@2026-02-11"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 88
+    },
+    "uhc_service_coverage_index": {
+      "activation_threshold": null,
+      "criterion_id": "uhc_service_coverage_index",
+      "experimental": false,
+      "minimum_valid_country_count": 0,
+      "mode": "DIAGNOSTIC_ONLY",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "uhc_coverage_bands_v1",
+      "source_versions": {
+        "world_bank_uhc": "SH.UHC.SRVS.CV.XD@HNP-2026-07-01"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "women_legal_economic_equality": {
+      "activation_threshold": null,
+      "criterion_id": "women_legal_economic_equality",
+      "experimental": false,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_max": 10.0,
+      "score_min": 1.0,
+      "scoring_method_version": "wbl_legal_equality_bands_v1",
+      "source_versions": {
+        "world_bank_wbl": "WBL26_FINAL_ALL@2026-02-23"
+      },
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    }
+  },
+  "file_checksums": {
+    "attempts.jsonl": "sha256:b63e6116c54c3a8a731a09dd0c40ad8072b7f98330ec86afa3b267711e29d33f",
+    "observations.jsonl": "sha256:7cb278fde494a20d9b6c44c1407f3aed6e661dcf369a3f9af4aac4aebc55b25a",
+    "raw-artifacts.json": "sha256:8fca27d295c5e531e5ad03607d54795024913c83e4c7c909e2395f58bedd1a0f",
+    "scores.jsonl": "sha256:377b1351a764a4eed394a73974db945aa65b9d97481a882852ec972e8d93eff4",
+    "scoring-sensitivity.json": "sha256:4af46d03177da968b39de621fef1c1b1a7c454454b269db1b87a0a115cf31e5d",
+    "sources.json": "sha256:bef70b9c1007fb2c0708c42e49b810353d79ebb2584c06b1cd897f3512102f67",
+    "validation.json": "sha256:30bb2875a2b8919989a8cfee657e6d302ddb178dcf72015a41466b0381439644"
+  },
+  "observation_count": 1080,
+  "previous_release_id": "2026-07-28.1",
+  "published_at": "2026-07-28T07:17:07.748837+00:00",
+  "release_checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+  "release_id": "2026-07-28.2",
+  "reproducibility": {
+    "observation_method_versions": [
+      "hci_plus_learning_adjusted_years_v1",
+      "ilostat_job_market_equal_component_percentiles_v1",
+      "wbl_2026_legal_framework_index_v1",
+      "wdi_infrastructure_equal_weight_v1",
+      "wdi_migrant_stock_share_v1",
+      "wgi_estimate_with_uncertainty_v1",
+      "wipo_gii_innovation_outputs_v1",
+      "world_bank_homicide_observation_v3",
+      "world_bank_icp_pli_v3",
+      "world_bank_pm25_observation_v1",
+      "world_bank_uhc_observation_v1"
+    ],
+    "parser_versions": [
+      "ilostat_job_market_opportunity_v1",
+      "wipo_innovation_outputs_v1",
+      "world_bank_hci_plus_schooling_v1",
+      "world_bank_homicide_v3",
+      "world_bank_icp_v3",
+      "world_bank_infrastructure_v1",
+      "world_bank_migrant_stock_v1",
+      "world_bank_pm25_v1",
+      "world_bank_uhc_v1",
+      "world_bank_wbl_v1",
+      "world_bank_wgi_xlsx_v1"
+    ],
+    "python_requires": ">=3.11",
+    "raw_storage": "local content-addressed files excluded from git",
+    "replay_command": "python -m konsider.ingestion.worker replay data/releases/2026-07-28.2",
+    "worker_package": "konsider-0.1.0"
+  },
+  "schema_version": "konsider-release-4.0",
+  "score_count": 1080,
+  "scoring_method_versions": [
+    "homicide_risk_bands_v1",
+    "icp_relative_cost_bands_v2",
+    "infrastructure_readiness_bands_v1",
+    "job_market_equal_component_percentiles_v1",
+    "learning_adjusted_schooling_bands_v1",
+    "migrant_presence_bands_v1",
+    "pm25_health_bands_v1",
+    "uhc_coverage_bands_v1",
+    "wbl_legal_equality_bands_v1",
+    "wgi_political_stability_bands_v1",
+    "wgi_rule_of_law_bands_v1",
+    "wipo_innovation_outputs_bands_v1"
+  ],
+  "source_versions": {
+    "ilostat_job_market_opportunity": "UNE+EMP+EAP@ILOSTAT-MODEL-2025-11",
+    "unodc_homicide": "VC.IHR.PSRC.P5@WDI-2026-07-13",
+    "wipo_innovation_outputs": "GII2025-INNOVATION-OUTPUTS",
+    "world_bank_hci_plus_schooling": "HCI+V3-LAYS@2026-02-11",
+    "world_bank_icp": "PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13",
+    "world_bank_infrastructure": "INFRA-3@WDI-2026-07-13",
+    "world_bank_migrant_stock": "SM.POP.TOTL.ZS@WDI-2026-07",
+    "world_bank_pm25": "EN.ATM.PM25.MC.M3@WDI-2026-07-13",
+    "world_bank_uhc": "SH.UHC.SRVS.CV.XD@HNP-2026-07-01",
+    "world_bank_wbl": "WBL26_FINAL_ALL@2026-02-23",
+    "world_bank_wgi_political_stability": "wgidataset_with_sourcedata-2025.xlsx#pv@2024",
+    "world_bank_wgi_rule_of_law": "wgidataset_with_sourcedata-2025.xlsx#rl@2024"
+  },
+  "status": "published",
+  "validation_summary": {
+    "blockers": 0,
+    "criterion_readiness": {
+      "ambient_pm25_population_weighted": true,
+      "established_immigrant_presence": true,
+      "household_consumption_price_level_us_100": true,
+      "infrastructure_readiness_composite": true,
+      "intentional_homicide_rate": true,
+      "overall_job_market_opportunity": true,
+      "political_stability": true,
+      "research_innovation_ecosystem": true,
+      "rule_of_law": true,
+      "school_education_quality": true,
+      "uhc_service_coverage_index": false,
+      "women_legal_economic_equality": true
+    },
+    "errors": 0,
+    "global_core_ready_count": 8,
+    "minimum_global_core_count": 8,
+    "product_ready": true,
+    "ready_criterion_count": 11,
+    "structural_passed": true,
+    "warnings": 0
+  }
+}

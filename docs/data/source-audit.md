@@ -89,6 +89,7 @@ recoverable countries remain excluded because their WDI records are stale.
 
 Licence adequacy is necessary but not sufficient. Each criterion also has source-specific range,
 unit, observation-type, quality-flag, coverage, freshness, attempt, provenance, schema, checksum, and
-replay checks. Active release `2026-07-27.1` has 91/91 coverage for all nine published criteria and
-eight ready criteria. UHC remains visible with blockers rather
-than being redefined, imputed, or replaced by a fixture score.
+replay checks. Active release `2026-07-28.2` has eight 91/91 global-core criteria and three ready
+conditional criteria: Overall job-market opportunity at 88/91, School education quality at 88/91,
+and Research and innovation ecosystem at 85/91. UHC remains diagnostic-only rather than being
+redefined, imputed, or replaced by a fixture score.

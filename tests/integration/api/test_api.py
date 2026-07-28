@@ -27,11 +27,11 @@ def test_health_reports_validated_snapshot(client) -> None:
 
     assert response.status_code == 200
     assert body.status == "ok"
-    assert body.release_id == "2026-07-27.1"
+    assert body.release_id == "2026-07-28.2"
     assert body.country_count == 91
-    assert body.enabled_criterion_count == 8
+    assert body.enabled_criterion_count == 11
     assert body.ready_for_rankings is True
-    assert len(body.scoring_method_versions) == 8
+    assert len(body.scoring_method_versions) == 11
 
 
 def test_catalog_has_available_and_enabled_contracts(client) -> None:
@@ -40,14 +40,18 @@ def test_catalog_has_available_and_enabled_contracts(client) -> None:
 
     assert response.status_code == 200
     assert len(body.countries) == 91
-    assert len(body.criteria) == 9
-    assert sum(item.default_enabled for item in body.criteria) == 8
+    assert len(body.criteria) == 12
+    assert sum(item.default_enabled for item in body.criteria) == 11
     uhc = next(item for item in body.criteria if item.id == "uhc_service_coverage_index")
     infrastructure = next(
         item for item in body.criteria if item.id == "infrastructure_readiness_composite"
     )
     assert uhc.ready is False and uhc.default_enabled is False
     assert infrastructure.ready is True and infrastructure.experimental is True
+    job_market = next(item for item in body.criteria if item.id == "overall_job_market_opportunity")
+    assert job_market.coverage_mode == "CONDITIONAL_COMPLETE_CASE"
+    assert job_market.valid_country_count == 88
+    assert job_market.pcc_activation_threshold == 0.6
     assert [item.id for item in body.profiles] == [
         "equal_weight_mvp",
         "safety_and_stability",
@@ -71,8 +75,11 @@ def test_catalog_profiles_are_exact_enabled_raw_weights(client) -> None:
             "household_consumption_price_level_us_100": 1.0,
             "infrastructure_readiness_composite": 1.0,
             "intentional_homicide_rate": 1.0,
+            "overall_job_market_opportunity": 1.0,
             "political_stability": 1.0,
+            "research_innovation_ecosystem": 1.0,
             "rule_of_law": 1.0,
+            "school_education_quality": 1.0,
             "women_legal_economic_equality": 1.0,
         },
         "safety_and_stability": {
@@ -81,8 +88,11 @@ def test_catalog_profiles_are_exact_enabled_raw_weights(client) -> None:
             "household_consumption_price_level_us_100": 0.4,
             "infrastructure_readiness_composite": 0.6,
             "intentional_homicide_rate": 1.0,
+            "overall_job_market_opportunity": 0.6,
             "political_stability": 1.0,
+            "research_innovation_ecosystem": 0.4,
             "rule_of_law": 0.8,
+            "school_education_quality": 0.4,
             "women_legal_economic_equality": 0.6,
         },
         "affordability_first": {
@@ -91,8 +101,11 @@ def test_catalog_profiles_are_exact_enabled_raw_weights(client) -> None:
             "household_consumption_price_level_us_100": 1.0,
             "infrastructure_readiness_composite": 0.4,
             "intentional_homicide_rate": 0.6,
+            "overall_job_market_opportunity": 0.6,
             "political_stability": 0.5,
+            "research_innovation_ecosystem": 0.4,
             "rule_of_law": 0.5,
+            "school_education_quality": 0.4,
             "women_legal_economic_equality": 0.4,
         },
         "quality_of_life": {
@@ -101,8 +114,11 @@ def test_catalog_profiles_are_exact_enabled_raw_weights(client) -> None:
             "household_consumption_price_level_us_100": 0.4,
             "infrastructure_readiness_composite": 0.8,
             "intentional_homicide_rate": 0.8,
+            "overall_job_market_opportunity": 0.8,
             "political_stability": 0.8,
+            "research_innovation_ecosystem": 0.8,
             "rule_of_law": 0.8,
+            "school_education_quality": 1.0,
             "women_legal_economic_equality": 0.8,
         },
     }
@@ -118,7 +134,7 @@ def test_added_profiles_use_existing_ranking_semantics(client) -> None:
     assert response.status_code == 200
     assert body.resolved_profile_id == "safety_and_stability"
     assert sum(body.normalized_weights.values()) == pytest.approx(1)
-    assert body.normalized_weights["intentional_homicide_rate"] == pytest.approx(1 / 5.3)
+    assert body.normalized_weights["intentional_homicide_rate"] == pytest.approx(1 / 5.9)
 
 
 def test_rankings_default_profile_and_top_k(client) -> None:
@@ -127,11 +143,11 @@ def test_rankings_default_profile_and_top_k(client) -> None:
 
     assert response.status_code == 200
     assert body.resolved_profile_id == "equal_weight_mvp"
-    assert body.total_eligible_country_count == 91
+    assert body.total_eligible_country_count == 83
     assert body.returned_result_count == 3
     assert len(body.rankings) == 3
-    assert set(body.normalized_weights.values()) == {0.125}
-    assert all(len(item.contributions) == 8 for item in body.rankings)
+    assert set(body.normalized_weights.values()) == {1 / 11}
+    assert all(len(item.contributions) == 11 for item in body.rankings)
 
 
 def test_explicit_ranking_is_deterministic_and_reconciles(client) -> None:
@@ -253,7 +269,7 @@ def test_country_metrics_are_enabled_public_records(client) -> None:
 
     assert response.status_code == 200
     assert body.country.code == "IND"
-    assert len(body.criteria) == 8
+    assert len(body.criteria) == 11
     assert all(item.criterion.ready for item in body.criteria)
     assert all(item.observations and item.source.canonical_page_url for item in body.criteria)
     assert "uhc_service_coverage_index" not in {item.criterion.id for item in body.criteria}
@@ -312,7 +328,7 @@ def test_default_paths_do_not_depend_on_current_working_directory(tmp_path, monk
         response = other_client.get("/api/v1/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-27.1"
+    assert response.json()["release_id"] == "2026-07-28.2"
 
 
 def test_service_is_constructed_once_per_app_lifecycle() -> None:
@@ -351,7 +367,7 @@ def test_unsupported_release_contract_returns_safe_503(tmp_path) -> None:
     release_root = tmp_path / "releases"
     release_root.mkdir()
     (release_root / "active.json").write_text(
-        json.dumps({"release_id": "future", "schema_version": "konsider-release-4.0"}),
+        json.dumps({"release_id": "future", "schema_version": "konsider-release-5.0"}),
         encoding="utf-8",
     )
     settings = ApiSettings(
@@ -371,7 +387,7 @@ def test_temporary_release_and_catalog_paths_are_injectable(tmp_path) -> None:
     release_root = tmp_path / "releases"
     shutil.copytree(ROOT / "data" / "releases", release_root)
     catalog = tmp_path / "catalog.json"
-    shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json", catalog)
+    shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json", catalog)
     settings = ApiSettings(
         release_root=release_root,
         active_release_path=release_root / "active.json",
@@ -381,7 +397,7 @@ def test_temporary_release_and_catalog_paths_are_injectable(tmp_path) -> None:
         response = other_client.get("/api/v1/catalog")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-27.1"
+    assert response.json()["release_id"] == "2026-07-28.2"
 
 
 def test_unexpected_failure_returns_safe_500() -> None:

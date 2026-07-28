@@ -1,0 +1,207 @@
+{
+  "coverage": {
+    "activation_threshold": 0.6,
+    "criterion_id": "overall_job_market_opportunity",
+    "experimental": false,
+    "minimum_valid_country_count": 82,
+    "mode": "CONDITIONAL_COMPLETE_CASE",
+    "outcome_counts": {
+      "invalid": 0,
+      "missing": 2,
+      "rejected": 0,
+      "stale": 1,
+      "valid": 88
+    },
+    "score_max": 10.0,
+    "score_min": 1.0,
+    "scoring_method_version": "job_market_equal_component_percentiles_v1",
+    "source_versions": {
+      "ilostat_job_market_opportunity": "UNE+EMP+EAP@ILOSTAT-MODEL-2025-11"
+    },
+    "stable_country_count": 91,
+    "stable_universe_id": "stable_supported_v1",
+    "valid_country_count": 88
+  },
+  "criterion_id": "overall_job_market_opportunity",
+  "criterion_name": "Overall job-market opportunity",
+  "decision": "PRODUCTION_ONBOARDED",
+  "non_valid_outcomes": [
+    {
+      "attempted_at": "2026-07-26T16:40:55.615165+00:00",
+      "country_code": "ATG",
+      "criterion_id": "overall_job_market_opportunity",
+      "observation_id": null,
+      "outcome": "missing",
+      "reason_codes": [
+        "COV_SOURCE_RECORD_MISSING"
+      ],
+      "source_id": "ilostat_job_market_opportunity"
+    },
+    {
+      "attempted_at": "2026-07-26T16:40:55.615165+00:00",
+      "country_code": "GRD",
+      "criterion_id": "overall_job_market_opportunity",
+      "observation_id": null,
+      "outcome": "missing",
+      "reason_codes": [
+        "COV_SOURCE_RECORD_MISSING"
+      ],
+      "source_id": "ilostat_job_market_opportunity"
+    },
+    {
+      "attempted_at": "2026-07-26T16:40:55.615165+00:00",
+      "country_code": "UKR",
+      "criterion_id": "overall_job_market_opportunity",
+      "observation_id": null,
+      "outcome": "stale",
+      "reason_codes": [
+        "FRS_STALE"
+      ],
+      "source_id": "ilostat_job_market_opportunity"
+    }
+  ],
+  "raw_artifacts": [
+    {
+      "artifact_id": "sha256:0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d",
+      "byte_length": 7565147,
+      "requested_url": "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+      "sha256": "0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d"
+    },
+    {
+      "artifact_id": "sha256:af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000",
+      "byte_length": 7451393,
+      "requested_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2WAP_SEX_AGE_RT_A&format=csv",
+      "sha256": "af1cc2b1744cf7075afc39f7c6cc577b98ee5e28790651f589b65a3aaee7d000"
+    },
+    {
+      "artifact_id": "sha256:f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589",
+      "byte_length": 23558617,
+      "requested_url": "https://rplumber.ilo.org/data/indicator/?id=EAP_2WAP_SEX_AGE_RT_A&format=csv",
+      "sha256": "f81f25bc89c25a094d3cb68ddd49a4756aa3f2b330277244e7dc15fd60c32589"
+    }
+  ],
+  "reference_year": 2025,
+  "release_id": "2026-07-28.1",
+  "replay_evidence": {
+    "phase3_offline_replay": "exact country-result agreement",
+    "phase3_online_run": "phase3e-2026-07-26-c11-online",
+    "phase4f_offline_replay_command": "python -m konsider.ingestion.worker replay data/releases/2026-07-28.1"
+  },
+  "schema_version": "phase4f-onboarding-report-1.0",
+  "scoring": {
+    "anchors": [
+      [
+        1,
+        1
+      ],
+      [
+        10,
+        10
+      ]
+    ],
+    "component_experiment": {
+      "component_directions": {
+        "employment_to_population_ratio": "higher_is_better",
+        "labour_force_participation_rate": "higher_is_better",
+        "unemployment_rate": "lower_is_better"
+      },
+      "component_removal_sensitivity": {
+        "without_employment_to_population_ratio": {
+          "maximum_absolute_score_change": 1.0172,
+          "spearman_vs_equal": 0.9862
+        },
+        "without_labour_force_participation_rate": {
+          "maximum_absolute_score_change": 2.2586,
+          "spearman_vs_equal": 0.9627
+        },
+        "without_unemployment_rate": {
+          "maximum_absolute_score_change": 2.2931,
+          "spearman_vs_equal": 0.9452
+        }
+      },
+      "components": [
+        "employment_to_population_ratio",
+        "labour_force_participation_rate",
+        "unemployment_rate"
+      ],
+      "decision": "Retain equal weights: the three components answer distinct labour-market questions; employment-heavy and unemployment-heavy variants remain diagnostics only.",
+      "pairwise_component_correlations": {
+        "employment_to_population_ratio__labour_force_participation_rate": {
+          "pearson_raw": 0.9422,
+          "spearman_direction_aligned": 0.9321
+        },
+        "employment_to_population_ratio__unemployment_rate": {
+          "pearson_raw": -0.6097,
+          "spearman_direction_aligned": 0.6318
+        },
+        "labour_force_participation_rate__unemployment_rate": {
+          "pearson_raw": -0.3119,
+          "spearman_direction_aligned": 0.3927
+        }
+      },
+      "reference_year": 2025,
+      "selected_weighting": {
+        "employment_to_population_ratio": 0.3333333333333333,
+        "labour_force_participation_rate": 0.3333333333333333,
+        "unemployment_rate": 0.3333333333333333
+      },
+      "weight_sensitivity": {
+        "employment_heavy": {
+          "maximum_absolute_score_change": 0.5086,
+          "spearman_vs_equal": 0.9976
+        },
+        "equal_weight": {
+          "maximum_absolute_score_change": 0.0,
+          "spearman_vs_equal": 1.0
+        },
+        "unemployment_heavy": {
+          "maximum_absolute_score_change": 1.8603,
+          "spearman_vs_equal": 0.9462
+        }
+      }
+    },
+    "country_set_test": {
+      "scenario": "remove one minimum and one maximum raw observation",
+      "threshold_score_range_full": [
+        1.276,
+        10
+      ],
+      "threshold_score_range_trimmed": [
+        1.414,
+        9.69
+      ]
+    },
+    "observed_raw_range": [
+      1.2758620689655171,
+      10.0
+    ],
+    "score_ranges": {
+      "percentile_rank": [
+        1.0,
+        10.0
+      ],
+      "threshold": [
+        1.276,
+        10
+      ],
+      "winsorized_minmax": [
+        1.0,
+        10.0
+      ]
+    },
+    "score_standard_deviation": {
+      "percentile_rank": 2.6312,
+      "threshold": 2.3031,
+      "winsorized_minmax": 2.6842
+    },
+    "selected_method_version": "job_market_equal_component_percentiles_v1",
+    "selection_reason": "The published value is the equal mean of three direction-aligned average-rank percentile components. Alternative weights and component removals are reported explicitly; no country-specific renormalisation is used.",
+    "tight_cluster_test_score_spread": {
+      "percentile_rank": 9.0,
+      "threshold": 0.0872,
+      "winsorized_minmax": 9.0
+    }
+  },
+  "source_id": "ilostat_job_market_opportunity",
+  "source_version": "UNE+EMP+EAP@ILOSTAT-MODEL-2025-11"
+}

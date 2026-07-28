@@ -8,11 +8,8 @@ def test_default_settings_are_absolute_and_project_relative() -> None:
 
     assert settings.release_root == (PROJECT_ROOT / "data" / "releases").resolve()
     assert settings.active_release_path == (settings.release_root / "active.json").resolve()
-    assert (
-        settings.catalog_path
-        == (PROJECT_ROOT / "data" / "catalogs" / "consumer-catalog-1.0.json").resolve()
-    )
-    assert all(path.is_absolute() for path in [settings.release_root, settings.catalog_path])
+    assert settings.catalog_path is None
+    assert settings.release_root.is_absolute()
 
 
 def test_environment_settings_support_distinct_paths_and_cors(tmp_path: Path) -> None:

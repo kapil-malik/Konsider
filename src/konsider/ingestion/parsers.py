@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import csv
 import hashlib
 import io
 import json
+from collections import defaultdict
 from collections.abc import Iterable
 
 from openpyxl import load_workbook
@@ -675,6 +677,345 @@ def parse_world_bank_migrant_stock(artifacts, bodies):
     ]
 
 
+_JOB_MARKET_REFERENCE_YEAR = 2025
+_JOB_MARKET_COMPONENTS = {
+    "EMP_2WAP_SEX_AGE_RT": "employment_to_population_ratio",
+    "EAP_2WAP_SEX_AGE_RT": "labour_force_participation_rate",
+    "UNE_2EAP_SEX_AGE_RT": "unemployment_rate",
+}
+_JOB_MARKET_COMPONENT_ORDER = (
+    "employment_to_population_ratio",
+    "labour_force_participation_rate",
+    "unemployment_rate",
+)
+
+
+def _average_rank_scores(values: dict[str, float], *, higher_is_better: bool) -> dict[str, float]:
+    ordered = sorted(values.items(), key=lambda item: (item[1], item[0]))
+    if len(ordered) == 1:
+        return {ordered[0][0]: 5.5}
+    scores: dict[str, float] = {}
+    start = 0
+    while start < len(ordered):
+        end = start + 1
+        while end < len(ordered) and ordered[end][1] == ordered[start][1]:
+            end += 1
+        percentile = ((start + end - 1) / 2) / (len(ordered) - 1)
+        if not higher_is_better:
+            percentile = 1 - percentile
+        for index in range(start, end):
+            scores[ordered[index][0]] = 1 + 9 * percentile
+        start = end
+    return scores
+
+
+def _ilostat_job_market_rows(artifacts: list[RawArtifact], bodies: list[bytes]):
+    target: dict[str, dict[str, tuple[float, SourceRecordReference]]] = defaultdict(dict)
+    latest_year: dict[str, dict[str, int]] = defaultdict(dict)
+    for artifact, body in zip(artifacts, bodies, strict=True):
+        rows = csv.DictReader(io.StringIO(body.decode("utf-8-sig")))
+        for line_number, row in enumerate(rows, start=2):
+            if row.get("sex") != "SEX_T" or row.get("classif1") != "AGE_YTHADULT_YGE15":
+                continue
+            component_id = _JOB_MARKET_COMPONENTS.get(str(row.get("indicator") or ""))
+            code = str(row.get("ref_area") or "").strip()
+            if component_id is None or code not in COUNTRIES:
+                continue
+            try:
+                year = int(row["time"])
+                value = float(row["obs_value"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            latest_year[code][component_id] = max(year, latest_year[code].get(component_id, year))
+            if year != _JOB_MARKET_REFERENCE_YEAR or component_id in target[code]:
+                continue
+            reference = SourceRecordReference(
+                artifact.artifact_id,
+                f"{artifact.requested_url}#row={line_number}",
+                f"{code}|{row['indicator']}|{year}",
+            )
+            target[code][component_id] = (value, reference)
+    return target, latest_year
+
+
+def classify_ilostat_job_market_outcomes(
+    artifacts: list[RawArtifact], bodies: list[bytes]
+) -> dict[str, tuple[str, tuple[str, ...]]]:
+    """Classify every stable country from the pinned source bytes."""
+
+    target, latest_year = _ilostat_job_market_rows(artifacts, bodies)
+    output = {}
+    for code in sorted(COUNTRIES):
+        components = target.get(code, {})
+        if all(component in components for component in _JOB_MARKET_COMPONENT_ORDER):
+            output[code] = ("valid", ())
+            continue
+        latest = latest_year.get(code, {})
+        if (
+            all(component in latest for component in _JOB_MARKET_COMPONENT_ORDER)
+            and max(latest.values()) < _JOB_MARKET_REFERENCE_YEAR
+        ):
+            output[code] = ("stale", ("FRS_STALE",))
+            continue
+        if not latest:
+            output[code] = ("missing", ("COV_SOURCE_RECORD_MISSING",))
+            continue
+        missing = tuple(
+            f"VAL_COMPONENT_MISSING:{component}"
+            for component in _JOB_MARKET_COMPONENT_ORDER
+            if component not in components
+        )
+        output[code] = ("invalid", missing or ("VAL_COMPONENT_SET_INCOMPLETE",))
+    return output
+
+
+def parse_ilostat_job_market_opportunity(
+    artifacts: list[RawArtifact], bodies: list[bytes]
+) -> list[MetricObservation]:
+    """Build the frozen 2025 equal-component labour-market percentile index."""
+
+    target, _ = _ilostat_job_market_rows(artifacts, bodies)
+    valid = {
+        code: components
+        for code, components in target.items()
+        if all(component in components for component in _JOB_MARKET_COMPONENT_ORDER)
+    }
+    employment = _average_rank_scores(
+        {
+            code: components["employment_to_population_ratio"][0]
+            for code, components in valid.items()
+        },
+        higher_is_better=True,
+    )
+    participation = _average_rank_scores(
+        {
+            code: components["labour_force_participation_rate"][0]
+            for code, components in valid.items()
+        },
+        higher_is_better=True,
+    )
+    reverse_unemployment = _average_rank_scores(
+        {code: components["unemployment_rate"][0] for code, components in valid.items()},
+        higher_is_better=False,
+    )
+    component_scores = {
+        "employment_to_population_ratio": employment,
+        "labour_force_participation_rate": participation,
+        "unemployment_rate": reverse_unemployment,
+    }
+    units = {
+        "employment_to_population_ratio": "percent_working_age_population",
+        "labour_force_participation_rate": "percent_working_age_population",
+        "unemployment_rate": "percent_labour_force",
+    }
+    observations = []
+    for code in sorted(valid):
+        components = valid[code]
+        records = tuple(components[item][1] for item in _JOB_MARKET_COMPONENT_ORDER)
+        value = sum(component_scores[item][code] for item in _JOB_MARKET_COMPONENT_ORDER) / 3
+        observations.append(
+            _annual_observation(
+                records=records,
+                source_id="ilostat_job_market_opportunity",
+                country=code,
+                metric="overall_job_market_opportunity",
+                value=value,
+                unit="equal_component_percentile_index_1_10",
+                year=_JOB_MARKET_REFERENCE_YEAR,
+                observation_type="derived_composite_of_modelled_national_estimates",
+                parser_version="ilostat_job_market_opportunity_v1",
+                method="ilostat_job_market_equal_component_percentiles_v1",
+                components=tuple(
+                    ObservationComponent(
+                        component_id,
+                        components[component_id][0],
+                        units[component_id],
+                        _JOB_MARKET_REFERENCE_YEAR,
+                        components[component_id][1],
+                    )
+                    for component_id in _JOB_MARKET_COMPONENT_ORDER
+                ),
+                flags=(
+                    "modelled_national_estimates",
+                    "total_population_age_15_plus",
+                    "equal_weight_three_components",
+                    "average_rank_percentiles",
+                    "unemployment_direction_reversed",
+                    "occupation_neutral",
+                    "future_projections_excluded",
+                ),
+            )
+        )
+    return observations
+
+
+_HCI_PLUS_FRESHNESS_YEAR = 2024
+
+
+def _hci_plus_schooling_rows(artifact: RawArtifact, body: bytes):
+    try:
+        import pandas as pd
+    except ImportError as exc:  # pragma: no cover - production dependency guard
+        raise RuntimeError("The HCI+ production parser requires pandas.") from exc
+
+    frame = pd.read_stata(io.BytesIO(body))
+    required = {"iso3c", "year", "hlo_mf", "lays_mf"}
+    missing = required - set(frame.columns)
+    if missing:
+        raise ValueError(f"HCI+ panel is missing fields: {', '.join(sorted(missing))}")
+    latest: dict[str, tuple[int, float | None, float | None, SourceRecordReference]] = {}
+    for index, row in frame.iterrows():
+        code = str(row["iso3c"]).strip()
+        if code not in COUNTRIES:
+            continue
+        try:
+            year = int(row["year"])
+        except (TypeError, ValueError):
+            continue
+        hlo = None if pd.isna(row["hlo_mf"]) else float(row["hlo_mf"])
+        lays = None if pd.isna(row["lays_mf"]) else float(row["lays_mf"])
+        if hlo is None and lays is None:
+            continue
+        reference = SourceRecordReference(
+            artifact.artifact_id,
+            f"row={int(index) + 2}",
+            f"{code}|HCI_PLUS_LAYS|{year}",
+        )
+        if code not in latest or year > latest[code][0]:
+            latest[code] = (year, hlo, lays, reference)
+    return latest
+
+
+def classify_hci_plus_schooling_outcomes(
+    artifacts: list[RawArtifact], bodies: list[bytes]
+) -> dict[str, tuple[str, tuple[str, ...]]]:
+    """Classify the stable universe for the frozen LAYS construct."""
+
+    if len(artifacts) != 1:
+        raise ValueError("HCI+ schooling requires exactly one source artifact.")
+    latest = _hci_plus_schooling_rows(artifacts[0], bodies[0])
+    output = {}
+    for code in sorted(COUNTRIES):
+        row = latest.get(code)
+        if row is None:
+            output[code] = ("missing", ("COV_SOURCE_RECORD_MISSING",))
+            continue
+        year, hlo, lays, _ = row
+        missing = tuple(
+            reason
+            for value, reason in (
+                (hlo, "VAL_COMPONENT_MISSING:harmonized_learning_outcome"),
+                (lays, "VAL_COMPONENT_MISSING:learning_adjusted_years_schooling"),
+            )
+            if value is None
+        )
+        if missing:
+            output[code] = ("invalid", missing)
+        elif year < _HCI_PLUS_FRESHNESS_YEAR:
+            output[code] = ("stale", ("FRS_STALE",))
+        else:
+            output[code] = ("valid", ())
+    return output
+
+
+def parse_world_bank_hci_plus_schooling(
+    artifacts: list[RawArtifact], bodies: list[bytes]
+) -> list[MetricObservation]:
+    """Parse fresh learning-adjusted years without requiring unrelated HCI+ components."""
+
+    if len(artifacts) != 1:
+        raise ValueError("HCI+ schooling requires exactly one source artifact.")
+    latest = _hci_plus_schooling_rows(artifacts[0], bodies[0])
+    observations = []
+    for code, (year, hlo, lays, reference) in sorted(latest.items()):
+        if year < _HCI_PLUS_FRESHNESS_YEAR or hlo is None or lays is None:
+            continue
+        observations.append(
+            _annual_observation(
+                records=(reference,),
+                source_id="world_bank_hci_plus_schooling",
+                country=code,
+                metric="school_education_quality",
+                value=lays,
+                unit="learning_adjusted_years",
+                year=year,
+                observation_type="national_modelled_and_harmonized_outcome",
+                parser_version="world_bank_hci_plus_schooling_v1",
+                method="hci_plus_learning_adjusted_years_v1",
+                components=(
+                    ObservationComponent(
+                        "harmonized_learning_outcome",
+                        hlo,
+                        "harmonized_test_score",
+                        year,
+                        reference,
+                    ),
+                ),
+                flags=(
+                    "national_modelled_outcome",
+                    "harmonized_assessment_inputs",
+                    "mixed_underlying_reference_periods",
+                    "not_city_or_school_specific",
+                    "catalogue_file_year_label_discrepancy",
+                ),
+            )
+        )
+    return observations
+
+
+def parse_wipo_innovation_outputs(
+    artifacts: list[RawArtifact], bodies: list[bytes]
+) -> list[MetricObservation]:
+    """Parse WIPO's published output sub-index without republishing input indicators."""
+
+    if len(artifacts) != 1:
+        raise ValueError("WIPO innovation outputs requires exactly one source artifact.")
+    workbook = load_workbook(io.BytesIO(bodies[0]), read_only=True, data_only=True)
+    sheet = workbook["Data"]
+    rows = sheet.iter_rows(values_only=True)
+    headers = list(next(rows))
+    required = {"ISO3", "ECONOMY_NAME", "NAME", "SCORE", "RANK"}
+    if not required.issubset(headers):
+        raise ValueError(f"WIPO workbook is missing fields: {sorted(required - set(headers))}")
+    columns = {name: headers.index(name) for name in required}
+    output = []
+    for row_number, row in enumerate(rows, start=2):
+        code = str(row[columns["ISO3"]] or "").strip()
+        if (
+            code not in COUNTRIES
+            or row[columns["NAME"]] != "Innovation outputs"
+            or not isinstance(row[columns["SCORE"]], (int, float))
+        ):
+            continue
+        reference = SourceRecordReference(
+            artifacts[0].artifact_id,
+            f"Data!R{row_number}C{columns['SCORE'] + 1}",
+            f"{code}|GII2025|INNOVATION_OUTPUTS",
+        )
+        output.append(
+            _annual_observation(
+                records=(reference,),
+                source_id="wipo_innovation_outputs",
+                country=code,
+                metric="research_innovation_ecosystem",
+                value=float(row[columns["SCORE"]]),
+                unit="wipo_innovation_outputs_score_0_100",
+                year=2025,
+                observation_type="published_composite_sub_index",
+                parser_version="wipo_innovation_outputs_v1",
+                method="wipo_gii_innovation_outputs_v1",
+                flags=(
+                    "published_wipo_sub_index",
+                    "mixed_source_years",
+                    "third_party_input_columns_not_redistributed",
+                    "national_not_city_cluster",
+                    "experimental",
+                ),
+            )
+        )
+    return sorted(output, key=lambda item: item.country_code)
+
+
 PARSERS = {
     "who_air_quality": parse_who_air_quality,
     "who_uhc": parse_who_uhc,
@@ -690,4 +1031,7 @@ PARSERS = {
     "world_bank_wgi_political_stability": parse_world_bank_wgi_political_stability,
     "world_bank_wgi_rule_of_law": parse_world_bank_wgi_rule_of_law,
     "world_bank_migrant_stock": parse_world_bank_migrant_stock,
+    "ilostat_job_market_opportunity": parse_ilostat_job_market_opportunity,
+    "world_bank_hci_plus_schooling": parse_world_bank_hci_plus_schooling,
+    "wipo_innovation_outputs": parse_wipo_innovation_outputs,
 }

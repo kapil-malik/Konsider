@@ -1,0 +1,40 @@
+[
+  {
+    "attribution": "Synthetic fixture generated from country codes and ordinal positions.",
+    "canonical_page_url": "https://example.invalid/konsider/phase4c-fixture",
+    "criterion_id": "fixture_global_core",
+    "dataset_version": "phase4c-fixture-v1",
+    "download_urls": [
+      "https://example.invalid/konsider/phase4c-fixture.json"
+    ],
+    "license_name": "Fixture only; not production source data",
+    "license_url": "https://example.invalid/konsider/phase4c-license",
+    "methodology_url": "https://example.invalid/konsider/phase4c-method",
+    "notes": "Contract-test fixture only. It is not candidate source onboarding.",
+    "parser": "phase4c_fixture",
+    "parser_version": "phase4c-fixture-parser-v1",
+    "publisher": "Konsider Phase 4C deterministic fixture",
+    "reference_period": "fixture year 2025",
+    "source_id": "phase4c_fixture_fcc",
+    "source_version": "phase4c_fixture_fcc-v1"
+  },
+  {
+    "attribution": "Synthetic fixture generated from country codes and ordinal positions.",
+    "canonical_page_url": "https://example.invalid/konsider/phase4c-fixture",
+    "criterion_id": "overall_job_market_opportunity_fixture",
+    "dataset_version": "phase4c-fixture-v1",
+    "download_urls": [
+      "https://example.invalid/konsider/phase4c-fixture.json"
+    ],
+    "license_name": "Fixture only; not production source data",
+    "license_url": "https://example.invalid/konsider/phase4c-license",
+    "methodology_url": "https://example.invalid/konsider/phase4c-method",
+    "notes": "Contract-test fixture only. It is not candidate source onboarding.",
+    "parser": "phase4c_fixture",
+    "parser_version": "phase4c-fixture-parser-v1",
+    "publisher": "Konsider Phase 4C deterministic fixture",
+    "reference_period": "fixture year 2025",
+    "source_id": "phase4c_fixture_pcc",
+    "source_version": "phase4c_fixture_pcc-v1"
+  }
+]

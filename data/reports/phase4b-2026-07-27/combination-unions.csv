@@ -1,0 +1,16 @@
+combination_id,candidate_count,excluded_country_count,eligible_country_count,coverage_band,excluded_country_codes,regional_bias_flag,regional_bias_evidence
+C08,1,4,87,PREFERRED,ATG|BHS|BOL|GUY,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 4 of 4 exclusions (100.0%) versus 24.2% of the stable catalog; overrepresentation ratio 4.14.
+C11,1,3,88,PREFERRED,ATG|GRD|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.
+C26,1,1,90,PREFERRED,UKR,SOME_REGIONAL_CONCENTRATION,Europe & Central Asia contains 1 of 1 exclusions (100.0%) versus 46.2% of the stable catalog; overrepresentation ratio 2.17.
+C53,1,5,86,PREFERRED,BHS|BIH|GRD|HRV|NIC,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 3 of 5 exclusions (60.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.48.
+C08+C11,2,6,85,ELEVATED,ATG|BHS|BOL|GRD|GUY|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 5 of 6 exclusions (83.3%) versus 24.2% of the stable catalog; overrepresentation ratio 3.45.
+C08+C26,2,5,86,PREFERRED,ATG|BHS|BOL|GUY|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 4 of 5 exclusions (80.0%) versus 24.2% of the stable catalog; overrepresentation ratio 3.31.
+C08+C53,2,8,83,ELEVATED,ATG|BHS|BIH|BOL|GRD|GUY|HRV|NIC,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 6 of 8 exclusions (75.0%) versus 24.2% of the stable catalog; overrepresentation ratio 3.10.
+C11+C26,2,3,88,PREFERRED,ATG|GRD|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 2 of 3 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.
+C11+C53,2,7,84,ELEVATED,ATG|BHS|BIH|GRD|HRV|NIC|UKR,SOME_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 4 of 7 exclusions (57.1%) versus 24.2% of the stable catalog; overrepresentation ratio 2.36.
+C26+C53,2,6,85,ELEVATED,BHS|BIH|GRD|HRV|NIC|UKR,SOME_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 3 of 6 exclusions (50.0%) versus 24.2% of the stable catalog; overrepresentation ratio 2.07.
+C08+C11+C26,3,6,85,ELEVATED,ATG|BHS|BOL|GRD|GUY|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 5 of 6 exclusions (83.3%) versus 24.2% of the stable catalog; overrepresentation ratio 3.45.
+C08+C11+C53,3,9,82,ELEVATED,ATG|BHS|BIH|BOL|GRD|GUY|HRV|NIC|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.
+C08+C26+C53,3,9,82,ELEVATED,ATG|BHS|BIH|BOL|GRD|GUY|HRV|NIC|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.
+C11+C26+C53,3,7,84,ELEVATED,ATG|BHS|BIH|GRD|HRV|NIC|UKR,SOME_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 4 of 7 exclusions (57.1%) versus 24.2% of the stable catalog; overrepresentation ratio 2.36.
+C08+C11+C26+C53,4,9,82,ELEVATED,ATG|BHS|BIH|BOL|GRD|GUY|HRV|NIC|UKR,STRONG_REGIONAL_CONCENTRATION,Latin America & Caribbean contains 6 of 9 exclusions (66.7%) versus 24.2% of the stable catalog; overrepresentation ratio 2.76.
