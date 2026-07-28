@@ -9,7 +9,7 @@
   "attempted_at": "2026-07-28T00:00:00Z",
   "observation_id": "obs:C66:country:CAN:invalid",
   "score_id": "score:C66:country:CAN:2020",
-  "derived_evidence_id": "derived:C66:country:CAN:fixture",
+  "derived_evidence_id": null,
   "source_lineage_ids": [
     "lineage:c66-ghsl:1.0"
   ],

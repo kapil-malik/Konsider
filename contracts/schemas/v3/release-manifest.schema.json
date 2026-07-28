@@ -80,7 +80,8 @@
         "scores",
         "criterion_outcomes",
         "derived_country_evidence",
-        "source_lineages"
+        "source_lineages",
+        "criterion_policies"
       ],
       "properties": {
         "geographic_entities": {
@@ -104,6 +105,10 @@
           "minimum": 0
         },
         "source_lineages": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "criterion_policies": {
           "type": "integer",
           "minimum": 1
         }
@@ -155,6 +160,7 @@
         "source-lineages.json",
         "locality-universes.json",
         "aggregation-policies.json",
+        "criterion-policies.json",
         "consumer-catalog.json",
         "validation.json"
       ],
@@ -181,6 +187,9 @@
           "$ref": "#/$defs/checksum"
         },
         "aggregation-policies.json": {
+          "$ref": "#/$defs/checksum"
+        },
+        "criterion-policies.json": {
           "$ref": "#/$defs/checksum"
         },
         "consumer-catalog.json": {

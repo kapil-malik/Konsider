@@ -7,7 +7,7 @@
   "outcome": "valid",
   "evidence_kind": "DERIVED_LOCALITIES",
   "attempted_at": "2026-07-28T00:00:00Z",
-  "observation_id": null,
+  "observation_id": "obs:C66:country:CAN:2020",
   "score_id": "score:C66:country:CAN:2020",
   "derived_evidence_id": "derived:C66:country:CAN:fixture",
   "source_lineage_ids": [

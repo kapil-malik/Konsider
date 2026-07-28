@@ -1,0 +1,37 @@
+{
+  "criterion_id": "C66",
+  "source_lineage_ids": [
+    "lineage:c66-ghsl:1.0"
+  ],
+  "parser": {
+    "id": "jrc-extreme-heat-city",
+    "version": "draft-1.0"
+  },
+  "scoring": {
+    "id": "lower-is-better-fixed-bands",
+    "version": "c66-extreme-heat-draft-1.0"
+  },
+  "coverage_mode": "CONDITIONAL_COMPLETE_CASE",
+  "scope": {
+    "evidence_level": "LOCALITY",
+    "result_level": "COUNTRY",
+    "locality_type": "CITY",
+    "derivation": "AGGREGATED_FROM_LOCALITIES",
+    "locality_universe_id": "major-urban-opportunity-v1",
+    "aggregation_policy_id": "c66-extreme-heat-top2",
+    "locality_analysis_threshold": 0.6
+  },
+  "derivation": {
+    "mode": "AGGREGATED_FROM_LOCALITIES",
+    "processor": {
+      "id": "top-n-mean",
+      "version": "draft-1.0"
+    }
+  },
+  "applicability": {
+    "mode": "UNIVERSAL",
+    "dimensions": []
+  },
+  "ready": false,
+  "experimental": true
+}

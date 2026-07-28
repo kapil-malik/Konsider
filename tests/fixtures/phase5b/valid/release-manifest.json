@@ -64,7 +64,8 @@
     "scores": 4,
     "criterion_outcomes": 2,
     "derived_country_evidence": 1,
-    "source_lineages": 3
+    "source_lineages": 3,
+    "criterion_policies": 2
   },
   "source_lineage_ids": [
     "lineage:c48-wgi:1.0",
@@ -90,6 +91,7 @@
     "source-lineages.json": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
     "locality-universes.json": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
     "aggregation-policies.json": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "criterion-policies.json": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
     "consumer-catalog.json": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
     "validation.json": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
   },

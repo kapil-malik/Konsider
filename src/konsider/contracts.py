@@ -23,6 +23,8 @@ class UnsupportedContractError(ContractError):
 SCHEMA_BASE = Path(__file__).resolve().parents[2] / "contracts" / "schemas"
 SCHEMA_ROOT = SCHEMA_BASE / "v1"
 SUPPORTED_MAJORS = {
+    # The v1 API consumer remains pinned to historical production generations.
+    # Schema 5/catalog 3 use CurrentReleaseRepository until the API-v2 migration.
     "konsider-release": frozenset({3, 4}),
     "validation": frozenset({3, 4}),
     "consumer-catalog": frozenset({1, 2}),

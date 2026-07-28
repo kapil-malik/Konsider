@@ -5,6 +5,13 @@ file is the sibling `active.json` pointer. Production currently uses release sch
 catalog schema 2 for explicit mixed-coverage outcomes. Historical schema-3 releases remain
 immutable and loadable with their matching schema-1 catalogs.
 
+Schema 5/catalog 3 are implemented as the inactive Phase 5 target. They use canonical geographic
+entities, entity-neutral observations/scores, a country-result outcome matrix, explicit derived
+evidence, multiple-source lineage, locality universes, aggregation policies, and snapshotted
+criterion ingestion policies. See the
+[Phase 5C foundation](../architecture/phase5c-generic-release-foundation.md). The active schema-4
+bytes and pointer are unchanged.
+
 ```text
 data/
   catalogs/
@@ -94,7 +101,8 @@ An aggregate pass does not make every criterion ready. Active UHC remains non-re
 at the repository/service boundary. Fixtures never fill release gaps.
 
 Machine-readable Draft 2020-12 schemas live in `contracts/schemas/v1` for release 3/catalog 1 and
-`contracts/schemas/v2` for release 4/catalog 2. See the
+`contracts/schemas/v2` for release 4/catalog 2. The inactive schema-5/catalog-3 contracts live in
+`contracts/schemas/v3`. See the
 [worker guide](../operations/worker.md), [contracts README](../../contracts/README.md), and
 [release history](../history/releases/README.md). The schema-4 invariants and fixture boundary are
 documented in the [Phase 4C coverage contract](phase4c-coverage-contract.md).

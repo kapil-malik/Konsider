@@ -15,6 +15,7 @@ remain immutable and supported for historical inspection.
 Contracts:
 
 - `criterion-definition` separates core fields, coverage, scope, and applicability;
+- `criterion-policy` snapshots parser, scoring, source, derivation, and readiness orchestration;
 - `geographic-entity` defines canonical country and locality identity;
 - `geographic-observation` and `geographic-score` use entity-neutral subjects;
 - `criterion-outcome` keeps every country result or non-result explicit without overloading

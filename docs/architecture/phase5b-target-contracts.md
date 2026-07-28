@@ -170,6 +170,7 @@ A derived country evidence row exposes:
 - `AGGREGATED_FROM_LOCALITIES`;
 - exact aggregation policy ID/version;
 - input release;
+- generated country observation and score IDs;
 - every contributing locality;
 - locality observation and score IDs plus input score;
 - eligible and valid locality counts;
@@ -241,6 +242,7 @@ The target schemas are under [`contracts/schemas/v3`](../../contracts/schemas/v3
 | Schema | Responsibility |
 | --- | --- |
 | `criterion-definition` | Root/core fields plus orthogonal coverage, scope, and applicability. |
+| `criterion-policy` | Snapshotted parser, scoring, source, derivation, applicability, and readiness orchestration. |
 | `geographic-entity` | Canonical country/locality IDs, type, parentage, aliases, and mappings. |
 | `geographic-observation` | Entity-neutral raw observation. |
 | `geographic-score` | Entity-neutral normalized score. |

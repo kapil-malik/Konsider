@@ -5,6 +5,12 @@ source-neutral observations, computes versioned canonical scores, validates a ca
 publishes a new immutable release. It does not serve API requests, modify published releases, fill
 missing data from fixtures, deploy to AWS, or run on a schedule.
 
+Phase 5C adds `GenericReleaseWorker` and `CurrentReleaseRepository` as the programmatic
+schema-5/catalog-3 build path. It accepts versioned criterion processors and snapshotted policies
+for national or locality evidence. It does not yet replace this production CLI or activate a
+release: `/api/v1` remains on the historical schema-4 path until the API-v2 migration. Schema-5
+replay returns a distinct `SOURCE_BYTES_UNAVAILABLE` status when ignored licensed bytes are absent.
+
 ## `audit-coverage`
 
 Coverage auditing is separate from refresh and can never activate a release.

@@ -15,6 +15,7 @@ FIXTURE_ROOT = ROOT / "tests" / "fixtures" / "phase5b"
 VALID_FIXTURES = {
     "criterion-fcc-lsc.json": "criterion-definition",
     "criterion-pcc-lsc-c66.json": "criterion-definition",
+    "criterion-policy-c66.json": "criterion-policy",
     "geographic-entity-country.json": "geographic-entity",
     "geographic-entity-city.json": "geographic-entity",
     "source-lineage-multiple.json": "source-lineage",
@@ -39,7 +40,7 @@ INVALID_FIXTURES = {
     "geographic-observation-mismatched-subject.json": "geographic-observation",
     "source-lineage-opaque-string.json": "source-lineage",
     "derived-country-evidence-opaque-source.json": "derived-country-evidence",
-    "criterion-outcome-derived-with-direct-observation.json": "criterion-outcome",
+    "criterion-outcome-derived-without-evidence.json": "criterion-outcome",
     "ranking-request-legacy-profile.json": "ranking-request",
     "ranking-response-duplicate-locality-status.json": "ranking-response",
     "ranking-response-coverage-in-locality-status.json": "ranking-response",
@@ -61,7 +62,7 @@ def _validate(payload: dict, schema_name: str, context: str) -> None:
 
 def test_phase5b_schemas_are_valid_draft_2020_12() -> None:
     schemas = sorted(SCHEMA_ROOT.glob("*.schema.json"))
-    assert len(schemas) == 14
+    assert len(schemas) == 15
     for path in schemas:
         Draft202012Validator.check_schema(json.loads(path.read_text(encoding="utf-8")))
 

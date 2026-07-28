@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 5B contract design complete
+Status: Phase 5C generic release foundation complete
 
 Last updated: 2026-07-28
 
@@ -23,6 +23,12 @@ Phase 5B has defined the clean major-version target for orthogonal coverage, loc
 applicability, canonical geography, policy-driven locality aggregation, multiple-source lineage,
 structured assessments, and preference presets. These schemas and fixtures remain inactive design
 contracts; the active release and API are unchanged.
+
+Phase 5C has implemented the inactive schema-5 generic worker, canonical geographic validation,
+policy and lineage snapshots, immutable release/catalog writer and loader, and deterministic replay.
+The same path accepts national/locality and FCC/PCC combinations. Explicit outcomes remain at the
+country result level; locality observations and scores are linked evidence. No production C66 data,
+ranking behavior, API, UI, or active release changed.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).

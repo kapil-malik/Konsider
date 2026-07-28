@@ -11,6 +11,8 @@
     "policy_version": "1.0"
   },
   "input_release_id": "phase5b-synthetic-5.0",
+  "result_observation_id": "obs:C66:country:CAN:2020",
+  "result_score_id": "score:C66:country:CAN:2020",
   "contributing_localities": [
     {
       "locality": {

@@ -131,7 +131,8 @@
                   "const": "DERIVED_LOCALITIES"
                 },
                 "observation_id": {
-                  "type": "null"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "derived_evidence_id": {
                   "type": "string",

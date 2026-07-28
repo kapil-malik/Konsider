@@ -72,6 +72,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Source and licence audit](data/source-audit.md)
 - [Scoring methodology](data/scoring-methodology.md)
 - [Release format](data/release-format.md)
+- [Phase 5C generic release foundation](architecture/phase5c-generic-release-foundation.md)
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md)
 - [Phase 4D ranking engine](product/phase4d-ranking-engine.md)
 - [Phase 2D country coverage audit](data/country-coverage-phase-2d.md)
