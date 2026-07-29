@@ -32,16 +32,21 @@
     },
     "locality": {
       "status": "ONE_ACTIVE_LOCALITY_CRITERION",
-      "active_criterion_ids": [
+      "policy_version": "locality-assessment-policy-1.0",
+      "contributing_criterion_ids": [
         "C66"
       ],
       "analysis_triggered_criterion_ids": [
         "C66"
       ],
-      "analysis_threshold": 0.6,
+      "below_threshold_criterion_ids": [],
+      "analysis_thresholds": {
+        "C66": 0.6
+      },
       "aggregation_policy_ids": [
         "c66-extreme-heat-top2"
       ],
+      "excluded_country_assessments": [],
       "reasons": [
         {
           "code": "LOCALITY_ANALYSIS_SINGLE_CRITERION",
@@ -70,6 +75,28 @@
         "entity_type": "COUNTRY"
       },
       "total_score": 8.4,
+      "contributions": [
+        {
+          "criterion_id": "C48",
+          "score": 9,
+          "normalized_weight": 0.4,
+          "contribution": 3.6,
+          "observation_id": "obs:C48:country:CAN:2025",
+          "score_id": "score:C48:country:CAN:2025",
+          "evidence_kind": "DIRECT_OBSERVATION",
+          "derived_evidence_id": null
+        },
+        {
+          "criterion_id": "C66",
+          "score": 8,
+          "normalized_weight": 0.6,
+          "contribution": 4.8,
+          "observation_id": "obs:C66:country:CAN:2020",
+          "score_id": "score:C66:country:CAN:2020",
+          "evidence_kind": "DERIVED_LOCALITIES",
+          "derived_evidence_id": "derived:C66:country:CAN:fixture"
+        }
+      ],
       "assessments": {
         "locality": {
           "status": "ONE_ACTIVE_LOCALITY_CRITERION",
@@ -86,6 +113,24 @@
             "ghsl-uc:10739"
           ],
           "common_locality_entity_ids": [],
+          "best_common_locality_entity_id": null,
+          "criterion_evidence": [
+            {
+              "criterion_id": "C66",
+              "eligible_locality_entity_ids": [
+                "ghsl-uc:10737",
+                "ghsl-uc:10739"
+              ],
+              "valid_locality_entity_ids": [
+                "ghsl-uc:10737",
+                "ghsl-uc:10739"
+              ],
+              "contributing_locality_entity_ids": [
+                "ghsl-uc:10737",
+                "ghsl-uc:10739"
+              ]
+            }
+          ],
           "reasons": [
             {
               "code": "COMMON_LOCALITY_NOT_APPLICABLE_SINGLE_CRITERION",

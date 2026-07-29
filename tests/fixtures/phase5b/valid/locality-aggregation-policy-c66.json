@@ -18,6 +18,7 @@
     "minimum": 0,
     "maximum": 10
   },
+  "score_precision": 8,
   "tie_handling": "STABLE_ENTITY_ID",
   "one_locality_treatment": "USE_AVAILABLE",
   "required_lineage_roles": [

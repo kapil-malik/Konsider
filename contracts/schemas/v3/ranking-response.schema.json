@@ -163,17 +163,24 @@
       "additionalProperties": false,
       "required": [
         "status",
-        "active_criterion_ids",
+        "policy_version",
+        "contributing_criterion_ids",
         "analysis_triggered_criterion_ids",
-        "analysis_threshold",
+        "below_threshold_criterion_ids",
+        "analysis_thresholds",
         "aggregation_policy_ids",
+        "excluded_country_assessments",
         "reasons"
       ],
       "properties": {
         "status": {
           "$ref": "#/$defs/responseLocalityStatus"
         },
-        "active_criterion_ids": {
+        "policy_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contributing_criterion_ids": {
           "type": "array",
           "uniqueItems": true,
           "items": {
@@ -189,10 +196,21 @@
             "minLength": 1
           }
         },
-        "analysis_threshold": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
+        "below_threshold_criterion_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "analysis_thresholds": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
         },
         "aggregation_policy_ids": {
           "type": "array",
@@ -200,6 +218,12 @@
           "items": {
             "type": "string",
             "minLength": 1
+          }
+        },
+        "excluded_country_assessments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/excludedCountryLocalityAssessment"
           }
         },
         "reasons": {
@@ -219,6 +243,8 @@
         "valid_locality_entity_ids",
         "contributing_locality_entity_ids",
         "common_locality_entity_ids",
+        "best_common_locality_entity_id",
+        "criterion_evidence",
         "reasons"
       ],
       "properties": {
@@ -236,6 +262,16 @@
         },
         "common_locality_entity_ids": {
           "$ref": "#/$defs/localityIds"
+        },
+        "best_common_locality_entity_id": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]+$"
+        },
+        "criterion_evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/criterionLocalityEvidence"
+          }
         },
         "reasons": {
           "type": "array",
@@ -288,6 +324,7 @@
         "rank",
         "country",
         "total_score",
+        "contributions",
         "assessments"
       ],
       "properties": {
@@ -314,6 +351,13 @@
           "minimum": 0,
           "maximum": 10
         },
+        "contributions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/contribution"
+          }
+        },
         "assessments": {
           "type": "object",
           "additionalProperties": false,
@@ -336,6 +380,132 @@
         "type": "string",
         "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]+$"
       }
+    },
+    "criterionLocalityEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "eligible_locality_entity_ids",
+        "valid_locality_entity_ids",
+        "contributing_locality_entity_ids"
+      ],
+      "properties": {
+        "criterion_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "eligible_locality_entity_ids": {
+          "$ref": "#/$defs/localityIds"
+        },
+        "valid_locality_entity_ids": {
+          "$ref": "#/$defs/localityIds"
+        },
+        "contributing_locality_entity_ids": {
+          "$ref": "#/$defs/localityIds"
+        }
+      }
+    },
+    "excludedCountryLocalityAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country", "assessment"],
+      "properties": {
+        "country": {
+          "allOf": [
+            {
+              "$ref": "geographic-entity.schema.json#/$defs/entityReference"
+            },
+            {
+              "properties": {
+                "entity_type": {
+                  "const": "COUNTRY"
+                }
+              }
+            }
+          ]
+        },
+        "assessment": {
+          "$ref": "#/$defs/countryLocalityAssessment"
+        }
+      }
+    },
+    "contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "score",
+        "normalized_weight",
+        "contribution",
+        "observation_id",
+        "score_id",
+        "evidence_kind",
+        "derived_evidence_id"
+      ],
+      "properties": {
+        "criterion_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "normalized_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "contribution": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "observation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "score_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_kind": {
+          "enum": ["DIRECT_OBSERVATION", "DERIVED_LOCALITIES"]
+        },
+        "derived_evidence_id": {
+          "type": ["string", "null"],
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evidence_kind": {
+                "const": "DIRECT_OBSERVATION"
+              }
+            },
+            "required": ["evidence_kind"]
+          },
+          "then": {
+            "properties": {
+              "derived_evidence_id": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "derived_evidence_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

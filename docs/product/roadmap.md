@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 5C generic release foundation complete
+Status: Phase 5D synthetic locality engine complete
 
 Last updated: 2026-07-28
 
@@ -29,6 +29,12 @@ policy and lineage snapshots, immutable release/catalog writer and loader, and d
 The same path accepts national/locality and FCC/PCC combinations. Explicit outcomes remain at the
 country result level; locality observations and scores are linked evidence. No production C66 data,
 ranking behavior, API, UI, or active release changed.
+
+Phase 5D has implemented policy-driven locality aggregation, independent country affinity,
+full-universe common-locality analysis, weighted best-common selection, and typed
+coverage/locality/profile assessments against synthetic schema-5 releases. Coverage and locality
+advice are invariantly separate. Production C66 data, API v2 transport, UI behavior, and the active
+release remain unchanged.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).

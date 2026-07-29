@@ -190,6 +190,7 @@ def _fixture_inputs():
                     "selection": {"method": "ALL_VALID_MEAN", "n": None},
                     "minimum_valid_localities": 1,
                     "score_range": {"minimum": 0, "maximum": 10},
+                    "score_precision": 8,
                     "tie_handling": "STABLE_ENTITY_ID",
                     "one_locality_treatment": "USE_AVAILABLE",
                     "required_lineage_roles": ["PRIMARY_OBSERVATION", "ENTITY_UNIVERSE"],
