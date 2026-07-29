@@ -1,13 +1,13 @@
-# Responsive comparison and uncertainty-aware ranking UI
+# Responsive locality-aware ranking and comparison UI
 
-Status: Phase 4G implemented locally
+Status: Phase 5F implemented locally
 
-The UI is a comparison and inspection surface over `/api/v1`, not a second recommendation engine.
+The UI is a comparison and inspection surface over `/api/v2`, not a second recommendation engine.
 It is implemented as one responsive React, TypeScript, and Vite application under `web/`.
 
 ## User experience
 
-- A guest selects one of the server-owned provisional profiles or edits its five enabled priorities
+- A guest selects one of the server-owned preference presets or edits its enabled priorities
   with accessible six-state controls.
 - Draft changes do not affect results until **Apply priorities**. **Undo changes** restores the last
   successfully applied profile or custom weights.
@@ -24,8 +24,9 @@ It is implemented as one responsive React, TypeScript, and Vite application unde
 
 ## Authority and state
 
-- FastAPI remains authoritative for profiles, readiness, normalization, canonical scores,
-  contributions, ranking order, comparisons, and active release selection.
+- FastAPI remains authoritative for preference presets, readiness, normalization, canonical scores,
+  contributions, ranking order, comparisons, structured coverage/locality/profile assessments,
+  locality selection and overlap, and active release selection.
 - Catalog source metadata is assembled from the validated active release source registry. Published
   release files are not modified.
 - OpenAPI is exported and converted to generated TypeScript component types by
@@ -109,3 +110,28 @@ Phase 4 closure confirms that the UI treats the stable catalog, eligible univers
 robustness status as distinct API-owned concepts. It does not infer eligibility from blank cells or
 calculate partial country totals. City, occupation, household, visa, licensing, and
 applicant-specific suitability remain outside this interface.
+
+## Phase 5F locality-aware presentation
+
+The UI now consumes the structured Phase 5 API directly. Coverage, locality, and applicant-profile
+assessments are rendered as separate domains so a locality advisory never implies that a country was
+excluded. Country rows and cards show the server-supplied locality status, contributing locality
+names, and best common locality when present. A no-common-locality advisory explicitly says the
+country affinity score is unchanged.
+
+Criterion controls show coverage, national or locality-derived scope, experimental state, and the
+server-supplied locality-analysis threshold. Draft weights are compared only with that supplied
+threshold to explain whether the next applied request will ask the server for compatibility
+analysis. Low locality weights retain a quiet provenance marker without a prominent coherence
+warning.
+
+Expanded criterion evidence and country details distinguish direct national results,
+locality-derived country results, and unavailable active criteria. Locality contributions include
+the country score, contributor names and scores, aggregation policy, source lineage, reference
+period, and caveats. Comparison cards and tables retain those distinctions and leave
+coverage-excluded aggregates blank.
+
+The browser does not select localities, compute intersections, derive a best common locality,
+determine assessment statuses, alter affinity scores, or infer applicant constraints. Compile-time
+contract checks reject legacy Phase 4 request and response fields, and Playwright verifies the
+`/api/v2` request path on desktop and mobile.

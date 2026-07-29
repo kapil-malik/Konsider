@@ -1,12 +1,14 @@
 # Konsider web application
 
-The Phase 2C UI is a responsive React, TypeScript, and Vite application over the local FastAPI
-`/api/v1` contract. It uses TanStack Query for API state, local React state for unapplied guest
+The Phase 5F UI is a responsive React, TypeScript, and Vite application over the local FastAPI
+`/api/v2` contract. It uses TanStack Query for API state, local React state for unapplied guest
 preferences, generated TypeScript types from FastAPI OpenAPI, Vitest and React Testing Library for
 component coverage, and Playwright for focused browser flows.
 
-The browser never scores, normalizes, sorts, decides readiness, or supplies fallback product data.
-Countries, criteria, profiles, sources, flags, and release IDs come from the API.
+The browser never scores, normalizes, sorts, selects localities, calculates locality intersections,
+chooses a best common locality, determines assessment statuses, or supplies fallback product data.
+Countries, criteria, preference presets, sources, contributions, structured assessments, flags,
+and release IDs come from the API.
 The current 91-country release is shown in a bounded desktop table and complete mobile cards.
 Country-name/ISO search and API-derived region filtering are client-side because the bounded global
 response remains small enough that server pagination is not justified.
@@ -22,7 +24,7 @@ response remains small enough that server pagination is not justified.
 Copy `.env.example` to `.env.local` only when the API is not available at the default URL:
 
 ```text
-VITE_KONSIDER_API_BASE_URL=http://127.0.0.1:8000/api/v1
+VITE_KONSIDER_API_BASE_URL=http://127.0.0.1:8000/api/v2
 ```
 
 Only browser-safe `VITE_` variables belong here. Do not add secrets.
@@ -80,7 +82,7 @@ starts Vite on port 4173. The normal development UI uses port 5173; FastAPI uses
 ## Troubleshooting
 
 - **The UI says it cannot reach the API:** start Uvicorn and confirm
-  <http://127.0.0.1:8000/api/v1/health> returns `200`.
+  <http://127.0.0.1:8000/api/v2/health> returns `200`.
 - **The browser reports a CORS failure:** add the exact Vite origin to
   `KONSIDER_CORS_ORIGINS`, then restart Uvicorn.
 - **Generated types changed unexpectedly:** confirm the intended Python environment and active

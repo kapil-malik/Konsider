@@ -1,14 +1,14 @@
-import type { CatalogCriterion, Profile } from '../api/types'
+import type { CatalogCriterionV2, PreferencePreset } from '../api/types'
 import type { PreferenceDraft } from '../preferences'
 import { ImportanceControl } from './ImportanceControl'
 
 type PreferencesPanelProps = {
-  criteria: CatalogCriterion[]
-  profiles: Profile[]
+  criteria: CatalogCriterionV2[]
+  presets: PreferencePreset[]
   draft: PreferenceDraft
   dirty: boolean
   isApplying: boolean
-  onProfileChange: (profile: Profile) => void
+  onPresetChange: (preset: PreferencePreset) => void
   onWeightChange: (criterionId: string, value: number) => void
   onApply: () => void
   onUndo: () => void
@@ -16,40 +16,44 @@ type PreferencesPanelProps = {
 
 export function PreferencesPanel({
   criteria,
-  profiles,
+  presets,
   draft,
   dirty,
   isApplying,
-  onProfileChange,
+  onPresetChange,
   onWeightChange,
   onApply,
   onUndo,
 }: PreferencesPanelProps) {
-  const selectedProfile = profiles.find((profile) => profile.id === draft.profileId)
+  const selectedPreset = presets.find(
+    (preset) => preset.id === draft.preferencePresetId,
+  )
 
   return (
     <aside className="preferences-panel" aria-labelledby="priorities-heading">
       <div className="panel-heading">
         <p className="eyebrow">Your priorities</p>
         <h2 id="priorities-heading">What matters most?</h2>
-        <p>Choose a starting profile, then adjust any priority before applying.</p>
+        <p>Choose a preference preset, then adjust any priority before applying.</p>
       </div>
 
-      <label className="field-label" htmlFor="profile-select">
-        Preference profile
+      <label className="field-label" htmlFor="preset-select">
+        Preference preset
       </label>
       <select
-        id="profile-select"
-        value={draft.profileId ?? '__custom'}
+        id="preset-select"
+        value={draft.preferencePresetId ?? '__custom'}
         disabled={isApplying}
         onChange={(event) => {
-          const profile = profiles.find((item) => item.id === event.currentTarget.value)
-          if (profile) onProfileChange(profile)
+          const preset = presets.find(
+            (item) => item.id === event.currentTarget.value,
+          )
+          if (preset) onPresetChange(preset)
         }}
       >
-        {profiles.map((profile) => (
-          <option value={profile.id} key={profile.id}>
-            {profile.name}
+        {presets.map((preset) => (
+          <option value={preset.id} key={preset.id}>
+            {preset.name}
           </option>
         ))}
         <option value="__custom" disabled>
@@ -57,7 +61,8 @@ export function PreferencesPanel({
         </option>
       </select>
       <p className="profile-description" aria-live="polite">
-        {selectedProfile?.description ?? 'Your priorities have been adjusted into a custom mix.'}
+        {selectedPreset?.description ??
+          'Your priorities have been adjusted into a custom mix.'}
       </p>
 
       {criteria.length ? (
@@ -79,7 +84,11 @@ export function PreferencesPanel({
       )}
 
       <div className="apply-bar">
-        <button className="button button-secondary" disabled={!dirty || isApplying} onClick={onUndo}>
+        <button
+          className="button button-secondary"
+          disabled={!dirty || isApplying}
+          onClick={onUndo}
+        >
           Undo changes
         </button>
         <button
@@ -91,7 +100,9 @@ export function PreferencesPanel({
         </button>
       </div>
       <p className="apply-hint" aria-live="polite">
-        {dirty ? 'Changes are ready to apply.' : 'Your visible ranking matches these priorities.'}
+        {dirty
+          ? 'Changes are ready to apply.'
+          : 'Your visible ranking matches these priorities.'}
       </p>
     </aside>
   )

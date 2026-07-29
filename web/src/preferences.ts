@@ -1,4 +1,4 @@
-import type { Profile } from './api/types'
+import type { PreferencePreset } from './api/types'
 
 export const IMPORTANCE_STATES = [
   { label: 'No', shortLabel: 'No', value: 0 },
@@ -10,12 +10,12 @@ export const IMPORTANCE_STATES = [
 ] as const
 
 export type PreferenceDraft = {
-  profileId: string | null
+  preferencePresetId: string | null
   weights: Record<string, number>
 }
 
-export function preferenceFromProfile(profile: Profile): PreferenceDraft {
-  return { profileId: profile.id, weights: { ...profile.weights } }
+export function preferenceFromPreset(preset: PreferencePreset): PreferenceDraft {
+  return { preferencePresetId: preset.id, weights: { ...preset.weights } }
 }
 
 export function importanceState(value: number) {
@@ -27,13 +27,21 @@ export function preferencesEqual(
   first: PreferenceDraft | null,
   second: PreferenceDraft | null,
 ): boolean {
-  if (!first || !second || first.profileId !== second.profileId) return false
+  if (
+    !first ||
+    !second ||
+    first.preferencePresetId !== second.preferencePresetId
+  )
+    return false
   const keys = new Set([...Object.keys(first.weights), ...Object.keys(second.weights)])
   return [...keys].every((key) => first.weights[key] === second.weights[key])
 }
 
 export function clonePreference(preference: PreferenceDraft): PreferenceDraft {
-  return { profileId: preference.profileId, weights: { ...preference.weights } }
+  return {
+    preferencePresetId: preference.preferencePresetId,
+    weights: { ...preference.weights },
+  }
 }
 
 export function formatScore(value: number): string {

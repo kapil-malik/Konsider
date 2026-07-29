@@ -3,11 +3,12 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { createComparison, createRanking, fetchCatalog } from './api/client'
 import type {
-  Catalog,
-  ComparisonRequest,
-  Profile,
-  Ranking,
-  RankingRequest,
+  CatalogV2,
+  ComparisonRequestV2,
+  PreferencePreset,
+  RankingRequestV2,
+  RankingV2,
+  WeightSelectionV2,
 } from './api/types'
 import { ComparisonView } from './components/ComparisonView'
 import { CountryDetails } from './components/CountryDetails'
@@ -15,9 +16,10 @@ import { ErrorNotice } from './components/ErrorNotice'
 import { PreferencesPanel } from './components/PreferencesPanel'
 import { RankingView } from './components/RankingView'
 import { SourcesDialog } from './components/SourcesDialog'
+import { countryCode } from './localityPresentation'
 import {
   clonePreference,
-  preferenceFromProfile,
+  preferenceFromPreset,
   preferencesEqual,
   type PreferenceDraft,
 } from './preferences'
@@ -69,26 +71,19 @@ function Header({ onOpenSources }: HeaderProps) {
               <strong>Guest session</strong>
               <p>Your priorities and selections are not saved.</p>
             </div>
-            <button
-              role="menuitem"
-              onClick={() => {
-                guestButtonRef.current?.focus()
-                setMenuOpen(false)
-                onOpenSources()
-              }}
-            >
-              How Konsider works
-            </button>
-            <button
-              role="menuitem"
-              onClick={() => {
-                guestButtonRef.current?.focus()
-                setMenuOpen(false)
-                onOpenSources()
-              }}
-            >
-              Data &amp; Sources
-            </button>
+            {['How Konsider works', 'Data & Sources'].map((label) => (
+              <button
+                role="menuitem"
+                key={label}
+                onClick={() => {
+                  guestButtonRef.current?.focus()
+                  setMenuOpen(false)
+                  onOpenSources()
+                }}
+              >
+                {label}
+              </button>
+            ))}
           </div>
         )}
       </div>
@@ -97,66 +92,93 @@ function Header({ onOpenSources }: HeaderProps) {
 }
 
 type ApplyVariables = {
-  request: RankingRequest
+  request: RankingRequestV2
   preference: PreferenceDraft
 }
 
-function Workspace({ catalog, onOpenSources }: { catalog: Catalog; onOpenSources: () => void }) {
+function selectionFor(preference: PreferenceDraft): WeightSelectionV2 {
+  return preference.preferencePresetId
+    ? { preference_preset_id: preference.preferencePresetId }
+    : { weights: preference.weights }
+}
+
+function Workspace({
+  catalog,
+  onOpenSources,
+  onRankingChange,
+}: {
+  catalog: CatalogV2
+  onOpenSources: () => void
+  onRankingChange: (ranking: RankingV2 | null) => void
+}) {
   const enabledCriteria = useMemo(
-    () => catalog.criteria.filter((criterion) => criterion.ready && criterion.default_enabled),
+    () =>
+      catalog.criteria.filter(
+        (criterion) => criterion.ready && criterion.default_enabled,
+      ),
     [catalog.criteria],
   )
-  const defaultProfile = catalog.profiles[0]
+  const defaultPreset = catalog.preference_presets[0]
 
-  if (!defaultProfile) {
+  if (!defaultPreset) {
     return (
       <main id="main-content" className="page-shell">
-        <ErrorNotice error={new Error('No server profiles')} title="No preference profiles are available" />
+        <ErrorNotice
+          error={new Error('No server preference presets')}
+          title="No preference presets are available"
+        />
       </main>
     )
   }
 
   return (
     <RankingWorkspace
-      key={`${catalog.release_id}:${defaultProfile.id}`}
+      key={`${catalog.release_id}:${defaultPreset.id}`}
       catalog={catalog}
-      defaultProfile={defaultProfile}
+      defaultPreset={defaultPreset}
       enabledCriteria={enabledCriteria}
       onOpenSources={onOpenSources}
+      onRankingChange={onRankingChange}
     />
   )
 }
 
 type RankingWorkspaceProps = {
-  catalog: Catalog
-  defaultProfile: Profile
-  enabledCriteria: Catalog['criteria']
+  catalog: CatalogV2
+  defaultPreset: PreferencePreset
+  enabledCriteria: CatalogV2['criteria']
   onOpenSources: () => void
+  onRankingChange: (ranking: RankingV2 | null) => void
 }
 
 function RankingWorkspace({
   catalog,
-  defaultProfile,
+  defaultPreset,
   enabledCriteria,
   onOpenSources,
+  onRankingChange,
 }: RankingWorkspaceProps) {
-  const initialPreference = preferenceFromProfile(defaultProfile)
-  const [draft, setDraft] = useState<PreferenceDraft>(() => clonePreference(initialPreference))
-  const [applied, setApplied] = useState<PreferenceDraft>(() => clonePreference(initialPreference))
-  const [successfulRanking, setSuccessfulRanking] = useState<Ranking | null>(null)
+  const initialPreference = preferenceFromPreset(defaultPreset)
+  const [draft, setDraft] = useState<PreferenceDraft>(() =>
+    clonePreference(initialPreference),
+  )
+  const [applied, setApplied] = useState<PreferenceDraft>(() =>
+    clonePreference(initialPreference),
+  )
+  const [successfulRanking, setSuccessfulRanking] = useState<RankingV2 | null>(null)
   const [detailed, setDetailed] = useState(false)
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
   const [comparisonCountries, setComparisonCountries] = useState<string[]>([])
   const [comparisonNotice, setComparisonNotice] = useState('')
   const [mode, setMode] = useState<'ranking' | 'comparison'>('ranking')
-  const [showingBaseline, setShowingBaseline] = useState(false)
   const rankingScrollRef = useRef<HTMLDivElement>(null)
   const compareButtonRef = useRef<HTMLButtonElement>(null)
   const rankingScrollTop = useRef(0)
 
   const initialRanking = useQuery({
-    queryKey: ['ranking', 'initial', catalog.release_id, defaultProfile.id],
-    queryFn: ({ signal }) => createRanking({ profile_id: defaultProfile.id }, signal),
+    queryKey: ['ranking', 'initial', catalog.release_id, defaultPreset.id],
+    queryFn: ({ signal }) =>
+      createRanking({ preference_preset_id: defaultPreset.id }, signal),
   })
   const applyMutation = useMutation({
     mutationFn: ({ request }: ApplyVariables) => createRanking(request),
@@ -168,16 +190,11 @@ function RankingWorkspace({
       setComparisonNotice('')
       setSelectedCountry(null)
       setMode('ranking')
-      setShowingBaseline(false)
-      baselineMutation.reset()
       comparisonMutation.reset()
     },
   })
-  const baselineMutation = useMutation({
-    mutationFn: (request: RankingRequest) => createRanking(request),
-  })
   const comparisonMutation = useMutation({
-    mutationFn: (request: ComparisonRequest) => createComparison(request),
+    mutationFn: (request: ComparisonRequestV2) => createComparison(request),
     onSuccess: () => {
       rankingScrollTop.current = rankingScrollRef.current?.scrollTop ?? 0
       setMode('comparison')
@@ -185,15 +202,16 @@ function RankingWorkspace({
   })
 
   const ranking = successfulRanking ?? initialRanking.data
+  useEffect(() => onRankingChange(ranking ?? null), [onRankingChange, ranking])
   const dirty = !preferencesEqual(draft, applied)
 
-  const selectProfile = (profile: Profile) => {
-    setDraft(preferenceFromProfile(profile))
+  const selectPreset = (preset: PreferencePreset) => {
+    setDraft(preferenceFromPreset(preset))
   }
 
   const changeWeight = (criterionId: string, value: number) => {
     setDraft((current) => ({
-      profileId: null,
+      preferencePresetId: null,
       weights: { ...current.weights, [criterionId]: value },
     }))
   }
@@ -201,72 +219,61 @@ function RankingWorkspace({
   const applyPriorities = () => {
     if (!dirty || applyMutation.isPending) return
     const preference = clonePreference(draft)
-    const request: RankingRequest = preference.profileId
-      ? { profile_id: preference.profileId }
-      : { weights: preference.weights }
-    applyMutation.mutate({ request, preference })
+    applyMutation.mutate({
+      request: selectionFor(preference),
+      preference,
+    })
   }
 
-  const toggleComparison = (countryCode: string) => {
+  const toggleComparison = (code: string) => {
     setComparisonCountries((current) => {
-      if (current.includes(countryCode)) {
+      if (current.includes(code)) {
         setComparisonNotice('')
-        return current.filter((code) => code !== countryCode)
+        return current.filter((item) => item !== code)
       }
       if (current.length >= 4) {
-        setComparisonNotice('You can compare up to four countries. Deselect one to add another.')
+        setComparisonNotice(
+          'You can compare up to four countries. Deselect one to add another.',
+        )
         return current
       }
-      setComparisonNotice(current.length === 3 ? 'Four countries selected—the comparison is full.' : '')
-      return [...current, countryCode]
+      setComparisonNotice(
+        current.length === 3 ? 'Four countries selected—the comparison is full.' : '',
+      )
+      return [...current, code]
     })
   }
 
   const compareSelected = () => {
     if (comparisonCountries.length < 2 || comparisonMutation.isPending) return
-    const selector = applied.profileId
-      ? { profile_id: applied.profileId }
-      : { weights: applied.weights }
-    comparisonMutation.mutate({ country_codes: comparisonCountries, ...selector })
-  }
-
-  const toggleBaseline = () => {
-    if (!ranking) return
-    if (showingBaseline) {
-      setShowingBaseline(false)
-      return
-    }
-    setShowingBaseline(true)
-    if (baselineMutation.data) return
-    const baselineWeights = Object.fromEntries(
-      Object.entries(applied.weights).map(([criterionId, weight]) => [
-        criterionId,
-        ranking.active_pcc_ids.includes(criterionId) ? 0 : weight,
-      ]),
-    )
-    baselineMutation.mutate({
-      weights: baselineWeights,
-      top_k: catalog.countries.length,
+    comparisonMutation.mutate({
+      country_codes: comparisonCountries,
+      ...selectionFor(applied),
     })
   }
 
   const backToRankings = () => {
     setMode('ranking')
     window.requestAnimationFrame(() => {
-      if (rankingScrollRef.current) rankingScrollRef.current.scrollTop = rankingScrollTop.current
+      if (rankingScrollRef.current)
+        rankingScrollRef.current.scrollTop = rankingScrollTop.current
       compareButtonRef.current?.focus()
     })
   }
 
-  const selectFromComparison = (countryCode: string) => {
-    setSelectedCountry(countryCode)
+  const selectFromComparison = (code: string) => {
+    setSelectedCountry(code)
     setMode('ranking')
   }
 
-  const rankingCountry = ranking?.rankings.find((item) => item.country_code === selectedCountry)
-  const selectedCatalogCountry = catalog.countries.find((item) => item.code === selectedCountry)
-  const excludedCountry = ranking?.excluded_countries.find(
-    (item) => item.country_code === selectedCountry,
+  const rankingCountry = ranking?.rankings.find(
+    (item) => countryCode(item.country.entity_id) === selectedCountry,
+  )
+  const selectedCatalogCountry = catalog.countries.find(
+    (item) => countryCode(item.entity_id) === selectedCountry,
+  )
+  const excludedCountry = ranking?.assessments.coverage.excluded_countries.find(
+    (item) => countryCode(item.country.entity_id) === selectedCountry,
   )
 
   return (
@@ -275,19 +282,19 @@ function RankingWorkspace({
         <p className="eyebrow">A clearer way to explore relocation choices</p>
         <h1 id="intro-heading">{INTRODUCTION}</h1>
         <p>
-          Shape the ranking with your priorities, inspect the evidence, and compare the countries
-          that stand out.
+          Shape the ranking with your priorities, inspect national and locality evidence, and
+          compare the countries that stand out.
         </p>
       </section>
 
       <div className="workspace-grid">
         <PreferencesPanel
           criteria={enabledCriteria}
-          profiles={catalog.profiles}
+          presets={catalog.preference_presets}
           draft={draft}
           dirty={dirty}
           isApplying={applyMutation.isPending}
-          onProfileChange={selectProfile}
+          onPresetChange={selectPreset}
           onWeightChange={changeWeight}
           onApply={applyPriorities}
           onUndo={() => setDraft(clonePreference(applied))}
@@ -295,7 +302,6 @@ function RankingWorkspace({
 
         <div className="ranking-workspace">
           {applyMutation.error && <ErrorNotice error={applyMutation.error} />}
-          {baselineMutation.error && <ErrorNotice error={baselineMutation.error} />}
           {comparisonMutation.error && <ErrorNotice error={comparisonMutation.error} />}
           {initialRanking.isPending && !ranking && (
             <section className="results-panel loading-panel" aria-busy="true" aria-live="polite">
@@ -309,7 +315,10 @@ function RankingWorkspace({
             </section>
           )}
           {initialRanking.error && !ranking && (
-            <ErrorNotice error={initialRanking.error} onRetry={() => void initialRanking.refetch()} />
+            <ErrorNotice
+              error={initialRanking.error}
+              onRetry={() => void initialRanking.refetch()}
+            />
           )}
           {ranking && mode === 'ranking' && (
             <RankingView
@@ -321,23 +330,18 @@ function RankingWorkspace({
               selectedCountry={selectedCountry}
               comparisonCountries={comparisonCountries}
               comparisonNotice={comparisonNotice}
-              baselineRanking={baselineMutation.data ?? null}
-              showingBaseline={showingBaseline}
-              isLoadingBaseline={baselineMutation.isPending}
               scrollRef={rankingScrollRef}
               compareButtonRef={compareButtonRef}
               onDetailedChange={setDetailed}
               onSelectCountry={setSelectedCountry}
               onToggleComparison={toggleComparison}
               onCompare={compareSelected}
-              onToggleBaseline={toggleBaseline}
               onOpenSources={onOpenSources}
             />
           )}
           {mode === 'comparison' && comparisonMutation.data && (
             <ComparisonView
               comparison={comparisonMutation.data}
-              criteria={enabledCriteria}
               onBack={backToRankings}
               onSelectCountry={selectFromComparison}
             />
@@ -348,9 +352,15 @@ function RankingWorkspace({
       {ranking && mode === 'ranking' && selectedCountry && (
         <CountryDetails
           countryCode={selectedCountry}
+          selection={selectionFor(applied)}
           rankingCountry={rankingCountry}
-          catalogCountry={selectedCatalogCountry}
-          excludedCountry={excludedCountry}
+          countryName={
+            rankingCountry?.country.display_name ??
+            excludedCountry?.country.display_name ??
+            selectedCatalogCountry?.display_name ??
+            selectedCountry
+          }
+          coverageExcluded={Boolean(excludedCountry)}
           onClose={() => setSelectedCountry(null)}
         />
       )}
@@ -360,6 +370,7 @@ function RankingWorkspace({
 
 export default function App() {
   const [sourcesOpen, setSourcesOpen] = useState(false)
+  const [currentRanking, setCurrentRanking] = useState<RankingV2 | null>(null)
   const sourcesReturnFocus = useRef<HTMLElement | null>(null)
   const catalogQuery = useQuery({
     queryKey: ['catalog'],
@@ -392,14 +403,25 @@ export default function App() {
       )}
       {catalogQuery.error && (
         <main id="main-content" className="page-shell initial-error">
-          <ErrorNotice error={catalogQuery.error} onRetry={() => void catalogQuery.refetch()} />
+          <ErrorNotice
+            error={catalogQuery.error}
+            onRetry={() => void catalogQuery.refetch()}
+          />
         </main>
       )}
       {catalogQuery.data && (
-        <Workspace catalog={catalogQuery.data} onOpenSources={openSources} />
+        <Workspace
+          catalog={catalogQuery.data}
+          onOpenSources={openSources}
+          onRankingChange={setCurrentRanking}
+        />
       )}
       {sourcesOpen && catalogQuery.data && (
-        <SourcesDialog catalog={catalogQuery.data} onClose={closeSources} />
+        <SourcesDialog
+          catalog={catalogQuery.data}
+          ranking={currentRanking}
+          onClose={closeSources}
+        />
       )}
     </div>
   )

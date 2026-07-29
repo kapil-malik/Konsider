@@ -15,12 +15,12 @@ Start order:
 2. Use the existing active release or run the [worker](worker.md) with a new release ID.
 3. Set `KONSIDER_CORS_ORIGINS` if a browser runs on another origin.
 4. Start Uvicorn: `python -m uvicorn konsider.api.app:app --reload`.
-5. Require `GET http://127.0.0.1:8000/api/v1/health` to return `200`.
+5. Require `GET http://127.0.0.1:8000/api/v2/health` to return `200`.
 
 Phase 2C adds:
 
 ```text
-Vite React UI :5173 -> http://127.0.0.1:8000/api/v1
+Vite React UI :5173 -> http://127.0.0.1:8000/api/v2
 ```
 
 Use `http://localhost:5173` consistently or allow both `localhost` and `127.0.0.1` in

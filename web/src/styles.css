@@ -1706,3 +1706,218 @@ input[type="checkbox"] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Phase 5F structured coverage, locality, and profile presentation */
+.assessment-summary {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.assessment-domain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.assessment-notice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  background: var(--surface-soft);
+}
+
+.assessment-notice strong,
+.assessment-notice p,
+.assessment-domain {
+  display: block;
+}
+
+.assessment-notice p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.assessment-domain {
+  margin-bottom: 0.15rem;
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assessment-icon {
+  display: grid;
+  width: 1.6rem;
+  height: 1.6rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.assessment-caution {
+  border-color: #c88322;
+  background: #fff9ed;
+}
+
+.assessment-strong {
+  border-width: 2px;
+  border-color: #a83c2e;
+  background: #fff4f1;
+}
+
+.assessment-mild {
+  border-color: #70a7a0;
+  background: #f1faf8;
+}
+
+.badge-scope {
+  border-color: #8ba7a2;
+  background: #eff8f6;
+  color: #235c54;
+}
+
+.locality-activation-state {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.locality-activation-state.is-active {
+  color: #235c54;
+  font-weight: 750;
+}
+
+.country-locality {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 12rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.country-locality strong {
+  color: var(--text);
+}
+
+.locality-advisory {
+  color: #8a5111;
+  font-weight: 700;
+}
+
+.contribution-details {
+  min-width: 10rem;
+  text-align: left;
+}
+
+.contribution-details summary {
+  cursor: pointer;
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+.contribution-details dl,
+.source-metadata-grid {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.65rem 0;
+}
+
+.contribution-details dl > div,
+.source-metadata-grid > div {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.contribution-details dt,
+.source-metadata-grid dt {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.contribution-details dd,
+.source-metadata-grid dd {
+  margin: 0;
+}
+
+.country-locality-assessment {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.9rem;
+  border: 1px solid #70a7a0;
+  border-radius: 0.75rem;
+  background: #f1faf8;
+}
+
+.country-locality-assessment p {
+  margin: 0.25rem 0 0;
+}
+
+.metric-unavailable {
+  border-color: #c88322;
+  background: #fffdf8;
+}
+
+.observation-entry {
+  display: contents;
+}
+
+.source-links {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+
+.comparison-value {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.comparison-localities {
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 980px) {
+  .assessment-domain-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .assessment-domain-grid {
+    gap: 0.55rem;
+  }
+
+  .country-locality {
+    min-width: 0;
+    margin: 0.7rem 0;
+    padding: 0.65rem;
+    border-radius: 0.55rem;
+    background: var(--surface-soft);
+  }
+
+  .mobile-score-list > div {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contribution-details {
+    width: 100%;
+    min-width: 0;
+  }
+}

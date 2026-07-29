@@ -1,14 +1,15 @@
 import type {
-  Catalog,
-  Comparison,
-  ComparisonRequest,
-  CountryMetric,
+  CatalogV2,
+  ComparisonRequestV2,
+  ComparisonV2,
+  CountryDetailsV2,
   ErrorEnvelope,
-  Ranking,
-  RankingRequest,
+  RankingRequestV2,
+  RankingV2,
+  WeightSelectionV2,
 } from './types'
 
-const DEFAULT_API_BASE_URL = 'http://127.0.0.1:8000/api/v1'
+const DEFAULT_API_BASE_URL = 'http://127.0.0.1:8000/api/v2'
 const API_BASE_URL = (import.meta.env.VITE_KONSIDER_API_BASE_URL || DEFAULT_API_BASE_URL).replace(
   /\/$/,
   '',
@@ -58,20 +59,28 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 }
 
 export const fetchCatalog = (signal?: AbortSignal) =>
-  request<Catalog>('/catalog', { signal })
+  request<CatalogV2>('/catalog', { signal })
 
-export const createRanking = (payload: RankingRequest, signal?: AbortSignal) =>
-  request<Ranking>('/rankings', {
+export const createRanking = (payload: RankingRequestV2, signal?: AbortSignal) =>
+  request<RankingV2>('/rankings', {
     method: 'POST',
     body: JSON.stringify(payload),
     signal,
   })
 
-export const fetchCountryMetric = (countryCode: string, signal?: AbortSignal) =>
-  request<CountryMetric>(`/countries/${encodeURIComponent(countryCode)}/metrics`, { signal })
+export const fetchCountryDetails = (
+  countryCode: string,
+  payload: WeightSelectionV2,
+  signal?: AbortSignal,
+) =>
+  request<CountryDetailsV2>(`/countries/${encodeURIComponent(countryCode)}/details`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    signal,
+  })
 
-export const createComparison = (payload: ComparisonRequest, signal?: AbortSignal) =>
-  request<Comparison>('/comparisons', {
+export const createComparison = (payload: ComparisonRequestV2, signal?: AbortSignal) =>
+  request<ComparisonV2>('/comparisons', {
     method: 'POST',
     body: JSON.stringify(payload),
     signal,

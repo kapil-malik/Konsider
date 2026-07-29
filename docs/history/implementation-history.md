@@ -1,5 +1,19 @@
 # Implementation history
 
+## Phase 5F: locality-aware UI and API-v2 client
+
+- Goal: present structured coverage, locality, and profile assessments without reproducing server
+  business logic in React.
+- Delivered: an `/api/v2` generated-client migration; independent assessment summaries;
+  locality-aware controls, rankings, country details, comparisons, and source metadata; desktop
+  and mobile browser coverage; and compile-time rejection of legacy transport fields.
+- Major decisions: locality advice never changes affinity or implies exclusion; coverage alone owns
+  coverage-excluded wording; Low locality weights retain quiet provenance; historical C66 naming
+  remains visible; production fixtures never fill the active release's locality-data gap.
+- Completed: 2026-07-29 against active release `2026-07-28.2`.
+- Remaining decisions: API retirement/version policy and production locality-criterion onboarding
+  remain deferred to Phase 5G or later.
+
 ## Phase 4H: end-to-end verification and closure
 
 - Goal: prove the uncertainty-aware ranking model end to end and close Phase 4.

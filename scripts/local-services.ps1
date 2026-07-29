@@ -247,7 +247,7 @@ function Start-Services {
             }
         } | ConvertTo-Json | Set-Content -LiteralPath $StatePath -Encoding UTF8
 
-        Wait-ForUrl -Url "http://127.0.0.1:8000/api/v1/health" -Label "API"
+        Wait-ForUrl -Url "http://127.0.0.1:8000/api/v2/health" -Label "API"
         Wait-ForUrl -Url "http://127.0.0.1:5173" -Label "UI"
 
         Write-Host "Konsider started."

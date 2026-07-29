@@ -1,31 +1,142 @@
 import { useMemo, useState, type KeyboardEvent, type RefObject } from 'react'
 
-import type { CatalogCriterion, Contribution, RankedCountry, Ranking } from '../api/types'
+import type {
+  CatalogCriterionV2,
+  ContributionV2,
+  RankedCountryV2,
+  RankingV2,
+} from '../api/types'
+import {
+  LOCALITY_CONTENT,
+  contributingLocalityNames,
+  countryCode,
+  localityContributions,
+  localityName,
+} from '../localityPresentation'
 import { formatScore } from '../preferences'
-import { UncertaintySummary } from './UncertaintySummary'
+import { AssessmentSummary } from './AssessmentSummary'
 
-const contributionFor = (country: RankedCountry, criterionId: string): Contribution | undefined =>
+const contributionFor = (
+  country: RankedCountryV2,
+  criterionId: string,
+): ContributionV2 | undefined =>
   country.contributions.find((item) => item.criterion_id === criterionId)
 
+function DetailedContribution({
+  contribution,
+  criterion,
+}: {
+  contribution: ContributionV2
+  criterion: CatalogCriterionV2
+}) {
+  const localityDerived =
+    contribution.derivation === 'AGGREGATED_FROM_LOCALITIES'
+  return (
+    <details className="contribution-details">
+      <summary>
+        {contribution.score.toFixed(1)} ·{' '}
+        {localityDerived ? 'Locality-derived' : 'National'}
+      </summary>
+      <dl>
+        <div>
+          <dt>Country score</dt>
+          <dd>{formatScore(contribution.score)}</dd>
+        </div>
+        <div>
+          <dt>Derivation</dt>
+          <dd>{localityDerived ? 'Aggregated from localities' : 'Direct national evidence'}</dd>
+        </div>
+        {localityDerived && (
+          <>
+            <div>
+              <dt>Contributing localities</dt>
+              <dd>
+                {contribution.contributing_localities
+                  .map(
+                    (item) =>
+                      `${item.locality.display_name} (${item.input_score.toFixed(1)})`,
+                  )
+                  .join(', ')}
+              </dd>
+            </div>
+            <div>
+              <dt>Aggregation policy</dt>
+              <dd>
+                {contribution.aggregation_policy?.method.replaceAll('_', ' ')} ·{' '}
+                <code>{contribution.aggregation_policy?.policy_id}</code>
+              </dd>
+            </div>
+          </>
+        )}
+        <div>
+          <dt>Source and period</dt>
+          <dd>
+            {contribution.sources
+              .map((source) => source.publisher ?? source.source_id)
+              .join(', ')}
+            {contribution.observations[0]
+              ? ` · ${contribution.observations[0].reference_start} to ${contribution.observations[0].reference_end}`
+              : ''}
+          </dd>
+        </div>
+      </dl>
+      {criterion.caveats.map((caveat) => (
+        <p key={caveat}>
+          <strong>Caveat:</strong> {caveat}
+        </p>
+      ))}
+    </details>
+  )
+}
+
+function CountryLocalitySummary({ country }: { country: RankedCountryV2 }) {
+  const assessment = country.assessments.locality
+  if (assessment.status === 'NO_ACTIVE_LOCALITY_CRITERIA') return <span>National evidence</span>
+  const contributions = localityContributions(country)
+  const names = contributingLocalityNames(country)
+  const bestCommon = localityName(
+    assessment.best_common_locality_entity_id,
+    contributions,
+  )
+  return (
+    <div className={`country-locality locality-${assessment.status.toLocaleLowerCase()}`}>
+      <strong>
+        <span aria-hidden="true">
+          {assessment.status === 'COMMON_LOCALITY_AVAILABLE' ? '✓ ' : '⌖ '}
+        </span>
+        {LOCALITY_CONTENT[assessment.status].label}
+      </strong>
+      {bestCommon && <span>Best common: {bestCommon}</span>}
+      {!bestCommon && names.length > 0 && (
+        <span>
+          Evidence: {names.slice(0, 3).join(', ')}
+          {names.length > 3 ? ` +${names.length - 3}` : ''}
+        </span>
+      )}
+      {assessment.status === 'NO_COMMON_LOCALITY' && (
+        <span className="locality-advisory">
+          Strong criteria are supported by different localities; the affinity score is unchanged.
+        </span>
+      )}
+    </div>
+  )
+}
+
 type RankingViewProps = {
-  ranking: Ranking
-  criteria: CatalogCriterion[]
+  ranking: RankingV2
+  criteria: CatalogCriterionV2[]
   detailed: boolean
   isUpdating: boolean
   isComparing: boolean
   selectedCountry: string | null
   comparisonCountries: string[]
   comparisonNotice: string
-  baselineRanking: Ranking | null
-  showingBaseline: boolean
-  isLoadingBaseline: boolean
   scrollRef: RefObject<HTMLDivElement | null>
   compareButtonRef: RefObject<HTMLButtonElement | null>
   onDetailedChange: (value: boolean) => void
   onSelectCountry: (countryCode: string) => void
   onToggleComparison: (countryCode: string) => void
   onCompare: () => void
-  onToggleBaseline: () => void
   onOpenSources: () => void
 }
 
@@ -38,45 +149,47 @@ export function RankingView({
   selectedCountry,
   comparisonCountries,
   comparisonNotice,
-  baselineRanking,
-  showingBaseline,
-  isLoadingBaseline,
   scrollRef,
   compareButtonRef,
   onDetailedChange,
   onSelectCountry,
   onToggleComparison,
   onCompare,
-  onToggleBaseline,
   onOpenSources,
 }: RankingViewProps) {
-  const isBaselineView =
-    showingBaseline || ranking.uncertainty_status === 'COVERAGE_LIMIT_EXCEEDED'
-  const displayedRanking = showingBaseline && baselineRanking ? baselineRanking : ranking
-  const displayedCriteria = isBaselineView
-    ? criteria.filter((criterion) => displayedRanking.active_fcc_ids.includes(criterion.id))
-    : criteria
   const [searchTerm, setSearchTerm] = useState('')
   const [region, setRegion] = useState('')
   const regions = useMemo(
-    () => [...new Set(displayedRanking.rankings.map((country) => country.region))].sort(),
-    [displayedRanking.rankings],
+    () =>
+      [
+        ...new Set(
+          ranking.rankings
+            .map((country) => country.country.region)
+            .filter((value): value is string => Boolean(value)),
+        ),
+      ].sort(),
+    [ranking.rankings],
   )
   const visibleRankings = useMemo(() => {
     const query = searchTerm.trim().toLocaleLowerCase()
-    return displayedRanking.rankings.filter(
+    return ranking.rankings.filter(
       (country) =>
-        (!region || country.region === region) &&
+        (!region || country.country.region === region) &&
         (!query ||
-          country.country_name.toLocaleLowerCase().includes(query) ||
-          country.country_code.toLocaleLowerCase().includes(query)),
+          country.country.display_name.toLocaleLowerCase().includes(query) ||
+          countryCode(country.country.entity_id)
+            .toLocaleLowerCase()
+            .includes(query)),
     )
-  }, [displayedRanking.rankings, region, searchTerm])
+  }, [ranking.rankings, region, searchTerm])
 
-  const handleRowKey = (event: KeyboardEvent<HTMLTableRowElement>, countryCode: string) => {
+  const handleRowKey = (
+    event: KeyboardEvent<HTMLTableRowElement>,
+    code: string,
+  ) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
-      onSelectCountry(countryCode)
+      onSelectCountry(code)
     }
   }
 
@@ -94,26 +207,16 @@ export function RankingView({
         )}
       </div>
 
-      <UncertaintySummary
+      <AssessmentSummary
         ranking={ranking}
         criteria={criteria}
-        showingBaseline={showingBaseline}
-        baselineAvailable={baselineRanking !== null}
-        baselineLoading={isLoadingBaseline}
-        onToggleBaseline={onToggleBaseline}
         onSelectCountry={onSelectCountry}
       />
 
-      <div className={`rank-scope${isBaselineView ? ' is-baseline' : ''}`}>
-        <strong>
-          {isBaselineView
-            ? `Full-coverage baseline · Rank among ${ranking.stable_universe_size} countries`
-            : `Rank among ${ranking.eligible_universe_size} eligible countries`}
-        </strong>
+      <div className="rank-scope">
+        <strong>Server-ranked countries for the applied priorities</strong>
         <span>
-          {isBaselineView
-            ? 'Uses global-core criteria only'
-            : `Showing the score-boundary top ${ranking.robustness_k}`}
+          Locality compatibility is advisory and does not alter the affinity score.
         </span>
       </div>
 
@@ -147,7 +250,7 @@ export function RankingView({
             checked={detailed}
             onChange={(event) => onDetailedChange(event.currentTarget.checked)}
           />
-          <span>Show detailed scores</span>
+          <span>Show detailed evidence</span>
         </label>
         <button
           ref={compareButtonRef}
@@ -155,14 +258,16 @@ export function RankingView({
           disabled={comparisonCountries.length < 2 || isComparing}
           onClick={onCompare}
         >
-          {isComparing ? 'Preparing comparison…' : `Compare selected (${comparisonCountries.length})`}
+          {isComparing
+            ? 'Preparing comparison…'
+            : `Compare selected (${comparisonCountries.length})`}
         </button>
       </div>
       <p id="comparison-limit" className="comparison-guidance" aria-live="polite">
         {comparisonNotice || 'Select 2–4 countries to compare.'}
       </p>
 
-      {!displayedRanking.rankings.length ? (
+      {!ranking.rankings.length ? (
         <div className="empty-state" role="status">
           <h3>No ranking results</h3>
           <p>The API returned no eligible countries for the current data release.</p>
@@ -183,56 +288,72 @@ export function RankingView({
                   </th>
                   <th scope="col">Rank</th>
                   <th scope="col">Country</th>
-                  <th scope="col">
-                    <span title="Affinity Score reflects how well a country matches the selected priorities within the current country set. It is a comparative decision aid, not a probability or guarantee.">
-                      Affinity score
-                    </span>
-                  </th>
+                  <th scope="col">Affinity score</th>
+                  <th scope="col">Locality context</th>
                   {detailed &&
-                    displayedCriteria.map((criterion) => (
+                    criteria.map((criterion) => (
                       <th scope="col" key={criterion.id} title={criterion.display_name}>
                         <span>{criterion.category}</span>
-                        {criterion.experimental && <span className="table-badge">Experimental</span>}
+                        {criterion.scope.derivation ===
+                          'AGGREGATED_FROM_LOCALITIES' && (
+                          <span className="table-badge">⌖ Locality</span>
+                        )}
                       </th>
                     ))}
                 </tr>
               </thead>
               <tbody>
                 {visibleRankings.map((country) => {
-                  const checked = comparisonCountries.includes(country.country_code)
-                  const selected = selectedCountry === country.country_code
+                  const code = countryCode(country.country.entity_id)
+                  const checked = comparisonCountries.includes(code)
+                  const selected = selectedCountry === code
                   return (
                     <tr
-                      key={country.country_code}
-                      data-country-code={country.country_code}
+                      key={country.country.entity_id}
+                      data-country-code={code}
                       className={selected ? 'selected-row' : undefined}
                       aria-selected={selected}
                       tabIndex={0}
-                      onClick={() => onSelectCountry(country.country_code)}
-                      onKeyDown={(event) => handleRowKey(event, country.country_code)}
+                      onClick={() => onSelectCountry(code)}
+                      onKeyDown={(event) => handleRowKey(event, code)}
                     >
                       <td>
                         <input
                           type="checkbox"
                           checked={checked}
-                          aria-label={`Select ${country.country_name} for comparison`}
+                          aria-label={`Select ${country.country.display_name} for comparison`}
                           aria-describedby="comparison-limit"
                           onClick={(event) => event.stopPropagation()}
-                          onChange={() => onToggleComparison(country.country_code)}
+                          onChange={() => onToggleComparison(code)}
                         />
                       </td>
                       <td className="rank-cell">{country.rank}</td>
                       <td>
-                        <strong>{country.country_name}</strong>
-                        <span className="region-label">{country.region}</span>
+                        <strong>{country.country.display_name}</strong>
+                        <span className="region-label">
+                          {country.country.region ?? code}
+                        </span>
                       </td>
                       <td className="score-cell">{formatScore(country.total_score)}</td>
+                      <td>
+                        <CountryLocalitySummary country={country} />
+                      </td>
                       {detailed &&
-                        displayedCriteria.map((criterion) => (
-                          <td key={criterion.id} className="criterion-score-cell">
-                            {contributionFor(country, criterion.id)?.score.toFixed(1) ?? '—'}
-                          </td>
-                        ))}
+                        criteria.map((criterion) => {
+                          const contribution = contributionFor(country, criterion.id)
+                          return (
+                            <td key={criterion.id} className="criterion-score-cell">
+                              {contribution ? (
+                                <DetailedContribution
+                                  contribution={contribution}
+                                  criterion={criterion}
+                                />
+                              ) : (
+                                '—'
+                              )}
+                            </td>
+                          )
+                        })}
                     </tr>
                   )
                 })}
@@ -242,51 +363,57 @@ export function RankingView({
 
           <div className="ranking-cards" role="list" aria-label="Ranked countries">
             {visibleRankings.map((country) => {
-              const checked = comparisonCountries.includes(country.country_code)
-              const selected = selectedCountry === country.country_code
+              const code = countryCode(country.country.entity_id)
+              const checked = comparisonCountries.includes(code)
+              const selected = selectedCountry === code
               return (
                 <article
                   className={`ranking-card${selected ? ' selected-card' : ''}`}
-                  key={country.country_code}
-                  data-country-code={country.country_code}
+                  key={country.country.entity_id}
+                  data-country-code={code}
                   role="listitem"
                 >
                   <div className="ranking-card-heading">
                     <input
                       type="checkbox"
                       checked={checked}
-                      aria-label={`Select ${country.country_name} for comparison`}
+                      aria-label={`Select ${country.country.display_name} for comparison`}
                       aria-describedby="comparison-limit"
-                      onChange={() => onToggleComparison(country.country_code)}
+                      onChange={() => onToggleComparison(code)}
                     />
                     <span className="rank-pill" aria-label={`Rank ${country.rank}`}>
                       {country.rank}
                     </span>
                     <div>
-                      <h3>{country.country_name}</h3>
-                      <p>{country.region}</p>
+                      <h3>{country.country.display_name}</h3>
+                      <p>{country.country.region ?? code}</p>
                     </div>
-                    <strong className="mobile-affinity">{formatScore(country.total_score)}</strong>
+                    <strong className="mobile-affinity">
+                      {formatScore(country.total_score)}
+                    </strong>
                   </div>
+                  <CountryLocalitySummary country={country} />
                   {detailed && (
-                    <dl className="mobile-score-list">
-                      {displayedCriteria.map((criterion) => (
-                        <div key={criterion.id}>
-                          <dt>
-                            {criterion.display_name}
-                            {criterion.experimental && (
-                              <span className="badge badge-experimental">Experimental</span>
+                    <div className="mobile-score-list">
+                      {criteria.map((criterion) => {
+                        const contribution = contributionFor(country, criterion.id)
+                        return (
+                          <div key={criterion.id}>
+                            <strong>{criterion.display_name}</strong>
+                            {contribution ? (
+                              <DetailedContribution
+                                contribution={contribution}
+                                criterion={criterion}
+                              />
+                            ) : (
+                              <span>—</span>
                             )}
-                          </dt>
-                          <dd>{contributionFor(country, criterion.id)?.score.toFixed(1) ?? '—'}</dd>
-                        </div>
-                      ))}
-                    </dl>
+                          </div>
+                        )
+                      })}
+                    </div>
                   )}
-                  <button
-                    className="text-button"
-                    onClick={() => onSelectCountry(country.country_code)}
-                  >
+                  <button className="text-button" onClick={() => onSelectCountry(code)}>
                     View country details
                   </button>
                 </article>
@@ -298,9 +425,9 @@ export function RankingView({
 
       <footer className="ranking-footer">
         <span aria-live="polite">
-          Showing {visibleRankings.length} of {displayedRanking.returned_result_count} returned{' '}
-          {displayedRanking.returned_result_count === 1 ? 'country' : 'countries'} ·{' '}
-          {displayedRanking.eligible_universe_size} of {displayedRanking.stable_universe_size} ranked
+          Showing {visibleRankings.length} of {ranking.rankings.length} returned{' '}
+          {ranking.rankings.length === 1 ? 'country' : 'countries'} ·{' '}
+          {ranking.assessments.coverage.excluded_countries.length} coverage excluded
         </span>
         <button className="release-link" onClick={onOpenSources}>
           Data release: {ranking.release_id}

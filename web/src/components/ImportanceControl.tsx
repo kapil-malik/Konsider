@@ -1,10 +1,10 @@
 import type { CSSProperties, KeyboardEvent } from 'react'
 
-import type { CatalogCriterion } from '../api/types'
+import type { CatalogCriterionV2 } from '../api/types'
 import { IMPORTANCE_STATES, importanceState } from '../preferences'
 
 type ImportanceControlProps = {
-  criterion: CatalogCriterion
+  criterion: CatalogCriterionV2
   value: number
   disabled?: boolean
   onChange: (value: number) => void
@@ -17,10 +17,19 @@ export function ImportanceControl({
   onChange,
 }: ImportanceControlProps) {
   const state = importanceState(value)
-  const isPartial = criterion.coverage_mode === 'CONDITIONAL_COMPLETE_CASE'
-  const activationThreshold = criterion.pcc_activation_threshold
-  const isActive =
-    isPartial && activationThreshold !== null && value >= activationThreshold
+  const isPartial = criterion.coverage.mode === 'CONDITIONAL_COMPLETE_CASE'
+  const isLocality = criterion.scope.derivation === 'AGGREGATED_FROM_LOCALITIES'
+  const coverageThreshold = criterion.coverage.activation_threshold ?? null
+  const localityThreshold =
+    criterion.scope.locality_analysis_threshold ?? null
+  const coverageActive =
+    isPartial &&
+    coverageThreshold !== null &&
+    value >= coverageThreshold
+  const localityAnalysisActive =
+    isLocality &&
+    localityThreshold !== null &&
+    value >= localityThreshold
   const fillStyle = { '--importance-fill': `${value * 100}%` } as CSSProperties
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const currentIndex = IMPORTANCE_STATES.findIndex((item) => item.value === state.value)
@@ -46,20 +55,41 @@ export function ImportanceControl({
       </div>
       <div className="criterion-status-row">
         <span className="coverage-count">
-          {criterion.valid_country_count}/{criterion.stable_country_count} countries
+          {criterion.coverage.valid_country_count}/{criterion.coverage.stable_country_count}{' '}
+          countries
         </span>
-        {isPartial && <span className="badge badge-limited">Limited coverage</span>}
-        {criterion.experimental && <span className="badge badge-experimental">Experimental</span>}
+        <span className="badge badge-scope">
+          {isLocality ? '⌖ Locality-derived' : '● National'}
+        </span>
+        {isPartial && <span className="badge badge-limited">! Limited coverage</span>}
+        {criterion.experimental && (
+          <span className="badge badge-experimental">◇ Experimental</span>
+        )}
       </div>
       {isPartial && (
         <p
-          className={`pcc-activation-state${isActive ? ' is-active' : ''}`}
+          className={`pcc-activation-state${coverageActive ? ' is-active' : ''}`}
           aria-live="polite"
         >
-          <span aria-hidden="true">{isActive ? '✓' : '○'}</span>{' '}
-          {isActive
-            ? 'Active in the ranking when applied.'
-            : 'Not active in the ranking at this setting.'}
+          <span aria-hidden="true">{coverageActive ? '✓' : '○'}</span>{' '}
+          {coverageActive
+              ? 'Limited-coverage ranking rules will apply.'
+              : `Coverage activation begins at ${importanceState(
+                coverageThreshold ?? 0,
+              ).label}.`}
+        </p>
+      )}
+      {isLocality && (
+        <p
+          className={`locality-activation-state${localityAnalysisActive ? ' is-active' : ''}`}
+          aria-live="polite"
+        >
+          <span aria-hidden="true">{localityAnalysisActive ? '⌖' : '○'}</span>{' '}
+          {localityAnalysisActive
+              ? 'Locality compatibility will be assessed when applied.'
+              : `Locality provenance remains available; prominent analysis begins at ${importanceState(
+                localityThreshold ?? 0,
+              ).label}.`}
         </p>
       )}
       <input
@@ -81,15 +111,20 @@ export function ImportanceControl({
           <span key={item.value}>{item.shortLabel}</span>
         ))}
       </div>
-      {isPartial && (
+      {(isPartial || isLocality) && (
         <details className="coverage-details">
-          <summary>Coverage details</summary>
+          <summary>Coverage and scope details</summary>
           <p>
-            This criterion affects ranking only at Medium or above. Data is unavailable for{' '}
-            {criterion.missing_country_count}{' '}
-            {criterion.missing_country_count === 1 ? 'country' : 'countries'}.
+            Coverage: {criterion.coverage.mode.replaceAll('_', ' ').toLocaleLowerCase()} · Scope:{' '}
+            {criterion.scope.evidence_level.toLocaleLowerCase()} evidence to country result.
           </p>
-          {criterion.concise_caveat && <p>{criterion.concise_caveat}</p>}
+          {isLocality && (
+            <p>
+              Universe <code>{criterion.scope.locality_universe_id}</code> · Policy{' '}
+              <code>{criterion.scope.aggregation_policy_id}</code>
+            </p>
+          )}
+          {criterion.caveats[0] && <p>{criterion.caveats[0]}</p>}
         </details>
       )}
     </div>

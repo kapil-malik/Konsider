@@ -1,88 +1,71 @@
 import { useEffect, useRef } from 'react'
 
 import type {
-  CatalogCriterion,
-  Comparison,
-  ComparisonCell,
-  ComparisonCountrySummary,
+  ComparisonV2,
+  ContributionV2,
 } from '../api/types'
+import {
+  LOCALITY_CONTENT,
+  countryCode,
+  localityName,
+  readableCode,
+} from '../localityPresentation'
 import { formatScore } from '../preferences'
 
 type ComparisonViewProps = {
-  comparison: Comparison
-  criteria: CatalogCriterion[]
+  comparison: ComparisonV2
   onBack: () => void
   onSelectCountry: (countryCode: string) => void
 }
 
-const readableCode = (value: string) =>
-  value
-    .toLocaleLowerCase()
-    .replaceAll('_', ' ')
-    .replace(/^\w/, (character) => character.toLocaleUpperCase())
-
-function availabilityLabel(cell: ComparisonCell): string {
-  if (cell.availability === 'AVAILABLE') return 'Available'
-  return cell.availability === 'STALE' ? 'Data is stale' : 'Data not available'
-}
-
-function ComparisonValue({ cell }: { cell: ComparisonCell }) {
-  if (cell.availability === 'AVAILABLE' && cell.normalized_score !== null) {
+function ContributionValue({
+  contribution,
+  outcome,
+  reasons,
+}: {
+  contribution: ContributionV2 | null
+  outcome: string
+  reasons: string[]
+}) {
+  if (!contribution) {
+    const reasonText = reasons.map(readableCode).join(', ')
     return (
-      <>
-        <strong>{cell.normalized_score.toFixed(1)}</strong>
-        {cell.raw_observation !== null && cell.raw_unit && (
-          <span className="comparison-raw-value">
-            {cell.raw_observation.toLocaleString()} {cell.raw_unit.replaceAll('_', ' ')}
+      <span
+        className="unavailable-cell"
+        aria-label={`Data not available: ${reasonText || readableCode(outcome)}`}
+      >
+        <span aria-hidden="true">—</span>
+        <small>{readableCode(outcome)}</small>
+        {reasonText && <small>{reasonText}</small>}
+      </span>
+    )
+  }
+  return (
+    <div className="comparison-value">
+      <strong>{contribution.score.toFixed(1)}</strong>
+      {contribution.derivation === 'AGGREGATED_FROM_LOCALITIES' && (
+        <>
+          <span className="badge badge-scope">⌖ Locality-derived</span>
+          <span className="comparison-localities">
+            {contribution.contributing_localities
+              .map(
+                (item) =>
+                  `${item.locality.display_name} ${item.input_score.toFixed(1)}`,
+              )
+              .join(', ')}
           </span>
-        )}
-      </>
-    )
-  }
-
-  const reasons = cell.reason_codes.map(readableCode).join(', ')
-  return (
-    <span
-      className="unavailable-cell"
-      title={reasons || readableCode(cell.availability)}
-      aria-label={`${availabilityLabel(cell)}${reasons ? `: ${reasons}` : ''}`}
-    >
-      <span aria-hidden="true">—</span>
-      <small>{availabilityLabel(cell)}</small>
-    </span>
-  )
-}
-
-function AggregateValue({ summary }: { summary: ComparisonCountrySummary }) {
-  if (summary.total_score !== null && summary.rank !== null) {
-    return (
-      <>
-        <strong>{formatScore(summary.total_score)}</strong>
-        <span className="comparison-rank">Rank {summary.rank}</span>
-      </>
-    )
-  }
-  return (
-    <span className="unavailable-cell" aria-label="No partial affinity score">
-      <span aria-hidden="true">—</span>
-      <small>
-        {summary.ranking_status === 'FCC_BASELINE_ONLY'
-          ? 'Full-coverage baseline only'
-          : 'Not ranked for this profile'}
-      </small>
-    </span>
+        </>
+      )}
+    </div>
   )
 }
 
 export function ComparisonView({
   comparison,
-  criteria,
   onBack,
   onSelectCountry,
 }: ComparisonViewProps) {
   const headingRef = useRef<HTMLHeadingElement>(null)
-  const criteriaById = new Map(criteria.map((criterion) => [criterion.id, criterion]))
-  const summaries = comparison.country_summaries
   useEffect(() => headingRef.current?.focus(), [])
 
   return (
@@ -97,8 +80,8 @@ export function ComparisonView({
             Compare countries
           </h2>
           <p>
-            Available evidence is shown for every country. An em dash means the source data is
-            unavailable; no partial affinity score is fabricated.
+            Scores, locality provenance, and unavailable evidence come directly from the API. No
+            partial aggregate is fabricated.
           </p>
         </div>
         <button
@@ -110,12 +93,12 @@ export function ComparisonView({
         </button>
       </div>
 
-      {summaries.some((summary) => !summary.ranking_eligible) && (
+      {comparison.countries.some((country) => country.coverage_excluded) && (
         <div className="comparison-data-notice" role="status">
-          <span aria-hidden="true">ⓘ</span>
+          <span aria-hidden="true">!</span>
           <p>
-            Highlighted countries have unavailable data for an active criterion and are not ranked
-            for this profile. Their available criterion evidence remains comparable.
+            Coverage-excluded countries have no final aggregate. Their available criterion and
+            locality evidence remains visible.
           </p>
         </div>
       )}
@@ -125,125 +108,176 @@ export function ComparisonView({
           <thead>
             <tr>
               <th scope="col">Criterion</th>
-              {summaries.map((summary) => (
-                <th
-                  scope="col"
-                  key={summary.country_code}
-                  className={summary.ranking_eligible ? undefined : 'unranked-country-column'}
-                >
-                  <button
-                    className="country-column-button"
-                    onClick={() => onSelectCountry(summary.country_code)}
+              {comparison.countries.map((country) => {
+                const code = countryCode(country.country.entity_id)
+                return (
+                  <th
+                    scope="col"
+                    key={country.country.entity_id}
+                    className={
+                      country.coverage_excluded ? 'unranked-country-column' : undefined
+                    }
                   >
-                    {summary.country_name}
-                  </button>
-                  {!summary.ranking_eligible && (
-                    <span className="column-status">Not ranked for this profile</span>
-                  )}
-                </th>
-              ))}
+                    <button
+                      className="country-column-button"
+                      onClick={() => onSelectCountry(code)}
+                    >
+                      {country.country.display_name}
+                    </button>
+                    {country.coverage_excluded && (
+                      <span className="column-status">Coverage excluded</span>
+                    )}
+                  </th>
+                )
+              })}
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">Overall affinity</th>
-              {summaries.map((summary) => (
+              {comparison.countries.map((country) => (
                 <td
-                  key={summary.country_code}
-                  className={summary.ranking_eligible ? undefined : 'unranked-country-column'}
+                  key={country.country.entity_id}
+                  className={
+                    country.coverage_excluded ? 'unranked-country-column' : undefined
+                  }
                 >
-                  <AggregateValue summary={summary} />
+                  {country.final_aggregate !== null && country.rank !== null ? (
+                    <>
+                      <strong>{formatScore(country.final_aggregate)}</strong>
+                      <span className="comparison-rank">Rank {country.rank}</span>
+                    </>
+                  ) : (
+                    <span className="unavailable-cell" aria-label="No partial affinity score">
+                      <span aria-hidden="true">—</span>
+                      <small>Coverage excluded</small>
+                    </span>
+                  )}
                 </td>
               ))}
             </tr>
-            {comparison.criterion_rows.map((row) => {
-              const criterion = criteriaById.get(row.criterion_id)
-              return (
-                <tr key={row.criterion_id}>
-                  <th scope="row">
-                    {row.criterion_name}
-                    <span className="row-badges">
-                      {row.coverage_mode === 'CONDITIONAL_COMPLETE_CASE' && (
-                        <span className="badge badge-limited">Limited coverage</span>
-                      )}
-                      {(row.experimental || criterion?.experimental) && (
-                        <span className="badge badge-experimental">Experimental</span>
-                      )}
-                    </span>
-                  </th>
-                  {summaries.map((summary) => {
-                    const cell = row.cells.find(
-                      (item) => item.country_code === summary.country_code,
+            <tr>
+              <th scope="row">Locality assessment</th>
+              {comparison.countries.map((country) => {
+                const locality = country.assessments.locality
+                const contributions = comparison.criterion_rows.flatMap((row) =>
+                  row.cells
+                    .filter(
+                      (cell) =>
+                        cell.country.entity_id === country.country.entity_id &&
+                        cell.contribution,
                     )
-                    return (
-                      <td
-                        key={summary.country_code}
-                        className={summary.ranking_eligible ? undefined : 'unranked-country-column'}
-                      >
-                        {cell ? <ComparisonValue cell={cell} /> : <span aria-label="Data not available">—</span>}
-                      </td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
+                    .map((cell) => cell.contribution as ContributionV2),
+                )
+                const bestCommon = localityName(
+                  locality.best_common_locality_entity_id,
+                  contributions,
+                )
+                return (
+                  <td key={country.country.entity_id}>
+                    <strong>{LOCALITY_CONTENT[locality.status].label}</strong>
+                    {bestCommon && <span>Best common: {bestCommon}</span>}
+                    {!bestCommon && locality.common_locality_entity_ids.length > 0 && (
+                      <span>
+                        Common evidence:{' '}
+                        {locality.common_locality_entity_ids
+                          .map((id) => localityName(id, contributions))
+                          .join(', ')}
+                      </span>
+                    )}
+                  </td>
+                )
+              })}
+            </tr>
+            {comparison.criterion_rows.map((row) => (
+              <tr key={row.criterion_id}>
+                <th scope="row">
+                  {row.criterion_name}
+                  <span className="row-badges">
+                    {row.coverage.mode === 'CONDITIONAL_COMPLETE_CASE' && (
+                      <span className="badge badge-limited">! Limited coverage</span>
+                    )}
+                    {row.scope.derivation === 'AGGREGATED_FROM_LOCALITIES' && (
+                      <span className="badge badge-scope">⌖ Locality-derived</span>
+                    )}
+                  </span>
+                </th>
+                {comparison.countries.map((country) => {
+                  const cell = row.cells.find(
+                    (item) => item.country.entity_id === country.country.entity_id,
+                  )
+                  return (
+                    <td
+                      key={country.country.entity_id}
+                      className={
+                        country.coverage_excluded
+                          ? 'unranked-country-column'
+                          : undefined
+                      }
+                    >
+                      {cell ? (
+                        <ContributionValue
+                          contribution={cell.contribution}
+                          outcome={cell.outcome}
+                          reasons={cell.reason_codes}
+                        />
+                      ) : (
+                        <span aria-label="Data not available">—</span>
+                      )}
+                    </td>
+                  )
+                })}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
       <div className="comparison-cards">
-        <article className="comparison-card">
-          <h3>Overall affinity</h3>
-          <dl>
-            {summaries.map((summary) => (
-              <div key={summary.country_code}>
-                <dt>
-                  <button onClick={() => onSelectCountry(summary.country_code)}>
-                    {summary.country_name}
-                  </button>
-                  {!summary.ranking_eligible && (
-                    <span className="column-status">Not ranked</span>
-                  )}
-                </dt>
-                <dd>
-                  <AggregateValue summary={summary} />
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </article>
-        {comparison.criterion_rows.map((row) => (
-          <article className="comparison-card" key={row.criterion_id}>
-            <h3>
-              {row.criterion_name}
-              <span className="row-badges">
-                {row.coverage_mode === 'CONDITIONAL_COMPLETE_CASE' && (
-                  <span className="badge badge-limited">Limited coverage</span>
-                )}
-                {row.experimental && (
-                  <span className="badge badge-experimental">Experimental</span>
-                )}
-              </span>
-            </h3>
-            <dl>
-              {summaries.map((summary) => {
-                const cell = row.cells.find(
-                  (item) => item.country_code === summary.country_code,
-                )
-                return (
-                  <div key={summary.country_code}>
-                    <dt>
-                      <button onClick={() => onSelectCountry(summary.country_code)}>
-                        {summary.country_name}
-                      </button>
-                    </dt>
-                    <dd>{cell ? <ComparisonValue cell={cell} /> : '—'}</dd>
-                  </div>
-                )
-              })}
-            </dl>
-          </article>
-        ))}
+        {comparison.countries.map((country) => {
+          const code = countryCode(country.country.entity_id)
+          return (
+            <article className="comparison-card" key={country.country.entity_id}>
+              <h3>
+                <button onClick={() => onSelectCountry(code)}>
+                  {country.country.display_name}
+                </button>
+              </h3>
+              <p>
+                {country.final_aggregate !== null
+                  ? `${formatScore(country.final_aggregate)} · Rank ${country.rank}`
+                  : 'Coverage excluded · no final aggregate'}
+              </p>
+              <p>
+                <strong>Locality:</strong>{' '}
+                {LOCALITY_CONTENT[country.assessments.locality.status].label}
+              </p>
+              <dl>
+                {comparison.criterion_rows.map((row) => {
+                  const cell = row.cells.find(
+                    (item) => item.country.entity_id === country.country.entity_id,
+                  )
+                  return (
+                    <div key={row.criterion_id}>
+                      <dt>{row.criterion_name}</dt>
+                      <dd>
+                        {cell ? (
+                          <ContributionValue
+                            contribution={cell.contribution}
+                            outcome={cell.outcome}
+                            reasons={cell.reason_codes}
+                          />
+                        ) : (
+                          '—'
+                        )}
+                      </dd>
+                    </div>
+                  )
+                })}
+              </dl>
+            </article>
+          )
+        })}
       </div>
 
       <footer className="comparison-footer">Data release: {comparison.release_id}</footer>
