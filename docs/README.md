@@ -19,6 +19,10 @@ readable schemas, and published release manifests take precedence if prose ever 
   conditional-coverage candidates, required gates, and explicit watchlist exclusions.
 - [Phase 4 closure report](history/phase4-closure-report.md) - end-to-end scenarios, invariants,
   quality gates, remaining risks, and next phase.
+- [Phase 5 closure report](history/phase5-closure-report.md) - final locality architecture,
+  criterion dispositions, active inventory, verification, limitations, and next phase.
+- [Phase 5I verification evidence](../data/reports/phase5i-2026-07-29/report.md) - working-tree and
+  clean-checkout backend, frontend, browser, replay, and CI-status evidence.
 - [Phase 4H verification evidence](../data/reports/phase4h-2026-07-28/report.md) - local gate
   results and clean-checkout CI status.
 - [Phase 5A locality criteria discovery](research/phase5a-locality-criteria-discovery.md) - the
@@ -95,6 +99,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Implementation history](history/implementation-history.md)
 - [Release history](history/releases/README.md)
 - [Phase 4 closure report](history/phase4-closure-report.md)
+- [Phase 5 closure report](history/phase5-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational

@@ -1,0 +1,33 @@
+{
+  "schema_version": "konsider-phase5i-verification-1.0",
+  "date": "2026-07-29",
+  "verified_commit": "f4a01d7",
+  "active_release_id": "2026-07-29.2",
+  "release_schema_version": "konsider-release-5.0",
+  "catalog_schema_version": "consumer-catalog-3.0",
+  "api_contract_version": "konsider-api-2.0",
+  "working_tree": {
+    "backend_passed": 280,
+    "backend_skipped": 0,
+    "component_passed": 15,
+    "browser_passed": 8,
+    "openapi_regeneration_diff": false,
+    "replay_status": "PASSED"
+  },
+  "clean_checkout_windows": {
+    "backend_passed": 271,
+    "backend_skipped_intentional_licensed_raw": 9,
+    "component_passed": 15,
+    "browser_passed": 8,
+    "offline_dependency_install": "PASSED",
+    "generated_contract_hash_match": true
+  },
+  "remote_ci": {
+    "workflow_has_ubuntu_backend": true,
+    "workflow_has_windows_backend": true,
+    "workflow_has_ubuntu_frontend_browser": true,
+    "final_local_commit_pushed": false,
+    "status": "PENDING_AUTHORIZED_PUSH"
+  },
+  "closure_decision": "LOCAL_GATES_PASSED_REMOTE_MATRIX_PENDING"
+}

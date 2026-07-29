@@ -6,10 +6,10 @@ FastAPI v2 API, and a responsive catalog-driven React comparison UI.
 
 Active release `2026-07-29.2` contains 91 countries, 388 selected urban centres, and fourteen
 catalogued criteria. Eight global-core criteria cover all countries; Overall job-market
-opportunity, School education quality, Research and innovation ecosystem, and locality-derived
-Extreme heat exposure use conditional complete-case ranking. UHC is unavailable, while
-infrastructure, the Phase 4 Wave 2 criteria, and Extreme heat exposure are experimental. Legacy
-fixtures never fill product data. Rankings use complete cases across active
+opportunity, School education quality, Research and innovation ecosystem, Extreme heat exposure,
+and Projected warm-day frequency (2030) use conditional complete-case ranking. UHC is unavailable,
+while infrastructure, the Phase 4 Wave 2 criteria, and both locality-derived climate criteria are
+experimental. Legacy fixtures never fill product data. Rankings use complete cases across active
 criteria, keep missing/stale outcomes explicit, and never impute or calculate partial country
 scores.
 
@@ -104,5 +104,7 @@ Start at the [documentation index](docs/README.md).
 - [Phase 4 Wave 2 onboarding report](data/reports/phase4-wave2-2026-07-28/report.md)
 - [Phase 4 Wave 2 PCC candidates](docs/research/phase4-wave2-pcc-candidates.md)
 - [Phase 4 closure report](docs/history/phase4-closure-report.md)
+- [Phase 5 closure report](docs/history/phase5-closure-report.md)
+- [Phase 5 verification report](data/reports/phase5i-2026-07-29/report.md)
 - [Historical phase workspaces](project-history/README.md)
 - [Active release report](docs/history/releases/2026-07-29.2.md)

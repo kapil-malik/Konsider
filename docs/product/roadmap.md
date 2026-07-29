@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 5H contract cleanup complete
+Status: Phase 5 complete; structured applicant/household context is next
 
 Last updated: 2026-07-29
 
@@ -35,6 +35,12 @@ full-universe common-locality analysis, weighted best-common selection, and type
 coverage/locality/profile assessments against synthetic schema-5 releases. Coverage and locality
 advice are invariantly separate. Phase 5E/F exposed these concepts through the typed API and UI,
 and Phase 5H removed the temporary dual-contract runtime.
+
+Phase 5I closed the phase with 280 passing backend tests, deterministic active-release replay,
+clean OpenAPI/TypeScript regeneration, frontend and browser gates, and a source-only Windows
+clean-checkout verification. The final architecture, 45-criterion disposition, active inventory,
+limitations, and remote-CI status are in the
+[Phase 5 closure report](../history/phase5-closure-report.md).
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -125,18 +131,19 @@ See the [Phase 3 closure report](../research/phase3-closure-report.md),
 Held Wave 2 criteria remain future onboarding candidates, not unfinished Phase 4 behavior. They
 must clear commercial reuse, construct, coverage, scoring, and replay requirements independently.
 
-## Phase 5: locality-aware criteria and structured assessments
+## Phase 5: locality-aware criteria and structured assessments — complete
 
-Phase 5 will add carefully bounded locality evidence without converting Konsider into a city-ranking
+Phase 5 added carefully bounded locality evidence without converting Konsider into a city-ranking
 product or weakening its country-level comparison contract.
 
-- Keep criterion definitions separate from source implementations and locality aggregation policy.
-- Use a frozen, reproducible GHSL urban-centre universe selected independently of criterion values.
-- Start with at most three criteria; Phase 5A currently approves only Extreme heat exposure.
-- Keep sparse applicant/household-specific questions in a later structured-profile phase.
-- Require every candidate to clear construct, licensing, coverage, aggregation, validation, and
-  replay gates before production onboarding.
-- Preserve missingness and uncertainty; never fill locality gaps with fixtures or silent proxies.
+- Classified all 45 researched criteria by locality and profile suitability.
+- Froze a reproducible GHSL urban-centre universe independently of criterion values.
+- Separated coverage, scope, and applicability in schema 5/catalog 3.
+- Added deterministic locality aggregation, common-locality advice, lineage, and replay.
+- Onboarded experimental C66 Extreme heat exposure and C67 Projected warm-day frequency (2030).
+- Exposed separate coverage, locality, and unevaluated-profile assessments through API v2 and UI.
+- Renamed weight profiles to preference presets and removed every transitional public field.
+- Preserved historical releases and all Phase 4 complete-case guarantees.
 
 Phase 5A is documented in the
 [locality criteria discovery report](../research/phase5a-locality-criteria-discovery.md).
@@ -144,10 +151,22 @@ Phase 5B is documented in the
 [target architecture and contracts report](../architecture/phase5b-target-contracts.md).
 The final public-contract cleanup is documented in the
 [Phase 5H migration report](phase5h-contract-migration.md).
+The complete outcome is documented in the
+[Phase 5 closure report](../history/phase5-closure-report.md).
+
+## Next phase: structured applicant and household context
+
+- Define typed applicant, occupation, qualification, licensing, institution, household, visa, and
+  co-location inputs without conflating them with preference presets.
+- Revisit technology and healthcare jobs, institution/program education, housing, earnings, and
+  professional access only where the required context and source gates are explicit.
+- Keep C05 locality research as an independent fast follow with its own source and identity gates.
+- Start with contracts and discovery before adding profile-dependent scores.
 
 ## Future phase: conversational exploration
 
-- Add AI explanations and chat only after deterministic ranking and explanations are proven.
+- Add AI explanations and chat only after deterministic ranking and structured profile tools are
+  proven.
 - Require numerical and factual claims to come from typed deterministic tools.
 - Provide non-LLM fallbacks and explicit rate, token, session, and tool limits.
 - Add agents, LangGraph, or MCP only for demonstrated workflows.
