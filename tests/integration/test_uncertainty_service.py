@@ -22,8 +22,13 @@ def phase4_service() -> RecommendationService:
     repository = PublishedReleaseRepository(
         FIXTURE / "releases",
         FIXTURE / "consumer-catalog-2.0.json",
+        active_release_path=FIXTURE / "releases" / "active.json",
     )
     return RecommendationService(repository)
+
+
+def _historical_service() -> RecommendationService:
+    return RecommendationService(PublishedReleaseRepository(release_id="2026-07-28.2"))
 
 
 @pytest.mark.parametrize(
@@ -54,7 +59,7 @@ def test_pcc_activation_and_ignored_semantics(
 
 
 def test_existing_schema3_fcc_scores_and_order_are_unchanged() -> None:
-    service = RecommendationService()
+    service = _historical_service()
     weights = {
         "ambient_pm25_population_weighted": 3,
         "intentional_homicide_rate": 2,
@@ -91,7 +96,7 @@ def test_server_owned_profile_uses_the_same_phase4_engine(phase4_service) -> Non
     ],
 )
 def test_phase4_service_preserves_weight_validation(weights, message) -> None:
-    service = RecommendationService()
+    service = _historical_service()
 
     with pytest.raises(ScoringError, match=message):
         service.rank_with_uncertainty(weights)

@@ -1,13 +1,13 @@
 # Product roadmap
 
-Status: Phase 5G locality onboarding in progress
+Status: Phase 5H contract cleanup complete
 
 Last updated: 2026-07-29
 
 ## Current position
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
-deterministic recommendation service, five-route FastAPI v1 transport, and responsive React UI are
+deterministic recommendation service, five-route FastAPI v2 transport, and responsive React UI are
 implemented. Active release `2026-07-29.2` exposes the stable 91-country universe, 388 frozen
 urban centres, and fourteen available criteria. Eight are 91/91 global-core criteria; Overall job-market opportunity, School
 education quality, and Research and innovation ecosystem are conditional criteria, and UHC remains
@@ -20,29 +20,28 @@ urban-centre universe. Phase 5G has now onboarded Extreme heat exposure and the 
 Projected warm-day frequency (2030) as experimental locality-derived criteria, each with 89/91
 country coverage.
 
-Phase 5B has defined the clean major-version target for orthogonal coverage, locality scope,
-applicability, canonical geography, policy-driven locality aggregation, multiple-source lineage,
-structured assessments, and preference presets. These schemas and fixtures remain inactive design
-contracts; the active release and API are unchanged.
+Phase 5B defined the clean target for orthogonal coverage, locality scope, applicability, canonical
+geography, policy-driven locality aggregation, multiple-source lineage, structured assessments,
+and preference presets. Phase 5H finalized that contract as the sole public runtime.
 
-Phase 5C has implemented the inactive schema-5 generic worker, canonical geographic validation,
+Phase 5C implemented the schema-5 generic worker, canonical geographic validation,
 policy and lineage snapshots, immutable release/catalog writer and loader, and deterministic replay.
 The same path accepts national/locality and FCC/PCC combinations. Explicit outcomes remain at the
-country result level; locality observations and scores are linked evidence. No production C66 data,
-ranking behavior, API, UI, or active release changed.
+country result level; locality observations and scores are linked evidence. Phase 5G then published
+the first production locality criteria through this path.
 
 Phase 5D has implemented policy-driven locality aggregation, independent country affinity,
 full-universe common-locality analysis, weighted best-common selection, and typed
 coverage/locality/profile assessments against synthetic schema-5 releases. Coverage and locality
-advice are invariantly separate. Production C66 data, API v2 transport, UI behavior, and the active
-release remain unchanged.
+advice are invariantly separate. Phase 5E/F exposed these concepts through the typed API and UI,
+and Phase 5H removed the temporary dual-contract runtime.
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
 
 ## Phase 2C: comparison UI — implemented
 
-Dependency: stable `/api/v1` catalog, ranking, comparison, country-metric, and health contracts.
+Historical dependency: the original five-route API contract, now superseded by `/api/v2`.
 
 Deliver a small React/TypeScript/Vite interface that:
 
@@ -143,6 +142,8 @@ Phase 5A is documented in the
 [locality criteria discovery report](../research/phase5a-locality-criteria-discovery.md).
 Phase 5B is documented in the
 [target architecture and contracts report](../architecture/phase5b-target-contracts.md).
+The final public-contract cleanup is documented in the
+[Phase 5H migration report](phase5h-contract-migration.md).
 
 ## Future phase: conversational exploration
 

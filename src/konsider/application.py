@@ -30,8 +30,10 @@ from konsider.repositories.published_release_repository import PublishedReleaseR
 class RecommendationService:
     """Catalog, ranking, comparison, and breakdown operations pinned to one release."""
 
-    def __init__(self, repository: PublishedReleaseRepository | None = None) -> None:
-        self.release = (repository or PublishedReleaseRepository()).load_active()
+    def __init__(self, repository: PublishedReleaseRepository) -> None:
+        """Construct the historical service from an explicitly selected legacy repository."""
+
+        self.release = repository.load_active()
 
     def get_catalog(self) -> dict[str, Any]:
         sources_by_criterion: dict[str, list[dict[str, Any]]] = {}

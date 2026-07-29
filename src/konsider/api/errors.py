@@ -13,19 +13,12 @@ from konsider.api.models.common import ErrorResponse
 from konsider.exceptions import (
     CountryNotFoundError,
     CriterionNotReadyError,
-    InvalidComparisonError,
-    InvalidProfileSelectionError,
     InvalidTopKError,
     InvalidWeightError,
     PreferencePresetNotFoundError,
-    ProfileNotFoundError,
     UnknownCriterionError,
 )
 from konsider.ingestion.current_release import CurrentReleaseError
-from konsider.repositories.published_release_repository import (
-    PublishedReleaseError,
-    UnsupportedReleaseContractError,
-)
 
 LOGGER = logging.getLogger("konsider.api")
 
@@ -101,22 +94,6 @@ def register_exception_handlers(app: FastAPI) -> None:
             {"top_k": exc.top_k, "eligible_country_count": exc.eligible_count},
         )
 
-    @app.exception_handler(InvalidProfileSelectionError)
-    async def invalid_profile_selection_handler(
-        request: Request, exc: InvalidProfileSelectionError
-    ):
-        return error_response(request, 422, "invalid_profile_selection", str(exc))
-
-    @app.exception_handler(ProfileNotFoundError)
-    async def profile_not_found_handler(request: Request, exc: ProfileNotFoundError):
-        return error_response(
-            request,
-            422,
-            "profile_not_found",
-            "The requested profile does not exist.",
-            {"profile_id": exc.profile_id},
-        )
-
     @app.exception_handler(PreferencePresetNotFoundError)
     async def preference_preset_not_found_handler(
         request: Request, exc: PreferencePresetNotFoundError
@@ -137,30 +114,6 @@ def register_exception_handlers(app: FastAPI) -> None:
             "country_not_found",
             "One or more country codes are unknown.",
             {"country_codes": exc.country_codes},
-        )
-
-    @app.exception_handler(InvalidComparisonError)
-    async def invalid_comparison_handler(request: Request, exc: InvalidComparisonError):
-        return error_response(request, 422, "invalid_comparison", str(exc))
-
-    @app.exception_handler(UnsupportedReleaseContractError)
-    async def unsupported_release_handler(request: Request, exc: UnsupportedReleaseContractError):
-        LOGGER.error("Unsupported release contract", exc_info=exc)
-        return error_response(
-            request,
-            503,
-            "unsupported_release_contract",
-            "The active release uses an unsupported contract.",
-        )
-
-    @app.exception_handler(PublishedReleaseError)
-    async def release_unavailable_handler(request: Request, exc: PublishedReleaseError):
-        LOGGER.error("Published release unavailable", exc_info=exc)
-        return error_response(
-            request,
-            503,
-            "release_unavailable",
-            "A validated active release is unavailable.",
         )
 
     @app.exception_handler(CurrentReleaseError)

@@ -1061,6 +1061,28 @@ class CurrentReleaseRepository:
         os.replace(pointer_tmp, self.root / "active.json")
         return self.root / "active.json"
 
+    def load_active(self, pointer_path: Path | str | None = None) -> LoadedCurrentRelease:
+        """Load the schema-current release selected by the active pointer."""
+
+        path = Path(pointer_path) if pointer_path is not None else self.root / "active.json"
+        try:
+            pointer = json.loads(path.read_text(encoding="utf-8"))
+        except (FileNotFoundError, json.JSONDecodeError) as exc:
+            raise CurrentReleaseError(
+                "The active release pointer is unavailable or invalid."
+            ) from exc
+        if pointer.get("schema_version") != RELEASE_SCHEMA_VERSION:
+            raise CurrentReleaseError(
+                "The active release pointer does not select the schema-current contract."
+            )
+        release_id = pointer.get("release_id")
+        if not isinstance(release_id, str) or not release_id:
+            raise CurrentReleaseError("The active release pointer has no valid release ID.")
+        loaded = self.load(self.root / release_id)
+        if loaded.manifest["release_id"] != release_id:
+            raise CurrentReleaseError("The active pointer and release manifest IDs disagree.")
+        return loaded
+
     def load(self, path: Path | str) -> LoadedCurrentRelease:
         release_path = Path(path)
         manifest = json.loads((release_path / "manifest.json").read_text(encoding="utf-8"))

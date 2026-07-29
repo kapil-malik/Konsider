@@ -20,13 +20,16 @@ def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
         ROOT / "data" / "releases" / ACTIVE_RELEASE_ID,
         release_root / ACTIVE_RELEASE_ID,
     )
-    shutil.copy2(
-        ROOT / "data" / "releases" / "legacy-active.json",
-        release_root / "active.json",
-    )
     catalog = tmp_path / "consumer-catalog.json"
     shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json", catalog)
-    return PublishedReleaseRepository(release_root, catalog), release_root / ACTIVE_RELEASE_ID
+    return (
+        PublishedReleaseRepository(
+            release_root,
+            catalog,
+            release_id=ACTIVE_RELEASE_ID,
+        ),
+        release_root / ACTIVE_RELEASE_ID,
+    )
 
 
 def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
@@ -45,7 +48,7 @@ def _rewrite_manifest_checksum(release: Path, filename: str) -> None:
 
 
 def test_active_release_loads_conditional_ready_matrix() -> None:
-    release = PublishedReleaseRepository().load_active()
+    release = PublishedReleaseRepository(release_id=ACTIVE_RELEASE_ID).load_active()
 
     assert release.release_id == ACTIVE_RELEASE_ID
     assert len(release.catalog["countries"]) == 91
@@ -68,7 +71,7 @@ def test_default_repository_paths_do_not_depend_on_working_directory(
 ) -> None:
     monkeypatch.chdir(tmp_path)
 
-    release = PublishedReleaseRepository().load_active()
+    release = PublishedReleaseRepository(release_id=ACTIVE_RELEASE_ID).load_active()
 
     assert release.release_id == ACTIVE_RELEASE_ID
 
@@ -81,20 +84,23 @@ def test_active_release_loads_after_git_style_lf_normalization(tmp_path: Path) -
     for source_path in source.iterdir():
         target_path = target / source_path.name
         target_path.write_bytes(source_path.read_bytes().replace(b"\r\n", b"\n"))
-    pointer = ROOT / "data" / "releases" / "legacy-active.json"
-    release_root.mkdir(parents=True, exist_ok=True)
-    (release_root / "active.json").write_bytes(pointer.read_bytes().replace(b"\r\n", b"\n"))
     catalog = tmp_path / "consumer-catalog.json"
     shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json", catalog)
 
-    release = PublishedReleaseRepository(release_root, catalog).load_active()
+    release = PublishedReleaseRepository(
+        release_root,
+        catalog,
+        release_id=ACTIVE_RELEASE_ID,
+    ).load_active()
 
     assert release.release_id == ACTIVE_RELEASE_ID
     assert len(release.records) == 989
 
 
 def test_diagnostic_mode_exposes_non_ready_records_without_enabling_them() -> None:
-    release = PublishedReleaseRepository().load_active(diagnostic_read_only=True)
+    release = PublishedReleaseRepository(release_id=ACTIVE_RELEASE_ID).load_active(
+        diagnostic_read_only=True
+    )
 
     assert len(release.records) == 1080
     assert "uhc_service_coverage_index" not in release.enabled_criterion_ids
@@ -110,11 +116,11 @@ def test_checksum_tampering_fails(tmp_path: Path) -> None:
 
 
 def test_unsupported_schema_fails(tmp_path: Path) -> None:
-    repository, _ = _repository(tmp_path)
-    pointer_path = repository.release_root / "active.json"
-    pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
-    pointer["schema_version"] = "konsider-release-5.0"
-    pointer_path.write_text(json.dumps(pointer), encoding="utf-8")
+    repository, release = _repository(tmp_path)
+    manifest_path = release / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["schema_version"] = "konsider-release-5.0"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
 
     with pytest.raises(PublishedReleaseError, match="Unsupported"):
         repository.load_active()

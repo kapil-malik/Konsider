@@ -35,8 +35,6 @@ class CoverageStatus(StrEnum):
 
 class ProfileStatus(StrEnum):
     NO_PROFILE_CONTEXT = "NO_PROFILE_CONTEXT"
-    NOT_EVALUATED = "NOT_EVALUATED"
-    EVALUATED = "EVALUATED"
 
 
 class ReasonSeverity(StrEnum):

@@ -19,42 +19,45 @@ Local Python worker ---> data/raw/ (ignored, content-addressed bytes)
 data/releases/{release_id}/ + data/releases/active.json
         |
         v
-CurrentReleaseRepository ----> V2RecommendationService --> FastAPI /api/v2 ---> React/Vite UI
+CurrentReleaseRepository ----> RecommendationService --> FastAPI /api/v2 ---> React/Vite UI
                                        ^                         |
                                        |                         v
                          release catalog              OpenAPI + JSON responses
 ```
 
-The active schema-5 release is `2026-07-29.2`. During the migration, API v1 reads the explicit
-`legacy-active.json` pointer to schema-4 release `2026-07-28.2`.
+The active schema-5 release is `2026-07-29.2`. It is the only release selected by the public
+runtime. Historical schema-3/4 releases remain immutable and can be opened only by an explicitly
+configured internal historical loader; they are never an alternate active API path.
 
 - The worker downloads ten registered official-source distributions, captures exact raw bytes,
   parses observations, computes versioned canonical scores, validates readiness, and publishes an
   immutable release only when the gate passes.
-- `PublishedReleaseRepository` validates the active pointer, schema majors, payload checksums,
-  counts, readiness, scoring versions, and provenance before joining records.
+- `CurrentReleaseRepository` validates the schema-5 active pointer, payload checksums, catalog,
+  geography, policies, outcomes, readiness, scoring versions, and provenance before joining data.
 - `RecommendationService` owns weight selection, normalization, contribution calculations,
   deterministic ranking, comparison, and country breakdowns.
 - FastAPI and Pydantic provide a thin versioned transport. One validated release snapshot is loaded
   during process startup and reused. Requests never fetch sources or recompute canonical scores.
 - Local files are the only implemented storage adapter. Legacy fixtures remain isolated tests and
   never fill product-release gaps.
-- The responsive React UI derives profiles, priority controls, ranking columns, sources, flags, and
-  release labels from `/api/v1`. TanStack Query owns API work; local state owns guest edits.
+- The responsive React UI derives preference presets, priority controls, ranking columns, sources,
+  flags, assessments, and release labels from `/api/v2`. TanStack Query owns API work; local state
+  owns guest edits.
 
-The active release is `2026-07-28.2`: 91 countries, twelve available criteria, eleven ready criteria,
-and eight 91/91 global-core criteria. Overall job-market opportunity is conditionally scored for
-its 88 valid countries when its raw weight reaches 0.6. UHC is diagnostic-only and cannot be
-weighted. Infrastructure remains experimental.
+The active release is `2026-07-29.2`: 91 countries, 388 frozen urban centres, and fourteen
+catalogued criteria. Extreme heat exposure and Projected warm-day frequency (2030) are experimental
+locality-derived criteria with 89/91 country coverage. Coverage, locality compatibility, and
+applicant-profile applicability remain independent structured assessments.
 Country-universe discovery and complete-case auditing are implemented as a separate safe worker
 flow. They use UN migrant-stock/M49 inputs plus the registered criterion sources, write diagnostic
 reports, and assert that `active.json` is unchanged. They do not share publication authority.
 
 ## Browser architecture
 
-The Phase 2C React, TypeScript, and Vite browser application calls only `/api/v1`, derives countries,
-criteria, profiles, labels, readiness, experimental flags, caveats, and sources from the catalog,
-and keeps editable weights in browser state. The UI contains no scoring or readiness logic.
+The React, TypeScript, and Vite browser application calls only `/api/v2`, derives countries,
+criteria, preference presets, labels, readiness, experimental flags, caveats, sources, and
+structured assessments from the catalog and ranking responses, and keeps editable weights in
+browser state. The UI contains no scoring, readiness, locality-selection, or eligibility logic.
 
 Local development will run Vite and Uvicorn as separate processes. The selected initial AWS design
 uses S3 and CloudFront for static UI assets, API Gateway plus Lambda for FastAPI, S3 for raw and
@@ -105,7 +108,7 @@ product endpoints return safe `503` envelopes. Changing the pointer requires a r
 
 ### Ranking
 
-The stable catalog remains 91 countries. The catalog or explicit request selects raw weights, and
+The stable catalog remains 91 countries. A preference preset or explicit request selects raw weights, and
 the domain service classifies ready criteria as full-coverage or conditional. It always creates
 the 91-country FCC baseline R0. When a conditional criterion reaches raw weight 0.6, the service
 builds the missing-country union, complete-case eligible universe, and R1 using one normalized

@@ -7,7 +7,20 @@ from typing import Literal
 from pydantic import Field, field_validator, model_validator
 
 from konsider.api.models.common import ApiModel
-from konsider.api.models.rankings import _validate_weights
+
+
+def _validate_weights(value):
+    if value is None:
+        return value
+    if not isinstance(value, dict):
+        raise ValueError("weights must be an object")
+    for criterion_id, weight in value.items():
+        if not isinstance(criterion_id, str) or not criterion_id:
+            raise ValueError("weight keys must be non-empty criterion IDs")
+        if isinstance(weight, bool) or not isinstance(weight, (int, float)):
+            raise ValueError("weights must contain numeric values")
+    return value
+
 
 CoverageMode = Literal[
     "GLOBAL_CORE",
@@ -229,9 +242,17 @@ class CountryLocalityAssessmentResponse(ApiModel):
 
 
 class ProfileAssessmentResponse(ApiModel):
-    status: Literal["NO_PROFILE_CONTEXT", "NOT_EVALUATED", "EVALUATED"]
+    status: Literal["NO_PROFILE_CONTEXT"]
     evaluated_dimensions: list[str]
     reasons: list[AssessmentReasonResponse]
+
+    @model_validator(mode="after")
+    def explicitly_unevaluated(self) -> ProfileAssessmentResponse:
+        if self.evaluated_dimensions:
+            raise ValueError("Profile dimensions cannot be evaluated without profile input.")
+        if not any(reason.effect == "NOT_EVALUATED" for reason in self.reasons):
+            raise ValueError("Profile assessment must explicitly report non-evaluation.")
+        return self
 
 
 class LocalityUniverseReferenceResponse(ApiModel):

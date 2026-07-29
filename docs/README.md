@@ -88,7 +88,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 5A locality criteria discovery](research/phase5a-locality-criteria-discovery.md)
 - [Phase 5B target architecture and contracts](architecture/phase5b-target-contracts.md)
 - [Phase 5E verification report](product/phase5e-verification.md)
-- [API v2 operations contract](operations/api-v2.md)
+- [Phase 5H contract migration](product/phase5h-contract-migration.md)
 
 ## Historical records
 
@@ -98,5 +98,5 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active release is `2026-07-29.2`; API v1 remains pinned through
-`legacy-active.json` to the final schema-4 release, `2026-07-28.2`.
+instructions. The active runtime serves schema-5 release `2026-07-29.2`; older immutable releases
+are available only through explicitly constructed internal historical loaders.

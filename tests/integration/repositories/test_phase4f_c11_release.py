@@ -46,6 +46,7 @@ def test_phase4f_publishes_replayable_schema4_release(tmp_path):
     release = PublishedReleaseRepository(
         release_root=tmp_path / "releases",
         catalog_path=tmp_path / "consumer-catalog-2.0.json",
+        active_release_path=tmp_path / "releases" / "active.json",
     ).load_active()
 
     assert published == tmp_path / "releases" / "phase4f-test"

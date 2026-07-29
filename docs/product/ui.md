@@ -1,6 +1,6 @@
 # Responsive locality-aware ranking and comparison UI
 
-Status: Phase 5F implemented locally
+Status: Phase 5H final contract
 
 The UI is a comparison and inspection surface over `/api/v2`, not a second recommendation engine.
 It is implemented as one responsive React, TypeScript, and Vite application under `web/`.
@@ -135,3 +135,13 @@ The browser does not select localities, compute intersections, derive a best com
 determine assessment statuses, alter affinity scores, or infer applicant constraints. Compile-time
 contract checks reject legacy Phase 4 request and response fields, and Playwright verifies the
 `/api/v2` request path on desktop and mobile.
+
+## Phase 5H contract finalization
+
+The UI has one transport contract: generated `/api/v2` component types. Handwritten aliases for
+the retired Phase 3/4 payloads and runtime fallbacks for old field names have been removed.
+`preference_presets` is the only catalog preset collection, and requests use
+`preference_preset_id`. Coverage, locality, and profile applicability render only from their
+separate structured assessments. With no applicant profile input, every profile assessment is
+explicitly `NO_PROFILE_CONTEXT`, has no evaluated dimensions, and carries a `NOT_EVALUATED`
+reason. The compile-time negative checks are retained as tests, not production compatibility code.

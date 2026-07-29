@@ -3,7 +3,6 @@ import re
 from pathlib import Path
 
 from konsider.api.app import create_app
-from konsider.application import RecommendationService
 
 ROOT = Path(__file__).resolve().parents[2]
 MARKDOWN_ROOTS = [
@@ -53,16 +52,13 @@ def test_json_documentation_examples_are_valid() -> None:
 
 
 def test_documented_api_paths_match_openapi() -> None:
-    documents = [
-        ROOT / "docs" / "operations" / "api.md",
-        ROOT / "docs" / "operations" / "api-v2.md",
-    ]
+    documents = [ROOT / "docs" / "operations" / "api.md"]
     documented = {
         path
         for document in documents
         for path in re.findall(r"`(/api/v[12]/[^`]+)`", document.read_text(encoding="utf-8"))
     }
-    openapi = create_app(service=RecommendationService()).openapi()
+    openapi = create_app().openapi()
     assert documented == set(openapi["paths"])
 
 

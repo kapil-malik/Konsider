@@ -13,6 +13,7 @@ def _repository(root: Path = FIXTURE) -> PublishedReleaseRepository:
     return PublishedReleaseRepository(
         root / "releases",
         root / "consumer-catalog-2.0.json",
+        active_release_path=root / "releases" / "active.json",
     )
 
 

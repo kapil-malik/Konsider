@@ -10,9 +10,9 @@ from konsider.api.app import create_app
 from konsider.api.models.v2 import (
     AssessmentsV2Response,
     ContributionV2Response,
+    ProfileAssessmentResponse,
 )
-from konsider.api.v2_service import V2RecommendationService
-from konsider.application import RecommendationService
+from konsider.api.v2_service import RecommendationService
 from tests.unit.domain.test_phase5d_locality_engine import _load
 
 
@@ -38,10 +38,7 @@ def current_client(tmp_path: Path):
         ],
         countries=("CAN", "MEX", "USA"),
     )
-    app = create_app(
-        service=RecommendationService(),
-        v2_service=V2RecommendationService(release),
-    )
+    app = create_app(service=RecommendationService(release))
     with TestClient(app) as client:
         yield client
 
@@ -80,7 +77,15 @@ def test_v2_ranking_exposes_locality_provenance_and_orthogonal_assessments(
     assert set(body["assessments"]) == {"coverage", "locality", "profile"}
     assert body["assessments"]["coverage"]["status"] == "PARTIAL_COMPLETE_CASE"
     assert body["assessments"]["locality"]["status"] == "ONE_ACTIVE_LOCALITY_CRITERION"
-    assert body["assessments"]["profile"]["status"] == "NO_PROFILE_CONTEXT"
+    profile = body["assessments"]["profile"]
+    assert profile["status"] == "NO_PROFILE_CONTEXT"
+    assert profile["evaluated_dimensions"] == []
+    assert {reason["effect"] for reason in profile["reasons"]} == {"NOT_EVALUATED"}
+    for country in body["rankings"]:
+        country_profile = country["assessments"]["profile"]
+        assert country_profile["status"] == "NO_PROFILE_CONTEXT"
+        assert country_profile["evaluated_dimensions"] == []
+        assert {reason["effect"] for reason in country_profile["reasons"]} == {"NOT_EVALUATED"}
     assert "uncertainty_status" not in body
     assert "locality_status" not in body
 
@@ -143,23 +148,6 @@ def test_v2_rejects_legacy_aliases_and_undocumented_fields(current_client: TestC
         assert response.status_code == 422
 
 
-def test_v1_remains_available_unchanged_during_the_migration() -> None:
-    with TestClient(create_app(service=RecommendationService())) as client:
-        catalog = client.get("/api/v1/catalog")
-        ranking = client.post("/api/v1/rankings", json={"profile_id": "equal_weight_mvp"})
-        v2 = client.post(
-            "/api/v2/rankings",
-            json={"preference_preset_id": "equal_weight_mvp", "top_k": 3},
-        )
-    assert catalog.status_code == 200
-    assert "profiles" in catalog.json()
-    assert ranking.status_code == 200
-    assert ranking.json()["resolved_profile_id"] == "equal_weight_mvp"
-    assert v2.status_code == 200
-    assert v2.json()["resolved_preference_preset_id"] == "equal_weight_mvp"
-    assert "resolved_profile_id" not in v2.json()
-
-
 @pytest.mark.parametrize(
     "coverage_status",
     [
@@ -209,7 +197,13 @@ def test_coverage_and_locality_statuses_are_transport_independent(
             "profile": {
                 "status": "NO_PROFILE_CONTEXT",
                 "evaluated_dimensions": [],
-                "reasons": [],
+                "reasons": [
+                    {
+                        "code": "PROFILE_CONTEXT_NOT_SUPPLIED",
+                        "severity": "INFO",
+                        "effect": "NOT_EVALUATED",
+                    }
+                ],
             },
         }
     )
@@ -239,9 +233,41 @@ def test_invalid_cross_domain_contribution_combinations_are_rejected(
         ContributionV2Response.model_validate(derived_without_policy)
 
 
-def test_openapi_declares_both_major_boundaries_and_every_v2_status() -> None:
-    schema = create_app(service=RecommendationService()).openapi()
-    assert {path for path in schema["paths"] if path.startswith("/api/v2/")} == {
+def test_profile_assessment_cannot_claim_evaluation_without_profile_input() -> None:
+    with pytest.raises(ValidationError):
+        ProfileAssessmentResponse.model_validate(
+            {
+                "status": "NO_PROFILE_CONTEXT",
+                "evaluated_dimensions": ["occupation"],
+                "reasons": [
+                    {
+                        "code": "PROFILE_CONTEXT_NOT_SUPPLIED",
+                        "severity": "INFO",
+                        "effect": "NOT_EVALUATED",
+                    }
+                ],
+            }
+        )
+
+    with pytest.raises(ValidationError):
+        ProfileAssessmentResponse.model_validate(
+            {
+                "status": "NO_PROFILE_CONTEXT",
+                "evaluated_dimensions": [],
+                "reasons": [
+                    {
+                        "code": "PROFILE_CONTEXT_NOT_SUPPLIED",
+                        "severity": "INFO",
+                        "effect": "ADVISORY",
+                    }
+                ],
+            }
+        )
+
+
+def test_openapi_declares_only_the_final_public_routes_and_every_status() -> None:
+    schema = create_app().openapi()
+    assert set(schema["paths"]) == {
         "/api/v2/health",
         "/api/v2/catalog",
         "/api/v2/rankings",
@@ -264,7 +290,7 @@ def test_openapi_declares_both_major_boundaries_and_every_v2_status() -> None:
 
 def test_exported_openapi_and_generated_types_match_application() -> None:
     root = Path(__file__).resolve().parents[3]
-    expected = create_app(service=RecommendationService()).openapi()
+    expected = create_app().openapi()
     contract = json.loads(
         (root / "contracts" / "openapi" / "konsider-api-2.0.json").read_text(encoding="utf-8")
     )

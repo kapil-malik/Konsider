@@ -1,23 +1,7 @@
 import type { components } from './schema'
 
-export type Catalog = components['schemas']['CatalogResponse']
-export type CatalogCriterion = components['schemas']['CatalogCriterionResponse']
-export type Profile = components['schemas']['ProfileResponse']
-export type RankingRequest = components['schemas']['RankingRequest']
-export type Ranking = components['schemas']['RankingResponse']
-export type RankedCountry = components['schemas']['RankedCountryResponse']
-export type Contribution = components['schemas']['ContributionResponse']
-export type IgnoredPcc = components['schemas']['IgnoredPccResponse']
-export type ExcludedCountry = components['schemas']['ExcludedCountryResponse']
-export type ComparisonCountrySummary = components['schemas']['ComparisonCountrySummaryResponse']
-export type ComparisonCriterionRow = components['schemas']['ComparisonCriterionRowResponse']
-export type ComparisonCell = components['schemas']['ComparisonCellResponse']
-export type CountryMetric = components['schemas']['CountryMetricResponse']
-export type ComparisonRequest = components['schemas']['ComparisonRequest']
-export type Comparison = components['schemas']['ComparisonResponse']
 export type ErrorEnvelope = components['schemas']['ErrorResponse']
 
-// API v2 transport aliases. Phase 5F moves consumers to these generated shapes.
 export type CatalogV2 = components['schemas']['CatalogV2Response']
 export type CatalogCriterionV2 = components['schemas']['CatalogCriterionV2Response']
 export type PreferencePreset = components['schemas']['PreferencePresetResponse']

@@ -4,11 +4,12 @@ import pytest
 
 from konsider.application import RecommendationService
 from konsider.domain.scoring import ScoringError
+from konsider.repositories.published_release_repository import PublishedReleaseRepository
 
 
 @pytest.fixture(scope="module")
 def service() -> RecommendationService:
-    return RecommendationService()
+    return RecommendationService(PublishedReleaseRepository(release_id="2026-07-28.2"))
 
 
 def test_catalog_has_eleven_enabled_criteria(service) -> None:

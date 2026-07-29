@@ -1,8 +1,8 @@
 # Konsider
 
 Konsider is an evidence-backed country-suitability project. It implements a local official-data
-refresh worker, immutable versioned releases, a deterministic recommendation service, typed
-FastAPI v1/v2 APIs, and a responsive catalog-driven React comparison UI.
+refresh worker, immutable versioned releases, a deterministic recommendation service, a typed
+FastAPI v2 API, and a responsive catalog-driven React comparison UI.
 
 Active release `2026-07-29.2` contains 91 countries, 388 selected urban centres, and fourteen
 catalogued criteria. Eight global-core criteria cover all countries; Overall job-market
@@ -14,7 +14,7 @@ criteria, keep missing/stale outcomes explicit, and never impute or calculate pa
 scores.
 
 ```text
-official sources -> worker -> immutable local releases -> RecommendationService -> FastAPI /api/v1
+official sources -> worker -> immutable local releases -> RecommendationService -> FastAPI /api/v2
                                       ^
                                       |
                                active.json pointer
@@ -35,7 +35,7 @@ pytest
 python -m uvicorn konsider.api.app:app --reload
 ```
 
-Health is available at <http://127.0.0.1:8000/api/v1/health> and interactive API documentation at
+Health is available at <http://127.0.0.1:8000/api/v2/health> and interactive API documentation at
 <http://127.0.0.1:8000/docs>.
 
 Start the responsive UI in a second terminal after following the API CORS instructions in the

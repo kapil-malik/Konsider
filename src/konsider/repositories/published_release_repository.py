@@ -80,27 +80,37 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 class PublishedReleaseRepository:
-    """Load one active release without calling any upstream data source."""
+    """Load an explicitly selected historical schema-3/4 release."""
 
     def __init__(
         self,
         release_root: Path | str | None = None,
         catalog_path: Path | str | None = None,
         active_release_path: Path | str | None = None,
+        release_id: str | None = None,
     ) -> None:
+        if (active_release_path is None) == (release_id is None):
+            raise ValueError("Select one historical release by explicit pointer or release ID.")
         self.release_root = Path(release_root or PROJECT_ROOT / "data" / "releases").resolve()
         self.catalog_path = Path(catalog_path).resolve() if catalog_path is not None else None
-        if active_release_path is not None:
-            self.active_release_path = Path(active_release_path)
-        else:
-            legacy_pointer = self.release_root / "legacy-active.json"
-            self.active_release_path = (
-                legacy_pointer if legacy_pointer.exists() else self.release_root / "active.json"
-            )
+        self.release_id = release_id
+        self.active_release_path = (
+            Path(active_release_path).resolve() if active_release_path is not None else None
+        )
 
     def load_active(self, *, diagnostic_read_only: bool = False) -> PublishedRelease:
         try:
-            pointer = _read_json(self.active_release_path)
+            if self.release_id is None:
+                assert self.active_release_path is not None
+                pointer = _read_json(self.active_release_path)
+            else:
+                historical_manifest = _read_json(
+                    self.release_root / self.release_id / "manifest.json"
+                )
+                pointer = {
+                    "release_id": self.release_id,
+                    "schema_version": historical_manifest["schema_version"],
+                }
             release_major = require_supported_version(
                 pointer.get("schema_version"), "konsider-release"
             )

@@ -1,399 +1,108 @@
-# API operations and reference
+# Konsider API operations and contract
 
-The Phase 2B API is a JSON-only FastAPI transport over `RecommendationService`. It loads and
-validates one active immutable release snapshot during application startup, reuses it for the
-process lifetime, and never fetches external sources or recomputes canonical 1-10 scores. Changing
-`active.json` requires a process restart. Every successful response identifies its release,
-release schema, catalog schema, and relevant scoring methods.
+Status: authoritative Phase 5H public contract
 
-OpenAPI at `/openapi.json` is authoritative for transport shapes. Swagger UI is available at
-`/docs`. Frontend types must be generated from OpenAPI or runtime-validated against it; prose
-examples here are tested but remain illustrative. This document describes the transitional
-`/api/v1` contract. New consumers should use [API v2](api-v2.md); v1 is scheduled for Phase 5H
-removal.
+Contract version: `konsider-api-2.0`
 
-The product pointer currently names schema-5 release `2026-07-29.2`. This transitional v1
-service reads `data/releases/legacy-active.json`, pinned to schema-4 release `2026-07-28.2`;
-v2 follows the product pointer.
+Active release: `2026-07-29.2`
 
-## Install and start
+Konsider exposes one structured API over the schema-current immutable release selected by
+`data/releases/active.json`. The generated
+[`contracts/openapi/konsider-api-2.0.json`](../../contracts/openapi/konsider-api-2.0.json)
+document is authoritative. Undocumented request fields are rejected.
 
-Follow [local setup](local-setup.md), then start Uvicorn from the repository root.
+## Start
 
-PowerShell:
+From the repository root:
 
-```powershell
-.venv\Scripts\Activate.ps1
+```text
 python -m uvicorn konsider.api.app:app --reload
 ```
 
-Bash:
+The default service is `http://127.0.0.1:8000`. Swagger UI is at `/docs` and OpenAPI is at
+`/openapi.json`.
 
-```bash
-source .venv/bin/activate
-python -m uvicorn konsider.api.app:app --reload
-```
-
-Uvicorn defaults to `127.0.0.1:8000`.
-
-- Health: <http://127.0.0.1:8000/api/v1/health>
-- Swagger UI: <http://127.0.0.1:8000/docs>
-- OpenAPI JSON: <http://127.0.0.1:8000/openapi.json>
-
-## Configuration
-
-All settings are optional.
-
-| Variable | Purpose | Default | Example |
-| --- | --- | --- | --- |
-| `KONSIDER_RELEASE_ROOT` | Directory containing release folders. | Repository `data/releases` | `/srv/konsider/releases` |
-| `KONSIDER_ACTIVE_RELEASE_PATH` | Active pointer JSON. | `RELEASE_ROOT/active.json` | `/srv/konsider/releases/active.json` |
-| `KONSIDER_CATALOG_PATH` | Optional catalog override. | Schema-matched repository catalog | `/srv/konsider/catalog.json` |
-| `KONSIDER_ENVIRONMENT` | Environment label exposed to application settings. | `development` | `staging` |
-| `KONSIDER_LOG_LEVEL` | `konsider.api` logger level; uppercased. | `INFO` | `DEBUG` |
-| `KONSIDER_CORS_ORIGINS` | Comma-separated exact browser origins. Empty disables CORS middleware. | empty | `http://localhost:5173` |
-
-Local Phase 2C CORS example:
-
-```powershell
-$env:KONSIDER_CORS_ORIGINS = "http://localhost:5173,http://127.0.0.1:5173"
-python -m uvicorn konsider.api.app:app --reload
-```
-
-```bash
-KONSIDER_CORS_ORIGINS="http://localhost:5173,http://127.0.0.1:5173" \
-  python -m uvicorn konsider.api.app:app --reload
-```
-
-Allowed CORS methods are `GET` and `POST`; allowed request headers are `Content-Type` and
-`X-Request-ID`. Credentials are disabled.
-
-## Startup validation and degraded mode
-
-Startup resolves `active.json`, validates supported schema majors, validates the pointer, manifest,
-validation report, catalog, sources, observations, and scores against JSON Schemas, verifies every
-declared payload checksum and the aggregate checksum, reconciles counts/readiness/method versions,
-and joins complete country/criterion provenance.
-
-Missing files, checksum failures, incompatible contracts, incomplete matrices, or broken lineage do
-not expose local paths to clients. The process starts in controlled degraded mode and all endpoints
-that need the service return `503`. Detailed exceptions are logged server-side. Unexpected runtime
-failures use a safe `500` envelope.
-
-## Endpoint summary
-
-| Method | Path | Purpose |
+| Setting | Meaning | Default |
 | --- | --- | --- |
-| `GET` | `/api/v1/health` | Report API and active-release readiness. |
-| `GET` | `/api/v1/catalog` | Return countries, all criteria, readiness, caveats, and profiles. |
-| `POST` | `/api/v1/rankings` | Rank eligible countries with a profile or explicit weights. |
-| `GET` | `/api/v1/countries/{country_code}/metrics` | Return one country's enabled metric breakdown. |
-| `POST` | `/api/v1/comparisons` | Compare 2-10 selected countries using ranking semantics. |
+| `KONSIDER_RELEASE_ROOT` | Immutable release directories. | `data/releases` |
+| `KONSIDER_ACTIVE_RELEASE_PATH` | Schema-5 active pointer. | `data/releases/active.json` |
+| `KONSIDER_ENVIRONMENT` | Deployment label. | `development` |
+| `KONSIDER_LOG_LEVEL` | Python log level. | `INFO` |
+| `KONSIDER_CORS_ORIGINS` | Comma-separated browser origins. | none |
 
-## Command examples
+The active runtime does not accept a separate catalog override. Catalog 3 is embedded in and
+checksummed with each schema-5 release.
 
-### curl
+## Public routes
 
-```bash
-curl http://127.0.0.1:8000/api/v1/health
-curl http://127.0.0.1:8000/api/v1/catalog
-curl -X POST http://127.0.0.1:8000/api/v1/rankings \
-  -H "Content-Type: application/json" \
-  -d '{"weights":{"ambient_pm25_population_weighted":3,"intentional_homicide_rate":2},"top_k":3}'
-curl http://127.0.0.1:8000/api/v1/countries/ind/metrics
-curl -X POST http://127.0.0.1:8000/api/v1/comparisons \
-  -H "Content-Type: application/json" \
-  -d '{"country_codes":["IND","SGP","CAN"],"profile_id":"equal_weight_mvp"}'
-```
+| Method | Route | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/v2/health` | Report active-release readiness. |
+| `GET` | `/api/v2/catalog` | Return criteria, canonical countries, and preference presets. |
+| `POST` | `/api/v2/rankings` | Rank countries with structured assessments. |
+| `POST` | `/api/v2/comparisons` | Compare two to ten countries. |
+| `POST` | `/api/v2/countries/{country_code}/details` | Return contextual country evidence. |
 
-### PowerShell
+There are no public v1 routes or aliases.
 
-```powershell
-Invoke-RestMethod http://127.0.0.1:8000/api/v1/health
-Invoke-RestMethod http://127.0.0.1:8000/api/v1/catalog
+## Weight selection
 
-$ranking = @{
-  weights = @{ ambient_pm25_population_weighted = 3; intentional_homicide_rate = 2 }
-  top_k = 3
-} | ConvertTo-Json
-Invoke-RestMethod -Method Post -ContentType "application/json" -Body $ranking `
-  http://127.0.0.1:8000/api/v1/rankings
-
-Invoke-RestMethod http://127.0.0.1:8000/api/v1/countries/ind/metrics
-
-$comparison = @{
-  country_codes = @("IND", "SGP", "CAN")
-  profile_id = "equal_weight_mvp"
-} | ConvertTo-Json
-Invoke-RestMethod -Method Post -ContentType "application/json" -Body $comparison `
-  http://127.0.0.1:8000/api/v1/comparisons
-```
-
-## `GET /api/v1/health`
-
-Returns `200` after successful startup validation or `503` in degraded mode. It has no parameters.
-
-Representative complete response:
+Requests accept either `weights` or `preference_preset_id`, never both. If neither is supplied,
+the server selects the default equal-weight preference preset.
 
 ```json
 {
-  "release_id": "2026-07-28.2",
-  "release_schema_version": "konsider-release-4.0",
-  "catalog_schema_version": "consumer-catalog-2.0",
-  "scoring_method_versions": [
-    "homicide_risk_bands_v1",
-    "icp_relative_cost_bands_v2",
-    "infrastructure_readiness_bands_v1",
-    "pm25_health_bands_v1",
-    "wbl_legal_equality_bands_v1"
-  ],
-  "status": "ok",
-  "country_count": 91,
-  "enabled_criterion_count": 9,
-  "ready_for_rankings": true
+  "preference_preset_id": "equal_weight_mvp",
+  "top_k": 10
 }
 ```
 
-Initialization failure example (`503`):
+`profile_id` is not a weight-preset alias. Profile terminology is reserved for future typed
+applicant or household context.
+
+## Authoritative response ownership
+
+Ranking, comparison, and country-details responses contain:
+
+- `assessments.coverage`: active global-core and conditional criteria, coverage fallback,
+  excluded-country evidence, and structured coverage reasons;
+- `assessments.locality`: contributing locality criteria, threshold-triggered analysis,
+  aggregation policies, and response-wide locality status;
+- `assessments.profile`: explicit `NO_PROFILE_CONTEXT`, no evaluated dimensions, and a
+  `NOT_EVALUATED` reason.
+
+Ranked and compared countries carry only their country-specific locality and profile assessments.
+Coverage does not appear in locality statuses. A locality advisory never changes country
+eligibility or the country aggregate.
+
+Criterion catalog entries have root identity and interpretation fields plus exactly one
+`coverage`, one `scope`, and one `applicability` object. Weight-only catalog entries are
+`preference_presets`.
+
+## Evidence and errors
+
+National contributions carry direct country evidence. Locality-derived contributions additionally
+carry the frozen locality universe, aggregation policy, contributor entities, observations,
+scores, and source lineage. Unavailable criterion cells have an outcome and evidence reasons but
+no contribution.
+
+Errors use:
 
 ```json
 {
   "error": {
-    "code": "release_unavailable",
-    "message": "A validated active release is unavailable.",
+    "code": "request_validation_failed",
+    "message": "The request payload is invalid.",
     "details": {},
     "request_id": null
   }
 }
 ```
 
-## `GET /api/v1/catalog`
+Invalid input returns 422, unknown countries return 404, unavailable active releases return 503,
+and unexpected failures return a redacted 500.
 
-Returns `200`, `500`, or `503`. The response contains:
+## Historical boundary
 
-- 91 ISO-3 countries with display names and regions;
-- ten criteria with descriptions, direction, raw units, interpretation, caveats, quality limits,
-  readiness, default-enabled state, experimental status, and scoring method version; and
-- four provisional, user-editable profiles, with `equal_weight_mvp` as the documented default; and
-- a public source mapping and source reference period for every criterion.
-
-UHC is returned with `ready: false` and `default_enabled: false`. Infrastructure is returned with
-`experimental: true`. Catalog metadata is authoritative for the UI.
-
-Carefully abbreviated response:
-
-```text
-{
-  "release_id": "2026-07-28.2",
-  "release_schema_version": "konsider-release-4.0",
-  "catalog_schema_version": "consumer-catalog-2.0",
-  "scoring_method_versions": [ten available method versions],
-  "countries": [91 CountryResponse objects],
-  "criteria": [ten CriterionResponse objects],
-  "profiles": [four ProfileResponse objects]
-}
-```
-
-The current profile IDs are `equal_weight_mvp`, `safety_and_stability`, `affordability_first`, and
-`quality_of_life`. Profile labels and raw weights remain server-owned and must not be duplicated in
-the browser.
-
-The route declares `200`, `422`, `500`, and `503`; because it has no input, `422` is not expected in
-a normal call. Startup/catalog validation failures use the shared `503` envelope shown above.
-
-## `POST /api/v1/rankings`
-
-Request fields:
-
-| Field | Rules |
-| --- | --- |
-| `weights` | Optional object of criterion ID to JSON number. Values must be finite and non-negative. Unknown and non-ready criteria are rejected. |
-| `profile_id` | Optional non-empty catalog profile ID. Cannot be supplied with `weights`. |
-| `top_k` | Optional strict integer from 1 through the active eligible count. Defaults to 10. Score-boundary ties may make the returned collection larger than K. |
-
-If neither selector is supplied, `equal_weight_mvp` is used. With explicit weights, omitted enabled
-criteria receive zero. If every explicit weight is zero (including an empty object), the service
-uses equal weights across the eight global-core criteria; a partial-coverage criterion remains
-inactive below its activation threshold. Non-zero active weights are normalized to sum to one.
-
-Canonical scores come from the release. A contribution is the published score multiplied by its
-normalized weight. Totals are sorted descending; ties use ascending ISO-3 country code. Strengths
-and trade-offs deterministically list up to three positively weighted criterion IDs ordered by high
-and low canonical score respectively. See [scoring methodology](../data/scoring-methodology.md).
-
-Complete request:
-
-```json
-{
-  "weights": {
-    "ambient_pm25_population_weighted": 3,
-    "intentional_homicide_rate": 2,
-    "household_consumption_price_level_us_100": 1
-  },
-  "top_k": 3
-}
-```
-
-Carefully abbreviated `200` response:
-
-```text
-{
-  "release_id": "2026-07-28.2",
-  "release_schema_version": "konsider-release-4.0",
-  "catalog_schema_version": "consumer-catalog-2.0",
-  "scoring_method_versions": [nine enabled method versions],
-  "resolved_profile_id": null,
-  "normalized_weights": {nine enabled criterion IDs},
-  "all_zero_behavior": "equal_weights_across_all_enabled_criteria",
-  "country_tie_breaker": "ascending_iso3_country_code",
-  "rounding_tolerance": 1e-8,
-  "total_eligible_country_count": 91,
-  "returned_result_count": 3,
-  "rankings": [{
-    "rank": 1,
-    "country_code": "...",
-    "country_name": "...",
-    "region": "...",
-    "total_score": 0.0,
-    "contributions": [ContributionResponse with observations and source],
-    "strengths": [criterion IDs],
-    "tradeoffs": [criterion IDs]
-  }]
-}
-```
-
-Returns `200`, request/domain `422`, `500`, or `503`. Phase 4 uncertainty metadata and
-coverage-limit fallback behavior are documented in the
-[Phase 4E API contract](phase4e-api-contract.md).
-
-Non-ready weight example (`422`):
-
-```json
-{
-  "error": {
-    "code": "criterion_not_ready",
-    "message": "One or more criteria are not available for ranking.",
-    "details": {"criterion_ids": ["uhc_service_coverage_index"]},
-    "request_id": null
-  }
-}
-```
-
-## `GET /api/v1/countries/{country_code}/metrics`
-
-`country_code` is case-insensitive ISO-3 input; output is canonical uppercase. A successful response
-contains the country and each available enabled criterion record. Each record contains catalog metadata,
-canonical normalized score, transform and direction, observation IDs, raw values and units,
-reference periods, method/parser versions, quality flags, exact source-record locators, and public
-source metadata. Caveats, quality limitations, and experimental status come from the criterion.
-
-UHC is excluded from normal product metrics because it is non-ready. Infrastructure remains present
-and experimental. The route declares `200`, unknown-country `404`, `422`, `500`, and `503`.
-
-Carefully abbreviated response:
-
-```text
-{
-  "release_id": "2026-07-28.2",
-  "release_schema_version": "konsider-release-4.0",
-  "catalog_schema_version": "consumer-catalog-2.0",
-  "scoring_method_versions": [nine enabled method versions],
-  "country": {"code": "IND", "display_name": "India", "region": "South Asia"},
-  "criteria": [available CountryCriterionMetricResponse objects]
-}
-```
-
-Unknown country example (`404`):
-
-```json
-{
-  "error": {
-    "code": "country_not_found",
-    "message": "One or more country codes are unknown.",
-    "details": {"country_codes": ["ZZZ"]},
-    "request_id": null
-  }
-}
-```
-
-## `POST /api/v1/comparisons`
-
-The body requires `country_codes` plus the same mutually exclusive `weights`/`profile_id` selector
-used by rankings. Supply 2-10 unique known ISO-3 codes. Input is normalized to uppercase. Returned
-countries preserve request order, while each row's `rank` remains its rank among all 91 eligible
-countries under the selected weights.
-
-```json
-{
-  "country_codes": ["IND", "SGP", "CAN"],
-  "profile_id": "equal_weight_mvp"
-}
-```
-
-The response has the same version, normalized-weight, tie-breaker, tolerance, and ranked-country
-shapes as rankings, with `countries` instead of `rankings`. Returns `200`, unknown-country `404`,
-selection/domain `422`, `500`, or `503`.
-
-Carefully abbreviated response:
-
-```text
-{
-  "release_id": "2026-07-28.2",
-  "resolved_profile_id": "equal_weight_mvp",
-  "normalized_weights": {nine enabled criterion IDs},
-  "total_eligible_country_count": 91,
-  "returned_result_count": 3,
-  "countries": [three RankedCountryResponse objects in requested order]
-}
-```
-
-Invalid selection example (`422`):
-
-```json
-{
-  "error": {
-    "code": "invalid_comparison",
-    "message": "Comparisons require between 2 and 10 countries.",
-    "details": {},
-    "request_id": null
-  }
-}
-```
-
-## Errors
-
-All errors share this envelope. `request_id` echoes `X-Request-ID` when provided.
-
-```json
-{
-  "error": {
-    "code": "criterion_not_ready",
-    "message": "One or more criteria are not available for ranking.",
-    "details": {"criterion_ids": ["uhc_service_coverage_index"]},
-    "request_id": null
-  }
-}
-```
-
-| Code | HTTP | Meaning |
-| --- | ---: | --- |
-| `request_validation_failed` | 422 | JSON or Pydantic transport validation failed. |
-| `unknown_criterion` | 422 | A weight key is not in the catalog. |
-| `criterion_not_ready` | 422 | A known non-ready criterion, currently UHC, was weighted. |
-| `invalid_weight` | 422 | A weight is negative, non-finite, invalid, or cannot normalize. |
-| `invalid_top_k` | 422 | `top_k` is not an integer from 1 through the eligible count. |
-| `invalid_profile_selection` | 422 | Both `weights` and `profile_id` were supplied. |
-| `profile_not_found` | 422 | The selected profile ID does not exist. |
-| `invalid_comparison` | 422 | Country count is outside 2-10 or codes are duplicated. |
-| `country_not_found` | 404 | One or more ISO-3 country codes are unknown. |
-| `unsupported_release_contract` | 503 | Active release uses an unsupported schema major. |
-| `release_unavailable` | 503 | Active release is missing, corrupt, invalid, or failed startup validation. |
-| `internal_error` | 500 | An unexpected failure occurred; private details remain server-side. |
-
-## Phase 4 closure boundary
-
-The API exposes the stable 91-country catalog separately from a request's eligible ranking
-universe. `baseline_*` fields describe the full-coverage R0; `rankings` describes R1 when the
-coverage gate passes; `excluded_countries` never contains a final rank. Robustness status, Kth
-scores, ties, optimistic bounds, and normalized weights are supplied by the domain result. Routes
-and response mappers do not recalculate them.
+Schema-3/4 release and catalog readers remain internal for explicit audit and historical
+regression. They are not consulted by the active application and do not expose HTTP routes.

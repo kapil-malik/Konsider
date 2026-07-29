@@ -17,7 +17,13 @@ PCC_IDS = {
 
 
 def _active_release():
-    return PublishedReleaseRepository().load_active(diagnostic_read_only=True)
+    return PublishedReleaseRepository(release_id="2026-07-28.2").load_active(
+        diagnostic_read_only=True
+    )
+
+
+def _historical_service() -> RecommendationService:
+    return RecommendationService(PublishedReleaseRepository(release_id="2026-07-28.2"))
 
 
 def test_active_release_proves_phase4_structural_invariants() -> None:
@@ -48,7 +54,7 @@ def test_active_release_proves_phase4_structural_invariants() -> None:
 
 @pytest.mark.parametrize("top_k", [5, 10, 20])
 def test_active_release_complete_case_runtime_invariants(top_k: int) -> None:
-    result = RecommendationService().rank_with_uncertainty(
+    result = _historical_service().rank_with_uncertainty(
         profile_id="equal_weight_mvp",
         top_k=top_k,
     )
@@ -81,7 +87,7 @@ def test_active_release_complete_case_runtime_invariants(top_k: int) -> None:
 
 
 def test_fcc_only_and_below_threshold_requests_preserve_full_catalog() -> None:
-    service = RecommendationService()
+    service = _historical_service()
     weights = {"intentional_homicide_rate": 1.0}
     baseline = service.rank_with_uncertainty(weights, top_k=91)
     ignored = service.rank_with_uncertainty(
