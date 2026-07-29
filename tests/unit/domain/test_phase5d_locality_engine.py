@@ -600,6 +600,53 @@ def test_national_only_and_locality_activation_thresholds(tmp_path: Path) -> Non
     assert medium.locality_assessment.status == LocalityStatus.ONE_ACTIVE_LOCALITY_CRITERION
 
 
+@pytest.mark.parametrize(
+    ("weight", "expected_status", "contributes"),
+    [
+        (0.0, LocalityStatus.NO_ACTIVE_LOCALITY_CRITERIA, False),
+        (0.2, LocalityStatus.BELOW_ANALYSIS_THRESHOLD, True),
+        (0.4, LocalityStatus.BELOW_ANALYSIS_THRESHOLD, True),
+        (0.6, LocalityStatus.ONE_ACTIVE_LOCALITY_CRITERION, True),
+        (0.8, LocalityStatus.ONE_ACTIVE_LOCALITY_CRITERION, True),
+        (1.0, LocalityStatus.ONE_ACTIVE_LOCALITY_CRITERION, True),
+    ],
+)
+def test_all_six_weight_levels_preserve_provenance_and_medium_boundary(
+    tmp_path: Path,
+    weight: float,
+    expected_status: LocalityStatus,
+    contributes: bool,
+) -> None:
+    release = _load(
+        tmp_path,
+        [
+            {"id": "N1", "scores": {"CAN": 8, "MEX": 7}},
+            {
+                "id": "L1",
+                "locality": True,
+                "scores": {"CAN": {"a": 9}, "MEX": {"a": 6}},
+            },
+        ],
+    )
+
+    result = rank_schema5_release(release, {"N1": 1, "L1": weight})
+
+    assert result.locality_assessment.status == expected_status
+    assert all(
+        any(item.criterion_id == "L1" for item in row.contributions) is contributes
+        for row in result.rankings
+    )
+    if weight in {0.2, 0.4}:
+        assert result.locality_assessment.below_threshold_criterion_ids == ("L1",)
+        assert all(
+            next(
+                item for item in row.contributions if item.criterion_id == "L1"
+            ).derived_evidence_id
+            is not None
+            for row in result.rankings
+        )
+
+
 def test_pcc_coverage_activation_is_independent_of_locality_threshold(tmp_path: Path) -> None:
     release = _load(
         tmp_path,
