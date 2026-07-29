@@ -15,8 +15,9 @@ The first production invocation was:
 
 ```powershell
 python -m konsider.ingestion.phase5_locality_onboarding `
-  --release-id 2026-07-29.1 `
+  --release-id 2026-07-29.2 `
   --criterion C66 `
+  --criterion C67 `
   --activate
 ```
 
@@ -28,7 +29,7 @@ Replay the active locality release with:
 
 ```powershell
 python -m konsider.ingestion.phase5_locality_onboarding `
-  --replay data\releases\2026-07-29.1
+  --replay data\releases\2026-07-29.2
 ```
 
 ## `audit-coverage`

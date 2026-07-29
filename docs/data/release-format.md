@@ -11,7 +11,8 @@ entities, entity-neutral observations/scores, a country-result outcome matrix, e
 evidence, multiple-source lineage, locality universes, aggregation policies, and snapshotted
 criterion ingestion policies. See the
 [Phase 5C foundation](../architecture/phase5c-generic-release-foundation.md). Release
-`2026-07-29.1` first activated this format with C66 Extreme heat exposure.
+`2026-07-29.1` first activated this format with C66 Extreme heat exposure. Active release
+`2026-07-29.2` adds C67 Projected warm-day frequency (2030).
 
 ```text
 data/

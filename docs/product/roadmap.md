@@ -8,16 +8,17 @@ Last updated: 2026-07-29
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v1 transport, and responsive React UI are
-implemented. Active release `2026-07-29.1` exposes the stable 91-country universe, 388 frozen
-urban centres, and thirteen available criteria. Eight are 91/91 global-core criteria; Overall job-market opportunity, School
+implemented. Active release `2026-07-29.2` exposes the stable 91-country universe, 388 frozen
+urban centres, and fourteen available criteria. Eight are 91/91 global-core criteria; Overall job-market opportunity, School
 education quality, and Research and innovation ecosystem are conditional criteria, and UHC remains
 diagnostic-only. Infrastructure and the two Wave 2 additions are experimental. Phase 4's ranking
 and API contracts preserve missing/stale outcomes without
 imputation and provide complete-case robustness diagnostics.
 
 Phase 5A classified all 45 deeply researched locality-related criteria and measured a stable
-urban-centre universe. Phase 5G has now onboarded its deliberately narrow first-wave candidate,
-Extreme heat exposure, as an experimental locality-derived criterion with 89/91 country coverage.
+urban-centre universe. Phase 5G has now onboarded Extreme heat exposure and the narrowed
+Projected warm-day frequency (2030) as experimental locality-derived criteria, each with 89/91
+country coverage.
 
 Phase 5B has defined the clean major-version target for orthogonal coverage, locality scope,
 applicability, canonical geography, policy-driven locality aggregation, multiple-source lineage,

@@ -4,7 +4,7 @@ Konsider is an evidence-backed country-suitability project. It implements a loca
 refresh worker, immutable versioned releases, a deterministic recommendation service, typed
 FastAPI v1/v2 APIs, and a responsive catalog-driven React comparison UI.
 
-Active release `2026-07-29.1` contains 91 countries, 388 selected urban centres, and thirteen
+Active release `2026-07-29.2` contains 91 countries, 388 selected urban centres, and fourteen
 catalogued criteria. Eight global-core criteria cover all countries; Overall job-market
 opportunity, School education quality, Research and innovation ecosystem, and locality-derived
 Extreme heat exposure use conditional complete-case ranking. UHC is unavailable, while
@@ -67,7 +67,7 @@ new release ID plus every printed source-version acknowledgement:
 
 ```powershell
 python -m konsider.ingestion.worker list-sources
-python -m konsider.ingestion.phase5_locality_onboarding --replay data\releases\2026-07-29.1
+python -m konsider.ingestion.phase5_locality_onboarding --replay data\releases\2026-07-29.2
 python -m konsider.ingestion.worker audit-coverage --universe data\country-universes\popular-relocation-v1.json --audit-id AUDIT_ID --mode offline --artifacts data\reports\country-coverage\coverage-2026-07-23.6\raw-artifacts.json
 ```
 
@@ -105,4 +105,4 @@ Start at the [documentation index](docs/README.md).
 - [Phase 4 Wave 2 PCC candidates](docs/research/phase4-wave2-pcc-candidates.md)
 - [Phase 4 closure report](docs/history/phase4-closure-report.md)
 - [Historical phase workspaces](project-history/README.md)
-- [Active release report](docs/history/releases/2026-07-29.1.md)
+- [Active release report](docs/history/releases/2026-07-29.2.md)

@@ -110,7 +110,50 @@ C66 = LocalityCriterionConfig(
     ),
 )
 
-CRITERIA = {C66.criterion_id: C66}
+C67 = LocalityCriterionConfig(
+    criterion_id="C67",
+    display_name="Projected warm-day frequency (2030)",
+    historical_names=("Long-term climate-change exposure",),
+    description=(
+        "Locality-derived projected percentage of days when daily maximum temperature exceeds "
+        "the calendar-day 90th percentile, under SSP2-4.5 for the decade ending 2030."
+    ),
+    field="CL_WDS_245_2030",
+    raw_unit="percent_of_days",
+    reference_start="2021-01-01",
+    reference_end="2030-12-31",
+    maximum_raw_value=Decimal("100"),
+    scoring_method_version="c67-projected-warm-days-ssp245-linear-v1",
+    aggregation_policy_id="c67-projected-warm-days-top2-v1",
+    source_lineage_id="lineage:C67:ghsl-climate-r2024a-v1.2",
+    interpretation=(
+        "A smaller projected share of unusually warm days receives a higher score. The country "
+        "result averages the two best-scoring major urban centres, or uses one where only one "
+        "qualifies."
+    ),
+    caveats=(
+        "This is a scenario-based projection under SSP2-4.5, not an observed outcome or a "
+        "forecast for a particular day.",
+        "Warm days are defined relative to each calendar day's 1961-1990 local temperature "
+        "baseline; the measure is not the number of days above a universal heat threshold.",
+        "The source uses the EC-Earth3 climate model and reports a zonal average of source-pixel "
+        "values for each urban centre.",
+        "This deliberately replaces the broader historical label Long-term climate-change "
+        "exposure; it does not measure total climate risk, adaptation, floods, drought, storms, "
+        "wildfire, or sea-level rise.",
+    ),
+    quality_limitations=(
+        "A single climate model and scenario do not express the full projection uncertainty.",
+        "Urban-centre averages do not represent neighbourhood-level temperature differences.",
+    ),
+    quality_flags=(
+        "PROJECTED_SSP2_4_5",
+        "SINGLE_MODEL_EC_EARTH3",
+        "RELATIVE_TO_1961_1990_CALENDAR_DAY_BASELINE",
+    ),
+)
+
+CRITERIA = {config.criterion_id: config for config in (C66, C67)}
 
 COUNTRY_NAME_ALIASES = {
     "bahamas": "BHS",
@@ -125,10 +168,10 @@ COUNTRY_NAME_ALIASES = {
 }
 
 PRESET_WEIGHTS = {
-    "equal_weight_mvp": {"C66": 1.0},
-    "safety_and_stability": {"C66": 0.6},
-    "affordability_first": {"C66": 0.4},
-    "quality_of_life": {"C66": 1.0},
+    "equal_weight_mvp": {"C66": 1.0, "C67": 1.0},
+    "safety_and_stability": {"C66": 0.6, "C67": 0.6},
+    "affordability_first": {"C66": 0.4, "C67": 0.4},
+    "quality_of_life": {"C66": 1.0, "C67": 1.0},
 }
 
 

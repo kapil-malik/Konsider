@@ -345,7 +345,7 @@ def test_default_paths_do_not_depend_on_current_working_directory(tmp_path, monk
         response = other_client.get("/api/v2/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-29.1"
+    assert response.json()["release_id"] == "2026-07-29.2"
 
 
 def test_service_is_constructed_once_per_app_lifecycle(tmp_path) -> None:

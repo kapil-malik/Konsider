@@ -1,0 +1,168 @@
+{
+  "schema_version": "konsider-phase5g-onboarding-disposition-1.0",
+  "generated_at": "2026-07-29T00:00:00+05:30",
+  "criterion_id": "C67",
+  "criterion_name": "Projected warm-day frequency (2030)",
+  "historical_name": "Long-term climate-change exposure",
+  "decision": "EXPERIMENTAL_ONBOARDED",
+  "previous_decision": "SECOND_WAVE",
+  "construct_resolution": {
+    "decision": "Use the single JRC field CL_WDS_245_2030.",
+    "basis": [
+      "The field has a documented percentage-of-days unit.",
+      "It uses the explicit SSP2-4.5 scenario and decade ending 2030.",
+      "It is a direct urban-centre climate projection in the already frozen GHSL asset.",
+      "It adds forward-looking evidence while remaining distinct from C66 observed extreme-heat days."
+    ],
+    "renaming": "The broad label Long-term climate-change exposure was replaced because this field measures one temperature-frequency projection, not total climate risk."
+  },
+  "production_onboarded": true,
+  "release_id": "2026-07-29.2",
+  "release_schema_version": "konsider-release-5.0",
+  "catalog_schema_version": "consumer-catalog-3.0",
+  "experimental": true,
+  "ready": true,
+  "default_enabled": true,
+  "source_freeze": {
+    "publisher": "European Commission, Joint Research Centre",
+    "distributor": "JRC Data Catalogue and JRC open-data file service",
+    "dataset": "Global Human Settlement Layer Urban Centre Database R2024A",
+    "exact_asset": "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip",
+    "exact_field": "CL_WDS_245_2030",
+    "url": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_UCDB_GLOBE_R2024A/GHS_UCDB_THEME_GLOBE_R2024A/GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A/V1-2/GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip",
+    "access_method": "anonymous_https_download",
+    "dataset_version": "R2024A",
+    "source_version": "V1.2",
+    "data_update": "2026-05-15",
+    "reference_period": "2021-01-01 through 2030-12-31",
+    "scenario": "SSP2-4.5",
+    "climate_model": "EC-Earth3",
+    "temperature_baseline": "calendar-day 90th percentile over 1961-1990 using a five-day window",
+    "spatial_aggregation": "zonal average of source-pixel values within the urban centre",
+    "update_frequency": "release_based_no_production_sla",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "commercial_use": true,
+    "redistribution": true,
+    "attribution_required": true,
+    "raw_byte_retention": "local_ignored_not_committed",
+    "parser_id": "jrc-ghsl-urban-climate-csv",
+    "parser_version": "1.0"
+  },
+  "construct": {
+    "status": "FROZEN_EXPERIMENTAL",
+    "measure": "Projected percentage of days in 2021-2030 when daily maximum temperature exceeds the calendar-day 90th percentile under SSP2-4.5.",
+    "does_not_measure": [
+      "total climate-change exposure",
+      "absolute extreme-heat days",
+      "observed future outcomes",
+      "multi-model projection uncertainty",
+      "adaptation or vulnerability",
+      "flood, drought, storm, wildfire, or sea-level risk"
+    ],
+    "locality_type": "CITY",
+    "locality_universe_id": "ghsl-ucdb-top5-population-v1",
+    "raw_unit": "percent_of_days",
+    "direction": "LOWER_IS_BETTER",
+    "scoring": "score = 10 - 9 * min(max(percent, 0), 100) / 100",
+    "scoring_method_version": "c67-projected-warm-days-ssp245-linear-v1",
+    "country_aggregation": "mean_of_two_highest_scoring_localities",
+    "aggregation_policy_id": "c67-projected-warm-days-top2-v1",
+    "minimum_qualifying_localities": 1
+  },
+  "coverage": {
+    "source_locality_count": 11422,
+    "selected_universe_locality_count": 388,
+    "mapped_locality_count": 388,
+    "valid_locality_count": 388,
+    "stable_country_count": 91,
+    "valid_country_count": 89,
+    "insufficient_locality_evidence_country_codes": ["ATG", "GRD"],
+    "missing_country_codes": ["ATG", "GRD"],
+    "stale_country_codes": [],
+    "invalid_or_rejected_country_codes": [],
+    "selected_coverage_mode": "CONDITIONAL_COMPLETE_CASE",
+    "scope": "LOCALITY_DERIVED"
+  },
+  "distribution": {
+    "locality_raw_minimum": 5.245,
+    "locality_raw_median": 36.091,
+    "locality_raw_maximum": 99.535,
+    "country_score_minimum": 1.21492,
+    "country_score_median": 7.053715,
+    "country_score_maximum": 9.10702,
+    "country_score_population_standard_deviation": 1.487278
+  },
+  "sensitivity": {
+    "top2_vs_top1": {
+      "spearman_rho": 0.967399,
+      "mean_absolute_rank_movement": 3.843,
+      "maximum_absolute_rank_movement": 27
+    },
+    "top2_vs_top3": {
+      "spearman_rho": 0.988679,
+      "mean_absolute_rank_movement": 2.629,
+      "maximum_absolute_rank_movement": 16
+    },
+    "top2_vs_all_five": {
+      "spearman_rho": 0.934695,
+      "mean_absolute_rank_movement": 6.449,
+      "maximum_absolute_rank_movement": 44
+    },
+    "top2_vs_population_weighted": {
+      "spearman_rho": 0.929469,
+      "mean_absolute_rank_movement": 6.697,
+      "maximum_absolute_rank_movement": 39
+    },
+    "top5_universe_vs_top3_universe": {
+      "spearman_rho": 0.971229,
+      "mean_absolute_rank_movement": 4.247,
+      "maximum_absolute_rank_movement": 24
+    },
+    "country_score_vs_eligible_locality_count_spearman_rho": 0.313927
+  },
+  "redundancy": {
+    "largest_existing_criterion_absolute_spearman_rho": 0.221166,
+    "largest_existing_criterion_id": "women_legal_economic_equality",
+    "c66_extreme_heat_spearman_rho": 0.275754,
+    "decision": "Retain. Correlations are low; the projection is empirically distinct from both the existing catalog and C66."
+  },
+  "balanced_preset_ranking_movement": {
+    "eligible_countries_before": 83,
+    "eligible_countries_after": 83,
+    "additional_country_exclusions": [],
+    "countries_with_changed_rank": 59,
+    "mean_absolute_rank_movement": 1.566,
+    "maximum_absolute_rank_movement": 7
+  },
+  "locality_examples": {
+    "CAN": {
+      "contributing_localities": ["Edmonton", "Montreal"],
+      "raw_projected_percent_of_days": [16.812, 18.601]
+    },
+    "IND": {
+      "contributing_localities": ["Kolkata", "Chennai"],
+      "raw_projected_percent_of_days": [5.245, 14.599]
+    },
+    "NOR": {
+      "contributing_localities": ["Oslo", "Trondheim"],
+      "raw_projected_percent_of_days": [33.169, 37.184]
+    }
+  },
+  "replay": {
+    "status": "PASSED",
+    "source_bytes_available": true
+  },
+  "checksums": {
+    "raw_archive_sha256": "966b96ef701a8b0053467179a1231ddc24830ac2693aadd7d1388f281795c0bb",
+    "release_checksum": "sha256:d68880bb8b366f74412df9894b4d38c89b4d9193a40134c87ab881cdca90426c"
+  },
+  "api_ui_verification": {
+    "api_contract_version": "konsider-api-2.0",
+    "catalog_exposes_narrow_construct_scenario_and_scope": true,
+    "ranking_exposes_common_locality_assessment_for_c66_and_c67": true,
+    "country_details_expose_contributing_localities": true
+  },
+  "active_release_before": "2026-07-29.1",
+  "active_release_after": "2026-07-29.2"
+}
