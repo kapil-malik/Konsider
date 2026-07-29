@@ -87,6 +87,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 3 closure report](research/phase3-closure-report.md)
 - [Phase 5A locality criteria discovery](research/phase5a-locality-criteria-discovery.md)
 - [Phase 5B target architecture and contracts](architecture/phase5b-target-contracts.md)
+- [Phase 5E verification report](product/phase5e-verification.md)
+- [API v2 operations contract](operations/api-v2.md)
 
 ## Historical records
 

@@ -8,7 +8,9 @@ release schema, catalog schema, and relevant scoring methods.
 
 OpenAPI at `/openapi.json` is authoritative for transport shapes. Swagger UI is available at
 `/docs`. Frontend types must be generated from OpenAPI or runtime-validated against it; prose
-examples here are tested but remain illustrative. The current API namespace is `/api/v1`.
+examples here are tested but remain illustrative. This document describes the transitional
+`/api/v1` contract. New consumers should use [API v2](api-v2.md); v1 is scheduled for Phase 5H
+removal.
 
 ## Install and start
 

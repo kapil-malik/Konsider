@@ -46,6 +46,12 @@ class ProfileNotFoundError(RecommendationError):
         super().__init__(f"Unknown profile ID: {profile_id}")
 
 
+class PreferencePresetNotFoundError(RecommendationError):
+    def __init__(self, preference_preset_id: str) -> None:
+        self.preference_preset_id = preference_preset_id
+        super().__init__(f"Unknown preference preset ID: {preference_preset_id}")
+
+
 class CountryNotFoundError(RecommendationError):
     def __init__(self, country_codes: list[str]) -> None:
         self.country_codes = country_codes

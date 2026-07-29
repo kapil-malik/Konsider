@@ -17,9 +17,11 @@ from konsider.exceptions import (
     InvalidProfileSelectionError,
     InvalidTopKError,
     InvalidWeightError,
+    PreferencePresetNotFoundError,
     ProfileNotFoundError,
     UnknownCriterionError,
 )
+from konsider.ingestion.current_release import CurrentReleaseError
 from konsider.repositories.published_release_repository import (
     PublishedReleaseError,
     UnsupportedReleaseContractError,
@@ -115,6 +117,18 @@ def register_exception_handlers(app: FastAPI) -> None:
             {"profile_id": exc.profile_id},
         )
 
+    @app.exception_handler(PreferencePresetNotFoundError)
+    async def preference_preset_not_found_handler(
+        request: Request, exc: PreferencePresetNotFoundError
+    ):
+        return error_response(
+            request,
+            422,
+            "preference_preset_not_found",
+            "The requested preference preset does not exist.",
+            {"preference_preset_id": exc.preference_preset_id},
+        )
+
     @app.exception_handler(CountryNotFoundError)
     async def country_not_found_handler(request: Request, exc: CountryNotFoundError):
         return error_response(
@@ -142,6 +156,16 @@ def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(PublishedReleaseError)
     async def release_unavailable_handler(request: Request, exc: PublishedReleaseError):
         LOGGER.error("Published release unavailable", exc_info=exc)
+        return error_response(
+            request,
+            503,
+            "release_unavailable",
+            "A validated active release is unavailable.",
+        )
+
+    @app.exception_handler(CurrentReleaseError)
+    async def current_release_unavailable_handler(request: Request, exc: CurrentReleaseError):
+        LOGGER.error("Current release unavailable", exc_info=exc)
         return error_response(
             request,
             503,

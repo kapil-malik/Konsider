@@ -416,7 +416,7 @@ def test_unexpected_failure_returns_safe_500() -> None:
     assert "RuntimeError" not in response.text
 
 
-def test_openapi_contains_only_the_five_phase_2b_paths() -> None:
+def test_openapi_retains_the_five_v1_routes_during_the_v2_migration() -> None:
     schema = create_app(service=RecommendationService()).openapi()
     expected = {
         "/api/v1/health",
@@ -426,8 +426,8 @@ def test_openapi_contains_only_the_five_phase_2b_paths() -> None:
         "/api/v1/comparisons",
     }
 
-    assert set(schema["paths"]) == expected
-    assert schema["info"]["version"] == "1.0.0"
+    assert {path for path in schema["paths"] if path.startswith("/api/v1/")} == expected
+    assert schema["info"]["version"] == "2.0.0"
     assert "RankingRequest" in schema["components"]["schemas"]
     assert "RankingResponse" in schema["components"]["schemas"]
     assert "ErrorResponse" in schema["components"]["schemas"]

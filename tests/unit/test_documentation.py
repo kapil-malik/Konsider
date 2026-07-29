@@ -53,8 +53,15 @@ def test_json_documentation_examples_are_valid() -> None:
 
 
 def test_documented_api_paths_match_openapi() -> None:
-    api_document = (ROOT / "docs" / "operations" / "api.md").read_text(encoding="utf-8")
-    documented = set(re.findall(r"`(/api/v1/[^`]+)`", api_document))
+    documents = [
+        ROOT / "docs" / "operations" / "api.md",
+        ROOT / "docs" / "operations" / "api-v2.md",
+    ]
+    documented = {
+        path
+        for document in documents
+        for path in re.findall(r"`(/api/v[12]/[^`]+)`", document.read_text(encoding="utf-8"))
+    }
     openapi = create_app(service=RecommendationService()).openapi()
     assert documented == set(openapi["paths"])
 

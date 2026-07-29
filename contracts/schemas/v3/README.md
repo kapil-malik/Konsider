@@ -30,8 +30,10 @@ Contracts:
 - `ranking-request` and `ranking-response` define the clean API v2 assessment shape.
 
 Phase 5D makes aggregation precision explicit and gives locality assessments per-criterion
-evidence inventories, best-common locality, and excluded-country advisory evidence. These remain
-inactive API-v2 target contracts until Phase 5E.
+evidence inventories, best-common locality, and excluded-country advisory evidence. Phase 5E
+exposes the clean transport through strict Pydantic models and authoritative generated OpenAPI.
+The JSON schemas remain the native schema-5 domain/release contracts; OpenAPI owns the complete
+HTTP contribution, comparison, and country-details surfaces.
 
 The synthetic valid and invalid examples are under `tests/fixtures/phase5b`. They are contract
 evidence only and must never be published as product data.

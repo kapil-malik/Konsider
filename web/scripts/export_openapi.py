@@ -1,4 +1,4 @@
-"""Export FastAPI OpenAPI and generate the small TypeScript component type surface."""
+"""Export authoritative API v2 OpenAPI and generated TypeScript component types."""
 
 from __future__ import annotations
 
@@ -53,12 +53,17 @@ def type_script_type(schema: dict[str, Any]) -> str:
 openapi = create_app().openapi()
 api_directory = ROOT / "web" / "src" / "api"
 api_directory.mkdir(parents=True, exist_ok=True)
-(api_directory / "openapi.json").write_text(
-    json.dumps(openapi, indent=2, sort_keys=True) + "\n",
+serialized_openapi = json.dumps(openapi, indent=2, sort_keys=True) + "\n"
+(api_directory / "openapi.json").write_text(serialized_openapi, encoding="utf-8")
+contract_directory = ROOT / "contracts" / "openapi"
+contract_directory.mkdir(parents=True, exist_ok=True)
+(contract_directory / "konsider-api-2.0.json").write_text(
+    serialized_openapi,
     encoding="utf-8",
 )
 
 component_lines = [
+    "// konsider-api-types-2.0",
     "// Generated from FastAPI OpenAPI by scripts/export_openapi.py. Do not edit.",
     "export interface components {",
     "  schemas: {",
