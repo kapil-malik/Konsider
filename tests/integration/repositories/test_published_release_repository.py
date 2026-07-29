@@ -20,7 +20,10 @@ def _repository(tmp_path: Path) -> tuple[PublishedReleaseRepository, Path]:
         ROOT / "data" / "releases" / ACTIVE_RELEASE_ID,
         release_root / ACTIVE_RELEASE_ID,
     )
-    shutil.copy2(ROOT / "data" / "releases" / "active.json", release_root / "active.json")
+    shutil.copy2(
+        ROOT / "data" / "releases" / "legacy-active.json",
+        release_root / "active.json",
+    )
     catalog = tmp_path / "consumer-catalog.json"
     shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json", catalog)
     return PublishedReleaseRepository(release_root, catalog), release_root / ACTIVE_RELEASE_ID
@@ -78,7 +81,7 @@ def test_active_release_loads_after_git_style_lf_normalization(tmp_path: Path) -
     for source_path in source.iterdir():
         target_path = target / source_path.name
         target_path.write_bytes(source_path.read_bytes().replace(b"\r\n", b"\n"))
-    pointer = ROOT / "data" / "releases" / "active.json"
+    pointer = ROOT / "data" / "releases" / "legacy-active.json"
     release_root.mkdir(parents=True, exist_ok=True)
     (release_root / "active.json").write_bytes(pointer.read_bytes().replace(b"\r\n", b"\n"))
     catalog = tmp_path / "consumer-catalog.json"

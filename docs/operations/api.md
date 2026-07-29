@@ -12,6 +12,10 @@ examples here are tested but remain illustrative. This document describes the tr
 `/api/v1` contract. New consumers should use [API v2](api-v2.md); v1 is scheduled for Phase 5H
 removal.
 
+The product pointer currently names schema-5 release `2026-07-29.1`. This transitional v1
+service reads `data/releases/legacy-active.json`, pinned to schema-4 release `2026-07-28.2`;
+v2 follows the product pointer.
+
 ## Install and start
 
 Follow [local setup](local-setup.md), then start Uvicorn from the repository root.

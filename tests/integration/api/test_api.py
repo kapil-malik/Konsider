@@ -11,13 +11,30 @@ from konsider.api.models.countries import CountryMetricResponse
 from konsider.api.models.rankings import ComparisonResponse, RankingResponse
 from konsider.api.settings import ApiSettings
 from konsider.application import RecommendationService
+from konsider.repositories.published_release_repository import PublishedReleaseRepository
 
 ROOT = Path(__file__).resolve().parents[3]
 
 
 @pytest.fixture
-def client():
-    with TestClient(create_app()) as value:
+def client(tmp_path):
+    active = tmp_path / "schema4-active.json"
+    active.write_text(
+        json.dumps(
+            {
+                "release_id": "2026-07-28.2",
+                "schema_version": "konsider-release-4.0",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    settings = ApiSettings(
+        release_root=ROOT / "data" / "releases",
+        active_release_path=active,
+        catalog_path=ROOT / "data" / "catalogs" / "releases" / "2026-07-28.2.json",
+    )
+    with TestClient(create_app(settings=settings)) as value:
         yield value
 
 
@@ -325,20 +342,42 @@ def test_unknown_comparison_country_is_404(client) -> None:
 def test_default_paths_do_not_depend_on_current_working_directory(tmp_path, monkeypatch) -> None:
     monkeypatch.chdir(tmp_path)
     with TestClient(create_app()) as other_client:
-        response = other_client.get("/api/v1/health")
+        response = other_client.get("/api/v2/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-07-28.2"
+    assert response.json()["release_id"] == "2026-07-29.1"
 
 
-def test_service_is_constructed_once_per_app_lifecycle() -> None:
+def test_service_is_constructed_once_per_app_lifecycle(tmp_path) -> None:
     calls = []
+    active = tmp_path / "schema4-active.json"
+    active.write_text(
+        json.dumps(
+            {
+                "release_id": "2026-07-28.2",
+                "schema_version": "konsider-release-4.0",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    settings = ApiSettings(
+        release_root=ROOT / "data" / "releases",
+        active_release_path=active,
+        catalog_path=ROOT / "data" / "catalogs" / "releases" / "2026-07-28.2.json",
+    )
 
-    def factory(settings):
-        calls.append(settings)
-        return RecommendationService()
+    def factory(factory_settings):
+        calls.append(factory_settings)
+        return RecommendationService(
+            PublishedReleaseRepository(
+                factory_settings.release_root,
+                factory_settings.catalog_path,
+                active_release_path=factory_settings.active_release_path,
+            )
+        )
 
-    with TestClient(create_app(service_factory=factory)) as other_client:
+    with TestClient(create_app(settings=settings, service_factory=factory)) as other_client:
         assert other_client.get("/api/v1/health").status_code == 200
         assert other_client.get("/api/v1/catalog").status_code == 200
         assert other_client.post("/api/v1/rankings", json={}).status_code == 200
@@ -386,6 +425,16 @@ def test_unsupported_release_contract_returns_safe_503(tmp_path) -> None:
 def test_temporary_release_and_catalog_paths_are_injectable(tmp_path) -> None:
     release_root = tmp_path / "releases"
     shutil.copytree(ROOT / "data" / "releases", release_root)
+    (release_root / "active.json").write_text(
+        json.dumps(
+            {
+                "release_id": "2026-07-28.2",
+                "schema_version": "konsider-release-4.0",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     catalog = tmp_path / "catalog.json"
     shutil.copy2(ROOT / "data" / "catalogs" / "consumer-catalog-2.0.json", catalog)
     settings = ApiSettings(

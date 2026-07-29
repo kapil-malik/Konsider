@@ -1,16 +1,17 @@
 # Release format
 
 Konsider publishes immutable directories under `data/releases/RELEASE_ID`. The only mutable release
-file is the sibling `active.json` pointer. Production currently uses release schema 4 and consumer
-catalog schema 2 for explicit mixed-coverage outcomes. Historical schema-3 releases remain
-immutable and loadable with their matching schema-1 catalogs.
+file is the sibling `active.json` pointer. Production currently uses release schema 5 and consumer
+catalog schema 3 for structured coverage, locality scope, canonical geography, derived locality
+evidence, and preference presets. Historical schema-3/4 releases remain immutable and loadable with
+their matching catalogs.
 
-Schema 5/catalog 3 are implemented as the inactive Phase 5 target. They use canonical geographic
+Schema 5/catalog 3 are the active Phase 5 format. They use canonical geographic
 entities, entity-neutral observations/scores, a country-result outcome matrix, explicit derived
 evidence, multiple-source lineage, locality universes, aggregation policies, and snapshotted
 criterion ingestion policies. See the
-[Phase 5C foundation](../architecture/phase5c-generic-release-foundation.md). The active schema-4
-bytes and pointer are unchanged.
+[Phase 5C foundation](../architecture/phase5c-generic-release-foundation.md). Release
+`2026-07-29.1` first activated this format with C66 Extreme heat exposure.
 
 ```text
 data/

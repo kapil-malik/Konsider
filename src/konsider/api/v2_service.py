@@ -102,15 +102,15 @@ def _source_from_current(source: dict[str, Any]) -> dict[str, Any]:
     return {
         "source_id": source["source_id"],
         "role": source["role"],
-        "publisher": None,
+        "publisher": source.get("publisher"),
         "source_version": source["source_version"],
-        "dataset_version": None,
+        "dataset_version": source.get("dataset_version"),
         "asset_uri": source["asset_uri"],
         "checksum": source["checksum"],
         "licence_id": source["licence_id"],
-        "canonical_page_url": None,
-        "attribution": None,
-        "reference_period": None,
+        "canonical_page_url": source.get("canonical_page_url"),
+        "attribution": source.get("attribution"),
+        "reference_period": source.get("reference_period"),
     }
 
 

@@ -1,6 +1,6 @@
 # System architecture
 
-Status: authoritative architecture as of 2026-07-28
+Status: authoritative architecture as of 2026-07-29
 
 Konsider separates data acquisition, immutable publication, deterministic recommendation logic,
 HTTP transport, and the browser UI. Scoring and readiness rules have one server-side owner.
@@ -19,11 +19,14 @@ Local Python worker ---> data/raw/ (ignored, content-addressed bytes)
 data/releases/{release_id}/ + data/releases/active.json
         |
         v
-PublishedReleaseRepository ---> RecommendationService ---> FastAPI /api/v1 ---> React/Vite UI
+CurrentReleaseRepository ----> V2RecommendationService --> FastAPI /api/v2 ---> React/Vite UI
                                        ^                         |
                                        |                         v
-                          consumer catalog             OpenAPI + JSON responses
+                         release catalog              OpenAPI + JSON responses
 ```
+
+The active schema-5 release is `2026-07-29.1`. During the migration, API v1 reads the explicit
+`legacy-active.json` pointer to schema-4 release `2026-07-28.2`.
 
 - The worker downloads ten registered official-source distributions, captures exact raw bytes,
   parses observations, computes versioned canonical scores, validates readiness, and publishes an

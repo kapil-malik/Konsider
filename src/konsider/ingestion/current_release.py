@@ -65,6 +65,7 @@ class CriterionBuildResult:
     observations: list[dict[str, Any]] = field(default_factory=list)
     scores: list[dict[str, Any]] = field(default_factory=list)
     derived_country_evidence: list[dict[str, Any]] = field(default_factory=list)
+    criterion_outcomes: list[dict[str, Any]] = field(default_factory=list)
     rejected_countries: dict[str, str] = field(default_factory=dict)
 
 
@@ -711,6 +712,7 @@ def build_country_outcomes(
     evidence: Iterable[dict[str, Any]],
     attempted_at: str,
     rejected_countries: Mapping[str, Mapping[str, str]] | None = None,
+    explicit_outcomes: Iterable[dict[str, Any]] = (),
 ) -> list[dict[str, Any]]:
     """Build the explicit country-result matrix; locality outcomes are intentionally absent."""
 
@@ -727,6 +729,14 @@ def build_country_outcomes(
     evidence_by_key = {
         (row["result_criterion_id"], row["country"]["entity_id"]): row for row in evidence
     }
+    explicit_rows = tuple(explicit_outcomes)
+    explicit_by_key = {
+        (row["criterion_id"], row["subject"]["entity_id"]): row for row in explicit_rows
+    }
+    if len(explicit_by_key) != len(explicit_rows):
+        raise CurrentReleaseError(
+            "Explicit country outcomes contain duplicate criterion/country rows."
+        )
     countries = sorted(
         (row for row in entities if row["entity_type"] == "COUNTRY"),
         key=lambda row: row["entity_id"],
@@ -736,6 +746,10 @@ def build_country_outcomes(
         criterion_id = policy["criterion_id"]
         for country in countries:
             entity_id = country["entity_id"]
+            explicit = explicit_by_key.get((criterion_id, entity_id))
+            if explicit is not None:
+                rows.append(explicit)
+                continue
             subject = {"entity_id": entity_id, "entity_type": "COUNTRY"}
             observation = observations_by_key.get((criterion_id, entity_id))
             score = scores_by_key.get((criterion_id, entity_id))
@@ -802,6 +816,7 @@ class GenericReleaseWorker:
         observations: list[dict[str, Any]] = []
         scores: list[dict[str, Any]] = []
         derived: list[dict[str, Any]] = []
+        explicit_outcomes: list[dict[str, Any]] = []
         rejected: dict[str, dict[str, str]] = {}
         for policy in sorted(policy_rows, key=lambda row: row["criterion_id"]):
             parser = policy["parser"]
@@ -819,6 +834,7 @@ class GenericReleaseWorker:
             observations.extend(result.observations)
             scores.extend(result.scores)
             derived.extend(result.derived_country_evidence)
+            explicit_outcomes.extend(result.criterion_outcomes)
             rejected[policy["criterion_id"]] = result.rejected_countries
         outcomes = build_country_outcomes(
             policies=policy_rows,
@@ -828,6 +844,7 @@ class GenericReleaseWorker:
             evidence=derived,
             attempted_at=attempted_at,
             rejected_countries=rejected,
+            explicit_outcomes=explicit_outcomes,
         )
         return CurrentReleaseArtifacts(
             geographic_entities=tuple(entity_rows),
@@ -1024,13 +1041,25 @@ class CurrentReleaseRepository:
         draft.replace(published)
         os.replace(snapshot_tmp, snapshot)
         if activate:
-            pointer_tmp = self.root / "active.json.tmp"
-            _write_json(
-                pointer_tmp,
-                {"release_id": release_id, "schema_version": RELEASE_SCHEMA_VERSION},
-            )
-            os.replace(pointer_tmp, self.root / "active.json")
+            self.activate(release_id)
         return published
+
+    def activate(self, release_id: str) -> Path:
+        """Atomically activate an already-published, validated schema-5 release."""
+
+        published = self.root / release_id
+        loaded = self.load(published)
+        if loaded.manifest["status"] != "published":
+            raise CurrentReleaseError("Only a published release can be activated.")
+        if not loaded.validation["product_ready"]:
+            raise CurrentReleaseError("A non-product-ready release cannot be activated.")
+        pointer_tmp = self.root / "active.json.tmp"
+        _write_json(
+            pointer_tmp,
+            {"release_id": release_id, "schema_version": RELEASE_SCHEMA_VERSION},
+        )
+        os.replace(pointer_tmp, self.root / "active.json")
+        return self.root / "active.json"
 
     def load(self, path: Path | str) -> LoadedCurrentRelease:
         release_path = Path(path)

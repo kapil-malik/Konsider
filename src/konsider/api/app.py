@@ -57,10 +57,20 @@ ERROR_RESPONSES = {
 
 
 def _default_service_factory(settings: ApiSettings) -> RecommendationService:
+    active_release_path = settings.active_release_path
+    pointer = (
+        json.loads(active_release_path.read_text(encoding="utf-8"))
+        if active_release_path.exists()
+        else {}
+    )
+    if str(pointer.get("schema_version", "")).startswith("konsider-release-5."):
+        legacy_pointer = settings.release_root / "legacy-active.json"
+        if legacy_pointer.exists():
+            active_release_path = legacy_pointer
     repository = PublishedReleaseRepository(
         settings.release_root,
         settings.catalog_path,
-        active_release_path=settings.active_release_path,
+        active_release_path=active_release_path,
     )
     return RecommendationService(repository)
 

@@ -69,6 +69,21 @@
         "licence_id": {
           "type": "string",
           "minLength": 1
+        },
+        "publisher": {
+          "type": ["string", "null"]
+        },
+        "dataset_version": {
+          "type": ["string", "null"]
+        },
+        "canonical_page_url": {
+          "type": ["string", "null"]
+        },
+        "attribution": {
+          "type": ["string", "null"]
+        },
+        "reference_period": {
+          "type": ["string", "null"]
         }
       }
     },

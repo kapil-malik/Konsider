@@ -368,6 +368,50 @@ def test_schema5_generic_worker_covers_national_and_locality_fcc_and_pcc() -> No
         ("GLOBAL_CORE", "LOCALITY"),
         ("CONDITIONAL_COMPLETE_CASE", "LOCALITY"),
     }
+
+
+def test_generic_worker_preserves_processor_owned_non_valid_outcomes() -> None:
+    inputs = _fixture_inputs()
+    original = PROCESSORS[("synthetic-national", "1.0")]
+
+    def processor_with_stale_country(policy, criterion_lineages, all_lineages):
+        result = original(policy, criterion_lineages, all_lineages)
+        country_id = "country:MEX"
+        result.observations = [
+            row for row in result.observations if row["subject"]["entity_id"] != country_id
+        ]
+        result.scores = [row for row in result.scores if row["subject"]["entity_id"] != country_id]
+        result.criterion_outcomes.append(
+            {
+                "criterion_id": policy["criterion_id"],
+                "subject": {"entity_id": country_id, "entity_type": "COUNTRY"},
+                "outcome": "stale",
+                "evidence_kind": "NONE",
+                "attempted_at": ATTEMPTED_AT,
+                "observation_id": None,
+                "score_id": None,
+                "derived_evidence_id": None,
+                "source_lineage_ids": sorted(policy["source_lineage_ids"]),
+                "reason_codes": ["SOURCE_STALE"],
+                "quality_flags": ["SOURCE_STALE"],
+            }
+        )
+        return result
+
+    processors = {**PROCESSORS, ("synthetic-national", "1.0"): processor_with_stale_country}
+    artifacts = GenericReleaseWorker(processors).build(
+        release_id=RELEASE_ID,
+        attempted_at=ATTEMPTED_AT,
+        **inputs,
+    )
+    stale = [
+        row
+        for row in artifacts.criterion_outcomes
+        if row["criterion_id"] in {"C-N-FCC", "C-N-PCC"}
+        and row["subject"]["entity_id"] == "country:MEX"
+    ]
+    assert len(stale) == 2
+    assert {row["outcome"] for row in stale} == {"stale"}
     multi = next(row for row in artifacts.source_lineages if row["lineage_id"] == "lineage:C-N-FCC")
     assert len(multi["sources"]) == 2
 

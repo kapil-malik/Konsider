@@ -98,4 +98,5 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active release is `2026-07-28.2`.
+instructions. The active release is `2026-07-29.1`; API v1 remains pinned through
+`legacy-active.json` to the final schema-4 release, `2026-07-28.2`.

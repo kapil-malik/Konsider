@@ -4,12 +4,26 @@
   "criterion_id": "C66",
   "criterion_name": "Extreme heat exposure",
   "historical_name": "Extreme-weather risk",
-  "decision": "HELD",
-  "production_onboarded": false,
-  "blocking_gate": "CONSTRUCT",
-  "blocking_reason_codes": [
-    "SEM_SOURCE_UNIT_AND_AGGREGATION_CONTRADICTION"
-  ],
+  "decision": "EXPERIMENTAL_ONBOARDED",
+  "previous_decision": "HELD_CONSTRUCT",
+  "previous_blocker_resolution": {
+    "decision": "Interpret CL_UTC_T32_2020 as annual mean extreme-heat days.",
+    "basis": [
+      "The publisher indicator name describes annual mean days.",
+      "The publisher unit is number of days.",
+      "The upstream Copernicus variable is day-based.",
+      "The observed selected-locality range is 0 to 357, consistent with days in a year.",
+      "The product owner approved the day interpretation with a visible disclaimer."
+    ],
+    "retained_disclaimer": "The JRC methodology sentence inconsistently refers to counting pixels."
+  },
+  "production_onboarded": true,
+  "release_id": "2026-07-29.1",
+  "release_schema_version": "konsider-release-5.0",
+  "catalog_schema_version": "consumer-catalog-3.0",
+  "experimental": true,
+  "ready": true,
+  "default_enabled": true,
   "source_freeze": {
     "publisher": "European Commission, Joint Research Centre",
     "distributor": "JRC Data Catalogue and JRC open-data file service",
@@ -21,20 +35,21 @@
     "dataset_version": "R2024A",
     "source_version": "V1.2",
     "data_update": "2026-05-15",
-    "reference_period": "decade_ending_2020",
-    "update_frequency": "release_based_no_production_sla_frozen",
+    "reference_period": "2011-01-01 through 2020-12-31",
+    "update_frequency": "release_based_no_production_sla",
     "licence": "CC BY 4.0",
     "licence_url": "https://creativecommons.org/licenses/by/4.0/",
     "commercial_use": true,
     "redistribution": true,
     "attribution_required": true,
-    "third_party_component_boundary": "JRC-derived asset uses Copernicus Climate Change Service ERA5-HEAT inputs; only the JRC-published derived asset would be consumed.",
+    "third_party_component_boundary": "JRC-derived asset uses Copernicus Climate Change Service ERA5-HEAT inputs; Konsider consumes the JRC-published derived asset.",
     "raw_byte_retention": "local_ignored_not_committed",
-    "parser_version": null
+    "parser_id": "jrc-ghsl-urban-climate-csv",
+    "parser_version": "1.0"
   },
   "construct": {
-    "status": "NOT_FROZEN",
-    "intended_measure": "Extreme heat exposure in major urban destinations using a UTCI daily-maximum threshold above 32 degrees Celsius for the decade ending 2020.",
+    "status": "FROZEN_EXPERIMENTAL",
+    "measure": "Annual mean number of days in the decade ending 2020 when daily maximum UTCI exceeded 32 degrees Celsius in a selected GHSL urban centre.",
     "does_not_measure": [
       "broad extreme-weather risk",
       "mortality or health vulnerability",
@@ -43,59 +58,132 @@
       "neighbourhood heat inequality",
       "national land-area average"
     ],
-    "locality_type": "GHSL_URBAN_CENTRE",
-    "locality_universe_version": "ghsl_ucdb_top5_population_v1",
-    "raw_unit": null,
+    "locality_type": "CITY",
+    "locality_universe_id": "ghsl-ucdb-top5-population-v1",
+    "raw_unit": "annual_mean_days",
     "direction": "LOWER_IS_BETTER",
-    "country_aggregation_proposal": "mean_of_two_lowest_exposure_localities_minimum_one",
-    "minimum_qualifying_localities_proposal": 1,
-    "unresolved_semantics": "Publisher documentation labels the value as a number of days but describes the urban-centre aggregation as a count of threshold-exceeding pixels."
+    "scoring": "score = 10 - 9 * min(max(days, 0), 365) / 365",
+    "scoring_method_version": "c66-extreme-heat-days-linear-v1",
+    "country_aggregation": "mean_of_two_highest_scoring_localities",
+    "aggregation_policy_id": "c66-extreme-heat-top2-v1",
+    "minimum_qualifying_localities": 1
   },
   "coverage": {
-    "evidence_level": "PHASE5A_RESEARCH_MEASUREMENT",
     "source_locality_count": 11422,
     "selected_universe_locality_count": 388,
-    "mapped_locality_count": null,
-    "valid_locality_count": null,
-    "exploratory_non_negative_locality_count": 388,
-    "supported_country_count": 91,
-    "potential_valid_country_count": 89,
+    "mapped_locality_count": 388,
+    "valid_locality_count": 388,
+    "stable_country_count": 91,
+    "valid_country_count": 89,
     "insufficient_locality_evidence_country_codes": [
       "ATG",
       "GRD"
     ],
-    "missing_country_codes": [],
+    "missing_country_codes": [
+      "ATG",
+      "GRD"
+    ],
     "stale_country_codes": [],
     "invalid_or_rejected_country_codes": [],
-    "selected_coverage_mode": null,
-    "anticipated_coverage_mode": "PCC",
+    "selected_coverage_mode": "CONDITIONAL_COMPLETE_CASE",
     "scope": "LOCALITY_DERIVED"
   },
-  "not_run_due_to_gate": [
-    "production_parser",
-    "canonical_locality_mapping",
-    "production_coverage_evaluation",
-    "score_distribution",
-    "top_n_sensitivity",
-    "locality_universe_sensitivity",
-    "small_country_treatment",
-    "large_country_advantage",
-    "correlation_and_redundancy",
-    "ranking_movement",
-    "locality_assessment_examples",
-    "normalized_release_replay",
-    "api_verification",
-    "ui_verification",
-    "active_pointer_update"
-  ],
-  "checksums": {
-    "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip": "966b96ef701a8b0053467179a1231ddc24830ac2693add7d1388f281795c0bb",
-    "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A.csv": "34c484b357bfdae6b6569d9e2235db4891b195d69db03eed2ce6e50547f42954",
-    "GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A.pdf": "7edda16eff38c50c0685313386730302b9f98d02a0a5c5bb2f7172e7e57b5883",
-    "GHSL_UCDB_R2024_V1_2.pdf": "00dbf5ac9a44c59919106cbe01149aea2923e011e9bab0256fd1f9e818546260",
-    "readme_V1_2.txt": "0ee8fb8e20da515f4b9fd41b28285ffeb596914c699bf7708e7e0a8a4a660a68"
+  "distribution": {
+    "locality_raw_minimum": 0,
+    "locality_raw_median": 56,
+    "locality_raw_maximum": 357,
+    "country_score_minimum": 1.851,
+    "country_score_median": 9.149,
+    "country_score_maximum": 10,
+    "country_score_population_standard_deviation": 2.417
   },
-  "unblock_condition": "An authoritative JRC artifact or retained publisher clarification must state the exact meaning, unit, and urban-centre spatial aggregation of CL_UTC_T32_2020.",
+  "sensitivity": {
+    "top2_vs_top1": {
+      "spearman_rho": 0.971161,
+      "mean_absolute_rank_movement": 4.101,
+      "maximum_absolute_rank_movement": 30.5
+    },
+    "top2_vs_top3": {
+      "spearman_rho": 0.985601,
+      "mean_absolute_rank_movement": 2.584,
+      "maximum_absolute_rank_movement": 22
+    },
+    "top2_vs_all_five": {
+      "spearman_rho": 0.909214,
+      "mean_absolute_rank_movement": 6.404,
+      "maximum_absolute_rank_movement": 53
+    },
+    "top2_vs_population_weighted": {
+      "spearman_rho": 0.910165,
+      "mean_absolute_rank_movement": 7.124,
+      "maximum_absolute_rank_movement": 44
+    },
+    "top5_universe_vs_top3_universe": {
+      "spearman_rho": 0.957734,
+      "mean_absolute_rank_movement": 4.438,
+      "maximum_absolute_rank_movement": 44
+    },
+    "country_score_vs_eligible_locality_count_spearman_rho": 0.010523
+  },
+  "redundancy": {
+    "largest_existing_criterion_absolute_spearman_rho": 0.607798,
+    "largest_existing_criterion_id": "women_legal_economic_equality",
+    "decision": "Retain. Correlation is moderate and does not make the heat construct redundant."
+  },
+  "balanced_preset_ranking_movement": {
+    "eligible_countries_before": 83,
+    "eligible_countries_after": 83,
+    "additional_country_exclusions": [],
+    "countries_with_changed_rank": 65,
+    "mean_absolute_rank_movement": 2.12,
+    "maximum_absolute_rank_movement": 10
+  },
+  "locality_examples": {
+    "CAN": {
+      "contributing_localities": [
+        "Vancouver",
+        "Edmonton"
+      ],
+      "raw_annual_mean_days": [
+        8,
+        11
+      ]
+    },
+    "IND": {
+      "contributing_localities": [
+        "Bengaluru",
+        "New Delhi"
+      ],
+      "raw_annual_mean_days": [
+        182,
+        245
+      ]
+    },
+    "NOR": {
+      "contributing_localities": [
+        "Stavanger",
+        "Trondheim"
+      ],
+      "raw_annual_mean_days": [
+        0,
+        0
+      ]
+    }
+  },
+  "replay": {
+    "status": "PASSED",
+    "source_bytes_available": true
+  },
+  "checksums": {
+    "raw_archive_sha256": "966b96ef701a8b0053467179a1231ddc24830ac2693aadd7d1388f281795c0bb",
+    "release_checksum": "sha256:d99cf9c6e266b6bf3a9f5d899ad2bad78e07a929ed13a42a2b42899c0856db4d"
+  },
+  "api_ui_verification": {
+    "api_contract_version": "konsider-api-2.0",
+    "catalog_exposes_scope_and_disclaimer": true,
+    "ranking_exposes_locality_assessment": true,
+    "country_details_expose_contributing_localities": true
+  },
   "active_release_before": "2026-07-28.2",
-  "active_release_after": "2026-07-28.2"
+  "active_release_after": "2026-07-29.1"
 }

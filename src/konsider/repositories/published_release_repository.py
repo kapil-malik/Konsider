@@ -90,11 +90,13 @@ class PublishedReleaseRepository:
     ) -> None:
         self.release_root = Path(release_root or PROJECT_ROOT / "data" / "releases").resolve()
         self.catalog_path = Path(catalog_path).resolve() if catalog_path is not None else None
-        self.active_release_path = (
-            Path(active_release_path)
-            if active_release_path is not None
-            else self.release_root / "active.json"
-        )
+        if active_release_path is not None:
+            self.active_release_path = Path(active_release_path)
+        else:
+            legacy_pointer = self.release_root / "legacy-active.json"
+            self.active_release_path = (
+                legacy_pointer if legacy_pointer.exists() else self.release_root / "active.json"
+            )
 
     def load_active(self, *, diagnostic_read_only: bool = False) -> PublishedRelease:
         try:

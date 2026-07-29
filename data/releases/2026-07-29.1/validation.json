@@ -1,0 +1,306 @@
+{
+  "country_count": 91,
+  "criterion_coverage": {
+    "C66": {
+      "activation_threshold": 0.6,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 2,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 89
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 0
+      },
+      "source_lineage_ids": [
+        "lineage:C66:ghsl-climate-r2024a-v1.2",
+        "lineage:ghsl-ucdb-r2024a-v1.2:locality-universe"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 89
+    },
+    "ambient_pm25_population_weighted": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:ambient_pm25_population_weighted:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "established_immigrant_presence": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:established_immigrant_presence:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "household_consumption_price_level_us_100": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:household_consumption_price_level_us_100:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "infrastructure_readiness_composite": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:infrastructure_readiness_composite:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "intentional_homicide_rate": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:intentional_homicide_rate:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "overall_job_market_opportunity": {
+      "activation_threshold": 0.6,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 2,
+        "rejected": 0,
+        "stale": 1,
+        "valid": 88
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:overall_job_market_opportunity:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 88
+    },
+    "political_stability": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:political_stability:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "research_innovation_ecosystem": {
+      "activation_threshold": 0.6,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 6,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 85
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:research_innovation_ecosystem:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 85
+    },
+    "rule_of_law": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:rule_of_law:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "school_education_quality": {
+      "activation_threshold": 0.6,
+      "minimum_valid_country_count": 82,
+      "mode": "CONDITIONAL_COMPLETE_CASE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 2,
+        "rejected": 0,
+        "stale": 1,
+        "valid": 88
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:school_education_quality:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 88
+    },
+    "uhc_service_coverage_index": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 0,
+      "mode": "DIAGNOSTIC_ONLY",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:uhc_service_coverage_index:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    },
+    "women_legal_economic_equality": {
+      "activation_threshold": null,
+      "minimum_valid_country_count": 91,
+      "mode": "GLOBAL_CORE",
+      "outcome_counts": {
+        "invalid": 0,
+        "missing": 0,
+        "rejected": 0,
+        "stale": 0,
+        "valid": 91
+      },
+      "score_range": {
+        "maximum": 10,
+        "minimum": 1.0
+      },
+      "source_lineage_ids": [
+        "lineage:women_legal_economic_equality:schema4-2026-07-28.2"
+      ],
+      "stable_country_count": 91,
+      "stable_universe_id": "stable_supported_v1",
+      "valid_country_count": 91
+    }
+  },
+  "criterion_outcome_count": 1183,
+  "derived_country_evidence_count": 89,
+  "geographic_entity_count": 479,
+  "issues": [],
+  "lineage_passed": true,
+  "locality_policy_passed": true,
+  "observation_count": 1557,
+  "passed": true,
+  "product_ready": true,
+  "schema_version": "validation-5.0",
+  "score_count": 1557,
+  "source_lineage_count": 14,
+  "stable_universe_id": "stable_supported_v1",
+  "structural_passed": true
+}

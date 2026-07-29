@@ -5,11 +5,31 @@ source-neutral observations, computes versioned canonical scores, validates a ca
 publishes a new immutable release. It does not serve API requests, modify published releases, fill
 missing data from fixtures, deploy to AWS, or run on a schedule.
 
-Phase 5C adds `GenericReleaseWorker` and `CurrentReleaseRepository` as the programmatic
-schema-5/catalog-3 build path. It accepts versioned criterion processors and snapshotted policies
-for national or locality evidence. It does not yet replace this production CLI or activate a
-release: `/api/v1` remains on the historical schema-4 path until the API-v2 migration. Schema-5
-replay returns a distinct `SOURCE_BYTES_UNAVAILABLE` status when ignored licensed bytes are absent.
+Phase 5C adds `GenericReleaseWorker` and `CurrentReleaseRepository` as the schema-5/catalog-3 build
+path. It accepts versioned criterion processors and snapshotted policies for national or locality
+evidence. Phase 5G's `phase5_locality_onboarding` command uses this path to migrate the immutable
+schema-4 baseline and onboard approved GHSL locality criteria. Schema-5 replay returns a distinct
+`SOURCE_BYTES_UNAVAILABLE` status when ignored licensed bytes are absent.
+
+The first production invocation was:
+
+```powershell
+python -m konsider.ingestion.phase5_locality_onboarding `
+  --release-id 2026-07-29.1 `
+  --criterion C66 `
+  --activate
+```
+
+The command verifies the retained archive checksum, builds through the generic worker, publishes
+without activation, replays every payload from retained inputs, and only then updates
+`active.json`.
+
+Replay the active locality release with:
+
+```powershell
+python -m konsider.ingestion.phase5_locality_onboarding `
+  --replay data\releases\2026-07-29.1
+```
 
 ## `audit-coverage`
 

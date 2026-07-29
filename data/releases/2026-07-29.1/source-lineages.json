@@ -1,0 +1,584 @@
+[
+  {
+    "lineage_id": "lineage:C66:ghsl-climate-r2024a-v1.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_UCDB_GLOBE_R2024A/GHS_UCDB_THEME_GLOBE_R2024A/GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A/V1-2/GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip#CL_UTC_T32_2020",
+        "attribution": "European Commission, Joint Research Centre, GHS-UCDB R2024A V1.2, licensed CC BY 4.0; transformed by Konsider.",
+        "canonical_page_url": "https://data.jrc.ec.europa.eu/dataset/1a338be6-7eaf-480c-9664-3a8ade88cbcd",
+        "checksum": "sha256:966b96ef701a8b0053467179a1231ddc24830ac2693aadd7d1388f281795c0bb",
+        "dataset_version": "GHS-UCDB R2024A V1.2",
+        "licence_id": "CC-BY-4.0",
+        "publisher": "European Commission, Joint Research Centre",
+        "reference_period": "2011-01-01 through 2020-12-31",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "jrc-ghs-ucdb-climate",
+        "source_version": "GHS-UCDB-R2024A-V1.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "jrc-ghs-ucdb-climate"
+        ],
+        "output_ref": "C66-locality-observations",
+        "step_id": "parse-cl_utc_t32_2020",
+        "transform_version": "jrc-ghsl-urban-climate-csv-v1"
+      },
+      {
+        "input_refs": [
+          "C66-locality-observations"
+        ],
+        "output_ref": "C66-locality-scores",
+        "step_id": "score-c66",
+        "transform_version": "c66-extreme-heat-days-linear-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:ambient_pm25_population_weighted:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://api.worldbank.org/v2/country/ALB;ARE;ARM;ATG;AUS;AUT;BEL;BGR;BHR;BHS;BIH;BOL;BRA;BWA;CAN;CHE;CHL;CMR;COL;CRI;CYP;CZE;DEU;DNK;DOM;DZA;ESP;EST;FIN;FJI;FRA;GBR;GHA;GRC;GRD;GTM;GUY;HND;HRV;HTI;HUN;IDN;IND;IRL;ISL;ISR;ITA;JAM;JPN;KAZ;KOR;LTU;LUX;LVA;MDA;MEX;MKD;MLT;MNE;MNG;MUS;MYS;NAM;NGA;NIC;NLD;NOR;NZL;OMN;PAN;PER;PHL;POL;PRT;PRY;QAT;ROU;RUS;SGP;SLV;SRB;SVK;SVN;SWE;TTO;TUR;UKR;URY;USA;UZB;ZAF/indicator/EN.ATM.PM25.MC.M3?format=json&date=2018:2026&per_page=5000",
+        "attribution": "World Bank, World Development Indicators, EN.ATM.PM25.MC.M3; source GBD 2023/IHME; licence CC BY 4.0; transformed by Konsider.",
+        "canonical_page_url": "https://data.worldbank.org/indicator/EN.ATM.PM25.MC.M3",
+        "checksum": "sha256:588d2d1af1e58ea564169a4c0e199d649208bcc82940ef537a51095a769df698",
+        "dataset_version": "WDI update 2026-07-13",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank World Development Indicators",
+        "reference_period": "annual, 1990-2023; latest 2023",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_pm25",
+        "source_version": "EN.ATM.PM25.MC.M3@WDI-2026-07-13"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-ambient_pm25_population_weighted",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_pm25",
+          "konsider-schema4-ambient_pm25_population_weighted"
+        ],
+        "output_ref": "ambient_pm25_population_weighted-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:established_immigrant_presence:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://api.worldbank.org/v2/country/ALB;ARE;ARM;ATG;AUS;AUT;BEL;BGR;BHR;BHS;BIH;BOL;BRA;BWA;CAN;CHE;CHL;CMR;COL;CRI;CYP;CZE;DEU;DNK;DOM;DZA;ESP;EST;FIN;FJI;FRA;GBR;GHA;GRC;GRD;GTM;GUY;HND;HRV;HTI;HUN;IDN;IND;IRL;ISL;ISR;ITA;JAM;JPN;KAZ;KOR;LTU;LUX;LVA;MDA;MEX;MKD;MLT;MNE;MNG;MUS;MYS;NAM;NGA;NIC;NLD;NOR;NZL;OMN;PAN;PER;PHL;POL;PRT;PRY;QAT;ROU;RUS;SGP;SLV;SRB;SVK;SVN;SWE;TTO;TUR;UKR;URY;USA;UZB;ZAF/indicator/SM.POP.TOTL.ZS?format=json&date=2024:2024&per_page=5000",
+        "attribution": "World Bank WDI; International Migrant Stock, United Nations Population Division; transformed by Konsider.",
+        "canonical_page_url": "https://data.worldbank.org/indicator/SM.POP.TOTL.ZS",
+        "checksum": "sha256:e2526ee031d6d553959f9786f2fb8ab67ed03d605569634704822d8d5086c1e2",
+        "dataset_version": "World Development Indicators, July 2026",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank World Development Indicators",
+        "reference_period": "2024",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_migrant_stock",
+        "source_version": "SM.POP.TOTL.ZS@WDI-2026-07"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-established_immigrant_presence",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_migrant_stock",
+          "konsider-schema4-established_immigrant_presence"
+        ],
+        "output_ref": "established_immigrant_presence-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:ghsl-ucdb-r2024a-v1.2:locality-universe",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_UCDB_GLOBE_R2024A/GHS_UCDB_THEME_GLOBE_R2024A/GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A/V1-2/GHS_UCDB_THEME_CLIMATE_GLOBE_R2024A_V1_2.zip",
+        "attribution": "European Commission, Joint Research Centre, GHS-UCDB R2024A V1.2, licensed CC BY 4.0; transformed by Konsider.",
+        "canonical_page_url": "https://data.jrc.ec.europa.eu/dataset/1a338be6-7eaf-480c-9664-3a8ade88cbcd",
+        "checksum": "sha256:966b96ef701a8b0053467179a1231ddc24830ac2693aadd7d1388f281795c0bb",
+        "dataset_version": "GHS-UCDB R2024A V1.2",
+        "licence_id": "CC-BY-4.0",
+        "publisher": "European Commission, Joint Research Centre",
+        "reference_period": "2025 population and urban-centre identities",
+        "role": "ENTITY_UNIVERSE",
+        "source_id": "jrc-ghs-ucdb-climate",
+        "source_version": "GHS-UCDB-R2024A-V1.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "jrc-ghs-ucdb-climate"
+        ],
+        "output_ref": "ghsl-ucdb-top5-population-v1",
+        "step_id": "select-ghsl-top-five-population-localities",
+        "transform_version": "ghsl-ucdb-top5-population-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:household_consumption_price_level_us_100:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://api.worldbank.org/v2/country/ALB;ARE;ARM;ATG;AUS;AUT;BEL;BGR;BHR;BHS;BIH;BOL;BRA;BWA;CAN;CHE;CHL;CMR;COL;CRI;CYP;CZE;DEU;DNK;DOM;DZA;ESP;EST;FIN;FJI;FRA;GBR;GHA;GRC;GRD;GTM;GUY;HND;HRV;HTI;HUN;IDN;IND;IRL;ISL;ISR;ITA;JAM;JPN;KAZ;KOR;LTU;LUX;LVA;MDA;MEX;MKD;MLT;MNE;MNG;MUS;MYS;NAM;NGA;NIC;NLD;NOR;NZL;OMN;PAN;PER;PHL;POL;PRT;PRY;QAT;ROU;RUS;SGP;SLV;SRB;SVK;SVN;SWE;TTO;TUR;UKR;URY;USA;UZB;ZAF/indicator/PA.NUS.PRVT.PP?format=json&date=2021:2026&per_page=5000",
+        "attribution": "World Bank ICP/WDI, PA.NUS.PRVT.PP and PA.NUS.FCRF; licence CC BY 4.0; PLI and broad bands derived by Konsider.",
+        "canonical_page_url": "https://www.worldbank.org/en/programs/icp/data",
+        "checksum": "sha256:6f422680fb7163c220507051a24bb7fdc12c23db831dfcfb8a38e9b364e6ce06",
+        "dataset_version": "2021 ICP benchmark with WDI extrapolations through 2025",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank International Comparison Program",
+        "reference_period": "latest common country year, currently 2025",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_icp",
+        "source_version": "PA.NUS.PRVT.PP+PA.NUS.FCRF@WDI-2026-07-13"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-household_consumption_price_level_us_100",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_icp",
+          "konsider-schema4-household_consumption_price_level_us_100"
+        ],
+        "output_ref": "household_consumption_price_level_us_100-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:infrastructure_readiness_composite:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://api.worldbank.org/v2/country/ALB;ARE;ARM;ATG;AUS;AUT;BEL;BGR;BHR;BHS;BIH;BOL;BRA;BWA;CAN;CHE;CHL;CMR;COL;CRI;CYP;CZE;DEU;DNK;DOM;DZA;ESP;EST;FIN;FJI;FRA;GBR;GHA;GRC;GRD;GTM;GUY;HND;HRV;HTI;HUN;IDN;IND;IRL;ISL;ISR;ITA;JAM;JPN;KAZ;KOR;LTU;LUX;LVA;MDA;MEX;MKD;MLT;MNE;MNG;MUS;MYS;NAM;NGA;NIC;NLD;NOR;NZL;OMN;PAN;PER;PHL;POL;PRT;PRY;QAT;ROU;RUS;SGP;SLV;SRB;SVK;SVN;SWE;TTO;TUR;UKR;URY;USA;UZB;ZAF/indicator/IT.NET.USER.ZS?format=json&date=2018:2026&per_page=5000",
+        "attribution": "World Bank WDI indicators IT.NET.USER.ZS, IT.NET.BBND.P2, LP.LPI.INFR.XQ; cite ITU for digital components; licence CC BY 4.0; composite derived by Konsider.",
+        "canonical_page_url": "https://data.worldbank.org/",
+        "checksum": "sha256:1265284a487fcdb20f40797892895f8cac9e285016ac78e986fd4a9d30d1c687",
+        "dataset_version": "WDI update 2026-07-13",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank World Development Indicators",
+        "reference_period": "latest components: Internet 2024-2025, broadband 2023-2024, LPI infrastructure 2022",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_infrastructure",
+        "source_version": "INFRA-3@WDI-2026-07-13"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-infrastructure_readiness_composite",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_infrastructure",
+          "konsider-schema4-infrastructure_readiness_composite"
+        ],
+        "output_ref": "infrastructure_readiness_composite-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:intentional_homicide_rate:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://api.worldbank.org/v2/country/ALB;ARE;ARM;ATG;AUS;AUT;BEL;BGR;BHR;BHS;BIH;BOL;BRA;BWA;CAN;CHE;CHL;CMR;COL;CRI;CYP;CZE;DEU;DNK;DOM;DZA;ESP;EST;FIN;FJI;FRA;GBR;GHA;GRC;GRD;GTM;GUY;HND;HRV;HTI;HUN;IDN;IND;IRL;ISL;ISR;ITA;JAM;JPN;KAZ;KOR;LTU;LUX;LVA;MDA;MEX;MKD;MLT;MNE;MNG;MUS;MYS;NAM;NGA;NIC;NLD;NOR;NZL;OMN;PAN;PER;PHL;POL;PRT;PRY;QAT;ROU;RUS;SGP;SLV;SRB;SVK;SVN;SWE;TTO;TUR;UKR;URY;USA;UZB;ZAF/indicator/VC.IHR.PSRC.P5?format=json&date=2000:2026&per_page=5000",
+        "attribution": "World Bank WDI, VC.IHR.PSRC.P5; original source UNODC Research Data Portal; licence CC BY 4.0; transformed by Konsider.",
+        "canonical_page_url": "https://data.worldbank.org/indicator/VC.IHR.PSRC.P5",
+        "checksum": "sha256:b6c023272a6881c57a8a50a86b15fc59d66c502a0469203ffe933c2200c506fa",
+        "dataset_version": "WDI update 2026-07-13",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "United Nations Office on Drugs and Crime",
+        "reference_period": "annual; latest country values 2021-2023",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "unodc_homicide",
+        "source_version": "VC.IHR.PSRC.P5@WDI-2026-07-13"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-intentional_homicide_rate",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "unodc_homicide",
+          "konsider-schema4-intentional_homicide_rate"
+        ],
+        "output_ref": "intentional_homicide_rate-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:overall_job_market_opportunity:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://rplumber.ilo.org/data/indicator/?id=UNE_2EAP_SEX_AGE_RT_A&format=csv",
+        "attribution": "International Labour Organization, ILOSTAT, ILO modelled estimates, November 2025 edition; 2025 UNE, EMP and EAP total-population age-15+ series; transformed by Konsider.",
+        "canonical_page_url": "https://ilostat.ilo.org/data/bulk/",
+        "checksum": "sha256:0c5640e14a3ca406e855f3ee5f71e4016dce54059493c930d95f326fa1550d7d",
+        "dataset_version": "ILO modelled estimates, November 2025 edition",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "International Labour Organization (ILOSTAT)",
+        "reference_period": "2025 modelled national estimates for total population age 15+; future projections in the edition are not used",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "ilostat_job_market_opportunity",
+        "source_version": "UNE+EMP+EAP@ILOSTAT-MODEL-2025-11"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-overall_job_market_opportunity",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "ilostat_job_market_opportunity",
+          "konsider-schema4-overall_job_market_opportunity"
+        ],
+        "output_ref": "overall_job_market_opportunity-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:political_stability:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://www.worldbank.org/content/dam/sites/govindicators/doc/wgidataset_with_sourcedata-2025.xlsx",
+        "attribution": "World Bank, Worldwide Governance Indicators, 2025 revision; transformed into broad Konsider bands.",
+        "canonical_page_url": "https://data.worldbank.org/indicator/GOV_WGI_PV_EST",
+        "checksum": "sha256:25a2f9eabb90b0092973392c0b31571aa58b691cc5786292e504b52f693e1eb8",
+        "dataset_version": "Worldwide Governance Indicators 2025 revision",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank Worldwide Governance Indicators",
+        "reference_period": "2024 estimate with published standard error",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_wgi_political_stability",
+        "source_version": "wgidataset_with_sourcedata-2025.xlsx#pv@2024"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-political_stability",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_wgi_political_stability",
+          "konsider-schema4-political_stability"
+        ],
+        "output_ref": "political_stability-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:research_innovation_ecosystem:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://www.wipo.int/edocs/pubdocs/en/wipo-pub-2000-2025-tech1.xlsx",
+        "attribution": "World Intellectual Property Organization, Global Innovation Index 2025, Innovation outputs sub-index; licence CC BY 4.0; transformed into fixed Konsider bands.",
+        "canonical_page_url": "https://www.wipo.int/en/web/global-innovation-index/2025/index",
+        "checksum": "sha256:29dac5fadb7c1ef3ae54044887db8eedd232a08f7cae930cf886e131afd55b81",
+        "dataset_version": "Global Innovation Index 2025",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Intellectual Property Organization",
+        "reference_period": "GII 2025 edition using latest available inputs in its multi-year window",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "wipo_innovation_outputs",
+        "source_version": "GII2025-INNOVATION-OUTPUTS"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-research_innovation_ecosystem",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "wipo_innovation_outputs",
+          "konsider-schema4-research_innovation_ecosystem"
+        ],
+        "output_ref": "research_innovation_ecosystem-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:rule_of_law:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://www.worldbank.org/content/dam/sites/govindicators/doc/wgidataset_with_sourcedata-2025.xlsx",
+        "attribution": "World Bank, Worldwide Governance Indicators, 2025 revision; transformed into broad Konsider bands.",
+        "canonical_page_url": "https://data.worldbank.org/indicator/GOV_WGI_RL_EST",
+        "checksum": "sha256:25a2f9eabb90b0092973392c0b31571aa58b691cc5786292e504b52f693e1eb8",
+        "dataset_version": "Worldwide Governance Indicators 2025 revision",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank Worldwide Governance Indicators",
+        "reference_period": "2024 estimate with published standard error",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_wgi_rule_of_law",
+        "source_version": "wgidataset_with_sourcedata-2025.xlsx#rl@2024"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-rule_of_law",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_wgi_rule_of_law",
+          "konsider-schema4-rule_of_law"
+        ],
+        "output_ref": "rule_of_law-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:school_education_quality:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://datacatalogfiles.worldbank.org/ddh-published/0067030/DR0095876/hci_plus_index_panel.dta",
+        "attribution": "World Bank, Human Capital Index Plus version 3, learning-adjusted years of schooling; licence CC BY 4.0; transformed into fixed Konsider bands.",
+        "canonical_page_url": "https://datacatalog.worldbank.org/search/dataset/0067030/human-capital-index-plus",
+        "checksum": "sha256:7ccaf4f0bef64d7eb2617700261cd6339355d1044d274fb75abc668cd35b7265",
+        "dataset_version": "Human Capital Index Plus version 3",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank",
+        "reference_period": "latest labelled country estimate; production freshness requires 2024+",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_hci_plus_schooling",
+        "source_version": "HCI+V3-LAYS@2026-02-11"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-school_education_quality",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_hci_plus_schooling",
+          "konsider-schema4-school_education_quality"
+        ],
+        "output_ref": "school_education_quality-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:uhc_service_coverage_index:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://api.worldbank.org/v2/country/ALB;ARE;ARM;ATG;AUS;AUT;BEL;BGR;BHR;BHS;BIH;BOL;BRA;BWA;CAN;CHE;CHL;CMR;COL;CRI;CYP;CZE;DEU;DNK;DOM;DZA;ESP;EST;FIN;FJI;FRA;GBR;GHA;GRC;GRD;GTM;GUY;HND;HRV;HTI;HUN;IDN;IND;IRL;ISL;ISR;ITA;JAM;JPN;KAZ;KOR;LTU;LUX;LVA;MDA;MEX;MKD;MLT;MNE;MNG;MUS;MYS;NAM;NGA;NIC;NLD;NOR;NZL;OMN;PAN;PER;PHL;POL;PRT;PRY;QAT;ROU;RUS;SGP;SLV;SRB;SVK;SVN;SWE;TTO;TUR;UKR;URY;USA;UZB;ZAF/indicator/SH.UHC.SRVS.CV.XD?format=json&date=2018:2026&per_page=5000&source=16",
+        "attribution": "World Bank HNP, SH.UHC.SRVS.CV.XD; source WHO Global Health Observatory; licence CC BY 4.0; transformed by Konsider.",
+        "canonical_page_url": "https://data.worldbank.org/indicator/SH.UHC.SRVS.CV.XD",
+        "checksum": "sha256:9903124b6fae098ec74c568dd17a081029cfc4f8733a230bdd28288fdea00936",
+        "dataset_version": "HNP update 2026-07-01",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank Health Nutrition and Population Statistics",
+        "reference_period": "annual, latest API value 2021",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_uhc",
+        "source_version": "SH.UHC.SRVS.CV.XD@HNP-2026-07-01"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-uhc_service_coverage_index",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_uhc",
+          "konsider-schema4-uhc_service_coverage_index"
+        ],
+        "output_ref": "uhc_service_coverage_index-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  },
+  {
+    "lineage_id": "lineage:women_legal_economic_equality:schema4-2026-07-28.2",
+    "lineage_version": "1.0",
+    "sources": [
+      {
+        "asset_uri": "https://wbl.worldbank.org/content/dam/sites/wbl/documents/2026/WBL26_FINAL_ALL.xlsx",
+        "attribution": "World Bank. 2026. Women, Business and the Law [dataset]. DOI 10.57966/gtdw-yp27; licence CC BY 4.0; transformed by Konsider.",
+        "canonical_page_url": "https://wbl.worldbank.org/en/data/download-data",
+        "checksum": "sha256:6c3cf161d0798b847de909e12eeacc99501b017294c50dee387d39ca75200d57",
+        "dataset_version": "Women, Business and the Law 2026",
+        "licence_id": "Creative Commons Attribution 4.0 International",
+        "publisher": "World Bank Women, Business and the Law",
+        "reference_period": "current as of 2025-10-01; report year 2026",
+        "role": "PRIMARY_OBSERVATION",
+        "source_id": "world_bank_wbl",
+        "source_version": "WBL26_FINAL_ALL@2026-02-23"
+      },
+      {
+        "asset_uri": "konsider-release:2026-07-28.2",
+        "attribution": "Normalized migration input; original publisher attribution is retained in the accompanying source-lineage inputs.",
+        "canonical_page_url": null,
+        "checksum": "sha256:de67681265428de36f6e182cb9435140fd2bb7ff5b5a284b4fed9a97fd5451de",
+        "dataset_version": "2026-07-28.2",
+        "licence_id": "UPSTREAM-LICENCES-AS-RECORDED",
+        "publisher": "Konsider",
+        "reference_period": null,
+        "role": "SCORING_INPUT",
+        "source_id": "konsider-schema4-women_legal_economic_equality",
+        "source_version": "2026-07-28.2"
+      }
+    ],
+    "transforms": [
+      {
+        "input_refs": [
+          "world_bank_wbl",
+          "konsider-schema4-women_legal_economic_equality"
+        ],
+        "output_ref": "women_legal_economic_equality-country-results",
+        "step_id": "migrate-normalized-country-result",
+        "transform_version": "schema4-to-schema5-normalized-v1"
+      }
+    ]
+  }
+]
