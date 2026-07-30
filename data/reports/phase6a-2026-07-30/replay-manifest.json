@@ -1,0 +1,39 @@
+{
+  "schema_version": "konsider-phase6a-replay-manifest-1.0",
+  "report_date": "2026-07-30",
+  "deterministic": true,
+  "files": {
+    "approved-implementation-portfolio.json": {
+      "bytes": 767,
+      "sha256": "8703feba3dd2cdc378b85fc755e36908add93293d596d9ec665b03e625402bdd"
+    },
+    "country-coverage.jsonl": {
+      "bytes": 183771,
+      "sha256": "852bb3cacab6cbf497663ca1e96cab63268055b022de91f8ac5b09a1dab8e0c9"
+    },
+    "coverage-summary.json": {
+      "bytes": 24944,
+      "sha256": "d552b252f97e01edc0b5d7435d8ebabd7ba4cb38687f8e0fecc329b71100caeb"
+    },
+    "decision-matrix.json": {
+      "bytes": 9007,
+      "sha256": "61e6e4c0af89b5a0134e1b3f22331585260507d5800bb4d36ac69ffee79bab45"
+    },
+    "mappings.json": {
+      "bytes": 2540,
+      "sha256": "635cd09c94e17569001b3b73223517234c8f9875251173a10a46812e96943f57"
+    },
+    "raw-artifacts.json": {
+      "bytes": 806,
+      "sha256": "f78b3cb7ee405ee11f6f7212bdb15118a5e4e21371473395bf52f1c18953085b"
+    },
+    "score-sensitivity.json": {
+      "bytes": 10248,
+      "sha256": "a8a8bbf441679162456f31a5636f463fb5128fcca9f88d379899d90dfb83227c"
+    },
+    "sources.json": {
+      "bytes": 4076,
+      "sha256": "bd56412a9e13129650e7f4f22e27c2a0a9f646ab5b97a7e3b226f496a730a6ec"
+    }
+  }
+}

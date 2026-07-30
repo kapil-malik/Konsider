@@ -1,0 +1,335 @@
+{
+  "schema_version": "konsider-phase6a-score-sensitivity-1.0",
+  "report_date": "2026-07-30",
+  "note": "Diagnostic calculations only; no candidate is approved for runtime scoring.",
+  "occupation": {
+    "technology_employment_market_depth": {
+      "country_count": 61,
+      "score_candidates": {
+        "occupation_share_percentile": {
+          "count": 61,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9344694769431685,
+          "unique_count": 61
+        },
+        "log_employment_scale_percentile": {
+          "count": 61,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9344694769431685,
+          "unique_count": 61
+        },
+        "equal_depth_specialization_blend": {
+          "count": 61,
+          "minimum": 0.16666666666666666,
+          "p10": 1.75,
+          "median": 5.166666666666667,
+          "p90": 7.666666666666666,
+          "maximum": 8.833333333333334,
+          "mean": 4.999999999999999,
+          "standard_deviation": 2.245416298455537,
+          "unique_count": 43
+        }
+      },
+      "raw_dispersion": {
+        "occupation_share_percent": {
+          "count": 61,
+          "minimum": 0.11647285351262371,
+          "p10": 0.7431678873379026,
+          "median": 3.0797650602487536,
+          "p90": 4.980059586813612,
+          "maximum": 6.552188365515152,
+          "mean": 2.8104312264203015,
+          "standard_deviation": 1.6471921215219216,
+          "unique_count": 61
+        },
+        "occupation_employment_thousands": {
+          "count": 61,
+          "minimum": 1.234,
+          "p10": 17.378999999999998,
+          "median": 147.642,
+          "p90": 1089.113,
+          "maximum": 6190.418,
+          "mean": 444.3488688524591,
+          "standard_deviation": 985.6712727793721,
+          "unique_count": 61
+        }
+      },
+      "spearman": {
+        "share_vs_log_scale": 0.17102062400846113,
+        "share_vs_equal_blend": 0.7597514280349303,
+        "log_scale_vs_equal_blend": 0.7593812045753937
+      }
+    },
+    "science_engineering_employment_market_depth": {
+      "country_count": 66,
+      "score_candidates": {
+        "occupation_share_percentile": {
+          "count": 66,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9308264345988815,
+          "unique_count": 66
+        },
+        "log_employment_scale_percentile": {
+          "count": 66,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9308264345988815,
+          "unique_count": 66
+        },
+        "equal_depth_specialization_blend": {
+          "count": 66,
+          "minimum": 0.6923076923076923,
+          "p10": 1.8461538461538463,
+          "median": 5.230769230769231,
+          "p90": 7.8076923076923075,
+          "maximum": 9.76923076923077,
+          "mean": 4.999999999999999,
+          "standard_deviation": 2.3088963447938347,
+          "unique_count": 45
+        }
+      },
+      "raw_dispersion": {
+        "occupation_share_percent": {
+          "count": 66,
+          "minimum": 0.5610851497256776,
+          "p10": 1.7536030270439595,
+          "median": 5.358883807534696,
+          "p90": 8.252188582194522,
+          "maximum": 10.935662302304491,
+          "mean": 5.211896383438742,
+          "standard_deviation": 2.5783956932809224,
+          "unique_count": 66
+        },
+        "occupation_employment_thousands": {
+          "count": 66,
+          "minimum": 2.604,
+          "p10": 18.7885,
+          "median": 251.476,
+          "p90": 1840.311,
+          "maximum": 8578.183,
+          "mean": 809.4331818181818,
+          "standard_deviation": 1578.0579371349372,
+          "unique_count": 66
+        }
+      },
+      "spearman": {
+        "share_vs_log_scale": 0.2412483039348711,
+        "share_vs_equal_blend": 0.7928881942487531,
+        "log_scale_vs_equal_blend": 0.7745135172166803
+      }
+    },
+    "healthcare_employment_market_depth": {
+      "country_count": 66,
+      "score_candidates": {
+        "occupation_share_percentile": {
+          "count": 66,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9308264345988815,
+          "unique_count": 66
+        },
+        "log_employment_scale_percentile": {
+          "count": 66,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9308264345988815,
+          "unique_count": 66
+        },
+        "equal_depth_specialization_blend": {
+          "count": 66,
+          "minimum": 0.23076923076923078,
+          "p10": 2,
+          "median": 4.884615384615385,
+          "p90": 8.307692307692307,
+          "maximum": 10,
+          "mean": 4.999999999999999,
+          "standard_deviation": 2.392422740620983,
+          "unique_count": 56
+        }
+      },
+      "raw_dispersion": {
+        "occupation_share_percent": {
+          "count": 66,
+          "minimum": 0.7240227631459212,
+          "p10": 1.8630300776751567,
+          "median": 4.39807656611515,
+          "p90": 6.870609749584903,
+          "maximum": 9.489438807973395,
+          "mean": 4.325752299884501,
+          "standard_deviation": 1.9513332301952635,
+          "unique_count": 66
+        },
+        "occupation_employment_thousands": {
+          "count": 66,
+          "minimum": 0.7929999999999999,
+          "p10": 13.3515,
+          "median": 183.65699999999998,
+          "p90": 1937.979,
+          "maximum": 15514.555,
+          "mean": 872.180803030303,
+          "standard_deviation": 2179.8446698416255,
+          "unique_count": 66
+        }
+      },
+      "spearman": {
+        "share_vs_log_scale": 0.33267926103747,
+        "share_vs_equal_blend": 0.8048724494929473,
+        "log_scale_vs_equal_blend": 0.816187217165757
+      }
+    },
+    "business_administration_employment_market_depth": {
+      "country_count": 66,
+      "score_candidates": {
+        "occupation_share_percentile": {
+          "count": 66,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9308264345988815,
+          "unique_count": 66
+        },
+        "log_employment_scale_percentile": {
+          "count": 66,
+          "minimum": 0,
+          "p10": 1,
+          "median": 5,
+          "p90": 9,
+          "maximum": 10,
+          "mean": 5,
+          "standard_deviation": 2.9308264345988815,
+          "unique_count": 66
+        },
+        "equal_depth_specialization_blend": {
+          "count": 66,
+          "minimum": 0.6153846153846154,
+          "p10": 1.9615384615384617,
+          "median": 5.384615384615385,
+          "p90": 7.961538461538462,
+          "maximum": 8.923076923076923,
+          "mean": 5,
+          "standard_deviation": 2.2238055443669644,
+          "unique_count": 46
+        }
+      },
+      "raw_dispersion": {
+        "occupation_share_percent": {
+          "count": 66,
+          "minimum": 0.8886703536292716,
+          "p10": 2.986709099050075,
+          "median": 9.09125486077539,
+          "p90": 14.379084915408688,
+          "maximum": 28.755352881061835,
+          "mean": 8.908859544549331,
+          "standard_deviation": 4.940858879554061,
+          "unique_count": 66
+        },
+        "occupation_employment_thousands": {
+          "count": 66,
+          "minimum": 1.7309999999999999,
+          "p10": 38.135,
+          "median": 419.97900000000004,
+          "p90": 3444.3010000000004,
+          "maximum": 20073.256,
+          "mean": 1317.628590909091,
+          "standard_deviation": 2877.7234155484307,
+          "unique_count": 66
+        }
+      },
+      "spearman": {
+        "share_vs_log_scale": 0.1514455693560171,
+        "share_vs_equal_blend": 0.7737887845210766,
+        "log_scale_vs_equal_blend": 0.7340773285927669
+      }
+    }
+  },
+  "education": {
+    "engineering_higher_education_capacity": {
+      "country_count": 76,
+      "raw_field_share_percent": {
+        "count": 76,
+        "minimum": 4.619897335614764,
+        "p10": 6.659761066190201,
+        "median": 12.363279819488525,
+        "p90": 18.194171338654254,
+        "maximum": 24.64767312176823,
+        "mean": 12.74679488963219,
+        "standard_deviation": 4.395790856599055,
+        "unique_count": 76
+      },
+      "percentile_score": {
+        "count": 76,
+        "minimum": 0,
+        "p10": 1,
+        "median": 5,
+        "p90": 9,
+        "maximum": 10,
+        "mean": 5,
+        "standard_deviation": 2.924988129130707,
+        "unique_count": 76
+      },
+      "capacity_score_status": "NOT_CONSTRUCTIBLE",
+      "reason": "The exact current UIS archive has field shares but no compatible field graduate count."
+    },
+    "ict_higher_education_capacity": {
+      "country_count": 75,
+      "raw_field_share_percent": {
+        "count": 75,
+        "minimum": 1.413019969721001,
+        "p10": 3.4018334177017056,
+        "median": 5.739980220794678,
+        "p90": 8.845910983080728,
+        "maximum": 11.672760511883,
+        "mean": 5.88126294528347,
+        "standard_deviation": 2.1273427497640056,
+        "unique_count": 75
+      },
+      "percentile_score": {
+        "count": 75,
+        "minimum": 0,
+        "p10": 1,
+        "median": 5,
+        "p90": 9.000000000000002,
+        "maximum": 10,
+        "mean": 4.999999999999999,
+        "standard_deviation": 2.9255014200233362,
+        "unique_count": 75
+      },
+      "capacity_score_status": "NOT_CONSTRUCTIBLE",
+      "reason": "The exact current UIS archive has field shares but no compatible field graduate count."
+    }
+  },
+  "academic_ecosystem": {
+    "status": "NOT_MEASURED",
+    "reason": "No pinned OpenAlex capture and no deterministic institution-to-locality mapping."
+  }
+}

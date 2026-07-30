@@ -1,0 +1,20 @@
+{
+  "schema_version": "konsider-phase6a-implementation-portfolio-1.0",
+  "report_date": "2026-07-30",
+  "approved_core": [],
+  "approved_stretch": [],
+  "diagnostic_only": [
+    "technology_employment_market_depth",
+    "science_engineering_employment_market_depth",
+    "healthcare_employment_market_depth",
+    "business_administration_employment_market_depth"
+  ],
+  "blocked": [
+    "engineering_higher_education_capacity",
+    "engineering_academic_research_ecosystem",
+    "ict_higher_education_capacity"
+  ],
+  "implementation_gate_passed": false,
+  "next_prompt_authorized": false,
+  "reason": "Zero candidates are approved; the Phase 6 rule requires four or evidence that four are impossible. This study provides the latter and stops before runtime work."
+}

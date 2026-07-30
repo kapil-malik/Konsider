@@ -1,8 +1,8 @@
 # Product roadmap
 
-Status: Phase 5 complete; structured applicant/household context is next
+Status: Phase 6 in progress; Phase 6A source gates complete with no implementation approvals
 
-Last updated: 2026-07-29
+Last updated: 2026-07-30
 
 ## Current position
 
@@ -41,6 +41,15 @@ clean OpenAPI/TypeScript regeneration, frontend and browser gates, and a source-
 clean-checkout verification. The final architecture, 45-criterion disposition, active inventory,
 limitations, and remote-CI status are in the
 [Phase 5 closure report](../history/phase5-closure-report.md).
+
+Phase 6A tested seven destination-side career and engineering-education constructs as one
+portfolio. Exact ILOSTAT occupation data reached only 61-66 fresh countries, exact UIS field-share
+data reached only 75-76 and cannot construct capacity, and the OpenAlex/ROR academic candidate
+lacks a pinned capture and deterministic locality mapping. No candidate clears the existing
+82-country PCC minimum and nine-country combined missing-union limit. Phase 6 therefore remains in
+research and stops before runtime implementation pending an exact new source or explicit owner
+decision. See the
+[Phase 6A source study](../research/phase6a-career-education-source-study.md).
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -154,7 +163,24 @@ The final public-contract cleanup is documented in the
 The complete outcome is documented in the
 [Phase 5 closure report](../history/phase5-closure-report.md).
 
-## Next phase: structured applicant and household context
+## Phase 6: career and engineering-education opportunity — in progress
+
+Phase 6 tests narrower, profile-neutral destination constructs without estimating an applicant's
+job, licensing, visa, or admission probability.
+
+- Phase 6A completed exact source, construct, legal, replay, coverage, overlap, and score-dispersion
+  probes for four core and three stretch candidates.
+- Technology, science-and-engineering, healthcare, and business-and-administration employment depth
+  remain diagnostic research because current ILOSTAT coverage is below policy.
+- Engineering and ICT education capacity are held because the exact UIS archive provides shares
+  without compatible counts, falls below coverage policy, and carries ShareAlike obligations that
+  need owner/legal review.
+- Engineering academic and research ecosystem is held pending a pinned OpenAlex capture, ROR
+  capture, deterministic institution-to-locality mapping, and measured overlap with C05.
+- No Phase 6B/runtime work is authorized until at least four candidates clear all gates or an exact
+  new source study changes the result without weakening policy.
+
+## Next phase after Phase 6: structured applicant and household context
 
 - Define typed applicant, occupation, qualification, licensing, institution, household, visa, and
   co-location inputs without conflating them with preference presets.

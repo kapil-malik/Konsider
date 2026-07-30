@@ -1,0 +1,26 @@
+{
+  "schema_version": "konsider-phase6a-raw-artifacts-1.0",
+  "report_date": "2026-07-30",
+  "artifacts": [
+    {
+      "file": "data/raw/phase6a/ilostat-emp-oc2.csv",
+      "bytes": 19708182,
+      "sha256": "aaadd9ad52c88af5b00edce9c78821481d352251fe1ee944bb9bff299bdd04d4"
+    },
+    {
+      "file": "data/raw/phase6a/uis-opri-202602.zip",
+      "bytes": 68300100,
+      "sha256": "7e35482e817d63b0cf638fb695f8a9fd2df9139ae830c0d13f2eba4706d50eca"
+    },
+    {
+      "file": "data/raw/phase6a/ilostat-guidelines.pdf",
+      "bytes": 301571,
+      "sha256": "aab6b086254c594cead72d0bf769783b01c80ef6723ba424de80452a642ad929"
+    },
+    {
+      "file": "data/raw/phase6a/uis-terms.html",
+      "bytes": 40012,
+      "sha256": "91843e81e17ce6cf9f3a99022f7676a28290b6f0202c79c609a9e2a010af2f8d"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": "konsider-phase6a-proposed-mappings-1.0",
+  "report_date": "2026-07-30",
+  "status": "PROPOSED_NOT_FROZEN",
+  "occupation": {
+    "classification": "ISCO-08",
+    "available_granularity": "two-digit only",
+    "table": "EMP_TEMP_SEX_OC2_NB_A",
+    "sex": "SEX_T",
+    "total": "OC2_ISCO08_TOTAL",
+    "families": {
+      "technology_employment_market_depth": [
+        "OC2_ISCO08_25",
+        "OC2_ISCO08_35"
+      ],
+      "science_engineering_employment_market_depth": [
+        "OC2_ISCO08_21",
+        "OC2_ISCO08_31"
+      ],
+      "healthcare_employment_market_depth": [
+        "OC2_ISCO08_22",
+        "OC2_ISCO08_32"
+      ],
+      "business_administration_employment_market_depth": [
+        "OC2_ISCO08_24",
+        "OC2_ISCO08_33"
+      ]
+    },
+    "excluded_examples": {
+      "technology": [
+        "133 ICT services managers",
+        "215 electrotechnology engineers",
+        "742 electronics and telecommunications installers and repairers"
+      ],
+      "science_engineering": [
+        "ISCO-08 trades and production groups outside 21 and 31"
+      ],
+      "business_administration": [
+        "management, legal, sales, clerical and marketing groups outside 24 and 33"
+      ]
+    }
+  },
+  "education": {
+    "classification": "ISCED-F 2013 broad fields; tertiary ISCED 5-8",
+    "sex": "both sexes",
+    "families": {
+      "engineering_higher_education_capacity": {
+        "indicator_id": "FOSGP.5T8.F700",
+        "field": "Engineering, manufacturing and construction"
+      },
+      "ict_higher_education_capacity": {
+        "indicator_id": "FOSGP.5T8.F600",
+        "field": "Information and Communication Technologies"
+      }
+    }
+  },
+  "research_field": {
+    "taxonomy": "OpenAlex domain > field > subfield > topic",
+    "primary_mapping": [
+      {
+        "field_id": 22,
+        "name": "Engineering",
+        "inclusion": "primary mapping"
+      }
+    ],
+    "sensitivity_mapping": [
+      {
+        "field_id": 15,
+        "name": "Chemical Engineering"
+      },
+      {
+        "field_id": 21,
+        "name": "Energy"
+      },
+      {
+        "field_id": 25,
+        "name": "Materials Science"
+      }
+    ],
+    "explicitly_excluded_from_primary": [
+      {
+        "field_id": 17,
+        "name": "Computer Science"
+      },
+      {
+        "field_id": 16,
+        "name": "Chemistry"
+      },
+      {
+        "field_id": 31,
+        "name": "Physics and Astronomy"
+      }
+    ],
+    "freeze_status": "Not frozen because no exact taxonomy capture was retained."
+  }
+}
