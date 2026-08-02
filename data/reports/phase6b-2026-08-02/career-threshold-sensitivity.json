@@ -1,0 +1,995 @@
+{
+  "schema_version": "konsider-career-threshold-sensitivity-1.0",
+  "report_date": "2026-08-02",
+  "base_percentile": 0.6,
+  "scenarios": {
+    "technology_software_opportunity": {
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 26,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 35,
+          "INSUFFICIENT_EVIDENCE": 30
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "BRA",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "LTU",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "NOR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "RUS",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SRB",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ]
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 19,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 42,
+          "INSUFFICIENT_EVIDENCE": 30
+        },
+        "state_changes_from_p60": []
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 8,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 53,
+          "INSUFFICIENT_EVIDENCE": 30
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUS",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "BEL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CHE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CZE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "DNK",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ESP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "FIN",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ITA",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "POL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "PRT",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "SGP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ]
+      }
+    },
+    "science_engineering_opportunity": {
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 30,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 36,
+          "INSUFFICIENT_EVIDENCE": 25
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUS",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "BEL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "COL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "ISR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "PRT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SRB",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SVK",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SVN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "TUR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ]
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 20,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 46,
+          "INSUFFICIENT_EVIDENCE": 25
+        },
+        "state_changes_from_p60": []
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 13,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 53,
+          "INSUFFICIENT_EVIDENCE": 25
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CHL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "DNK",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ESP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "HRV",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "NOR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "USA",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ]
+      }
+    },
+    "health_social_work_opportunity": {
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 35,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 53,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "COL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "CZE",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "GRC",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "KAZ",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "POL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SGP",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "URY",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ]
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 27,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 61,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": []
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 19,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 69,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CHL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "IRL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ISR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ITA",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "NZL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "PRT",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "TUR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ]
+      }
+    },
+    "finance_insurance_opportunity": {
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 36,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 52,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "BRA",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "CHL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "COL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "CRI",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "CYP",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "DNK",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "DOM",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "ESP",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "KAZ",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "LUX",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "NZL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "PRT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SWE",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ]
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 22,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 66,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": []
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 16,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 72,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "BEL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CZE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ISR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ITA",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ZAF",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ]
+      }
+    },
+    "research_academia_opportunity": {
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 24,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 30,
+          "INSUFFICIENT_EVIDENCE": 37
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "GRC",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "IRL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "ITA",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "POL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SGP",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SVN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "UKR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ]
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 16,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 38,
+          "INSUFFICIENT_EVIDENCE": 37
+        },
+        "state_changes_from_p60": []
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 9,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 45,
+          "INSUFFICIENT_EVIDENCE": 37
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUS",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "BEL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CZE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "DNK",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ESP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "HUN",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "JPN",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ]
+      }
+    },
+    "skilled_trades_construction_opportunity": {
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 46,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 42,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "CAN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "CMR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "COL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "DEU",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "JAM",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "KAZ",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "PAN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "PRT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "URY",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "ZAF",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ]
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 34,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 54,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": []
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 21,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 67,
+          "INSUFFICIENT_EVIDENCE": 3
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "BHR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CHL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CZE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "DOM",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ESP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "HND",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "JPN",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "KOR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "MYS",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "NZL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "PRY",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "SLV",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "SVK",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ]
+      }
+    }
+  },
+  "route_thresholds": {
+    "observed_technology_occupation": {
+      "p50": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 147.642,
+          "base_share_percent": 3.079765,
+          "high_scale_thousands": 276.312,
+          "high_share_percent": 3.627033,
+          "low_scale_thousands": 43.173,
+          "low_share_percent": 1.59423
+        }
+      },
+      "p60": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 183.694,
+          "base_share_percent": 3.404585,
+          "high_scale_thousands": 492.363,
+          "high_share_percent": 4.058963,
+          "low_scale_thousands": 88.868,
+          "low_share_percent": 2.323686
+        }
+      },
+      "p70": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 276.312,
+          "base_share_percent": 3.627033,
+          "high_scale_thousands": 1089.113,
+          "high_share_percent": 4.98006,
+          "low_scale_thousands": 147.642,
+          "low_share_percent": 3.079765
+        }
+      }
+    },
+    "observed_science_engineering_occupation": {
+      "p50": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 251.476,
+          "base_share_percent": 5.358884,
+          "high_scale_thousands": 550.211,
+          "high_share_percent": 6.539053,
+          "low_scale_thousands": 71.593,
+          "low_share_percent": 3.16254
+        }
+      },
+      "p60": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 364.893,
+          "base_share_percent": 6.083528,
+          "high_scale_thousands": 814.458,
+          "high_share_percent": 7.526469,
+          "low_scale_thousands": 126.713,
+          "low_share_percent": 4.90198
+        }
+      },
+      "p70": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 550.211,
+          "base_share_percent": 6.539053,
+          "high_scale_thousands": 1840.311,
+          "high_share_percent": 8.252189,
+          "low_scale_thousands": 251.476,
+          "low_share_percent": 5.358884
+        }
+      }
+    },
+    "modelled_health_social_work_sector": {
+      "p50": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 256.4035,
+          "base_share_percent": 6.27729,
+          "high_scale_thousands": 703.2468,
+          "high_share_percent": 8.369866,
+          "low_scale_thousands": 81.6174,
+          "low_share_percent": 3.969863
+        }
+      },
+      "p60": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 453.0574,
+          "base_share_percent": 7.484637,
+          "high_scale_thousands": 1469.0624,
+          "high_share_percent": 11.691941,
+          "low_scale_thousands": 147.652,
+          "low_share_percent": 4.722972
+        }
+      },
+      "p70": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 703.2468,
+          "base_share_percent": 8.369866,
+          "high_scale_thousands": 2926.0859,
+          "high_share_percent": 14.694351,
+          "low_scale_thousands": 256.4035,
+          "low_share_percent": 6.27729
+        }
+      }
+    },
+    "modelled_finance_insurance_sector": {
+      "p50": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 74.631,
+          "base_share_percent": 2.073989,
+          "high_scale_thousands": 202.9895,
+          "high_share_percent": 2.624906,
+          "low_scale_thousands": 32.3579,
+          "low_share_percent": 1.470859
+        }
+      },
+      "p60": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 119.72,
+          "base_share_percent": 2.381522,
+          "high_scale_thousands": 470.9548,
+          "high_share_percent": 2.950836,
+          "low_scale_thousands": 50.7606,
+          "low_share_percent": 1.821987
+        }
+      },
+      "p70": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 202.9895,
+          "base_share_percent": 2.624906,
+          "high_scale_thousands": 893.8113,
+          "high_share_percent": 3.792473,
+          "low_scale_thousands": 74.631,
+          "low_share_percent": 2.073989
+        }
+      }
+    },
+    "observed_research_development_sector": {
+      "p50": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 15.14,
+          "base_share_percent": 0.362511,
+          "high_scale_thousands": 32.2666,
+          "high_share_percent": 0.525189,
+          "low_scale_thousands": 6.5901,
+          "low_share_percent": 0.161281
+        }
+      },
+      "p60": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 20.6988,
+          "base_share_percent": 0.44033,
+          "high_scale_thousands": 57.7296,
+          "high_share_percent": 0.656531,
+          "low_scale_thousands": 11.1262,
+          "low_share_percent": 0.255644
+        }
+      },
+      "p70": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 32.2666,
+          "base_share_percent": 0.525189,
+          "high_scale_thousands": 106.0749,
+          "high_share_percent": 0.760937,
+          "low_scale_thousands": 15.14,
+          "low_share_percent": 0.362511
+        }
+      }
+    },
+    "modelled_skilled_trades": {
+      "p50": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 438.794,
+          "base_share_percent": 11.240334,
+          "high_scale_thousands": 1325.2995,
+          "high_share_percent": 13.070664,
+          "low_scale_thousands": 211.3772,
+          "low_share_percent": 9.569763
+        }
+      },
+      "p60": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 787.6608,
+          "base_share_percent": 11.966052,
+          "high_scale_thousands": 2209.4046,
+          "high_share_percent": 13.856934,
+          "low_scale_thousands": 319.8666,
+          "low_share_percent": 10.53095
+        }
+      },
+      "p70": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 1325.2995,
+          "base_share_percent": 13.070664,
+          "high_scale_thousands": 4388.2442,
+          "high_share_percent": 16.064969,
+          "low_scale_thousands": 438.794,
+          "low_share_percent": 11.240334
+        }
+      }
+    },
+    "modelled_construction_sector": {
+      "p50": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 322.384,
+          "base_share_percent": 7.527574,
+          "high_scale_thousands": 822.7168,
+          "high_share_percent": 8.365533,
+          "low_scale_thousands": 153.3954,
+          "low_share_percent": 6.711008
+        }
+      },
+      "p60": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 471.3942,
+          "base_share_percent": 7.773501,
+          "high_scale_thousands": 1583.1238,
+          "high_share_percent": 8.886313,
+          "low_scale_thousands": 217.8856,
+          "low_share_percent": 6.879055
+        }
+      },
+      "p70": {
+        "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+        "frozen_values": {
+          "base_scale_thousands": 822.7168,
+          "base_share_percent": 8.365533,
+          "high_scale_thousands": 2923.8169,
+          "high_share_percent": 10.815504,
+          "low_scale_thousands": 322.384,
+          "low_share_percent": 7.527574
+        }
+      }
+    }
+  }
+}

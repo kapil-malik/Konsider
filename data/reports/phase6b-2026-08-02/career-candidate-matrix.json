@@ -1,0 +1,402 @@
+{
+  "schema_version": "konsider-career-candidate-matrix-1.0",
+  "report_date": "2026-08-02",
+  "stable_universe_id": "stable_supported_v1",
+  "stable_country_count": 91,
+  "hard_minimum_assessable": 60,
+  "preferred_shortlist_assessable": 16,
+  "candidates": [
+    {
+      "candidate_id": "technology_software_opportunity",
+      "display_name": "Technology and software employment ecosystem",
+      "original_scope": "Technology/software",
+      "exact_construct": "Employment in ISCO-08 groups 25 and 35, measured as both national employment scale and employment share.",
+      "does_not_mean": "Live vacancies, job quality, licensing or credential recognition, immigration eligibility, applicant success probability, or absence of jobs.",
+      "primary_route": "observed_technology_occupation",
+      "outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 19,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 42,
+        "INSUFFICIENT_EVIDENCE": 30
+      },
+      "assessable_count": 61,
+      "hard_minimum_passes": true,
+      "state_counts_by_region": {
+        "East Asia & Pacific": {
+          "INSUFFICIENT_EVIDENCE": 5,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 3,
+          "VERIFIED_STRONG_SIGNAL": 2
+        },
+        "Europe & Central Asia": {
+          "INSUFFICIENT_EVIDENCE": 5,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 22,
+          "VERIFIED_STRONG_SIGNAL": 15
+        },
+        "Latin America & Caribbean": {
+          "INSUFFICIENT_EVIDENCE": 9,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 13
+        },
+        "Middle East, North Africa, Afghanistan & Pakistan": {
+          "INSUFFICIENT_EVIDENCE": 5,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "North America": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "South Asia": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+        },
+        "Sub-Saharan Africa": {
+          "INSUFFICIENT_EVIDENCE": 5,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 2
+        }
+      },
+      "state_counts_by_income_group": {
+        "High income": {
+          "INSUFFICIENT_EVIDENCE": 11,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 22,
+          "VERIFIED_STRONG_SIGNAL": 19
+        },
+        "Lower middle income": {
+          "INSUFFICIENT_EVIDENCE": 7,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+        },
+        "Upper middle income": {
+          "INSUFFICIENT_EVIDENCE": 12,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 17
+        }
+      },
+      "decision": "HOLD_SOURCE_GAP",
+      "decision_reason": "The exact observed route is assessable for 61 countries, but only 15 of 20 countries are assessable in four career-relevant benchmark shortlists; Canada, Japan, Korea, Malta and New Zealand are material gaps.",
+      "source_dependency": "ILO_SINGLE_PUBLISHER_MATERIAL_DEPENDENCY",
+      "implementation_status": "NOT_STARTED"
+    },
+    {
+      "candidate_id": "science_engineering_opportunity",
+      "display_name": "Science and engineering employment ecosystem",
+      "original_scope": "Science/engineering",
+      "exact_construct": "Employment in ISCO-08 groups 21 and 31, measured as both national employment scale and employment share.",
+      "does_not_mean": "Live vacancies, job quality, licensing or credential recognition, immigration eligibility, applicant success probability, or absence of jobs.",
+      "primary_route": "observed_science_engineering_occupation",
+      "outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 20,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 46,
+        "INSUFFICIENT_EVIDENCE": 25
+      },
+      "assessable_count": 66,
+      "hard_minimum_passes": true,
+      "state_counts_by_region": {
+        "East Asia & Pacific": {
+          "INSUFFICIENT_EVIDENCE": 4,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 5,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "Europe & Central Asia": {
+          "INSUFFICIENT_EVIDENCE": 5,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 21,
+          "VERIFIED_STRONG_SIGNAL": 16
+        },
+        "Latin America & Caribbean": {
+          "INSUFFICIENT_EVIDENCE": 6,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 15,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "Middle East, North Africa, Afghanistan & Pakistan": {
+          "INSUFFICIENT_EVIDENCE": 5,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "North America": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "South Asia": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+        },
+        "Sub-Saharan Africa": {
+          "INSUFFICIENT_EVIDENCE": 4,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+        }
+      },
+      "state_counts_by_income_group": {
+        "High income": {
+          "INSUFFICIENT_EVIDENCE": 10,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 22,
+          "VERIFIED_STRONG_SIGNAL": 20
+        },
+        "Lower middle income": {
+          "INSUFFICIENT_EVIDENCE": 6,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 4
+        },
+        "Upper middle income": {
+          "INSUFFICIENT_EVIDENCE": 9,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 20
+        }
+      },
+      "decision": "HOLD_SOURCE_GAP",
+      "decision_reason": "The exact observed route is assessable for 66 countries, but four benchmark shortlists reach only 15 of 20; the modelled professional/technician aggregate is too broad to repair the construct.",
+      "source_dependency": "ILO_SINGLE_PUBLISHER_MATERIAL_DEPENDENCY",
+      "implementation_status": "NOT_STARTED"
+    },
+    {
+      "candidate_id": "health_social_work_opportunity",
+      "display_name": "Health and social-work employment ecosystem",
+      "original_scope": "Healthcare",
+      "exact_construct": "Employment in ISIC Rev.4 section Q (human health and social work), measured as both national employment scale and employment share.",
+      "does_not_mean": "Live vacancies, job quality, licensing or credential recognition, immigration eligibility, applicant success probability, or absence of jobs.",
+      "primary_route": "modelled_health_social_work_sector",
+      "outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 27,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 61,
+        "INSUFFICIENT_EVIDENCE": 3
+      },
+      "assessable_count": 88,
+      "hard_minimum_passes": true,
+      "state_counts_by_region": {
+        "East Asia & Pacific": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 6,
+          "VERIFIED_STRONG_SIGNAL": 4
+        },
+        "Europe & Central Asia": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 24,
+          "VERIFIED_STRONG_SIGNAL": 17
+        },
+        "Latin America & Caribbean": {
+          "INSUFFICIENT_EVIDENCE": 2,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 18,
+          "VERIFIED_STRONG_SIGNAL": 2
+        },
+        "Middle East, North Africa, Afghanistan & Pakistan": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 6,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "North America": {
+          "VERIFIED_STRONG_SIGNAL": 2
+        },
+        "South Asia": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+        },
+        "Sub-Saharan Africa": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 6,
+          "VERIFIED_STRONG_SIGNAL": 1
+        }
+      },
+      "state_counts_by_income_group": {
+        "High income": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 27,
+          "VERIFIED_STRONG_SIGNAL": 24
+        },
+        "Lower middle income": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 10
+        },
+        "Upper middle income": {
+          "INSUFFICIENT_EVIDENCE": 2,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 24,
+          "VERIFIED_STRONG_SIGNAL": 3
+        }
+      },
+      "decision": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+      "decision_reason": "The modelled section-Q route is assessable for 88 countries and all five benchmark top-20 lists, but it cannot be presented as healthcare alone because it includes social work.",
+      "source_dependency": "ILO_SINGLE_PUBLISHER_MATERIAL_DEPENDENCY",
+      "implementation_status": "NOT_STARTED"
+    },
+    {
+      "candidate_id": "finance_insurance_opportunity",
+      "display_name": "Finance and insurance employment ecosystem",
+      "original_scope": "Business/finance/administration",
+      "exact_construct": "Employment in ISIC Rev.4 section K (financial and insurance activities), measured as both national employment scale and employment share.",
+      "does_not_mean": "Live vacancies, job quality, licensing or credential recognition, immigration eligibility, applicant success probability, or absence of jobs.",
+      "primary_route": "modelled_finance_insurance_sector",
+      "outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 22,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 66,
+        "INSUFFICIENT_EVIDENCE": 3
+      },
+      "assessable_count": 88,
+      "hard_minimum_passes": true,
+      "state_counts_by_region": {
+        "East Asia & Pacific": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 5,
+          "VERIFIED_STRONG_SIGNAL": 5
+        },
+        "Europe & Central Asia": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 29,
+          "VERIFIED_STRONG_SIGNAL": 12
+        },
+        "Latin America & Caribbean": {
+          "INSUFFICIENT_EVIDENCE": 2,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 20
+        },
+        "Middle East, North Africa, Afghanistan & Pakistan": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 5,
+          "VERIFIED_STRONG_SIGNAL": 2
+        },
+        "North America": {
+          "VERIFIED_STRONG_SIGNAL": 2
+        },
+        "South Asia": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+        },
+        "Sub-Saharan Africa": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 6,
+          "VERIFIED_STRONG_SIGNAL": 1
+        }
+      },
+      "state_counts_by_income_group": {
+        "High income": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 31,
+          "VERIFIED_STRONG_SIGNAL": 20
+        },
+        "Lower middle income": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 10
+        },
+        "Upper middle income": {
+          "INSUFFICIENT_EVIDENCE": 2,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 25,
+          "VERIFIED_STRONG_SIGNAL": 2
+        }
+      },
+      "decision": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+      "decision_reason": "The modelled section-K route is assessable for 88 countries and all benchmark lists; it supports finance and insurance, not the broader business/administration label.",
+      "source_dependency": "ILO_SINGLE_PUBLISHER_MATERIAL_DEPENDENCY",
+      "implementation_status": "NOT_STARTED"
+    },
+    {
+      "candidate_id": "research_academia_opportunity",
+      "display_name": "Research and academia opportunity",
+      "original_scope": "Research/academia",
+      "exact_construct": "Field-relevant research employment or active hiring, with research output and institutions only as supporting evidence.",
+      "does_not_mean": "Live vacancies, job quality, licensing or credential recognition, immigration eligibility, applicant success probability, or absence of jobs.",
+      "primary_route": "observed_research_development_sector",
+      "outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 16,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 38,
+        "INSUFFICIENT_EVIDENCE": 37
+      },
+      "assessable_count": 54,
+      "hard_minimum_passes": false,
+      "state_counts_by_region": {
+        "East Asia & Pacific": {
+          "INSUFFICIENT_EVIDENCE": 4,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 4,
+          "VERIFIED_STRONG_SIGNAL": 2
+        },
+        "Europe & Central Asia": {
+          "INSUFFICIENT_EVIDENCE": 8,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 22,
+          "VERIFIED_STRONG_SIGNAL": 12
+        },
+        "Latin America & Caribbean": {
+          "INSUFFICIENT_EVIDENCE": 13,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 9
+        },
+        "Middle East, North Africa, Afghanistan & Pakistan": {
+          "INSUFFICIENT_EVIDENCE": 5,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "North America": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "South Asia": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+        },
+        "Sub-Saharan Africa": {
+          "INSUFFICIENT_EVIDENCE": 6,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+        }
+      },
+      "state_counts_by_income_group": {
+        "High income": {
+          "INSUFFICIENT_EVIDENCE": 13,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 23,
+          "VERIFIED_STRONG_SIGNAL": 16
+        },
+        "Lower middle income": {
+          "INSUFFICIENT_EVIDENCE": 8,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 2
+        },
+        "Upper middle income": {
+          "INSUFFICIENT_EVIDENCE": 16,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 13
+        }
+      },
+      "decision": "HOLD_SOURCE_GAP",
+      "decision_reason": "Fresh ISIC M72 employment is assessable for only 54 countries and measures research-and-development activity rather than academia; innovation-output evidence cannot safely produce a negative opportunity state.",
+      "source_dependency": "ILO_SINGLE_PUBLISHER_MATERIAL_DEPENDENCY",
+      "implementation_status": "NOT_STARTED"
+    },
+    {
+      "candidate_id": "skilled_trades_construction_opportunity",
+      "display_name": "Skilled-trades or construction employment ecosystem",
+      "original_scope": "Skilled trades/construction",
+      "exact_construct": "A strong signal may be established by either ISCO-08 major group 7 employment or ISIC Rev.4 section F construction employment, each tested on national scale and share.",
+      "does_not_mean": "Live vacancies, job quality, licensing or credential recognition, immigration eligibility, applicant success probability, or absence of jobs.",
+      "primary_route": "modelled_skilled_trades_or_construction",
+      "outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 34,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 54,
+        "INSUFFICIENT_EVIDENCE": 3
+      },
+      "assessable_count": 88,
+      "hard_minimum_passes": true,
+      "state_counts_by_region": {
+        "East Asia & Pacific": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 3,
+          "VERIFIED_STRONG_SIGNAL": 7
+        },
+        "Europe & Central Asia": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 32,
+          "VERIFIED_STRONG_SIGNAL": 9
+        },
+        "Latin America & Caribbean": {
+          "INSUFFICIENT_EVIDENCE": 2,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 11,
+          "VERIFIED_STRONG_SIGNAL": 9
+        },
+        "Middle East, North Africa, Afghanistan & Pakistan": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+          "VERIFIED_STRONG_SIGNAL": 5
+        },
+        "North America": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 1,
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "South Asia": {
+          "VERIFIED_STRONG_SIGNAL": 1
+        },
+        "Sub-Saharan Africa": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 5,
+          "VERIFIED_STRONG_SIGNAL": 2
+        }
+      },
+      "state_counts_by_income_group": {
+        "High income": {
+          "INSUFFICIENT_EVIDENCE": 1,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 34,
+          "VERIFIED_STRONG_SIGNAL": 17
+        },
+        "Lower middle income": {
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 4,
+          "VERIFIED_STRONG_SIGNAL": 6
+        },
+        "Upper middle income": {
+          "INSUFFICIENT_EVIDENCE": 2,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 16,
+          "VERIFIED_STRONG_SIGNAL": 11
+        }
+      },
+      "decision": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+      "decision_reason": "Both transparent modelled routes are available for the same 88 countries, cover every benchmark top-20 list, and retain an explicit OR rule without a composite score.",
+      "source_dependency": "ILO_SINGLE_PUBLISHER_MATERIAL_DEPENDENCY",
+      "implementation_status": "NOT_STARTED"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema_version": "konsider-career-source-matrix-1.0",
+  "report_date": "2026-08-02",
+  "sources": [
+    {
+      "source_id": "ilo_observed_occupation_oc2",
+      "publisher": "International Labour Organization",
+      "table": "EMP_TEMP_SEX_OC2_NB_A",
+      "construct_role": "Exact two-digit occupation employment for technology/software and science/engineering.",
+      "coverage_result": "61 fresh technology rows; 66 fresh science/engineering rows in the 91-country universe.",
+      "comparability": "ISCO-08 two-digit, total sex, latest acceptable 2021+ national observation.",
+      "licence": "ILO content is available under CC BY 4.0 unless otherwise indicated.",
+      "exact_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_OC2_NB_A&format=csv",
+      "replay": {
+        "status": "PASS",
+        "sha256": "aaadd9ad52c88af5b00edce9c78821481d352251fe1ee944bb9bff299bdd04d4"
+      },
+      "decision": "USABLE_EXACT_ROUTE_WITH_COVERAGE_GAP"
+    },
+    {
+      "source_id": "ilo_modelled_occupation_2025",
+      "publisher": "International Labour Organization",
+      "table": "EMP_2EMP_SEX_OCU_NB_A; Nov. 2025 edition",
+      "construct_role": "ISCO-08 major-group employment; exact for skilled trades group 7 and supporting-only for broad professionals/technicians.",
+      "coverage_result": "88 of 91 stable countries; Antigua and Barbuda, Grenada and Ukraine absent.",
+      "comparability": "Balanced internationally comparable panel combining reported and imputed country estimates; country estimates with limited information carry higher uncertainty.",
+      "licence": "ILO content is available under CC BY 4.0 unless otherwise indicated.",
+      "exact_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2EMP_SEX_OCU_NB_A&format=csv",
+      "methodology_url": "https://ilostat.ilo.org/methods/concepts-and-definitions/ilo-modelled-estimates/",
+      "replay": {
+        "status": "PASS",
+        "sha256": "00c76b161f5308f6655bac28ac3b6edeca25f4d262fc694e1aec5c310ef89986"
+      },
+      "decision": "USABLE_WITH_MODELLED_CONFIDENCE_CAVEAT"
+    },
+    {
+      "source_id": "ilo_modelled_economic_activity_2025",
+      "publisher": "International Labour Organization",
+      "table": "EMP_2EMP_SEX_ECO_NB_A; Nov. 2025 edition",
+      "construct_role": "ISIC Rev.4 section F construction, K finance/insurance and Q health/social-work employment.",
+      "coverage_result": "88 of 91 stable countries; the same three absences as the occupation model.",
+      "comparability": "Balanced internationally comparable panel; sections are broad and must be named exactly.",
+      "licence": "ILO content is available under CC BY 4.0 unless otherwise indicated.",
+      "exact_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2EMP_SEX_ECO_NB_A&format=csv",
+      "methodology_url": "https://ilostat.ilo.org/methods/concepts-and-definitions/ilo-modelled-estimates/",
+      "replay": {
+        "status": "PASS",
+        "sha256": "ab1baf83fb7f3cd3646df98b129571c21651e65fe49237efc873bff7e832efef"
+      },
+      "decision": "USABLE_WITH_SCOPE_AND_MODELLED_CONFIDENCE_CAVEATS"
+    },
+    {
+      "source_id": "ilo_observed_economic_activity_isic2",
+      "publisher": "International Labour Organization",
+      "table": "EMP_TEMP_SEX_EC2_NB_A",
+      "construct_role": "Detailed supporting route for J62/J63, M71/M72, Q86, K/M/N families and construction divisions.",
+      "coverage_result": "No tested detailed family reaches the 60-country hard floor; fresh M72 research employment reaches 54.",
+      "comparability": "Observed ISIC Rev.4 two-digit rows, but source/year/status gaps are material.",
+      "licence": "ILO content is available under CC BY 4.0 unless otherwise indicated.",
+      "exact_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_EC2_NB_A&format=csv",
+      "replay": {
+        "status": "PASS",
+        "sha256": "f66ac2ba0364f70a2ed1709d99d7e2c5786819fae703247f8cb3642e7895aa96"
+      },
+      "decision": "SUPPORTING_ONLY_SOURCE_GAP"
+    },
+    {
+      "source_id": "eurostat_job_vacancy_statistics",
+      "publisher": "Eurostat",
+      "construct_role": "Current unmet labour demand by economic activity; occupation breakdown is voluntary and experimental.",
+      "coverage_result": "European regional scope; cannot satisfy geographic breadth for the 91-country universe.",
+      "comparability": "Generally comparable but country coverage and establishment scope differ.",
+      "exact_url": "https://ec.europa.eu/eurostat/web/labour-market/information-data/job-vacancies",
+      "decision": "SUPPLEMENTAL_ONLY_GEOGRAPHIC_GAP"
+    },
+    {
+      "source_id": "cedefop_skills_ovate",
+      "publisher": "Cedefop and Eurostat Web Intelligence Hub",
+      "construct_role": "Near-real-time online job-advertisement demand by occupation and skills.",
+      "coverage_result": "EU, EFTA and United Kingdom only.",
+      "comparability": "Online advertisements are mined and classified; platform representation differs by country.",
+      "exact_url": "https://www.cedefop.europa.eu/en/projects/skills-online-job-advertisements",
+      "decision": "SUPPLEMENTAL_ONLY_GEOGRAPHIC_AND_REPRESENTATION_GAP"
+    },
+    {
+      "source_id": "national_labour_force_and_shortage_sources",
+      "publisher": "National statistical and immigration authorities",
+      "construct_role": "Potential gap-filling observations for Canada, Japan, Korea and New Zealand.",
+      "coverage_result": "Prominent-country positives may be recoverable, but taxonomies, reference periods and machine interfaces are not yet normalized.",
+      "comparability": "NOC, Japan Standard Occupational Classification, KSCO and ANZSCO do not form an automatic ISCO-08 two-digit join.",
+      "decision": "NOT_USED_UNTIL_CROSSWALKS_AND_REPLAY_ARE_FROZEN"
+    },
+    {
+      "source_id": "major_employer_ecosystem_route",
+      "publisher": "No qualifying cross-country source identified",
+      "construct_role": "Large relevant employers with material in-country employment.",
+      "coverage_result": "No authoritative, harmonized, reproducible 91-country source with employment counts and acceptable reuse was found.",
+      "comparability": "Office presence, search result counts and crowdsourced employer lists do not establish material employment.",
+      "decision": "REJECTED_FOR_CURRENT_STUDY"
+    },
+    {
+      "source_id": "world_bank_country_metadata",
+      "publisher": "World Bank",
+      "construct_role": "Income-group breadth diagnostic only; never used to classify opportunity.",
+      "exact_url": "https://api.worldbank.org/v2/country?format=json&per_page=400",
+      "replay": {
+        "status": "PASS",
+        "sha256": "d29d57f8adf954c5e2a1520a02fb2c7b45575d8db3bd327a9dff47d66914231c"
+      },
+      "decision": "ANALYSIS_ONLY"
+    }
+  ]
+}

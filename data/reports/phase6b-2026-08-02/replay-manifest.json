@@ -1,0 +1,39 @@
+{
+  "schema_version": "konsider-phase6b-replay-manifest-1.0",
+  "report_date": "2026-08-02",
+  "command": "node project-history/phases/phase-6/research/run_phase6b_opportunity_probe.mjs",
+  "input_sha256": {
+    "ilo_observed_occupation": "aaadd9ad52c88af5b00edce9c78821481d352251fe1ee944bb9bff299bdd04d4",
+    "ilo_modelled_occupation": "00c76b161f5308f6655bac28ac3b6edeca25f4d262fc694e1aec5c310ef89986",
+    "ilo_modelled_economy": "ab1baf83fb7f3cd3646df98b129571c21651e65fe49237efc873bff7e832efef",
+    "ilo_observed_economy": "f66ac2ba0364f70a2ed1709d99d7e2c5786819fae703247f8cb3642e7895aa96",
+    "world_bank_metadata": "d29d57f8adf954c5e2a1520a02fb2c7b45575d8db3bd327a9dff47d66914231c",
+    "stable_universe": "dd85b26ac4f2bcd11782de1bfa62c86a519b0bfd27557877b2edadacdf1fff8c",
+    "phase6a_country_coverage": "852bb3cacab6cbf497663ca1e96cab63268055b022de91f8ac5b09a1dab8e0c9",
+    "release_catalog": "78b75f8eacc34f092e00ed3a1255a029c28b0519a93d7f7dbf960bbe13fbe460",
+    "release_entities": "958ceff1a51ceaca638c9954f160d4cee11603645ca6df4464e29b14534ce66e",
+    "release_outcomes": "ceffc088f1a4c406480299146d31f6c7a8772e6f8c28a21e9137dd3ecd2d1d1a",
+    "release_scores": "0ad27f6a9d735dbad16be26f7e152de97dd986f8a97ee31d47b2fd9e6c560e57"
+  },
+  "output_sha256": {
+    "career-candidate-matrix.json": "21a3a896f70a922d16f8f941e74d03f294f1466e31f30a3ed07934e557cb5e8f",
+    "career-country-opportunity-evidence.jsonl": "e31365150be5fcd909cc75621db82b9d735558014a406a8cb0022d116152e443",
+    "career-source-matrix.json": "621138c794f10d4cd0afa90ded9e35f67f837b23cadbd70cd5a85b1f6bb6bd96",
+    "career-shortlist-coverage.json": "f00f92bd00fcbfebc503e664cd5a6d82de43e510a0f32fea22e178e13d513c3a",
+    "career-threshold-sensitivity.json": "9ab860fafa6009ce4f6ed483cb5f7b62cc4296f0d789d1308857ce673a24792c",
+    "approved-career-opportunity-portfolio.json": "82762015858d12c626122775800014d2d16e14ed1bee222d708d69992b15147b"
+  },
+  "assertions": {
+    "candidate_count": 6,
+    "country_count": 91,
+    "evidence_row_count": 546,
+    "unique_country_candidate_count": 546,
+    "approved_count": 3,
+    "all_approved_meet_hard_minimum": true,
+    "all_approved_shortlists_meet_preferred_target": true,
+    "all_approved_have_at_least_eight_in_smaller_assessed_state": true,
+    "modelled_routes_assessable_count": 88,
+    "modelled_routes_expected_88": true,
+    "runtime_change_authorized": false
+  }
+}

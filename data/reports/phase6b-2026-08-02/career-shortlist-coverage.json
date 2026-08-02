@@ -1,0 +1,1133 @@
+{
+  "schema_version": "konsider-career-shortlist-coverage-1.0",
+  "report_date": "2026-08-02",
+  "release_id": "2026-07-29.2",
+  "generation_note": "Lists use only current production criteria and current complete-case ranking semantics; Phase 6B opportunity evidence is joined afterward and never affects rank or ordering.",
+  "profiles": {
+    "general_balanced": {
+      "weights": {
+        "C66": 1,
+        "C67": 1,
+        "ambient_pm25_population_weighted": 1,
+        "established_immigrant_presence": 1,
+        "household_consumption_price_level_us_100": 1,
+        "infrastructure_readiness_composite": 1,
+        "intentional_homicide_rate": 1,
+        "overall_job_market_opportunity": 1,
+        "political_stability": 1,
+        "research_innovation_ecosystem": 1,
+        "rule_of_law": 1,
+        "school_education_quality": 1,
+        "women_legal_economic_equality": 1
+      },
+      "active_fcc": [
+        "ambient_pm25_population_weighted",
+        "established_immigrant_presence",
+        "household_consumption_price_level_us_100",
+        "infrastructure_readiness_composite",
+        "intentional_homicide_rate",
+        "political_stability",
+        "rule_of_law",
+        "women_legal_economic_equality"
+      ],
+      "active_pcc": [
+        "C66",
+        "C67",
+        "overall_job_market_opportunity",
+        "research_innovation_ecosystem",
+        "school_education_quality"
+      ],
+      "eligible_count": 83,
+      "countries": [
+        {
+          "code": "AUS",
+          "name": "Australia",
+          "score": 8.39142743,
+          "rank": 1
+        },
+        {
+          "code": "NZL",
+          "name": "New Zealand",
+          "score": 8.29487856,
+          "rank": 2
+        },
+        {
+          "code": "SWE",
+          "name": "Sweden",
+          "score": 8.2192477,
+          "rank": 3
+        },
+        {
+          "code": "CHE",
+          "name": "Switzerland",
+          "score": 8.20182707,
+          "rank": 4
+        },
+        {
+          "code": "NOR",
+          "name": "Norway",
+          "score": 8.1972396,
+          "rank": 5
+        },
+        {
+          "code": "NLD",
+          "name": "Netherlands",
+          "score": 8.19193971,
+          "rank": 6
+        },
+        {
+          "code": "LUX",
+          "name": "Luxembourg",
+          "score": 8.16819133,
+          "rank": 7
+        },
+        {
+          "code": "JPN",
+          "name": "Japan",
+          "score": 8.02713334,
+          "rank": 8
+        },
+        {
+          "code": "SGP",
+          "name": "Singapore",
+          "score": 8.02477387,
+          "rank": 9
+        },
+        {
+          "code": "CAN",
+          "name": "Canada",
+          "score": 8.02401298,
+          "rank": 10
+        },
+        {
+          "code": "EST",
+          "name": "Estonia",
+          "score": 8.0178825,
+          "rank": 11
+        },
+        {
+          "code": "DEU",
+          "name": "Germany",
+          "score": 7.99543967,
+          "rank": 12
+        },
+        {
+          "code": "MLT",
+          "name": "Malta",
+          "score": 7.98473951,
+          "rank": 13
+        },
+        {
+          "code": "DNK",
+          "name": "Denmark",
+          "score": 7.97949,
+          "rank": 14
+        },
+        {
+          "code": "IRL",
+          "name": "Ireland",
+          "score": 7.9605827,
+          "rank": 15
+        },
+        {
+          "code": "GBR",
+          "name": "United Kingdom",
+          "score": 7.93010366,
+          "rank": 16
+        },
+        {
+          "code": "KOR",
+          "name": "Korea, Rep.",
+          "score": 7.90433469,
+          "rank": 17
+        },
+        {
+          "code": "FIN",
+          "name": "Finland",
+          "score": 7.90306585,
+          "rank": 18
+        },
+        {
+          "code": "ISL",
+          "name": "Iceland",
+          "score": 7.86394461,
+          "rank": 19
+        },
+        {
+          "code": "AUT",
+          "name": "Austria",
+          "score": 7.84753018,
+          "rank": 20
+        }
+      ]
+    },
+    "affordability_sensitive": {
+      "weights": {
+        "C66": 0.4,
+        "C67": 0.4,
+        "ambient_pm25_population_weighted": 0.4,
+        "established_immigrant_presence": 0.3,
+        "household_consumption_price_level_us_100": 1,
+        "infrastructure_readiness_composite": 0.4,
+        "intentional_homicide_rate": 0.6,
+        "overall_job_market_opportunity": 0.6,
+        "political_stability": 0.5,
+        "research_innovation_ecosystem": 0.4,
+        "rule_of_law": 0.5,
+        "school_education_quality": 0.4,
+        "women_legal_economic_equality": 0.4
+      },
+      "active_fcc": [
+        "ambient_pm25_population_weighted",
+        "established_immigrant_presence",
+        "household_consumption_price_level_us_100",
+        "infrastructure_readiness_composite",
+        "intentional_homicide_rate",
+        "political_stability",
+        "rule_of_law",
+        "women_legal_economic_equality"
+      ],
+      "active_pcc": [
+        "overall_job_market_opportunity"
+      ],
+      "eligible_count": 88,
+      "countries": [
+        {
+          "code": "SGP",
+          "name": "Singapore",
+          "score": 8.48063829,
+          "rank": 1
+        },
+        {
+          "code": "MLT",
+          "name": "Malta",
+          "score": 8.28148936,
+          "rank": 2
+        },
+        {
+          "code": "AUS",
+          "name": "Australia",
+          "score": 8.10425532,
+          "rank": 3
+        },
+        {
+          "code": "NZL",
+          "name": "New Zealand",
+          "score": 8.08446807,
+          "rank": 4
+        },
+        {
+          "code": "JPN",
+          "name": "Japan",
+          "score": 8.07170214,
+          "rank": 5
+        },
+        {
+          "code": "NOR",
+          "name": "Norway",
+          "score": 8.03765956,
+          "rank": 6
+        },
+        {
+          "code": "NLD",
+          "name": "Netherlands",
+          "score": 7.87106383,
+          "rank": 7
+        },
+        {
+          "code": "LUX",
+          "name": "Luxembourg",
+          "score": 7.84531915,
+          "rank": 8
+        },
+        {
+          "code": "EST",
+          "name": "Estonia",
+          "score": 7.82829788,
+          "rank": 9
+        },
+        {
+          "code": "CZE",
+          "name": "Czechia",
+          "score": 7.81638297,
+          "rank": 10
+        },
+        {
+          "code": "KOR",
+          "name": "Korea, Rep.",
+          "score": 7.78531915,
+          "rank": 11
+        },
+        {
+          "code": "SVN",
+          "name": "Slovenia",
+          "score": 7.76851063,
+          "rank": 12
+        },
+        {
+          "code": "CYP",
+          "name": "Cyprus",
+          "score": 7.68829788,
+          "rank": 13
+        },
+        {
+          "code": "SWE",
+          "name": "Sweden",
+          "score": 7.62021275,
+          "rank": 14
+        },
+        {
+          "code": "PRT",
+          "name": "Portugal",
+          "score": 7.55255318,
+          "rank": 15
+        },
+        {
+          "code": "CAN",
+          "name": "Canada",
+          "score": 7.51999999,
+          "rank": 16
+        },
+        {
+          "code": "DEU",
+          "name": "Germany",
+          "score": 7.5,
+          "rank": 17
+        },
+        {
+          "code": "HUN",
+          "name": "Hungary",
+          "score": 7.47085106,
+          "rank": 18
+        },
+        {
+          "code": "ARE",
+          "name": "United Arab Emirates",
+          "score": 7.45297873,
+          "rank": 19
+        },
+        {
+          "code": "AUT",
+          "name": "Austria",
+          "score": 7.43659574,
+          "rank": 20
+        }
+      ]
+    },
+    "safety_governance_oriented": {
+      "weights": {
+        "C66": 0.6,
+        "C67": 0.6,
+        "ambient_pm25_population_weighted": 0.6,
+        "established_immigrant_presence": 0.3,
+        "household_consumption_price_level_us_100": 0.4,
+        "infrastructure_readiness_composite": 0.6,
+        "intentional_homicide_rate": 1,
+        "overall_job_market_opportunity": 0.6,
+        "political_stability": 1,
+        "research_innovation_ecosystem": 0.4,
+        "rule_of_law": 0.8,
+        "school_education_quality": 0.4,
+        "women_legal_economic_equality": 0.6
+      },
+      "active_fcc": [
+        "ambient_pm25_population_weighted",
+        "established_immigrant_presence",
+        "household_consumption_price_level_us_100",
+        "infrastructure_readiness_composite",
+        "intentional_homicide_rate",
+        "political_stability",
+        "rule_of_law",
+        "women_legal_economic_equality"
+      ],
+      "active_pcc": [
+        "C66",
+        "C67",
+        "overall_job_market_opportunity"
+      ],
+      "eligible_count": 88,
+      "countries": [
+        {
+          "code": "NZL",
+          "name": "New Zealand",
+          "score": 8.61042997,
+          "rank": 1
+        },
+        {
+          "code": "AUS",
+          "name": "Australia",
+          "score": 8.58720196,
+          "rank": 2
+        },
+        {
+          "code": "NOR",
+          "name": "Norway",
+          "score": 8.52161536,
+          "rank": 3
+        },
+        {
+          "code": "LUX",
+          "name": "Luxembourg",
+          "score": 8.39406935,
+          "rank": 4
+        },
+        {
+          "code": "CHE",
+          "name": "Switzerland",
+          "score": 8.31933116,
+          "rank": 5
+        },
+        {
+          "code": "ISL",
+          "name": "Iceland",
+          "score": 8.27700956,
+          "rank": 6
+        },
+        {
+          "code": "NLD",
+          "name": "Netherlands",
+          "score": 8.25199008,
+          "rank": 7
+        },
+        {
+          "code": "JPN",
+          "name": "Japan",
+          "score": 8.25121692,
+          "rank": 8
+        },
+        {
+          "code": "DNK",
+          "name": "Denmark",
+          "score": 8.20028477,
+          "rank": 9
+        },
+        {
+          "code": "SWE",
+          "name": "Sweden",
+          "score": 8.1607228,
+          "rank": 10
+        },
+        {
+          "code": "IRL",
+          "name": "Ireland",
+          "score": 8.13120352,
+          "rank": 11
+        },
+        {
+          "code": "CAN",
+          "name": "Canada",
+          "score": 8.11933816,
+          "rank": 12
+        },
+        {
+          "code": "FIN",
+          "name": "Finland",
+          "score": 8.09956531,
+          "rank": 13
+        },
+        {
+          "code": "CZE",
+          "name": "Czechia",
+          "score": 8.08507999,
+          "rank": 14
+        },
+        {
+          "code": "EST",
+          "name": "Estonia",
+          "score": 8.07922303,
+          "rank": 15
+        },
+        {
+          "code": "MLT",
+          "name": "Malta",
+          "score": 8.05562931,
+          "rank": 16
+        },
+        {
+          "code": "DEU",
+          "name": "Germany",
+          "score": 8.00344077,
+          "rank": 17
+        },
+        {
+          "code": "AUT",
+          "name": "Austria",
+          "score": 7.99094865,
+          "rank": 18
+        },
+        {
+          "code": "SVN",
+          "name": "Slovenia",
+          "score": 7.97112841,
+          "rank": 19
+        },
+        {
+          "code": "KOR",
+          "name": "Korea, Rep.",
+          "score": 7.93039584,
+          "rank": 20
+        }
+      ]
+    },
+    "career_prioritised": {
+      "weights": {
+        "C66": 0.2,
+        "C67": 0.2,
+        "ambient_pm25_population_weighted": 0.2,
+        "established_immigrant_presence": 0.5,
+        "household_consumption_price_level_us_100": 0.3,
+        "infrastructure_readiness_composite": 0.6,
+        "intentional_homicide_rate": 0.3,
+        "overall_job_market_opportunity": 1,
+        "political_stability": 0.4,
+        "research_innovation_ecosystem": 0.8,
+        "rule_of_law": 0.4,
+        "school_education_quality": 0.2,
+        "women_legal_economic_equality": 0.3
+      },
+      "active_fcc": [
+        "ambient_pm25_population_weighted",
+        "established_immigrant_presence",
+        "household_consumption_price_level_us_100",
+        "infrastructure_readiness_composite",
+        "intentional_homicide_rate",
+        "political_stability",
+        "rule_of_law",
+        "women_legal_economic_equality"
+      ],
+      "active_pcc": [
+        "overall_job_market_opportunity",
+        "research_innovation_ecosystem"
+      ],
+      "eligible_count": 84,
+      "countries": [
+        {
+          "code": "SGP",
+          "name": "Singapore",
+          "score": 8.73854166,
+          "rank": 1
+        },
+        {
+          "code": "CHE",
+          "name": "Switzerland",
+          "score": 8.32145835,
+          "rank": 2
+        },
+        {
+          "code": "NLD",
+          "name": "Netherlands",
+          "score": 8.19520834,
+          "rank": 3
+        },
+        {
+          "code": "MLT",
+          "name": "Malta",
+          "score": 8.16812499,
+          "rank": 4
+        },
+        {
+          "code": "AUS",
+          "name": "Australia",
+          "score": 8.07020833,
+          "rank": 5
+        },
+        {
+          "code": "NZL",
+          "name": "New Zealand",
+          "score": 7.94854166,
+          "rank": 6
+        },
+        {
+          "code": "ISL",
+          "name": "Iceland",
+          "score": 7.92729167,
+          "rank": 7
+        },
+        {
+          "code": "NOR",
+          "name": "Norway",
+          "score": 7.86812501,
+          "rank": 8
+        },
+        {
+          "code": "SWE",
+          "name": "Sweden",
+          "score": 7.85645834,
+          "rank": 9
+        },
+        {
+          "code": "KOR",
+          "name": "Korea, Rep.",
+          "score": 7.80541666,
+          "rank": 10
+        },
+        {
+          "code": "JPN",
+          "name": "Japan",
+          "score": 7.75562501,
+          "rank": 11
+        },
+        {
+          "code": "DNK",
+          "name": "Denmark",
+          "score": 7.74062499,
+          "rank": 12
+        },
+        {
+          "code": "LUX",
+          "name": "Luxembourg",
+          "score": 7.71729167,
+          "rank": 13
+        },
+        {
+          "code": "DEU",
+          "name": "Germany",
+          "score": 7.69645833,
+          "rank": 14
+        },
+        {
+          "code": "ARE",
+          "name": "United Arab Emirates",
+          "score": 7.69375001,
+          "rank": 15
+        },
+        {
+          "code": "IRL",
+          "name": "Ireland",
+          "score": 7.67145833,
+          "rank": 16
+        },
+        {
+          "code": "GBR",
+          "name": "United Kingdom",
+          "score": 7.66958333,
+          "rank": 17
+        },
+        {
+          "code": "CAN",
+          "name": "Canada",
+          "score": 7.49854166,
+          "rank": 18
+        },
+        {
+          "code": "CYP",
+          "name": "Cyprus",
+          "score": 7.4825,
+          "rank": 19
+        },
+        {
+          "code": "EST",
+          "name": "Estonia",
+          "score": 7.45000001,
+          "rank": 20
+        }
+      ]
+    },
+    "family_education_oriented": {
+      "weights": {
+        "C66": 0.6,
+        "C67": 0.6,
+        "ambient_pm25_population_weighted": 0.7,
+        "established_immigrant_presence": 0.6,
+        "household_consumption_price_level_us_100": 0.6,
+        "infrastructure_readiness_composite": 0.7,
+        "intentional_homicide_rate": 1,
+        "overall_job_market_opportunity": 0.4,
+        "political_stability": 0.8,
+        "research_innovation_ecosystem": 0.4,
+        "rule_of_law": 0.8,
+        "school_education_quality": 1,
+        "women_legal_economic_equality": 0.8
+      },
+      "active_fcc": [
+        "ambient_pm25_population_weighted",
+        "established_immigrant_presence",
+        "household_consumption_price_level_us_100",
+        "infrastructure_readiness_composite",
+        "intentional_homicide_rate",
+        "political_stability",
+        "rule_of_law",
+        "women_legal_economic_equality"
+      ],
+      "active_pcc": [
+        "C66",
+        "C67",
+        "school_education_quality"
+      ],
+      "eligible_count": 86,
+      "countries": [
+        {
+          "code": "AUS",
+          "name": "Australia",
+          "score": 8.65050415,
+          "rank": 1
+        },
+        {
+          "code": "NZL",
+          "name": "New Zealand",
+          "score": 8.56683569,
+          "rank": 2
+        },
+        {
+          "code": "LUX",
+          "name": "Luxembourg",
+          "score": 8.54669419,
+          "rank": 3
+        },
+        {
+          "code": "NOR",
+          "name": "Norway",
+          "score": 8.51859379,
+          "rank": 4
+        },
+        {
+          "code": "SWE",
+          "name": "Sweden",
+          "score": 8.43989415,
+          "rank": 5
+        },
+        {
+          "code": "FIN",
+          "name": "Finland",
+          "score": 8.38230656,
+          "rank": 6
+        },
+        {
+          "code": "CAN",
+          "name": "Canada",
+          "score": 8.30052452,
+          "rank": 7
+        },
+        {
+          "code": "EST",
+          "name": "Estonia",
+          "score": 8.29079064,
+          "rank": 8
+        },
+        {
+          "code": "JPN",
+          "name": "Japan",
+          "score": 8.24898048,
+          "rank": 9
+        },
+        {
+          "code": "CHE",
+          "name": "Switzerland",
+          "score": 8.2473477,
+          "rank": 10
+        },
+        {
+          "code": "NLD",
+          "name": "Netherlands",
+          "score": 8.24282069,
+          "rank": 11
+        },
+        {
+          "code": "AUT",
+          "name": "Austria",
+          "score": 8.24118723,
+          "rank": 12
+        },
+        {
+          "code": "IRL",
+          "name": "Ireland",
+          "score": 8.23628598,
+          "rank": 13
+        },
+        {
+          "code": "DNK",
+          "name": "Denmark",
+          "score": 8.22707586,
+          "rank": 14
+        },
+        {
+          "code": "SVN",
+          "name": "Slovenia",
+          "score": 8.20829412,
+          "rank": 15
+        },
+        {
+          "code": "DEU",
+          "name": "Germany",
+          "score": 8.16005238,
+          "rank": 16
+        },
+        {
+          "code": "CZE",
+          "name": "Czechia",
+          "score": 8.13378875,
+          "rank": 17
+        },
+        {
+          "code": "ESP",
+          "name": "Spain",
+          "score": 8.13114977,
+          "rank": 18
+        },
+        {
+          "code": "PRT",
+          "name": "Portugal",
+          "score": 8.12521513,
+          "rank": 19
+        },
+        {
+          "code": "BEL",
+          "name": "Belgium",
+          "score": 8.1190649,
+          "rank": 20
+        }
+      ]
+    }
+  },
+  "candidates": {
+    "technology_software_opportunity": {
+      "display_name": "Technology and software employment ecosystem",
+      "profiles": {
+        "general_balanced": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 10,
+          "strong_signal_not_established_count": 5,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "affordability_sensitive": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 7,
+          "strong_signal_not_established_count": 8,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "safety_governance_oriented": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 9,
+          "strong_signal_not_established_count": 6,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "career_prioritised": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 9,
+          "strong_signal_not_established_count": 6,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "family_education_oriented": {
+          "assessable_count": 17,
+          "verified_strong_signal_count": 12,
+          "strong_signal_not_established_count": 5,
+          "insufficient_evidence_count": 3,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "NZL"
+          ],
+          "preferred_target_passes": true
+        }
+      }
+    },
+    "science_engineering_opportunity": {
+      "display_name": "Science and engineering employment ecosystem",
+      "profiles": {
+        "general_balanced": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 10,
+          "strong_signal_not_established_count": 5,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "affordability_sensitive": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 8,
+          "strong_signal_not_established_count": 7,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "safety_governance_oriented": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 9,
+          "strong_signal_not_established_count": 6,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "career_prioritised": {
+          "assessable_count": 15,
+          "verified_strong_signal_count": 9,
+          "strong_signal_not_established_count": 6,
+          "insufficient_evidence_count": 5,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": false
+        },
+        "family_education_oriented": {
+          "assessable_count": 17,
+          "verified_strong_signal_count": 10,
+          "strong_signal_not_established_count": 7,
+          "insufficient_evidence_count": 3,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "JPN",
+            "NZL"
+          ],
+          "preferred_target_passes": true
+        }
+      }
+    },
+    "health_social_work_opportunity": {
+      "display_name": "Health and social-work employment ecosystem",
+      "profiles": {
+        "general_balanced": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 15,
+          "strong_signal_not_established_count": 5,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "affordability_sensitive": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 11,
+          "strong_signal_not_established_count": 9,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "safety_governance_oriented": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 14,
+          "strong_signal_not_established_count": 6,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "career_prioritised": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 13,
+          "strong_signal_not_established_count": 7,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "family_education_oriented": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 16,
+          "strong_signal_not_established_count": 4,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        }
+      }
+    },
+    "finance_insurance_opportunity": {
+      "display_name": "Finance and insurance employment ecosystem",
+      "profiles": {
+        "general_balanced": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 11,
+          "strong_signal_not_established_count": 9,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "affordability_sensitive": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 10,
+          "strong_signal_not_established_count": 10,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "safety_governance_oriented": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 10,
+          "strong_signal_not_established_count": 10,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "career_prioritised": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 11,
+          "strong_signal_not_established_count": 9,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "family_education_oriented": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 10,
+          "strong_signal_not_established_count": 10,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        }
+      }
+    },
+    "research_academia_opportunity": {
+      "display_name": "Research and academia opportunity",
+      "profiles": {
+        "general_balanced": {
+          "assessable_count": 16,
+          "verified_strong_signal_count": 9,
+          "strong_signal_not_established_count": 7,
+          "insufficient_evidence_count": 4,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": true
+        },
+        "affordability_sensitive": {
+          "assessable_count": 16,
+          "verified_strong_signal_count": 7,
+          "strong_signal_not_established_count": 9,
+          "insufficient_evidence_count": 4,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": true
+        },
+        "safety_governance_oriented": {
+          "assessable_count": 16,
+          "verified_strong_signal_count": 9,
+          "strong_signal_not_established_count": 7,
+          "insufficient_evidence_count": 4,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": true
+        },
+        "career_prioritised": {
+          "assessable_count": 16,
+          "verified_strong_signal_count": 8,
+          "strong_signal_not_established_count": 8,
+          "insufficient_evidence_count": 4,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "KOR",
+            "MLT",
+            "NZL"
+          ],
+          "preferred_target_passes": true
+        },
+        "family_education_oriented": {
+          "assessable_count": 18,
+          "verified_strong_signal_count": 11,
+          "strong_signal_not_established_count": 7,
+          "insufficient_evidence_count": 2,
+          "insufficient_evidence_countries": [
+            "CAN",
+            "NZL"
+          ],
+          "preferred_target_passes": true
+        }
+      }
+    },
+    "skilled_trades_construction_opportunity": {
+      "display_name": "Skilled-trades or construction employment ecosystem",
+      "profiles": {
+        "general_balanced": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 4,
+          "strong_signal_not_established_count": 16,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "affordability_sensitive": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 6,
+          "strong_signal_not_established_count": 14,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "safety_governance_oriented": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 5,
+          "strong_signal_not_established_count": 15,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "career_prioritised": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 5,
+          "strong_signal_not_established_count": 15,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        },
+        "family_education_oriented": {
+          "assessable_count": 20,
+          "verified_strong_signal_count": 5,
+          "strong_signal_not_established_count": 15,
+          "insufficient_evidence_count": 0,
+          "insufficient_evidence_countries": [],
+          "preferred_target_passes": true
+        }
+      }
+    }
+  }
+}
