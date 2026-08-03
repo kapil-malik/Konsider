@@ -1,6 +1,6 @@
 # Opportunity Filter contracts and staged architecture
 
-Status: Phase 6D contracts complete; evidence onboarding and runtime activation not started
+Status: Phase 6D contracts complete; Phase 6E career evidence staged; runtime activation not started
 
 Date: 2026-08-03
 
@@ -157,7 +157,8 @@ Reusable logic must move into a tested production module with a versioned policy
 ## Phase boundaries
 
 - Phase 6D: contracts, synthetic fixtures, validators, ADR and documentation only.
-- Phase 6E: onboard five career evidence filters into a staged immutable bundle.
+- Phase 6E: five career evidence filters are onboarded in staged immutable fragment
+  `phase6e-career-2026-08-03.1`; they remain inactive.
 - Phase 6F: onboard four education filters and complete the nine-filter staged bundle.
 - Phase 6G: implement strict AND evaluation and API transport.
 - Phase 6H: implement UI controls and explanations.

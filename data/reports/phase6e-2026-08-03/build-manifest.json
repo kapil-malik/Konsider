@@ -1,0 +1,52 @@
+{
+  "activation_authorized": false,
+  "api_exposure_authorized": false,
+  "artifact_checksums": {
+    "candidate-release-manifest.json": "sha256:c430ebfbe4a9f71faa0fdf782a466aee33cb1bcf6f6ebbe535a88ed2cfb2552e",
+    "classification-crosswalks.json": "sha256:58e19b89ae947e6310ee2e462e1f73284c972b290bf10e90971e4ea5e3295877",
+    "opportunity-filter-catalog.json": "sha256:4901be217c53175cbf5270c1fa669a5a326fdb7400f7000d9ada1490c5b866e4",
+    "opportunity-filter-coverage-summary.json": "sha256:a4c716c3e5ab84aeef3e35fbd300eb9393dbe666a2c5cea6438e15358ad1f2b6",
+    "opportunity-filter-evidence-policy.json": "sha256:0ca8f72434eaf21cd83579b399270c621b8cf0e016a2eaad369dc2b188ffb2f7",
+    "opportunity-filter-evidence.jsonl": "sha256:d9b9f151f0c9feb60f792fce662741884bf448b5d14827195868ecd30158f683",
+    "opportunity-filter-source-manifest.json": "sha256:093cbfe9373bcda8d735cd0332d1c3eaa549957b9344e3bdf69559b6bf7577df",
+    "opportunity-filter-threshold-policies.json": "sha256:43a13bc3b017e5fae3efa44d73560a22f19201c65e95c0b71d7f00705b13afd3",
+    "research-production-reconciliation.json": "sha256:d4cc90a674c299e9828d4b3b0d04d58f12aa424af9b65941ed417cb7bc3d5b5f",
+    "source-legal-records.json": "sha256:9128e84c8e553a92a364c8d047ebf52d24f7cbc47a86e298f09868193c3b1d17"
+  },
+  "assertions": {
+    "country_count": 91,
+    "current_release_unchanged": true,
+    "evidence_record_count": 455,
+    "filter_count": 5,
+    "ranking_api_ui_unchanged": true,
+    "research_reconciliation_passed": true,
+    "unique_filter_country_count": 455
+  },
+  "base_release_id": "2026-07-29.2",
+  "base_release_schema_version": "konsider-release-5.0",
+  "build_id": "phase6e-career-promotion-1.0",
+  "command": "python -m konsider.ingestion.phase6_career_opportunity --output data/reports/phase6e-2026-08-03 --verify-retained-sources",
+  "generated_at": "2026-08-03T00:00:00+05:30",
+  "input_checksums": {
+    "phase6b1_confidence": "sha256:0e607bdba7b9cad0515610bbb95b913a7d314a97fdfe6be5cc73c488ff6c1e80",
+    "phase6b1_crosswalks": "sha256:85fa49bba6c2a3c35a35753e32eaa26d34127d232c57411ac53534d1f5fd44c9",
+    "phase6b1_gap_fill": "sha256:b8dc0323cde355173283eb541e1d82f9927706b2e079b6bf4d8919dd0b4e26e5",
+    "phase6b1_portfolio": "sha256:ddf3965c5e4764b1a6e693943a3e173fc3cdc2dddc278846541f46d1376e4ed1",
+    "phase6b1_route_analysis": "sha256:1660eb35f6c723c55157b65b83a23ff27a813e21a92df0f6ef33549de389cd42",
+    "phase6b1_route_policy": "sha256:c932e938c3b38c959ae8e71ee12f878172191714f80ae72e3cb890196ecace84",
+    "phase6b1_shortlists": "sha256:57a0544178021f828d988eefe667ed8c8c491c9b14693c38ddb3d273b86bdeb6",
+    "phase6b1_thresholds": "sha256:2998990df1244a4e16a2a6e13f8815cedb4549ff71e4565e17cd003e28ae452a",
+    "phase6b_evidence": "sha256:e31365150be5fcd909cc75621db82b9d735558014a406a8cb0022d116152e443",
+    "phase6b_portfolio": "sha256:82762015858d12c626122775800014d2d16e14ed1bee222d708d69992b15147b",
+    "phase6b_shortlists": "sha256:f00f92bd00fcbfebc503e664cd5a6d82de43e510a0f32fea22e178e13d513c3a"
+  },
+  "retained_source_verification": {
+    "eurostat_lfsa_egai2d": "CHECKSUM_FROZEN_OPTIONAL_LOCAL_GATE",
+    "ilo_modelled_economic_activity_2025": "CHECKSUM_FROZEN_OPTIONAL_LOCAL_GATE",
+    "ilo_modelled_occupation_2025": "CHECKSUM_FROZEN_OPTIONAL_LOCAL_GATE",
+    "ilo_observed_occupation_oc2": "CHECKSUM_FROZEN_OPTIONAL_LOCAL_GATE",
+    "japan_lfs_occupation": "CHECKSUM_FROZEN_OPTIONAL_LOCAL_GATE",
+    "statcan_2021_census_noc": "CHECKSUM_FROZEN_OPTIONAL_LOCAL_GATE"
+  },
+  "schema_version": "phase6e-career-build-manifest-1.0"
+}

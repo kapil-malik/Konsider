@@ -203,7 +203,9 @@
         "scale_thousands": {"type": "number", "minimum": 0},
         "share_percent": {"type": "number", "minimum": 0, "maximum": 100},
         "skilled_trades_scale_thousands": {"type": ["number", "null"], "minimum": 0},
-        "construction_scale_thousands": {"type": ["number", "null"], "minimum": 0}
+        "skilled_trades_share_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "construction_scale_thousands": {"type": ["number", "null"], "minimum": 0},
+        "construction_share_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100}
       }
     },
     "educationMetrics": {

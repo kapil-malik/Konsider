@@ -1,0 +1,254 @@
+{
+  "harmonised_identity_mappings": [
+    {
+      "included_source_codes": [
+        "25",
+        "35"
+      ],
+      "mapping_type": "IDENTITY",
+      "route_id": "observed_technology",
+      "source_classification": "ISCO-08",
+      "source_id": "ilo_observed_occupation_oc2"
+    },
+    {
+      "included_source_codes": [
+        "21",
+        "31"
+      ],
+      "mapping_type": "IDENTITY",
+      "route_id": "observed_science_engineering",
+      "source_classification": "ISCO-08",
+      "source_id": "ilo_observed_occupation_oc2"
+    },
+    {
+      "included_source_codes": [
+        "Q"
+      ],
+      "mapping_type": "IDENTITY",
+      "route_id": "health_social_work",
+      "source_classification": "ISIC Rev.4",
+      "source_id": "ilo_modelled_economic_activity_2025"
+    },
+    {
+      "included_source_codes": [
+        "K"
+      ],
+      "mapping_type": "IDENTITY",
+      "route_id": "finance_insurance",
+      "source_classification": "ISIC Rev.4",
+      "source_id": "ilo_modelled_economic_activity_2025"
+    },
+    {
+      "included_source_codes": [
+        "7"
+      ],
+      "mapping_type": "IDENTITY",
+      "route_id": "skilled_trades",
+      "source_classification": "ISCO-08",
+      "source_id": "ilo_modelled_occupation_2025"
+    },
+    {
+      "included_source_codes": [
+        "F"
+      ],
+      "mapping_type": "IDENTITY",
+      "route_id": "construction",
+      "source_classification": "ISIC Rev.4",
+      "source_id": "ilo_modelled_economic_activity_2025"
+    }
+  ],
+  "national_mappings": [
+    {
+      "ambiguity": "NONE",
+      "confidence": "HIGH_CONFIDENCE_OBSERVED_HARMONISED",
+      "country_code": "MLT",
+      "excluded_adjacent_codes": [
+        "21",
+        "31"
+      ],
+      "included_source_codes": [
+        "25",
+        "35"
+      ],
+      "official_provenance": "Eurostat EU-LFS harmonised ISCO-08 table",
+      "one_to_many": false,
+      "over_inclusion_risk": "NONE",
+      "rationale": "Direct identity mapping at the exact two-digit target level.",
+      "source_classification": "ISCO-08",
+      "source_version": "dataset lfsa_egai2d",
+      "target_construct": "technology",
+      "under_inclusion_risk": "NONE"
+    },
+    {
+      "ambiguity": "NONE",
+      "confidence": "HIGH_CONFIDENCE_OBSERVED_HARMONISED",
+      "country_code": "MLT",
+      "excluded_adjacent_codes": [
+        "25",
+        "35"
+      ],
+      "included_source_codes": [
+        "21",
+        "31"
+      ],
+      "official_provenance": "Eurostat EU-LFS harmonised ISCO-08 table",
+      "one_to_many": false,
+      "over_inclusion_risk": "NONE",
+      "rationale": "Direct identity mapping at the exact two-digit target level.",
+      "source_classification": "ISCO-08",
+      "source_version": "dataset lfsa_egai2d",
+      "target_construct": "science_engineering",
+      "under_inclusion_risk": "NONE"
+    },
+    {
+      "ambiguity": "LOW_BUT_NO_OFFICIAL_NOC_TO_ISCO_CONCORDANCE_LOCATED",
+      "confidence": "MEDIUM_CONFIDENCE_OFFICIAL_CROSSWALK",
+      "country_code": "CAN",
+      "excluded_adjacent_codes": [
+        "2121",
+        "2131"
+      ],
+      "included_source_codes": [
+        "2122",
+        "2123",
+        "2222"
+      ],
+      "official_provenance": "Official Statistics Canada NOC labels and Census counts; research mapping is explicitly not an official concordance.",
+      "one_to_many": true,
+      "over_inclusion_risk": "LOW",
+      "rationale": "The published minor-group labels align tightly with ICT professionals and ICT technicians; computer engineering remains science/engineering rather than ICT employment.",
+      "source_classification": "NOC 2021",
+      "source_version": "Version 1.0",
+      "target_construct": "technology",
+      "under_inclusion_risk": "LOW_TO_MEDIUM"
+    },
+    {
+      "ambiguity": "MEDIUM_NO_OFFICIAL_NOC_TO_ISCO_CONCORDANCE_LOCATED",
+      "confidence": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "country_code": "CAN",
+      "excluded_adjacent_codes": [
+        "2112",
+        "2223",
+        "2122",
+        "2123",
+        "2222"
+      ],
+      "included_source_codes": [
+        "2110",
+        "2111",
+        "2120",
+        "2121",
+        "2130",
+        "2131",
+        "2132",
+        "2133",
+        "2139",
+        "2210",
+        "2211",
+        "2221",
+        "2230",
+        "2231"
+      ],
+      "official_provenance": "Official Statistics Canada NOC labels and Census counts; not accepted for a public negative.",
+      "one_to_many": true,
+      "over_inclusion_risk": "MEDIUM_2121_INCLUDES_DATA_SCIENTISTS",
+      "rationale": "A conservative research mapping excludes mixed public-health/safety and inspector/regulatory groups and excludes ICT groups.",
+      "source_classification": "NOC 2021",
+      "source_version": "Version 1.0",
+      "target_construct": "science_engineering",
+      "under_inclusion_risk": "MEDIUM_EXCLUDES_MIXED_GROUPS"
+    },
+    {
+      "ambiguity": "UNRESOLVED_GRANULARITY_GAP",
+      "confidence": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "country_code": "JPN",
+      "excluded_adjacent_codes": [],
+      "included_source_codes": [],
+      "official_provenance": "Official source limitation retained; no invented mapping.",
+      "one_to_many": null,
+      "over_inclusion_risk": "UNBOUNDED_IF_BROAD_GROUP_USED",
+      "rationale": "No sufficiently granular matching employment stock was located; no crosswalk is applied.",
+      "source_classification": "JSOC December 2009",
+      "source_version": "official source located in national-source-matrix.json",
+      "target_construct": "technology",
+      "under_inclusion_risk": "UNBOUNDED"
+    },
+    {
+      "ambiguity": "UNRESOLVED_GRANULARITY_GAP",
+      "confidence": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "country_code": "JPN",
+      "excluded_adjacent_codes": [],
+      "included_source_codes": [],
+      "official_provenance": "Official source limitation retained; no invented mapping.",
+      "one_to_many": null,
+      "over_inclusion_risk": "UNBOUNDED_IF_BROAD_GROUP_USED",
+      "rationale": "No sufficiently granular matching employment stock was located; no crosswalk is applied.",
+      "source_classification": "JSOC December 2009",
+      "source_version": "official source located in national-source-matrix.json",
+      "target_construct": "science_engineering",
+      "under_inclusion_risk": "UNBOUNDED"
+    },
+    {
+      "ambiguity": "UNRESOLVED_GRANULARITY_GAP",
+      "confidence": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "country_code": "KOR",
+      "excluded_adjacent_codes": [],
+      "included_source_codes": [],
+      "official_provenance": "Official source limitation retained; no invented mapping.",
+      "one_to_many": null,
+      "over_inclusion_risk": "UNBOUNDED_IF_BROAD_GROUP_USED",
+      "rationale": "No sufficiently granular matching employment stock was located; no crosswalk is applied.",
+      "source_classification": "KSCO 8th revision",
+      "source_version": "official source located in national-source-matrix.json",
+      "target_construct": "technology",
+      "under_inclusion_risk": "UNBOUNDED"
+    },
+    {
+      "ambiguity": "UNRESOLVED_GRANULARITY_GAP",
+      "confidence": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "country_code": "KOR",
+      "excluded_adjacent_codes": [],
+      "included_source_codes": [],
+      "official_provenance": "Official source limitation retained; no invented mapping.",
+      "one_to_many": null,
+      "over_inclusion_risk": "UNBOUNDED_IF_BROAD_GROUP_USED",
+      "rationale": "No sufficiently granular matching employment stock was located; no crosswalk is applied.",
+      "source_classification": "KSCO 8th revision",
+      "source_version": "official source located in national-source-matrix.json",
+      "target_construct": "science_engineering",
+      "under_inclusion_risk": "UNBOUNDED"
+    },
+    {
+      "ambiguity": "UNRESOLVED_GRANULARITY_GAP",
+      "confidence": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "country_code": "NZL",
+      "excluded_adjacent_codes": [],
+      "included_source_codes": [],
+      "official_provenance": "Official source limitation retained; no invented mapping.",
+      "one_to_many": null,
+      "over_inclusion_risk": "UNBOUNDED_IF_BROAD_GROUP_USED",
+      "rationale": "No sufficiently granular matching employment stock was located; no crosswalk is applied.",
+      "source_classification": "ANZSCO v1.3",
+      "source_version": "official source located in national-source-matrix.json",
+      "target_construct": "technology",
+      "under_inclusion_risk": "UNBOUNDED"
+    },
+    {
+      "ambiguity": "UNRESOLVED_GRANULARITY_GAP",
+      "confidence": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "country_code": "NZL",
+      "excluded_adjacent_codes": [],
+      "included_source_codes": [],
+      "official_provenance": "Official source limitation retained; no invented mapping.",
+      "one_to_many": null,
+      "over_inclusion_risk": "UNBOUNDED_IF_BROAD_GROUP_USED",
+      "rationale": "No sufficiently granular matching employment stock was located; no crosswalk is applied.",
+      "source_classification": "ANZSCO v1.3",
+      "source_version": "official source located in national-source-matrix.json",
+      "target_construct": "science_engineering",
+      "under_inclusion_risk": "UNBOUNDED"
+    }
+  ],
+  "negative_integrity": "Only complete identity or defensibly complete mappings may establish STRONG_SIGNAL_NOT_ESTABLISHED.",
+  "schema_version": "phase6e-career-classification-crosswalks-1.0"
+}

@@ -1,0 +1,463 @@
+{
+  "confidence_tier_mismatches": [],
+  "discrepancies": [],
+  "metric_component_mismatches": [],
+  "reason_code_mismatches_after_phase6d_translation": [],
+  "reason_code_translation_policy": "Phase 6B/6B.1 research reasons are deterministically translated to the exact Phase 6D reason-code enum without changing public state.",
+  "reference_period_mismatches": [],
+  "release_id": "phase6e-career-2026-08-03.1",
+  "research_sources": [
+    "data/reports/phase6b-2026-08-02",
+    "data/reports/phase6b1-2026-08-03"
+  ],
+  "row_count": 455,
+  "schema_version": "phase6e-research-production-reconciliation-1.0",
+  "shortlist_coverage": {
+    "filters": {
+      "finance_insurance_opportunity": {
+        "affordability_sensitive": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 10,
+            "verified_strong_signal_count": 10
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 10,
+            "verified_strong_signal_count": 10
+          }
+        },
+        "career_prioritised": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 11
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 11
+          }
+        },
+        "family_education_oriented": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 10,
+            "verified_strong_signal_count": 10
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 10,
+            "verified_strong_signal_count": 10
+          }
+        },
+        "general_balanced": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 11
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 11
+          }
+        },
+        "safety_governance_oriented": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 10,
+            "verified_strong_signal_count": 10
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 10,
+            "verified_strong_signal_count": 10
+          }
+        }
+      },
+      "health_social_work_opportunity": {
+        "affordability_sensitive": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 11
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 11
+          }
+        },
+        "career_prioritised": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 13
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 13
+          }
+        },
+        "family_education_oriented": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 4,
+            "verified_strong_signal_count": 16
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 4,
+            "verified_strong_signal_count": 16
+          }
+        },
+        "general_balanced": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 5,
+            "verified_strong_signal_count": 15
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 5,
+            "verified_strong_signal_count": 15
+          }
+        },
+        "safety_governance_oriented": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 6,
+            "verified_strong_signal_count": 14
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 6,
+            "verified_strong_signal_count": 14
+          }
+        }
+      },
+      "science_engineering_opportunity": {
+        "affordability_sensitive": {
+          "actual": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 8,
+            "verified_strong_signal_count": 8
+          },
+          "expected": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 8,
+            "verified_strong_signal_count": 8
+          }
+        },
+        "career_prioritised": {
+          "actual": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 9
+          },
+          "expected": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 9
+          }
+        },
+        "family_education_oriented": {
+          "actual": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 10
+          },
+          "expected": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 10
+          }
+        },
+        "general_balanced": {
+          "actual": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 6,
+            "verified_strong_signal_count": 10
+          },
+          "expected": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 6,
+            "verified_strong_signal_count": 10
+          }
+        },
+        "safety_governance_oriented": {
+          "actual": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 9
+          },
+          "expected": {
+            "assessable_count": 16,
+            "insufficient_evidence_count": 4,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 9
+          }
+        }
+      },
+      "skilled_trades_construction_opportunity": {
+        "affordability_sensitive": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 14,
+            "verified_strong_signal_count": 6
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 14,
+            "verified_strong_signal_count": 6
+          }
+        },
+        "career_prioritised": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 15,
+            "verified_strong_signal_count": 5
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 15,
+            "verified_strong_signal_count": 5
+          }
+        },
+        "family_education_oriented": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 15,
+            "verified_strong_signal_count": 5
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 15,
+            "verified_strong_signal_count": 5
+          }
+        },
+        "general_balanced": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 16,
+            "verified_strong_signal_count": 4
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 16,
+            "verified_strong_signal_count": 4
+          }
+        },
+        "safety_governance_oriented": {
+          "actual": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 15,
+            "verified_strong_signal_count": 5
+          },
+          "expected": {
+            "assessable_count": 20,
+            "insufficient_evidence_count": 0,
+            "strong_signal_not_established_count": 15,
+            "verified_strong_signal_count": 5
+          }
+        }
+      },
+      "technology_software_opportunity": {
+        "affordability_sensitive": {
+          "actual": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 8
+          },
+          "expected": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 9,
+            "verified_strong_signal_count": 8
+          }
+        },
+        "career_prioritised": {
+          "actual": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 10
+          },
+          "expected": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 10
+          }
+        },
+        "family_education_oriented": {
+          "actual": {
+            "assessable_count": 18,
+            "insufficient_evidence_count": 2,
+            "strong_signal_not_established_count": 5,
+            "verified_strong_signal_count": 13
+          },
+          "expected": {
+            "assessable_count": 18,
+            "insufficient_evidence_count": 2,
+            "strong_signal_not_established_count": 5,
+            "verified_strong_signal_count": 13
+          }
+        },
+        "general_balanced": {
+          "actual": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 6,
+            "verified_strong_signal_count": 11
+          },
+          "expected": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 6,
+            "verified_strong_signal_count": 11
+          }
+        },
+        "safety_governance_oriented": {
+          "actual": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 10
+          },
+          "expected": {
+            "assessable_count": 17,
+            "insufficient_evidence_count": 3,
+            "strong_signal_not_established_count": 7,
+            "verified_strong_signal_count": 10
+          }
+        }
+      }
+    },
+    "mismatches": []
+  },
+  "skilled_trades_construction_route_counts": {
+    "actual": {
+      "both": 8,
+      "construction_only": 11,
+      "insufficient": 3,
+      "neither": 54,
+      "skilled_only": 15
+    },
+    "expected": {
+      "both": 8,
+      "construction_only": 11,
+      "insufficient": 3,
+      "neither": 54,
+      "skilled_only": 15
+    }
+  },
+  "source_reference_mismatches_after_family_normalization": [],
+  "state_count_mismatches": [],
+  "state_counts": {
+    "finance_insurance_opportunity": {
+      "actual": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 66,
+        "VERIFIED_STRONG_SIGNAL": 22
+      },
+      "expected": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 66,
+        "VERIFIED_STRONG_SIGNAL": 22
+      }
+    },
+    "health_social_work_opportunity": {
+      "actual": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 61,
+        "VERIFIED_STRONG_SIGNAL": 27
+      },
+      "expected": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 61,
+        "VERIFIED_STRONG_SIGNAL": 27
+      }
+    },
+    "science_engineering_opportunity": {
+      "actual": {
+        "INSUFFICIENT_EVIDENCE": 24,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 47,
+        "VERIFIED_STRONG_SIGNAL": 20
+      },
+      "expected": {
+        "INSUFFICIENT_EVIDENCE": 24,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 47,
+        "VERIFIED_STRONG_SIGNAL": 20
+      }
+    },
+    "skilled_trades_construction_opportunity": {
+      "actual": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 54,
+        "VERIFIED_STRONG_SIGNAL": 34
+      },
+      "expected": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 54,
+        "VERIFIED_STRONG_SIGNAL": 34
+      }
+    },
+    "technology_software_opportunity": {
+      "actual": {
+        "INSUFFICIENT_EVIDENCE": 28,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 43,
+        "VERIFIED_STRONG_SIGNAL": 20
+      },
+      "expected": {
+        "INSUFFICIENT_EVIDENCE": 28,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 43,
+        "VERIFIED_STRONG_SIGNAL": 20
+      }
+    }
+  },
+  "state_mismatches": [],
+  "threshold_route_mismatches": [],
+  "unique_filter_country_count": 455
+}

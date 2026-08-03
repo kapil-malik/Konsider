@@ -1,0 +1,190 @@
+{
+  "policies": [
+    {
+      "filter_id": "technology_software_opportunity",
+      "global_only": true,
+      "policy_id": "career-p60-technology_software_opportunity",
+      "policy_version": "career-p60-technology_software_opportunity-1.0",
+      "routes": [
+        {
+          "description": "Frozen P60 scale/share route for Technology and software employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 183.694,
+            "base_share_percent": 3.404585,
+            "high_scale_thousands": 492.363,
+            "high_share_percent": 4.058963,
+            "low_scale_thousands": 88.868,
+            "low_share_percent": 2.323686,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "observed_technology",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        },
+        {
+          "description": "Frozen P60 scale/share route for Technology and software employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 183.694,
+            "base_share_percent": 3.404585,
+            "high_scale_thousands": 492.363,
+            "high_share_percent": 4.058963,
+            "low_scale_thousands": 88.868,
+            "low_share_percent": 2.323686,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "canada_technology",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        },
+        {
+          "description": "Frozen P60 scale/share route for Technology and software employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 183.694,
+            "base_share_percent": 3.404585,
+            "high_scale_thousands": 492.363,
+            "high_share_percent": 4.058963,
+            "low_scale_thousands": 88.868,
+            "low_share_percent": 2.323686,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "malta_technology",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        }
+      ],
+      "schema_version": "opportunity-filter-threshold-policy-1.0"
+    },
+    {
+      "filter_id": "science_engineering_opportunity",
+      "global_only": true,
+      "policy_id": "career-p60-science_engineering_opportunity",
+      "policy_version": "career-p60-science_engineering_opportunity-1.0",
+      "routes": [
+        {
+          "description": "Frozen P60 scale/share route for Science and engineering employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 364.893,
+            "base_share_percent": 6.083528,
+            "high_scale_thousands": 814.458,
+            "high_share_percent": 7.526469,
+            "low_scale_thousands": 126.713,
+            "low_share_percent": 4.90198,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "observed_science_engineering",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        },
+        {
+          "description": "Frozen P60 scale/share route for Science and engineering employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 364.893,
+            "base_share_percent": 6.083528,
+            "high_scale_thousands": 814.458,
+            "high_share_percent": 7.526469,
+            "low_scale_thousands": 126.713,
+            "low_share_percent": 4.90198,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "canada_science_supplemental",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        },
+        {
+          "description": "Frozen P60 scale/share route for Science and engineering employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 364.893,
+            "base_share_percent": 6.083528,
+            "high_scale_thousands": 814.458,
+            "high_share_percent": 7.526469,
+            "low_scale_thousands": 126.713,
+            "low_share_percent": 4.90198,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "malta_science_engineering",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        }
+      ],
+      "schema_version": "opportunity-filter-threshold-policy-1.0"
+    },
+    {
+      "filter_id": "health_social_work_opportunity",
+      "global_only": true,
+      "policy_id": "career-p60-health_social_work_opportunity",
+      "policy_version": "career-p60-health_social_work_opportunity-1.0",
+      "routes": [
+        {
+          "description": "Frozen P60 scale/share route for Care-sector employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 453.0574,
+            "base_share_percent": 7.484637,
+            "high_scale_thousands": 1469.0624,
+            "high_share_percent": 11.691941,
+            "low_scale_thousands": 147.652,
+            "low_share_percent": 4.722972,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "health_social_work",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        }
+      ],
+      "schema_version": "opportunity-filter-threshold-policy-1.0"
+    },
+    {
+      "filter_id": "finance_insurance_opportunity",
+      "global_only": true,
+      "policy_id": "career-p60-finance_insurance_opportunity",
+      "policy_version": "career-p60-finance_insurance_opportunity-1.0",
+      "routes": [
+        {
+          "description": "Frozen P60 scale/share route for Finance and insurance employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 119.72,
+            "base_share_percent": 2.381522,
+            "high_scale_thousands": 470.9548,
+            "high_share_percent": 2.950836,
+            "low_scale_thousands": 50.7606,
+            "low_share_percent": 1.821987,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "finance_insurance",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        }
+      ],
+      "schema_version": "opportunity-filter-threshold-policy-1.0"
+    },
+    {
+      "filter_id": "skilled_trades_construction_opportunity",
+      "global_only": true,
+      "policy_id": "career-p60-skilled_trades_construction_opportunity",
+      "policy_version": "career-p60-skilled_trades_construction_opportunity-1.0",
+      "routes": [
+        {
+          "description": "Frozen P60 scale/share route for Skilled-trades or construction employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 787.6608,
+            "base_share_percent": 11.966052,
+            "high_scale_thousands": 2209.4046,
+            "high_share_percent": 13.856934,
+            "low_scale_thousands": 319.8666,
+            "low_share_percent": 10.53095,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "skilled_trades",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        },
+        {
+          "description": "Frozen P60 scale/share route for Skilled-trades or construction employment ecosystem.",
+          "parameters": {
+            "base_scale_thousands": 471.3942,
+            "base_share_percent": 7.773501,
+            "high_scale_thousands": 1583.1238,
+            "high_share_percent": 8.886313,
+            "low_scale_thousands": 217.8856,
+            "low_share_percent": 6.879055,
+            "reference_distribution": "phase6b-pre-gap-fill-approved-pool"
+          },
+          "route_id": "construction",
+          "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)"
+        }
+      ],
+      "schema_version": "opportunity-filter-threshold-policy-1.0"
+    }
+  ],
+  "schema_version": "opportunity-filter-threshold-policies-1.0"
+}

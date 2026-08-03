@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 6D contracts complete; evidence onboarding and runtime activation not started
+Status: Phase 6E career evidence staged; education onboarding and runtime activation not started
 
 Last updated: 2026-08-03
 
@@ -47,11 +47,13 @@ career ecosystem signals as filter-only product concepts, and Phase 6C approved 
 source-aligned research-university ecosystem signals. These nine signals are Opportunity Filters,
 not weighted criteria or PCCs.
 
-Phase 6D now defines the sibling catalog, tri-state evidence, confidence, reason, policy, source,
-coverage, future assessment and optional release-5.1 contracts. The active release remains 5.0;
-API v2, ranking and UI are unchanged. Career evidence onboarding begins only under Phase 6E after
-owner acceptance of the Phase 6D contracts. See the
-[Opportunity Filter architecture](../architecture/opportunity-filter-contracts.md).
+Phase 6D defines the sibling catalog, tri-state evidence, confidence, reason, policy, source,
+coverage, future assessment and optional release-5.1 contracts. Phase 6E now stages five inactive
+career filters and 455 explicit country states in draft fragment `phase6e-career-2026-08-03.1`.
+API v2, ranking, UI and the active release remain unchanged. Education evidence begins only under
+Phase 6F after owner acceptance of the Phase 6E report. See the
+[Opportunity Filter architecture](../architecture/opportunity-filter-contracts.md) and
+[career evidence guide](../data/career-opportunity-evidence.md).
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).
@@ -170,17 +172,16 @@ The complete outcome is documented in the
 Phase 6 tests narrower, profile-neutral destination constructs without estimating an applicant's
 job, licensing, visa, or admission probability.
 
-- Phase 6A completed exact source, construct, legal, replay, coverage, overlap, and score-dispersion
-  probes for four core and three stretch candidates.
-- Technology, science-and-engineering, healthcare, and business-and-administration employment depth
-  remain diagnostic research because current ILOSTAT coverage is below policy.
-- Engineering and ICT education capacity are held because the exact UIS archive provides shares
-  without compatible counts, falls below coverage policy, and carries ShareAlike obligations that
-  need owner/legal review.
-- Engineering academic and research ecosystem is held pending a pinned OpenAlex capture, ROR
-  capture, deterministic institution-to-locality mapping, and measured overlap with C05.
-- No Phase 6B/runtime work is authorized until at least four candidates clear all gates or an exact
-  new source study changes the result without weakening policy.
+- Phase 6A completed the initial source-gate study. Phase 6B/6B.1 then froze five career constructs,
+  exact source routes, confidence/negative-integrity policy, P60 thresholds and gap-fill decisions.
+- Phase 6C froze four field-specific research-university ecosystem filters using the source-aligned
+  education methodology.
+- Phase 6D completed the separate filter-only contracts and optional release-5.1 binding without
+  changing ranking, API or UI behavior.
+- Phase 6E stages the five career filters with exactly 455 explicit country records, complete
+  research reconciliation and no active-release change.
+- Phase 6F education evidence onboarding remains gated on owner acceptance of Phase 6E. API,
+  filtering engine, UI and release activation remain later sequential phases.
 
 ## Next phase after Phase 6: structured applicant and household context
 

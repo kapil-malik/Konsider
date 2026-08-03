@@ -34,6 +34,10 @@ readable schemas, and published release manifests take precedence if prose ever 
   product role, tri-state evidence, release-5.1 binding, fixtures, validation and staged rollout.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
+- [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,
+  source routes, frozen thresholds, missingness, refresh and deterministic replay.
+- [Phase 6E implementation report](history/phase6e-career-opportunity-evidence.md) - staged artifact
+  IDs, exact state counts, reconciliation, verification and Phase 6F owner gates.
 - [Terminology glossary](product/terminology-glossary.md) - authoritative meanings for ordering
   criteria, FCC/PCC/LSC, Opportunity Filters, states, confidence, base rank and filtered rank.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
@@ -110,6 +114,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 4 closure report](history/phase4-closure-report.md)
 - [Phase 5 closure report](history/phase5-closure-report.md)
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md)
+- [Phase 6E career Opportunity Filter report](history/phase6e-career-opportunity-evidence.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational

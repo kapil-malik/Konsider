@@ -11,7 +11,8 @@ canonical geographic entities, entity-neutral observations/scores, versioned loc
 replayable multiple-source lineage, preference presets, and API v2 assessment envelopes. Phase 6D
 adds an optional release-5.1 Opportunity Filter binding plus standalone filter definition,
 evidence, policy, source, coverage and future assessment contracts. The active release remains
-`2026-07-29.2` on release 5.0; all Phase 6D fixtures are synthetic and test-only.
+`2026-07-29.2` on release 5.0. Phase 6D fixtures remain synthetic and test-only; Phase 6E uses the
+contracts for a checksum-bound, inactive five-career-filter staged fragment.
 
 FastAPI-generated `/openapi.json` is authoritative for HTTP request, response, and error shapes. It
 is generated from strict Pydantic transport models and exported at

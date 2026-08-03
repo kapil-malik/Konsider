@@ -1,0 +1,25 @@
+{
+  "combination": "ALL_SELECTED_REQUIRED",
+  "eligibility_state": "VERIFIED_STRONG_SIGNAL",
+  "missing_record_behavior": "REJECT_RELEASE_NO_RUNTIME_INFERENCE",
+  "negative_integrity": {
+    "partial_source_can_establish_negative": false,
+    "requires_complete_evidence": true,
+    "source_absence_state": "INSUFFICIENT_EVIDENCE"
+  },
+  "policy_id": "career-opportunity-evidence-policy",
+  "policy_version": "career-opportunity-evidence-policy-1.0",
+  "precedence": [
+    "HIGH_CONFIDENCE_OBSERVED_HARMONISED",
+    "HIGH_CONFIDENCE_OBSERVED_NATIONAL",
+    "MEDIUM_CONFIDENCE_OFFICIAL_CROSSWALK",
+    "MEDIUM_CONFIDENCE_MODELLED_HARMONISED",
+    "LOW_CONFIDENCE_SUPPLEMENTAL"
+  ],
+  "public_states": [
+    "VERIFIED_STRONG_SIGNAL",
+    "STRONG_SIGNAL_NOT_ESTABLISHED",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "schema_version": "opportunity-filter-evidence-policy-1.0"
+}

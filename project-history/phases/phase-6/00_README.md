@@ -66,4 +66,16 @@ The accepted implementation sequence is indexed by [`03_README_EXECUTION_GUIDE.t
 - [`../../../docs/architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md`](../../../docs/architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md)
 - [`../../../docs/history/phase6d-opportunity-filter-contracts.md`](../../../docs/history/phase6d-opportunity-filter-contracts.md)
 
-Prompts `05`–`09` remain sequential future instructions. Phase 6D does not onboard evidence, expose API fields, add UI or activate a release.
+Phase 6D does not onboard evidence, expose API fields, add UI or activate a release.
+
+## Phase 6E career evidence onboarding
+
+Phase 6E promotes the five approved career filters into checksum-bound, deterministic staged
+artifacts without activating a release or changing ranking, API or UI behavior:
+
+- [`05_PHASE_6E_CAREER_OFC_EVIDENCE_ONBOARDING.txt`](05_PHASE_6E_CAREER_OFC_EVIDENCE_ONBOARDING.txt)
+- [`../../../docs/data/career-opportunity-evidence.md`](../../../docs/data/career-opportunity-evidence.md)
+- [`../../../docs/history/phase6e-career-opportunity-evidence.md`](../../../docs/history/phase6e-career-opportunity-evidence.md)
+- [`../../../data/reports/phase6e-2026-08-03`](../../../data/reports/phase6e-2026-08-03)
+
+Prompts `06`–`09` remain sequential future instructions. Phase 6F has not started.
