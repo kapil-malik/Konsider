@@ -4,7 +4,7 @@ Status: complete; staged only
 
 Completed: 2026-08-03
 
-Implementation commit: `<implementation-commit>`
+Implementation commit: `da0a433`
 
 ## Outcome
 
