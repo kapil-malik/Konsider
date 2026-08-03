@@ -2,7 +2,7 @@
 
 Status: complete (contracts only)  
 Completed: 2026-08-03  
-Implementation commit: pending final commit
+Implementation commit: `82a659c`
 
 ## Outcome
 
