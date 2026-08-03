@@ -1,0 +1,69 @@
+{
+  "schema_version": "konsider-phase6b1-career-confidence-policy-1.0",
+  "report_date": "2026-08-03",
+  "tiers": [
+    {
+      "id": "HIGH_CONFIDENCE_OBSERVED_HARMONISED",
+      "public_positive": true,
+      "public_negative": true,
+      "requirements": [
+        "observed",
+        "harmonised construct",
+        "complete numerator and denominator",
+        "same source/period/population/sex/unit"
+      ]
+    },
+    {
+      "id": "HIGH_CONFIDENCE_OBSERVED_NATIONAL",
+      "public_positive": true,
+      "public_negative": true,
+      "requirements": [
+        "official national observed",
+        "official or near-identity mapping",
+        "defensible completeness"
+      ]
+    },
+    {
+      "id": "MEDIUM_CONFIDENCE_MODELLED_HARMONISED",
+      "public_positive": true,
+      "public_negative": true,
+      "requirements": [
+        "harmonised modelled series",
+        "modelled status disclosed",
+        "complete route"
+      ]
+    },
+    {
+      "id": "MEDIUM_CONFIDENCE_OFFICIAL_CROSSWALK",
+      "public_positive": true,
+      "public_negative": "ONLY_IF_MAPPING_COMPLETENESS_DEFENSIBLE",
+      "requirements": [
+        "official national source",
+        "documented mapping",
+        "limited ambiguity"
+      ]
+    },
+    {
+      "id": "LOW_CONFIDENCE_SUPPLEMENTAL",
+      "public_positive": false,
+      "public_negative": false,
+      "requirements": [
+        "context only",
+        "never replaces stronger evidence"
+      ]
+    }
+  ],
+  "precedence": [
+    "HIGH_CONFIDENCE_OBSERVED_HARMONISED",
+    "HIGH_CONFIDENCE_OBSERVED_NATIONAL",
+    "MEDIUM_CONFIDENCE_MODELLED_HARMONISED",
+    "MEDIUM_CONFIDENCE_OFFICIAL_CROSSWALK",
+    "LOW_CONFIDENCE_SUPPLEMENTAL"
+  ],
+  "contradiction_policy": "Do not overwrite observed with modelled. Retain both, prefer the higher tier for public state, and open a review record when states disagree.",
+  "asymmetric_state_rule": {
+    "positive": "A complete accepted route may establish a positive.",
+    "negative": "Only evidence with defensible mapping completeness may establish a negative.",
+    "insufficient": "Missing, stale, incompatible, or ambiguous evidence remains insufficient and never becomes negative."
+  }
+}

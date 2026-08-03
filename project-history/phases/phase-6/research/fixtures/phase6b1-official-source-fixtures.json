@@ -1,0 +1,71 @@
+{
+  "schema_version": "konsider-phase6b1-official-source-fixtures-1.0",
+  "report_date": "2026-08-03",
+  "fixture_policy": "Small, source-faithful extracts retained for deterministic replay; raw captures remain under data/raw and are checksum-bound below.",
+  "sources": {
+    "eurostat_lfsa_egai2d_malta": {
+      "publisher": "Eurostat",
+      "dataset_code": "lfsa_egai2d",
+      "title": "Employed persons by detailed occupation (ISCO-08 two digit level)",
+      "endpoint": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_egai2d?geo=MT&sex=T&age=Y15-74&sinceTimePeriod=2021&lang=en",
+      "extracted_at": "2026-08-03",
+      "classification": "ISCO-08 two-digit",
+      "sex": "Total",
+      "age": "15-74",
+      "unit": "thousand persons",
+      "raw_capture_sha256": "b6eb11bf3845c8c05aaa905a5aa2d97fafcf5af902977455ed4f397d31213dfe",
+      "rows": [
+        { "year": 2021, "total": 265.6, "oc21": 7.0, "oc31": 7.8, "oc25": 7.1, "oc35": 2.1 },
+        { "year": 2022, "total": 283.3, "oc21": 8.1, "oc31": 6.9, "oc25": 7.3, "oc35": 2.6 },
+        { "year": 2023, "total": 302.3, "oc21": 8.3, "oc31": 6.2, "oc25": 7.9, "oc35": 2.0 },
+        { "year": 2024, "total": 316.8, "oc21": 10.3, "oc31": 8.1, "oc25": 9.6, "oc35": 3.0 },
+        { "year": 2025, "total": 328.4, "oc21": 10.2, "oc31": 11.5, "oc25": 8.8, "oc35": 2.2 }
+      ]
+    },
+    "statcan_9810059401_canada": {
+      "publisher": "Statistics Canada",
+      "table_id": "98-10-0594-01",
+      "title": "Labour force status by occupation minor group, industry sectors, age and gender: Canada, 2021 Census",
+      "endpoint": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810059401",
+      "extracted_at": "2026-08-03",
+      "reference_period": "2021 Census reference week, May 2-8, 2021",
+      "classification": "NOC 2021 Version 1.0",
+      "sex": "Total gender",
+      "age": "15 years and over",
+      "unit": "persons",
+      "raw_capture_sha256": "3e2e50bbb7fde23890400e79636d8521b164b0678f9eec2ba03ab7c15aab8b46",
+      "all_occupations_employed": 17321700,
+      "rows": [
+        { "code": "2110", "label": "Physical science professionals", "employed": 30285 },
+        { "code": "2111", "label": "Life science professionals", "employed": 46515 },
+        { "code": "2112", "label": "Public and environmental health and safety professionals", "employed": 19410 },
+        { "code": "2120", "label": "Architects, urban planners and land surveyors", "employed": 47420 },
+        { "code": "2121", "label": "Mathematicians, statisticians, actuaries and data scientists", "employed": 27530 },
+        { "code": "2122", "label": "Computer and information systems professionals", "employed": 202610 },
+        { "code": "2123", "label": "Computer, software and Web designers and developers", "employed": 276890 },
+        { "code": "2130", "label": "Civil and mechanical engineers", "employed": 118435 },
+        { "code": "2131", "label": "Electrical, electronics and computer engineers", "employed": 69550 },
+        { "code": "2132", "label": "Manufacturing and processing engineers", "employed": 29060 },
+        { "code": "2133", "label": "Natural resources engineers", "employed": 11710 },
+        { "code": "2139", "label": "Other engineers", "employed": 11000 },
+        { "code": "2210", "label": "Technical occupations in physical sciences", "employed": 19010 },
+        { "code": "2211", "label": "Technical occupations in life sciences", "employed": 46655 },
+        { "code": "2221", "label": "Technical occupations in architecture, drafting, surveying, geomatics and meteorology", "employed": 62095 },
+        { "code": "2222", "label": "Technical occupations in computer and information systems", "employed": 134185 },
+        { "code": "2223", "label": "Technical inspectors and regulatory officers", "employed": 46575 },
+        { "code": "2230", "label": "Technical occupations in civil, mechanical and industrial engineering", "employed": 93145 },
+        { "code": "2231", "label": "Technical occupations in electronics and electrical engineering", "employed": 103225 }
+      ]
+    },
+    "estat_japan_lfs_table_6_1": {
+      "publisher": "Statistics Bureau of Japan, Ministry of Internal Affairs and Communications",
+      "title": "Historical data 6 - Employed person by occupation - Whole Japan",
+      "endpoint": "https://www.e-stat.go.jp/en/stat-search/file-download?fileKind=0&statInfId=000012925012",
+      "classification": "Japan Standard Occupational Classification, December 2009 revision",
+      "latest_period": 2025,
+      "unit": "ten thousand persons",
+      "raw_capture_sha256": "e7f5d59bda3c774c0f26f65f66007c699abf75e49a30dea711425bd037970d87",
+      "published_detail": "Major occupational groups only; professional and engineering workers are not separable into frozen technology and science constructs."
+    }
+  }
+}

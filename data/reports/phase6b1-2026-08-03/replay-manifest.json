@@ -1,0 +1,43 @@
+{
+  "schema_version": "konsider-phase6b1-replay-manifest-1.0",
+  "report_date": "2026-08-03",
+  "command": "node project-history/phases/phase-6/research/run_phase6b1_gap_fill_and_calibration.mjs",
+  "input_sha256": {
+    "phase6b_evidence": "e31365150be5fcd909cc75621db82b9d735558014a406a8cb0022d116152e443",
+    "phase6b_shortlists": "f00f92bd00fcbfebc503e664cd5a6d82de43e510a0f32fea22e178e13d513c3a",
+    "phase6b_portfolio": "82762015858d12c626122775800014d2d16e14ed1bee222d708d69992b15147b",
+    "official_source_fixture": "f7f4410742a2a32e06cad411beb2458c6d2cd7444788a06ac161ec39a90d2d5c",
+    "replay_script": "f5bd03e590c8521ffa973aeb0b4de4b868683408a9a5f3543876682026e133e4",
+    "eurostat_raw_capture": "b6eb11bf3845c8c05aaa905a5aa2d97fafcf5af902977455ed4f397d31213dfe",
+    "statcan_raw_capture": "3e2e50bbb7fde23890400e79636d8521b164b0678f9eec2ba03ab7c15aab8b46",
+    "estat_japan_raw_capture": "e7f5d59bda3c774c0f26f65f66007c699abf75e49a30dea711425bd037970d87"
+  },
+  "output_sha256": {
+    "national-source-matrix.json": "30f410e34a4edd6ee4223c66f983a53b17c2cb59f10ebc06951b294f97d62d26",
+    "occupation-crosswalks.json": "85fa49bba6c2a3c35a35753e32eaa26d34127d232c57411ac53534d1f5fd44c9",
+    "gap-fill-country-evidence.jsonl": "b8dc0323cde355173283eb541e1d82f9927706b2e079b6bf4d8919dd0b4e26e5",
+    "career-confidence-policy.json": "0e607bdba7b9cad0515610bbb95b913a7d314a97fdfe6be5cc73c488ff6c1e80",
+    "multi-route-decision-policy.json": "c932e938c3b38c959ae8e71ee12f878172191714f80ae72e3cb890196ecace84",
+    "career-shortlist-coverage-before-after.json": "57a0544178021f828d988eefe667ed8c8c491c9b14693c38ddb3d273b86bdeb6",
+    "career-threshold-calibration.json": "2998990df1244a4e16a2a6e13f8815cedb4549ff71e4565e17cd003e28ae452a",
+    "anchor-country-review.json": "8121c2efd9351343657439405f83628d7cd1bf475b9ed282ba65ca1872dd1ae6",
+    "broad-criterion-route-analysis.json": "1660eb35f6c723c55157b65b83a23ff27a813e21a92df0f6ef33549de389cd42",
+    "final-career-opportunity-portfolio.json": "ddf3965c5e4764b1a6e693943a3e173fc3cdc2dddc278846541f46d1376e4ed1",
+    "docs/research/phase6b1-career-gap-fill-and-calibration.md": "74ba1b16c3df0680dd6b37849aa7d1f0c66f97e39af27aa9b30bb8848b218861"
+  },
+  "assertions": {
+    "target_country_count": 5,
+    "candidate_count": 2,
+    "evidence_row_count": 10,
+    "unique_country_candidate_count": 10,
+    "iso_alpha3_codes": true,
+    "metric_compatibility": true,
+    "technology_assessable_after": 63,
+    "science_assessable_after": 67,
+    "technology_all_shortlists_at_least_16": true,
+    "science_all_shortlists_at_least_16": true,
+    "no_country_specific_thresholds": true,
+    "canada_science_negative_suppressed": true,
+    "research_only_no_runtime_change": true
+  }
+}

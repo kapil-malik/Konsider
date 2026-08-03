@@ -1,0 +1,376 @@
+{
+  "schema_version": "konsider-phase6b1-career-shortlist-coverage-before-after-1.0",
+  "report_date": "2026-08-03",
+  "release_id": "2026-07-29.2",
+  "ordering_effect": "NONE",
+  "candidates": {
+    "technology_software_opportunity": {
+      "profiles": {
+        "general_balanced": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 10,
+            "strong_signal_not_established_count": 5,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "CAN",
+              "state": "VERIFIED_STRONG_SIGNAL"
+            },
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 17,
+            "verified_strong_signal_count": 11,
+            "strong_signal_not_established_count": 6,
+            "insufficient_evidence_count": 3,
+            "insufficient_evidence_countries": [
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "affordability_sensitive": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 7,
+            "strong_signal_not_established_count": 8,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "CAN",
+              "state": "VERIFIED_STRONG_SIGNAL"
+            },
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 17,
+            "verified_strong_signal_count": 8,
+            "strong_signal_not_established_count": 9,
+            "insufficient_evidence_count": 3,
+            "insufficient_evidence_countries": [
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "safety_governance_oriented": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 9,
+            "strong_signal_not_established_count": 6,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "CAN",
+              "state": "VERIFIED_STRONG_SIGNAL"
+            },
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 17,
+            "verified_strong_signal_count": 10,
+            "strong_signal_not_established_count": 7,
+            "insufficient_evidence_count": 3,
+            "insufficient_evidence_countries": [
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "career_prioritised": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 9,
+            "strong_signal_not_established_count": 6,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "CAN",
+              "state": "VERIFIED_STRONG_SIGNAL"
+            },
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 17,
+            "verified_strong_signal_count": 10,
+            "strong_signal_not_established_count": 7,
+            "insufficient_evidence_count": 3,
+            "insufficient_evidence_countries": [
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "family_education_oriented": {
+          "before": {
+            "assessable_count": 17,
+            "verified_strong_signal_count": 12,
+            "strong_signal_not_established_count": 5,
+            "insufficient_evidence_count": 3,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "NZL"
+            ],
+            "preferred_target_passes": true
+          },
+          "added_countries": [
+            {
+              "country_code": "CAN",
+              "state": "VERIFIED_STRONG_SIGNAL"
+            }
+          ],
+          "after": {
+            "assessable_count": 18,
+            "verified_strong_signal_count": 13,
+            "strong_signal_not_established_count": 5,
+            "insufficient_evidence_count": 2,
+            "insufficient_evidence_countries": [
+              "JPN",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": true
+          }
+        }
+      }
+    },
+    "science_engineering_opportunity": {
+      "profiles": {
+        "general_balanced": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 10,
+            "strong_signal_not_established_count": 5,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 16,
+            "verified_strong_signal_count": 10,
+            "strong_signal_not_established_count": 6,
+            "insufficient_evidence_count": 4,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "affordability_sensitive": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 8,
+            "strong_signal_not_established_count": 7,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 16,
+            "verified_strong_signal_count": 8,
+            "strong_signal_not_established_count": 8,
+            "insufficient_evidence_count": 4,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "safety_governance_oriented": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 9,
+            "strong_signal_not_established_count": 6,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 16,
+            "verified_strong_signal_count": 9,
+            "strong_signal_not_established_count": 7,
+            "insufficient_evidence_count": 4,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "career_prioritised": {
+          "before": {
+            "assessable_count": 15,
+            "verified_strong_signal_count": 9,
+            "strong_signal_not_established_count": 6,
+            "insufficient_evidence_count": 5,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "MLT",
+              "NZL"
+            ],
+            "preferred_target_passes": false
+          },
+          "added_countries": [
+            {
+              "country_code": "MLT",
+              "state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+            }
+          ],
+          "after": {
+            "assessable_count": 16,
+            "verified_strong_signal_count": 9,
+            "strong_signal_not_established_count": 7,
+            "insufficient_evidence_count": 4,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "KOR",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        },
+        "family_education_oriented": {
+          "before": {
+            "assessable_count": 17,
+            "verified_strong_signal_count": 10,
+            "strong_signal_not_established_count": 7,
+            "insufficient_evidence_count": 3,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "NZL"
+            ],
+            "preferred_target_passes": true
+          },
+          "added_countries": [],
+          "after": {
+            "assessable_count": 17,
+            "verified_strong_signal_count": 10,
+            "strong_signal_not_established_count": 7,
+            "insufficient_evidence_count": 3,
+            "insufficient_evidence_countries": [
+              "CAN",
+              "JPN",
+              "NZL"
+            ],
+            "hard_minimum_passes": true,
+            "preferred_target_passes": false
+          }
+        }
+      }
+    }
+  }
+}

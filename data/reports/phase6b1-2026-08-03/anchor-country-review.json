@@ -1,0 +1,186 @@
+{
+  "schema_version": "konsider-phase6b1-anchor-country-review-1.0",
+  "report_date": "2026-08-03",
+  "countries": [
+    {
+      "country_code": "AUS",
+      "technology": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "science_engineering": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "review_note": "Existing Phase 6B evidence retained without exception."
+    },
+    {
+      "country_code": "CAN",
+      "technology": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "science_engineering": {
+        "p50": "INSUFFICIENT_EVIDENCE",
+        "p55": "INSUFFICIENT_EVIDENCE",
+        "p60": "INSUFFICIENT_EVIDENCE",
+        "p65": "INSUFFICIENT_EVIDENCE",
+        "p70": "INSUFFICIENT_EVIDENCE"
+      },
+      "review_note": "Technology accepted; science negative suppressed to insufficient."
+    },
+    {
+      "country_code": "DEU",
+      "technology": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "VERIFIED_STRONG_SIGNAL",
+        "p70": "VERIFIED_STRONG_SIGNAL"
+      },
+      "science_engineering": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "VERIFIED_STRONG_SIGNAL",
+        "p70": "VERIFIED_STRONG_SIGNAL"
+      },
+      "review_note": "Existing Phase 6B evidence retained without exception."
+    },
+    {
+      "country_code": "IND",
+      "technology": {
+        "p50": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p55": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p60": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "science_engineering": {
+        "p50": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p55": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p60": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "review_note": "Existing Phase 6B evidence retained without exception."
+    },
+    {
+      "country_code": "JPN",
+      "technology": {
+        "p50": "INSUFFICIENT_EVIDENCE",
+        "p55": "INSUFFICIENT_EVIDENCE",
+        "p60": "INSUFFICIENT_EVIDENCE",
+        "p65": "INSUFFICIENT_EVIDENCE",
+        "p70": "INSUFFICIENT_EVIDENCE"
+      },
+      "science_engineering": {
+        "p50": "INSUFFICIENT_EVIDENCE",
+        "p55": "INSUFFICIENT_EVIDENCE",
+        "p60": "INSUFFICIENT_EVIDENCE",
+        "p65": "INSUFFICIENT_EVIDENCE",
+        "p70": "INSUFFICIENT_EVIDENCE"
+      },
+      "review_note": "Granularity hold retained; no proxy state."
+    },
+    {
+      "country_code": "KOR",
+      "technology": {
+        "p50": "INSUFFICIENT_EVIDENCE",
+        "p55": "INSUFFICIENT_EVIDENCE",
+        "p60": "INSUFFICIENT_EVIDENCE",
+        "p65": "INSUFFICIENT_EVIDENCE",
+        "p70": "INSUFFICIENT_EVIDENCE"
+      },
+      "science_engineering": {
+        "p50": "INSUFFICIENT_EVIDENCE",
+        "p55": "INSUFFICIENT_EVIDENCE",
+        "p60": "INSUFFICIENT_EVIDENCE",
+        "p65": "INSUFFICIENT_EVIDENCE",
+        "p70": "INSUFFICIENT_EVIDENCE"
+      },
+      "review_note": "Granularity hold retained; no proxy state."
+    },
+    {
+      "country_code": "MLT",
+      "technology": {
+        "p50": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p55": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p60": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "science_engineering": {
+        "p50": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p55": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p60": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "review_note": "Exact harmonised evidence; scale floor prevents small-country false positive."
+    },
+    {
+      "country_code": "NZL",
+      "technology": {
+        "p50": "INSUFFICIENT_EVIDENCE",
+        "p55": "INSUFFICIENT_EVIDENCE",
+        "p60": "INSUFFICIENT_EVIDENCE",
+        "p65": "INSUFFICIENT_EVIDENCE",
+        "p70": "INSUFFICIENT_EVIDENCE"
+      },
+      "science_engineering": {
+        "p50": "INSUFFICIENT_EVIDENCE",
+        "p55": "INSUFFICIENT_EVIDENCE",
+        "p60": "INSUFFICIENT_EVIDENCE",
+        "p65": "INSUFFICIENT_EVIDENCE",
+        "p70": "INSUFFICIENT_EVIDENCE"
+      },
+      "review_note": "Granularity hold retained; no proxy state."
+    },
+    {
+      "country_code": "SGP",
+      "technology": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "science_engineering": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "VERIFIED_STRONG_SIGNAL",
+        "p70": "VERIFIED_STRONG_SIGNAL"
+      },
+      "review_note": "Existing Phase 6B evidence retained without exception."
+    },
+    {
+      "country_code": "USA",
+      "technology": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "VERIFIED_STRONG_SIGNAL",
+        "p70": "VERIFIED_STRONG_SIGNAL"
+      },
+      "science_engineering": {
+        "p50": "VERIFIED_STRONG_SIGNAL",
+        "p55": "VERIFIED_STRONG_SIGNAL",
+        "p60": "VERIFIED_STRONG_SIGNAL",
+        "p65": "VERIFIED_STRONG_SIGNAL",
+        "p70": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "review_note": "Existing Phase 6B evidence retained without exception."
+    }
+  ]
+}

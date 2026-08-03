@@ -1,0 +1,65 @@
+{
+  "schema_version": "konsider-phase6b1-final-career-opportunity-portfolio-1.0",
+  "report_date": "2026-08-03",
+  "status": "RESEARCH_COMPLETE_IMPLEMENTATION_DESIGN_ONLY",
+  "runtime_change_authorized": false,
+  "approved_for_implementation_design": [
+    {
+      "candidate_id": "health_social_work_opportunity",
+      "display_name": "Care-sector employment ecosystem",
+      "construct": "ISIC Rev.4 Q",
+      "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+      "source_from_phase6b": true
+    },
+    {
+      "candidate_id": "finance_insurance_opportunity",
+      "display_name": "Finance and insurance employment ecosystem",
+      "construct": "ISIC Rev.4 K",
+      "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+      "source_from_phase6b": true
+    },
+    {
+      "candidate_id": "skilled_trades_construction_opportunity",
+      "display_name": "Skilled-trades or construction employment ecosystem",
+      "construct": "ISCO-08 7 OR ISIC Rev.4 F",
+      "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+      "source_from_phase6b": true
+    },
+    {
+      "candidate_id": "technology_software_opportunity",
+      "display_name": "Technology and software employment ecosystem",
+      "construct": "Employment in ISCO-08 groups 25 and 35, measured as both national employment scale and employment share.",
+      "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+      "assessable_count": 63,
+      "shortlist_floor_after": 17,
+      "preferred_shortlist_count": 1,
+      "implementation_status": "NOT_STARTED"
+    },
+    {
+      "candidate_id": "science_engineering_opportunity",
+      "display_name": "Science and engineering employment ecosystem",
+      "construct": "Employment in ISCO-08 groups 21 and 31, measured as both national employment scale and employment share.",
+      "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+      "assessable_count": 67,
+      "shortlist_floor_after": 16,
+      "preferred_shortlist_count": 0,
+      "implementation_status": "NOT_STARTED",
+      "risk": "Four profiles sit exactly at the hard 16/20 floor and depend on the Eurostat Malta source."
+    }
+  ],
+  "moved": [
+    {
+      "candidate_id": "research_academia_opportunity",
+      "display_name": "Research and academic ecosystem",
+      "disposition": "MOVE_TO_EDUCATION_RESEARCH_PHASE",
+      "implementation_status": "NOT_STARTED"
+    }
+  ],
+  "rejected": [],
+  "owner_decisions_required": [
+    "Accept hard-floor rather than preferred-floor coverage for science/engineering.",
+    "Accept the documented medium-confidence Canada technology mapping.",
+    "Accept the care-sector name and route visibility for skilled trades/construction.",
+    "Confirm research/academia moves to the education/research phase."
+  ]
+}

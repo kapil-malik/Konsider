@@ -1,0 +1,1254 @@
+{
+  "schema_version": "konsider-phase6b1-career-threshold-calibration-1.0",
+  "report_date": "2026-08-03",
+  "base_percentile": 0.6,
+  "rule": "(scale >= P60 and share >= P60) OR (scale >= P80 and share >= P40) OR (share >= P80 and scale >= P40)",
+  "decision": "RETAIN_P60_GLOBAL_THRESHOLDS_FROM_PRE_GAP_FILL_REFERENCE_POOL",
+  "decision_reason": "P60 remains a transparent middle calibration; thresholds are not recomputed into policy after target-country additions, avoiding target-driven drift.",
+  "candidates": {
+    "technology_software_opportunity": {
+      "original_assessable_count": 61,
+      "expanded_assessable_count": 63,
+      "raw_threshold_stability": {
+        "p50": {
+          "original_pool": {
+            "base_scale_thousands": 147.642,
+            "base_share_percent": 3.079765,
+            "high_scale_thousands": 276.312,
+            "high_share_percent": 3.627033,
+            "low_scale_thousands": 43.173,
+            "low_share_percent": 1.59423
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 147.642,
+            "base_share_percent": 3.10807,
+            "high_scale_thousands": 297.3732,
+            "high_share_percent": 3.625545,
+            "low_scale_thousands": 42.3926,
+            "low_share_percent": 1.597589
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": 0,
+            "base_share_percent": 0.028305,
+            "high_scale_thousands": 21.0612,
+            "high_share_percent": -0.001488,
+            "low_scale_thousands": -0.7804,
+            "low_share_percent": 0.003359
+          }
+        },
+        "p55": {
+          "original_pool": {
+            "base_scale_thousands": 160.512,
+            "base_share_percent": 3.363753,
+            "high_scale_thousands": 348.832,
+            "high_share_percent": 3.994084,
+            "low_scale_thousands": 58.494,
+            "low_share_percent": 2.039637
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 160.9733,
+            "base_share_percent": 3.364421,
+            "high_scale_thousands": 349.019,
+            "high_share_percent": 3.890219,
+            "low_scale_thousands": 58.23,
+            "low_share_percent": 2.083717
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": 0.4613,
+            "base_share_percent": 0.000668,
+            "high_scale_thousands": 0.187,
+            "high_share_percent": -0.103865,
+            "low_scale_thousands": -0.264,
+            "low_share_percent": 0.04408
+          }
+        },
+        "p60": {
+          "original_pool": {
+            "base_scale_thousands": 183.694,
+            "base_share_percent": 3.404585,
+            "high_scale_thousands": 492.363,
+            "high_share_percent": 4.058963,
+            "low_scale_thousands": 88.868,
+            "low_share_percent": 2.323686
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 184.2232,
+            "base_share_percent": 3.408097,
+            "high_scale_thousands": 519.309,
+            "high_share_percent": 4.047203,
+            "low_scale_thousands": 87.6266,
+            "low_share_percent": 2.332921
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": 0.5292,
+            "base_share_percent": 0.003512,
+            "high_scale_thousands": 26.946,
+            "high_share_percent": -0.01176,
+            "low_scale_thousands": -1.2414,
+            "low_share_percent": 0.009235
+          }
+        },
+        "p65": {
+          "original_pool": {
+            "base_scale_thousands": 220.979,
+            "base_share_percent": 3.568752,
+            "high_scale_thousands": 618.936,
+            "high_share_percent": 4.402206,
+            "low_scale_thousands": 108.437,
+            "low_share_percent": 2.491624
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 224.8226,
+            "base_share_percent": 3.550633,
+            "high_scale_thousands": 617.3607,
+            "high_share_percent": 4.389601,
+            "low_scale_thousands": 108.0549,
+            "low_share_percent": 2.576742
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": 3.8436,
+            "base_share_percent": -0.018119,
+            "high_scale_thousands": -1.5753,
+            "high_share_percent": -0.012605,
+            "low_scale_thousands": -0.3821,
+            "low_share_percent": 0.085118
+          }
+        },
+        "p70": {
+          "original_pool": {
+            "base_scale_thousands": 276.312,
+            "base_share_percent": 3.627033,
+            "high_scale_thousands": 1089.113,
+            "high_share_percent": 4.98006,
+            "low_scale_thousands": 147.642,
+            "low_share_percent": 3.079765
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 297.3732,
+            "base_share_percent": 3.625545,
+            "high_scale_thousands": 1004.6682,
+            "high_share_percent": 4.942994,
+            "low_scale_thousands": 147.642,
+            "low_share_percent": 3.10807
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": 21.0612,
+            "base_share_percent": -0.001488,
+            "high_scale_thousands": -84.4448,
+            "high_share_percent": -0.037066,
+            "low_scale_thousands": 0,
+            "low_share_percent": 0.028305
+          }
+        }
+      },
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 27,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 36,
+          "INSUFFICIENT_EVIDENCE": 28
+        },
+        "thresholds": {
+          "base_scale_thousands": 147.642,
+          "base_share_percent": 3.079765,
+          "high_scale_thousands": 276.312,
+          "high_share_percent": 3.627033,
+          "low_scale_thousands": 43.173,
+          "low_share_percent": 1.59423
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "BRA",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "LTU",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "NOR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "RUS",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SRB",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3,
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 16,
+            "VERIFIED_STRONG_SIGNAL": 21
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 12,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 18,
+            "VERIFIED_STRONG_SIGNAL": 25
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 7,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 12,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 15,
+            "VERIFIED_STRONG_SIGNAL": 2
+          }
+        }
+      },
+      "p55": {
+        "percentile": 0.55,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 25,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 38,
+          "INSUFFICIENT_EVIDENCE": 28
+        },
+        "thresholds": {
+          "base_scale_thousands": 160.512,
+          "base_share_percent": 3.363753,
+          "high_scale_thousands": 348.832,
+          "high_share_percent": 3.994084,
+          "low_scale_thousands": 58.494,
+          "low_share_percent": 2.039637
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "NOR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "RUS",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SRB",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3,
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 17,
+            "VERIFIED_STRONG_SIGNAL": 20
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 13
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 19,
+            "VERIFIED_STRONG_SIGNAL": 24
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 7,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 12,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 16,
+            "VERIFIED_STRONG_SIGNAL": 1
+          }
+        }
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 20,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 43,
+          "INSUFFICIENT_EVIDENCE": 28
+        },
+        "thresholds": {
+          "base_scale_thousands": 183.694,
+          "base_share_percent": 3.404585,
+          "high_scale_thousands": 492.363,
+          "high_share_percent": 4.058963,
+          "low_scale_thousands": 88.868,
+          "low_share_percent": 2.323686
+        },
+        "state_changes_from_p60": [],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3,
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 22,
+            "VERIFIED_STRONG_SIGNAL": 15
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 13
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 23,
+            "VERIFIED_STRONG_SIGNAL": 20
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 7,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 12,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 17
+          }
+        }
+      },
+      "p65": {
+        "percentile": 0.65,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 13,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 50,
+          "INSUFFICIENT_EVIDENCE": 28
+        },
+        "thresholds": {
+          "base_scale_thousands": 220.979,
+          "base_share_percent": 3.568752,
+          "high_scale_thousands": 618.936,
+          "high_share_percent": 4.402206,
+          "low_scale_thousands": 108.437,
+          "low_share_percent": 2.491624
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUS",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "BEL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CAN",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CZE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ITA",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "POL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "SGP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 5
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 26,
+            "VERIFIED_STRONG_SIGNAL": 11
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 13
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 30,
+            "VERIFIED_STRONG_SIGNAL": 13
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 7,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 12,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 17
+          }
+        }
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 8,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 55,
+          "INSUFFICIENT_EVIDENCE": 28
+        },
+        "thresholds": {
+          "base_scale_thousands": 276.312,
+          "base_share_percent": 3.627033,
+          "high_scale_thousands": 1089.113,
+          "high_share_percent": 4.98006,
+          "low_scale_thousands": 147.642,
+          "low_share_percent": 3.079765
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUS",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "BEL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CAN",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CHE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CZE",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "DNK",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ESP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "FIN",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ITA",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "POL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "PRT",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "SGP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 5
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 31,
+            "VERIFIED_STRONG_SIGNAL": 6
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 13
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 35,
+            "VERIFIED_STRONG_SIGNAL": 8
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 7,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 12,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 17
+          }
+        }
+      }
+    },
+    "science_engineering_opportunity": {
+      "original_assessable_count": 66,
+      "expanded_assessable_count": 67,
+      "raw_threshold_stability": {
+        "p50": {
+          "original_pool": {
+            "base_scale_thousands": 251.476,
+            "base_share_percent": 5.358883,
+            "high_scale_thousands": 550.211,
+            "high_share_percent": 6.539053,
+            "low_scale_thousands": 71.593,
+            "low_share_percent": 3.16254
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 250.495,
+            "base_share_percent": 5.408027,
+            "high_scale_thousands": 533.5088,
+            "high_share_percent": 6.572754,
+            "low_scale_thousands": 69.1444,
+            "low_share_percent": 3.281064
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": -0.981,
+            "base_share_percent": 0.049144,
+            "high_scale_thousands": -16.7022,
+            "high_share_percent": 0.033701,
+            "low_scale_thousands": -2.4486,
+            "low_share_percent": 0.118524
+          }
+        },
+        "p55": {
+          "original_pool": {
+            "base_scale_thousands": 297.16875,
+            "base_share_percent": 5.771907,
+            "high_scale_thousands": 651.5285,
+            "high_share_percent": 6.915733,
+            "low_scale_thousands": 88.3625,
+            "low_share_percent": 4.143783
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 275.0355,
+            "base_share_percent": 5.812568,
+            "high_scale_thousands": 648.577,
+            "high_share_percent": 6.860409,
+            "low_scale_thousands": 82.7296,
+            "low_share_percent": 4.214877
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": -22.13325,
+            "base_share_percent": 0.040661,
+            "high_scale_thousands": -2.9515,
+            "high_share_percent": -0.055324,
+            "low_scale_thousands": -5.6329,
+            "low_share_percent": 0.071094
+          }
+        },
+        "p60": {
+          "original_pool": {
+            "base_scale_thousands": 364.893,
+            "base_share_percent": 6.083528,
+            "high_scale_thousands": 814.458,
+            "high_share_percent": 7.526469,
+            "low_scale_thousands": 126.713,
+            "low_share_percent": 4.90198
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 352.7002,
+            "base_share_percent": 6.164636,
+            "high_scale_thousands": 794.7856,
+            "high_share_percent": 7.463252,
+            "low_scale_thousands": 125.7464,
+            "low_share_percent": 4.902209
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": -12.1928,
+            "base_share_percent": 0.081108,
+            "high_scale_thousands": -19.6724,
+            "high_share_percent": -0.063217,
+            "low_scale_thousands": -0.9666,
+            "low_share_percent": 0.000229
+          }
+        },
+        "p65": {
+          "original_pool": {
+            "base_scale_thousands": 489.287,
+            "base_share_percent": 6.330234,
+            "high_scale_thousands": 1416.59125,
+            "high_share_percent": 8.017213,
+            "low_scale_thousands": 196.883,
+            "low_share_percent": 5.165788
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 477.4764,
+            "base_share_percent": 6.34401,
+            "high_scale_thousands": 1379.8933,
+            "high_share_percent": 8.015308,
+            "low_scale_thousands": 183.5493,
+            "low_share_percent": 5.209954
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": -11.8106,
+            "base_share_percent": 0.013776,
+            "high_scale_thousands": -36.69795,
+            "high_share_percent": -0.001905,
+            "low_scale_thousands": -13.3337,
+            "low_share_percent": 0.044166
+          }
+        },
+        "p70": {
+          "original_pool": {
+            "base_scale_thousands": 550.211,
+            "base_share_percent": 6.539053,
+            "high_scale_thousands": 1840.311,
+            "high_share_percent": 8.252188,
+            "low_scale_thousands": 251.476,
+            "low_share_percent": 5.358883
+          },
+          "expanded_pool": {
+            "base_scale_thousands": 533.5088,
+            "base_share_percent": 6.572754,
+            "high_scale_thousands": 1839.3248,
+            "high_share_percent": 8.228735,
+            "low_scale_thousands": 250.495,
+            "low_share_percent": 5.408027
+          },
+          "absolute_deltas": {
+            "base_scale_thousands": -16.7022,
+            "base_share_percent": 0.033701,
+            "high_scale_thousands": -0.9862,
+            "high_share_percent": -0.023453,
+            "low_scale_thousands": -0.981,
+            "low_share_percent": 0.049143
+          }
+        }
+      },
+      "p50": {
+        "percentile": 0.5,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 30,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 37,
+          "INSUFFICIENT_EVIDENCE": 24
+        },
+        "thresholds": {
+          "base_scale_thousands": 251.476,
+          "base_share_percent": 5.358883,
+          "high_scale_thousands": 550.211,
+          "high_share_percent": 6.539053,
+          "low_scale_thousands": 71.593,
+          "low_share_percent": 3.16254
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUS",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "BEL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "COL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "ISR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "PRT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SRB",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SVK",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SVN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "TUR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 4,
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 14,
+            "VERIFIED_STRONG_SIGNAL": 23
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 14,
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1,
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "North America": {
+            "INSUFFICIENT_EVIDENCE": 1,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 16,
+            "VERIFIED_STRONG_SIGNAL": 27
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 4
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 17,
+            "VERIFIED_STRONG_SIGNAL": 3
+          }
+        }
+      },
+      "p55": {
+        "percentile": 0.55,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 26,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 41,
+          "INSUFFICIENT_EVIDENCE": 24
+        },
+        "thresholds": {
+          "base_scale_thousands": 297.16875,
+          "base_share_percent": 5.771907,
+          "high_scale_thousands": 651.5285,
+          "high_share_percent": 6.915733,
+          "low_scale_thousands": 88.3625,
+          "low_share_percent": 4.143783
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUS",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "BEL",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "HUN",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "PRT",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "SVK",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          },
+          {
+            "country_code": "TUR",
+            "from": "STRONG_SIGNAL_NOT_ESTABLISHED",
+            "to": "VERIFIED_STRONG_SIGNAL"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 4,
+            "VERIFIED_STRONG_SIGNAL": 2
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 16,
+            "VERIFIED_STRONG_SIGNAL": 21
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 15,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "INSUFFICIENT_EVIDENCE": 1,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 18,
+            "VERIFIED_STRONG_SIGNAL": 25
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 4
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 19,
+            "VERIFIED_STRONG_SIGNAL": 1
+          }
+        }
+      },
+      "p60": {
+        "percentile": 0.6,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 20,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 47,
+          "INSUFFICIENT_EVIDENCE": 24
+        },
+        "thresholds": {
+          "base_scale_thousands": 364.893,
+          "base_share_percent": 6.083528,
+          "high_scale_thousands": 814.458,
+          "high_share_percent": 7.526469,
+          "low_scale_thousands": 126.713,
+          "low_share_percent": 4.90198
+        },
+        "state_changes_from_p60": [],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 5,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 21,
+            "VERIFIED_STRONG_SIGNAL": 16
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 15,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "INSUFFICIENT_EVIDENCE": 1,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 23,
+            "VERIFIED_STRONG_SIGNAL": 20
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 4
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 20
+          }
+        }
+      },
+      "p65": {
+        "percentile": 0.65,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 17,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 50,
+          "INSUFFICIENT_EVIDENCE": 24
+        },
+        "thresholds": {
+          "base_scale_thousands": 489.287,
+          "base_share_percent": 6.330234,
+          "high_scale_thousands": 1416.59125,
+          "high_share_percent": 8.017213,
+          "low_scale_thousands": 196.883,
+          "low_share_percent": 5.165788
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "ESP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "HRV",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "NOR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 5,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 24,
+            "VERIFIED_STRONG_SIGNAL": 13
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 15,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "INSUFFICIENT_EVIDENCE": 1,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 26,
+            "VERIFIED_STRONG_SIGNAL": 17
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 4
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 20
+          }
+        }
+      },
+      "p70": {
+        "percentile": 0.7,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 13,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 54,
+          "INSUFFICIENT_EVIDENCE": 24
+        },
+        "thresholds": {
+          "base_scale_thousands": 550.211,
+          "base_share_percent": 6.539053,
+          "high_scale_thousands": 1840.311,
+          "high_share_percent": 8.252188,
+          "low_scale_thousands": 251.476,
+          "low_share_percent": 5.358883
+        },
+        "state_changes_from_p60": [
+          {
+            "country_code": "AUT",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "CHL",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "DNK",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "ESP",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "HRV",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "NOR",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          },
+          {
+            "country_code": "USA",
+            "from": "VERIFIED_STRONG_SIGNAL",
+            "to": "STRONG_SIGNAL_NOT_ESTABLISHED"
+          }
+        ],
+        "region_counts": {
+          "East Asia & Pacific": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 5,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "Europe & Central Asia": {
+            "INSUFFICIENT_EVIDENCE": 5,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 26,
+            "VERIFIED_STRONG_SIGNAL": 11
+          },
+          "Latin America & Caribbean": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 16
+          },
+          "Middle East, North Africa, Afghanistan & Pakistan": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+            "VERIFIED_STRONG_SIGNAL": 1
+          },
+          "North America": {
+            "INSUFFICIENT_EVIDENCE": 1,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "South Asia": {
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 1
+          },
+          "Sub-Saharan Africa": {
+            "INSUFFICIENT_EVIDENCE": 4,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 3
+          }
+        },
+        "income_group_counts": {
+          "High income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 30,
+            "VERIFIED_STRONG_SIGNAL": 13
+          },
+          "Lower middle income": {
+            "INSUFFICIENT_EVIDENCE": 6,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 4
+          },
+          "Upper middle income": {
+            "INSUFFICIENT_EVIDENCE": 9,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 20
+          }
+        }
+      }
+    }
+  },
+  "source_removal_tests": {
+    "remove_eurostat_malta": {
+      "technology_minimum_profile_assessable": 16,
+      "science_minimum_profile_assessable": 15,
+      "science_hard_floor_passes": false
+    },
+    "remove_statcan_canada": {
+      "technology_minimum_profile_assessable": 16,
+      "technology_hard_floor_passes": true,
+      "science_effect": "NONE_CANADA_SUPPLEMENTAL_ONLY"
+    }
+  },
+  "period_stability": {
+    "MLT": {
+      "technology": {
+        "prior_period": 2024,
+        "prior_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "latest_period": 2025,
+        "latest_state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      },
+      "science_engineering": {
+        "prior_period": 2024,
+        "prior_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "latest_period": 2025,
+        "latest_state": "STRONG_SIGNAL_NOT_ESTABLISHED"
+      }
+    },
+    "CAN": {
+      "technology": {
+        "period": 2021,
+        "state": "VERIFIED_STRONG_SIGNAL",
+        "prior_period_test": "NOT_AVAILABLE_IN_ACCEPTED_CENSUS_ROUTE"
+      }
+    }
+  }
+}

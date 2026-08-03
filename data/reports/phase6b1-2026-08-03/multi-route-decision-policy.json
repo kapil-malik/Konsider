@@ -1,0 +1,13 @@
+{
+  "schema_version": "konsider-phase6b1-multi-route-decision-policy-1.0",
+  "report_date": "2026-08-03",
+  "rule": "A positive may be established when any accepted transparent route crosses its frozen threshold. A negative requires every required route to be present, comparable, and below threshold.",
+  "no_composite_score": true,
+  "route_visibility_required": true,
+  "missing_route_policy": "INSUFFICIENT_EVIDENCE_FOR_NEGATIVE",
+  "contradiction_policy": "Preserve route-level states and expose the route that established the positive; do not average routes.",
+  "applicable_constructs": [
+    "skilled_trades_construction_opportunity",
+    "future independently sourced career constructs"
+  ]
+}

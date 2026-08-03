@@ -1,0 +1,176 @@
+{
+  "schema_version": "konsider-phase6b1-national-source-matrix-1.0",
+  "report_date": "2026-08-03",
+  "countries": [
+    {
+      "country_code": "CAN",
+      "country_name": "Canada",
+      "disposition": "PARTIAL_GAP_FILL_TECHNOLOGY_ONLY",
+      "sources": [
+        {
+          "publisher": "Statistics Canada",
+          "title": "Labour force status by occupation minor group, industry sectors, age and gender: Canada, 2021 Census",
+          "endpoint": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810059401",
+          "table_or_version": "98-10-0594-01 / NOC 2021 v1.0",
+          "period": "2021 Census reference week, May 2-8, 2021"
+        },
+        {
+          "publisher": "Statistics Canada",
+          "title": "Employment by occupation, annual",
+          "endpoint": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410041601",
+          "table_or_version": "14-10-0416-01",
+          "period": "2025",
+          "disposition": "REJECT_TOO_AGGREGATED_FOR_FROZEN_CONSTRUCTS"
+        }
+      ],
+      "extraction": "Official HTML table payload; compact fixture retains exact employed counts for included and excluded NOC groups.",
+      "classification": "NOC 2021 Version 1.0",
+      "sex": "Both sexes / total gender",
+      "unit": "persons",
+      "denominator": "All occupations employed, 17,321,700",
+      "flags": [
+        "Canada-level long-form census data quality flag 20000",
+        "Excludes one or more incompletely enumerated reserves or settlements"
+      ],
+      "normalized_rights": "STATISTICS_CANADA_OPEN_LICENCE",
+      "required_attribution": "Adapted from Statistics Canada, table 98-10-0594-01, 2021 Census. This does not constitute an endorsement by Statistics Canada.",
+      "retention_policy": "Compact fixture committed; raw HTML retained under data/raw/phase6b1 and checksum-bound.",
+      "replay": {
+        "raw_sha256": "3e2e50bbb7fde23890400e79636d8521b164b0678f9eec2ba03ab7c15aab8b46",
+        "fixture_source": "phase6b1-official-source-fixtures.json"
+      },
+      "limitations": "No official NOC 2021 to ISCO-08 concordance was located; technology is a tight semantic mapping, science remains supplemental-only for a negative result."
+    },
+    {
+      "country_code": "JPN",
+      "country_name": "Japan",
+      "disposition": "HOLD_CROSSWALK_GAP",
+      "sources": [
+        {
+          "publisher": "Statistics Bureau of Japan, Ministry of Internal Affairs and Communications",
+          "title": "Historical data 6 - Employed person by occupation - Whole Japan",
+          "endpoint": "https://www.e-stat.go.jp/en/stat-search/file-download?fileKind=0&statInfId=000012925012",
+          "table_or_version": "Labour Force Survey historical table 6 / JSOC Dec. 2009",
+          "period": "2025"
+        }
+      ],
+      "extraction": "Official e-Stat XLSX inspected and rendered; annual both-sex total is present.",
+      "classification": "Japan Standard Occupational Classification, December 2009 revision",
+      "sex": "Both sexes / total gender",
+      "unit": "ten thousand persons",
+      "denominator": "All employed persons, whole Japan",
+      "flags": [
+        "2011 earthquake supplementary-estimated values affect historical rows, not 2025"
+      ],
+      "normalized_rights": "GOVERNMENT_OF_JAPAN_STANDARD_TERMS_V2_CC_BY_4_COMPATIBLE",
+      "required_attribution": "Source: Labour Force Survey, Statistics Bureau of Japan, via e-Stat; adapted by Konsider.",
+      "retention_policy": "Compact metadata fixture committed; raw XLSX retained under data/raw/phase6b1 and checksum-bound.",
+      "replay": {
+        "raw_sha256": "e7f5d59bda3c774c0f26f65f66007c699abf75e49a30dea711425bd037970d87"
+      },
+      "limitations": "The retained annual workbook publishes only major groups; professional and engineering workers cannot be split into the frozen technology and science constructs."
+    },
+    {
+      "country_code": "KOR",
+      "country_name": "Korea, Rep.",
+      "disposition": "HOLD_SOURCE_GAP",
+      "sources": [
+        {
+          "publisher": "Statistics Korea",
+          "title": "Employed persons by gender/occupation",
+          "endpoint": "https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1DA7E27S&language=en&conn_path=I2",
+          "table_or_version": "KOSIS DT_1DA7E27S / KSCO 8th revision",
+          "period": "2025 onward"
+        },
+        {
+          "publisher": "Statistics Korea",
+          "title": "Economically Active Population Survey detailed data — official Q&A",
+          "endpoint": "https://kosis.kr/eng/bulletinBoard/qnaView.do?boardIdx=335753",
+          "table_or_version": "Q&A response dated 2025-08-13",
+          "period": "current policy"
+        }
+      ],
+      "extraction": "Metadata and official dissemination clarification only; no evidence-bearing values retained.",
+      "classification": "Korean Standard Classification of Occupations, 8th revision",
+      "sex": "Both sexes / total gender",
+      "unit": "persons / public series",
+      "denominator": "Employed persons",
+      "flags": [
+        "Official response states occupation-by-sex data are disseminated only at 1 digit"
+      ],
+      "normalized_rights": "KOSIS_PUBLIC_DATA_FREE_USE",
+      "required_attribution": "Source: Statistics Korea, KOSIS.",
+      "retention_policy": "URLs and official limitation frozen in the source matrix.",
+      "replay": {
+        "mode": "REMOTE_METADATA_ONLY"
+      },
+      "limitations": "One-digit occupation groups cannot isolate ISCO-08 25+35 or 21+31."
+    },
+    {
+      "country_code": "MLT",
+      "country_name": "Malta",
+      "disposition": "COMPLETE_GAP_FILL_BOTH_CONSTRUCTS",
+      "sources": [
+        {
+          "publisher": "Eurostat",
+          "title": "Employed persons by detailed occupation (ISCO-08 two digit level)",
+          "endpoint": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_egai2d?geo=MT&sex=T&age=Y15-74&sinceTimePeriod=2021&lang=en",
+          "table_or_version": "lfsa_egai2d",
+          "period": "2021-2025; latest 2025"
+        }
+      ],
+      "extraction": "Eurostat JSON-stat API; annual, age 15-74, both sexes, thousand persons, Malta.",
+      "classification": "ISCO-08 two-digit",
+      "sex": "Both sexes / total gender",
+      "unit": "thousand persons",
+      "denominator": "Total employed persons in the same dataset/period/population",
+      "flags": [
+        "No status flag attached to the 2025 total or OC21/31/25/35 observations"
+      ],
+      "normalized_rights": "EUROSTAT_CC_BY_4_0_FREE_REUSE",
+      "required_attribution": "Source: Eurostat, lfsa_egai2d, accessed 2026-08-03; adapted values and calculations by Konsider.",
+      "retention_policy": "Compact five-year fixture committed; raw JSON retained under data/raw/phase6b1 and checksum-bound.",
+      "replay": {
+        "raw_sha256": "b6eb11bf3845c8c05aaa905a5aa2d97fafcf5af902977455ed4f397d31213dfe",
+        "fixture_source": "phase6b1-official-source-fixtures.json"
+      },
+      "limitations": "Small-country estimates remain below the global scale floor; result is a defensible not-established state, not no jobs."
+    },
+    {
+      "country_code": "NZL",
+      "country_name": "New Zealand",
+      "disposition": "HOLD_SOURCE_GAP",
+      "sources": [
+        {
+          "publisher": "Stats NZ",
+          "title": "Occupation, age, and gender for the employed census usually resident population count aged 15 years and over",
+          "endpoint": "https://explore.data.stats.govt.nz/vis?df[id]=CEN23_WRK_009&df[ag]=STATSNZ&df[vs]=1.0",
+          "table_or_version": "CEN23_WRK_009 / ANZSCO v1.3",
+          "period": "2013, 2018, 2023"
+        },
+        {
+          "publisher": "Stats NZ",
+          "title": "About the National Occupation List",
+          "endpoint": "https://www.stats.govt.nz/methods/about-the-national-occupation-list",
+          "table_or_version": "NOL concordance catalogue",
+          "period": "updated 2026"
+        }
+      ],
+      "extraction": "Public Data Explorer table inspected; API requires a subscription key.",
+      "classification": "ANZSCO v1.3, public national table at major level 1",
+      "sex": "Both sexes / total gender",
+      "unit": "persons",
+      "denominator": "Employed census usually resident population aged 15+",
+      "flags": [
+        "2023 Census confidentiality rounding and coding notes apply"
+      ],
+      "normalized_rights": "STATS_NZ_CC_BY_4_0_ATTRIBUTION",
+      "required_attribution": "Source: Stats NZ, 2023 Census; adapted by Konsider.",
+      "retention_policy": "Dataset ID, query URL, classification, and limitation frozen in the source matrix.",
+      "replay": {
+        "mode": "REMOTE_METADATA_ONLY_API_KEY_REQUIRED"
+      },
+      "limitations": "The located full-population table exposes occupation only at major level; a concordance alone cannot create detailed employment counts."
+    }
+  ]
+}
