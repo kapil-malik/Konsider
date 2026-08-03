@@ -35,3 +35,24 @@ Phase 6B stops after product-definition research. It does not authorize changes 
 - [`research/run_phase6b_opportunity_probe.mjs`](research/run_phase6b_opportunity_probe.mjs)
 
 Any implementation must begin under a separately approved prompt after the owner resolves the decisions recorded in the Phase 6B report.
+
+## Phase 6B.1 gap fill and calibration
+
+Phase 6B.1 tightened source precedence, negative integrity, threshold sensitivity, frozen-shortlist coverage, dependency testing and deterministic replay. It completed the targeted career-evidence follow-up without authorising production work.
+
+- [`Konsider Phase 6B.1 Prompt.pdf`](Konsider%20Phase%206B.1%20Prompt.pdf)
+- [`../../../docs/research/phase6b1-career-gap-fill-and-calibration.md`](../../../docs/research/phase6b1-career-gap-fill-and-calibration.md)
+- [`../../../data/reports/phase6b1-2026-08-03`](../../../data/reports/phase6b1-2026-08-03)
+- [`research/run_phase6b1_gap_fill_and_calibration.mjs`](research/run_phase6b1_gap_fill_and_calibration.mjs)
+
+## Phase 6C education exploration
+
+Phase 6C applies the same evidence discipline to field-specific higher-education research ecosystems while retaining the directions and implementation boundary in the Phase 6C PDF. Its augmented protocol records how Phase 6B.1's methodology is adapted without importing its career criteria.
+
+- [`Konsider Phase 6C Higher-Education Opportunity Criteria.pdf`](Konsider%20Phase%206C%20Higher-Education%20Opportunity%20Criteria.pdf)
+- [`02_PHASE_6C_AUGMENTED_RESEARCH_PROTOCOL.md`](02_PHASE_6C_AUGMENTED_RESEARCH_PROTOCOL.md)
+- [`../../../docs/research/phase6c-education-opportunity-study.md`](../../../docs/research/phase6c-education-opportunity-study.md)
+- [`../../../data/reports/phase6c-2026-08-03`](../../../data/reports/phase6c-2026-08-03)
+- [`research/run_phase6c_education_opportunity_study.mjs`](research/run_phase6c_education_opportunity_study.mjs)
+
+Phase 6C stops at research and owner decisions. It does not add an education criterion or change any ranking, schema, worker, preset, API, release or UI.

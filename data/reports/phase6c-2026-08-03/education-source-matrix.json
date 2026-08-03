@@ -1,0 +1,72 @@
+{
+  "schema_version": "konsider-phase6c-education-source-matrix-1.0",
+  "report_date": "2026-08-03",
+  "sources": [
+    {
+      "source_id": "CWTS_LEIDEN_OPEN_2025_RESULTS",
+      "role": "PRIMARY_POSITIVE_AND_NEGATIVE_CAPABLE_WITHIN_NARROW_RESEARCH_ECOSYSTEM_CONSTRUCT",
+      "title": "CWTS Leiden Ranking Open Edition 2025",
+      "doi": "10.5281/zenodo.17473224",
+      "official_urls": [
+        "https://open.leidenranking.com/resources",
+        "https://open.leidenranking.com/information/universities",
+        "https://open.leidenranking.com/information/fields",
+        "https://open.leidenranking.com/information/indicators",
+        "https://open.leidenranking.com/information/responsibleuse",
+        "https://zenodo.org/records/17473224"
+      ],
+      "snapshot": "2025-08",
+      "publication_window": "2020-2023",
+      "coverage": "2,831 universities in 120 countries; inclusion requires at least 1,500 qualifying publications in 2020-2023.",
+      "licence": "CC0-1.0 for result and underlying data; source code MIT",
+      "retention": "Commit compact derived fixture; keep raw captures ignored; retain source URLs and hashes.",
+      "strengths": [
+        "complete frozen field result",
+        "global within-field ranks",
+        "fractional output",
+        "official ROR identity workbook",
+        "reusable"
+      ],
+      "limitations": [
+        "scientific performance only",
+        "research-intensive university selection",
+        "no teaching quality",
+        "no admissions",
+        "no affordability",
+        "no accreditation or qualification recognition",
+        "single retained time window"
+      ]
+    },
+    {
+      "source_id": "ROR_VIA_CWTS_WORKBOOK",
+      "role": "CANONICAL_INSTITUTION_IDENTITY",
+      "official_url": "https://ror.org/",
+      "licence": "CC0",
+      "disposition": "RETAIN_EMBEDDED_IDENTIFIERS",
+      "limitation": "No campus locality or coordinate inference in this phase."
+    },
+    {
+      "source_id": "OPENALEX_DIRECT_API",
+      "role": "UNDERLYING_BIBLIOGRAPHIC_SOURCE_NOT_DIRECTLY_ACQUIRED",
+      "official_url": "https://docs.openalex.org/",
+      "disposition": "NOT_SELECTED_FOR_PRIMARY_ROUTE",
+      "reason": "The CWTS release already pins an OpenAlex snapshot and publishes a reusable result; a direct current route would require a separately frozen access and replay policy."
+    },
+    {
+      "source_id": "UNESCO_UIS_OPRI",
+      "role": "POTENTIAL_SPECIALISATION_SUPPLEMENT",
+      "official_url": "https://www.unesco.org/en/education/observatory/public-research-innovation",
+      "disposition": "HOLD_LEGAL_AND_COVERAGE_ROUTE",
+      "reason": "Not needed for the primary research-university signal; ShareAlike and normalized reuse implications require owner/legal review before integration."
+    }
+  ],
+  "negative_integrity": {
+    "capable": "Complete retained field result plus stable institution and country mapping.",
+    "suppressed_when": [
+      "country absent from release",
+      "publisher redaction prevents complete country evidence",
+      "field taxonomy is broader than construct",
+      "canonical institution mapping unavailable"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "konsider-phase6c-replay-manifest-1.0",
+  "report_date": "2026-08-03",
+  "replay_mode": "COMMITTED_FIXTURE_WITH_OPTIONAL_RAW_CAPTURE_VALIDATION",
+  "deterministic": true,
+  "input_sha256": {
+    "project-history/phases/phase-6/research/fixtures/phase6c-leiden-source-fixture.json": "53c6c796eb57baf95111901de17036cefb8a3833ee11bce7071212cde8aa866b",
+    "data/country-universes/stable-supported-v1.json": "dd85b26ac4f2bcd11782de1bfa62c86a519b0bfd27557877b2edadacdf1fff8c",
+    "data/reports/phase6b-2026-08-02/career-shortlist-coverage.json": "f00f92bd00fcbfebc503e664cd5a6d82de43e510a0f32fea22e178e13d513c3a",
+    "data/reports/phase6b-2026-08-02/career-country-opportunity-evidence.jsonl": "e31365150be5fcd909cc75621db82b9d735558014a406a8cb0022d116152e443",
+    "data/reports/phase6b1-2026-08-03/gap-fill-country-evidence.jsonl": "b8dc0323cde355173283eb541e1d82f9927706b2e079b6bf4d8919dd0b4e26e5",
+    "data/reports/phase6b1-2026-08-03/final-career-opportunity-portfolio.json": "ddf3965c5e4764b1a6e693943a3e173fc3cdc2dddc278846541f46d1376e4ed1",
+    "project-history/phases/phase-6/02_PHASE_6C_AUGMENTED_RESEARCH_PROTOCOL.md": "2774069a0bd8d8bb1892f6caf408ec5ef1b2af5f26e464eaa561a59c4cf81e91",
+    "project-history/phases/phase-6/research/run_phase6c_education_opportunity_study.mjs": "e148697a6acb452646ebb9de17b08167bf9ee58841fae426ea73a2855176985d"
+  },
+  "output_sha256": {
+    "education-candidate-matrix.json": "dd78d6fe89e5aee8279ee652211775c1cb79ded5290ba10afce2311f11e9492a",
+    "education-country-opportunity-evidence.jsonl": "de249893686c2ba104983a7adafc3881225dc6bfc0bb33a00820bc19a132c09e",
+    "education-source-matrix.json": "542a0676df1d367442232ea6e29a869ee309202234dc60da35c0040e59a5d452",
+    "institution-mapping.jsonl": "7ab248dbfc330f827aea4b0c776907ab53ae86227e40383413b9e459f5c96eed",
+    "education-shortlist-coverage.json": "e9af55cabc962066e2d0680a8fca780369aaecfe0f0a32dc461f2f7961a8f57c",
+    "education-threshold-sensitivity.json": "b766984515077bbec650fe6cf0804f45f5ceae5ee38786dcf2392c9ffca814e7",
+    "career-education-crosswalk.json": "620b0aafbe3fdf2c4d64c734923688455e4313332ba048e1d42e6da00dfefde3",
+    "approved-opportunity-portfolio.json": "baab9cad27c8ebdd0203e2e30177c086550df520a49b5452df10a9f9f0cfe4ab",
+    "docs/research/phase6c-education-opportunity-study.md": "31e5767605642c414fcda0a4e0c537b1428c8d073eb1212571aee0d8628fb675"
+  },
+  "assertions": {
+    "candidate_count": 6,
+    "stable_country_count": 91,
+    "country_outcome_count": 546,
+    "unique_country_outcome_keys": 546,
+    "institution_mapping_count": 2831,
+    "unique_ror_count": 2831,
+    "manual_institution_disambiguation_count": 6,
+    "recognized_states_only": true,
+    "no_country_specific_thresholds": true,
+    "shortlist_ordering_changed": false,
+    "production_change_authorized": false
+  }
+}

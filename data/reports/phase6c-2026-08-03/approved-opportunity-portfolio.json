@@ -1,0 +1,198 @@
+{
+  "schema_version": "konsider-phase6c-approved-opportunity-portfolio-1.0",
+  "report_date": "2026-08-03",
+  "status": "RESEARCH_COMPLETE_IMPLEMENTATION_DESIGN_ONLY",
+  "runtime_change_authorized": false,
+  "career": {
+    "schema_version": "konsider-phase6b1-final-career-opportunity-portfolio-1.0",
+    "report_date": "2026-08-03",
+    "status": "RESEARCH_COMPLETE_IMPLEMENTATION_DESIGN_ONLY",
+    "runtime_change_authorized": false,
+    "approved_for_implementation_design": [
+      {
+        "candidate_id": "health_social_work_opportunity",
+        "display_name": "Care-sector employment ecosystem",
+        "construct": "ISIC Rev.4 Q",
+        "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+        "source_from_phase6b": true
+      },
+      {
+        "candidate_id": "finance_insurance_opportunity",
+        "display_name": "Finance and insurance employment ecosystem",
+        "construct": "ISIC Rev.4 K",
+        "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+        "source_from_phase6b": true
+      },
+      {
+        "candidate_id": "skilled_trades_construction_opportunity",
+        "display_name": "Skilled-trades or construction employment ecosystem",
+        "construct": "ISCO-08 7 OR ISIC Rev.4 F",
+        "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+        "source_from_phase6b": true
+      },
+      {
+        "candidate_id": "technology_software_opportunity",
+        "display_name": "Technology and software employment ecosystem",
+        "construct": "Employment in ISCO-08 groups 25 and 35, measured as both national employment scale and employment share.",
+        "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+        "assessable_count": 63,
+        "shortlist_floor_after": 17,
+        "preferred_shortlist_count": 1,
+        "implementation_status": "NOT_STARTED"
+      },
+      {
+        "candidate_id": "science_engineering_opportunity",
+        "display_name": "Science and engineering employment ecosystem",
+        "construct": "Employment in ISCO-08 groups 21 and 31, measured as both national employment scale and employment share.",
+        "disposition": "APPROVE_FOR_IMPLEMENTATION_DESIGN",
+        "assessable_count": 67,
+        "shortlist_floor_after": 16,
+        "preferred_shortlist_count": 0,
+        "implementation_status": "NOT_STARTED",
+        "risk": "Four profiles sit exactly at the hard 16/20 floor and depend on the Eurostat Malta source."
+      }
+    ],
+    "moved": [
+      {
+        "candidate_id": "research_academia_opportunity",
+        "display_name": "Research and academic ecosystem",
+        "disposition": "MOVE_TO_EDUCATION_RESEARCH_PHASE",
+        "implementation_status": "NOT_STARTED"
+      }
+    ],
+    "rejected": [],
+    "owner_decisions_required": [
+      "Accept hard-floor rather than preferred-floor coverage for science/engineering.",
+      "Accept the documented medium-confidence Canada technology mapping.",
+      "Accept the care-sector name and route visibility for skilled trades/construction.",
+      "Confirm research/academia moves to the education/research phase."
+    ]
+  },
+  "education": {
+    "approved_for_implementation_design": [
+      {
+        "candidate_id": "engineering_technology_education_opportunity",
+        "display_name": "Physical sciences and engineering research-university ecosystem",
+        "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+        "assessable_count": 75,
+        "implementation_status": "NOT_STARTED"
+      },
+      {
+        "candidate_id": "computer_science_ict_education_opportunity",
+        "display_name": "Mathematics and computer science research-university ecosystem",
+        "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+        "assessable_count": 75,
+        "implementation_status": "NOT_STARTED"
+      },
+      {
+        "candidate_id": "medicine_health_sciences_education_opportunity",
+        "display_name": "Biomedical and health sciences research-university ecosystem",
+        "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+        "assessable_count": 75,
+        "implementation_status": "NOT_STARTED"
+      },
+      {
+        "candidate_id": "natural_sciences_education_opportunity",
+        "display_name": "Life and earth sciences research-university ecosystem",
+        "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+        "assessable_count": 75,
+        "implementation_status": "NOT_STARTED"
+      }
+    ],
+    "held": [
+      {
+        "candidate_id": "business_finance_education_opportunity",
+        "prompt_direction": "Business and finance",
+        "public_display_name": "Business and finance higher-education opportunity",
+        "source_field": null,
+        "disposition": "HOLD_SOURCE_GAP",
+        "rationale": "The available Social sciences and humanities field is too broad to establish business or finance opportunity.",
+        "p60_outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        },
+        "gates": {
+          "assessable_60_of_91": false,
+          "all_shortlists_at_least_16_of_20": false,
+          "geographic_and_income_breadth": "FAIL",
+          "smaller_assessed_class_at_least_8": false,
+          "reusable_source_and_replay": false,
+          "source_aligned_public_name": false
+        },
+        "recommended_for_implementation_design": false,
+        "runtime_change_authorized": false,
+        "geography_and_income_summary": {
+          "assessable_by_region": {},
+          "verified_by_region": {},
+          "assessable_by_income_group": {},
+          "verified_by_income_group": {}
+        }
+      }
+    ],
+    "rejected": [
+      {
+        "candidate_id": "broad_university_excellence_opportunity",
+        "prompt_direction": "Broad university excellence",
+        "public_display_name": "Broad scientific research-university ecosystem",
+        "source_field": "All sciences",
+        "disposition": "REJECT_AS_OPPORTUNITY_CRITERION",
+        "rationale": "Scientific performance is not generic university excellence and substantially overlaps the existing research/innovation criterion.",
+        "p60_outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 29,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 46,
+          "INSUFFICIENT_EVIDENCE": 16
+        },
+        "gates": {
+          "assessable_60_of_91": true,
+          "all_shortlists_at_least_16_of_20": true,
+          "geographic_and_income_breadth": "PASS_WITH_REPRESENTATION_LIMITATION_REPORTED",
+          "smaller_assessed_class_at_least_8": true,
+          "reusable_source_and_replay": true,
+          "source_aligned_public_name": false
+        },
+        "recommended_for_implementation_design": false,
+        "runtime_change_authorized": false,
+        "geography_and_income_summary": {
+          "assessable_by_region": {
+            "East Asia & Pacific": 8,
+            "Europe & Central Asia": 40,
+            "Latin America & Caribbean": 11,
+            "Middle East, North Africa, Afghanistan & Pakistan": 7,
+            "North America": 2,
+            "South Asia": 1,
+            "Sub-Saharan Africa": 6
+          },
+          "verified_by_region": {
+            "East Asia & Pacific": 6,
+            "Europe & Central Asia": 16,
+            "Latin America & Caribbean": 2,
+            "North America": 2,
+            "South Asia": 1,
+            "Sub-Saharan Africa": 2
+          },
+          "assessable_by_income_group": {
+            "High income": 47,
+            "Lower middle income": 7,
+            "Upper middle income": 21
+          },
+          "verified_by_income_group": {
+            "High income": 21,
+            "Lower middle income": 2,
+            "Upper middle income": 6
+          }
+        }
+      }
+    ]
+  },
+  "consolidated_approved_count": 9,
+  "research_academia_resolution": "Resolved through source-aligned field-specific education research-university ecosystems; no employment proxy or generic academia criterion added.",
+  "owner_decisions_required": [
+    "Accept the research-university ecosystem boundary and four source-aligned public names.",
+    "Accept P60 plus fixed prominence routes and the recorded sensitivity.",
+    "Accept 75/91 assessability and explicit insufficiency for absent systems.",
+    "Accept or mitigate the single-source and ROR-identity dependency.",
+    "Keep business/finance held and broad university excellence rejected.",
+    "Require a separate implementation authorization before production work."
+  ]
+}

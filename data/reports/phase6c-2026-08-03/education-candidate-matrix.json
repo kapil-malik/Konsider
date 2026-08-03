@@ -1,0 +1,301 @@
+{
+  "schema_version": "konsider-phase6c-education-candidate-matrix-1.0",
+  "report_date": "2026-08-03",
+  "status": "RESEARCH_COMPLETE_OWNER_DECISIONS_REQUIRED",
+  "production_change_authorized": false,
+  "frozen_country_universe": "stable_supported_v1",
+  "candidate_count": 6,
+  "candidates": [
+    {
+      "candidate_id": "engineering_technology_education_opportunity",
+      "prompt_direction": "Engineering and technology",
+      "public_display_name": "Physical sciences and engineering research-university ecosystem",
+      "source_field": "Physical sciences and engineering",
+      "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+      "rationale": "The official field is broader than engineering and technology, so the public name must follow the source taxonomy.",
+      "p60_outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 27,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 48,
+        "INSUFFICIENT_EVIDENCE": 16
+      },
+      "gates": {
+        "assessable_60_of_91": true,
+        "all_shortlists_at_least_16_of_20": true,
+        "geographic_and_income_breadth": "PASS_WITH_REPRESENTATION_LIMITATION_REPORTED",
+        "smaller_assessed_class_at_least_8": true,
+        "reusable_source_and_replay": true,
+        "source_aligned_public_name": true
+      },
+      "recommended_for_implementation_design": true,
+      "runtime_change_authorized": false,
+      "geography_and_income_summary": {
+        "assessable_by_region": {
+          "East Asia & Pacific": 8,
+          "Europe & Central Asia": 40,
+          "Latin America & Caribbean": 11,
+          "Middle East, North Africa, Afghanistan & Pakistan": 7,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 6
+        },
+        "verified_by_region": {
+          "East Asia & Pacific": 6,
+          "Europe & Central Asia": 15,
+          "Latin America & Caribbean": 2,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 1
+        },
+        "assessable_by_income_group": {
+          "High income": 47,
+          "Lower middle income": 7,
+          "Upper middle income": 21
+        },
+        "verified_by_income_group": {
+          "High income": 20,
+          "Lower middle income": 1,
+          "Upper middle income": 6
+        }
+      }
+    },
+    {
+      "candidate_id": "computer_science_ict_education_opportunity",
+      "prompt_direction": "Computer science and ICT",
+      "public_display_name": "Mathematics and computer science research-university ecosystem",
+      "source_field": "Mathematics and computer science",
+      "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+      "rationale": "The source cannot isolate ICT programme availability from mathematics and computer science research output.",
+      "p60_outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 30,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 45,
+        "INSUFFICIENT_EVIDENCE": 16
+      },
+      "gates": {
+        "assessable_60_of_91": true,
+        "all_shortlists_at_least_16_of_20": true,
+        "geographic_and_income_breadth": "PASS_WITH_REPRESENTATION_LIMITATION_REPORTED",
+        "smaller_assessed_class_at_least_8": true,
+        "reusable_source_and_replay": true,
+        "source_aligned_public_name": true
+      },
+      "recommended_for_implementation_design": true,
+      "runtime_change_authorized": false,
+      "geography_and_income_summary": {
+        "assessable_by_region": {
+          "East Asia & Pacific": 8,
+          "Europe & Central Asia": 40,
+          "Latin America & Caribbean": 11,
+          "Middle East, North Africa, Afghanistan & Pakistan": 7,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 6
+        },
+        "verified_by_region": {
+          "East Asia & Pacific": 6,
+          "Europe & Central Asia": 17,
+          "Latin America & Caribbean": 2,
+          "Middle East, North Africa, Afghanistan & Pakistan": 1,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 1
+        },
+        "assessable_by_income_group": {
+          "High income": 47,
+          "Lower middle income": 7,
+          "Upper middle income": 21
+        },
+        "verified_by_income_group": {
+          "High income": 23,
+          "Lower middle income": 1,
+          "Upper middle income": 6
+        }
+      }
+    },
+    {
+      "candidate_id": "medicine_health_sciences_education_opportunity",
+      "prompt_direction": "Medicine and health sciences",
+      "public_display_name": "Biomedical and health sciences research-university ecosystem",
+      "source_field": "Biomedical and health sciences",
+      "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+      "rationale": "The signal is a research ecosystem, not clinical training access or professional qualification recognition.",
+      "p60_outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 30,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 45,
+        "INSUFFICIENT_EVIDENCE": 16
+      },
+      "gates": {
+        "assessable_60_of_91": true,
+        "all_shortlists_at_least_16_of_20": true,
+        "geographic_and_income_breadth": "PASS_WITH_REPRESENTATION_LIMITATION_REPORTED",
+        "smaller_assessed_class_at_least_8": true,
+        "reusable_source_and_replay": true,
+        "source_aligned_public_name": true
+      },
+      "recommended_for_implementation_design": true,
+      "runtime_change_authorized": false,
+      "geography_and_income_summary": {
+        "assessable_by_region": {
+          "East Asia & Pacific": 8,
+          "Europe & Central Asia": 40,
+          "Latin America & Caribbean": 11,
+          "Middle East, North Africa, Afghanistan & Pakistan": 7,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 6
+        },
+        "verified_by_region": {
+          "East Asia & Pacific": 6,
+          "Europe & Central Asia": 16,
+          "Latin America & Caribbean": 2,
+          "Middle East, North Africa, Afghanistan & Pakistan": 1,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 2
+        },
+        "assessable_by_income_group": {
+          "High income": 47,
+          "Lower middle income": 7,
+          "Upper middle income": 21
+        },
+        "verified_by_income_group": {
+          "High income": 22,
+          "Lower middle income": 2,
+          "Upper middle income": 6
+        }
+      }
+    },
+    {
+      "candidate_id": "business_finance_education_opportunity",
+      "prompt_direction": "Business and finance",
+      "public_display_name": "Business and finance higher-education opportunity",
+      "source_field": null,
+      "disposition": "HOLD_SOURCE_GAP",
+      "rationale": "The available Social sciences and humanities field is too broad to establish business or finance opportunity.",
+      "p60_outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 0,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+        "INSUFFICIENT_EVIDENCE": 91
+      },
+      "gates": {
+        "assessable_60_of_91": false,
+        "all_shortlists_at_least_16_of_20": false,
+        "geographic_and_income_breadth": "FAIL",
+        "smaller_assessed_class_at_least_8": false,
+        "reusable_source_and_replay": false,
+        "source_aligned_public_name": false
+      },
+      "recommended_for_implementation_design": false,
+      "runtime_change_authorized": false,
+      "geography_and_income_summary": {
+        "assessable_by_region": {},
+        "verified_by_region": {},
+        "assessable_by_income_group": {},
+        "verified_by_income_group": {}
+      }
+    },
+    {
+      "candidate_id": "natural_sciences_education_opportunity",
+      "prompt_direction": "Natural sciences",
+      "public_display_name": "Life and earth sciences research-university ecosystem",
+      "source_field": "Life and earth sciences",
+      "disposition": "APPROVE_WITH_NAMING_OR_SCOPE_CHANGE",
+      "rationale": "The retained route covers life and earth sciences; physical sciences sit in another official field.",
+      "p60_outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 31,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 44,
+        "INSUFFICIENT_EVIDENCE": 16
+      },
+      "gates": {
+        "assessable_60_of_91": true,
+        "all_shortlists_at_least_16_of_20": true,
+        "geographic_and_income_breadth": "PASS_WITH_REPRESENTATION_LIMITATION_REPORTED",
+        "smaller_assessed_class_at_least_8": true,
+        "reusable_source_and_replay": true,
+        "source_aligned_public_name": true
+      },
+      "recommended_for_implementation_design": true,
+      "runtime_change_authorized": false,
+      "geography_and_income_summary": {
+        "assessable_by_region": {
+          "East Asia & Pacific": 8,
+          "Europe & Central Asia": 40,
+          "Latin America & Caribbean": 11,
+          "Middle East, North Africa, Afghanistan & Pakistan": 7,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 6
+        },
+        "verified_by_region": {
+          "East Asia & Pacific": 5,
+          "Europe & Central Asia": 18,
+          "Latin America & Caribbean": 3,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 2
+        },
+        "assessable_by_income_group": {
+          "High income": 47,
+          "Lower middle income": 7,
+          "Upper middle income": 21
+        },
+        "verified_by_income_group": {
+          "High income": 22,
+          "Lower middle income": 2,
+          "Upper middle income": 7
+        }
+      }
+    },
+    {
+      "candidate_id": "broad_university_excellence_opportunity",
+      "prompt_direction": "Broad university excellence",
+      "public_display_name": "Broad scientific research-university ecosystem",
+      "source_field": "All sciences",
+      "disposition": "REJECT_AS_OPPORTUNITY_CRITERION",
+      "rationale": "Scientific performance is not generic university excellence and substantially overlaps the existing research/innovation criterion.",
+      "p60_outcome_counts": {
+        "VERIFIED_STRONG_SIGNAL": 29,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 46,
+        "INSUFFICIENT_EVIDENCE": 16
+      },
+      "gates": {
+        "assessable_60_of_91": true,
+        "all_shortlists_at_least_16_of_20": true,
+        "geographic_and_income_breadth": "PASS_WITH_REPRESENTATION_LIMITATION_REPORTED",
+        "smaller_assessed_class_at_least_8": true,
+        "reusable_source_and_replay": true,
+        "source_aligned_public_name": false
+      },
+      "recommended_for_implementation_design": false,
+      "runtime_change_authorized": false,
+      "geography_and_income_summary": {
+        "assessable_by_region": {
+          "East Asia & Pacific": 8,
+          "Europe & Central Asia": 40,
+          "Latin America & Caribbean": 11,
+          "Middle East, North Africa, Afghanistan & Pakistan": 7,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 6
+        },
+        "verified_by_region": {
+          "East Asia & Pacific": 6,
+          "Europe & Central Asia": 16,
+          "Latin America & Caribbean": 2,
+          "North America": 2,
+          "South Asia": 1,
+          "Sub-Saharan Africa": 2
+        },
+        "assessable_by_income_group": {
+          "High income": 47,
+          "Lower middle income": 7,
+          "Upper middle income": 21
+        },
+        "verified_by_income_group": {
+          "High income": 21,
+          "Lower middle income": 2,
+          "Upper middle income": 6
+        }
+      }
+    }
+  ]
+}

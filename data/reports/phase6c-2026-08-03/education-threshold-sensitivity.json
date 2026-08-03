@@ -1,0 +1,1432 @@
+{
+  "schema_version": "konsider-phase6c-threshold-sensitivity-1.0",
+  "report_date": "2026-08-03",
+  "global_rule": "top100 >= 1 OR top300 >= 3 OR (output >= base AND breadth >= base) OR (output >= high AND breadth >= low) OR (breadth >= high AND output >= low)",
+  "no_country_specific_thresholds": true,
+  "candidates": {
+    "engineering_technology_education_opportunity": {
+      "display_name": "Physical sciences and engineering research-university ecosystem",
+      "source_gap": false,
+      "represented_country_count": 75,
+      "global_band_country_counts": {
+        "at_least_one_top100": 13,
+        "at_least_one_top200": 25,
+        "at_least_one_top300": 33,
+        "at_least_three_top300": 18
+      },
+      "percentiles": {
+        "P50": {
+          "thresholds": {
+            "percentile": "P50",
+            "base_output": 4233,
+            "base_breadth": 8,
+            "high_output": 10930.2,
+            "high_breadth": 19.6,
+            "low_output": 1159.6,
+            "low_breadth": 4
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 37,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 38,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "CZE",
+            "DEU",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "HUN",
+            "IDN",
+            "IND",
+            "IRL",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "UKR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P55": {
+          "thresholds": {
+            "percentile": "P55",
+            "base_output": 6550.1,
+            "base_breadth": 10,
+            "high_output": 13039,
+            "high_breadth": 26.5,
+            "low_output": 1646.8,
+            "low_breadth": 4.9
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 32,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 43,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CZE",
+            "DEU",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "UKR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P60": {
+          "thresholds": {
+            "percentile": "P60",
+            "base_output": 7834.8,
+            "base_breadth": 12.8,
+            "high_output": 30774.2,
+            "high_breadth": 39.2,
+            "low_output": 2623.2,
+            "low_breadth": 6
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 27,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 48,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CZE",
+            "DEU",
+            "ESP",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P65": {
+          "thresholds": {
+            "percentile": "P65",
+            "base_output": 9128.1,
+            "base_breadth": 17,
+            "high_output": 37410.6,
+            "high_breadth": 60.6,
+            "low_output": 3988,
+            "low_breadth": 7
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 24,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 51,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "ESP",
+            "FRA",
+            "GBR",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P70": {
+          "thresholds": {
+            "percentile": "P70",
+            "base_output": 10930.2,
+            "base_breadth": 19.6,
+            "high_output": 46982.4,
+            "high_breadth": 77.2,
+            "low_output": 4233,
+            "low_breadth": 8
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 23,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 52,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "ESP",
+            "FRA",
+            "GBR",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA"
+          ]
+        }
+      },
+      "primary_source_removal": {
+        "consequence": "No positive- or negative-capable country evidence remains.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "canonical_identity_removal": {
+        "consequence": "All country states are suppressed because stable institution identity is a precondition for publication.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "period_stability": "NOT_TESTED_SINGLE_FROZEN_2025_RELEASE_NO_TIME_TREND_CLAIM"
+    },
+    "computer_science_ict_education_opportunity": {
+      "display_name": "Mathematics and computer science research-university ecosystem",
+      "source_gap": false,
+      "represented_country_count": 75,
+      "global_band_country_counts": {
+        "at_least_one_top100": 17,
+        "at_least_one_top200": 29,
+        "at_least_one_top300": 35,
+        "at_least_three_top300": 17
+      },
+      "percentiles": {
+        "P50": {
+          "thresholds": {
+            "percentile": "P50",
+            "base_output": 3596,
+            "base_breadth": 8,
+            "high_output": 7745,
+            "high_breadth": 19.6,
+            "low_output": 963.8,
+            "low_breadth": 4
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 38,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 37,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "HUN",
+            "IDN",
+            "IND",
+            "IRL",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "UKR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P55": {
+          "thresholds": {
+            "percentile": "P55",
+            "base_output": 5122.1,
+            "base_breadth": 10,
+            "high_output": 8598.5,
+            "high_breadth": 26.5,
+            "low_output": 1381.6,
+            "low_breadth": 4.9
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 35,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 40,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "UKR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P60": {
+          "thresholds": {
+            "percentile": "P60",
+            "base_output": 6337,
+            "base_breadth": 12.8,
+            "high_output": 17870.8,
+            "high_breadth": 39.2,
+            "low_output": 2215.6,
+            "low_breadth": 6
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 30,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 45,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P65": {
+          "thresholds": {
+            "percentile": "P65",
+            "base_output": 6955,
+            "base_breadth": 17,
+            "high_output": 28035.1,
+            "high_breadth": 60.6,
+            "low_output": 3079.8,
+            "low_breadth": 7
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 27,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 48,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA"
+          ]
+        },
+        "P70": {
+          "thresholds": {
+            "percentile": "P70",
+            "base_output": 7745,
+            "base_breadth": 19.6,
+            "high_output": 33471.6,
+            "high_breadth": 77.2,
+            "low_output": 3596,
+            "low_breadth": 8
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 23,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 52,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MYS",
+            "NLD",
+            "POL",
+            "RUS",
+            "SGP",
+            "TUR",
+            "USA"
+          ]
+        }
+      },
+      "primary_source_removal": {
+        "consequence": "No positive- or negative-capable country evidence remains.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "canonical_identity_removal": {
+        "consequence": "All country states are suppressed because stable institution identity is a precondition for publication.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "period_stability": "NOT_TESTED_SINGLE_FROZEN_2025_RELEASE_NO_TIME_TREND_CLAIM"
+    },
+    "medicine_health_sciences_education_opportunity": {
+      "display_name": "Biomedical and health sciences research-university ecosystem",
+      "source_gap": false,
+      "represented_country_count": 75,
+      "global_band_country_counts": {
+        "at_least_one_top100": 20,
+        "at_least_one_top200": 29,
+        "at_least_one_top300": 35,
+        "at_least_three_top300": 19
+      },
+      "percentiles": {
+        "P50": {
+          "thresholds": {
+            "percentile": "P50",
+            "base_output": 8428,
+            "base_breadth": 8,
+            "high_output": 18330.6,
+            "high_breadth": 19.6,
+            "low_output": 1391.4,
+            "low_breadth": 4
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 39,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 36,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "COL",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "IRL",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "NZL",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "UKR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P55": {
+          "thresholds": {
+            "percentile": "P55",
+            "base_output": 9116.8,
+            "base_breadth": 10,
+            "high_output": 23667.5,
+            "high_breadth": 26.5,
+            "low_output": 2314.1,
+            "low_breadth": 4.9
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 34,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 41,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P60": {
+          "thresholds": {
+            "percentile": "P60",
+            "base_output": 12502.8,
+            "base_breadth": 12.8,
+            "high_output": 39464.8,
+            "high_breadth": 39.2,
+            "low_output": 2761.6,
+            "low_breadth": 6
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 30,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 45,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P65": {
+          "thresholds": {
+            "percentile": "P65",
+            "base_output": 15544.4,
+            "base_breadth": 17,
+            "high_output": 73458.5,
+            "high_breadth": 60.6,
+            "low_output": 5145.4,
+            "low_breadth": 7
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 27,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 48,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P70": {
+          "thresholds": {
+            "percentile": "P70",
+            "base_output": 18330.6,
+            "base_breadth": 19.6,
+            "high_output": 94674.8,
+            "high_breadth": 77.2,
+            "low_output": 8428,
+            "low_breadth": 8
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 25,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 50,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA"
+          ]
+        }
+      },
+      "primary_source_removal": {
+        "consequence": "No positive- or negative-capable country evidence remains.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "canonical_identity_removal": {
+        "consequence": "All country states are suppressed because stable institution identity is a precondition for publication.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "period_stability": "NOT_TESTED_SINGLE_FROZEN_2025_RELEASE_NO_TIME_TREND_CLAIM"
+    },
+    "business_finance_education_opportunity": {
+      "display_name": "Business and finance higher-education opportunity",
+      "source_gap": true,
+      "percentiles": {
+        "P50": {
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 0,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+            "INSUFFICIENT_EVIDENCE": 91
+          }
+        },
+        "P55": {
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 0,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+            "INSUFFICIENT_EVIDENCE": 91
+          }
+        },
+        "P60": {
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 0,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+            "INSUFFICIENT_EVIDENCE": 91
+          }
+        },
+        "P65": {
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 0,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+            "INSUFFICIENT_EVIDENCE": 91
+          }
+        },
+        "P70": {
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 0,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+            "INSUFFICIENT_EVIDENCE": 91
+          }
+        }
+      },
+      "source_removal": {
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      }
+    },
+    "natural_sciences_education_opportunity": {
+      "display_name": "Life and earth sciences research-university ecosystem",
+      "source_gap": false,
+      "represented_country_count": 75,
+      "global_band_country_counts": {
+        "at_least_one_top100": 21,
+        "at_least_one_top200": 29,
+        "at_least_one_top300": 36,
+        "at_least_three_top300": 20
+      },
+      "percentiles": {
+        "P50": {
+          "thresholds": {
+            "percentile": "P50",
+            "base_output": 2825,
+            "base_breadth": 8,
+            "high_output": 7204.6,
+            "high_breadth": 19.6,
+            "low_output": 782.2,
+            "low_breadth": 4
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 39,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 36,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "COL",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "HUN",
+            "IDN",
+            "IND",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "NZL",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SRB",
+            "SWE",
+            "TUR",
+            "UKR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P55": {
+          "thresholds": {
+            "percentile": "P55",
+            "base_output": 3610.7,
+            "base_breadth": 10,
+            "high_output": 10344.5,
+            "high_breadth": 26.5,
+            "low_output": 1015.6,
+            "low_breadth": 4.9
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 34,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 41,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "COL",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "POL",
+            "PRT",
+            "RUS",
+            "SRB",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P60": {
+          "thresholds": {
+            "percentile": "P60",
+            "base_output": 4560.2,
+            "base_breadth": 12.8,
+            "high_output": 13754.6,
+            "high_breadth": 39.2,
+            "low_output": 1397.8,
+            "low_breadth": 6
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 31,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 44,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SRB",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P65": {
+          "thresholds": {
+            "percentile": "P65",
+            "base_output": 5646.8,
+            "base_breadth": 17,
+            "high_output": 20752.9,
+            "high_breadth": 60.6,
+            "low_output": 1983.1,
+            "low_breadth": 7
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 29,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 46,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SRB",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P70": {
+          "thresholds": {
+            "percentile": "P70",
+            "base_output": 7204.6,
+            "base_breadth": 19.6,
+            "high_output": 24701.8,
+            "high_breadth": 77.2,
+            "low_output": 2825,
+            "low_breadth": 8
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 28,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 47,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SRB",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        }
+      },
+      "primary_source_removal": {
+        "consequence": "No positive- or negative-capable country evidence remains.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "canonical_identity_removal": {
+        "consequence": "All country states are suppressed because stable institution identity is a precondition for publication.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "period_stability": "NOT_TESTED_SINGLE_FROZEN_2025_RELEASE_NO_TIME_TREND_CLAIM"
+    },
+    "broad_university_excellence_opportunity": {
+      "display_name": "Broad scientific research-university ecosystem",
+      "source_gap": false,
+      "represented_country_count": 75,
+      "global_band_country_counts": {
+        "at_least_one_top100": 16,
+        "at_least_one_top200": 28,
+        "at_least_one_top300": 34,
+        "at_least_three_top300": 18
+      },
+      "percentiles": {
+        "P50": {
+          "thresholds": {
+            "percentile": "P50",
+            "base_output": 30417,
+            "base_breadth": 8,
+            "high_output": 64534.8,
+            "high_breadth": 19.6,
+            "low_output": 6698.6,
+            "low_breadth": 4
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 38,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 37,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CHL",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "IRL",
+            "ISR",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "NZL",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "UKR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P55": {
+          "thresholds": {
+            "percentile": "P55",
+            "base_output": 35535.3,
+            "base_breadth": 10,
+            "high_output": 75081,
+            "high_breadth": 26.5,
+            "low_output": 9181.5,
+            "low_breadth": 4.9
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 33,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 42,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "CZE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FIN",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "NOR",
+            "POL",
+            "PRT",
+            "ROU",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P60": {
+          "thresholds": {
+            "percentile": "P60",
+            "base_output": 42074.8,
+            "base_breadth": 12.8,
+            "high_output": 145519.4,
+            "high_breadth": 39.2,
+            "low_output": 12178.2,
+            "low_breadth": 6
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 29,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 46,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "AUT",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "GRC",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P65": {
+          "thresholds": {
+            "percentile": "P65",
+            "base_output": 48199.9,
+            "base_breadth": 17,
+            "high_output": 220674.8,
+            "high_breadth": 60.6,
+            "low_output": 18204.2,
+            "low_breadth": 7
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 27,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 48,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NGA",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        },
+        "P70": {
+          "thresholds": {
+            "percentile": "P70",
+            "base_output": 64534.8,
+            "base_breadth": 19.6,
+            "high_output": 264646.2,
+            "high_breadth": 77.2,
+            "low_output": 30417,
+            "low_breadth": 8
+          },
+          "outcome_counts": {
+            "VERIFIED_STRONG_SIGNAL": 26,
+            "STRONG_SIGNAL_NOT_ESTABLISHED": 49,
+            "INSUFFICIENT_EVIDENCE": 16
+          },
+          "verified_country_codes": [
+            "AUS",
+            "BEL",
+            "BRA",
+            "CAN",
+            "CHE",
+            "DEU",
+            "DNK",
+            "ESP",
+            "FRA",
+            "GBR",
+            "IDN",
+            "IND",
+            "ITA",
+            "JPN",
+            "KOR",
+            "MEX",
+            "MYS",
+            "NLD",
+            "POL",
+            "PRT",
+            "RUS",
+            "SGP",
+            "SWE",
+            "TUR",
+            "USA",
+            "ZAF"
+          ]
+        }
+      },
+      "primary_source_removal": {
+        "consequence": "No positive- or negative-capable country evidence remains.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "canonical_identity_removal": {
+        "consequence": "All country states are suppressed because stable institution identity is a precondition for publication.",
+        "assessable_count": 0,
+        "outcome_counts": {
+          "VERIFIED_STRONG_SIGNAL": 0,
+          "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+          "INSUFFICIENT_EVIDENCE": 91
+        }
+      },
+      "period_stability": "NOT_TESTED_SINGLE_FROZEN_2025_RELEASE_NO_TIME_TREND_CLAIM"
+    }
+  }
+}

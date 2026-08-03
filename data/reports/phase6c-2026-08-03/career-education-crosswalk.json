@@ -1,0 +1,1695 @@
+{
+  "schema_version": "konsider-phase6c-career-education-crosswalk-1.0",
+  "report_date": "2026-08-03",
+  "runtime_taxonomy_change_authorized": false,
+  "pairs": [
+    {
+      "proposed_future_shared_taxonomy_id": "science_engineering_research",
+      "career_candidate_id": "science_engineering_opportunity",
+      "education_candidate_id": "engineering_technology_education_opportunity",
+      "interpretation": "DESCRIPTIVE_ECOSYSTEM_COMPARISON_NOT_CAUSAL_AND_NOT_APPLICANT_SPECIFIC",
+      "relationship_counts": {
+        "BOTH_STRONG": 14,
+        "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED": 6,
+        "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED": 8,
+        "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE": 28,
+        "ONE_OR_BOTH_INSUFFICIENT": 35
+      },
+      "countries": [
+        {
+          "country_code": "ALB",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ARE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "ARM",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ATG",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "AUS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "AUT",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "BEL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BGR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BHR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "BHS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "BIH",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BOL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BRA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "BWA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CAN",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "CHE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "CHL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "CMR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "COL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CRI",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CYP",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CZE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "DEU",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "DNK",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "DOM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "DZA",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ESP",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "EST",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "FIN",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "FJI",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "FRA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "GBR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "GHA",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "GRC",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "GRD",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "GTM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "GUY",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HND",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HRV",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "HTI",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HUN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "IDN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "IND",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "IRL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ISL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ISR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ITA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "JAM",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "JPN",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "KAZ",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "KOR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "LTU",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "LUX",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "LVA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MDA",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MEX",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "MKD",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MLT",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MNE",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MNG",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MUS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MYS",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "NAM",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "NGA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "NIC",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "NLD",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "NOR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "NZL",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "OMN",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "PAN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "PER",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "PHL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "POL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "PRT",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "PRY",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "QAT",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ROU",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "RUS",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "SGP",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "SLV",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "SRB",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SVK",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SVN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SWE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "TTO",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "TUR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "UKR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "URY",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "USA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "UZB",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ZAF",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        }
+      ]
+    },
+    {
+      "proposed_future_shared_taxonomy_id": "technology_mathematics_research",
+      "career_candidate_id": "technology_software_opportunity",
+      "education_candidate_id": "computer_science_ict_education_opportunity",
+      "interpretation": "DESCRIPTIVE_ECOSYSTEM_COMPARISON_NOT_CAUSAL_AND_NOT_APPLICANT_SPECIFIC",
+      "relationship_counts": {
+        "BOTH_STRONG": 17,
+        "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED": 3,
+        "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED": 9,
+        "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE": 26,
+        "ONE_OR_BOTH_INSUFFICIENT": 36
+      },
+      "countries": [
+        {
+          "country_code": "ALB",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ARE",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ARM",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ATG",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "AUS",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "AUT",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "BEL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "BGR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BHR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "BHS",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "BIH",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BOL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BRA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "BWA",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "CAN",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "CHE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "CHL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CMR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "COL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CRI",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CYP",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CZE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "DEU",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "DNK",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "DOM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "DZA",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ESP",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "EST",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "FIN",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "FJI",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "FRA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "GBR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "GHA",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "GRC",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "GRD",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "GTM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "GUY",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HND",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HRV",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "HTI",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HUN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "IDN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "IND",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "IRL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "ISL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ISR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "ITA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "JAM",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "JPN",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "KAZ",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "KOR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "LTU",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "LUX",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "LVA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MDA",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MEX",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "MKD",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MLT",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MNE",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MNG",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MUS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MYS",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "NAM",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "NGA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "NIC",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "NLD",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "NOR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "NZL",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "OMN",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "PAN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "PER",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "PHL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "POL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "PRT",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "PRY",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "QAT",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ROU",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "RUS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "SGP",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "SLV",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "SRB",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SVK",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SVN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SWE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "TTO",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "TUR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "UKR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "URY",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "USA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "UZB",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ZAF",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        }
+      ]
+    },
+    {
+      "proposed_future_shared_taxonomy_id": "biomedical_health_research",
+      "career_candidate_id": "health_social_work_opportunity",
+      "education_candidate_id": "medicine_health_sciences_education_opportunity",
+      "interpretation": "DESCRIPTIVE_ECOSYSTEM_COMPARISON_NOT_CAUSAL_AND_NOT_APPLICANT_SPECIFIC",
+      "relationship_counts": {
+        "BOTH_STRONG": 22,
+        "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED": 5,
+        "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED": 8,
+        "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE": 38,
+        "ONE_OR_BOTH_INSUFFICIENT": 18
+      },
+      "countries": [
+        {
+          "country_code": "ALB",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "ARE",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ARM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ATG",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "AUS",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "AUT",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "BEL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "BGR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BHR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BHS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "BIH",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BOL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "BRA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "BWA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CAN",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "CHE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "CHL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "CMR",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "COL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CRI",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CYP",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "CZE",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "DEU",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "DNK",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "DOM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "DZA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ESP",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "EST",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "FIN",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "FJI",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "FRA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "GBR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "GHA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "GRC",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "GRD",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "GTM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "GUY",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HND",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HRV",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "HTI",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "HUN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "IDN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "IND",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "IRL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "ISL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ISR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "ITA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "JAM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "JPN",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "KAZ",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "KOR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "LTU",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "LUX",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "LVA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MDA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MEX",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "MKD",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MLT",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MNE",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "MNG",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MUS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "MYS",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "NAM",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "NGA",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "NIC",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "NLD",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "NOR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "NZL",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "CAREER_STRONG_EDUCATION_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "OMN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "PAN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "PER",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "PHL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "POL",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "PRT",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "PRY",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "QAT",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ROU",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "RUS",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "SGP",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "EDUCATION_STRONG_CAREER_NOT_ESTABLISHED"
+        },
+        {
+          "country_code": "SLV",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "SRB",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SVK",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SVN",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "SWE",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "TTO",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "INSUFFICIENT_EVIDENCE",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "TUR",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "UKR",
+          "career_state": "INSUFFICIENT_EVIDENCE",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "ONE_OR_BOTH_INSUFFICIENT"
+        },
+        {
+          "country_code": "URY",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "USA",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        },
+        {
+          "country_code": "UZB",
+          "career_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "education_state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "relationship": "NEITHER_STRONG_WITH_COMPLETE_EVIDENCE"
+        },
+        {
+          "country_code": "ZAF",
+          "career_state": "VERIFIED_STRONG_SIGNAL",
+          "education_state": "VERIFIED_STRONG_SIGNAL",
+          "relationship": "BOTH_STRONG"
+        }
+      ]
+    }
+  ],
+  "unpaired_education_construct": {
+    "proposed_future_shared_taxonomy_id": "life_earth_sciences",
+    "education_candidate_id": "natural_sciences_education_opportunity",
+    "note": "No direct approved Phase 6B employment construct; do not force a proxy pairing."
+  }
+}
