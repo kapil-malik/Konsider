@@ -62,7 +62,7 @@ def _validate(payload: dict, schema_name: str, context: str) -> None:
 
 def test_phase5b_schemas_are_valid_draft_2020_12() -> None:
     schemas = sorted(SCHEMA_ROOT.glob("*.schema.json"))
-    assert len(schemas) == 15
+    assert len(schemas) == 23
     for path in schemas:
         Draft202012Validator.check_schema(json.loads(path.read_text(encoding="utf-8")))
 

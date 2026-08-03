@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/opportunity-filter-coverage-summary.schema.json",
+  "title": "Opportunity Filter coverage summary 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_id", "stable_universe_id", "stable_country_count", "filters"],
+  "properties": {
+    "schema_version": {"const": "opportunity-filter-coverage-summary-1.0"},
+    "release_id": {"type": "string", "minLength": 1},
+    "stable_universe_id": {"type": "string", "minLength": 1},
+    "stable_country_count": {"const": 91},
+    "filters": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/filterCoverage"}
+    }
+  },
+  "$defs": {
+    "filterCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assessable_count", "state_counts", "source_dependency_status"],
+      "properties": {
+        "assessable_count": {"type": "integer", "minimum": 0, "maximum": 91},
+        "state_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["VERIFIED_STRONG_SIGNAL", "STRONG_SIGNAL_NOT_ESTABLISHED", "INSUFFICIENT_EVIDENCE"],
+          "properties": {
+            "VERIFIED_STRONG_SIGNAL": {"type": "integer", "minimum": 0, "maximum": 91},
+            "STRONG_SIGNAL_NOT_ESTABLISHED": {"type": "integer", "minimum": 0, "maximum": 91},
+            "INSUFFICIENT_EVIDENCE": {"type": "integer", "minimum": 0, "maximum": 91}
+          }
+        },
+        "source_dependency_status": {"enum": ["AVAILABLE", "DEGRADED", "UNAVAILABLE"]}
+      }
+    }
+  }
+}

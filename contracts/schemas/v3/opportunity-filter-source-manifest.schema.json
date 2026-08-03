@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/opportunity-filter-source-manifest.schema.json",
+  "title": "Opportunity Filter source bundle manifest 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "bundle_id", "bundle_version", "sources", "generated_at", "build_id"],
+  "properties": {
+    "schema_version": {"const": "opportunity-filter-source-manifest-1.0"},
+    "bundle_id": {"type": "string", "minLength": 1},
+    "bundle_version": {"type": "string", "minLength": 1},
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "build_id": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_version",
+        "publisher",
+        "asset_uri",
+        "canonical_page_url",
+        "checksum",
+        "licence_id",
+        "attribution",
+        "reuse_status",
+        "retention_policy"
+      ],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "source_version": {"type": "string", "minLength": 1},
+        "publisher": {"type": "string", "minLength": 1},
+        "asset_uri": {"type": "string", "minLength": 1},
+        "canonical_page_url": {"type": "string", "minLength": 1},
+        "checksum": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
+        "licence_id": {"type": "string", "minLength": 1},
+        "attribution": {"type": "string", "minLength": 1},
+        "reuse_status": {"enum": ["APPROVED", "SUPPLEMENTAL_ONLY", "BLOCKED"]},
+        "retention_policy": {"enum": ["COMMITTED", "IGNORED_LOCAL", "FETCH_ON_REFRESH", "NOT_RETAINED"]}
+      }
+    }
+  }
+}

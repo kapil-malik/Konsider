@@ -50,6 +50,17 @@ LF for committed release artifacts. Corrections always create a new release ID.
 | `criterion-policies.json` | Snapshotted criterion ingestion, coverage, scope, applicability, scoring, and assessment policy. |
 | `validation.json` | Structural, coverage, readiness, policy, lineage, and product-gate results. |
 
+## Staged Opportunity Filter extension
+
+Phase 6D defines an additive release-5.1 contract but does not publish or activate it. A future 5.1
+release may bind six checksummed sibling files: Opportunity Filter catalog, country evidence,
+source manifest, threshold policies, evidence policy and coverage summary. The OFC catalog remains
+separate from `consumer-catalog.json`, which continues to own score-bearing ordering criteria.
+
+Release 5.0 manifests omit the binding and remain valid. A 5.1 bundle must store one explicit state
+for every declared filter-country pair; no loader may infer an omitted row as insufficient. See
+the [Opportunity Filter contracts](../architecture/opportunity-filter-contracts.md).
+
 The catalog is part of the immutable release and is covered by its checksum. There is no active
 catalog alias or runtime catalog override. Historical release-scoped catalogs under
 `data/catalogs/releases/` remain only for opening schema-3/4 history.

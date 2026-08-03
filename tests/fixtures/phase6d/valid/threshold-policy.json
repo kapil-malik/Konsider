@@ -1,0 +1,15 @@
+{
+  "schema_version": "opportunity-filter-threshold-policy-1.0",
+  "policy_id": "synthetic-career-threshold",
+  "policy_version": "synthetic-career-threshold-1.0",
+  "filter_id": "synthetic_career_opportunity",
+  "global_only": true,
+  "routes": [
+    {
+      "route_id": "scale_and_share",
+      "description": "Synthetic global scale/share route.",
+      "rule": "scale >= base and share >= base",
+      "parameters": {"scale_floor": 100, "share_floor": 3}
+    }
+  ]
+}

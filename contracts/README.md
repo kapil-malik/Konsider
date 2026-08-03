@@ -6,10 +6,12 @@ criterion-country outcomes. Unchanged source, observation, and score rows contin
 against v1. Producers own valid output; consumers negotiate compatible majors before joining or
 serving records. Published schemas are not silently weakened to accept invalid historical data.
 
-`contracts/schemas/v3` defines the active Phase 5 domain/release contract: release 5, catalog 3, canonical
-geographic entities, entity-neutral observations/scores, versioned locality policies, replayable
-multiple-source lineage, preference presets, and API v2 assessment envelopes. The release
-contracts are implemented by active release `2026-07-29.2`; synthetic fixtures remain test-only.
+`contracts/schemas/v3` defines the active Phase 5 domain/release contract: release 5, catalog 3,
+canonical geographic entities, entity-neutral observations/scores, versioned locality policies,
+replayable multiple-source lineage, preference presets, and API v2 assessment envelopes. Phase 6D
+adds an optional release-5.1 Opportunity Filter binding plus standalone filter definition,
+evidence, policy, source, coverage and future assessment contracts. The active release remains
+`2026-07-29.2` on release 5.0; all Phase 6D fixtures are synthetic and test-only.
 
 FastAPI-generated `/openapi.json` is authoritative for HTTP request, response, and error shapes. It
 is generated from strict Pydantic transport models and exported at
@@ -20,3 +22,5 @@ is generated from strict Pydantic transport models and exported at
 - [API contract and examples](../docs/operations/api.md)
 - [Phase 5H contract migration](../docs/product/phase5h-contract-migration.md)
 - [Immutable release decision](../docs/architecture/decisions/001-immutable-release-artifacts.md)
+- [Opportunity Filter contracts](../docs/architecture/opportunity-filter-contracts.md)
+- [Opportunity Filter decision](../docs/architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md)

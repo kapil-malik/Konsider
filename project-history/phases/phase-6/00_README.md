@@ -16,7 +16,7 @@ After Phase 6A, the original Phase 6B–6G prompt sequence was withdrawn. Those 
 
 The replacement Phase 6B prompt is:
 
-- [`Konsider Phase 6B Career Opportunity Criteria.pdf`](Konsider%20Phase%206B%20Career%20Opportunity%20Criteria.pdf)
+- `Konsider Phase 6B Career Opportunity Criteria.pdf`
 
 It defines a research-only, non-ranking opportunity filter with three states:
 
@@ -40,7 +40,7 @@ Any implementation must begin under a separately approved prompt after the owner
 
 Phase 6B.1 tightened source precedence, negative integrity, threshold sensitivity, frozen-shortlist coverage, dependency testing and deterministic replay. It completed the targeted career-evidence follow-up without authorising production work.
 
-- [`Konsider Phase 6B.1 Prompt.pdf`](Konsider%20Phase%206B.1%20Prompt.pdf)
+- `Konsider Phase 6B.1 Prompt.pdf`
 - [`../../../docs/research/phase6b1-career-gap-fill-and-calibration.md`](../../../docs/research/phase6b1-career-gap-fill-and-calibration.md)
 - [`../../../data/reports/phase6b1-2026-08-03`](../../../data/reports/phase6b1-2026-08-03)
 - [`research/run_phase6b1_gap_fill_and_calibration.mjs`](research/run_phase6b1_gap_fill_and_calibration.mjs)
@@ -49,10 +49,21 @@ Phase 6B.1 tightened source precedence, negative integrity, threshold sensitivit
 
 Phase 6C applies the same evidence discipline to field-specific higher-education research ecosystems while retaining the directions and implementation boundary in the Phase 6C PDF. Its augmented protocol records how Phase 6B.1's methodology is adapted without importing its career criteria.
 
-- [`Konsider Phase 6C Higher-Education Opportunity Criteria.pdf`](Konsider%20Phase%206C%20Higher-Education%20Opportunity%20Criteria.pdf)
+- `Konsider Phase 6C Higher-Education Opportunity Criteria.pdf`
 - [`02_PHASE_6C_AUGMENTED_RESEARCH_PROTOCOL.md`](02_PHASE_6C_AUGMENTED_RESEARCH_PROTOCOL.md)
 - [`../../../docs/research/phase6c-education-opportunity-study.md`](../../../docs/research/phase6c-education-opportunity-study.md)
 - [`../../../data/reports/phase6c-2026-08-03`](../../../data/reports/phase6c-2026-08-03)
 - [`research/run_phase6c_education_opportunity_study.mjs`](research/run_phase6c_education_opportunity_study.mjs)
 
 Phase 6C stops at research and owner decisions. It does not add an education criterion or change any ranking, schema, worker, preset, API, release or UI.
+
+## Phase 6D–6I execution pack
+
+The accepted implementation sequence is indexed by [`03_README_EXECUTION_GUIDE.txt`](03_README_EXECUTION_GUIDE.txt). Phase 6D begins with contracts and architecture only:
+
+- [`04_PHASE_6D_OFC_PRODUCT_CONTRACTS_AND_ARCHITECTURE.txt`](04_PHASE_6D_OFC_PRODUCT_CONTRACTS_AND_ARCHITECTURE.txt)
+- [`../../../docs/architecture/opportunity-filter-contracts.md`](../../../docs/architecture/opportunity-filter-contracts.md)
+- [`../../../docs/architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md`](../../../docs/architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md)
+- [`../../../docs/history/phase6d-opportunity-filter-contracts.md`](../../../docs/history/phase6d-opportunity-filter-contracts.md)
+
+Prompts `05`–`09` remain sequential future instructions. Phase 6D does not onboard evidence, expose API fields, add UI or activate a release.

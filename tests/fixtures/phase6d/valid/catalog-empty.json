@@ -1,0 +1,8 @@
+{
+  "schema_version": "opportunity-filter-catalog-1.0",
+  "compatible_release_schema_major": 5,
+  "stable_universe_id": "stable_supported_v1",
+  "activation_status": "STAGED_CONTRACT_ONLY",
+  "state_contract_version": "opportunity-filter-state-1.0",
+  "definitions": []
+}

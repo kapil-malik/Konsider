@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/opportunity-filter-threshold-policy.schema.json",
+  "title": "Opportunity Filter threshold policy 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "policy_id", "policy_version", "filter_id", "global_only", "routes"],
+  "properties": {
+    "schema_version": {"const": "opportunity-filter-threshold-policy-1.0"},
+    "policy_id": {"type": "string", "minLength": 1},
+    "policy_version": {"type": "string", "minLength": 1},
+    "filter_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_opportunity$"},
+    "global_only": {"const": true},
+    "routes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["route_id", "description", "rule", "parameters"],
+        "properties": {
+          "route_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "description": {"type": "string", "minLength": 1},
+          "rule": {"type": "string", "minLength": 1},
+          "parameters": {"type": "object", "additionalProperties": {"type": ["number", "integer", "string", "boolean", "null"]}}
+        }
+      }
+    }
+  }
+}

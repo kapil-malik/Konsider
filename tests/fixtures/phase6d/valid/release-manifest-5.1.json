@@ -1,0 +1,70 @@
+{
+  "schema_version": "konsider-release-5.1",
+  "release_id": "phase6d-synthetic-5.1",
+  "status": "draft",
+  "catalog_schema_version": "consumer-catalog-3.0",
+  "validation_schema_version": "validation-5.0",
+  "stable_universe_id": "stable_supported_v1",
+  "country_entity_ids": ["country:CAN"],
+  "criteria": ["synthetic_ordering_criterion"],
+  "criterion_coverage": {
+    "synthetic_ordering_criterion": {
+      "mode": "GLOBAL_CORE",
+      "stable_universe_id": "stable_supported_v1",
+      "stable_country_count": 1,
+      "valid_country_count": 1,
+      "minimum_valid_country_count": 1,
+      "outcome_counts": {"valid": 1, "missing": 0, "stale": 0, "invalid": 0, "rejected": 0},
+      "activation_threshold": null,
+      "score_range": {"minimum": 0, "maximum": 10},
+      "source_lineage_ids": ["lineage:synthetic:1.0"]
+    }
+  },
+  "artifact_counts": {
+    "geographic_entities": 1,
+    "observations": 1,
+    "scores": 1,
+    "criterion_outcomes": 1,
+    "derived_country_evidence": 0,
+    "source_lineages": 1,
+    "criterion_policies": 1,
+    "opportunity_filter_definitions": 0,
+    "opportunity_filter_evidence": 0
+  },
+  "source_lineage_ids": ["lineage:synthetic:1.0"],
+  "locality_universe_ids": [],
+  "aggregation_policy_ids": [],
+  "scoring_method_versions": ["synthetic-scoring-1.0"],
+  "opportunity_filters": {
+    "binding_schema_version": "opportunity-filter-release-binding-1.0",
+    "state_contract_version": "opportunity-filter-state-1.0",
+    "artifacts": [
+      {"role": "CATALOG", "filename": "opportunity-filter-catalog.json", "schema_version": "opportunity-filter-catalog-1.0", "checksum": "sha256:1111111111111111111111111111111111111111111111111111111111111111"},
+      {"role": "COUNTRY_EVIDENCE", "filename": "opportunity-filter-evidence.jsonl", "schema_version": "opportunity-filter-evidence-1.0", "checksum": "sha256:2222222222222222222222222222222222222222222222222222222222222222"},
+      {"role": "SOURCE_MANIFEST", "filename": "opportunity-filter-source-manifest.json", "schema_version": "opportunity-filter-source-manifest-1.0", "checksum": "sha256:3333333333333333333333333333333333333333333333333333333333333333"},
+      {"role": "THRESHOLD_POLICIES", "filename": "opportunity-filter-threshold-policies.json", "schema_version": "opportunity-filter-threshold-policy-1.0", "checksum": "sha256:4444444444444444444444444444444444444444444444444444444444444444"},
+      {"role": "EVIDENCE_POLICY", "filename": "opportunity-filter-evidence-policy.json", "schema_version": "opportunity-filter-evidence-policy-1.0", "checksum": "sha256:5555555555555555555555555555555555555555555555555555555555555555"},
+      {"role": "COVERAGE_SUMMARY", "filename": "opportunity-filter-coverage-summary.json", "schema_version": "opportunity-filter-coverage-summary-1.0", "checksum": "sha256:6666666666666666666666666666666666666666666666666666666666666666"}
+    ]
+  },
+  "file_checksums": {
+    "geographic-entities.jsonl": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "observations.jsonl": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "scores.jsonl": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "criterion-outcomes.jsonl": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "derived-country-evidence.jsonl": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "source-lineages.json": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "locality-universes.json": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+    "aggregation-policies.json": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+    "criterion-policies.json": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+    "consumer-catalog.json": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "validation.json": "sha256:abababababababababababababababababababababababababababababababab",
+    "opportunity-filter-catalog.json": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "opportunity-filter-evidence.jsonl": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "opportunity-filter-source-manifest.json": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "opportunity-filter-threshold-policies.json": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "opportunity-filter-evidence-policy.json": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+    "opportunity-filter-coverage-summary.json": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+  },
+  "release_checksum": "sha256:1212121212121212121212121212121212121212121212121212121212121212"
+}

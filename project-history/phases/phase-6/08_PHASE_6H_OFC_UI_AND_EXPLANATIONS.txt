@@ -1,0 +1,387 @@
+KONSIDER PHASE 6H
+OPPORTUNITY FILTER UI, EXPLANATIONS AND RESPONSIVE EXPERIENCE
+
+PROMPT FILE
+
+`08_PHASE_6H_OFC_UI_AND_EXPLANATIONS.txt`
+
+DEPENDENCY
+
+Proceed only after Phase 6G API behavior from `07_PHASE_6G_OFC_FILTER_ENGINE_AND_API.txt` is
+accepted.
+
+ROLE
+
+Work as the lead product-UX, frontend, accessibility and integration engineer for Konsider.
+
+This phase adds Opportunity Filters to the existing responsive UI without changing the ranking
+engine or activating the final release.
+
+PUBLIC TERMINOLOGY
+
+Use:
+
+    Opportunity filters
+
+Do not label the section:
+
+- criteria;
+- opportunity criteria;
+- weights;
+- scores;
+- ranking factors.
+
+Supporting copy:
+
+    Opportunity filters do not change affinity scores. They keep only countries where Konsider has
+    verified a strong signal for every selected opportunity.
+
+Use “verified strong signal,” “strong signal not established,” and “insufficient evidence” in
+details/explanations.
+
+Never display “no opportunity,” “bad,” “weak country,” or “negative evidence.”
+
+CONTROL DESIGN
+
+Add a distinct Opportunity Filters section separate from weighted ordering criteria.
+
+Group filters:
+
+### Career
+
+- Technology and software employment ecosystem
+- Science and engineering employment ecosystem
+- Care-sector employment ecosystem
+- Finance and insurance employment ecosystem
+- Skilled-trades or construction employment ecosystem
+
+### Education and research universities
+
+- Physical sciences and engineering research-university ecosystem
+- Mathematics and computer science research-university ecosystem
+- Biomedical and health sciences research-university ecosystem
+- Life and earth sciences research-university ecosystem
+
+Each filter is selected/unselected only.
+
+No slider.
+
+No weight.
+
+No positive/negative toggle.
+
+No user-selectable enum.
+
+Use compact labels where necessary, but preserve full evidence-aligned names in tooltips/details.
+
+INITIAL SEMANTICS
+
+All selected filters are required.
+
+Show a short inline statement:
+
+    All selected opportunity filters must have a verified strong signal.
+
+Do not expose OR mode or permissive unknown handling.
+
+APPLY BEHAVIOR
+
+Integrate with the existing Apply workflow.
+
+On Apply:
+
+- send selected OFC IDs with existing ordering preferences;
+- show filtered results;
+- preserve affinity score display;
+- show active filter chips;
+- allow clearing one filter or all filters;
+- do not silently modify ordering weights.
+
+RESULT SUMMARY
+
+Show a compact summary such as:
+
+- 12 countries match all selected opportunity filters.
+- 7 countries were excluded because a strong signal was not established.
+- 3 countries were excluded because evidence is insufficient.
+
+Make “insufficient evidence” visibly different from “not established.”
+
+Do not imply that insufficient countries are worse.
+
+COUNTRY TABLE
+
+Preserve existing rank, country and affinity score behavior.
+
+When filters are active:
+
+- show filtered rank;
+- optionally show base rank in details, not necessarily as a primary column;
+- show compact badges/checkmarks for selected filters;
+- do not alter affinity score;
+- do not add all nine columns to the default table.
+
+In detailed mode, include selected-filter states and evidence summaries.
+
+COUNTRY DETAIL
+
+Add an Opportunity section.
+
+For every relevant filter show:
+
+- display name;
+- state;
+- plain-language explanation;
+- confidence band;
+- evidence vintage/reference period;
+- establishing route where applicable;
+- source attribution/link metadata as supported by current UI conventions;
+- limitations.
+
+State language:
+
+### VERIFIED_STRONG_SIGNAL
+
+    Verified strong signal
+
+Supporting text should describe the exact ecosystem measured.
+
+### STRONG_SIGNAL_NOT_ESTABLISHED
+
+    Strong signal not established
+
+Supporting text:
+
+    Comparable evidence was available, but it did not cross Konsider’s strong-ecosystem threshold.
+    This does not mean that no opportunity exists.
+
+### INSUFFICIENT_EVIDENCE
+
+    Insufficient evidence
+
+Supporting text:
+
+    Konsider does not currently have enough comparable evidence to assess this opportunity for the
+    country.
+
+FILTER-EXCLUSION DETAILS
+
+Users should be able to inspect why a country did not pass, without putting every excluded country
+in the main result table.
+
+Use one of:
+
+- an excluded-country summary panel;
+- a modal/drawer;
+- a secondary list;
+- a country-search detail path.
+
+Show failing filter(s) and exact state.
+
+Do not rank excluded countries in the filtered result.
+
+EMPTY STATE
+
+When no country matches:
+
+- do not show a generic error;
+- explain that no country has verified signals for all selected filters;
+- show counts by filter;
+- allow removing individual filters;
+- preserve selected ordering weights;
+- do not automatically relax the filters.
+
+Suggested text:
+
+    No country matches every selected opportunity filter. This does not mean these opportunities
+    are absent everywhere; some countries may have insufficient comparable evidence. Remove one
+    filter to broaden the result.
+
+SKILLED TRADES / CONSTRUCTION
+
+For a verified state, show which route passed:
+
+- skilled trades;
+- construction;
+- both.
+
+Do not hide the OR semantics.
+
+CARE SECTOR
+
+Explain that the evidence covers human health and social work.
+
+Do not display it as doctor or healthcare-only opportunity.
+
+FINANCE
+
+Explain that the evidence covers finance and insurance activity.
+
+Do not imply all business/administration careers.
+
+EDUCATION FILTERS
+
+Use a visible “Research-university ecosystem” qualifier.
+
+Do not shorten labels to:
+
+- best colleges;
+- quality colleges;
+- engineering colleges;
+- medical colleges;
+- top universities
+
+without a nearby source-aligned explanation.
+
+Include a shared limitation:
+
+    This evidence describes research-intensive university ecosystems. It does not establish
+    teaching quality, programme availability, admission access, affordability, accreditation or
+    applicant eligibility.
+
+FILTER CATALOG HELP
+
+Add a concise explainer accessible from the section:
+
+- why filters do not affect affinity score;
+- why only a verified strong signal passes;
+- why insufficient evidence is not negative;
+- why education filters describe research ecosystems;
+- evidence/source freshness;
+- link to methodology.
+
+COMPARISON VIEW
+
+Extend country comparison to show all selected filters and optionally all nine.
+
+Use state labels/icons accessible without color.
+
+Preserve ordering-criteria score breakdown separately.
+
+MOBILE
+
+Maintain full functionality on mobile:
+
+- collapsible Career/Education groups;
+- large tap targets;
+- active filter count;
+- clear all;
+- filter summary;
+- accessible detail drawer;
+- no horizontal nine-column grid.
+
+ACCESSIBILITY
+
+- keyboard operation;
+- screen-reader labels;
+- state communicated by text, not color alone;
+- sufficient contrast;
+- tooltips accessible by focus;
+- no red/green-only meaning;
+- semantic headings;
+- announcement when result count changes;
+- error/empty states announced.
+
+ANALYTICS
+
+If repository analytics conventions exist, add privacy-safe events for:
+
+- filter selected;
+- filter removed;
+- apply with OFCs;
+- zero-result outcome;
+- evidence detail opened.
+
+Do not send personal applicant data.
+
+FEATURE FLAG / STAGED RELEASE
+
+Use the staged release or existing development fixture.
+
+Do not activate the final production release in this phase.
+
+If a feature flag system exists, use it according to repository conventions.
+
+TESTS
+
+At minimum:
+
+- catalog rendering;
+- category grouping;
+- selection and clear;
+- request serialization;
+- no-filter behavior;
+- one filter;
+- multiple AND filters;
+- result count;
+- unchanged affinity scores;
+- active chips;
+- selected state badges;
+- not-established explanation;
+- insufficient-evidence explanation;
+- empty state;
+- remove one filter;
+- skilled/construction route;
+- care-sector limitation;
+- education limitation;
+- country detail;
+- comparison;
+- mobile layouts;
+- keyboard;
+- screen reader labels;
+- snapshot/golden tests;
+- existing ordering-criteria UI regression.
+
+DOCUMENTATION
+
+Update:
+
+- user help;
+- methodology page;
+- developer UI integration guide;
+- screenshots only if repository practice supports them;
+- wording glossary;
+- test plan.
+
+EXPLICIT NON-GOALS
+
+Do not:
+
+- activate release;
+- change API semantics;
+- change ranking;
+- add weights;
+- add OR mode;
+- add applicant profiles;
+- add admissions or job matching;
+- add conversational UI;
+- add institution recommendations.
+
+DELIVERABLES
+
+1. responsive Opportunity Filters control;
+2. request integration;
+3. result summary;
+4. country detail evidence;
+5. comparison support;
+6. excluded/empty-state experience;
+7. accessibility;
+8. tests;
+9. help/methodology documentation;
+10. Phase 6H implementation report.
+
+STOP CONDITION
+
+Stop when the UI is complete and verified against the staged nine-filter API.
+
+Report:
+
+- screenshots or component descriptions;
+- exact wording;
+- responsive/accessibility results;
+- test results;
+- files changed;
+- commit SHA;
+- blockers before Phase 6I (`09_PHASE_6I_RELEASE_VERIFICATION_AND_CLOSURE.txt`).
+
+Do not activate the production release.

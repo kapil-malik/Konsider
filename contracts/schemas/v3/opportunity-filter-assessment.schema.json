@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/opportunity-filter-assessment.schema.json",
+  "title": "Opportunity Filter assessment 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "selected_filter_ids",
+    "combination",
+    "input_country_count",
+    "passing_country_count",
+    "excluded_country_count",
+    "excluded_counts_by_state",
+    "per_filter",
+    "countries"
+  ],
+  "properties": {
+    "schema_version": {"const": "opportunity-filter-assessment-1.0"},
+    "status": {"enum": ["NO_FILTERS_ACTIVE", "FILTERS_APPLIED", "NO_COUNTRIES_MATCH"]},
+    "selected_filter_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_opportunity$"}
+    },
+    "combination": {"const": "ALL_SELECTED_REQUIRED"},
+    "input_country_count": {"type": "integer", "minimum": 0},
+    "passing_country_count": {"type": "integer", "minimum": 0},
+    "excluded_country_count": {"type": "integer", "minimum": 0},
+    "excluded_counts_by_state": {"$ref": "#/$defs/stateCounts"},
+    "per_filter": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/filterAssessment"}
+    },
+    "countries": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/countryAssessment"}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "NO_FILTERS_ACTIVE"}}, "required": ["status"]},
+      "then": {"properties": {"selected_filter_ids": {"maxItems": 0}, "per_filter": {"maxItems": 0}}}
+    },
+    {
+      "if": {"properties": {"status": {"enum": ["FILTERS_APPLIED", "NO_COUNTRIES_MATCH"]}}, "required": ["status"]},
+      "then": {"properties": {"selected_filter_ids": {"minItems": 1}, "per_filter": {"minItems": 1}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "NO_COUNTRIES_MATCH"}}, "required": ["status"]},
+      "then": {"properties": {"passing_country_count": {"const": 0}}}
+    }
+  ],
+  "$defs": {
+    "state": {
+      "enum": ["VERIFIED_STRONG_SIGNAL", "STRONG_SIGNAL_NOT_ESTABLISHED", "INSUFFICIENT_EVIDENCE"]
+    },
+    "stateCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["STRONG_SIGNAL_NOT_ESTABLISHED", "INSUFFICIENT_EVIDENCE"],
+      "properties": {
+        "STRONG_SIGNAL_NOT_ESTABLISHED": {"type": "integer", "minimum": 0},
+        "INSUFFICIENT_EVIDENCE": {"type": "integer", "minimum": 0}
+      }
+    },
+    "filterAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["filter_id", "input_country_count", "passing_country_count", "excluded_counts_by_state"],
+      "properties": {
+        "filter_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_opportunity$"},
+        "input_country_count": {"type": "integer", "minimum": 0},
+        "passing_country_count": {"type": "integer", "minimum": 0},
+        "excluded_counts_by_state": {"$ref": "#/$defs/stateCounts"}
+      }
+    },
+    "countryFilterState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["filter_id", "state", "passes"],
+      "properties": {
+        "filter_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_opportunity$"},
+        "state": {"$ref": "#/$defs/state"},
+        "passes": {"type": "boolean"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"const": "VERIFIED_STRONG_SIGNAL"}}, "required": ["state"]},
+          "then": {"properties": {"passes": {"const": true}}},
+          "else": {"properties": {"passes": {"const": false}}}
+        }
+      ]
+    },
+    "countryAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country_code", "base_rank", "filtered_rank", "passes", "filter_states"],
+      "properties": {
+        "country_code": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "base_rank": {"type": "integer", "minimum": 1},
+        "filtered_rank": {"type": ["integer", "null"], "minimum": 1},
+        "passes": {"type": "boolean"},
+        "filter_states": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/countryFilterState"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"passes": {"const": true}}, "required": ["passes"]},
+          "then": {"properties": {"filtered_rank": {"type": "integer", "minimum": 1}}},
+          "else": {"properties": {"filtered_rank": {"type": "null"}}}
+        }
+      ]
+    }
+  }
+}

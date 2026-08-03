@@ -1,6 +1,6 @@
 # System architecture
 
-Status: authoritative architecture as of 2026-07-29
+Status: authoritative architecture as of 2026-08-03
 
 Konsider separates data acquisition, immutable publication, deterministic recommendation logic,
 HTTP transport, and the browser UI. Scoring and readiness rules have one server-side owner.
@@ -51,6 +51,17 @@ applicant-profile applicability remain independent structured assessments.
 Country-universe discovery and complete-case auditing are implemented as a separate safe worker
 flow. They use UN migrant-stock/M49 inputs plus the registered criterion sources, write diagnostic
 reports, and assert that `active.json` is unchanged. They do not share publication authority.
+
+## Staged Opportunity Filter architecture
+
+Phase 6D defines a sibling filter-only contract family and optional release-5.1 artifact binding.
+It does not onboard the nine approved evidence datasets or alter the diagrammed active runtime.
+Opportunity Filter definitions contain no ranking fields; their country evidence uses a separate
+tri-state and future `assessments.opportunity` shape. Later phases will onboard evidence, implement
+strict AND filtering after canonical ranking, expose API fields, add UI and finally publish a new
+immutable release. Until then, active release 5.0, API v2 responses and UI behavior are unchanged.
+
+See [Opportunity Filter contracts](opportunity-filter-contracts.md) and [ADR 010](decisions/010-opportunity-filters-as-filter-only-contracts.md).
 
 ## Browser architecture
 

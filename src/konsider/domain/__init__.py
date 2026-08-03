@@ -11,6 +11,14 @@ from konsider.domain.models import (
     RankingRow,
     ScoreContribution,
 )
+from konsider.domain.opportunity_filters import (
+    OpportunityFilterCategory,
+    OpportunityFilterConfidenceBand,
+    OpportunityFilterConfidenceTier,
+    OpportunityFilterContractError,
+    OpportunityFilterReasonCode,
+    OpportunityFilterState,
+)
 from konsider.domain.uncertainty_models import (
     ComparisonAggregateKind,
     ComparisonAvailability,
@@ -49,6 +57,12 @@ __all__ = [
     "ExcludedCountryDiagnostic",
     "IgnoredPartialCriterion",
     "NonReadyCriterion",
+    "OpportunityFilterCategory",
+    "OpportunityFilterConfidenceBand",
+    "OpportunityFilterConfidenceTier",
+    "OpportunityFilterContractError",
+    "OpportunityFilterReasonCode",
+    "OpportunityFilterState",
     "ParameterDefinition",
     "ProjectData",
     "RankingRow",

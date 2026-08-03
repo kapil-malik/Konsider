@@ -1,8 +1,8 @@
 # Product roadmap
 
-Status: Phase 6 in progress; Phase 6A source gates complete with no implementation approvals
+Status: Phase 6D contracts complete; evidence onboarding and runtime activation not started
 
-Last updated: 2026-07-30
+Last updated: 2026-08-03
 
 ## Current position
 
@@ -42,14 +42,16 @@ clean-checkout verification. The final architecture, 45-criterion disposition, a
 limitations, and remote-CI status are in the
 [Phase 5 closure report](../history/phase5-closure-report.md).
 
-Phase 6A tested seven destination-side career and engineering-education constructs as one
-portfolio. Exact ILOSTAT occupation data reached only 61-66 fresh countries, exact UIS field-share
-data reached only 75-76 and cannot construct capacity, and the OpenAlex/ROR academic candidate
-lacks a pinned capture and deterministic locality mapping. No candidate clears the existing
-82-country PCC minimum and nine-country combined missing-union limit. Phase 6 therefore remains in
-research and stops before runtime implementation pending an exact new source or explicit owner
-decision. See the
-[Phase 6A source study](../research/phase6a-career-education-source-study.md).
+Phase 6A exposed source and construct blockers. The Phase 6B/6B.1 pivot subsequently approved five
+career ecosystem signals as filter-only product concepts, and Phase 6C approved four
+source-aligned research-university ecosystem signals. These nine signals are Opportunity Filters,
+not weighted criteria or PCCs.
+
+Phase 6D now defines the sibling catalog, tri-state evidence, confidence, reason, policy, source,
+coverage, future assessment and optional release-5.1 contracts. The active release remains 5.0;
+API v2, ranking and UI are unchanged. Career evidence onboarding begins only under Phase 6E after
+owner acceptance of the Phase 6D contracts. See the
+[Opportunity Filter architecture](../architecture/opportunity-filter-contracts.md).
 
 Completed Phase 2A and 2B details live in [implementation history](../history/implementation-history.md).
 Historical releases live in [release history](../history/releases/README.md).

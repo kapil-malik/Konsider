@@ -30,6 +30,12 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 5B target architecture and contracts](architecture/phase5b-target-contracts.md) -
   orthogonal criterion metadata, canonical geography, derived lineage, structured assessments,
   target versions, fixtures, and migration plan.
+- [Opportunity Filter contracts](architecture/opportunity-filter-contracts.md) - filter-only
+  product role, tri-state evidence, release-5.1 binding, fixtures, validation and staged rollout.
+- [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
+  architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
+- [Terminology glossary](product/terminology-glossary.md) - authoritative meanings for ordering
+  criteria, FCC/PCC/LSC, Opportunity Filters, states, confidence, base rank and filtered rank.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
   validation, fixture, and compatibility contract.
 - [Phase 4D ranking engine](product/phase4d-ranking-engine.md) - typed complete-case ranking,
@@ -61,6 +67,9 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [ADR 005: Orthogonal criterion and geography](architecture/decisions/005-orthogonal-criterion-geography.md)
 - [ADR 006: Canonical geography and derived lineage](architecture/decisions/006-canonical-geography-and-derived-lineage.md)
 - [ADR 007: Structured assessments and preference presets](architecture/decisions/007-structured-assessments-and-preference-presets.md)
+- [ADR 008: Schema-5 orchestration and country outcomes](architecture/decisions/008-schema5-orchestration-and-country-outcomes.md)
+- [ADR 009: Deterministic locality aggregation and overlap](architecture/decisions/009-deterministic-locality-aggregation-and-overlap.md)
+- [ADR 010: Opportunity Filters as filter-only contracts](architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md)
 
 ## Operations
 
@@ -100,6 +109,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Release history](history/releases/README.md)
 - [Phase 4 closure report](history/phase4-closure-report.md)
 - [Phase 5 closure report](history/phase5-closure-report.md)
+- [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational

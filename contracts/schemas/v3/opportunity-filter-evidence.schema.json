@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/opportunity-filter-evidence.schema.json",
+  "title": "Opportunity Filter country evidence 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "filter_id",
+    "country_code",
+    "state",
+    "confidence_band",
+    "internal_confidence_tier",
+    "coverage_completeness",
+    "evaluated_route_ids",
+    "establishing_route_ids",
+    "reason_codes",
+    "reference_period",
+    "metric_payload",
+    "threshold_results",
+    "source_references",
+    "source_observation_status",
+    "caveats",
+    "evidence_policy_version",
+    "threshold_policy_version",
+    "source_bundle_version",
+    "generated_at",
+    "build_id"
+  ],
+  "properties": {
+    "schema_version": {"const": "opportunity-filter-evidence-1.0"},
+    "release_id": {"type": "string", "minLength": 1},
+    "filter_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_opportunity$"},
+    "country_code": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "state": {
+      "enum": ["VERIFIED_STRONG_SIGNAL", "STRONG_SIGNAL_NOT_ESTABLISHED", "INSUFFICIENT_EVIDENCE"]
+    },
+    "confidence_band": {"enum": ["HIGH", "MEDIUM", "LOW"]},
+    "internal_confidence_tier": {
+      "type": ["string", "null"],
+      "enum": [
+        "HIGH_CONFIDENCE_OBSERVED_HARMONISED",
+        "HIGH_CONFIDENCE_OBSERVED_NATIONAL",
+        "HIGH_CONFIDENCE_FROZEN_RESEARCH_DATASET",
+        "MEDIUM_CONFIDENCE_MODELLED_HARMONISED",
+        "MEDIUM_CONFIDENCE_OFFICIAL_CROSSWALK",
+        "LOW_CONFIDENCE_SUPPLEMENTAL",
+        null
+      ]
+    },
+    "coverage_completeness": {"enum": ["COMPLETE", "PARTIAL", "UNASSESSED"]},
+    "evaluated_route_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+    },
+    "establishing_route_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+    },
+    "reason_codes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/reasonCode"}
+    },
+    "reference_period": {"type": ["string", "null"]},
+    "metric_payload": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/careerMetrics"},
+        {"$ref": "#/$defs/educationMetrics"}
+      ]
+    },
+    "threshold_results": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/thresholdResult"}
+    },
+    "source_references": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/sourceReference"}
+    },
+    "source_observation_status": {
+      "enum": [
+        "OBSERVED_HARMONISED",
+        "OBSERVED_NATIONAL",
+        "MODELLED_HARMONISED",
+        "FROZEN_RESEARCH_DATASET",
+        "SUPPLEMENTAL",
+        "MISSING",
+        "STALE",
+        "BLOCKED"
+      ]
+    },
+    "caveats": {"type": "array", "items": {"type": "string"}},
+    "evidence_policy_version": {"type": "string", "minLength": 1},
+    "threshold_policy_version": {"type": "string", "minLength": 1},
+    "source_bundle_version": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "build_id": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"state": {"const": "VERIFIED_STRONG_SIGNAL"}}, "required": ["state"]},
+      "then": {
+        "properties": {
+          "coverage_completeness": {"const": "COMPLETE"},
+          "evaluated_route_ids": {"minItems": 1},
+          "establishing_route_ids": {"minItems": 1},
+          "reason_codes": {"contains": {"$ref": "#/$defs/positiveReasonCode"}},
+          "threshold_results": {"contains": {"properties": {"passed": {"const": true}}, "required": ["passed"]}},
+          "source_references": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"state": {"const": "STRONG_SIGNAL_NOT_ESTABLISHED"}}, "required": ["state"]},
+      "then": {
+        "properties": {
+          "coverage_completeness": {"const": "COMPLETE"},
+          "evaluated_route_ids": {"minItems": 1},
+          "establishing_route_ids": {"maxItems": 0},
+          "reason_codes": {"contains": {"$ref": "#/$defs/notEstablishedReasonCode"}},
+          "source_references": {"minItems": 1}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"state": {"const": "INSUFFICIENT_EVIDENCE"}}, "required": ["state"]},
+      "then": {
+        "properties": {
+          "establishing_route_ids": {"maxItems": 0},
+          "reason_codes": {"contains": {"$ref": "#/$defs/insufficientReasonCode"}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"internal_confidence_tier": {"enum": ["HIGH_CONFIDENCE_OBSERVED_HARMONISED", "HIGH_CONFIDENCE_OBSERVED_NATIONAL", "HIGH_CONFIDENCE_FROZEN_RESEARCH_DATASET"]}}, "required": ["internal_confidence_tier"]},
+      "then": {"properties": {"confidence_band": {"const": "HIGH"}}}
+    },
+    {
+      "if": {"properties": {"internal_confidence_tier": {"enum": ["MEDIUM_CONFIDENCE_MODELLED_HARMONISED", "MEDIUM_CONFIDENCE_OFFICIAL_CROSSWALK"]}}, "required": ["internal_confidence_tier"]},
+      "then": {"properties": {"confidence_band": {"const": "MEDIUM"}}}
+    },
+    {
+      "if": {"properties": {"internal_confidence_tier": {"const": "LOW_CONFIDENCE_SUPPLEMENTAL"}}, "required": ["internal_confidence_tier"]},
+      "then": {"properties": {"confidence_band": {"const": "LOW"}}}
+    }
+  ],
+  "$defs": {
+    "positiveReasonCode": {
+      "enum": [
+        "SCALE_AND_SHARE_ROUTE_PASSED",
+        "EXCEPTIONAL_SCALE_ROUTE_PASSED",
+        "EXCEPTIONAL_SPECIALIZATION_ROUTE_PASSED",
+        "SKILLED_TRADES_ROUTE_PASSED",
+        "CONSTRUCTION_ROUTE_PASSED",
+        "SKILLED_TRADES_AND_CONSTRUCTION_ROUTES_PASSED",
+        "TOP_100_INSTITUTION_ROUTE_PASSED",
+        "TOP_300_BREADTH_ROUTE_PASSED",
+        "OUTPUT_AND_BREADTH_ROUTE_PASSED"
+      ]
+    },
+    "notEstablishedReasonCode": {
+      "enum": [
+        "COMPLETE_EVIDENCE_BELOW_STRONG_THRESHOLD",
+        "SCALE_FLOOR_NOT_MET",
+        "BREADTH_THRESHOLD_NOT_MET",
+        "NO_APPROVED_STRONG_ROUTE_PASSED"
+      ]
+    },
+    "insufficientReasonCode": {
+      "enum": [
+        "SOURCE_MISSING",
+        "EVIDENCE_STALE",
+        "UNSUPPORTED_TAXONOMY",
+        "INSUFFICIENT_GRANULARITY",
+        "CROSSWALK_INCOMPLETE",
+        "INCOMPATIBLE_NUMERATOR_DENOMINATOR",
+        "SOURCE_LEGALLY_BLOCKED",
+        "COUNTRY_ABSENT_FROM_SOURCE_UNIVERSE",
+        "INSTITUTION_IDENTITY_UNRESOLVED",
+        "SOURCE_DEPENDENCY_UNAVAILABLE",
+        "CONFLICTING_EVIDENCE_UNRESOLVED"
+      ]
+    },
+    "reasonCode": {
+      "anyOf": [
+        {"$ref": "#/$defs/positiveReasonCode"},
+        {"$ref": "#/$defs/notEstablishedReasonCode"},
+        {"$ref": "#/$defs/insufficientReasonCode"}
+      ]
+    },
+    "careerMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "scale_thousands", "share_percent"],
+      "properties": {
+        "schema_version": {"const": "career-employment-metrics-1.0"},
+        "scale_thousands": {"type": "number", "minimum": 0},
+        "share_percent": {"type": "number", "minimum": 0, "maximum": 100},
+        "skilled_trades_scale_thousands": {"type": ["number", "null"], "minimum": 0},
+        "construction_scale_thousands": {"type": ["number", "null"], "minimum": 0}
+      }
+    },
+    "educationMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "fractional_publication_output", "active_university_breadth", "top_100_count", "top_200_count", "top_300_count"],
+      "properties": {
+        "schema_version": {"const": "education-research-ecosystem-metrics-1.0"},
+        "fractional_publication_output": {"type": "number", "minimum": 0},
+        "active_university_breadth": {"type": "integer", "minimum": 0},
+        "top_100_count": {"type": "integer", "minimum": 0},
+        "top_200_count": {"type": "integer", "minimum": 0},
+        "top_300_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "thresholdResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route_id", "passed", "policy_version", "components"],
+      "properties": {
+        "route_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "passed": {"type": "boolean"},
+        "policy_version": {"type": "string", "minLength": 1},
+        "components": {"type": "object", "additionalProperties": {"type": ["number", "integer", "boolean", "null"]}}
+      }
+    },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "source_version", "lineage_id"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "source_version": {"type": "string", "minLength": 1},
+        "lineage_id": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

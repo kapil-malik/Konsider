@@ -1,0 +1,396 @@
+KONSIDER PHASE 6I
+OPPORTUNITY FILTER RELEASE PUBLICATION, END-TO-END VERIFICATION AND PHASE CLOSURE
+
+PROMPT FILE
+
+`09_PHASE_6I_RELEASE_VERIFICATION_AND_CLOSURE.txt`
+
+DEPENDENCY
+
+Proceed only after the prompts from Phase 6D through Phase 6H are accepted:
+
+- `04_PHASE_6D_OFC_PRODUCT_CONTRACTS_AND_ARCHITECTURE.txt`
+- `05_PHASE_6E_CAREER_OFC_EVIDENCE_ONBOARDING.txt`
+- `06_PHASE_6F_EDUCATION_OFC_EVIDENCE_ONBOARDING.txt`
+- `07_PHASE_6G_OFC_FILTER_ENGINE_AND_API.txt`
+- `08_PHASE_6H_OFC_UI_AND_EXPLANATIONS.txt`
+
+ROLE
+
+Work as the lead release, integration, quality, documentation and closure engineer for Konsider.
+
+This phase publishes the new immutable release containing the nine Opportunity Filters, verifies
+the full stack, cleans temporary compatibility paths, and closes Phase 6.
+
+Do not add new Opportunity Filters or expand product semantics.
+
+PRE-FLIGHT
+
+Read:
+
+- all Phase 6D–6H reports;
+- current active release;
+- staged nine-filter catalog/evidence bundle;
+- source and legal manifests;
+- API/OpenAPI changes;
+- UI implementation;
+- Phase 4 and Phase 5 closure matrices;
+- current deployment/runbook/CI conventions.
+
+Inspect the working tree and recent commits.
+
+OWNER DECISIONS TO RECORD
+
+Before activation, ensure the repository records acceptance of:
+
+1. public term “Opportunity Filters” and internal OFC shorthand;
+2. strict AND semantics;
+3. tri-state enum;
+4. science/engineering at the hard shortlist floor;
+5. Canada technology medium-confidence official mapping;
+6. care-sector name;
+7. route visibility for skilled trades/construction;
+8. education research-university boundary;
+9. 75/91 education assessability;
+10. ILO single-publisher dependency;
+11. CWTS/ROR single-route dependency;
+12. no business/finance education filter;
+13. no generic broad-university-excellence filter.
+
+If any decision is not accepted, stop and report the precise blocked release item.
+
+FINAL RELEASE
+
+Create a new immutable release using current repository naming/version conventions.
+
+Do not hard-code a release ID from this prompt. Derive the correct next ID from the repository date
+and sequence.
+
+The release must retain:
+
+- stable 91-country catalog;
+- all existing ordering criteria unchanged;
+- all existing scores/evidence unchanged unless a separately documented refresh is part of the
+  release;
+- nine Opportunity Filter definitions;
+- 819 Opportunity Filter country evidence records;
+- evidence policy;
+- threshold policy;
+- source/legal manifest;
+- coverage summary;
+- checksums;
+- schema/catalog version;
+- API compatibility metadata.
+
+ACTIVATION
+
+Activate the new release only after every release gate passes.
+
+Do not leave the active release pointer half-updated.
+
+Use atomic/validated release promotion according to repository conventions.
+
+DATA ASSERTIONS
+
+Verify:
+
+- 91 countries;
+- 9 filter definitions;
+- 819 unique filter-country records;
+- exactly one state per pair;
+- no duplicate IDs;
+- no missing pairs;
+- state counts exactly match approved research/production artifacts;
+- no score/weight fields on OFCs;
+- current ordering criteria count and enabled count are unchanged;
+- source checksums;
+- threshold IDs;
+- country mappings;
+- institution/ROR identity;
+- route attribution;
+- reason-code validity;
+- source/legal attribution.
+
+EXPECTED STATE COUNTS
+
+Career:
+
+- technology/software: 20 / 43 / 28
+- science/engineering: 20 / 47 / 24
+- care sector: 27 / 61 / 3
+- finance/insurance: 22 / 66 / 3
+- skilled trades/construction: 34 / 54 / 3
+
+Education:
+
+- physical sciences/engineering: 27 / 48 / 16
+- mathematics/computer science: 30 / 45 / 16
+- biomedical/health sciences: 30 / 45 / 16
+- life/earth sciences: 31 / 44 / 16
+
+Order: verified / not established / insufficient.
+
+If production output differs, do not update expectations automatically. Reconcile against the
+accepted research and implementation reports.
+
+RANKING INVARIANCE
+
+Prove against the prior active release:
+
+With no Opportunity Filters selected:
+
+- identical country eligibility;
+- identical affinity scores;
+- identical ordering;
+- identical top-K/tie behavior;
+- identical PCC statuses;
+- identical locality assessments;
+- identical profile assessments;
+- no new exclusions;
+- no changed preset behavior.
+
+Where response schemas gained additive fields, compare the pre-existing semantic payload subset.
+
+FILTER END-TO-END MATRIX
+
+Verify through production service/API/UI:
+
+1. no filter;
+2. each of nine filters individually;
+3. technology + mathematics/computer-science education;
+4. science/engineering + physical-sciences/engineering education;
+5. care sector + biomedical/health education;
+6. three-filter AND case;
+7. verified country;
+8. not-established country;
+9. insufficient-evidence country;
+10. multiple failure reasons;
+11. empty result;
+12. top-K/tie after filtering;
+13. base rank and filtered rank;
+14. excluded summary;
+15. country details;
+16. comparison;
+17. skilled route;
+18. construction route;
+19. both routes;
+20. Canada technology confidence;
+21. Japan/Korea/New Zealand insufficiency;
+22. education absent-system insufficiency.
+
+PCC/LSC/PROFILE REGRESSION
+
+Run the full Phase 4/5 closure matrix.
+
+Explicitly prove:
+
+- no active PCC;
+- active PCC with full coverage;
+- active PCC with exclusions;
+- PCC coverage limit exceeded;
+- tie-expanded K;
+- locality criteria active;
+- multiple locality criteria;
+- profile remains no-context unless actual profile input exists;
+- OFCs never affect PCC missing unions;
+- OFCs never affect locality aggregation;
+- OFCs never affect profile assessment.
+
+API COMPATIBILITY
+
+Verify:
+
+- old clients omitting OFCs work;
+- current API v2 remains authoritative;
+- no v1 paths;
+- invalid OFC IDs have stable errors;
+- OpenAPI matches runtime;
+- catalog exposes separate Opportunity Filters;
+- evidence payload is bounded;
+- empty result is valid;
+- source/limitations are retrievable.
+
+UI VERIFICATION
+
+Verify:
+
+- separate Opportunity Filters section;
+- nine filters grouped correctly;
+- no weights;
+- strict AND copy;
+- score unchanged;
+- active chips;
+- counts by exclusion state;
+- insufficient evidence not shown as negative;
+- empty-state recovery;
+- mobile;
+- accessibility;
+- comparison;
+- details and limitations.
+
+PERFORMANCE
+
+Measure:
+
+- release load;
+- ranking request without OFCs;
+- ranking request with one OFC;
+- ranking request with multiple OFCs;
+- catalog response;
+- country detail;
+- UI interaction.
+
+Ensure OFC indexing avoids repeated full scans.
+
+Document acceptable regression or optimize.
+
+SECURITY AND ROBUSTNESS
+
+Verify:
+
+- request ID validation;
+- no arbitrary source path access;
+- no live external fetch from API/UI;
+- malformed evidence release fails closed;
+- missing state record fails release load;
+- source checksum mismatch fails build;
+- unsupported mode rejected;
+- no injection through reason/source text;
+- bounded payloads.
+
+CI
+
+Run all relevant local tests and repository-wide gates.
+
+Run remote CI if the repository workflow supports it and the branch is pushed.
+
+Do not claim remote CI unless it ran.
+
+DOCUMENTATION
+
+Finalize:
+
+- product overview;
+- Opportunity Filter methodology;
+- state semantics;
+- source list and attribution;
+- coverage table;
+- exact nine names;
+- API guide;
+- UI help;
+- worker/refresh runbook;
+- release notes;
+- architecture diagrams if repository practice supports them;
+- phase closure report;
+- project-history index.
+
+Explain clearly:
+
+- OFCs filter; they do not score;
+- not established is not no opportunity;
+- insufficient evidence is unknown;
+- career evidence is ecosystem stock, not vacancies;
+- education evidence is research-university ecosystem, not teaching/admissions;
+- multiple filters use AND;
+- no filter preserves canonical ranking.
+
+CLEANUP
+
+Remove only implementation-temporary paths:
+
+- staged fixture switches no longer needed;
+- duplicate generated artifacts;
+- dead experimental adapters;
+- obsolete compatibility aliases created during this phase;
+- temporary feature flags after activation, if safe;
+- stale docs that contradict final contracts.
+
+Do not delete:
+
+- Phase 6A/6B/6B.1/6C research history;
+- source/legal evidence;
+- replay manifests;
+- rejected/held decision records;
+- prior immutable releases.
+
+CLOSURE REPORT
+
+Create a comprehensive Phase 6 closure report including:
+
+- original Phase 6A failure and product pivot;
+- Opportunity Filter product contract;
+- nine implemented filters;
+- exact coverage/state counts;
+- source routes;
+- confidence and limitations;
+- API/UI behavior;
+- release/schema/catalog versions;
+- ranking-invariance proof;
+- PCC/LSC/profile regression;
+- verification matrix;
+- performance;
+- legal/source dependencies;
+- known gaps;
+- held future candidates;
+- next recommended phase.
+
+KNOWN FUTURE WORK
+
+Record, but do not implement:
+
+- applicant profession/qualification/licensing context;
+- admission/programme access;
+- UG/PG programme-level evidence;
+- business/finance education source;
+- improved Japan/Korea/New Zealand occupation granularity;
+- independent second-source corroboration;
+- permissive filter modes;
+- OR semantics;
+- conversational interpretation;
+- city/campus accessibility.
+
+NEXT-PHASE GUIDANCE
+
+Recommend the next best investment honestly.
+
+Likely options:
+
+1. structured applicant/context criteria for profession, qualification, licensing, education level,
+   household and accessibility; or
+2. programme/campus and current-demand enrichment for shortlisted countries.
+
+Do not automatically recommend adding more broad country filters unless evidence supports them.
+
+DELIVERABLES
+
+1. activated immutable release;
+2. release notes;
+3. checksums and manifest;
+4. full end-to-end verification;
+5. regression proof;
+6. performance report;
+7. finalized docs/runbooks;
+8. cleanup;
+9. Phase 6 closure report;
+10. commit SHA and CI references.
+
+STOP CONDITION
+
+Stop after the release is active, verified and documented.
+
+Report:
+
+- active release ID;
+- schema/catalog/API versions;
+- nine filter names and coverage;
+- exact state counts;
+- ranking-invariance proof;
+- end-to-end tests;
+- local and remote CI;
+- performance;
+- known risks;
+- files changed;
+- commit SHA;
+- recommended next phase.
+
+Do not begin applicant-context, conversational or additional-source work.

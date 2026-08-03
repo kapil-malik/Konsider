@@ -1,0 +1,28 @@
+{
+  "id": "synthetic_education_opportunity",
+  "display_name": "Synthetic research-university ecosystem",
+  "compact_label": "Synthetic education",
+  "category": "EDUCATION",
+  "construct": "Synthetic institution-derived research ecosystem for contract testing only.",
+  "meaning": "A reproducible strong research-university ecosystem signal.",
+  "does_not_mean": ["Teaching quality, admission probability, accreditation, affordability, qualification recognition, or applicant access."],
+  "product_role": "OPPORTUNITY_FILTER",
+  "state_contract_version": "opportunity-filter-state-1.0",
+  "filter_behavior": {
+    "eligibility_state": "VERIFIED_STRONG_SIGNAL",
+    "combination": "ALL_SELECTED_REQUIRED",
+    "changes_affinity_score": false,
+    "changes_survivor_order": false
+  },
+  "evidence_policy_version": "ofc-evidence-policy-1.0",
+  "threshold_policy_version": "synthetic-education-threshold-1.0",
+  "source_bundle_version": "synthetic-source-bundle-1.0",
+  "scope": {"evidence_level": "INSTITUTION", "result_level": "COUNTRY", "derivation": "AGGREGATED_FROM_INSTITUTIONS"},
+  "applicability": {"mode": "DESTINATION_SIDE", "dimensions": []},
+  "refresh_policy": {"policy_id": "source-release-refresh-v1", "cadence": "SOURCE_RELEASE", "maximum_age_months": 24, "fail_closed": true},
+  "source_dependency": {"mode": "MULTI_SOURCE", "required_source_ids": ["synthetic-education-source", "synthetic-ror-source"], "failure_state": "INSUFFICIENT_EVIDENCE"},
+  "availability": "STAGED",
+  "active": false,
+  "sort_order": 2,
+  "documentation_ref": "tests/fixtures/phase6d/README.md"
+}

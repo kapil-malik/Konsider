@@ -1,0 +1,21 @@
+{
+  "schema_version": "opportunity-filter-source-manifest-1.0",
+  "bundle_id": "phase6d-synthetic-source-bundle",
+  "bundle_version": "synthetic-source-bundle-1.0",
+  "sources": [
+    {
+      "source_id": "synthetic-career-source",
+      "source_version": "1.0",
+      "publisher": "Konsider test fixture",
+      "asset_uri": "fixture://phase6d/synthetic-career",
+      "canonical_page_url": "https://example.invalid/phase6d",
+      "checksum": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "licence_id": "TEST-ONLY",
+      "attribution": "Synthetic fixture; never publish.",
+      "reuse_status": "APPROVED",
+      "retention_policy": "COMMITTED"
+    }
+  ],
+  "generated_at": "2026-08-03T00:00:00Z",
+  "build_id": "phase6d-contract-fixture"
+}

@@ -1,0 +1,350 @@
+KONSIDER PHASE 6F
+EDUCATION AND RESEARCH-UNIVERSITY OPPORTUNITY FILTER EVIDENCE ONBOARDING
+
+PROMPT FILE
+
+`06_PHASE_6F_EDUCATION_OFC_EVIDENCE_ONBOARDING.txt`
+
+DEPENDENCY
+
+Proceed only after Phase 6E (`05_PHASE_6E_CAREER_OFC_EVIDENCE_ONBOARDING.txt`) is accepted and
+merged.
+
+ROLE
+
+Work as the lead higher-education research-data, institution-identity, evidence-pipeline and
+immutable-release engineer for Konsider.
+
+This phase productionizes the four approved education/research-university Opportunity Filters and
+builds the complete nine-filter staged portfolio. It must not activate the final release, expose API
+filtering or add UI.
+
+STARTING MATERIAL
+
+Read:
+
+- Phase 6D OFC contracts;
+- Phase 6E career evidence implementation;
+- `docs/research/phase6c-education-opportunity-study.md`;
+- the Phase 6C source matrix, institution mapping, threshold sensitivity, shortlist coverage,
+  career-education crosswalk and final portfolio;
+- the Phase 6C augmented research protocol;
+- current release/source/lineage architecture;
+- current institution/geography contracts;
+- current licensing/attribution documentation.
+
+Do not import historical research scripts as production runtime dependencies.
+
+EDUCATION FILTERS TO ONBOARD
+
+1. `engineering_technology_education_opportunity`
+   Public name: Physical sciences and engineering research-university ecosystem
+   Expected P60 states: 27 verified, 48 not established, 16 insufficient.
+   Assessable: 75/91.
+
+2. `computer_science_ict_education_opportunity`
+   Public name: Mathematics and computer science research-university ecosystem
+   Expected P60 states: 30 verified, 45 not established, 16 insufficient.
+   Assessable: 75/91.
+
+3. `medicine_health_sciences_education_opportunity`
+   Public name: Biomedical and health sciences research-university ecosystem
+   Expected P60 states: 30 verified, 45 not established, 16 insufficient.
+   Assessable: 75/91.
+
+4. `natural_sciences_education_opportunity`
+   Public name: Life and earth sciences research-university ecosystem
+   Expected P60 states: 31 verified, 44 not established, 16 insufficient.
+   Assessable: 75/91.
+
+Do not onboard:
+
+- Business and finance higher-education opportunity: held source gap.
+- Broad university excellence: rejected as a product construct.
+- Generic research/academia employment opportunity.
+
+PUBLIC BOUNDARY
+
+These filters establish a strong research-intensive university ecosystem in the exact source field.
+
+They do not establish:
+
+- general teaching quality;
+- availability of every UG or PG programme;
+- admissions access;
+- international-student access;
+- tuition affordability;
+- scholarships;
+- accreditation;
+- qualification recognition;
+- visa eligibility;
+- campus accessibility;
+- language fit;
+- employment outcome;
+- applicant success probability.
+
+Retain these limitations in catalog, API evidence and UI explanation fields.
+
+PRIMARY SOURCE
+
+Productionize the exact Phase 6C route:
+
+- CWTS Leiden Ranking Open Edition 2025;
+- DOI and exact release identity from the research artifacts;
+- frozen August 2025 OpenAlex snapshot;
+- 2020–2023 publication window;
+- 2,831 universities across 120 countries;
+- CC0 result/data conclusion;
+- official ROR identities;
+- exact workbook/source checksums.
+
+Do not replace the frozen route with the live OpenAlex API for this release.
+
+Do not introduce inferred coordinates, GeoNames or campus mapping.
+
+INSTITUTION IDENTITY
+
+Retain:
+
+- source institution ID;
+- ROR ID;
+- source display name;
+- canonical display name;
+- country;
+- source field;
+- publication/output components;
+- prominence/rank-band components;
+- mapping status;
+- mapping confidence;
+- explicit manual disambiguation record for the six quoted/truncated names identified in Phase 6C.
+
+Validate:
+
+- 2,831 source institutions;
+- 2,831 unique ROR identities as frozen by the approved artifact;
+- 2,825 exact name/country matches;
+- six explicit high-confidence manual disambiguations;
+- no accidental many-to-one merges;
+- country assignment only.
+
+Do not claim locality or campus accessibility.
+
+CLASSIFICATION POLICY
+
+Implement the frozen Phase 6C global P60 policy.
+
+A represented country is `VERIFIED_STRONG_SIGNAL` when at least one approved route passes:
+
+1. at least one global top-100 institution in the official field; or
+2. at least three global top-300 institutions in the official field; or
+3. one of the frozen output-and-breadth combinations passes.
+
+Otherwise, complete represented-country evidence is `STRONG_SIGNAL_NOT_ESTABLISHED`.
+
+A country absent from the retained research-intensive source universe is
+`INSUFFICIENT_EVIDENCE`.
+
+Use the exact frozen raw thresholds from Phase 6C for:
+
+- Physical sciences and engineering;
+- Mathematics and computer science;
+- Biomedical and health sciences;
+- Life and earth sciences.
+
+Do not recompute percentiles dynamically.
+
+Do not introduce country exceptions.
+
+EVIDENCE ROUTE VISIBILITY
+
+For each verified country retain all passing route IDs, including:
+
+- top-100 institution presence;
+- top-300 institution breadth;
+- base output-and-breadth;
+- high-output/minimum-breadth;
+- high-breadth/minimum-output;
+- any other exact route frozen by Phase 6C.
+
+Retain:
+
+- best institution/band summary where legally and methodologically supported;
+- institution count in relevant bands;
+- field output;
+- active institution breadth;
+- source window;
+- source identity.
+
+Do not return the full institution list in normal ranking responses.
+
+SOURCE DEPENDENCY
+
+Record the material dependency:
+
+- removing the CWTS result source makes supported education filters unassessable;
+- removing ROR identity fails the approved publication rule.
+
+Fail closed to `INSUFFICIENT_EVIDENCE` during build/validation if the source identity cannot be
+verified.
+
+Do not silently reuse stale or untraceable data.
+
+PRODUCTION ARCHITECTURE
+
+Create production modules for:
+
+- source ingestion/verification;
+- institution identity normalization;
+- official field mapping;
+- country aggregation;
+- route evaluation;
+- state/reason generation;
+- staged release output.
+
+Keep API runtime offline from source acquisition.
+
+Use immutable normalized artifacts and exact source hashes.
+
+RESEARCH-TO-PRODUCTION PROMOTION
+
+Compare production outputs against the approved Phase 6C research artifacts.
+
+For all four filters and 91 countries compare:
+
+- state;
+- route IDs;
+- output;
+- breadth;
+- top-100/top-300 evidence;
+- source field;
+- reason codes;
+- source window;
+- country mapping.
+
+Any unexplained mismatch must fail.
+
+STAGED CATALOG AND EVIDENCE
+
+Add the four education definitions to the staged Opportunity Filter catalog.
+
+Generate exactly:
+
+    4 filters × 91 countries = 364 evidence records
+
+Combine with Phase 6E:
+
+    9 filters × 91 countries = 819 evidence records
+
+Validate exact state counts for each filter.
+
+Build the complete staged Opportunity Filter source/evidence bundle.
+
+Do not activate the release.
+
+CAREER–EDUCATION CROSSWALK
+
+Retain the Phase 6C crosswalk as explanatory metadata only.
+
+Suggested future pairs:
+
+- science/engineering career ↔ physical sciences and engineering research universities;
+- technology/software career ↔ mathematics and computer science research universities;
+- care-sector career ↔ biomedical and health sciences research universities.
+
+Do not merge states.
+
+Do not infer causality.
+
+Do not infer applicant opportunity from both being strong.
+
+Do not make crosswalk IDs runtime profile taxonomy without a separate approved contract.
+
+TESTS
+
+At minimum:
+
+- source byte/hash verification;
+- institution count and unique ROR identity;
+- manual disambiguation fixtures;
+- field mapping;
+- exact 364 education records;
+- exact 819 consolidated records;
+- state counts:
+  - 27/48/16;
+  - 30/45/16;
+  - 30/45/16;
+  - 31/44/16;
+- absent-country insufficiency;
+- complete-country not-established behavior;
+- top-100 route;
+- top-300 breadth route;
+- output/breadth routes;
+- threshold immutability;
+- no country exceptions;
+- all benchmark top-20 lists remain 20/20 assessable for supported fields;
+- business/finance absent from production catalog;
+- broad university excellence absent from production catalog;
+- deterministic no-diff regeneration;
+- current ranking tests unaffected.
+
+DOCUMENTATION
+
+Document:
+
+- research-university boundary;
+- exact official source fields;
+- coverage and absent systems;
+- source and ROR dependency;
+- institution identity policy;
+- threshold routes;
+- annual refresh protocol;
+- limitations;
+- research-production reconciliation;
+- why business/finance and broad university excellence are not included.
+
+EXPLICIT NON-GOALS
+
+Do not:
+
+- activate release;
+- add API filtering;
+- add UI;
+- expose institution recommendations;
+- add campus/locality mapping;
+- add programme availability;
+- add UG/PG distinction;
+- add teaching-quality claims;
+- add admissions, tuition, accreditation, recognition or visa logic;
+- add held/rejected education filters.
+
+DELIVERABLES
+
+1. production source manifest;
+2. production institution normalization;
+3. four catalog definitions;
+4. 364 education evidence records;
+5. 819-record consolidated staged evidence;
+6. threshold/evidence policies;
+7. source/legal manifest;
+8. research-production reconciliation;
+9. complete staged Opportunity Filter bundle;
+10. deterministic build/replay command;
+11. tests and documentation;
+12. Phase 6F implementation report.
+
+STOP CONDITION
+
+Stop when the complete nine-filter staged catalog/evidence bundle is deterministic and validated.
+
+Report:
+
+- institution/source results;
+- exact state counts;
+- consolidated 819-record validation;
+- source dependencies;
+- files changed;
+- tests run;
+- commit SHA;
+- blockers or owner decisions before Phase 6G (`07_PHASE_6G_OFC_FILTER_ENGINE_AND_API.txt`).
+
+Do not activate the release or expose API/UI behavior.

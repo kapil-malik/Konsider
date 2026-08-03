@@ -1,0 +1,28 @@
+{
+  "id": "synthetic_career_opportunity",
+  "display_name": "Synthetic career employment ecosystem",
+  "compact_label": "Synthetic career",
+  "category": "CAREER",
+  "construct": "Synthetic employment scale and share for contract testing only.",
+  "meaning": "A reproducible strong employment-ecosystem signal.",
+  "does_not_mean": ["Live vacancies, hiring probability, salary, visa access, or applicant success."],
+  "product_role": "OPPORTUNITY_FILTER",
+  "state_contract_version": "opportunity-filter-state-1.0",
+  "filter_behavior": {
+    "eligibility_state": "VERIFIED_STRONG_SIGNAL",
+    "combination": "ALL_SELECTED_REQUIRED",
+    "changes_affinity_score": false,
+    "changes_survivor_order": false
+  },
+  "evidence_policy_version": "ofc-evidence-policy-1.0",
+  "threshold_policy_version": "synthetic-career-threshold-1.0",
+  "source_bundle_version": "synthetic-source-bundle-1.0",
+  "scope": {"evidence_level": "COUNTRY", "result_level": "COUNTRY", "derivation": "DIRECT"},
+  "applicability": {"mode": "DESTINATION_SIDE", "dimensions": []},
+  "refresh_policy": {"policy_id": "annual-source-refresh-v1", "cadence": "ANNUAL", "maximum_age_months": 24, "fail_closed": true},
+  "source_dependency": {"mode": "SINGLE_SOURCE", "required_source_ids": ["synthetic-career-source"], "failure_state": "INSUFFICIENT_EVIDENCE"},
+  "availability": "STAGED",
+  "active": false,
+  "sort_order": 1,
+  "documentation_ref": "tests/fixtures/phase6d/README.md"
+}

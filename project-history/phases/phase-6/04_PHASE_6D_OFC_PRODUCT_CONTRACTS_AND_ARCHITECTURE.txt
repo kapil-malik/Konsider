@@ -1,0 +1,402 @@
+KONSIDER PHASE 6D
+OPPORTUNITY FILTER PRODUCT CONTRACTS AND ARCHITECTURE
+
+PROMPT FILE
+
+`04_PHASE_6D_OFC_PRODUCT_CONTRACTS_AND_ARCHITECTURE.txt`
+
+ROLE
+
+Work as the lead product-contract, domain-model, data-contract and architecture engineer for the
+Konsider repository.
+
+This phase defines and implements the minimum contracts required for Opportunity Filters. It must
+not onboard the nine production evidence datasets, activate a release, change ranking output,
+change the API response used by clients, or add UI controls.
+
+STARTING MATERIAL
+
+Read at minimum:
+
+- `docs/research/phase6b-career-opportunity-study.md`
+- `docs/research/phase6b1-career-gap-fill-and-calibration.md`
+- `docs/research/phase6c-education-opportunity-study.md`
+- the final Phase 6B.1 career portfolio artifact
+- the final Phase 6C consolidated portfolio artifact
+- Phase 4 closure report and uncertainty-aware ranking contracts
+- Phase 5 closure report and structured assessment contracts
+- current release schema
+- current catalog schema
+- current API v2 request/response schemas
+- current worker/source manifest contracts
+- current evidence, lineage and country mapping models
+- current tests around catalog validation, releases and API serialization
+
+Inspect the latest repository paths rather than assuming the research paths remain the only source
+of truth.
+
+PRODUCT DECISION
+
+Use “Opportunity Filters” in user-facing product language.
+
+Use these internal concepts:
+
+- `OpportunityFilterDefinition`
+- `OpportunityFilterEvidence`
+- `OpportunityFilterState`
+- `OpportunityFilterAssessment`
+- shorthand `OFC`
+
+Do not put OFCs into the existing weighted-criteria collection if doing so makes ranking code treat
+them as score-bearing.
+
+Prefer a sibling catalog/collection for Opportunity Filters while reusing generic source,
+provenance, country and release primitives.
+
+ORTHOGONALITY
+
+Represent these dimensions separately:
+
+1. Product role
+   - ordering criterion
+   - opportunity filter
+
+2. Evidence coverage
+   - complete, partial or source-specific coverage metadata
+
+3. Geographic scope
+   - national
+   - locality-derived
+   - institution-derived country result
+   - other explicitly supported scope
+
+4. Applicability
+   - destination-side
+   - applicant-context-dependent
+   - diagnostic-only, where applicable
+
+Do not create a single enum where FCC, PCC, LSC and OFC are peers.
+
+PUBLIC STATE ENUM
+
+Create exactly:
+
+- `VERIFIED_STRONG_SIGNAL`
+- `STRONG_SIGNAL_NOT_ESTABLISHED`
+- `INSUFFICIENT_EVIDENCE`
+
+Document and validate the semantics:
+
+### VERIFIED_STRONG_SIGNAL
+
+A complete approved evidence route crosses the frozen strong-ecosystem rule.
+
+### STRONG_SIGNAL_NOT_ESTABLISHED
+
+A sufficiently complete approved evidence route was assessed and no strong route passed.
+
+It must never be serialized or described as:
+
+- no jobs;
+- poor education;
+- weak country;
+- no opportunity;
+- no universities;
+- or an applicant rejection.
+
+### INSUFFICIENT_EVIDENCE
+
+No defensible positive or not-established conclusion can be made.
+
+Missing data is not negative data.
+
+DOMAIN CONTRACTS
+
+Implement versioned, typed contracts for at least:
+
+### OpportunityFilterDefinition
+
+Required fields should include or clearly represent:
+
+- stable filter ID;
+- public display name;
+- optional compact label;
+- category: career or education;
+- exact construct;
+- plain-language meaning;
+- explicit “does not mean” limitations;
+- product role fixed to filter-only;
+- public state enum;
+- filter behavior fixed to strict verified-signal eligibility;
+- evidence policy/version ID;
+- threshold policy/version ID;
+- source bundle/version ID;
+- scope;
+- refresh policy;
+- source dependency;
+- availability/active flag;
+- sort order;
+- documentation reference.
+
+Do not include:
+
+- weight;
+- score direction;
+- normalization;
+- contribution to affinity;
+- PCC activation threshold;
+- imputation;
+- ranking coefficient.
+
+### OpportunityFilterEvidence
+
+Required country-level fields should include or clearly represent:
+
+- release ID;
+- filter ID;
+- ISO alpha-3 country code;
+- public state;
+- evidence confidence band;
+- exact internal confidence tier where available;
+- evidence route IDs evaluated;
+- route that established the result, if any;
+- reason codes;
+- latest/reference period;
+- metric components used by the frozen rule;
+- threshold results;
+- source references;
+- source observation status;
+- caveats;
+- generated-at/build identity;
+- evidence schema version.
+
+Allow source-specific metric payloads behind a typed/versioned boundary. Do not force career
+employment metrics and education institution metrics into one flattened numeric schema.
+
+### OpportunityFilterAssessment
+
+Design the future API/service assessment shape now, but do not expose it from the production API in
+this phase.
+
+It should support:
+
+- no filters active;
+- filters applied;
+- no countries match;
+- selected filter IDs;
+- AND semantics;
+- input country count;
+- passing country count;
+- excluded count by public state;
+- per-filter pass/exclusion counts;
+- per-country state summaries;
+- clear distinction between base rank and filtered rank.
+
+### Confidence
+
+Expose a simple public/API confidence band:
+
+- `HIGH`
+- `MEDIUM`
+- `LOW`
+
+Retain an internal exact tier.
+
+Support the Phase 6B.1 career tiers without pretending they are equivalent:
+
+- `HIGH_CONFIDENCE_OBSERVED_HARMONISED`
+- `HIGH_CONFIDENCE_OBSERVED_NATIONAL`
+- `MEDIUM_CONFIDENCE_MODELLED_HARMONISED`
+- `MEDIUM_CONFIDENCE_OFFICIAL_CROSSWALK`
+- `LOW_CONFIDENCE_SUPPLEMENTAL`
+
+Add a source-aligned education tier only if required by the committed Phase 6C evidence, such as a
+versioned frozen research dataset tier. Do not invent fine-grained confidence distinctions that the
+research did not establish.
+
+REASON CODES
+
+Define a stable reason-code vocabulary, including at minimum concepts for:
+
+Positive:
+
+- scale-and-share route passed;
+- exceptional scale route passed;
+- exceptional specialization route passed;
+- skilled-trades route passed;
+- construction route passed;
+- both skilled-trades and construction passed;
+- top-100 institution route passed;
+- top-300 breadth route passed;
+- output-and-breadth route passed.
+
+Not established:
+
+- complete evidence below strong threshold;
+- scale floor not met;
+- breadth threshold not met;
+- no approved strong route passed.
+
+Insufficient:
+
+- source missing;
+- stale evidence;
+- unsupported taxonomy;
+- insufficient granularity;
+- crosswalk incomplete;
+- incompatible numerator/denominator;
+- source legally blocked;
+- country absent from source universe;
+- institution identity unresolved;
+- source dependency unavailable;
+- conflicting evidence unresolved.
+
+Use codes in data and API. Use localized/explanatory text in presentation layers.
+
+CATALOG CONTRACT
+
+Add a versioned Opportunity Filter catalog as a sibling to the ordering-criteria catalog.
+
+The catalog must:
+
+- list exactly nine approved filter definitions once onboarding is complete;
+- permit zero definitions during this contracts-only phase through fixtures or staged examples;
+- validate unique IDs and sort order;
+- validate category and state semantics;
+- prohibit ranking fields;
+- link to evidence policy, source policy and documentation;
+- be included in release-manifest validation in a backward-safe staged form.
+
+Do not activate the nine definitions in the active release in this phase.
+
+RELEASE CONTRACT
+
+Extend the release schema so a future immutable release can point to:
+
+- opportunity filter catalog;
+- opportunity filter country evidence;
+- opportunity filter source/evidence manifest;
+- threshold policy;
+- evidence policy;
+- coverage summary.
+
+The current active release must continue to load unchanged.
+
+Increment schema/catalog versions once, following repository conventions.
+
+Write migration and compatibility rules:
+
+- old releases without Opportunity Filters remain valid;
+- a new release with Opportunity Filters must contain exactly one state for every declared
+  filter-country pair;
+- no filter may be partially omitted from its declared release;
+- `INSUFFICIENT_EVIDENCE` is the explicit missing state;
+- a release must not infer missing records as insufficient at runtime.
+
+STRUCTURED ASSESSMENTS
+
+Prepare the contract for a future sibling assessment:
+
+- `assessments.coverage`
+- `assessments.locality`
+- `assessments.profile`
+- `assessments.opportunity`
+
+Do not overload coverage, locality or profile assessments with OFC behavior.
+
+The root ranking fields must remain stable.
+
+ARCHITECTURE DECISION RECORD
+
+Create an ADR explaining:
+
+- why public language uses Opportunity Filters rather than criteria;
+- why OFC is internal shorthand only;
+- why OFCs are separate from ordering criteria;
+- why the public state is tri-state;
+- why no negative-opportunity state exists;
+- why strict AND semantics are the initial release;
+- why filters are evaluated after canonical ranking evidence is computed;
+- why affinity score remains unchanged;
+- why evidence confidence and state are separate;
+- why OFCs do not affect PCC unions or LSC aggregation.
+
+TESTS
+
+Add tests for:
+
+- enum validation;
+- prohibition of score/weight fields in OFC definitions;
+- unique filter IDs;
+- state/reason consistency;
+- positive state requiring an establishing route;
+- not-established requiring complete evidence;
+- insufficient evidence not requiring numeric metrics;
+- route attribution for skilled trades/construction;
+- legacy release loading;
+- new release schema validation using fixtures;
+- exactly one state per filter-country pair;
+- structured opportunity assessment schema;
+- serialization stability.
+
+DOCUMENTATION
+
+Create or update:
+
+- OFC architecture/contract documentation;
+- schema documentation;
+- release documentation;
+- terminology glossary;
+- ADR index;
+- developer guidance on adding an Opportunity Filter;
+- clear boundary between research approval and production onboarding.
+
+EXPLICIT NON-GOALS
+
+Do not:
+
+- onboard the nine filters;
+- activate a new release;
+- change ranking behavior;
+- change affinity scores;
+- change PCC logic;
+- change LSC logic;
+- expose API request fields;
+- expose API response fields to clients;
+- add UI controls;
+- implement conversational behavior;
+- implement applicant access, licensing, admissions, salary or visa logic.
+
+DELIVERABLES
+
+At minimum:
+
+1. versioned Opportunity Filter domain contracts;
+2. Opportunity Filter catalog schema;
+3. release-schema extension;
+4. evidence and assessment schemas;
+5. state, confidence and reason-code enums;
+6. ADR;
+7. schema fixtures;
+8. validation and regression tests;
+9. documentation;
+10. phase report recording decisions and exact changed paths.
+
+STOP CONDITION
+
+Stop when contracts, fixtures, validation, tests and documentation are complete.
+
+Report:
+
+- architecture decision;
+- public and internal naming;
+- schema/catalog version changes;
+- exact enums;
+- compatibility result for the current active release;
+- files changed;
+- tests run;
+- local verification result;
+- commit SHA;
+- owner decisions required before Phase 6E (`05_PHASE_6E_CAREER_OFC_EVIDENCE_ONBOARDING.txt`).
+
+Do not onboard source data or activate a release.

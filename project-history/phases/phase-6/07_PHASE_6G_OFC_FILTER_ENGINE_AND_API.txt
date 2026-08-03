@@ -1,0 +1,367 @@
+KONSIDER PHASE 6G
+OPPORTUNITY FILTER ENGINE AND API INTEGRATION
+
+PROMPT FILE
+
+`07_PHASE_6G_OFC_FILTER_ENGINE_AND_API.txt`
+
+DEPENDENCY
+
+Proceed only after the nine-filter staged evidence bundle from Phase 6F
+(`06_PHASE_6F_EDUCATION_OFC_EVIDENCE_ONBOARDING.txt`) is accepted.
+
+ROLE
+
+Work as the lead ranking-engine, service-contract and API engineer for Konsider.
+
+This phase adds Opportunity Filter evaluation to the service and API while proving that canonical
+ranking and affinity scoring remain unchanged.
+
+Do not add the UI or activate the final release.
+
+CORE INVARIANT
+
+Opportunity Filters must never:
+
+- contribute to affinity score;
+- change criterion weights;
+- change normalization;
+- change ordering among countries that pass;
+- change FCC/PCC active sets;
+- change PCC missing unions;
+- change complete-case eligibility;
+- change LSC aggregation;
+- change profile assessment;
+- impute evidence.
+
+PIPELINE ORDER
+
+Use this conceptual pipeline:
+
+1. Validate ordering-criterion request using existing behavior.
+2. Compute the canonical full ranking/eligibility result using the existing engine unchanged.
+3. Join Opportunity Filter states from the selected immutable release.
+4. Evaluate selected Opportunity Filters with strict AND semantics.
+5. Exclude countries that do not have `VERIFIED_STRONG_SIGNAL` for every selected filter.
+6. Preserve original affinity score and canonical/base rank.
+7. Assign consecutive filtered rank among surviving countries.
+8. Apply requested top-K boundary behavior to the filtered eligible set, preserving score-tie rules.
+9. Return separate opportunity assessment and exclusion diagnostics.
+
+Do not optimize by inserting OFC logic inside score calculation.
+
+Prove no-filter output is unchanged.
+
+REQUEST CONTRACT
+
+Add an optional API v2 request field following current style.
+
+Prefer a simple explicit structure such as:
+
+    "opportunity_filters": {
+      "mode": "ALL_REQUIRED",
+      "required_filter_ids": ["technology_software_opportunity"]
+    }
+
+Only `ALL_REQUIRED` is supported initially.
+
+Alternatively use a flat `required_opportunity_filter_ids` list if that is more consistent with the
+current API, but document the future compatibility trade-off.
+
+Rules:
+
+- omitted field or empty list = no active Opportunity Filters;
+- IDs must exist and be active in the selected release;
+- duplicates are rejected or canonicalized deterministically;
+- ordering of IDs must not affect results;
+- no weights;
+- no negative filter;
+- no OR mode;
+- no minimum-count mode;
+- no “include unknown” option in this release.
+
+SERVICE CONTRACT
+
+Implement an `OpportunityFilterService` or equivalent that:
+
+- loads definitions and country evidence from the immutable release;
+- validates complete 91-country evidence per filter;
+- evaluates one country against selected filters;
+- returns per-filter states and reason codes;
+- produces aggregate pass/exclusion counts;
+- never queries external sources at request time.
+
+FILTER RULE
+
+A country passes when every selected filter is:
+
+    VERIFIED_STRONG_SIGNAL
+
+Exclusion reason categories:
+
+- `STRONG_SIGNAL_NOT_ESTABLISHED`
+- `INSUFFICIENT_EVIDENCE`
+
+When multiple filters exclude a country, retain all failing filters.
+
+Do not call either category “negative evidence” in user-facing fields.
+
+RANKING RESPONSE
+
+Preserve existing root ranking fields.
+
+For every returned country include or make retrievable:
+
+- canonical/base rank;
+- filtered rank;
+- unchanged affinity score;
+- selected-filter evidence summary;
+- per-filter state;
+- confidence band;
+- route IDs;
+- reason codes;
+- evidence/reference period;
+- source IDs;
+- limitations link or compact limitations.
+
+Avoid returning full raw evidence payloads in the main ranking list.
+
+STRUCTURED ASSESSMENT
+
+Add:
+
+    assessments.opportunity
+
+Support at least these statuses:
+
+- `NO_OPPORTUNITY_FILTERS_ACTIVE`
+- `OPPORTUNITY_FILTERS_APPLIED`
+- `NO_COUNTRIES_MATCH`
+
+Suggested fields:
+
+- mode;
+- active filter IDs;
+- input ranked-country count;
+- passing-country count;
+- excluded-country count;
+- excluded because not established;
+- excluded because insufficient evidence;
+- counts per filter and state;
+- source release/evidence policy IDs;
+- strict-filter explanation;
+- no-score-impact flag fixed to true.
+
+If the current API uses different status naming conventions, align with them while preserving the
+meaning.
+
+BASE RANK AND FILTERED RANK
+
+Do not overwrite canonical rank silently.
+
+Return:
+
+- `base_rank`: position before OFC filtering;
+- `rank`: filtered user-facing rank, or `filtered_rank` if current conventions support both.
+
+Document the contract.
+
+Affinity scores must be byte-for-byte/equivalent values from the unfiltered engine.
+
+TOP-K AND TIES
+
+Apply top-K after filtering the canonical ranked set.
+
+Preserve Phase 4 boundary/tie behavior:
+
+- a tie at the Kth filtered score may return more than K countries;
+- filtering must not break a score tie among surviving countries;
+- excluded countries do not occupy filtered top-K slots;
+- canonical/base ranks remain available for explanation.
+
+PCC/LSC INTERACTION
+
+Explicitly test and document:
+
+- PCC complete-case eligibility is computed before OFC filtering;
+- OFC `INSUFFICIENT_EVIDENCE` does not enter PCC missing unions;
+- OFC filtering does not create coverage-limit fallback;
+- LSC-derived ordering criteria remain unchanged;
+- locality evidence is not reused as OFC evidence unless explicitly part of the approved OFC route;
+- profile assessment remains unchanged.
+
+EMPTY RESULTS
+
+When no country passes:
+
+- return a valid empty result;
+- set `NO_COUNTRIES_MATCH`;
+- include counts by filter/state;
+- do not fall back;
+- do not remove filters automatically;
+- do not change weights;
+- make enough information available for the UI to suggest removing a filter.
+
+CATALOG API
+
+Expose Opportunity Filter definitions from the API.
+
+Prefer a sibling endpoint or sibling catalog section, for example:
+
+- `/api/v2/opportunity-filters`; or
+- an `opportunity_filters` collection in the existing catalog response.
+
+Return:
+
+- ID;
+- display name;
+- compact label;
+- category;
+- exact meaning;
+- limitations;
+- coverage summary;
+- source/evidence vintage;
+- active status;
+- filter semantics;
+- no-score-impact indicator.
+
+Do not mix them into the weightable criteria array.
+
+COUNTRY DETAIL / COMPARISON API
+
+Extend current country detail/comparison responses so clients can display:
+
+- all nine filter states, or at minimum selected-filter states;
+- evidence route;
+- confidence;
+- reference period;
+- source attribution;
+- limitations.
+
+Choose one consistent contract and document payload-size implications.
+
+API VERSIONING
+
+Keep API v2 if changes are additive and optional.
+
+Do not create v3 merely for additive OFC support.
+
+Do not restore v1.
+
+Regenerate OpenAPI/schema documentation.
+
+PERFORMANCE
+
+Load OFC evidence once with the release.
+
+Avoid repeatedly parsing 819 records per country/request.
+
+Use indexed maps by filter ID and country code.
+
+Add performance/regression measurements appropriate to the current repository.
+
+TEST MATRIX
+
+At minimum:
+
+1. no OFC field;
+2. empty OFC list;
+3. one career filter;
+4. one education filter;
+5. multiple filters with AND semantics;
+6. country verified for all;
+7. country not established for one;
+8. country insufficient for one;
+9. multiple failure reasons;
+10. invalid filter ID;
+11. duplicate filter ID;
+12. no countries match;
+13. top-K after filtering;
+14. score-boundary ties;
+15. base rank versus filtered rank;
+16. affinity scores unchanged;
+17. ordering unchanged among survivors;
+18. PCC no-active case;
+19. PCC full coverage;
+20. PCC exclusions present;
+21. PCC coverage-limit fallback;
+22. LSC-active ranking;
+23. comparison response;
+24. catalog response;
+25. evidence route visibility for skilled/construction;
+26. confidence visibility for Canada technology;
+27. education source limitations;
+28. old release without OFCs;
+29. staged new release with all 819 evidence records.
+
+GOLDEN TESTS
+
+Create deterministic golden scenarios demonstrating:
+
+- exact same ranking with no OFC;
+- technology filter;
+- science/engineering filter;
+- care + biomedical education filter;
+- technology + mathematics/computer-science education filter;
+- skilled/construction route explanation;
+- strict exclusion of insufficient evidence;
+- empty result.
+
+DOCUMENTATION
+
+Update:
+
+- API guide;
+- request examples;
+- response examples;
+- ranking algorithm description;
+- assessment statuses;
+- top-K behavior;
+- OFC/PCC/LSC interaction;
+- error contracts;
+- source/evidence explanation.
+
+EXPLICIT NON-GOALS
+
+Do not:
+
+- activate release;
+- add UI;
+- add OR/permissive filter modes;
+- add filter weights;
+- add negative filters;
+- add applicant-specific logic;
+- add conversational interpretation;
+- query sources at request time;
+- alter ranking algorithms.
+
+DELIVERABLES
+
+1. service/filter engine;
+2. API request contract;
+3. API response and structured assessment;
+4. catalog exposure;
+5. detail/comparison evidence exposure;
+6. OpenAPI/schema updates;
+7. indexed release loading;
+8. comprehensive tests/goldens;
+9. performance validation;
+10. Phase 6G implementation report.
+
+STOP CONDITION
+
+Stop when API/service behavior is complete against the staged nine-filter release and all regression
+tests pass.
+
+Report:
+
+- exact request/response contracts;
+- pipeline order;
+- proof scores/order are unchanged;
+- test matrix result;
+- performance result;
+- files changed;
+- commit SHA;
+- blockers before Phase 6H (`08_PHASE_6H_OFC_UI_AND_EXPLANATIONS.txt`).
+
+Do not activate the final release or implement UI.

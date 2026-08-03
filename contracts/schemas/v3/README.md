@@ -1,6 +1,6 @@
 # Phase 5 target contract schemas
 
-Status: design contracts; not active production contracts
+Status: active schema-5 contracts plus staged Phase 6D Opportunity Filter extensions
 
 Schema generation `v3` defines the clean Phase 5 target:
 
@@ -37,3 +37,19 @@ HTTP contribution, comparison, and country-details surfaces.
 
 The synthetic valid and invalid examples are under `tests/fixtures/phase5b`. They are contract
 evidence only and must never be published as product data.
+
+Phase 6D adds these standalone contracts without changing the active release or API:
+
+- `opportunity-filter-definition` owns filter-only identity, meaning, limitations, policy links,
+  orthogonal scope/applicability and activation metadata;
+- `opportunity-filter-catalog` is a sibling to the ordering-criterion catalog;
+- `opportunity-filter-evidence` owns the tri-state country result, confidence, reasons, route
+  attribution and typed career/education metric payloads;
+- `opportunity-filter-assessment` defines the future sibling assessment without exposing it;
+- `opportunity-filter-source-manifest`, `opportunity-filter-evidence-policy`,
+  `opportunity-filter-threshold-policy` and `opportunity-filter-coverage-summary` freeze source,
+  legal, policy and explicit missingness metadata; and
+- `release-manifest` optionally binds these files only on release `konsider-release-5.1`.
+
+Release 5.0/catalog 3.0 remain valid unchanged. The Phase 6D synthetic fixtures are under
+`tests/fixtures/phase6d`; they never activate the nine researched filters.

@@ -1,0 +1,362 @@
+KONSIDER PHASE 6E
+CAREER OPPORTUNITY FILTER EVIDENCE ONBOARDING
+
+PROMPT FILE
+
+`05_PHASE_6E_CAREER_OFC_EVIDENCE_ONBOARDING.txt`
+
+DEPENDENCY
+
+Proceed only after Phase 6D contracts from
+`04_PHASE_6D_OFC_PRODUCT_CONTRACTS_AND_ARCHITECTURE.txt` are accepted and merged.
+
+ROLE
+
+Work as the lead labour-data, source-adapter, evidence-pipeline and immutable-release engineer for
+Konsider.
+
+This phase productionizes the five approved career Opportunity Filters. It must not expose API
+filtering, add UI controls or activate the final release.
+
+STARTING MATERIAL
+
+Read:
+
+- all Phase 6D contracts and ADRs;
+- `docs/research/phase6b-career-opportunity-study.md`;
+- `docs/research/phase6b1-career-gap-fill-and-calibration.md`;
+- all Phase 6B and Phase 6B.1 source, crosswalk, confidence, threshold, route and portfolio artifacts;
+- the existing production worker/source architecture;
+- current release build and validation tooling;
+- current source licensing/attribution documentation;
+- country mapping and stable 91-country catalog;
+- existing evidence lineage and refresh scripts.
+
+Do not import historical research scripts as production runtime dependencies.
+
+Reuse exact research assets, mappings, thresholds and decisions. Refactor parsers/mappers into
+production modules where appropriate while preserving research replay.
+
+CAREER FILTERS TO ONBOARD
+
+1. `technology_software_opportunity`
+   Public name: Technology and software employment ecosystem
+   Construct: employment in ISCO-08 groups 25 and 35, using scale and employment share.
+   Expected P60 states: 20 verified, 43 not established, 28 insufficient.
+   Assessable: 63/91.
+
+2. `science_engineering_opportunity`
+   Public name: Science and engineering employment ecosystem
+   Construct: employment in ISCO-08 groups 21 and 31, using scale and employment share.
+   Expected P60 states: 20 verified, 47 not established, 24 insufficient.
+   Assessable: 67/91.
+
+3. `health_social_work_opportunity`
+   Public name: Care-sector employment ecosystem
+   Construct: ISIC Rev.4 section Q, human health and social work.
+   Expected P60 states: 27 verified, 61 not established, 3 insufficient.
+   Assessable: 88/91.
+
+4. `finance_insurance_opportunity`
+   Public name: Finance and insurance employment ecosystem
+   Construct: ISIC Rev.4 section K.
+   Expected P60 states: 22 verified, 66 not established, 3 insufficient.
+   Assessable: 88/91.
+
+5. `skilled_trades_construction_opportunity`
+   Public name: Skilled-trades or construction employment ecosystem
+   Construct: ISCO-08 major group 7 OR ISIC Rev.4 section F.
+   Expected P60 states: 34 verified, 54 not established, 3 insufficient.
+   Assessable: 88/91.
+
+SOURCE ROUTES
+
+Productionize the exact approved routes.
+
+### Harmonised observed occupation route
+
+Use the retained ILOSTAT observed two-digit occupation source for:
+
+- technology/software;
+- science/engineering.
+
+Retain:
+
+- exact indicator identity;
+- latest acceptable 2021+ observation policy;
+- both-sex total;
+- same-country/source/year numerator and denominator;
+- quality/break handling;
+- invalid/unreliable treatment;
+- raw source checksum;
+- attribution;
+- observed confidence tier.
+
+### Canada technology gap-fill
+
+Use the accepted official Statistics Canada source and frozen NOC mapping from Phase 6B.1.
+
+Retain:
+
+- exact table;
+- extraction/version identity;
+- NOC version;
+- accepted included codes;
+- excluded adjacent codes;
+- scale/share calculation;
+- medium-confidence official-crosswalk tier;
+- positive-only limitation where mapping completeness does not support a negative.
+
+Do not expand this mapping to science/engineering.
+
+Canada science/engineering must remain `INSUFFICIENT_EVIDENCE` unless the approved research artifact
+explicitly supports another final state.
+
+### Malta gap-fill
+
+Use the exact harmonised Eurostat ISCO-08 two-digit source for technology and science/engineering.
+
+Retain:
+
+- exact dataset;
+- latest period;
+- scale and share;
+- high-confidence observed-harmonised tier;
+- below-scale-floor not-established result;
+- source identity and attribution.
+
+### ILO modelled occupation/economic-activity routes
+
+Use the approved November 2025 editions for:
+
+- care sector;
+- finance and insurance;
+- skilled trades;
+- construction.
+
+Retain modelled status and medium-confidence disclosure.
+
+Do not replace a valid observed result with a modelled result where source precedence applies.
+
+### Japan, South Korea and New Zealand
+
+Keep explicit `INSUFFICIENT_EVIDENCE` for technology and science/engineering under the documented
+source/granularity gaps.
+
+Do not use major-group proxies.
+
+### Research and academia
+
+Do not onboard an employment OFC.
+
+Its Phase 6B.1 disposition is moved to education/research ecosystem analysis and is resolved through
+Phase 6F source-aligned education filters.
+
+THRESHOLD POLICY
+
+Implement the frozen Phase 6B.1 P60 rule:
+
+- scale >= P60 AND share >= P60; OR
+- scale >= P80 AND share >= P40; OR
+- share >= P80 AND scale >= P40.
+
+Use frozen raw thresholds derived from the approved reference pool.
+
+Do not recompute thresholds from the currently available countries during each run.
+
+Retain:
+
+- policy/version ID;
+- raw thresholds per route/construct;
+- reference distribution identity;
+- P50/P55/P60/P65/P70 research sensitivity links;
+- no country-specific exceptions.
+
+SKILLED-TRADES/CONSTRUCTION ROUTE VISIBILITY
+
+For every country retain one of:
+
+- skilled trades only;
+- construction only;
+- both;
+- neither;
+- insufficient.
+
+A verified result must expose the establishing route.
+
+Do not collapse the two metrics into an opaque score.
+
+CONFIDENCE AND PRECEDENCE
+
+Implement Phase 6D confidence contracts and the accepted precedence:
+
+1. recent harmonised observed;
+2. recent official national observed with strong mapping;
+3. harmonised modelled;
+4. supplemental.
+
+Rules:
+
+- high-confidence complete evidence may establish positive or not-established;
+- medium-confidence evidence may establish positive;
+- a medium-confidence negative requires defensible mapping completeness;
+- low-confidence supplemental evidence cannot establish a public state on its own;
+- contradictions are retained and reason-coded;
+- observed evidence is not overwritten by modelled evidence.
+
+PRODUCTION ARCHITECTURE
+
+Create production source/adaptation modules in the current worker architecture.
+
+Prefer:
+
+- source manifests checked into the repository;
+- raw source bytes ignored;
+- checksums and extraction identities checked;
+- normalized evidence artifacts committed as part of immutable releases;
+- deterministic transforms;
+- explicit country mapping;
+- explicit status for all 91 countries;
+- no network dependency at API runtime.
+
+Do not make the API fetch ILO, Eurostat or national sources live.
+
+RESEARCH-TO-PRODUCTION PROMOTION
+
+Create an auditable promotion comparison that proves production output matches approved research
+output.
+
+For each filter compare:
+
+- all 91 states;
+- state counts;
+- metric components;
+- threshold route;
+- confidence tier;
+- reference period;
+- reason codes;
+- source references.
+
+Any mismatch must fail the build unless explicitly documented and owner-approved.
+
+STAGED CATALOG AND EVIDENCE
+
+Add the five career definitions to the staged Opportunity Filter catalog.
+
+Generate exactly:
+
+    5 filters × 91 countries = 455 evidence records
+
+Every record must have one public state.
+
+Do not activate them in the current release.
+
+Create a staged/candidate release bundle or release fragment following current repository
+conventions.
+
+SOURCE AND LEGAL RECORDS
+
+For every exact source retain:
+
+- publisher;
+- distributor;
+- URL/API query;
+- table/indicator;
+- edition or extraction date;
+- byte count;
+- SHA-256;
+- licence;
+- attribution;
+- production use conclusion;
+- normalized derivative conclusion;
+- raw retention policy;
+- refresh cadence;
+- terms snapshot where needed.
+
+Include ILO single-publisher dependency as an explicit risk.
+
+TESTS
+
+At minimum:
+
+- source checksum verification;
+- parser fixtures;
+- country mapping;
+- classification mapping;
+- metric compatibility;
+- frozen threshold application;
+- confidence precedence;
+- Canada positive-only policy;
+- Canada science remains insufficient;
+- Malta not-established results;
+- Japan/Korea/New Zealand remain insufficient;
+- exactly 455 records;
+- expected state counts per filter;
+- expected shortlist coverage from research;
+- skilled/construction route counts: 15 skilled-only, 11 construction-only, 8 both, 54 neither
+  among assessed route outcomes as frozen by research;
+- no score or weight fields;
+- deterministic no-diff regeneration;
+- current ranking/release regression suite remains unchanged.
+
+DOCUMENTATION
+
+Document:
+
+- exact construct per filter;
+- public limitations;
+- source route;
+- confidence;
+- refresh process;
+- frozen thresholds;
+- missing countries;
+- route visibility;
+- how to replay the production build;
+- how production output was reconciled with Phase 6B.1 research.
+
+EXPLICIT NON-GOALS
+
+Do not:
+
+- activate the release;
+- change ranking;
+- add API request/response behavior;
+- add UI;
+- add applicant-specific career access;
+- add salary, vacancies, licensing, recognition or visa logic;
+- add research/academia employment proxy;
+- add new career filters outside the approved five.
+
+DELIVERABLES
+
+1. production source manifests;
+2. production parsers/adapters/crosswalks;
+3. five catalog definitions;
+4. 455 country evidence records;
+5. threshold and confidence policy artifacts;
+6. source/legal manifest;
+7. research-production reconciliation report;
+8. staged release fragment/bundle;
+9. deterministic build command;
+10. tests and documentation;
+11. Phase 6E implementation report.
+
+STOP CONDITION
+
+Stop when the five career filters are deterministically onboarded into staged release artifacts and
+all tests pass.
+
+Report:
+
+- source routes;
+- exact state counts;
+- coverage;
+- discrepancies from research, if any;
+- staged artifact IDs;
+- files changed;
+- tests run;
+- commit SHA;
+- blockers or owner decisions before Phase 6F
+  (`06_PHASE_6F_EDUCATION_OFC_EVIDENCE_ONBOARDING.txt`).
+
+Do not activate a release or expose API/UI behavior.

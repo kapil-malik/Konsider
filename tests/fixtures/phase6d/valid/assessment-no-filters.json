@@ -1,0 +1,15 @@
+{
+  "schema_version": "opportunity-filter-assessment-1.0",
+  "status": "NO_FILTERS_ACTIVE",
+  "selected_filter_ids": [],
+  "combination": "ALL_SELECTED_REQUIRED",
+  "input_country_count": 2,
+  "passing_country_count": 2,
+  "excluded_country_count": 0,
+  "excluded_counts_by_state": {"STRONG_SIGNAL_NOT_ESTABLISHED": 0, "INSUFFICIENT_EVIDENCE": 0},
+  "per_filter": [],
+  "countries": [
+    {"country_code": "ALB", "base_rank": 1, "filtered_rank": 1, "passes": true, "filter_states": []},
+    {"country_code": "CAN", "base_rank": 2, "filtered_rank": 2, "passes": true, "filter_states": []}
+  ]
+}

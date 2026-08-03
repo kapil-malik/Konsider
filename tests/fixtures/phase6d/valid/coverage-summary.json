@@ -1,0 +1,13 @@
+{
+  "schema_version": "opportunity-filter-coverage-summary-1.0",
+  "release_id": "phase6d-synthetic-5.1",
+  "stable_universe_id": "stable_supported_v1",
+  "stable_country_count": 91,
+  "filters": {
+    "synthetic_career_opportunity": {
+      "assessable_count": 63,
+      "state_counts": {"VERIFIED_STRONG_SIGNAL": 20, "STRONG_SIGNAL_NOT_ESTABLISHED": 43, "INSUFFICIENT_EVIDENCE": 28},
+      "source_dependency_status": "AVAILABLE"
+    }
+  }
+}

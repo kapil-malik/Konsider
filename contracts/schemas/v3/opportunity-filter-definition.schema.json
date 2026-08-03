@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v3/opportunity-filter-definition.schema.json",
+  "title": "Opportunity Filter definition 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "display_name",
+    "compact_label",
+    "category",
+    "construct",
+    "meaning",
+    "does_not_mean",
+    "product_role",
+    "state_contract_version",
+    "filter_behavior",
+    "evidence_policy_version",
+    "threshold_policy_version",
+    "source_bundle_version",
+    "scope",
+    "applicability",
+    "refresh_policy",
+    "source_dependency",
+    "availability",
+    "active",
+    "sort_order",
+    "documentation_ref"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*_opportunity$"
+    },
+    "display_name": {"type": "string", "minLength": 1},
+    "compact_label": {"type": ["string", "null"], "minLength": 1},
+    "category": {"enum": ["CAREER", "EDUCATION"]},
+    "construct": {"type": "string", "minLength": 1},
+    "meaning": {"type": "string", "minLength": 1},
+    "does_not_mean": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "product_role": {"const": "OPPORTUNITY_FILTER"},
+    "state_contract_version": {"const": "opportunity-filter-state-1.0"},
+    "filter_behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eligibility_state", "combination", "changes_affinity_score", "changes_survivor_order"],
+      "properties": {
+        "eligibility_state": {"const": "VERIFIED_STRONG_SIGNAL"},
+        "combination": {"const": "ALL_SELECTED_REQUIRED"},
+        "changes_affinity_score": {"const": false},
+        "changes_survivor_order": {"const": false}
+      }
+    },
+    "evidence_policy_version": {"type": "string", "minLength": 1},
+    "threshold_policy_version": {"type": "string", "minLength": 1},
+    "source_bundle_version": {"type": "string", "minLength": 1},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_level", "result_level", "derivation"],
+      "properties": {
+        "evidence_level": {"enum": ["COUNTRY", "LOCALITY", "INSTITUTION"]},
+        "result_level": {"const": "COUNTRY"},
+        "derivation": {"enum": ["DIRECT", "AGGREGATED_FROM_LOCALITIES", "AGGREGATED_FROM_INSTITUTIONS"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"derivation": {"const": "DIRECT"}}, "required": ["derivation"]},
+          "then": {"properties": {"evidence_level": {"const": "COUNTRY"}}}
+        },
+        {
+          "if": {"properties": {"derivation": {"const": "AGGREGATED_FROM_LOCALITIES"}}, "required": ["derivation"]},
+          "then": {"properties": {"evidence_level": {"const": "LOCALITY"}}}
+        },
+        {
+          "if": {"properties": {"derivation": {"const": "AGGREGATED_FROM_INSTITUTIONS"}}, "required": ["derivation"]},
+          "then": {"properties": {"evidence_level": {"const": "INSTITUTION"}}}
+        }
+      ]
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "dimensions"],
+      "properties": {
+        "mode": {"enum": ["DESTINATION_SIDE", "APPLICANT_CONTEXT_DEPENDENT", "DIAGNOSTIC_ONLY"]},
+        "dimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"}
+        }
+      }
+    },
+    "refresh_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_id", "cadence", "maximum_age_months", "fail_closed"],
+      "properties": {
+        "policy_id": {"type": "string", "minLength": 1},
+        "cadence": {"enum": ["ANNUAL", "SOURCE_RELEASE", "MANUAL_REVIEW"]},
+        "maximum_age_months": {"type": ["integer", "null"], "minimum": 1},
+        "fail_closed": {"const": true}
+      }
+    },
+    "source_dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "required_source_ids", "failure_state"],
+      "properties": {
+        "mode": {"enum": ["SINGLE_SOURCE", "MULTI_SOURCE", "MULTI_ROUTE"]},
+        "required_source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "failure_state": {"const": "INSUFFICIENT_EVIDENCE"}
+      }
+    },
+    "availability": {"enum": ["STAGED", "AVAILABLE", "WITHDRAWN"]},
+    "active": {"type": "boolean"},
+    "sort_order": {"type": "integer", "minimum": 1},
+    "documentation_ref": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"active": {"const": true}}, "required": ["active"]},
+      "then": {"properties": {"availability": {"const": "AVAILABLE"}}}
+    }
+  ]
+}

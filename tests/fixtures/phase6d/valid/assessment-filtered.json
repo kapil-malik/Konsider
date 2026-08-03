@@ -1,0 +1,34 @@
+{
+  "schema_version": "opportunity-filter-assessment-1.0",
+  "status": "FILTERS_APPLIED",
+  "selected_filter_ids": ["synthetic_career_opportunity"],
+  "combination": "ALL_SELECTED_REQUIRED",
+  "input_country_count": 2,
+  "passing_country_count": 1,
+  "excluded_country_count": 1,
+  "excluded_counts_by_state": {"STRONG_SIGNAL_NOT_ESTABLISHED": 1, "INSUFFICIENT_EVIDENCE": 0},
+  "per_filter": [
+    {
+      "filter_id": "synthetic_career_opportunity",
+      "input_country_count": 2,
+      "passing_country_count": 1,
+      "excluded_counts_by_state": {"STRONG_SIGNAL_NOT_ESTABLISHED": 1, "INSUFFICIENT_EVIDENCE": 0}
+    }
+  ],
+  "countries": [
+    {
+      "country_code": "CAN",
+      "base_rank": 2,
+      "filtered_rank": 1,
+      "passes": true,
+      "filter_states": [{"filter_id": "synthetic_career_opportunity", "state": "VERIFIED_STRONG_SIGNAL", "passes": true}]
+    },
+    {
+      "country_code": "ALB",
+      "base_rank": 1,
+      "filtered_rank": null,
+      "passes": false,
+      "filter_states": [{"filter_id": "synthetic_career_opportunity", "state": "STRONG_SIGNAL_NOT_ESTABLISHED", "passes": false}]
+    }
+  ]
+}

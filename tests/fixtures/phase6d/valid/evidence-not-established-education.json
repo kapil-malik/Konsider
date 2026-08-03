@@ -1,0 +1,28 @@
+{
+  "schema_version": "opportunity-filter-evidence-1.0",
+  "release_id": "phase6d-synthetic-5.1",
+  "filter_id": "synthetic_education_opportunity",
+  "country_code": "CAN",
+  "state": "STRONG_SIGNAL_NOT_ESTABLISHED",
+  "confidence_band": "HIGH",
+  "internal_confidence_tier": "HIGH_CONFIDENCE_FROZEN_RESEARCH_DATASET",
+  "coverage_completeness": "COMPLETE",
+  "evaluated_route_ids": ["top_100_institution", "top_300_breadth", "output_and_breadth"],
+  "establishing_route_ids": [],
+  "reason_codes": ["NO_APPROVED_STRONG_ROUTE_PASSED", "BREADTH_THRESHOLD_NOT_MET"],
+  "reference_period": "2020-2023",
+  "metric_payload": {"schema_version": "education-research-ecosystem-metrics-1.0", "fractional_publication_output": 1000, "active_university_breadth": 2, "top_100_count": 0, "top_200_count": 0, "top_300_count": 1},
+  "threshold_results": [
+    {"route_id": "top_100_institution", "passed": false, "policy_version": "synthetic-education-threshold-1.0", "components": {"top_100_count": 0}},
+    {"route_id": "top_300_breadth", "passed": false, "policy_version": "synthetic-education-threshold-1.0", "components": {"top_300_count": 1}},
+    {"route_id": "output_and_breadth", "passed": false, "policy_version": "synthetic-education-threshold-1.0", "components": {"output": 1000, "breadth": 2}}
+  ],
+  "source_references": [{"source_id": "synthetic-education-source", "source_version": "1.0", "lineage_id": "lineage:synthetic-education:1.0"}],
+  "source_observation_status": "FROZEN_RESEARCH_DATASET",
+  "caveats": ["Synthetic contract fixture; not product data."],
+  "evidence_policy_version": "ofc-evidence-policy-1.0",
+  "threshold_policy_version": "synthetic-education-threshold-1.0",
+  "source_bundle_version": "synthetic-source-bundle-1.0",
+  "generated_at": "2026-08-03T00:00:00Z",
+  "build_id": "phase6d-contract-fixture"
+}
