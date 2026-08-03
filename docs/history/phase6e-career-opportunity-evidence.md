@@ -4,7 +4,7 @@ Status: complete; staged only
 
 Completed: 2026-08-03
 
-Implementation commit: pending final commit
+Implementation commit: `24a6923`
 
 ## Outcome
 
