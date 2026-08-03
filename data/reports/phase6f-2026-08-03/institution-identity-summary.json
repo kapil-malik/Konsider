@@ -1,0 +1,79 @@
+{
+  "exact_name_country_count": 2825,
+  "institution_count": 2831,
+  "locality_inference_performed": false,
+  "manual_disambiguation_count": 6,
+  "manual_disambiguations": [
+    {
+      "canonical_institution_name": "Medical University of Varna \"Prof. Dr. Paraskev Stoyanov\"",
+      "match_confidence": "HIGH",
+      "match_method": "MANUAL_QUOTED_NAME_DISAMBIGUATION",
+      "ror_id": "03jkshc47",
+      "source_country_alpha2": "BG",
+      "source_country_name": "Bulgaria",
+      "source_display_name": "Medical University of Varna ",
+      "source_institution_id": "70",
+      "stable_country_code": "BGR"
+    },
+    {
+      "canonical_institution_name": "University of Campania \"Luigi Vanvitelli\"",
+      "match_confidence": "HIGH",
+      "match_method": "MANUAL_QUOTED_NAME_DISAMBIGUATION",
+      "ror_id": "02kqnpp86",
+      "source_country_alpha2": "IT",
+      "source_country_name": "Italy",
+      "source_display_name": "University of Campania ",
+      "source_institution_id": "433",
+      "stable_country_code": "ITA"
+    },
+    {
+      "canonical_institution_name": "University \"Magna Gr\u00e6cia\" of Catanzaro",
+      "match_confidence": "HIGH",
+      "match_method": "MANUAL_QUOTED_NAME_DISAMBIGUATION",
+      "ror_id": "0530bdk91",
+      "source_country_alpha2": "IT",
+      "source_country_name": "Italy",
+      "source_display_name": "University ",
+      "source_institution_id": "809",
+      "stable_country_code": "ITA"
+    },
+    {
+      "canonical_institution_name": "University of Medicine and Pharmacy \"Carol Davila\" Bucharest",
+      "match_confidence": "HIGH",
+      "match_method": "MANUAL_QUOTED_NAME_DISAMBIGUATION",
+      "ror_id": "04fm87419",
+      "source_country_alpha2": "RO",
+      "source_country_name": "Romania",
+      "source_display_name": "University of Medicine and Pharmacy ",
+      "source_institution_id": "976",
+      "stable_country_code": "ROU"
+    },
+    {
+      "canonical_institution_name": "University of Prishtina \"Hasan Prishtina\"",
+      "match_confidence": "HIGH",
+      "match_method": "MANUAL_QUOTED_NAME_DISAMBIGUATION",
+      "ror_id": "05t3p2g92",
+      "source_country_alpha2": "XK",
+      "source_country_name": "Kosovo",
+      "source_display_name": "University of Prishtina ",
+      "source_institution_id": "32054",
+      "stable_country_code": null
+    },
+    {
+      "canonical_institution_name": "Universitas Putra Indonesia \"YPTK\"",
+      "match_confidence": "HIGH",
+      "match_method": "MANUAL_QUOTED_NAME_DISAMBIGUATION",
+      "ror_id": "04pqmjc38",
+      "source_country_alpha2": "ID",
+      "source_country_name": "Indonesia",
+      "source_display_name": "Universitas Putra Indonesia ",
+      "source_institution_id": "70081",
+      "stable_country_code": "IDN"
+    }
+  ],
+  "many_to_one_ror_count": 0,
+  "schema_version": "phase6f-institution-identity-summary-1.0",
+  "source_release": "CWTS Leiden Ranking Open Edition 2025",
+  "unique_ror_count": 2831,
+  "unique_source_institution_id_count": 2831
+}

@@ -38,6 +38,10 @@ readable schemas, and published release manifests take precedence if prose ever 
   source routes, frozen thresholds, missingness, refresh and deterministic replay.
 - [Phase 6E implementation report](history/phase6e-career-opportunity-evidence.md) - staged artifact
   IDs, exact state counts, reconciliation, verification and Phase 6F owner gates.
+- [Education Opportunity Filter evidence](data/education-opportunity-evidence.md) - Phase 6F exact
+  CWTS fields, ROR identities, frozen routes, coverage, replay, refresh and limitations.
+- [Phase 6F implementation report](history/phase6f-education-opportunity-evidence.md) - complete
+  nine-filter candidate, education state counts, reconciliation, verification and Phase 6G gates.
 - [Terminology glossary](product/terminology-glossary.md) - authoritative meanings for ordering
   criteria, FCC/PCC/LSC, Opportunity Filters, states, confidence, base rank and filtered rank.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
@@ -115,6 +119,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 5 closure report](history/phase5-closure-report.md)
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md)
 - [Phase 6E career Opportunity Filter report](history/phase6e-career-opportunity-evidence.md)
+- [Phase 6F education Opportunity Filter report](history/phase6f-education-opportunity-evidence.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational

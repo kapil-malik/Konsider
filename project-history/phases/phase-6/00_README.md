@@ -78,4 +78,14 @@ artifacts without activating a release or changing ranking, API or UI behavior:
 - [`../../../docs/history/phase6e-career-opportunity-evidence.md`](../../../docs/history/phase6e-career-opportunity-evidence.md)
 - [`../../../data/reports/phase6e-2026-08-03`](../../../data/reports/phase6e-2026-08-03)
 
-Prompts `06`–`09` remain sequential future instructions. Phase 6F has not started.
+## Phase 6F education evidence onboarding
+
+Phase 6F promotes the four approved research-university ecosystem filters and combines them with
+Phase 6E into a deterministic inactive nine-filter candidate:
+
+- [`06_PHASE_6F_EDUCATION_OFC_EVIDENCE_ONBOARDING.txt`](06_PHASE_6F_EDUCATION_OFC_EVIDENCE_ONBOARDING.txt)
+- [`../../../docs/data/education-opportunity-evidence.md`](../../../docs/data/education-opportunity-evidence.md)
+- [`../../../docs/history/phase6f-education-opportunity-evidence.md`](../../../docs/history/phase6f-education-opportunity-evidence.md)
+- [`../../../data/reports/phase6f-2026-08-03`](../../../data/reports/phase6f-2026-08-03)
+
+Prompts `07`–`09` remain sequential future instructions. Phase 6G has not started.

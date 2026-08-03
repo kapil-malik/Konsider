@@ -1,0 +1,66 @@
+{
+  "direct_live_openalex_access_used": false,
+  "licence": "CC0-1.0",
+  "openalex_snapshot": "2025-08",
+  "production_use_conclusion": "COMMIT_DERIVED_CC0_RESULTS_AND_ROR_IDENTITIES",
+  "publication_window": "2020-2023",
+  "schema_version": "phase6f-education-source-legal-records-1.0",
+  "source_dependency_policy": "CWTS result removal makes every education field unassessable; ROR identity removal fails publication.",
+  "source_doi": "10.5281/zenodo.17473224",
+  "source_files": {
+    "leiden-open-2025-all-sciences.html": {
+      "bytes": 6043603,
+      "sha256": "02f9bb4dbd36d016b95d7df85a8d02ff9aaa2e9763cc3f9c9d687e138fc5382a"
+    },
+    "leiden-open-2025-biomedical-health.html": {
+      "bytes": 6038930,
+      "sha256": "59aca704885fbab2250d83cdc0ba8a9c4c3763df62d948876faa07576706e709"
+    },
+    "leiden-open-2025-information-fields.html": {
+      "bytes": 33447,
+      "sha256": "ea15601930bfc093720e966af2ae8f00bfc71293e507208a2cbcd76f4a8e671d"
+    },
+    "leiden-open-2025-information-indicators.html": {
+      "bytes": 46812,
+      "sha256": "4f447606f37bf1b8fd1b1a483ae52d775b74ebbbc7627640a3380dd6bf1a0879"
+    },
+    "leiden-open-2025-information-responsible-use.html": {
+      "bytes": 43117,
+      "sha256": "2235b9ca5e00059e1359c989f168de4f8475f2534cc8564492eb82f85c6e0b07"
+    },
+    "leiden-open-2025-information-universities.html": {
+      "bytes": 38627,
+      "sha256": "aaf6d4bcb3aa9c993ecf9cc3a7cc23d6c2d72f8cfb4c3e09952035aa23a7b737"
+    },
+    "leiden-open-2025-life-earth-sciences.html": {
+      "bytes": 6034981,
+      "sha256": "0efacbee459f3d67b6d9b7109886ae911dd20c0ba4b6fd6a330d53d14eaf9ca9"
+    },
+    "leiden-open-2025-main-fields.xlsx": {
+      "bytes": 15483,
+      "sha256": "3a64eebef7c446514541f6babaa837ecb63c0719e362e1d7bc2b7967a2918cc7"
+    },
+    "leiden-open-2025-mathematics-computer-science.html": {
+      "bytes": 6036347,
+      "sha256": "ac7e89240b23b0dc2fd58daafffd2ffee1248f8b19954bcfb7f1df6fc82ae5af"
+    },
+    "leiden-open-2025-physical-sciences-engineering.html": {
+      "bytes": 6037543,
+      "sha256": "f1f44a92e5b7991285471e4c34c7885b4df5fac65005f7783d1603f56e712e8f"
+    },
+    "leiden-open-2025-resources.html": {
+      "bytes": 30366,
+      "sha256": "5a00511a02365b087015c2512f5c8bc9ff70068c23072175535a1c096efeee5e"
+    },
+    "leiden-open-2025-social-sciences-humanities.html": {
+      "bytes": 6036740,
+      "sha256": "8d2391f273328048b4b42e9f59b9bf66e50aa50bd9f214c4b237f6e1e20221d7"
+    },
+    "leiden-open-2025-universities.xlsx": {
+      "bytes": 117456,
+      "sha256": "35d96fe44a0f1724f0071fd11c47185063654b444cc837775c65643119ea2e74"
+    }
+  },
+  "source_release": "CWTS Leiden Ranking Open Edition 2025",
+  "terms_snapshot": "docs/research/phase6c-education-opportunity-study.md"
+}
