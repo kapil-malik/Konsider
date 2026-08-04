@@ -1042,10 +1042,16 @@ def replay_locality_release(
     if len(attempted_values) != 1:
         raise CurrentReleaseError("Replay requires one deterministic attempted_at value.")
     attempted_at = next(iter(attempted_values))
+    input_release_ids = {
+        row["input_release_id"] for row in loaded.artifacts.derived_country_evidence
+    }
+    if len(input_release_ids) != 1:
+        raise CurrentReleaseError("Replay requires one frozen locality input release ID.")
+    locality_input_release_id = next(iter(input_release_ids))
     processors = {
         ("schema4-normalized-release", "1.0"): _schema4_processor(base_release_path, attempted_at),
         ("jrc-ghsl-urban-climate-csv", "1.0"): _locality_processor(
-            release_id=loaded.manifest["release_id"],
+            release_id=locality_input_release_id,
             attempted_at=attempted_at,
             catalog=loaded.artifacts.consumer_catalog,
             entities=loaded.artifacts.geographic_entities,
@@ -1054,7 +1060,14 @@ def replay_locality_release(
             selected=selected,
         ),
     }
-    return repository.replay(release_path, processors=processors).status
+    result = repository.replay(release_path, processors=processors)
+    if not result.passed:
+        print(
+            "replay_detail="
+            f"{result.detail or 'unspecified'};"
+            f"mismatched_files={','.join(result.mismatched_files) or 'none'}"
+        )
+    return result.status
 
 
 def _parse_args() -> argparse.Namespace:

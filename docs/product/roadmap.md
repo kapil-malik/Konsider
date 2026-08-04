@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 6H Opportunity Filter UI complete against staged API; publication pending
+Status: Phase 6 complete; nine Opportunity Filters active
 
 Last updated: 2026-08-04
 
@@ -8,7 +8,7 @@ Last updated: 2026-08-04
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v2 transport, and responsive React UI are
-implemented. Active release `2026-07-29.2` exposes the stable 91-country universe, 388 frozen
+implemented. Active release `2026-08-04.1` exposes the stable 91-country universe, 388 frozen
 urban centres, and fourteen available criteria. Eight are 91/91 global-core criteria; Overall job-market opportunity, School
 education quality, and Research and innovation ecosystem are conditional criteria, and UHC remains
 diagnostic-only. Infrastructure and the two Wave 2 additions are experimental. Phase 4's ranking
@@ -47,13 +47,14 @@ career ecosystem signals as filter-only product concepts, and Phase 6C approved 
 source-aligned research-university ecosystem signals. These nine signals are Opportunity Filters,
 not weighted criteria or PCCs.
 
-Phase 6D defines the sibling catalog, tri-state evidence, confidence, reason, policy, source,
+Phase 6D defined the sibling catalog, tri-state evidence, confidence, reason, policy, source,
 coverage, assessment and optional release-5.1 contracts. Phase 6E stages five career filters and
 455 explicit country states. Phase 6F adds four education filters, 364 education rows, and a
 complete 819-row draft candidate. Phase 6G implements the isolated post-ranking strict-AND engine
-and additive typed API against `phase6g-api-2026-08-03.1`. Phase 6H implements the separate
-checkbox controls, result/exclusion explanations, details and comparison presentation over that
-typed staged API. The canonical ranking engine and active release remain unchanged. See the
+and additive typed API against `phase6g-api-2026-08-03.1`. Phase 6H implemented the separate
+checkbox controls, result/exclusion explanations, details and comparison presentation. Phase 6I
+published and atomically activated release `2026-08-04.1`, preserving every prior ordering payload
+while binding nine filters and 819 states under release schema 5.1. See the
 [Opportunity Filter architecture](../architecture/opportunity-filter-contracts.md) and
 [Opportunity Filter engine](opportunity-filter-engine.md), [UI guide](ui.md),
 [career evidence guide](../data/career-opportunity-evidence.md) and
@@ -192,7 +193,7 @@ job, licensing, visa, or admission probability.
 - Phase 6H implements grouped checkbox controls, Apply/Undo and removable-filter interactions,
   result/exclusion explanations, evidence details, comparison, responsive behavior and
   accessibility over the staged API without activating it.
-- Phase 6I publication, release verification and closure remains the final sequential phase.
+- Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
 ## Next phase after Phase 6: structured applicant and household context
 

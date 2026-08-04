@@ -251,6 +251,26 @@ python -m konsider.ingestion.phase5_locality_onboarding --replay data/releases/2
 API startup performs schema-5, catalog, relationship, and payload-checksum validation through
 `CurrentReleaseRepository` even when retained source bytes are unavailable.
 
+## Phase 6 Opportunity Filter publication
+
+The final release was produced with three separately gated commands:
+
+```text
+python -m konsider.ingestion.phase6_release_publication build --release-id 2026-08-04.1
+python -m konsider.ingestion.phase6_release_publication publish 2026-08-04.1
+python -m konsider.ingestion.phase6_release_publication activate 2026-08-04.1
+```
+
+`build` verifies retained Phase 6E/F/G checksums, exact accepted state counts, product decisions,
+and base-payload identity while leaving `active.json` unchanged. `publish` moves only a validated
+draft into the immutable release namespace. `activate` strictly reloads the published release and
+atomically writes the matching release/schema pointer. Existing IDs are never reused.
+
+Run `python -m konsider.ingestion.phase6_release_verification` after activation to record active
+load and API timings. Future evidence refreshes require a new reviewed prompt, new source captures,
+new release ID, reconciliation against accepted thresholds, and the same build/publish/activate
+separation. Historical research, source/legal records, and replay manifests must be retained.
+
 ## Manual local rollback
 
 There is no rollback CLI. Use this manual procedure only for a compatible published release:

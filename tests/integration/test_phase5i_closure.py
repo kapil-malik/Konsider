@@ -8,7 +8,7 @@ from konsider.api.app import create_app
 from konsider.ingestion.current_release import CurrentReleaseRepository
 
 ROOT = Path(__file__).resolve().parents[2]
-RELEASE_ID = "2026-07-29.2"
+RELEASE_ID = "2026-08-04.1"
 DEPRECATED_PUBLIC_FIELDS = {
     "profiles",
     "profile_id",
@@ -105,7 +105,7 @@ def test_active_release_catalog_validation_api_and_licences_agree() -> None:
     catalog = artifacts.consumer_catalog
 
     assert manifest["release_id"] == RELEASE_ID
-    assert manifest["schema_version"] == "konsider-release-5.0"
+    assert manifest["schema_version"] == "konsider-release-5.1"
     assert manifest["catalog_schema_version"] == "consumer-catalog-3.0"
     assert manifest["status"] == "published"
     assert release.validation["structural_passed"] is True

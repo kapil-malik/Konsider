@@ -1,0 +1,45 @@
+{
+  "active_release_load_ms": 2180.106,
+  "environment": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python": "3.12.13",
+    "transport": "FastAPI TestClient in-process"
+  },
+  "no_filter_median_regression_ratio": 0.6625,
+  "passed": true,
+  "prior_release_no_filter_timing": {
+    "maximum_ms": 2538.425,
+    "median_ms": 960.484,
+    "p95_ms": 2522.997
+  },
+  "release_id": "2026-08-04.1",
+  "repeats_per_request": 20,
+  "request_timings": {
+    "catalog": {
+      "maximum_ms": 1.703,
+      "median_ms": 1.353,
+      "p95_ms": 1.607
+    },
+    "ranking_multi_filter": {
+      "maximum_ms": 1470.589,
+      "median_ms": 603.621,
+      "p95_ms": 1348.975
+    },
+    "ranking_no_filter": {
+      "maximum_ms": 1168.949,
+      "median_ms": 636.33,
+      "p95_ms": 904.812
+    },
+    "ranking_one_filter": {
+      "maximum_ms": 1046.669,
+      "median_ms": 800.247,
+      "p95_ms": 907.019
+    }
+  },
+  "schema_version": "phase6i-performance-verification-1.0",
+  "thresholds": {
+    "active_release_load_max_ms": 5000,
+    "no_filter_median_regression_ratio_max": 1.25,
+    "request_p95_max_ms": 2000
+  }
+}

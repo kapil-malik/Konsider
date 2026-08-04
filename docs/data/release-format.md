@@ -5,7 +5,8 @@ release file is the sibling `active.json` pointer. The public runtime accepts on
 with embedded consumer catalog schema 3. Historical schema-3/4 releases and their catalog snapshots
 remain immutable; an explicitly configured internal historical loader can open them for audit.
 
-Active release `2026-07-29.2` contains the complete Phase 5 structure: canonical geographic
+Active release `2026-08-04.1` contains the complete Phase 5 ranking structure unchanged, plus the
+release-5.1 Opportunity Filter binding: canonical geographic
 entities, entity-neutral observations and scores, one explicit criterion outcome per country,
 derived locality evidence, multiple-source lineages, locality universes, aggregation policies,
 criterion ingestion policies, and `preference_presets`.
@@ -26,6 +27,12 @@ data/releases/
     aggregation-policies.json
     criterion-policies.json
     validation.json
+    opportunity-filter-catalog.json
+    opportunity-filter-evidence.jsonl
+    opportunity-filter-source-manifest.json
+    opportunity-filter-threshold-policies.json
+    opportunity-filter-evidence-policy.json
+    opportunity-filter-coverage-summary.json
 ```
 
 Writers emit UTF-8 JSON and JSONL with explicit LF newlines on every operating system. Payload
@@ -50,16 +57,14 @@ LF for committed release artifacts. Corrections always create a new release ID.
 | `criterion-policies.json` | Snapshotted criterion ingestion, coverage, scope, applicability, scoring, and assessment policy. |
 | `validation.json` | Structural, coverage, readiness, policy, lineage, and product-gate results. |
 
-## Staged Opportunity Filter extension
+## Active Opportunity Filter extension
 
-Phase 6D defines an additive release-5.1 contract. Phase 6E staged five career filters, and Phase 6F
-completed the inactive nine-filter, 819-row candidate `phase6f-complete-2026-08-03.1`. Phase 6G
-produces the deterministic API-integration candidate `phase6g-api-2026-08-03.1` under
-`data/reports/phase6g-2026-08-03/staged-release`. Its nine definitions are active and available
-inside that draft so the API selection contract can be exercised; the draft is neither published
-nor selected by `active.json`.
+Phase 6D defined the additive release-5.1 contract. Phase 6E staged five career filters, Phase 6F
+completed the nine-filter evidence candidate, and Phase 6G produced the deterministic API
+candidate. Phase 6I transformed its release identity, revalidated all retained input checksums, and
+published the final 819-row binding as `2026-08-04.1`.
 
-A future 5.1 release may bind six checksummed sibling files: Opportunity Filter catalog, country
+A 5.1 release binds six checksummed sibling files: Opportunity Filter catalog, country
 evidence, source manifest, threshold policies, evidence policy and coverage summary. The OFC
 catalog remains separate from `consumer-catalog.json`, which continues to own score-bearing
 ordering criteria.
@@ -71,14 +76,11 @@ the [Opportunity Filter contracts](../architecture/opportunity-filter-contracts.
 The evidence and replay inputs are documented in [Career Opportunity Filter evidence](career-opportunity-evidence.md)
 and [Education Opportunity Filter evidence](education-opportunity-evidence.md). The Phase 6G
 filter engine is documented in [Opportunity Filter engine](../product/opportunity-filter-engine.md).
-The active ranking release remains `2026-07-29.2` on release schema 5.0.
+The active release is `2026-08-04.1` on release schema 5.1.
 
-The catalog is part of the immutable Opportunity Filter bundle and is covered by its checksum.
-Phase 6G's optional `KONSIDER_OPPORTUNITY_RELEASE_PATH` loads a named bundle for integration and
-verification; it is not a mutable catalog alias and does not alter the ranking-release pointer.
-Phase 6I must publish and bind the approved bundle before general activation. Historical
-release-scoped ordering catalogs under `data/catalogs/releases/` remain only for opening
-schema-3/4 history.
+The catalog is part of the immutable release and is covered by both its artifact binding and the
+release file-checksum map. The runtime has no mutable Opportunity Filter catalog alias. Historical
+release-scoped ordering catalogs under `data/catalogs/releases/` remain only for opening history.
 
 ## Checksums and replay
 

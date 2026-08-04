@@ -52,6 +52,10 @@ readable schemas, and published release manifests take precedence if prose ever 
   contract, language, responsive and compatibility verification matrix.
 - [Phase 6H implementation report](history/phase6h-opportunity-filter-ui.md) - delivered components,
   wording safeguards, staged verification and Phase 6I gates.
+- [Phase 6 closure report](history/phase6-closure-report.md) - owner decisions, immutable release,
+  activation, invariance, verification, risks and next-phase context.
+- [Release 2026-08-04.1](history/releases/2026-08-04.1.md) - final release contents, checksums,
+  compatibility and rollback boundary.
 - [Terminology glossary](product/terminology-glossary.md) - authoritative meanings for ordering
   criteria, FCC/PCC/LSC, Opportunity Filters, states, confidence, base rank and filtered rank.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
@@ -132,8 +136,9 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 6F education Opportunity Filter report](history/phase6f-education-opportunity-evidence.md)
 - [Phase 6G Opportunity Filter engine and API report](history/phase6g-opportunity-filter-api.md)
 - [Phase 6H Opportunity Filter UI report](history/phase6h-opportunity-filter-ui.md)
+- [Phase 6 closure report](history/phase6-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active runtime serves schema-5 release `2026-07-29.2`; older immutable releases
+instructions. The active runtime serves schema-5.1 release `2026-08-04.1`; older immutable releases
 are available only through explicitly constructed internal historical loaders.

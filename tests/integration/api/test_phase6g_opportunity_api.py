@@ -75,7 +75,7 @@ def test_phase6g_candidate_is_draft_complete_and_does_not_change_active_pointer(
     assert (
         len(evidence) == len({(row["filter_id"], row["country_code"]) for row in evidence}) == 819
     )
-    assert _json(ROOT / "data" / "releases" / "active.json")["release_id"] == "2026-07-29.2"
+    assert _json(ROOT / "data" / "releases" / "active.json")["release_id"] == "2026-08-04.1"
 
 
 def test_phase6g_candidate_regeneration_is_byte_identical() -> None:

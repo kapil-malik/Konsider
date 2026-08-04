@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 from fastapi.testclient import TestClient
@@ -9,15 +8,9 @@ from konsider.ingestion.current_release import CurrentReleaseRepository
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def test_active_phase5g_release_contains_two_real_locality_criteria() -> None:
-    pointer = json.loads((ROOT / "data" / "releases" / "active.json").read_text(encoding="utf-8"))
-    assert pointer == {
-        "release_id": "2026-07-29.2",
-        "schema_version": "konsider-release-5.0",
-    }
-
+def test_immutable_phase5g_release_contains_two_real_locality_criteria() -> None:
     release = CurrentReleaseRepository(ROOT / "data" / "releases").load(
-        ROOT / "data" / "releases" / pointer["release_id"]
+        ROOT / "data" / "releases" / "2026-07-29.2"
     )
     assert release.validation["product_ready"] is True
     assert release.manifest["status"] == "published"

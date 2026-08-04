@@ -1,6 +1,6 @@
-# Opportunity Filter contracts and staged architecture
+# Opportunity Filter contracts and architecture
 
-Status: Phase 6G engine/API and Phase 6H UI complete against a staged candidate; publication pending
+Status: active in release `2026-08-04.1`
 
 Date: 2026-08-03
 
@@ -27,17 +27,16 @@ peer of OFC, and no combined enum is introduced.
 
 | Surface | Phase 6D contract | Active production |
 | --- | --- | --- |
-| Immutable release | optional `konsider-release-5.1` OFC binding | unchanged `konsider-release-5.0` |
+| Immutable release | optional `konsider-release-5.1` OFC binding | active `konsider-release-5.1` |
 | Ordering catalog | unchanged `consumer-catalog-3.0` | unchanged `consumer-catalog-3.0` |
-| OFC catalog | `opportunity-filter-catalog-1.0` | optional Phase 6G staged bundle |
-| OFC state | `opportunity-filter-state-1.0` | optional Phase 6G staged bundle |
-| OFC evidence | `opportunity-filter-evidence-1.0` | optional Phase 6G staged bundle |
-| OFC assessment | `opportunity-filter-assessment-1.0` | exposed when API bundle is configured |
+| OFC catalog | `opportunity-filter-catalog-1.0` | bound in active release |
+| OFC state | `opportunity-filter-state-1.0` | bound in active release |
+| OFC evidence | `opportunity-filter-evidence-1.0` | bound in active release |
+| OFC assessment | `opportunity-filter-assessment-1.0` | active API surface |
 | HTTP API | additive Opportunity Filter fields | `konsider-api-2.0` |
 
 Schema generation remains `contracts/schemas/v3`. The directory number is not a release or catalog
-major. Release 5.1 is additive and optional; it does not authorize the active pointer to select a
-5.1 release.
+major. Release 5.1 is additive; release 5.0 remains valid without an OFC binding.
 
 ## Definition contract
 

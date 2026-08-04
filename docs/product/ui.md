@@ -1,6 +1,6 @@
 # Responsive ranking, Opportunity Filter, and comparison UI
 
-Status: Phase 6H staged UI complete; publication remains Phase 6I work
+Status: Phase 6 complete; Opportunity Filter UI active
 
 The UI is a comparison and inspection surface over `/api/v2`, not a second recommendation engine.
 It is implemented as one responsive React, TypeScript, and Vite application under `web/`.

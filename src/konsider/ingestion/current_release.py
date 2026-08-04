@@ -19,9 +19,17 @@ from pathlib import Path
 from typing import Any
 
 from konsider.contracts import ContractError, validate_contract
+from konsider.domain.opportunity_filters import (
+    validate_opportunity_filter_coverage_summary,
+    validate_opportunity_filter_release_bundle,
+)
 from konsider.text_io import write_text_lf
 
 RELEASE_SCHEMA_VERSION = "konsider-release-5.0"
+OPPORTUNITY_RELEASE_SCHEMA_VERSION = "konsider-release-5.1"
+SUPPORTED_RELEASE_SCHEMA_VERSIONS = frozenset(
+    {RELEASE_SCHEMA_VERSION, OPPORTUNITY_RELEASE_SCHEMA_VERSION}
+)
 VALIDATION_SCHEMA_VERSION = "validation-5.0"
 PAYLOAD_FILES = (
     "geographic-entities.jsonl",
@@ -1056,7 +1064,10 @@ class CurrentReleaseRepository:
         pointer_tmp = self.root / "active.json.tmp"
         _write_json(
             pointer_tmp,
-            {"release_id": release_id, "schema_version": RELEASE_SCHEMA_VERSION},
+            {
+                "release_id": release_id,
+                "schema_version": loaded.manifest["schema_version"],
+            },
         )
         os.replace(pointer_tmp, self.root / "active.json")
         return self.root / "active.json"
@@ -1071,7 +1082,7 @@ class CurrentReleaseRepository:
             raise CurrentReleaseError(
                 "The active release pointer is unavailable or invalid."
             ) from exc
-        if pointer.get("schema_version") != RELEASE_SCHEMA_VERSION:
+        if pointer.get("schema_version") not in SUPPORTED_RELEASE_SCHEMA_VERSIONS:
             raise CurrentReleaseError(
                 "The active release pointer does not select the schema-current contract."
             )
@@ -1081,6 +1092,8 @@ class CurrentReleaseRepository:
         loaded = self.load(self.root / release_id)
         if loaded.manifest["release_id"] != release_id:
             raise CurrentReleaseError("The active pointer and release manifest IDs disagree.")
+        if loaded.manifest["schema_version"] != pointer["schema_version"]:
+            raise CurrentReleaseError("The active pointer and release schema versions disagree.")
         return loaded
 
     def load(self, path: Path | str) -> LoadedCurrentRelease:
@@ -1092,6 +1105,10 @@ class CurrentReleaseRepository:
             context="release manifest",
             schema_generation=3,
         )
+        if manifest["schema_version"] not in SUPPORTED_RELEASE_SCHEMA_VERSIONS:
+            raise CurrentReleaseError(
+                f"Unsupported schema-current release: {manifest['schema_version']}."
+            )
         for filename, expected in manifest["file_checksums"].items():
             actual = _checksum(release_path / filename)
             if actual != expected:
@@ -1142,7 +1159,7 @@ class CurrentReleaseRepository:
             raise CurrentReleaseError(
                 "Manifest, catalog, and validation schema/universe metadata disagree."
             )
-        if manifest["artifact_counts"] != {
+        expected_artifact_counts = {
             "geographic_entities": len(artifacts.geographic_entities),
             "observations": len(artifacts.observations),
             "scores": len(artifacts.scores),
@@ -1150,7 +1167,55 @@ class CurrentReleaseRepository:
             "derived_country_evidence": len(artifacts.derived_country_evidence),
             "source_lineages": len(artifacts.source_lineages),
             "criterion_policies": len(artifacts.criterion_policies),
-        }:
+        }
+        if "opportunity_filters" in manifest:
+            catalog = read_json("opportunity-filter-catalog.json")
+            evidence_rows = read_jsonl("opportunity-filter-evidence.jsonl")
+            coverage_summary = read_json("opportunity-filter-coverage-summary.json")
+            source_manifest = read_json("opportunity-filter-source-manifest.json")
+            evidence_policy = read_json("opportunity-filter-evidence-policy.json")
+            threshold_policies = read_json("opportunity-filter-threshold-policies.json")
+            country_codes = sorted(
+                row["country_codes"][0]
+                for row in artifacts.geographic_entities
+                if row["entity_type"] == "COUNTRY"
+            )
+            validate_opportunity_filter_release_bundle(
+                manifest, catalog, evidence_rows, country_codes
+            )
+            validate_opportunity_filter_coverage_summary(coverage_summary)
+            validate_contract(
+                source_manifest,
+                "opportunity-filter-source-manifest",
+                context="published Opportunity Filter source manifest",
+                schema_generation=3,
+            )
+            validate_contract(
+                evidence_policy,
+                "opportunity-filter-evidence-policy",
+                context="published Opportunity Filter evidence policy",
+                schema_generation=3,
+            )
+            for policy in threshold_policies["policies"]:
+                validate_contract(
+                    policy,
+                    "opportunity-filter-threshold-policy",
+                    context=f"published threshold policy {policy['policy_version']}",
+                    schema_generation=3,
+                )
+            if coverage_summary["release_id"] != manifest["release_id"] or any(
+                row["release_id"] != manifest["release_id"] for row in evidence_rows
+            ):
+                raise CurrentReleaseError(
+                    "Opportunity Filter artifacts and release manifest IDs disagree."
+                )
+            expected_artifact_counts.update(
+                {
+                    "opportunity_filter_definitions": len(catalog["definitions"]),
+                    "opportunity_filter_evidence": len(evidence_rows),
+                }
+            )
+        if manifest["artifact_counts"] != expected_artifact_counts:
             raise CurrentReleaseError("Manifest artifact counts do not match payload files.")
         if manifest["criterion_coverage"] != report["criterion_coverage"]:
             raise CurrentReleaseError("Manifest and validation coverage metadata disagree.")
@@ -1220,7 +1285,33 @@ class CurrentReleaseRepository:
                 (rebuilt_path / "manifest.json").read_text(encoding="utf-8")
             )
             rebuilt_manifest["status"] = loaded.manifest["status"]
-            if rebuilt_manifest != loaded.manifest:
+            expected_manifest = loaded.manifest
+            if "opportunity_filters" in expected_manifest:
+                expected_manifest = {
+                    **expected_manifest,
+                    "schema_version": RELEASE_SCHEMA_VERSION,
+                    "artifact_counts": {
+                        key: value
+                        for key, value in expected_manifest["artifact_counts"].items()
+                        if not key.startswith("opportunity_filter_")
+                    },
+                    "file_checksums": {
+                        filename: expected_manifest["file_checksums"][filename]
+                        for filename in PAYLOAD_FILES
+                    },
+                }
+                expected_manifest.pop("opportunity_filters")
+                expected_manifest["release_checksum"] = (
+                    "sha256:"
+                    + hashlib.sha256(
+                        json.dumps(
+                            expected_manifest["file_checksums"],
+                            sort_keys=True,
+                            separators=(",", ":"),
+                        ).encode()
+                    ).hexdigest()
+                )
+            if rebuilt_manifest != expected_manifest:
                 mismatched.append("manifest.json")
         return ReplayResult(
             "PASSED" if not mismatched else "FAILED",

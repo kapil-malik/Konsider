@@ -1,14 +1,14 @@
 # Konsider API operations and contract
 
-Status: authoritative Phase 6G additive public contract
+Status: authoritative active Phase 6 public contract
 
 Contract version: `konsider-api-2.0`
 
-Active release: `2026-07-29.2`
+Active release: `2026-08-04.1`
 
 Konsider exposes one structured API over the schema-current immutable ranking release selected by
-`data/releases/active.json`. Phase 6G also supports a separately configured, immutable Opportunity
-Filter candidate while Phase 6I publication remains pending. The generated
+`data/releases/active.json`. Release `2026-08-04.1` binds the active Opportunity Filter catalog and
+evidence in the same checksummed publication envelope. The generated
 [`contracts/openapi/konsider-api-2.0.json`](../../contracts/openapi/konsider-api-2.0.json)
 document is authoritative. Undocumented request fields are rejected.
 
@@ -27,16 +27,12 @@ The default service is `http://127.0.0.1:8000`. Swagger UI is at `/docs` and Ope
 | --- | --- | --- |
 | `KONSIDER_RELEASE_ROOT` | Immutable release directories. | `data/releases` |
 | `KONSIDER_ACTIVE_RELEASE_PATH` | Schema-5 active pointer. | `data/releases/active.json` |
-| `KONSIDER_OPPORTUNITY_RELEASE_PATH` | Optional Phase 6G Opportunity Filter bundle directory. | none |
 | `KONSIDER_ENVIRONMENT` | Deployment label. | `development` |
 | `KONSIDER_LOG_LEVEL` | Python log level. | `INFO` |
 | `KONSIDER_CORS_ORIGINS` | Comma-separated browser origins. | none |
 
-The ordering catalog does not accept an override: Catalog 3 remains embedded in and checksummed
-with each schema-5 ranking release. `KONSIDER_OPPORTUNITY_RELEASE_PATH` is narrowly scoped to the
-separate filter-only bundle. For Phase 6G verification it may point to
-`data/reports/phase6g-2026-08-03/staged-release`; it does not change `data/releases/active.json` or
-publish that candidate.
+Neither catalog accepts a runtime override. Catalog 3 and the sibling Opportunity Filter catalog
+are bound to and checksummed by the selected immutable release.
 
 ## Public routes
 
@@ -78,7 +74,7 @@ selection:
     "mode": "ALL_REQUIRED",
     "required_filter_ids": [
       "technology_software_opportunity",
-      "mathematics_computer_science_research_ecosystem"
+      "computer_science_ict_education_opportunity"
     ]
   },
   "top_k": 10

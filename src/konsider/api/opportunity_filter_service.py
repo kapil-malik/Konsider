@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -13,6 +14,7 @@ from konsider.domain.opportunity_filters import (
     validate_opportunity_filter_catalog,
     validate_opportunity_filter_coverage_summary,
     validate_opportunity_filter_evidence_matrix,
+    validate_opportunity_filter_release_binding,
 )
 from konsider.exceptions import (
     InvalidOpportunityFilterSelectionError,
@@ -37,6 +39,10 @@ def _read_json(path: Path) -> Any:
 
 def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line]
+
+
+def _checksum(path: Path) -> str:
+    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 class OpportunityFilterService:
@@ -98,12 +104,49 @@ class OpportunityFilterService:
         manifest = _read_json(root / "candidate-release-manifest.json")
         if manifest["status"] not in {"draft", "published"}:
             raise OpportunityFilterBundleError("Opportunity Filter release status is unsupported.")
+        return cls._from_bound_release(root, manifest)
+
+    @classmethod
+    def from_release(
+        cls, path: Path | str, manifest: Mapping[str, Any]
+    ) -> OpportunityFilterService:
+        """Load the checksummed Opportunity Filter artifacts bound to a published release."""
+
+        if manifest.get("status") != "published":
+            raise OpportunityFilterBundleError(
+                "Only a published release can provide active Opportunity Filters."
+            )
+        return cls._from_bound_release(Path(path), manifest)
+
+    @classmethod
+    def _from_bound_release(
+        cls, root: Path, manifest: Mapping[str, Any]
+    ) -> OpportunityFilterService:
+        validate_opportunity_filter_release_binding(manifest)
+        binding = manifest.get("opportunity_filters")
+        if binding is None:
+            raise OpportunityFilterBundleError("The release has no Opportunity Filter binding.")
+        for artifact in binding["artifacts"]:
+            filename = artifact["filename"]
+            actual = _checksum(root / filename)
+            if actual != artifact["checksum"] or actual != manifest["file_checksums"][filename]:
+                raise OpportunityFilterBundleError(
+                    f"Opportunity Filter checksum mismatch for {filename}."
+                )
+        evidence_rows = _read_jsonl(root / "opportunity-filter-evidence.jsonl")
+        coverage_summary = _read_json(root / "opportunity-filter-coverage-summary.json")
+        if coverage_summary.get("release_id") != manifest["release_id"] or any(
+            row.get("release_id") != manifest["release_id"] for row in evidence_rows
+        ):
+            raise OpportunityFilterBundleError(
+                "Opportunity Filter API artifacts and release identity disagree."
+            )
         return cls(
             release_id=manifest["release_id"],
             catalog=_read_json(root / "opportunity-filter-catalog.json"),
-            evidence_rows=_read_jsonl(root / "opportunity-filter-evidence.jsonl"),
+            evidence_rows=evidence_rows,
             source_manifest=_read_json(root / "opportunity-filter-source-manifest.json"),
-            coverage_summary=_read_json(root / "opportunity-filter-coverage-summary.json"),
+            coverage_summary=coverage_summary,
             evidence_policy=_read_json(root / "opportunity-filter-evidence-policy.json"),
         )
 

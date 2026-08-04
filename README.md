@@ -107,4 +107,5 @@ Start at the [documentation index](docs/README.md).
 - [Phase 5 closure report](docs/history/phase5-closure-report.md)
 - [Phase 5 verification report](data/reports/phase5i-2026-07-29/report.md)
 - [Historical phase workspaces](project-history/README.md)
-- [Active release report](docs/history/releases/2026-07-29.2.md)
+- [Phase 6 closure report](docs/history/phase6-closure-report.md)
+- [Active release report](docs/history/releases/2026-08-04.1.md)

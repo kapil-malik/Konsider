@@ -112,5 +112,15 @@ affinity, activate the candidate or modify the active release pointer:
 - [`../../../docs/product/phase6h-opportunity-filter-ui-test-plan.md`](../../../docs/product/phase6h-opportunity-filter-ui-test-plan.md)
 - [`../../../docs/history/phase6h-opportunity-filter-ui.md`](../../../docs/history/phase6h-opportunity-filter-ui.md)
 
-Prompt `09` remains the sequential future instruction for publication, final verification and
-Phase 6 closure.
+## Phase 6I release verification and closure
+
+Phase 6I published and atomically activated immutable release `2026-08-04.1`. It binds nine
+Opportunity Filter definitions and 819 explicit country states under release schema 5.1 while
+preserving the Phase 5 ranking payloads byte-for-byte:
+
+- [`09_PHASE_6I_RELEASE_VERIFICATION_AND_CLOSURE.txt`](09_PHASE_6I_RELEASE_VERIFICATION_AND_CLOSURE.txt)
+- [`../../../docs/history/phase6-closure-report.md`](../../../docs/history/phase6-closure-report.md)
+- [`../../../docs/history/releases/2026-08-04.1.md`](../../../docs/history/releases/2026-08-04.1.md)
+- [`../../../data/reports/phase6i-2026-08-04`](../../../data/reports/phase6i-2026-08-04)
+
+Phase 6 is closed. Future work must begin under a separately approved phase prompt.

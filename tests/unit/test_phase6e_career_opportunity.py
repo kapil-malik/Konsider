@@ -268,7 +268,7 @@ def test_coverage_reconciliation_source_legal_records_and_shortlists_pass() -> N
     assert canada_technology["excluded_adjacent_codes"] == ["2121", "2131"]
 
 
-def test_candidate_release_is_draft_and_active_runtime_remains_unchanged() -> None:
+def test_phase6e_candidate_remains_draft_after_final_activation() -> None:
     manifest = _json(STAGED_ROOT / "candidate-release-manifest.json")
     catalog = _json(STAGED_ROOT / "opportunity-filter-catalog.json")
     rows = _staged_rows()
@@ -283,11 +283,11 @@ def test_candidate_release_is_draft_and_active_runtime_remains_unchanged() -> No
     validate_opportunity_filter_release_bundle(manifest, catalog, rows, countries)
 
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
-    assert loaded.manifest["release_id"] == "2026-07-29.2"
-    assert loaded.manifest["schema_version"] == "konsider-release-5.0"
-    assert "opportunity_filters" not in loaded.manifest
+    assert loaded.manifest["release_id"] == "2026-08-04.1"
+    assert "opportunity_filters" in loaded.manifest
+    assert loaded.manifest["schema_version"] == "konsider-release-5.1"
     active_pointer = _json(ROOT / "data" / "releases" / "active.json")
-    assert active_pointer["release_id"] == "2026-07-29.2"
+    assert active_pointer["release_id"] == "2026-08-04.1"
 
 
 def test_regeneration_is_byte_identical_without_raw_source_dependency(

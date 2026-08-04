@@ -1,6 +1,6 @@
 # Education Opportunity Filter evidence
 
-Status: Phase 6F staged evidence complete; not active and not exposed through API or UI
+Status: promoted into active release `2026-08-04.1`
 
 Build: `phase6f-education-promotion-1.0`
 
@@ -20,8 +20,8 @@ approved strong route. It does not mean that the country has no universities or 
 
 The complete nine-filter candidate is under
 `data/reports/phase6f-2026-08-03/staged-release`. It contains the five Phase 6E career definitions
-and these four education definitions, all inactive. Active release `2026-07-29.2`, ranking, API v2,
-and UI are unchanged.
+and these four education definitions. The accepted evidence is now bound to active release
+`2026-08-04.1`; its research-university boundary and source limitations remain unchanged.
 
 ## Official source and institution identity
 
@@ -129,4 +129,3 @@ Source/legal details are in
 [`source-legal-records.json`](../../data/reports/phase6f-2026-08-03/source-legal-records.json), and
 the identity audit is in
 [`institution-identity-summary.json`](../../data/reports/phase6f-2026-08-03/institution-identity-summary.json).
-

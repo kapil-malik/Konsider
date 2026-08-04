@@ -42,8 +42,8 @@ def _default_service_factory(settings: ApiSettings) -> RecommendationService:
     if not release.validation["product_ready"]:
         raise CurrentReleaseError("The active schema-5 release is not product-ready.")
     opportunity_filters = (
-        OpportunityFilterService.from_directory(settings.opportunity_release_path)
-        if settings.opportunity_release_path is not None
+        OpportunityFilterService.from_release(release.path, release.manifest)
+        if "opportunity_filters" in release.manifest
         else OpportunityFilterService.empty()
     )
     return RecommendationService(release, opportunity_filters)

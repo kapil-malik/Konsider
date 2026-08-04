@@ -263,8 +263,10 @@ def test_release_5_0_remains_valid_and_release_5_1_binding_is_consistent() -> No
         validate_opportunity_filter_release_binding(broken)
 
 
-def test_active_release_is_unchanged_and_phase6g_api_surface_is_additive() -> None:
-    loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
+def test_release5_0_compatibility_and_phase6g_api_surface_is_additive() -> None:
+    loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load(
+        ROOT / "data" / "releases" / "2026-07-29.2"
+    )
     assert loaded.manifest["schema_version"] == "konsider-release-5.0"
     assert loaded.artifacts.consumer_catalog["schema_version"] == "consumer-catalog-3.0"
     assert "opportunity_filters" not in loaded.manifest

@@ -1,6 +1,6 @@
 # Career Opportunity Filter evidence
 
-Status: Phase 6E staged evidence complete; not active and not exposed through API or UI
+Status: promoted into active release `2026-08-04.1`
 
 Build: `phase6e-career-promotion-1.0`
 
@@ -14,9 +14,9 @@ quality, licensing, qualification recognition, visa access or applicant success.
 `STRONG_SIGNAL_NOT_ESTABLISHED` state does not mean that no employment exists, and
 `INSUFFICIENT_EVIDENCE` is never a negative conclusion.
 
-The artifacts are staged under
-`data/reports/phase6e-2026-08-03/staged-release`. The active release remains `2026-07-29.2` on
-`konsider-release-5.0` and has no Opportunity Filter binding.
+The retained Phase 6E source artifacts are under `data/reports/phase6e-2026-08-03/staged-release`.
+Their accepted evidence was combined, identity-rebound, checksummed, and published in active
+release `2026-08-04.1`.
 
 ## Frozen portfolio and coverage
 

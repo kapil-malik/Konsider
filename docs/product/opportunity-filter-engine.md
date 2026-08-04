@@ -1,6 +1,6 @@
 # Opportunity Filter engine
 
-Status: Phase 6G engine/API and Phase 6H UI complete against staged candidate
+Status: active in immutable release `2026-08-04.1`
 
 Date: 2026-08-04
 
@@ -55,12 +55,11 @@ references, coverage summaries, and the exact definition-by-country matrix once 
 then indexes definitions and evidence by ID. Request-time evaluation performs no file or source
 I/O.
 
-`KONSIDER_OPPORTUNITY_RELEASE_PATH` selects an immutable bundle directory independently of the
-schema-5 ranking release. With no configured bundle, old release-5.0 deployments expose an empty
-filter catalog and all existing no-filter requests continue to work. The Phase 6G integration
-candidate is `data/reports/phase6g-2026-08-03/staged-release`, release
-`phase6g-api-2026-08-03.1`, containing nine active definitions and 819 explicit evidence rows.
-`data/releases/active.json` remains `2026-07-29.2`; publication is reserved for Phase 6I.
+Release `2026-08-04.1` binds the six Opportunity Filter artifacts directly in its release-5.1
+manifest. Startup verifies every release and binding checksum, exact release identity, schemas,
+policies, coverage, sources, and the 9-by-91 evidence matrix before serving. There is no separate
+runtime path override. Historical release-5.0 deployments remain loadable and expose an empty
+filter catalog, preserving their no-filter behavior.
 
 ## API surfaces
 
@@ -73,7 +72,7 @@ candidate is `data/reports/phase6g-2026-08-03/staged-release`, release
 
 The OpenAPI contract remains versioned as `konsider-api-2.0`; Phase 6G fields and the catalog route
 are additive. Phase 6H consumes these fields through checkbox-only, all-required controls and
-API-owned explanations documented in the [UI guide](ui.md). Publication remains Phase 6I work.
+API-owned explanations documented in the [UI guide](ui.md).
 
 ## Verification contract
 
@@ -81,4 +80,5 @@ Tests cover omitted/empty compatibility, all nine real definitions, strict AND b
 public failure state, zero-match validity, deterministic ID ordering, top-k ties, PCC/LSC and
 profile isolation, comparison/detail evidence, old-release behavior, inactive selections,
 candidate replay, checksum validation, and indexed-request performance. The implementation report
-records the exact gate results and measured timing.
+records the exact gate results and measured timing. Final publication, activation, invariance,
+performance and closure evidence is in the [Phase 6 closure report](../history/phase6-closure-report.md).

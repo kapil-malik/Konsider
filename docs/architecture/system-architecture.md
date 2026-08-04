@@ -1,6 +1,6 @@
 # System architecture
 
-Status: authoritative architecture as of 2026-08-03
+Status: authoritative architecture as of 2026-08-04
 
 Konsider separates data acquisition, immutable publication, deterministic recommendation logic,
 HTTP transport, and the browser UI. Scoring and readiness rules have one server-side owner.
@@ -25,15 +25,16 @@ CurrentReleaseRepository ----> RecommendationService --> FastAPI /api/v2 ---> Re
                          release catalog              OpenAPI + JSON responses
 ```
 
-The active schema-5 release is `2026-07-29.2`. It is the only release selected by the public
+The active schema-5.1 release is `2026-08-04.1`. It is the only release selected by the public
 runtime. Historical schema-3/4 releases remain immutable and can be opened only by an explicitly
 configured internal historical loader; they are never an alternate active API path.
 
 - The worker downloads ten registered official-source distributions, captures exact raw bytes,
   parses observations, computes versioned canonical scores, validates readiness, and publishes an
   immutable release only when the gate passes.
-- `CurrentReleaseRepository` validates the schema-5 active pointer, payload checksums, catalog,
-  geography, policies, outcomes, readiness, scoring versions, and provenance before joining data.
+- `CurrentReleaseRepository` validates the schema-5 active pointer, payload checksums, catalogs,
+  geography, policies, outcomes, readiness, scoring versions, provenance, and optional OFC binding
+  before joining data.
 - `RecommendationService` owns weight selection, normalization, contribution calculations,
   deterministic ranking, comparison, and country breakdowns.
 - FastAPI and Pydantic provide a thin versioned transport. One validated release snapshot is loaded
@@ -44,22 +45,22 @@ configured internal historical loader; they are never an alternate active API pa
   flags, assessments, and release labels from `/api/v2`. TanStack Query owns API work; local state
   owns guest edits.
 
-The active release is `2026-07-29.2`: 91 countries, 388 frozen urban centres, and fourteen
+The active release is `2026-08-04.1`: 91 countries, 388 frozen urban centres, fourteen
 catalogued criteria. Extreme heat exposure and Projected warm-day frequency (2030) are experimental
 locality-derived criteria with 89/91 country coverage. Coverage, locality compatibility, and
-applicant-profile applicability remain independent structured assessments.
+applicant-profile applicability, and filter-only opportunity remain independent structured
+assessments.
 Country-universe discovery and complete-case auditing are implemented as a separate safe worker
 flow. They use UN migrant-stock/M49 inputs plus the registered criterion sources, write diagnostic
 reports, and assert that `active.json` is unchanged. They do not share publication authority.
 
-## Staged Opportunity Filter architecture
+## Opportunity Filter architecture
 
-Phase 6D defines a sibling filter-only contract family and optional release-5.1 artifact binding.
-It does not onboard the nine approved evidence datasets or alter the diagrammed active runtime.
-Opportunity Filter definitions contain no ranking fields; their country evidence uses a separate
-tri-state and future `assessments.opportunity` shape. Later phases will onboard evidence, implement
-strict AND filtering after canonical ranking, expose API fields, add UI and finally publish a new
-immutable release. Until then, active release 5.0, API v2 responses and UI behavior are unchanged.
+The sibling filter-only contract family is bound by the active release-5.1 manifest. Opportunity
+Filter definitions contain no ranking fields; country evidence uses a separate tri-state and
+`assessments.opportunity` shape. `OpportunityFilterService` validates and indexes the binding at
+startup, then applies strict AND filtering after canonical ranking. The API and UI expose the
+separate assessment without changing scoring, PCC, locality, or profile behavior.
 
 See [Opportunity Filter contracts](opportunity-filter-contracts.md) and [ADR 010](decisions/010-opportunity-filters-as-filter-only-contracts.md).
 

@@ -50,22 +50,6 @@ KONSIDER_CORS_ORIGINS="http://localhost:5173,http://127.0.0.1:5173" \
   python -m uvicorn konsider.api.app:app --reload
 ```
 
-To exercise the Phase 6H interface against the staged nine-filter candidate, set this additional
-API environment variable before starting Uvicorn. This is a local integration configuration only;
-it does not change the active release pointer.
-
-PowerShell:
-
-```powershell
-$env:KONSIDER_OPPORTUNITY_RELEASE_PATH = "data\reports\phase6g-2026-08-03\staged-release"
-```
-
-Bash:
-
-```bash
-export KONSIDER_OPPORTUNITY_RELEASE_PATH="data/reports/phase6g-2026-08-03/staged-release"
-```
-
 In a second terminal:
 
 ```bash

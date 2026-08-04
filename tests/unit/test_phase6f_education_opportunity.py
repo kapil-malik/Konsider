@@ -231,7 +231,7 @@ def test_excluded_constructs_are_not_onboarded_and_shortlist_coverage_is_20_of_2
             assert result["actual"]["ordering_changed"] is False
 
 
-def test_candidate_is_draft_and_active_release_ranking_surface_is_unchanged() -> None:
+def test_phase6f_candidate_remains_draft_after_final_activation() -> None:
     manifest = _json(STAGED_ROOT / "candidate-release-manifest.json")
     catalog = _json(STAGED_ROOT / "opportunity-filter-catalog.json")
     countries = [
@@ -244,10 +244,10 @@ def test_candidate_is_draft_and_active_release_ranking_surface_is_unchanged() ->
     assert manifest["status"] == "draft"
     validate_opportunity_filter_release_bundle(manifest, catalog, _rows(), countries)
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
-    assert loaded.manifest["release_id"] == "2026-07-29.2"
-    assert loaded.manifest["schema_version"] == "konsider-release-5.0"
-    assert "opportunity_filters" not in loaded.manifest
-    assert _json(ROOT / "data" / "releases" / "active.json")["release_id"] == "2026-07-29.2"
+    assert loaded.manifest["release_id"] == "2026-08-04.1"
+    assert "opportunity_filters" in loaded.manifest
+    assert loaded.manifest["schema_version"] == "konsider-release-5.1"
+    assert _json(ROOT / "data" / "releases" / "active.json")["release_id"] == "2026-08-04.1"
 
 
 def test_no_opportunity_artifact_contains_score_or_weight_fields() -> None:
