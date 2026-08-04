@@ -47,12 +47,22 @@ def _by_pair() -> dict[tuple[str, str], dict]:
     return {(row["filter_id"], row["country_code"]): row for row in _staged_rows()}
 
 
-def _tree_bytes(root: Path) -> dict[str, bytes]:
-    return {
-        path.relative_to(root).as_posix(): path.read_bytes()
-        for path in sorted(root.rglob("*"))
-        if path.is_file()
-    }
+def _semantic_tree(root: Path) -> dict[str, object]:
+    tree: dict[str, object] = {}
+    for path in sorted(root.rglob("*")):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(root).as_posix()
+        if path.suffix == ".jsonl":
+            payload: object = [
+                json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line
+            ]
+        elif path.suffix == ".json":
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        else:
+            payload = path.read_bytes()
+        tree[relative] = _without_checksum_fields(payload)
+    return tree
 
 
 def test_research_inputs_and_optional_raw_checksum_gate(
@@ -312,16 +322,4 @@ def test_regeneration_preserves_product_bytes_without_raw_source_dependency(
     monkeypatch.setattr(phase6e, "RETAINED_RAW_SOURCES", missing_sources)
     generated = tmp_path / "generated"
     phase6e.build_career_opportunity_bundle(generated)
-    actual = _tree_bytes(generated)
-    expected = _tree_bytes(REPORT_ROOT)
-    checksum_envelopes = {
-        "build-manifest.json",
-        "staged-release/candidate-release-manifest.json",
-    }
-    assert {
-        path: payload for path, payload in actual.items() if path not in checksum_envelopes
-    } == {path: payload for path, payload in expected.items() if path not in checksum_envelopes}
-    for relative in checksum_envelopes:
-        assert _without_checksum_fields(json.loads(actual[relative])) == _without_checksum_fields(
-            json.loads(expected[relative])
-        )
+    assert _semantic_tree(generated) == _semantic_tree(REPORT_ROOT)

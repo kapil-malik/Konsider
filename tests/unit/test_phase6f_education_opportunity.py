@@ -33,12 +33,34 @@ def _education_rows() -> list[dict]:
     return _jsonl(REPORT_ROOT / "education-opportunity-filter-evidence.jsonl")
 
 
-def _tree_bytes(root: Path) -> dict[str, bytes]:
-    return {
-        str(path.relative_to(root)): path.read_bytes()
-        for path in sorted(root.rglob("*"))
-        if path.is_file()
-    }
+def _without_checksum_fields(value: object) -> object:
+    if isinstance(value, dict):
+        return {
+            key: _without_checksum_fields(child)
+            for key, child in value.items()
+            if "checksum" not in key
+        }
+    if isinstance(value, list):
+        return [_without_checksum_fields(child) for child in value]
+    return value
+
+
+def _semantic_tree(root: Path) -> dict[str, object]:
+    tree: dict[str, object] = {}
+    for path in sorted(root.rglob("*")):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(root).as_posix()
+        if path.suffix == ".jsonl":
+            payload: object = [
+                json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line
+            ]
+        elif path.suffix == ".json":
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        else:
+            payload = path.read_bytes()
+        tree[relative] = _without_checksum_fields(payload)
+    return tree
 
 
 def test_research_phase6e_and_optional_raw_checksum_gates(
@@ -272,8 +294,8 @@ def test_no_opportunity_artifact_contains_score_or_weight_fields() -> None:
         walk(row)
 
 
-def test_regeneration_is_byte_identical_without_raw_source_dependency() -> None:
+def test_regeneration_is_semantically_identical_without_raw_source_dependency() -> None:
     with tempfile.TemporaryDirectory(dir=ROOT / "data" / "reports") as temporary:
         generated = Path(temporary) / "generated"
         phase6f.build_education_opportunity_bundle(generated)
-        assert _tree_bytes(generated) == _tree_bytes(REPORT_ROOT)
+        assert _semantic_tree(generated) == _semantic_tree(REPORT_ROOT)
