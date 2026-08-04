@@ -4,7 +4,7 @@ Status: complete against staged candidate; Phase 6H UI and Phase 6I publication 
 
 Completion date: 2026-08-04
 
-Implementation commit: `<implementation-commit>`
+Implementation commit: `96c5fa1`
 
 ## Outcome
 
