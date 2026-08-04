@@ -4,7 +4,7 @@ Status: complete against staged candidate; Phase 6I publication pending
 
 Completion date: 2026-08-04
 
-Implementation commit: `IMPLEMENTATION_COMMIT`
+Implementation commit: `ba113ab`
 
 ## Outcome
 
