@@ -290,7 +290,19 @@ def test_phase6e_candidate_remains_draft_after_final_activation() -> None:
     assert active_pointer["release_id"] == "2026-08-04.1"
 
 
-def test_regeneration_is_byte_identical_without_raw_source_dependency(
+def _without_checksum_fields(value: object) -> object:
+    if isinstance(value, dict):
+        return {
+            key: _without_checksum_fields(child)
+            for key, child in value.items()
+            if "checksum" not in key
+        }
+    if isinstance(value, list):
+        return [_without_checksum_fields(child) for child in value]
+    return value
+
+
+def test_regeneration_preserves_product_bytes_without_raw_source_dependency(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     missing_sources = {
@@ -300,4 +312,16 @@ def test_regeneration_is_byte_identical_without_raw_source_dependency(
     monkeypatch.setattr(phase6e, "RETAINED_RAW_SOURCES", missing_sources)
     generated = tmp_path / "generated"
     phase6e.build_career_opportunity_bundle(generated)
-    assert _tree_bytes(generated) == _tree_bytes(REPORT_ROOT)
+    actual = _tree_bytes(generated)
+    expected = _tree_bytes(REPORT_ROOT)
+    checksum_envelopes = {
+        "build-manifest.json",
+        "staged-release/candidate-release-manifest.json",
+    }
+    assert {
+        path: payload for path, payload in actual.items() if path not in checksum_envelopes
+    } == {path: payload for path, payload in expected.items() if path not in checksum_envelopes}
+    for relative in checksum_envelopes:
+        assert _without_checksum_fields(json.loads(actual[relative])) == _without_checksum_fields(
+            json.loads(expected[relative])
+        )

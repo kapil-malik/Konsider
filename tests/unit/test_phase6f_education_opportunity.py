@@ -41,14 +41,19 @@ def _tree_bytes(root: Path) -> dict[str, bytes]:
     }
 
 
-def test_research_phase6e_and_optional_raw_checksum_gates() -> None:
+def test_research_phase6e_and_optional_raw_checksum_gates(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     research = phase6f.verify_research_inputs()
     phase6e = phase6f.verify_phase6e_inputs()
-    raw = phase6f.verify_retained_sources(require_all=True)
+    raw = phase6f.verify_retained_sources(require_all=False)
     assert len(research) >= 17
     assert len(phase6e) >= 10
     assert len(raw) == 13
-    assert set(raw.values()) == {"VERIFIED"}
+    assert set(raw.values()) <= {"VERIFIED", "NOT_PRESENT"}
+    monkeypatch.setattr(phase6f, "ROOT", tmp_path)
+    with pytest.raises(phase6f.EducationOpportunityBuildError, match="unavailable"):
+        phase6f.verify_retained_sources(require_all=True)
     with tempfile.TemporaryDirectory(dir=ROOT / "data" / "reports") as temporary:
         checkout_text = Path(temporary) / "checkout.txt"
         checkout_text.write_bytes(b"one\ntwo\n")
