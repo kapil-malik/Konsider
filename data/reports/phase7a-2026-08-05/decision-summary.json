@@ -1,0 +1,14 @@
+{
+  "schema_version": "konsider-phase7a-decision-summary-1.0",
+  "generated_at": "2026-08-05",
+  "status": "PHASE7A_COMPLETE_PHASE7B_RECOMMENDED",
+  "tfc_definition": "A deterministic, evidence-backed assessment of an explicit applicant, household or exploration-scenario snapshot against named destination rules or costs as of a stated date; never an affinity score or ordering criterion.",
+  "candidate_count": 21,
+  "recommendation_counts": {"DEEP_PROBE": 8, "SECOND_WAVE": 4, "PROFILE_MODEL_ONLY": 7, "RESEARCH_ONLY": 1, "REJECT_TFC": 1},
+  "deep_probe_tfc_ids": ["skilled_work_route_feasibility", "family_accompaniment_reunification", "post_study_work_pathway", "permanent_residence_pathway", "professional_licensing_requirements", "employment_deductions_estimate", "housing_affordability_scenario", "healthcare_affordability_scenario"],
+  "deep_probe_source_criterion_ids": ["C21", "C22", "C25", "C26", "C32", "C33", "C35", "C36", "C38"],
+  "result_families": ["RULE_ROUTE_MATCH", "SCENARIO_METRIC", "CONTEXTUAL_ADVISORY_LATER"],
+  "privacy_boundary": "Guest-first, tab-memory default, explicit session/device retention only, no profile facts in releases, source artifacts, URLs, analytics, logs or implicit server persistence.",
+  "implementation_gate": {"minimum_production_qualified": 3, "preferred_first_wave_min": 3, "preferred_first_wave_max": 5, "prefer_result_family_diversity": true, "on_failure": "CLOSE_PHASE7_AS_RESEARCH_ONLY"},
+  "owner_decisions_deferred_to_phase7b": ["first-wave TFC list and public names", "supported applicant boundary", "supported destination boundary", "result-family scope", "permission for explicit post-ranking feasibility filtering", "session/device retention direction"]
+}

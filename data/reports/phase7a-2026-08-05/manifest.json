@@ -1,0 +1,15 @@
+{
+  "schema_version": "konsider-phase7a-report-manifest-1.0",
+  "generated_at": "2026-08-05",
+  "phase": "7A",
+  "status": "COMPLETE",
+  "artifacts": [
+    {"filename": "tfc-disposition-matrix.json", "role": "21-candidate disposition", "expected_rows": 21},
+    {"filename": "profile-context-field-registry.json", "role": "candidate applicant/household/scenario fields"},
+    {"filename": "tfc-ofc-crosswalk.json", "role": "nine active Opportunity Filter interactions", "expected_rows": 9},
+    {"filename": "phase7b-deep-probe-protocol.json", "role": "eight-candidate Phase 7B preregistration", "expected_rows": 8},
+    {"filename": "decision-summary.json", "role": "owner-readable machine summary"}
+  ],
+  "runtime_changed": false,
+  "production_approval_granted": false
+}

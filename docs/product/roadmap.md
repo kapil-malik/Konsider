@@ -1,8 +1,8 @@
 # Product roadmap
 
-Status: Phase 6 complete; nine Opportunity Filters active
+Status: Phase 7A discovery complete; Phase 7B source gate next
 
-Last updated: 2026-08-04
+Last updated: 2026-08-05
 
 ## Current position
 
@@ -172,7 +172,7 @@ The final public-contract cleanup is documented in the
 The complete outcome is documented in the
 [Phase 5 closure report](../history/phase5-closure-report.md).
 
-## Phase 6: career and engineering-education opportunity — in progress
+## Phase 6: career and engineering-education opportunity — complete
 
 Phase 6 tests narrower, profile-neutral destination constructs without estimating an applicant's
 job, licensing, visa, or admission probability.
@@ -195,14 +195,29 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Next phase after Phase 6: structured applicant and household context
+## Phase 7: Typed Feasibility Checks — discovery gate active
 
-- Define typed applicant, occupation, qualification, licensing, institution, household, visa, and
-  co-location inputs without conflating them with preference presets.
-- Revisit technology and healthcare jobs, institution/program education, housing, earnings, and
-  professional access only where the required context and source gates are explicit.
-- Keep C05 locality research as an independent fast follow with its own source and identity gates.
-- Start with contracts and discovery before adding profile-dependent scores.
+Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
+applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
+criteria, PCC/LSC behavior, Opportunity Filters, preference presets or account settings. They never
+change affinity. The discovery revisits all 21 Phase 5 `PROFILE_PHASE` candidates and recommends
+eight exact-source probes spanning route/rule matches and scenario metrics. See the
+[Phase 7A discovery report](../research/phase7a-tfc-discovery.md).
+
+Phase 7 implementation is gated. Phase 7B must independently qualify at least three TFCs as
+`PRODUCTION_QUALIFIED_FIRST_WAVE` without weakening product, construct, source, legal, coverage,
+profile-input, replay, safety or maintenance gates. Prefer three to five checks and at least two
+result families. If fewer than three qualify, close Phase 7 as research-only and do not build the
+generic runtime, contracts, API or UI.
+
+Until that gate passes:
+
+- keep applicant, household and scenario facts separate from preference presets and immutable
+  destination evidence;
+- use synthetic profiles only for research;
+- retain guest use and browser-tab memory as the default;
+- do not add authentication, server-side saved profiles, sync, chat or conversational memory; and
+- keep C05 locality research as an independent fast follow with its own source and identity gates.
 
 ## Future phase: conversational exploration
 
