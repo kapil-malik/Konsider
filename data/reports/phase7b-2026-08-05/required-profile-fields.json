@@ -1,0 +1,110 @@
+{
+  "schema_version": "konsider-phase7b-profile-fields-1.0",
+  "synthetic_only": true,
+  "candidates": [
+    {
+      "tfc_id": "skilled_work_route_feasibility",
+      "required_inputs": [
+        "citizenships",
+        "age_years where route uses age",
+        "occupation",
+        "qualifications",
+        "experience_years",
+        "language evidence where required",
+        "job-offer state",
+        "salary where required",
+        "target destination/region",
+        "snapshot date"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    },
+    {
+      "tfc_id": "family_accompaniment_reunification",
+      "required_inputs": [
+        "primary applicant status/route",
+        "citizenships/residence where relevant",
+        "partner status",
+        "dependant roles and ages",
+        "salary where sponsor threshold applies",
+        "partner work intent",
+        "snapshot date"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    },
+    {
+      "tfc_id": "post_study_work_pathway",
+      "required_inputs": [
+        "citizenships/residence where relevant",
+        "institution identity",
+        "qualification level and field",
+        "course duration/mode",
+        "completion date",
+        "target destination/region",
+        "snapshot date"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    },
+    {
+      "tfc_id": "permanent_residence_pathway",
+      "required_inputs": [
+        "citizenships",
+        "current/target status",
+        "residence history where required",
+        "age/occupation/qualification/language where route requires",
+        "job offer/salary where required",
+        "household status where relevant",
+        "snapshot date"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    },
+    {
+      "tfc_id": "professional_licensing_requirements",
+      "required_inputs": [
+        "profession",
+        "qualification level/field/origin",
+        "current registrations",
+        "experience",
+        "language evidence where required",
+        "target jurisdiction",
+        "snapshot date"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    },
+    {
+      "tfc_id": "employment_deductions_estimate",
+      "required_inputs": [
+        "destination/tax jurisdiction",
+        "tax year",
+        "gross salary/currency/period",
+        "employee versus self-employed",
+        "residence assumption",
+        "partner/dependant scenario where allowances apply"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    },
+    {
+      "tfc_id": "housing_affordability_scenario",
+      "required_inputs": [
+        "target city/region",
+        "rent/buy tenure",
+        "unit/bedroom assumption",
+        "household size",
+        "target period",
+        "gross/net income or budget and currency"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    },
+    {
+      "tfc_id": "healthcare_affordability_scenario",
+      "required_inputs": [
+        "destination",
+        "planned status/purpose",
+        "residence assumption",
+        "target year",
+        "household size/child ages where premiums vary",
+        "salary where levy/contribution varies"
+      ],
+      "missing_input_state": "INPUT_REQUIRED"
+    }
+  ]
+}

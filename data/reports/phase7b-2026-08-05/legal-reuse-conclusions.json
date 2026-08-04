@@ -1,0 +1,85 @@
+{
+  "schema_version": "konsider-phase7b-legal-1.0",
+  "research_cutoff": "2026-08-05",
+  "conclusions": [
+    {
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "url": "https://commission.europa.eu/legal-notice_en",
+      "conclusion": "PASS_WITH_ATTRIBUTION",
+      "normalized_derivatives": "allowed for Commission-owned content under CC BY 4.0 unless otherwise indicated",
+      "obligations": [
+        "credit the European Union",
+        "link licence",
+        "indicate changes",
+        "exclude third-party material and official emblems"
+      ]
+    },
+    {
+      "legal_id": "AU_HOME_AFFAIRS_CC_BY_3_AU",
+      "url": "https://www.homeaffairs.gov.au/access-and-accountability/using-our-website/copyright-and-disclaimer",
+      "conclusion": "PASS_WITH_ATTRIBUTION",
+      "normalized_derivatives": "allowed for department-produced website material under CC BY 3.0 Australia",
+      "obligations": [
+        "attribute Australian Government Department of Home Affairs",
+        "exclude logo, coat of arms, third-party and specifically excluded material"
+      ]
+    },
+    {
+      "legal_id": "CA_OPEN_GOVERNMENT_2",
+      "url": "https://open.canada.ca/en/open-government-licence-canada",
+      "conclusion": "PASS_WITH_ATTRIBUTION",
+      "normalized_derivatives": "worldwide commercial and non-commercial use allowed",
+      "obligations": [
+        "use prescribed attribution",
+        "link licence where possible",
+        "exclude personal information, symbols and third-party rights",
+        "do not imply endorsement"
+      ]
+    },
+    {
+      "legal_id": "UK_OPEN_GOVERNMENT_LICENCE",
+      "url": "https://www.gov.uk/help/terms-conditions",
+      "conclusion": "PASS_WITH_ATTRIBUTION",
+      "normalized_derivatives": "most Crown-copyright GOV.UK content is reusable under OGL",
+      "obligations": [
+        "follow OGL attribution and exemptions",
+        "exclude credited third-party material",
+        "do not imply official product status"
+      ]
+    },
+    {
+      "legal_id": "US_FEDERAL_GOVERNMENT_WORKS",
+      "url": "https://www.copyright.gov/title17/92chap1.html",
+      "conclusion": "PASS_WITH_EXCLUSIONS",
+      "normalized_derivatives": "U.S. federal government works are generally not protected by U.S. copyright under 17 USC 105",
+      "obligations": [
+        "exclude transferred/third-party works, seals, logos and marks",
+        "record exact USCIS page provenance",
+        "do not imply endorsement"
+      ]
+    },
+    {
+      "legal_id": "OECD_OPEN_BY_DEFAULT",
+      "url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html",
+      "conclusion": "PASS_FOR_IDENTIFIED_OPEN_CONTENT_ONLY",
+      "normalized_derivatives": "post-2024 OECD content is generally openly licensed, but each asset must retain its exact notice",
+      "obligations": [
+        "verify publication-specific notice",
+        "attribute OECD",
+        "do not treat access to the restricted TaxBEN command as granted"
+      ]
+    },
+    {
+      "legal_id": "EUROSTAT_REUSE",
+      "url": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "conclusion": "PASS_WITH_ATTRIBUTION",
+      "normalized_derivatives": "Eurostat statistical data and metadata may be reused commercially and non-commercially subject to exceptions",
+      "obligations": [
+        "cite Eurostat as source",
+        "indicate modifications",
+        "exclude third-party material",
+        "retain capture identity because the API is latest-only"
+      ]
+    }
+  ]
+}

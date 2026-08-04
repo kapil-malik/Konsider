@@ -1,0 +1,154 @@
+{
+  "schema_version": "konsider-phase7b-sources-1.0",
+  "research_cutoff": "2026-08-05",
+  "sources": [
+    {
+      "source_id": "EU_IMMIGRATION_PORTAL",
+      "publisher": "European Commission, Directorate-General for Migration and Home Affairs",
+      "authority": "official_supranational_and_member_state_contributed",
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal_en",
+      "technical_access": "stable HTML index plus predictable country/category pages; normalized manual capture required",
+      "coverage_set": "eu_immigration_portal_25",
+      "freshness": "country pages observed with 2025 updates; review before every evidence release",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "captured normalized route facts, exact page URLs, effective dates and checksums; never browse at runtime",
+      "limitations": "Practical guidance is not authentic legal text; member states decide applications and national conditions. Denmark and Ireland are outside the common legal-migration directives."
+    },
+    {
+      "source_id": "AU_HOME_AFFAIRS_ROUTES",
+      "publisher": "Australian Government Department of Home Affairs",
+      "authority": "official_national",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
+      "related_urls": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485"
+      ],
+      "technical_access": "stable HTML route pages; normalized manual capture required",
+      "coverage": [
+        "AUS"
+      ],
+      "freshness": "review before every evidence release and on route-change alerts",
+      "legal_id": "AU_HOME_AFFAIRS_CC_BY_3_AU",
+      "replay": "captured normalized route facts and exact page identities",
+      "limitations": "Website is a basic guide; legislation is authoritative and route decisions remain individual."
+    },
+    {
+      "source_id": "CA_IRCC_ROUTES",
+      "publisher": "Immigration, Refugees and Citizenship Canada",
+      "authority": "official_national",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html",
+      "related_urls": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work.html",
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/open-work-permit.html"
+      ],
+      "technical_access": "stable HTML route pages; normalized manual capture required",
+      "coverage": [
+        "CAN"
+      ],
+      "freshness": "review before every evidence release and on IRCC change notices",
+      "legal_id": "CA_OPEN_GOVERNMENT_2",
+      "replay": "captured normalized route facts and exact page identities",
+      "limitations": "Invitation, program, permit and family-work conditions are conditional and time-varying."
+    },
+    {
+      "source_id": "UK_HOME_OFFICE_ROUTES",
+      "publisher": "UK Home Office",
+      "authority": "official_national_rules",
+      "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-worker",
+      "related_urls": [
+        "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-graduate",
+        "https://www.gov.uk/graduate-visa/your-partner-and-children"
+      ],
+      "technical_access": "stable HTML rules and guidance with update history; normalized manual capture required",
+      "coverage": [
+        "GBR"
+      ],
+      "freshness": "rules observed updated 2026-07-01; review before every evidence release",
+      "legal_id": "UK_OPEN_GOVERNMENT_LICENCE",
+      "replay": "captured normalized rule facts, exact URLs and effective dates",
+      "limitations": "Route matching is conditional; the public check cannot predict sponsorship, discretion or grant."
+    },
+    {
+      "source_id": "US_USCIS_ROUTES",
+      "publisher": "U.S. Citizenship and Immigration Services",
+      "authority": "official_national",
+      "url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
+      "related_urls": [
+        "https://www.uscis.gov/node/92821",
+        "https://www.uscis.gov/sites/default/files/document/policy-manual-afm/afm31-external.pdf"
+      ],
+      "technical_access": "HTML and official PDF guidance; normalized manual capture required",
+      "coverage": [
+        "USA"
+      ],
+      "freshness": "review before every evidence release and on USCIS policy alerts",
+      "legal_id": "US_FEDERAL_GOVERNMENT_WORKS",
+      "replay": "captured normalized route facts and exact asset identities",
+      "limitations": "H-1B, H-4 and OPT have petition, cap, authorization and status conditions; third-party material is excluded."
+    },
+    {
+      "source_id": "EU_LONG_TERM_RESIDENTS",
+      "publisher": "European Commission",
+      "authority": "official_supranational_summary",
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/legal-migration-and-resettlement/long-term-residents_en",
+      "technical_access": "stable HTML summary plus linked legislation",
+      "coverage_set": "eu_immigration_portal_25",
+      "freshness": "review before every evidence release; revision proposal is active",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "normalized summary can replay, but complete national pathway inventories are not captured",
+      "limitations": "Five-year EU long-term-resident summary does not cover complete national settlement pathways or applicant residence histories."
+    },
+    {
+      "source_id": "EU_REGULATED_PROFESSIONS_DATABASE",
+      "publisher": "European Commission",
+      "authority": "official_member_state_contributed_database",
+      "url": "https://ec.europa.eu/growth/tools-databases/regprof/",
+      "technical_access": "interactive database; no stable versioned bulk export established",
+      "coverage_set": "regulated_professions_31",
+      "freshness": "countries are responsible for updates",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "not yet sufficient for complete regulator/profession/jurisdiction replay",
+      "limitations": "Coverage identifies regulated professions and authorities, not a complete normalized licensing decision rule."
+    },
+    {
+      "source_id": "OECD_TAXING_WAGES_2026",
+      "publisher": "OECD",
+      "authority": "official_intergovernmental_comparative_model",
+      "url": "https://www.oecd.org/en/publications/2026/04/taxing-wages-2026_d1f39986/full-report/overview_d93131c3.html",
+      "related_urls": [
+        "https://www.oecd.org/en/data/tools/oecd-calculator-of-taxes-and-benefits.html",
+        "https://taxben.oecd.org/"
+      ],
+      "technical_access": "publication tables and interactive calculator; underlying TaxBEN STATA command requires application/review",
+      "coverage_set": "oecd_taxing_wages_38",
+      "freshness": "Taxing Wages 2026 covers tax year 2025",
+      "legal_id": "OECD_OPEN_BY_DEFAULT",
+      "replay": "fixed OECD household benchmarks replay; arbitrary applicant gross-to-net formulas do not",
+      "limitations": "Eight standardized household types and earnings levels are not an arbitrary taxpayer calculator."
+    },
+    {
+      "source_id": "EUROSTAT_PRC_COLC_RENTS",
+      "publisher": "Eurostat",
+      "authority": "official_statistical",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_colc_rents?lang=en&sinceTimePeriod=2024",
+      "metadata_url": "https://ec.europa.eu/eurostat/cache/metadata/en/prc_colc_rents_esms.htm",
+      "technical_access": "free JSON-stat dissemination API; latest-version endpoint updated twice daily",
+      "coverage_set": "eurostat_reference_city_rents_37",
+      "freshness": "captured metadata update 2026-01-07 with 2024 and 2025 periods",
+      "legal_id": "EUROSTAT_REUSE",
+      "replay": "normalized metadata and representative rows are captured; production would retain each raw response checksum because API history is not versioned",
+      "limitations": "Selected reference-city neighbourhood rents for standardized dwellings, designed for remuneration comparisons, are not national housing-market estimates."
+    },
+    {
+      "source_id": "EU_MISSOC",
+      "publisher": "European Commission, MISSOC network",
+      "authority": "official_ministry_contributed_comparative_information",
+      "url": "https://employment-social-affairs.ec.europa.eu/policies-and-activities/moving-working-europe/eu-social-security-coordination/specialised-information/social-protection-systems-missoc_en",
+      "technical_access": "structured comparative tables and country information; normalized extraction requires review",
+      "coverage_set": "missoc_30",
+      "freshness": "updated twice yearly, January and July",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "system eligibility summaries can be captured; a comparable applicant mandatory-cost formula cannot yet replay",
+      "limitations": "Healthcare-system descriptions do not supply a comparable, applicant-specific mandatory-cost calculation."
+    }
+  ]
+}

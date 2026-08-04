@@ -1,0 +1,77 @@
+{
+  "schema_version": "konsider-phase7b-route-examples-1.0",
+  "examples": [
+    {
+      "example_id": "EU_BLUE_CARD",
+      "source_id": "EU_IMMIGRATION_PORTAL",
+      "destination_scope": "EU portal 25, subject to national transposition",
+      "inputs": [
+        "job_offer",
+        "qualification_or_experience",
+        "salary",
+        "destination",
+        "snapshot_date"
+      ],
+      "positive_boundary": "A named route can be conditionally matched when its frozen threshold facts are satisfied.",
+      "negative_boundary": "Absence of a positive match is not permanent ineligibility."
+    },
+    {
+      "example_id": "AU_SID_482",
+      "source_id": "AU_HOME_AFFAIRS_ROUTES",
+      "destination_scope": "AUS",
+      "inputs": [
+        "approved_sponsor",
+        "nominated_occupation",
+        "skills",
+        "english",
+        "salary_where_applicable",
+        "snapshot_date"
+      ],
+      "positive_boundary": "Conditional match only; nomination and grant are external decisions.",
+      "negative_boundary": "Do not infer rejection from incomplete facts."
+    },
+    {
+      "example_id": "CA_EXPRESS_ENTRY",
+      "source_id": "CA_IRCC_ROUTES",
+      "destination_scope": "CAN",
+      "inputs": [
+        "program_family",
+        "occupation",
+        "experience",
+        "language",
+        "education",
+        "snapshot_date"
+      ],
+      "positive_boundary": "Potential program match is separate from invitation.",
+      "negative_boundary": "No invitation prediction."
+    },
+    {
+      "example_id": "UK_SKILLED_WORKER",
+      "source_id": "UK_HOME_OFFICE_ROUTES",
+      "destination_scope": "GBR",
+      "inputs": [
+        "sponsor",
+        "job_offer",
+        "occupation",
+        "salary",
+        "english",
+        "snapshot_date"
+      ],
+      "positive_boundary": "Conditional route match only.",
+      "negative_boundary": "No visa-grant prediction."
+    },
+    {
+      "example_id": "US_H1B",
+      "source_id": "US_USCIS_ROUTES",
+      "destination_scope": "USA",
+      "inputs": [
+        "employer_petition",
+        "specialty_occupation",
+        "qualification",
+        "snapshot_date"
+      ],
+      "positive_boundary": "Conditional route match only.",
+      "negative_boundary": "Cap selection, petition approval, visa issuance and admission are outside the check."
+    }
+  ]
+}

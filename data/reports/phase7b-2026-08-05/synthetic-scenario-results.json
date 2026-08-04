@@ -1,0 +1,150 @@
+{
+  "schema_version": "konsider-phase7b-synthetic-scenarios-1.0",
+  "contains_real_applicant_data": false,
+  "scenarios": [
+    {
+      "scenario_id": "missing_required_field",
+      "tfc_id": "skilled_work_route_feasibility",
+      "profile": {
+        "destination": "DEU",
+        "occupation": null
+      },
+      "expected_state": "INPUT_REQUIRED",
+      "reason": "Occupation is required and is never guessed."
+    },
+    {
+      "scenario_id": "job_offer_present",
+      "tfc_id": "skilled_work_route_feasibility",
+      "profile": {
+        "destination": "DEU",
+        "occupation": "software_engineer",
+        "job_offer": true,
+        "salary": "ABOVE_FROZEN_THRESHOLD",
+        "qualification": "RECOGNIZED",
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "CONDITIONAL_ROUTE_MATCH",
+      "reason": "A positive source-rule match is conditional on official processing."
+    },
+    {
+      "scenario_id": "job_offer_absent",
+      "tfc_id": "skilled_work_route_feasibility",
+      "profile": {
+        "destination": "GBR",
+        "occupation": "software_engineer",
+        "job_offer": false,
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "INPUT_REQUIRED_OR_NO_POSITIVE_CONCLUSION",
+      "reason": "The first wave does not expose a complete no-route-matched conclusion."
+    },
+    {
+      "scenario_id": "relocating_alone",
+      "tfc_id": "family_accompaniment_reunification",
+      "profile": {
+        "destination": "AUS",
+        "household_roles": [],
+        "primary_route": "AU_SID_482",
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "NOT_APPLICABLE_BY_DECLARED_SCENARIO",
+      "reason": "No household member is declared."
+    },
+    {
+      "scenario_id": "partner_and_child",
+      "tfc_id": "family_accompaniment_reunification",
+      "profile": {
+        "destination": "AUS",
+        "household_roles": [
+          "partner",
+          "dependent_child"
+        ],
+        "primary_route": "AU_SID_482",
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "CONDITIONAL_ROUTE_MATCH",
+      "reason": "The route permits bounded secondary-applicant roles subject to conditions."
+    },
+    {
+      "scenario_id": "student_completion",
+      "tfc_id": "post_study_work_pathway",
+      "profile": {
+        "destination": "USA",
+        "status": "F1",
+        "qualification_level": "masters",
+        "completion_state": "PLANNED",
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "CONDITIONAL_ROUTE_MATCH",
+      "reason": "Future completion remains provisional and requires DSO/USCIS authorization."
+    },
+    {
+      "scenario_id": "unsupported_destination",
+      "tfc_id": "skilled_work_route_feasibility",
+      "profile": {
+        "destination": "IND",
+        "occupation": "software_engineer",
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "DESTINATION_UNSUPPORTED",
+      "reason": "Missing destination support is not an applicant-negative result."
+    },
+    {
+      "scenario_id": "regional_licensing",
+      "tfc_id": "professional_licensing_requirements",
+      "profile": {
+        "destination": "DEU",
+        "region": "Bavaria",
+        "profession": "physician",
+        "qualification_origin": "IND",
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "SOURCE_ROUTE_PARTIALLY_ASSESSABLE",
+      "reason": "The bounded regulator/jurisdiction rule set is not captured."
+    },
+    {
+      "scenario_id": "effective_date_changed",
+      "tfc_id": "skilled_work_route_feasibility",
+      "profile": {
+        "destination": "GBR",
+        "evidence_effective_from": "2026-07-01",
+        "snapshot_date": "2026-06-30"
+      },
+      "expected_state": "EVIDENCE_DATE_MISMATCH",
+      "reason": "Evidence cannot be applied outside its effective interval."
+    },
+    {
+      "scenario_id": "official_conflict",
+      "tfc_id": "permanent_residence_pathway",
+      "profile": {
+        "destination": "NLD",
+        "conflict": true,
+        "snapshot_date": "2026-08-05"
+      },
+      "expected_state": "CONFLICTING_UNRESOLVED",
+      "reason": "Conflicting official evidence blocks a conclusion and triggers review."
+    },
+    {
+      "scenario_id": "tax_missing_salary",
+      "tfc_id": "employment_deductions_estimate",
+      "profile": {
+        "destination": "CAN",
+        "tax_year": 2025,
+        "gross_salary": null
+      },
+      "expected_state": "INPUT_REQUIRED",
+      "reason": "Salary is required and is never inferred."
+    },
+    {
+      "scenario_id": "housing_missing_city",
+      "tfc_id": "housing_affordability_scenario",
+      "profile": {
+        "destination": "DEU",
+        "city": null,
+        "income": 60000
+      },
+      "expected_state": "INPUT_REQUIRED",
+      "reason": "Reference-city evidence cannot be substituted with a national value."
+    }
+  ]
+}

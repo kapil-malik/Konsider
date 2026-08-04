@@ -1,0 +1,151 @@
+{
+  "schema_version": "konsider-phase7b-support-summary-1.0",
+  "stable_country_count": 91,
+  "candidate_count": 8,
+  "expected_matrix_rows": 728,
+  "actual_matrix_rows": 728,
+  "candidates": [
+    {
+      "tfc_id": "skilled_work_route_feasibility",
+      "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE",
+      "country_count": 91,
+      "state_counts": {
+        "DESTINATION_UNSUPPORTED": 62,
+        "SOURCE_ROUTE_ASSESSABLE": 29
+      },
+      "supported_anchor_codes": [
+        "AUS",
+        "CAN",
+        "DEU",
+        "NLD",
+        "GBR",
+        "USA"
+      ],
+      "predeclared_floor": "At least 6/8 anchors and 20/91 stable destinations fully assessable from official sources, or an owner-approved bounded subset of at least 12 destinations with explicit unsupported states.",
+      "coverage_gate": "PASS"
+    },
+    {
+      "tfc_id": "family_accompaniment_reunification",
+      "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE",
+      "country_count": 91,
+      "state_counts": {
+        "DESTINATION_UNSUPPORTED": 62,
+        "SOURCE_ROUTE_ASSESSABLE": 29
+      },
+      "supported_anchor_codes": [
+        "AUS",
+        "CAN",
+        "DEU",
+        "NLD",
+        "GBR",
+        "USA"
+      ],
+      "predeclared_floor": "At least 6/8 anchors and 20/91 stable destinations fully assessable for one frozen primary-route family, with all other route families explicit as unsupported.",
+      "coverage_gate": "PASS"
+    },
+    {
+      "tfc_id": "post_study_work_pathway",
+      "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE",
+      "country_count": 91,
+      "state_counts": {
+        "DESTINATION_UNSUPPORTED": 62,
+        "SOURCE_ROUTE_ASSESSABLE": 29
+      },
+      "supported_anchor_codes": [
+        "AUS",
+        "CAN",
+        "DEU",
+        "NLD",
+        "GBR",
+        "USA"
+      ],
+      "predeclared_floor": "At least 6/8 anchors and 15/91 stable destinations fully assessable from official routes and institution/qualification registers.",
+      "coverage_gate": "PASS"
+    },
+    {
+      "tfc_id": "permanent_residence_pathway",
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "country_count": 91,
+      "state_counts": {
+        "DESTINATION_UNSUPPORTED": 62,
+        "SOURCE_ROUTE_PARTIALLY_ASSESSABLE": 29
+      },
+      "supported_anchor_codes": [
+        "AUS",
+        "CAN",
+        "DEU",
+        "NLD",
+        "GBR",
+        "USA"
+      ],
+      "predeclared_floor": "At least 6/8 anchors and 20/91 stable destinations fully assessable for a frozen set of employment/study-to-residence route families.",
+      "coverage_gate": "FAIL"
+    },
+    {
+      "tfc_id": "professional_licensing_requirements",
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "country_count": 91,
+      "state_counts": {
+        "DESTINATION_UNSUPPORTED": 60,
+        "SOURCE_ROUTE_PARTIALLY_ASSESSABLE": 31
+      },
+      "supported_anchor_codes": [
+        "DEU",
+        "NLD",
+        "GBR"
+      ],
+      "predeclared_floor": "At least two precisely defined profession families across at least 5/8 anchors, with one explicit regulator/jurisdiction record per supported combination.",
+      "coverage_gate": "FAIL"
+    },
+    {
+      "tfc_id": "employment_deductions_estimate",
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "country_count": 91,
+      "state_counts": {
+        "DESTINATION_UNSUPPORTED": 53,
+        "SOURCE_ROUTE_PARTIALLY_ASSESSABLE": 38
+      },
+      "supported_anchor_codes": [
+        "AUS",
+        "CAN",
+        "DEU",
+        "NLD",
+        "GBR",
+        "USA"
+      ],
+      "predeclared_floor": "At least 6/8 anchors and 20/91 stable destinations with reproducible official parameters for one frozen employee household model and tax year.",
+      "coverage_gate": "FAIL"
+    },
+    {
+      "tfc_id": "housing_affordability_scenario",
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "country_count": 91,
+      "state_counts": {
+        "SOURCE_ROUTE_ASSESSABLE": 37,
+        "DESTINATION_UNSUPPORTED": 54
+      },
+      "supported_anchor_codes": [
+        "DEU",
+        "NLD",
+        "GBR"
+      ],
+      "predeclared_floor": "At least 6/8 anchors and 20 canonical cities across at least 12 stable destinations with like-for-like official rental evidence.",
+      "coverage_gate": "FAIL"
+    },
+    {
+      "tfc_id": "healthcare_affordability_scenario",
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "country_count": 91,
+      "state_counts": {
+        "DESTINATION_UNSUPPORTED": 61,
+        "SOURCE_ROUTE_PARTIALLY_ASSESSABLE": 30
+      },
+      "supported_anchor_codes": [
+        "DEU",
+        "NLD"
+      ],
+      "predeclared_floor": "At least 6/8 anchors and 20/91 stable destinations with reproducible official eligibility and mandatory-cost parameters for one frozen status/household model.",
+      "coverage_gate": "FAIL"
+    }
+  ]
+}

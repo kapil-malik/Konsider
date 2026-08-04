@@ -1,0 +1,15 @@
+{
+  "schema_version": "konsider-phase7b-effective-date-conflict-1.0",
+  "effective_date_policy": [
+    "Every normalized fact or rule must store source identity, captured_at, effective_from and effective_to when known.",
+    "Select only evidence whose effective interval contains the scenario snapshot date.",
+    "A newer capture does not retroactively replace a rule for an earlier snapshot.",
+    "Latest-only APIs require retained lawful raw snapshots and SHA-256 identities before production use."
+  ],
+  "conflict_policy": [
+    "Authentic legislation or formally published immigration rules outrank practical guidance.",
+    "National authority rules outrank supranational summaries for national conditions.",
+    "Unresolved same-authority or same-rank conflicts produce CONFLICTING_UNRESOLVED and block an applicant conclusion.",
+    "Source missingness or conflict never becomes an applicant-negative result."
+  ]
+}

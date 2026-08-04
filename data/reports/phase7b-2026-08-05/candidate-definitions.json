@@ -1,0 +1,335 @@
+{
+  "schema_version": "konsider-phase7b-candidates-1.0",
+  "research_cutoff": "2026-08-05",
+  "candidates": [
+    {
+      "tfc_id": "skilled_work_route_feasibility",
+      "public_name": "Highly qualified work route check",
+      "original_criterion_ids": [
+        "C32"
+      ],
+      "exact_user_question": "Which supported skilled-work routes match this explicit snapshot, and what is missing or unmet?",
+      "check_kind": "RULE_ROUTE_MATCH",
+      "result_family": "RULE_ROUTE_MATCH",
+      "required_inputs": [
+        "citizenships",
+        "age_years where route uses age",
+        "occupation",
+        "qualifications",
+        "experience_years",
+        "language evidence where required",
+        "job-offer state",
+        "salary where required",
+        "target destination/region",
+        "snapshot date"
+      ],
+      "predeclared_coverage_floor": "At least 6/8 anchors and 20/91 stable destinations fully assessable from official sources, or an owner-approved bounded subset of at least 12 destinations with explicit unsupported states.",
+      "measured_supported_destinations": 29,
+      "measured_supported_anchors": 6,
+      "source_ids": [
+        "EU_IMMIGRATION_PORTAL",
+        "AU_HOME_AFFAIRS_ROUTES",
+        "CA_IRCC_ROUTES",
+        "UK_HOME_OFFICE_ROUTES",
+        "US_USCIS_ROUTES"
+      ],
+      "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "PASS",
+        "SOURCE": "PASS",
+        "LEGAL": "PASS",
+        "COVERAGE": "PASS",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "PASS",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "PASS"
+      },
+      "safe_negative_boundary": "No supported route matched only when the frozen supported route inventory is complete for the snapshot date.",
+      "public_limitations": "Positive or conditional matches only across the frozen named-route inventory; never predicts invitation, sponsorship or grant."
+    },
+    {
+      "tfc_id": "family_accompaniment_reunification",
+      "public_name": "Dependants on supported work and study routes",
+      "original_criterion_ids": [
+        "C36"
+      ],
+      "exact_user_question": "Can the declared household roles accompany or reunify under a supported route, and what conditions and work rights apply?",
+      "check_kind": "RULE_ROUTE_MATCH",
+      "result_family": "RULE_ROUTE_MATCH",
+      "required_inputs": [
+        "primary applicant status/route",
+        "citizenships/residence where relevant",
+        "partner status",
+        "dependant roles and ages",
+        "salary where sponsor threshold applies",
+        "partner work intent",
+        "snapshot date"
+      ],
+      "predeclared_coverage_floor": "At least 6/8 anchors and 20/91 stable destinations fully assessable for one frozen primary-route family, with all other route families explicit as unsupported.",
+      "measured_supported_destinations": 29,
+      "measured_supported_anchors": 6,
+      "source_ids": [
+        "EU_IMMIGRATION_PORTAL",
+        "AU_HOME_AFFAIRS_ROUTES",
+        "CA_IRCC_ROUTES",
+        "UK_HOME_OFFICE_ROUTES",
+        "US_USCIS_ROUTES"
+      ],
+      "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "PASS",
+        "SOURCE": "PASS",
+        "LEGAL": "PASS",
+        "COVERAGE": "PASS",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "PASS",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "PASS"
+      },
+      "safe_negative_boundary": "No supported family route matched is limited to the declared primary route/status and household roles.",
+      "public_limitations": "Limited to partner/child conditions attached to the frozen supported primary routes; not a general family-reunification checker."
+    },
+    {
+      "tfc_id": "post_study_work_pathway",
+      "public_name": "Post-study stay and work route check",
+      "original_criterion_ids": [
+        "C35"
+      ],
+      "exact_user_question": "Does this institution, qualification and study scenario match a supported post-study work or stay route?",
+      "check_kind": "RULE_ROUTE_MATCH",
+      "result_family": "RULE_ROUTE_MATCH",
+      "required_inputs": [
+        "citizenships/residence where relevant",
+        "institution identity",
+        "qualification level and field",
+        "course duration/mode",
+        "completion date",
+        "target destination/region",
+        "snapshot date"
+      ],
+      "predeclared_coverage_floor": "At least 6/8 anchors and 15/91 stable destinations fully assessable from official routes and institution/qualification registers.",
+      "measured_supported_destinations": 29,
+      "measured_supported_anchors": 6,
+      "source_ids": [
+        "EU_IMMIGRATION_PORTAL",
+        "AU_HOME_AFFAIRS_ROUTES",
+        "CA_IRCC_ROUTES",
+        "UK_HOME_OFFICE_ROUTES",
+        "US_USCIS_ROUTES"
+      ],
+      "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "PASS",
+        "SOURCE": "PASS",
+        "LEGAL": "PASS",
+        "COVERAGE": "PASS",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "PASS",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "PASS"
+      },
+      "safe_negative_boundary": "No supported route matched only for completed/current study facts and a complete destination route inventory; planned future graduation remains provisional.",
+      "public_limitations": "Checks current/completed study facts against frozen routes; future graduation remains provisional and institution identity must be verified."
+    },
+    {
+      "tfc_id": "permanent_residence_pathway",
+      "public_name": "Permanent-residence pathway",
+      "original_criterion_ids": [
+        "C33"
+      ],
+      "exact_user_question": "Which supported permanent or settled residence pathways match now or conditionally, and which requirements remain?",
+      "check_kind": "RULE_ROUTE_MATCH",
+      "result_family": "RULE_ROUTE_MATCH",
+      "required_inputs": [
+        "citizenships",
+        "current/target status",
+        "residence history where required",
+        "age/occupation/qualification/language where route requires",
+        "job offer/salary where required",
+        "household status where relevant",
+        "snapshot date"
+      ],
+      "predeclared_coverage_floor": "At least 6/8 anchors and 20/91 stable destinations fully assessable for a frozen set of employment/study-to-residence route families.",
+      "measured_supported_destinations": 29,
+      "measured_supported_anchors": 6,
+      "source_ids": [
+        "EU_LONG_TERM_RESIDENTS",
+        "AU_HOME_AFFAIRS_ROUTES",
+        "CA_IRCC_ROUTES",
+        "UK_HOME_OFFICE_ROUTES",
+        "US_USCIS_ROUTES"
+      ],
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "FAIL",
+        "SOURCE": "FAIL",
+        "LEGAL": "PASS",
+        "COVERAGE": "FAIL",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "FAIL",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "FAIL"
+      },
+      "safe_negative_boundary": "Future pathway is conditional, not promised; no-match applies only to supported routes and supplied history.",
+      "public_limitations": "Current sources do not form a complete route inventory or normalize residence-history counting."
+    },
+    {
+      "tfc_id": "professional_licensing_requirements",
+      "public_name": "Professional licensing requirements",
+      "original_criterion_ids": [
+        "C38"
+      ],
+      "exact_user_question": "For this bounded profession, qualification origin and jurisdiction, what supported recognition and licensing steps apply?",
+      "check_kind": "RULE_ROUTE_MATCH",
+      "result_family": "RULE_ROUTE_MATCH",
+      "required_inputs": [
+        "profession",
+        "qualification level/field/origin",
+        "current registrations",
+        "experience",
+        "language evidence where required",
+        "target jurisdiction",
+        "snapshot date"
+      ],
+      "predeclared_coverage_floor": "At least two precisely defined profession families across at least 5/8 anchors, with one explicit regulator/jurisdiction record per supported combination.",
+      "measured_supported_destinations": 31,
+      "measured_supported_anchors": 3,
+      "source_ids": [
+        "EU_REGULATED_PROFESSIONS_DATABASE"
+      ],
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "FAIL",
+        "SOURCE": "FAIL",
+        "LEGAL": "PASS",
+        "COVERAGE": "FAIL",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "FAIL",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "FAIL"
+      },
+      "safe_negative_boundary": "Report unmet or unsupported requirements; never claim the applicant cannot practise outside the frozen protected scope and regulator route.",
+      "public_limitations": "Database coverage does not replace profession-, regulator- and jurisdiction-specific recognition rules."
+    },
+    {
+      "tfc_id": "employment_deductions_estimate",
+      "public_name": "Employment deductions estimate",
+      "original_criterion_ids": [
+        "C21",
+        "C22"
+      ],
+      "exact_user_question": "Under this employment and household scenario, what employee income tax and mandatory deductions are estimated?",
+      "check_kind": "SCENARIO_METRIC",
+      "result_family": "SCENARIO_METRIC",
+      "required_inputs": [
+        "destination/tax jurisdiction",
+        "tax year",
+        "gross salary/currency/period",
+        "employee versus self-employed",
+        "residence assumption",
+        "partner/dependant scenario where allowances apply"
+      ],
+      "predeclared_coverage_floor": "At least 6/8 anchors and 20/91 stable destinations with reproducible official parameters for one frozen employee household model and tax year.",
+      "measured_supported_destinations": 38,
+      "measured_supported_anchors": 6,
+      "source_ids": [
+        "OECD_TAXING_WAGES_2026"
+      ],
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "FAIL",
+        "SOURCE": "FAIL",
+        "LEGAL": "PASS",
+        "COVERAGE": "FAIL",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "FAIL",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "FAIL"
+      },
+      "safe_negative_boundary": "Return an estimate/range with assumptions and excluded filing circumstances; never tax advice or a guaranteed payslip.",
+      "public_limitations": "OECD benchmark households cannot yield an arbitrary applicant payslip; national formulas remain required."
+    },
+    {
+      "tfc_id": "housing_affordability_scenario",
+      "public_name": "Reference-city rent affordability scenario",
+      "original_criterion_ids": [
+        "C25"
+      ],
+      "exact_user_question": "For this target locality, household and housing assumption, what supported housing-cost range and income/budget share apply?",
+      "check_kind": "SCENARIO_METRIC",
+      "result_family": "SCENARIO_METRIC",
+      "required_inputs": [
+        "target city/region",
+        "rent/buy tenure",
+        "unit/bedroom assumption",
+        "household size",
+        "target period",
+        "gross/net income or budget and currency"
+      ],
+      "predeclared_coverage_floor": "At least 6/8 anchors and 20 canonical cities across at least 12 stable destinations with like-for-like official rental evidence.",
+      "measured_supported_destinations": 37,
+      "measured_supported_anchors": 3,
+      "source_ids": [
+        "EUROSTAT_PRC_COLC_RENTS"
+      ],
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "PASS",
+        "SOURCE": "PASS",
+        "LEGAL": "PASS",
+        "COVERAGE": "FAIL",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "PASS",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "PASS"
+      },
+      "safe_negative_boundary": "Report a sourced range and ratio, not availability, neighbourhood fit or a promise that housing can be secured.",
+      "public_limitations": "Reference-city standardized-dwelling rents are not representative national rents; the frozen 6-of-8-anchor floor is not met."
+    },
+    {
+      "tfc_id": "healthcare_affordability_scenario",
+      "public_name": "Healthcare affordability scenario",
+      "original_criterion_ids": [
+        "C26"
+      ],
+      "exact_user_question": "Under this immigration/status and household scenario, what required system-level healthcare costs can be estimated and what is excluded?",
+      "check_kind": "SCENARIO_METRIC",
+      "result_family": "SCENARIO_METRIC",
+      "required_inputs": [
+        "destination",
+        "planned status/purpose",
+        "residence assumption",
+        "target year",
+        "household size/child ages where premiums vary",
+        "salary where levy/contribution varies"
+      ],
+      "predeclared_coverage_floor": "At least 6/8 anchors and 20/91 stable destinations with reproducible official eligibility and mandatory-cost parameters for one frozen status/household model.",
+      "measured_supported_destinations": 30,
+      "measured_supported_anchors": 2,
+      "source_ids": [
+        "EU_MISSOC"
+      ],
+      "disposition": "NEEDS_TARGETED_FOLLOW_UP",
+      "gate_results": {
+        "PRODUCT": "PASS",
+        "CONSTRUCT": "FAIL",
+        "SOURCE": "FAIL",
+        "LEGAL": "PASS",
+        "COVERAGE": "FAIL",
+        "PROFILE_INPUT": "PASS",
+        "REPLAY": "FAIL",
+        "SAFETY_INTERPRETATION": "PASS",
+        "MAINTENANCE": "FAIL"
+      },
+      "safe_negative_boundary": "Estimate required system costs only; do not collect health conditions or estimate personal treatment needs/out-of-pocket events.",
+      "public_limitations": "MISSOC describes systems but does not provide comparable mandatory-cost formulas for the supported applicant model."
+    }
+  ]
+}

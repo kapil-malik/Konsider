@@ -1,0 +1,80 @@
+{
+  "schema_version": "konsider-phase7b-owner-decision-1.0",
+  "research_cutoff": "2026-08-05",
+  "phase7c_may_proceed_after_owner_approval": true,
+  "production_qualified_count": 3,
+  "minimum_three_gate": "PASS",
+  "recommended_first_wave": [
+    "skilled_work_route_feasibility",
+    "family_accompaniment_reunification",
+    "post_study_work_pathway"
+  ],
+  "recommended_public_names": {
+    "skilled_work_route_feasibility": "Highly qualified work route check",
+    "family_accompaniment_reunification": "Dependants on supported work and study routes",
+    "post_study_work_pathway": "Post-study stay and work route check"
+  },
+  "supported_destination_boundary": "29/91: EU Immigration Portal 25 plus Australia, Canada, United Kingdom and United States; all other destinations explicit as unsupported.",
+  "supported_profile_boundary": "Guest-entered applicant/household/scenario snapshots; no real data in research; route-specific minimum fields; missing fields return INPUT_REQUIRED.",
+  "result_family_scope": [
+    "RULE_ROUTE_MATCH"
+  ],
+  "contract_narrowing": "Phase 7C must define a route/rule-match contract only, not a generic multi-result engine.",
+  "negative_result_policy": "Initial evidence permits positive and conditional supported-route matches only. Do not expose a complete no-supported-route-matched conclusion until route inventory completeness is independently proven.",
+  "owner_approvals_required": [
+    "Approve the exact three-item first-wave list.",
+    "Approve the three exact public names.",
+    "Approve the supported profile and 29-destination boundaries.",
+    "Approve route/rule-match-only result-family scope for Phase 7C.",
+    "Decide whether explicit post-ranking filtering is permitted for route-match checks.",
+    "Confirm browser-tab memory as default and choose whether opt-in same-device/session retention may be designed later."
+  ],
+  "follow_up_candidates": [
+    {
+      "tfc_id": "permanent_residence_pathway",
+      "failed_gates": [
+        "CONSTRUCT",
+        "SOURCE",
+        "COVERAGE",
+        "REPLAY",
+        "MAINTENANCE"
+      ]
+    },
+    {
+      "tfc_id": "professional_licensing_requirements",
+      "failed_gates": [
+        "CONSTRUCT",
+        "SOURCE",
+        "COVERAGE",
+        "REPLAY",
+        "MAINTENANCE"
+      ]
+    },
+    {
+      "tfc_id": "employment_deductions_estimate",
+      "failed_gates": [
+        "CONSTRUCT",
+        "SOURCE",
+        "COVERAGE",
+        "REPLAY",
+        "MAINTENANCE"
+      ]
+    },
+    {
+      "tfc_id": "housing_affordability_scenario",
+      "failed_gates": [
+        "COVERAGE"
+      ]
+    },
+    {
+      "tfc_id": "healthcare_affordability_scenario",
+      "failed_gates": [
+        "CONSTRUCT",
+        "SOURCE",
+        "COVERAGE",
+        "REPLAY",
+        "MAINTENANCE"
+      ]
+    }
+  ]
+}

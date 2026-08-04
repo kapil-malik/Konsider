@@ -1,0 +1,173 @@
+{
+  "schema_version": "konsider-phase7b-source-fixture-1.0",
+  "research_cutoff": "2026-08-05",
+  "purpose": "Lawful normalized facts captured for deterministic Phase 7B feasibility replay. This fixture contains no applicant data and is not production evidence.",
+  "anchors_iso3": ["AUS", "CAN", "DEU", "NLD", "SGP", "ARE", "GBR", "USA"],
+  "country_sets": {
+    "eu_immigration_portal_25": ["AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE"],
+    "first_wave_route_29": ["AUS", "AUT", "BEL", "BGR", "CAN", "HRV", "CYP", "CZE", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "GBR", "USA"],
+    "regulated_professions_31": ["AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "ISL", "NOR", "CHE", "GBR"],
+    "oecd_taxing_wages_38": ["AUS", "AUT", "BEL", "CAN", "CHL", "COL", "CRI", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "IRL", "ISR", "ITA", "JPN", "KOR", "LVA", "LTU", "LUX", "MEX", "NLD", "NZL", "NOR", "POL", "PRT", "SVK", "SVN", "ESP", "SWE", "CHE", "TUR", "GBR", "USA"],
+    "eurostat_reference_city_rents_37": ["ALB", "AUT", "BEL", "BGR", "BIH", "CHE", "CYP", "CZE", "DEU", "DNK", "EST", "FIN", "FRA", "GBR", "GRC", "HRV", "HUN", "IRL", "ISL", "ITA", "LTU", "LUX", "LVA", "MKD", "MLT", "MNE", "NLD", "NOR", "POL", "PRT", "ROU", "SRB", "SVK", "SVN", "SWE", "TUR", "ESP"],
+    "missoc_30": ["AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "ISL", "NOR", "CHE"]
+  },
+  "sources": [
+    {
+      "source_id": "EU_IMMIGRATION_PORTAL",
+      "publisher": "European Commission, Directorate-General for Migration and Home Affairs",
+      "authority": "official_supranational_and_member_state_contributed",
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal_en",
+      "technical_access": "stable HTML index plus predictable country/category pages; normalized manual capture required",
+      "coverage_set": "eu_immigration_portal_25",
+      "freshness": "country pages observed with 2025 updates; review before every evidence release",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "captured normalized route facts, exact page URLs, effective dates and checksums; never browse at runtime",
+      "limitations": "Practical guidance is not authentic legal text; member states decide applications and national conditions. Denmark and Ireland are outside the common legal-migration directives."
+    },
+    {
+      "source_id": "AU_HOME_AFFAIRS_ROUTES",
+      "publisher": "Australian Government Department of Home Affairs",
+      "authority": "official_national",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
+      "related_urls": ["https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485"],
+      "technical_access": "stable HTML route pages; normalized manual capture required",
+      "coverage": ["AUS"],
+      "freshness": "review before every evidence release and on route-change alerts",
+      "legal_id": "AU_HOME_AFFAIRS_CC_BY_3_AU",
+      "replay": "captured normalized route facts and exact page identities",
+      "limitations": "Website is a basic guide; legislation is authoritative and route decisions remain individual."
+    },
+    {
+      "source_id": "CA_IRCC_ROUTES",
+      "publisher": "Immigration, Refugees and Citizenship Canada",
+      "authority": "official_national",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html",
+      "related_urls": ["https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work.html", "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/open-work-permit.html"],
+      "technical_access": "stable HTML route pages; normalized manual capture required",
+      "coverage": ["CAN"],
+      "freshness": "review before every evidence release and on IRCC change notices",
+      "legal_id": "CA_OPEN_GOVERNMENT_2",
+      "replay": "captured normalized route facts and exact page identities",
+      "limitations": "Invitation, program, permit and family-work conditions are conditional and time-varying."
+    },
+    {
+      "source_id": "UK_HOME_OFFICE_ROUTES",
+      "publisher": "UK Home Office",
+      "authority": "official_national_rules",
+      "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-worker",
+      "related_urls": ["https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-graduate", "https://www.gov.uk/graduate-visa/your-partner-and-children"],
+      "technical_access": "stable HTML rules and guidance with update history; normalized manual capture required",
+      "coverage": ["GBR"],
+      "freshness": "rules observed updated 2026-07-01; review before every evidence release",
+      "legal_id": "UK_OPEN_GOVERNMENT_LICENCE",
+      "replay": "captured normalized rule facts, exact URLs and effective dates",
+      "limitations": "Route matching is conditional; the public check cannot predict sponsorship, discretion or grant."
+    },
+    {
+      "source_id": "US_USCIS_ROUTES",
+      "publisher": "U.S. Citizenship and Immigration Services",
+      "authority": "official_national",
+      "url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
+      "related_urls": ["https://www.uscis.gov/node/92821", "https://www.uscis.gov/sites/default/files/document/policy-manual-afm/afm31-external.pdf"],
+      "technical_access": "HTML and official PDF guidance; normalized manual capture required",
+      "coverage": ["USA"],
+      "freshness": "review before every evidence release and on USCIS policy alerts",
+      "legal_id": "US_FEDERAL_GOVERNMENT_WORKS",
+      "replay": "captured normalized route facts and exact asset identities",
+      "limitations": "H-1B, H-4 and OPT have petition, cap, authorization and status conditions; third-party material is excluded."
+    },
+    {
+      "source_id": "EU_LONG_TERM_RESIDENTS",
+      "publisher": "European Commission",
+      "authority": "official_supranational_summary",
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/legal-migration-and-resettlement/long-term-residents_en",
+      "technical_access": "stable HTML summary plus linked legislation",
+      "coverage_set": "eu_immigration_portal_25",
+      "freshness": "review before every evidence release; revision proposal is active",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "normalized summary can replay, but complete national pathway inventories are not captured",
+      "limitations": "Five-year EU long-term-resident summary does not cover complete national settlement pathways or applicant residence histories."
+    },
+    {
+      "source_id": "EU_REGULATED_PROFESSIONS_DATABASE",
+      "publisher": "European Commission",
+      "authority": "official_member_state_contributed_database",
+      "url": "https://ec.europa.eu/growth/tools-databases/regprof/",
+      "technical_access": "interactive database; no stable versioned bulk export established",
+      "coverage_set": "regulated_professions_31",
+      "freshness": "countries are responsible for updates",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "not yet sufficient for complete regulator/profession/jurisdiction replay",
+      "limitations": "Coverage identifies regulated professions and authorities, not a complete normalized licensing decision rule."
+    },
+    {
+      "source_id": "OECD_TAXING_WAGES_2026",
+      "publisher": "OECD",
+      "authority": "official_intergovernmental_comparative_model",
+      "url": "https://www.oecd.org/en/publications/2026/04/taxing-wages-2026_d1f39986/full-report/overview_d93131c3.html",
+      "related_urls": ["https://www.oecd.org/en/data/tools/oecd-calculator-of-taxes-and-benefits.html", "https://taxben.oecd.org/"],
+      "technical_access": "publication tables and interactive calculator; underlying TaxBEN STATA command requires application/review",
+      "coverage_set": "oecd_taxing_wages_38",
+      "freshness": "Taxing Wages 2026 covers tax year 2025",
+      "legal_id": "OECD_OPEN_BY_DEFAULT",
+      "replay": "fixed OECD household benchmarks replay; arbitrary applicant gross-to-net formulas do not",
+      "limitations": "Eight standardized household types and earnings levels are not an arbitrary taxpayer calculator."
+    },
+    {
+      "source_id": "EUROSTAT_PRC_COLC_RENTS",
+      "publisher": "Eurostat",
+      "authority": "official_statistical",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_colc_rents?lang=en&sinceTimePeriod=2024",
+      "metadata_url": "https://ec.europa.eu/eurostat/cache/metadata/en/prc_colc_rents_esms.htm",
+      "technical_access": "free JSON-stat dissemination API; latest-version endpoint updated twice daily",
+      "coverage_set": "eurostat_reference_city_rents_37",
+      "freshness": "captured metadata update 2026-01-07 with 2024 and 2025 periods",
+      "legal_id": "EUROSTAT_REUSE",
+      "replay": "normalized metadata and representative rows are captured; production would retain each raw response checksum because API history is not versioned",
+      "limitations": "Selected reference-city neighbourhood rents for standardized dwellings, designed for remuneration comparisons, are not national housing-market estimates."
+    },
+    {
+      "source_id": "EU_MISSOC",
+      "publisher": "European Commission, MISSOC network",
+      "authority": "official_ministry_contributed_comparative_information",
+      "url": "https://employment-social-affairs.ec.europa.eu/policies-and-activities/moving-working-europe/eu-social-security-coordination/specialised-information/social-protection-systems-missoc_en",
+      "technical_access": "structured comparative tables and country information; normalized extraction requires review",
+      "coverage_set": "missoc_30",
+      "freshness": "updated twice yearly, January and July",
+      "legal_id": "EU_COMMISSION_CC_BY_4",
+      "replay": "system eligibility summaries can be captured; a comparable applicant mandatory-cost formula cannot yet replay",
+      "limitations": "Healthcare-system descriptions do not supply a comparable, applicant-specific mandatory-cost calculation."
+    }
+  ],
+  "legal_conclusions": [
+    {"legal_id": "EU_COMMISSION_CC_BY_4", "url": "https://commission.europa.eu/legal-notice_en", "conclusion": "PASS_WITH_ATTRIBUTION", "normalized_derivatives": "allowed for Commission-owned content under CC BY 4.0 unless otherwise indicated", "obligations": ["credit the European Union", "link licence", "indicate changes", "exclude third-party material and official emblems"]},
+    {"legal_id": "AU_HOME_AFFAIRS_CC_BY_3_AU", "url": "https://www.homeaffairs.gov.au/access-and-accountability/using-our-website/copyright-and-disclaimer", "conclusion": "PASS_WITH_ATTRIBUTION", "normalized_derivatives": "allowed for department-produced website material under CC BY 3.0 Australia", "obligations": ["attribute Australian Government Department of Home Affairs", "exclude logo, coat of arms, third-party and specifically excluded material"]},
+    {"legal_id": "CA_OPEN_GOVERNMENT_2", "url": "https://open.canada.ca/en/open-government-licence-canada", "conclusion": "PASS_WITH_ATTRIBUTION", "normalized_derivatives": "worldwide commercial and non-commercial use allowed", "obligations": ["use prescribed attribution", "link licence where possible", "exclude personal information, symbols and third-party rights", "do not imply endorsement"]},
+    {"legal_id": "UK_OPEN_GOVERNMENT_LICENCE", "url": "https://www.gov.uk/help/terms-conditions", "conclusion": "PASS_WITH_ATTRIBUTION", "normalized_derivatives": "most Crown-copyright GOV.UK content is reusable under OGL", "obligations": ["follow OGL attribution and exemptions", "exclude credited third-party material", "do not imply official product status"]},
+    {"legal_id": "US_FEDERAL_GOVERNMENT_WORKS", "url": "https://www.copyright.gov/title17/92chap1.html", "conclusion": "PASS_WITH_EXCLUSIONS", "normalized_derivatives": "U.S. federal government works are generally not protected by U.S. copyright under 17 USC 105", "obligations": ["exclude transferred/third-party works, seals, logos and marks", "record exact USCIS page provenance", "do not imply endorsement"]},
+    {"legal_id": "OECD_OPEN_BY_DEFAULT", "url": "https://www.oecd.org/en/about/oecd-open-by-default-policy.html", "conclusion": "PASS_FOR_IDENTIFIED_OPEN_CONTENT_ONLY", "normalized_derivatives": "post-2024 OECD content is generally openly licensed, but each asset must retain its exact notice", "obligations": ["verify publication-specific notice", "attribute OECD", "do not treat access to the restricted TaxBEN command as granted"]},
+    {"legal_id": "EUROSTAT_REUSE", "url": "https://ec.europa.eu/eurostat/help/copyright-notice", "conclusion": "PASS_WITH_ATTRIBUTION", "normalized_derivatives": "Eurostat statistical data and metadata may be reused commercially and non-commercially subject to exceptions", "obligations": ["cite Eurostat as source", "indicate modifications", "exclude third-party material", "retain capture identity because the API is latest-only"]}
+  ],
+  "candidate_overrides": [
+    {"tfc_id": "skilled_work_route_feasibility", "public_name": "Highly qualified work route check", "check_kind": "RULE_ROUTE_MATCH", "support_set": "first_wave_route_29", "support_state": "SOURCE_ROUTE_ASSESSABLE", "source_ids": ["EU_IMMIGRATION_PORTAL", "AU_HOME_AFFAIRS_ROUTES", "CA_IRCC_ROUTES", "UK_HOME_OFFICE_ROUTES", "US_USCIS_ROUTES"], "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE", "public_limitations": "Positive or conditional matches only across the frozen named-route inventory; never predicts invitation, sponsorship or grant."},
+    {"tfc_id": "family_accompaniment_reunification", "public_name": "Dependants on supported work and study routes", "check_kind": "RULE_ROUTE_MATCH", "support_set": "first_wave_route_29", "support_state": "SOURCE_ROUTE_ASSESSABLE", "source_ids": ["EU_IMMIGRATION_PORTAL", "AU_HOME_AFFAIRS_ROUTES", "CA_IRCC_ROUTES", "UK_HOME_OFFICE_ROUTES", "US_USCIS_ROUTES"], "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE", "public_limitations": "Limited to partner/child conditions attached to the frozen supported primary routes; not a general family-reunification checker."},
+    {"tfc_id": "post_study_work_pathway", "public_name": "Post-study stay and work route check", "check_kind": "RULE_ROUTE_MATCH", "support_set": "first_wave_route_29", "support_state": "SOURCE_ROUTE_ASSESSABLE", "source_ids": ["EU_IMMIGRATION_PORTAL", "AU_HOME_AFFAIRS_ROUTES", "CA_IRCC_ROUTES", "UK_HOME_OFFICE_ROUTES", "US_USCIS_ROUTES"], "disposition": "PRODUCTION_QUALIFIED_FIRST_WAVE", "public_limitations": "Checks current/completed study facts against frozen routes; future graduation remains provisional and institution identity must be verified."},
+    {"tfc_id": "permanent_residence_pathway", "public_name": "Permanent-residence pathway", "check_kind": "RULE_ROUTE_MATCH", "support_set": "first_wave_route_29", "support_state": "SOURCE_ROUTE_PARTIALLY_ASSESSABLE", "source_ids": ["EU_LONG_TERM_RESIDENTS", "AU_HOME_AFFAIRS_ROUTES", "CA_IRCC_ROUTES", "UK_HOME_OFFICE_ROUTES", "US_USCIS_ROUTES"], "disposition": "NEEDS_TARGETED_FOLLOW_UP", "public_limitations": "Current sources do not form a complete route inventory or normalize residence-history counting."},
+    {"tfc_id": "professional_licensing_requirements", "public_name": "Professional licensing requirements", "check_kind": "RULE_ROUTE_MATCH", "support_set": "regulated_professions_31", "support_state": "SOURCE_ROUTE_PARTIALLY_ASSESSABLE", "source_ids": ["EU_REGULATED_PROFESSIONS_DATABASE"], "disposition": "NEEDS_TARGETED_FOLLOW_UP", "public_limitations": "Database coverage does not replace profession-, regulator- and jurisdiction-specific recognition rules."},
+    {"tfc_id": "employment_deductions_estimate", "public_name": "Employment deductions estimate", "check_kind": "SCENARIO_METRIC", "support_set": "oecd_taxing_wages_38", "support_state": "SOURCE_ROUTE_PARTIALLY_ASSESSABLE", "source_ids": ["OECD_TAXING_WAGES_2026"], "disposition": "NEEDS_TARGETED_FOLLOW_UP", "public_limitations": "OECD benchmark households cannot yield an arbitrary applicant payslip; national formulas remain required."},
+    {"tfc_id": "housing_affordability_scenario", "public_name": "Reference-city rent affordability scenario", "check_kind": "SCENARIO_METRIC", "support_set": "eurostat_reference_city_rents_37", "support_state": "SOURCE_ROUTE_ASSESSABLE", "source_ids": ["EUROSTAT_PRC_COLC_RENTS"], "disposition": "NEEDS_TARGETED_FOLLOW_UP", "public_limitations": "Reference-city standardized-dwelling rents are not representative national rents; the frozen 6-of-8-anchor floor is not met."},
+    {"tfc_id": "healthcare_affordability_scenario", "public_name": "Healthcare affordability scenario", "check_kind": "SCENARIO_METRIC", "support_set": "missoc_30", "support_state": "SOURCE_ROUTE_PARTIALLY_ASSESSABLE", "source_ids": ["EU_MISSOC"], "disposition": "NEEDS_TARGETED_FOLLOW_UP", "public_limitations": "MISSOC describes systems but does not provide comparable mandatory-cost formulas for the supported applicant model."}
+  ],
+  "route_rule_examples": [
+    {"example_id": "EU_BLUE_CARD", "source_id": "EU_IMMIGRATION_PORTAL", "destination_scope": "EU portal 25, subject to national transposition", "inputs": ["job_offer", "qualification_or_experience", "salary", "destination", "snapshot_date"], "positive_boundary": "A named route can be conditionally matched when its frozen threshold facts are satisfied.", "negative_boundary": "Absence of a positive match is not permanent ineligibility."},
+    {"example_id": "AU_SID_482", "source_id": "AU_HOME_AFFAIRS_ROUTES", "destination_scope": "AUS", "inputs": ["approved_sponsor", "nominated_occupation", "skills", "english", "salary_where_applicable", "snapshot_date"], "positive_boundary": "Conditional match only; nomination and grant are external decisions.", "negative_boundary": "Do not infer rejection from incomplete facts."},
+    {"example_id": "CA_EXPRESS_ENTRY", "source_id": "CA_IRCC_ROUTES", "destination_scope": "CAN", "inputs": ["program_family", "occupation", "experience", "language", "education", "snapshot_date"], "positive_boundary": "Potential program match is separate from invitation.", "negative_boundary": "No invitation prediction."},
+    {"example_id": "UK_SKILLED_WORKER", "source_id": "UK_HOME_OFFICE_ROUTES", "destination_scope": "GBR", "inputs": ["sponsor", "job_offer", "occupation", "salary", "english", "snapshot_date"], "positive_boundary": "Conditional route match only.", "negative_boundary": "No visa-grant prediction."},
+    {"example_id": "US_H1B", "source_id": "US_USCIS_ROUTES", "destination_scope": "USA", "inputs": ["employer_petition", "specialty_occupation", "qualification", "snapshot_date"], "positive_boundary": "Conditional route match only.", "negative_boundary": "Cap selection, petition approval, visa issuance and admission are outside the check."}
+  ],
+  "metric_formula_examples": [
+    {"example_id": "OECD_FIXED_HOUSEHOLD_TAX_WEDGE", "source_id": "OECD_TAXING_WAGES_2026", "formula": "(personal_income_tax + employee_social_security + employer_social_security - cash_benefits) / total_labour_cost", "usable_for": "benchmark reconciliation only", "blocked_for": "arbitrary applicant net-pay estimate"},
+    {"example_id": "EUROSTAT_REFERENCE_CITY_RENT_SHARE", "source_id": "EUROSTAT_PRC_COLC_RENTS", "formula": "monthly_reference_rent / monthly_income", "usable_for": "one explicit city, dwelling type, currency and period", "blocked_for": "national housing affordability or availability"},
+    {"example_id": "MISSOC_MANDATORY_HEALTH_COST", "source_id": "EU_MISSOC", "formula": null, "usable_for": "system eligibility and financing research", "blocked_for": "comparable applicant mandatory-cost estimate until national formulas are captured"}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "konsider-phase7b-metric-examples-1.0",
+  "examples": [
+    {
+      "example_id": "OECD_FIXED_HOUSEHOLD_TAX_WEDGE",
+      "source_id": "OECD_TAXING_WAGES_2026",
+      "formula": "(personal_income_tax + employee_social_security + employer_social_security - cash_benefits) / total_labour_cost",
+      "usable_for": "benchmark reconciliation only",
+      "blocked_for": "arbitrary applicant net-pay estimate"
+    },
+    {
+      "example_id": "EUROSTAT_REFERENCE_CITY_RENT_SHARE",
+      "source_id": "EUROSTAT_PRC_COLC_RENTS",
+      "formula": "monthly_reference_rent / monthly_income",
+      "usable_for": "one explicit city, dwelling type, currency and period",
+      "blocked_for": "national housing affordability or availability"
+    },
+    {
+      "example_id": "MISSOC_MANDATORY_HEALTH_COST",
+      "source_id": "EU_MISSOC",
+      "formula": null,
+      "usable_for": "system eligibility and financing research",
+      "blocked_for": "comparable applicant mandatory-cost estimate until national formulas are captured"
+    }
+  ]
+}

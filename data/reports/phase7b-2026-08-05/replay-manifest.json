@@ -1,0 +1,71 @@
+{
+  "schema_version": "konsider-phase7b-replay-manifest-1.0",
+  "generated_at": "2026-08-05",
+  "command": "node project-history/phases/phase-7/research/run_phase7b_tfc_probe.mjs",
+  "inputs": [
+    "data/country-universes/stable-supported-v1.json",
+    "data/reports/phase7a-2026-08-05/phase7b-deep-probe-protocol.json",
+    "project-history/phases/phase-7/research/fixtures/phase7b-source-fixture.json"
+  ],
+  "output_directory": "data/reports/phase7b-2026-08-05",
+  "deterministic": true,
+  "runtime_network_required": false,
+  "real_applicant_data": false,
+  "artifacts": [
+    {
+      "path": "candidate-definitions.json",
+      "sha256": "1725559d3eaa7cabb89e2f755e2262aa5d84153e6b288e685db496ad1b7a8226",
+      "bytes": 14069
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "6f6eeb8b37de2118018382cb5a9df147cd500b4d4bbd4e5349a188d0d2e22aea",
+      "bytes": 9129
+    },
+    {
+      "path": "legal-reuse-conclusions.json",
+      "sha256": "1c3c044bf03e8e2ab5c849f4857b13b7d013b2a0b9535d58fc21a9a390faa608",
+      "bytes": 3490
+    },
+    {
+      "path": "country-support-matrix.jsonl",
+      "sha256": "5fa077d6513a75fb6182a536cd634070b86ba9fb27df796919c024be0670e4a4",
+      "bytes": 209019
+    },
+    {
+      "path": "support-summary.json",
+      "sha256": "d67390fa136f91ed60786b2b88402f9f98eebdcf8227ee2a08e3d23e8949f7af",
+      "bytes": 4839
+    },
+    {
+      "path": "required-profile-fields.json",
+      "sha256": "0fd893a2df6e02949f1a75840eec211f14fa5bbecd185dad4c56edd5589bef51",
+      "bytes": 3223
+    },
+    {
+      "path": "route-rule-examples.json",
+      "sha256": "d768bb4857958518c6e6958a1c2a1003d5ecdc2222731d5281ad5c459b120188",
+      "bytes": 2344
+    },
+    {
+      "path": "metric-formula-examples.json",
+      "sha256": "5fa79d6fd267a1a165b056ee51f1ff56dd1aabcd6d7a36d65fe46e5ba8a2cafb",
+      "bytes": 1054
+    },
+    {
+      "path": "effective-date-and-conflicts.json",
+      "sha256": "892e843de79c56fc68c8cb2874c04da1169f0081e193c083107736bbdbd422a9",
+      "bytes": 927
+    },
+    {
+      "path": "synthetic-scenario-results.json",
+      "sha256": "462b16c3c2b93d8cdb713b976ad3c63ed9ec33d7a262c1b6099a49b2c1fb459f",
+      "bytes": 4899
+    },
+    {
+      "path": "owner-decision-summary.json",
+      "sha256": "89e7b5a30364826b1b9d97d12b5733c493b9afdf3c66803c4144df3fbf61db9f",
+      "bytes": 2816
+    }
+  ]
+}
