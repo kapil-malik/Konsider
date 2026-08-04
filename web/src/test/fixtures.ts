@@ -283,6 +283,33 @@ const localityContribution = (
 
 type LocalityStatus = RankedCountryV2['assessments']['locality']['status']
 
+const countryOpportunityAssessment: RankedCountryV2['assessments']['opportunity'] = {
+  evaluated: false,
+  passes: null,
+  filter_evidence: [],
+}
+
+const opportunityAssessment: RankingV2['assessments']['opportunity'] = {
+  status: 'NO_FILTERS_ACTIVE',
+  mode: 'ALL_REQUIRED',
+  active_filter_ids: [],
+  input_ranked_country_count: 5,
+  passing_country_count: 5,
+  excluded_country_count: 0,
+  excluded_counts_by_state: {
+    STRONG_SIGNAL_NOT_ESTABLISHED: 0,
+    INSUFFICIENT_EVIDENCE: 0,
+  },
+  per_filter: [],
+  excluded_countries: [],
+  opportunity_release_id: null,
+  evidence_policy_version: null,
+  source_bundle_version: null,
+  strict_filter_explanation:
+    'No Opportunity Filters were selected; canonical ranking is unchanged.',
+  no_score_impact: true,
+}
+
 const countryLocalityAssessment = (
   countryIndex: number,
   status: LocalityStatus,
@@ -328,6 +355,7 @@ const rankedCountry = (
   localityStatus: LocalityStatus = 'COMMON_LOCALITY_AVAILABLE',
 ): RankedCountryV2 => ({
   rank: index + 1,
+  base_rank: index + 1,
   country: countries[index],
   total_score: 8.5 - index * 0.4,
   contributions: [
@@ -337,6 +365,7 @@ const rankedCountry = (
   assessments: {
     locality: countryLocalityAssessment(index, localityStatus),
     profile: profileAssessment,
+    opportunity: countryOpportunityAssessment,
   },
 })
 
@@ -403,6 +432,7 @@ export const rankingFixture: RankingV2 = {
     coverage: coverageAssessment,
     locality: responseLocalityAssessment('COMMON_LOCALITY_AVAILABLE'),
     profile: profileAssessment,
+    opportunity: opportunityAssessment,
   },
   rankings: rankedCountries,
 }
@@ -524,8 +554,10 @@ export const comparisonFixture: ComparisonV2 = {
   countries: rankedCountries.slice(0, 4).map((country) => ({
     country: country.country,
     rank: country.rank,
+    base_rank: country.base_rank,
     final_aggregate: country.total_score,
     coverage_excluded: false,
+    opportunity_excluded: false,
     assessments: country.assessments,
   })),
   criterion_rows: [airCriterion, heatCriterion].map((criterionValue) => ({
@@ -560,11 +592,14 @@ export const comparisonWithUnavailableFixture: ComparisonV2 = {
     {
       country: countries[4],
       rank: null,
+      base_rank: null,
       final_aggregate: null,
       coverage_excluded: true,
+      opportunity_excluded: false,
       assessments: {
         locality: countryLocalityAssessment(4, 'NO_COMMON_LOCALITY'),
         profile: profileAssessment,
+        opportunity: countryOpportunityAssessment,
       },
     },
   ],
@@ -646,5 +681,6 @@ export function countryDetailsFixture(
     assessments: ranking.assessments,
     country,
     criteria,
+    opportunity_filters: [],
   }
 }

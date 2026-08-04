@@ -14,9 +14,12 @@ from konsider.exceptions import (
     CountryNotFoundError,
     CriterionNotReadyError,
     InvalidTopKError,
+    InvalidOpportunityFilterSelectionError,
     InvalidWeightError,
+    OpportunityFilterNotActiveError,
     PreferencePresetNotFoundError,
     UnknownCriterionError,
+    UnknownOpportunityFilterError,
 )
 from konsider.ingestion.current_release import CurrentReleaseError
 
@@ -83,6 +86,36 @@ def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(InvalidWeightError)
     async def invalid_weight_handler(request: Request, exc: InvalidWeightError):
         return error_response(request, 422, "invalid_weight", str(exc))
+
+    @app.exception_handler(UnknownOpportunityFilterError)
+    async def unknown_opportunity_filter_handler(
+        request: Request, exc: UnknownOpportunityFilterError
+    ):
+        return error_response(
+            request,
+            422,
+            "unknown_opportunity_filter",
+            "One or more Opportunity Filter IDs are unknown.",
+            {"filter_ids": exc.filter_ids},
+        )
+
+    @app.exception_handler(OpportunityFilterNotActiveError)
+    async def inactive_opportunity_filter_handler(
+        request: Request, exc: OpportunityFilterNotActiveError
+    ):
+        return error_response(
+            request,
+            422,
+            "opportunity_filter_not_active",
+            "One or more Opportunity Filters are not active in the selected release.",
+            {"filter_ids": exc.filter_ids},
+        )
+
+    @app.exception_handler(InvalidOpportunityFilterSelectionError)
+    async def invalid_opportunity_filter_selection_handler(
+        request: Request, exc: InvalidOpportunityFilterSelectionError
+    ):
+        return error_response(request, 422, "invalid_opportunity_filter_selection", str(exc))
 
     @app.exception_handler(InvalidTopKError)
     async def invalid_top_k_handler(request: Request, exc: InvalidTopKError):

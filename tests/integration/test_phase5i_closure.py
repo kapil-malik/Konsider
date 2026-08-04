@@ -151,7 +151,12 @@ def test_active_release_catalog_validation_api_and_licences_agree() -> None:
     assert public_catalog["release_schema_version"] == manifest["schema_version"]
     assert public_catalog["catalog_schema_version"] == catalog["schema_version"]
     assert {row["id"] for row in public_catalog["criteria"]} == set(manifest["criteria"])
-    assert set(ranking["assessments"]) == {"coverage", "locality", "profile"}
+    assert set(ranking["assessments"]) == {
+        "coverage",
+        "locality",
+        "profile",
+        "opportunity",
+    }
     assert ranking["assessments"]["coverage"]["status"] == "PARTIAL_COMPLETE_CASE"
     assert ranking["assessments"]["locality"]["status"] in {
         "COMMON_LOCALITY_AVAILABLE",
@@ -162,6 +167,8 @@ def test_active_release_catalog_validation_api_and_licences_agree() -> None:
     assert {reason["effect"] for reason in ranking["assessments"]["profile"]["reasons"]} == {
         "NOT_EVALUATED"
     }
+    assert ranking["assessments"]["opportunity"]["status"] == "NO_FILTERS_ACTIVE"
+    assert ranking["assessments"]["opportunity"]["active_filter_ids"] == []
     assert DEPRECATED_PUBLIC_FIELDS.isdisjoint(_all_keys(public_catalog))
     assert DEPRECATED_PUBLIC_FIELDS.isdisjoint(_all_keys(ranking))
 

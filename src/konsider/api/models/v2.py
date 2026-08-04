@@ -48,9 +48,24 @@ class V2VersionedResponse(ApiModel):
     scoring_method_versions: list[str]
 
 
+class OpportunityFilterSelection(ApiModel):
+    mode: Literal["ALL_REQUIRED"] = "ALL_REQUIRED"
+    required_filter_ids: list[str] = Field(default_factory=list)
+
+    @field_validator("required_filter_ids")
+    @classmethod
+    def unique_canonical_filter_ids(cls, value: list[str]) -> list[str]:
+        if len(value) != len(set(value)):
+            raise ValueError("Opportunity Filter IDs must be unique.")
+        if any(not item for item in value):
+            raise ValueError("Opportunity Filter IDs must be non-empty.")
+        return sorted(value)
+
+
 class V2WeightSelection(ApiModel):
     weights: dict[str, float] | None = None
     preference_preset_id: str | None = Field(default=None, min_length=1)
+    opportunity_filters: OpportunityFilterSelection | None = None
 
     _strict_weights = field_validator("weights", mode="before")(_validate_weights)
 
@@ -202,6 +217,52 @@ class CatalogV2Response(V2VersionedResponse):
     countries: list[GeographicEntityResponse]
     criteria: list[CatalogCriterionV2Response]
     preference_presets: list[PreferencePresetResponse]
+
+
+class OpportunitySourceVintageResponse(ApiModel):
+    source_id: str
+    source_version: str
+    publisher: str
+    attribution: str
+
+
+class OpportunityFilterStateCountsResponse(ApiModel):
+    VERIFIED_STRONG_SIGNAL: int = Field(ge=0)
+    STRONG_SIGNAL_NOT_ESTABLISHED: int = Field(ge=0)
+    INSUFFICIENT_EVIDENCE: int = Field(ge=0)
+
+
+class OpportunityFilterCoverageResponse(ApiModel):
+    assessable_count: int = Field(ge=0)
+    state_counts: OpportunityFilterStateCountsResponse
+    source_dependency_status: Literal["AVAILABLE", "DEGRADED", "UNAVAILABLE"]
+
+
+class OpportunityFilterDefinitionV2Response(ApiModel):
+    id: str
+    display_name: str
+    compact_label: str | None
+    category: Literal["CAREER", "EDUCATION"]
+    meaning: str
+    limitations: list[str]
+    documentation_ref: str
+    coverage: OpportunityFilterCoverageResponse
+    source_vintage: list[OpportunitySourceVintageResponse]
+    active: bool
+    availability: Literal["STAGED", "AVAILABLE", "WITHDRAWN"]
+    mode: Literal["ALL_REQUIRED"]
+    eligibility_state: Literal["VERIFIED_STRONG_SIGNAL"]
+    no_score_impact: Literal[True]
+
+
+class OpportunityFilterCatalogV2Response(V2VersionedResponse):
+    opportunity_release_id: str | None
+    state_contract_version: str | None
+    evidence_policy_version: str | None
+    source_bundle_version: str | None
+    mode: Literal["ALL_REQUIRED"]
+    no_score_impact: Literal[True]
+    definitions: list[OpportunityFilterDefinitionV2Response]
 
 
 class HealthV2Response(V2VersionedResponse):
@@ -371,6 +432,75 @@ class CoverageAssessmentV2Response(ApiModel):
     reasons: list[AssessmentReasonResponse]
 
 
+class OpportunityFilterEvidenceSummaryResponse(ApiModel):
+    filter_id: str
+    state: Literal[
+        "VERIFIED_STRONG_SIGNAL",
+        "STRONG_SIGNAL_NOT_ESTABLISHED",
+        "INSUFFICIENT_EVIDENCE",
+    ]
+    passes: bool
+    confidence_band: Literal["HIGH", "MEDIUM", "LOW"]
+    establishing_route_ids: list[str]
+    reason_codes: list[str]
+    reference_period: str | None
+    source_ids: list[str]
+    limitations: list[str]
+    documentation_ref: str
+
+
+class CountryOpportunityAssessmentV2Response(ApiModel):
+    evaluated: bool
+    passes: bool | None
+    filter_evidence: list[OpportunityFilterEvidenceSummaryResponse]
+
+    @model_validator(mode="after")
+    def evaluation_state_is_explicit(self) -> CountryOpportunityAssessmentV2Response:
+        if self.evaluated and self.passes is None:
+            raise ValueError("Evaluated Opportunity Filters require an explicit pass state.")
+        if not self.evaluated and (self.passes is not None or self.filter_evidence):
+            raise ValueError(
+                "Unevaluated Opportunity Filters cannot carry evidence or a pass state."
+            )
+        return self
+
+
+class OpportunityPerFilterAssessmentV2Response(ApiModel):
+    filter_id: str
+    input_country_count: int = Field(ge=0)
+    passing_country_count: int = Field(ge=0)
+    state_counts: OpportunityFilterStateCountsResponse
+
+
+class OpportunityExcludedCountsResponse(ApiModel):
+    STRONG_SIGNAL_NOT_ESTABLISHED: int = Field(ge=0)
+    INSUFFICIENT_EVIDENCE: int = Field(ge=0)
+
+
+class OpportunityExcludedCountryV2Response(ApiModel):
+    country_code: str = Field(pattern=r"^[A-Z]{3}$")
+    base_rank: int = Field(ge=1)
+    exclusion_category: Literal["STRONG_SIGNAL_NOT_ESTABLISHED", "INSUFFICIENT_EVIDENCE"]
+    failing_filter_evidence: list[OpportunityFilterEvidenceSummaryResponse]
+
+
+class OpportunityAssessmentV2Response(ApiModel):
+    status: Literal["NO_FILTERS_ACTIVE", "FILTERS_APPLIED", "NO_COUNTRIES_MATCH"]
+    mode: Literal["ALL_REQUIRED"]
+    active_filter_ids: list[str]
+    input_ranked_country_count: int = Field(ge=0)
+    passing_country_count: int = Field(ge=0)
+    excluded_country_count: int = Field(ge=0)
+    excluded_counts_by_state: OpportunityExcludedCountsResponse
+    per_filter: list[OpportunityPerFilterAssessmentV2Response]
+    excluded_countries: list[OpportunityExcludedCountryV2Response]
+    opportunity_release_id: str | None
+    evidence_policy_version: str | None
+    source_bundle_version: str | None
+    strict_filter_explanation: str
+    no_score_impact: Literal[True]
+
+
 class ResponseLocalityAssessmentV2Response(ApiModel):
     status: LocalityStatus
     policy_version: str
@@ -386,15 +516,18 @@ class AssessmentsV2Response(ApiModel):
     coverage: CoverageAssessmentV2Response
     locality: ResponseLocalityAssessmentV2Response
     profile: ProfileAssessmentResponse
+    opportunity: OpportunityAssessmentV2Response
 
 
 class CountryAssessmentsV2Response(ApiModel):
     locality: CountryLocalityAssessmentResponse
     profile: ProfileAssessmentResponse
+    opportunity: CountryOpportunityAssessmentV2Response
 
 
 class RankedCountryV2Response(ApiModel):
     rank: int = Field(ge=1)
+    base_rank: int = Field(ge=1)
     country: GeographicEntityResponse
     total_score: float
     contributions: list[ContributionV2Response]
@@ -423,14 +556,30 @@ class ComparisonCriterionRowV2Response(ApiModel):
 class ComparedCountryV2Response(ApiModel):
     country: GeographicEntityResponse
     rank: int | None
+    base_rank: int | None
     final_aggregate: float | None
     coverage_excluded: bool
+    opportunity_excluded: bool
     assessments: CountryAssessmentsV2Response
 
     @model_validator(mode="after")
     def excluded_has_no_aggregate(self) -> ComparedCountryV2Response:
-        if self.coverage_excluded and (self.rank is not None or self.final_aggregate is not None):
+        if self.coverage_excluded and (
+            self.rank is not None
+            or self.base_rank is not None
+            or self.final_aggregate is not None
+            or self.opportunity_excluded
+        ):
             raise ValueError("Coverage-excluded countries cannot carry a final aggregate.")
+        if self.opportunity_excluded and (
+            self.coverage_excluded
+            or self.rank is not None
+            or self.base_rank is None
+            or self.final_aggregate is None
+        ):
+            raise ValueError(
+                "Opportunity-excluded countries retain base rank and score but no filtered rank."
+            )
         return self
 
 
@@ -454,3 +603,4 @@ class CountryDetailsV2Response(V2VersionedResponse):
     assessments: AssessmentsV2Response
     country: GeographicEntityResponse
     criteria: list[CountryCriterionDetailV2Response]
+    opportunity_filters: list[OpportunityFilterEvidenceSummaryResponse]

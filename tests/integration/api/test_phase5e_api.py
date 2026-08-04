@@ -74,7 +74,8 @@ def test_v2_ranking_exposes_locality_provenance_and_orthogonal_assessments(
     assert response.status_code == 200
     body = response.json()
     assert body["resolved_preference_preset_id"] is None
-    assert set(body["assessments"]) == {"coverage", "locality", "profile"}
+    assert set(body["assessments"]) == {"coverage", "locality", "profile", "opportunity"}
+    assert body["assessments"]["opportunity"]["status"] == "NO_FILTERS_ACTIVE"
     assert body["assessments"]["coverage"]["status"] == "PARTIAL_COMPLETE_CASE"
     assert body["assessments"]["locality"]["status"] == "ONE_ACTIVE_LOCALITY_CRITERION"
     profile = body["assessments"]["profile"]
@@ -205,6 +206,25 @@ def test_coverage_and_locality_statuses_are_transport_independent(
                     }
                 ],
             },
+            "opportunity": {
+                "status": "NO_FILTERS_ACTIVE",
+                "mode": "ALL_REQUIRED",
+                "active_filter_ids": [],
+                "input_ranked_country_count": 3,
+                "passing_country_count": 3,
+                "excluded_country_count": 0,
+                "excluded_counts_by_state": {
+                    "STRONG_SIGNAL_NOT_ESTABLISHED": 0,
+                    "INSUFFICIENT_EVIDENCE": 0,
+                },
+                "per_filter": [],
+                "excluded_countries": [],
+                "opportunity_release_id": None,
+                "evidence_policy_version": None,
+                "source_bundle_version": None,
+                "strict_filter_explanation": "Strict AND; no score impact.",
+                "no_score_impact": True,
+            },
         }
     )
 
@@ -273,6 +293,7 @@ def test_openapi_declares_only_the_final_public_routes_and_every_status() -> Non
         "/api/v2/rankings",
         "/api/v2/comparisons",
         "/api/v2/countries/{country_code}/details",
+        "/api/v2/opportunity-filters",
     }
     serialized = str(schema)
     for status in (
@@ -284,6 +305,9 @@ def test_openapi_declares_only_the_final_public_routes_and_every_status() -> Non
         "NO_COMMON_LOCALITY",
         "INSUFFICIENT_LOCALITY_EVIDENCE",
         "MIXED_COUNTRY_RESULTS",
+        "NO_FILTERS_ACTIVE",
+        "FILTERS_APPLIED",
+        "NO_COUNTRIES_MATCH",
     ):
         assert status in serialized
 

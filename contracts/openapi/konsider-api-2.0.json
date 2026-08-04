@@ -87,6 +87,9 @@
           "locality": {
             "$ref": "#/components/schemas/ResponseLocalityAssessmentV2Response"
           },
+          "opportunity": {
+            "$ref": "#/components/schemas/OpportunityAssessmentV2Response"
+          },
           "profile": {
             "$ref": "#/components/schemas/ProfileAssessmentResponse"
           }
@@ -94,7 +97,8 @@
         "required": [
           "coverage",
           "locality",
-          "profile"
+          "profile",
+          "opportunity"
         ],
         "title": "AssessmentsV2Response",
         "type": "object"
@@ -289,6 +293,17 @@
           "assessments": {
             "$ref": "#/components/schemas/CountryAssessmentsV2Response"
           },
+          "base_rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Rank"
+          },
           "country": {
             "$ref": "#/components/schemas/GeographicEntityResponse"
           },
@@ -307,6 +322,10 @@
             ],
             "title": "Final Aggregate"
           },
+          "opportunity_excluded": {
+            "title": "Opportunity Excluded",
+            "type": "boolean"
+          },
           "rank": {
             "anyOf": [
               {
@@ -322,8 +341,10 @@
         "required": [
           "country",
           "rank",
+          "base_rank",
           "final_aggregate",
           "coverage_excluded",
+          "opportunity_excluded",
           "assessments"
         ],
         "title": "ComparedCountryV2Response",
@@ -720,13 +741,17 @@
           "locality": {
             "$ref": "#/components/schemas/CountryLocalityAssessmentResponse"
           },
+          "opportunity": {
+            "$ref": "#/components/schemas/CountryOpportunityAssessmentV2Response"
+          },
           "profile": {
             "$ref": "#/components/schemas/ProfileAssessmentResponse"
           }
         },
         "required": [
           "locality",
-          "profile"
+          "profile",
+          "opportunity"
         ],
         "title": "CountryAssessmentsV2Response",
         "type": "object"
@@ -781,6 +806,13 @@
             "title": "Normalized Weights",
             "type": "object"
           },
+          "opportunity_filters": {
+            "items": {
+              "$ref": "#/components/schemas/OpportunityFilterEvidenceSummaryResponse"
+            },
+            "title": "Opportunity Filters",
+            "type": "array"
+          },
           "release_id": {
             "title": "Release Id",
             "type": "string"
@@ -817,7 +849,8 @@
           "normalized_weights",
           "assessments",
           "country",
-          "criteria"
+          "criteria",
+          "opportunity_filters"
         ],
         "title": "CountryDetailsV2Response",
         "type": "object"
@@ -904,6 +937,40 @@
           "reasons"
         ],
         "title": "CountryLocalityAssessmentResponse",
+        "type": "object"
+      },
+      "CountryOpportunityAssessmentV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "evaluated": {
+            "title": "Evaluated",
+            "type": "boolean"
+          },
+          "filter_evidence": {
+            "items": {
+              "$ref": "#/components/schemas/OpportunityFilterEvidenceSummaryResponse"
+            },
+            "title": "Filter Evidence",
+            "type": "array"
+          },
+          "passes": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Passes"
+          }
+        },
+        "required": [
+          "evaluated",
+          "passes",
+          "filter_evidence"
+        ],
+        "title": "CountryOpportunityAssessmentV2Response",
         "type": "object"
       },
       "CoverageAssessmentV2Response": {
@@ -1581,6 +1648,615 @@
         "title": "ObservationEvidenceResponse",
         "type": "object"
       },
+      "OpportunityAssessmentV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "active_filter_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Active Filter Ids",
+            "type": "array"
+          },
+          "evidence_policy_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Policy Version"
+          },
+          "excluded_countries": {
+            "items": {
+              "$ref": "#/components/schemas/OpportunityExcludedCountryV2Response"
+            },
+            "title": "Excluded Countries",
+            "type": "array"
+          },
+          "excluded_country_count": {
+            "minimum": 0.0,
+            "title": "Excluded Country Count",
+            "type": "integer"
+          },
+          "excluded_counts_by_state": {
+            "$ref": "#/components/schemas/OpportunityExcludedCountsResponse"
+          },
+          "input_ranked_country_count": {
+            "minimum": 0.0,
+            "title": "Input Ranked Country Count",
+            "type": "integer"
+          },
+          "mode": {
+            "const": "ALL_REQUIRED",
+            "title": "Mode",
+            "type": "string"
+          },
+          "no_score_impact": {
+            "const": true,
+            "title": "No Score Impact",
+            "type": "boolean"
+          },
+          "opportunity_release_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opportunity Release Id"
+          },
+          "passing_country_count": {
+            "minimum": 0.0,
+            "title": "Passing Country Count",
+            "type": "integer"
+          },
+          "per_filter": {
+            "items": {
+              "$ref": "#/components/schemas/OpportunityPerFilterAssessmentV2Response"
+            },
+            "title": "Per Filter",
+            "type": "array"
+          },
+          "source_bundle_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Bundle Version"
+          },
+          "status": {
+            "enum": [
+              "NO_FILTERS_ACTIVE",
+              "FILTERS_APPLIED",
+              "NO_COUNTRIES_MATCH"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "strict_filter_explanation": {
+            "title": "Strict Filter Explanation",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "mode",
+          "active_filter_ids",
+          "input_ranked_country_count",
+          "passing_country_count",
+          "excluded_country_count",
+          "excluded_counts_by_state",
+          "per_filter",
+          "excluded_countries",
+          "opportunity_release_id",
+          "evidence_policy_version",
+          "source_bundle_version",
+          "strict_filter_explanation",
+          "no_score_impact"
+        ],
+        "title": "OpportunityAssessmentV2Response",
+        "type": "object"
+      },
+      "OpportunityExcludedCountryV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "base_rank": {
+            "minimum": 1.0,
+            "title": "Base Rank",
+            "type": "integer"
+          },
+          "country_code": {
+            "pattern": "^[A-Z]{3}$",
+            "title": "Country Code",
+            "type": "string"
+          },
+          "exclusion_category": {
+            "enum": [
+              "STRONG_SIGNAL_NOT_ESTABLISHED",
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "title": "Exclusion Category",
+            "type": "string"
+          },
+          "failing_filter_evidence": {
+            "items": {
+              "$ref": "#/components/schemas/OpportunityFilterEvidenceSummaryResponse"
+            },
+            "title": "Failing Filter Evidence",
+            "type": "array"
+          }
+        },
+        "required": [
+          "country_code",
+          "base_rank",
+          "exclusion_category",
+          "failing_filter_evidence"
+        ],
+        "title": "OpportunityExcludedCountryV2Response",
+        "type": "object"
+      },
+      "OpportunityExcludedCountsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "INSUFFICIENT_EVIDENCE": {
+            "minimum": 0.0,
+            "title": "Insufficient Evidence",
+            "type": "integer"
+          },
+          "STRONG_SIGNAL_NOT_ESTABLISHED": {
+            "minimum": 0.0,
+            "title": "Strong Signal Not Established",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "title": "OpportunityExcludedCountsResponse",
+        "type": "object"
+      },
+      "OpportunityFilterCatalogV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "api_contract_version": {
+            "const": "konsider-api-2.0",
+            "default": "konsider-api-2.0",
+            "title": "Api Contract Version",
+            "type": "string"
+          },
+          "catalog_schema_version": {
+            "title": "Catalog Schema Version",
+            "type": "string"
+          },
+          "definitions": {
+            "items": {
+              "$ref": "#/components/schemas/OpportunityFilterDefinitionV2Response"
+            },
+            "title": "Definitions",
+            "type": "array"
+          },
+          "evidence_policy_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Policy Version"
+          },
+          "mode": {
+            "const": "ALL_REQUIRED",
+            "title": "Mode",
+            "type": "string"
+          },
+          "no_score_impact": {
+            "const": true,
+            "title": "No Score Impact",
+            "type": "boolean"
+          },
+          "opportunity_release_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opportunity Release Id"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          },
+          "release_schema_version": {
+            "title": "Release Schema Version",
+            "type": "string"
+          },
+          "scoring_method_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scoring Method Versions",
+            "type": "array"
+          },
+          "source_bundle_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Bundle Version"
+          },
+          "state_contract_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "State Contract Version"
+          }
+        },
+        "required": [
+          "release_id",
+          "release_schema_version",
+          "catalog_schema_version",
+          "scoring_method_versions",
+          "opportunity_release_id",
+          "state_contract_version",
+          "evidence_policy_version",
+          "source_bundle_version",
+          "mode",
+          "no_score_impact",
+          "definitions"
+        ],
+        "title": "OpportunityFilterCatalogV2Response",
+        "type": "object"
+      },
+      "OpportunityFilterCoverageResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "assessable_count": {
+            "minimum": 0.0,
+            "title": "Assessable Count",
+            "type": "integer"
+          },
+          "source_dependency_status": {
+            "enum": [
+              "AVAILABLE",
+              "DEGRADED",
+              "UNAVAILABLE"
+            ],
+            "title": "Source Dependency Status",
+            "type": "string"
+          },
+          "state_counts": {
+            "$ref": "#/components/schemas/OpportunityFilterStateCountsResponse"
+          }
+        },
+        "required": [
+          "assessable_count",
+          "state_counts",
+          "source_dependency_status"
+        ],
+        "title": "OpportunityFilterCoverageResponse",
+        "type": "object"
+      },
+      "OpportunityFilterDefinitionV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "active": {
+            "title": "Active",
+            "type": "boolean"
+          },
+          "availability": {
+            "enum": [
+              "STAGED",
+              "AVAILABLE",
+              "WITHDRAWN"
+            ],
+            "title": "Availability",
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "CAREER",
+              "EDUCATION"
+            ],
+            "title": "Category",
+            "type": "string"
+          },
+          "compact_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Compact Label"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/OpportunityFilterCoverageResponse"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "documentation_ref": {
+            "title": "Documentation Ref",
+            "type": "string"
+          },
+          "eligibility_state": {
+            "const": "VERIFIED_STRONG_SIGNAL",
+            "title": "Eligibility State",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Limitations",
+            "type": "array"
+          },
+          "meaning": {
+            "title": "Meaning",
+            "type": "string"
+          },
+          "mode": {
+            "const": "ALL_REQUIRED",
+            "title": "Mode",
+            "type": "string"
+          },
+          "no_score_impact": {
+            "const": true,
+            "title": "No Score Impact",
+            "type": "boolean"
+          },
+          "source_vintage": {
+            "items": {
+              "$ref": "#/components/schemas/OpportunitySourceVintageResponse"
+            },
+            "title": "Source Vintage",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "display_name",
+          "compact_label",
+          "category",
+          "meaning",
+          "limitations",
+          "documentation_ref",
+          "coverage",
+          "source_vintage",
+          "active",
+          "availability",
+          "mode",
+          "eligibility_state",
+          "no_score_impact"
+        ],
+        "title": "OpportunityFilterDefinitionV2Response",
+        "type": "object"
+      },
+      "OpportunityFilterEvidenceSummaryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "confidence_band": {
+            "enum": [
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ],
+            "title": "Confidence Band",
+            "type": "string"
+          },
+          "documentation_ref": {
+            "title": "Documentation Ref",
+            "type": "string"
+          },
+          "establishing_route_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Establishing Route Ids",
+            "type": "array"
+          },
+          "filter_id": {
+            "title": "Filter Id",
+            "type": "string"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Limitations",
+            "type": "array"
+          },
+          "passes": {
+            "title": "Passes",
+            "type": "boolean"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reason Codes",
+            "type": "array"
+          },
+          "reference_period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Period"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Source Ids",
+            "type": "array"
+          },
+          "state": {
+            "enum": [
+              "VERIFIED_STRONG_SIGNAL",
+              "STRONG_SIGNAL_NOT_ESTABLISHED",
+              "INSUFFICIENT_EVIDENCE"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "filter_id",
+          "state",
+          "passes",
+          "confidence_band",
+          "establishing_route_ids",
+          "reason_codes",
+          "reference_period",
+          "source_ids",
+          "limitations",
+          "documentation_ref"
+        ],
+        "title": "OpportunityFilterEvidenceSummaryResponse",
+        "type": "object"
+      },
+      "OpportunityFilterSelection": {
+        "additionalProperties": false,
+        "properties": {
+          "mode": {
+            "const": "ALL_REQUIRED",
+            "default": "ALL_REQUIRED",
+            "title": "Mode",
+            "type": "string"
+          },
+          "required_filter_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Required Filter Ids",
+            "type": "array"
+          }
+        },
+        "title": "OpportunityFilterSelection",
+        "type": "object"
+      },
+      "OpportunityFilterStateCountsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "INSUFFICIENT_EVIDENCE": {
+            "minimum": 0.0,
+            "title": "Insufficient Evidence",
+            "type": "integer"
+          },
+          "STRONG_SIGNAL_NOT_ESTABLISHED": {
+            "minimum": 0.0,
+            "title": "Strong Signal Not Established",
+            "type": "integer"
+          },
+          "VERIFIED_STRONG_SIGNAL": {
+            "minimum": 0.0,
+            "title": "Verified Strong Signal",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "VERIFIED_STRONG_SIGNAL",
+          "STRONG_SIGNAL_NOT_ESTABLISHED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "title": "OpportunityFilterStateCountsResponse",
+        "type": "object"
+      },
+      "OpportunityPerFilterAssessmentV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "filter_id": {
+            "title": "Filter Id",
+            "type": "string"
+          },
+          "input_country_count": {
+            "minimum": 0.0,
+            "title": "Input Country Count",
+            "type": "integer"
+          },
+          "passing_country_count": {
+            "minimum": 0.0,
+            "title": "Passing Country Count",
+            "type": "integer"
+          },
+          "state_counts": {
+            "$ref": "#/components/schemas/OpportunityFilterStateCountsResponse"
+          }
+        },
+        "required": [
+          "filter_id",
+          "input_country_count",
+          "passing_country_count",
+          "state_counts"
+        ],
+        "title": "OpportunityPerFilterAssessmentV2Response",
+        "type": "object"
+      },
+      "OpportunitySourceVintageResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "attribution": {
+            "title": "Attribution",
+            "type": "string"
+          },
+          "publisher": {
+            "title": "Publisher",
+            "type": "string"
+          },
+          "source_id": {
+            "title": "Source Id",
+            "type": "string"
+          },
+          "source_version": {
+            "title": "Source Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "source_version",
+          "publisher",
+          "attribution"
+        ],
+        "title": "OpportunitySourceVintageResponse",
+        "type": "object"
+      },
       "OutcomeCountsResponse": {
         "additionalProperties": false,
         "properties": {
@@ -1689,6 +2365,11 @@
           "assessments": {
             "$ref": "#/components/schemas/CountryAssessmentsV2Response"
           },
+          "base_rank": {
+            "minimum": 1.0,
+            "title": "Base Rank",
+            "type": "integer"
+          },
           "contributions": {
             "items": {
               "$ref": "#/components/schemas/ContributionV2Response"
@@ -1711,6 +2392,7 @@
         },
         "required": [
           "rank",
+          "base_rank",
           "country",
           "total_score",
           "contributions",
@@ -2022,6 +2704,16 @@
             "title": "Country Codes",
             "type": "array"
           },
+          "opportunity_filters": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OpportunityFilterSelection"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "preference_preset_id": {
             "anyOf": [
               {
@@ -2058,6 +2750,16 @@
       "V2RankingRequest": {
         "additionalProperties": false,
         "properties": {
+          "opportunity_filters": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OpportunityFilterSelection"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "preference_preset_id": {
             "anyOf": [
               {
@@ -2097,6 +2799,16 @@
       "V2WeightSelection": {
         "additionalProperties": false,
         "properties": {
+          "opportunity_filters": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OpportunityFilterSelection"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "preference_preset_id": {
             "anyOf": [
               {
@@ -2357,6 +3069,54 @@
           }
         },
         "summary": "Check API and active-release readiness"
+      }
+    },
+    "/api/v2/opportunity-filters": {
+      "get": {
+        "operationId": "opportunity_filters_api_v2_opportunity_filters_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityFilterCatalogV2Response"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected internal failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Active release unavailable"
+          }
+        },
+        "summary": "Retrieve filter-only destination opportunity definitions"
       }
     },
     "/api/v2/rankings": {

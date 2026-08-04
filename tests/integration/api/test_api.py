@@ -84,6 +84,7 @@ def test_openapi_has_only_the_final_structured_public_surface() -> None:
         "/api/v2/rankings",
         "/api/v2/comparisons",
         "/api/v2/countries/{country_code}/details",
+        "/api/v2/opportunity-filters",
     }
     serialized = json.dumps(schema)
     for removed in (

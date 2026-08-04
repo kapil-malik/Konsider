@@ -16,11 +16,13 @@ from konsider.api.models.v2 import (
     ComparisonV2Response,
     CountryDetailsV2Response,
     HealthV2Response,
+    OpportunityFilterCatalogV2Response,
     RankingV2Response,
     V2ComparisonRequest,
     V2RankingRequest,
     V2WeightSelection,
 )
+from konsider.api.opportunity_filter_service import OpportunityFilterService
 from konsider.api.settings import ApiSettings
 from konsider.api.v2_service import RecommendationService
 from konsider.ingestion.current_release import CurrentReleaseError, CurrentReleaseRepository
@@ -39,7 +41,20 @@ def _default_service_factory(settings: ApiSettings) -> RecommendationService:
         raise CurrentReleaseError("The active schema-5 release is not published.")
     if not release.validation["product_ready"]:
         raise CurrentReleaseError("The active schema-5 release is not product-ready.")
-    return RecommendationService(release)
+    opportunity_filters = (
+        OpportunityFilterService.from_directory(settings.opportunity_release_path)
+        if settings.opportunity_release_path is not None
+        else OpportunityFilterService.empty()
+    )
+    return RecommendationService(release, opportunity_filters)
+
+
+def _opportunity_filter_ids(payload: V2WeightSelection) -> list[str]:
+    return (
+        payload.opportunity_filters.required_filter_ids
+        if payload.opportunity_filters is not None
+        else []
+    )
 
 
 def create_app(
@@ -96,6 +111,19 @@ def create_app(
     def catalog(current: RecommendationService = Depends(get_recommendation_service)):
         return CatalogV2Response.model_validate(current.catalog())
 
+    @application.get(
+        "/api/v2/opportunity-filters",
+        response_model=OpportunityFilterCatalogV2Response,
+        responses=ERROR_RESPONSES,
+        summary="Retrieve filter-only destination opportunity definitions",
+    )
+    def opportunity_filters(
+        current: RecommendationService = Depends(get_recommendation_service),
+    ):
+        return OpportunityFilterCatalogV2Response.model_validate(
+            current.opportunity_filter_catalog()
+        )
+
     @application.post(
         "/api/v2/rankings",
         response_model=RankingV2Response,
@@ -111,6 +139,7 @@ def create_app(
                 payload.weights,
                 preference_preset_id=payload.preference_preset_id,
                 top_k=payload.top_k,
+                opportunity_filter_ids=_opportunity_filter_ids(payload),
             )
         )
 
@@ -129,6 +158,7 @@ def create_app(
                 payload.country_codes,
                 payload.weights,
                 preference_preset_id=payload.preference_preset_id,
+                opportunity_filter_ids=_opportunity_filter_ids(payload),
             )
         )
 
@@ -148,6 +178,7 @@ def create_app(
                 country_code.upper(),
                 payload.weights,
                 preference_preset_id=payload.preference_preset_id,
+                opportunity_filter_ids=_opportunity_filter_ids(payload),
             )
         )
 

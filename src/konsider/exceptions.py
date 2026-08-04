@@ -62,5 +62,21 @@ class InvalidComparisonError(RecommendationError):
     pass
 
 
+class UnknownOpportunityFilterError(RecommendationError):
+    def __init__(self, filter_ids: list[str]) -> None:
+        self.filter_ids = filter_ids
+        super().__init__(f"Unknown Opportunity Filter ID(s): {filter_ids}")
+
+
+class OpportunityFilterNotActiveError(RecommendationError):
+    def __init__(self, filter_ids: list[str]) -> None:
+        self.filter_ids = filter_ids
+        super().__init__(f"Inactive Opportunity Filter ID(s): {filter_ids}")
+
+
+class InvalidOpportunityFilterSelectionError(RecommendationError):
+    pass
+
+
 class RankingIntegrityError(RecommendationError):
     """Raised when a validated release cannot satisfy one ranking invariant."""

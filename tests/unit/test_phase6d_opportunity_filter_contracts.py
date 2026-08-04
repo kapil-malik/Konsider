@@ -263,16 +263,22 @@ def test_release_5_0_remains_valid_and_release_5_1_binding_is_consistent() -> No
         validate_opportunity_filter_release_binding(broken)
 
 
-def test_active_release_and_api_v2_serialization_surface_are_unchanged() -> None:
+def test_active_release_is_unchanged_and_phase6g_api_surface_is_additive() -> None:
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
     assert loaded.manifest["schema_version"] == "konsider-release-5.0"
     assert loaded.artifacts.consumer_catalog["schema_version"] == "consumer-catalog-3.0"
     assert "opportunity_filters" not in loaded.manifest
-    assert set(AssessmentsV2Response.model_fields) == {"coverage", "locality", "profile"}
+    assert set(AssessmentsV2Response.model_fields) == {
+        "coverage",
+        "locality",
+        "profile",
+        "opportunity",
+    }
 
     openapi = json.loads(
         (ROOT / "contracts" / "openapi" / "konsider-api-2.0.json").read_text(encoding="utf-8")
     )
     serialized = json.dumps(openapi, sort_keys=True)
-    assert "selected_opportunity_filter" not in serialized
-    assert "OpportunityFilterAssessment" not in serialized
+    assert "/api/v2/opportunity-filters" in openapi["paths"]
+    assert "OpportunityAssessmentV2Response" in serialized
+    assert "OpportunityFilterSelection" in serialized

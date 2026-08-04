@@ -9,7 +9,7 @@ readable schemas, and published release manifests take precedence if prose ever 
   next steps, and deferred options.
 - [Local setup](operations/local-setup.md) - install and verify a clean checkout.
 - [Worker operations](operations/worker.md) - refresh, publish, replay, inspect, and roll back data.
-- [API operations and reference](operations/api.md) - configure, start, and use all five routes.
+- [API operations and reference](operations/api.md) - configure, start, and use the additive v2 API.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
 - [Phase 4A uncertainty-aware ranking policy](product/uncertainty-aware-ranking.md) - approved
   product and mathematical contract.
@@ -42,6 +42,10 @@ readable schemas, and published release manifests take precedence if prose ever 
   CWTS fields, ROR identities, frozen routes, coverage, replay, refresh and limitations.
 - [Phase 6F implementation report](history/phase6f-education-opportunity-evidence.md) - complete
   nine-filter candidate, education state counts, reconciliation, verification and Phase 6G gates.
+- [Opportunity Filter engine](product/opportunity-filter-engine.md) - Phase 6G post-ranking strict
+  AND evaluation, isolation guarantees, compatibility and API behavior.
+- [Phase 6G implementation report](history/phase6g-opportunity-filter-api.md) - staged API candidate,
+  exact runtime contract, verification and Phase 6H/6I gates.
 - [Terminology glossary](product/terminology-glossary.md) - authoritative meanings for ordering
   criteria, FCC/PCC/LSC, Opportunity Filters, states, confidence, base rank and filtered rank.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
@@ -120,6 +124,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md)
 - [Phase 6E career Opportunity Filter report](history/phase6e-career-opportunity-evidence.md)
 - [Phase 6F education Opportunity Filter report](history/phase6f-education-opportunity-evidence.md)
+- [Phase 6G Opportunity Filter engine and API report](history/phase6g-opportunity-filter-api.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational

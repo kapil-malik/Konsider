@@ -1,8 +1,8 @@
 # Product roadmap
 
-Status: Phase 6F complete nine-filter evidence staged; runtime activation not started
+Status: Phase 6G filter engine and additive API complete; UI and publication pending
 
-Last updated: 2026-08-03
+Last updated: 2026-08-04
 
 ## Current position
 
@@ -48,11 +48,13 @@ source-aligned research-university ecosystem signals. These nine signals are Opp
 not weighted criteria or PCCs.
 
 Phase 6D defines the sibling catalog, tri-state evidence, confidence, reason, policy, source,
-coverage, future assessment and optional release-5.1 contracts. Phase 6E stages five inactive
-career filters and 455 explicit country states. Phase 6F now adds four inactive education filters,
-364 education rows, and a complete 819-row draft candidate `phase6f-complete-2026-08-03.1`.
-API v2, ranking, UI and the active release remain unchanged. See the
+coverage, assessment and optional release-5.1 contracts. Phase 6E stages five career filters and
+455 explicit country states. Phase 6F adds four education filters, 364 education rows, and a
+complete 819-row draft candidate. Phase 6G now implements the isolated post-ranking strict-AND
+engine and additive typed API against `phase6g-api-2026-08-03.1`. The canonical ranking engine,
+UI and active release remain unchanged. See the
 [Opportunity Filter architecture](../architecture/opportunity-filter-contracts.md) and
+[Opportunity Filter engine](opportunity-filter-engine.md),
 [career evidence guide](../data/career-opportunity-evidence.md) and
 [education evidence guide](../data/education-opportunity-evidence.md).
 
@@ -183,8 +185,11 @@ job, licensing, visa, or admission probability.
   research reconciliation.
 - Phase 6F stages the four education filters with exactly 364 records and validates the complete
   nine-filter, 819-record candidate without changing the active release.
-- Phase 6G filtering engine and API, Phase 6H UI, and Phase 6I release verification remain later
-  sequential phases.
+- Phase 6G implements indexed strict-AND evaluation after canonical ranking, additive API v2
+  selection/catalog/assessment fields, and deterministic compatibility and golden tests. It does
+  not activate the staged candidate.
+- Phase 6H UI and Phase 6I publication, release verification and closure remain later sequential
+  phases.
 
 ## Next phase after Phase 6: structured applicant and household context
 

@@ -88,4 +88,16 @@ Phase 6E into a deterministic inactive nine-filter candidate:
 - [`../../../docs/history/phase6f-education-opportunity-evidence.md`](../../../docs/history/phase6f-education-opportunity-evidence.md)
 - [`../../../data/reports/phase6f-2026-08-03`](../../../data/reports/phase6f-2026-08-03)
 
-Prompts `07`–`09` remain sequential future instructions. Phase 6G has not started.
+## Phase 6G filter engine and API
+
+Phase 6G implements strict post-ranking `ALL_REQUIRED` evaluation and additive API v2 transport
+against a deterministic nine-filter API candidate. It preserves canonical scores, weights,
+contributions, base ranks and survivor order, and leaves the active release pointer and UI
+unchanged:
+
+- [`07_PHASE_6G_OFC_FILTER_ENGINE_AND_API.txt`](07_PHASE_6G_OFC_FILTER_ENGINE_AND_API.txt)
+- [`../../../docs/product/opportunity-filter-engine.md`](../../../docs/product/opportunity-filter-engine.md)
+- [`../../../docs/history/phase6g-opportunity-filter-api.md`](../../../docs/history/phase6g-opportunity-filter-api.md)
+- [`../../../data/reports/phase6g-2026-08-03`](../../../data/reports/phase6g-2026-08-03)
+
+Prompts `08` and `09` remain sequential future instructions. Phase 6H has not started.

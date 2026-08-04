@@ -1,6 +1,6 @@
 # Opportunity Filter contracts and staged architecture
 
-Status: Phase 6D contracts complete; Phase 6E career evidence staged; runtime activation not started
+Status: Phase 6G engine and API complete against a staged candidate; UI and publication pending
 
 Date: 2026-08-03
 
@@ -29,11 +29,11 @@ peer of OFC, and no combined enum is introduced.
 | --- | --- | --- |
 | Immutable release | optional `konsider-release-5.1` OFC binding | unchanged `konsider-release-5.0` |
 | Ordering catalog | unchanged `consumer-catalog-3.0` | unchanged `consumer-catalog-3.0` |
-| OFC catalog | `opportunity-filter-catalog-1.0` | absent |
-| OFC state | `opportunity-filter-state-1.0` | absent |
-| OFC evidence | `opportunity-filter-evidence-1.0` | absent |
-| OFC assessment | `opportunity-filter-assessment-1.0` | not exposed |
-| HTTP API | no change | `konsider-api-2.0` |
+| OFC catalog | `opportunity-filter-catalog-1.0` | optional Phase 6G staged bundle |
+| OFC state | `opportunity-filter-state-1.0` | optional Phase 6G staged bundle |
+| OFC evidence | `opportunity-filter-evidence-1.0` | optional Phase 6G staged bundle |
+| OFC assessment | `opportunity-filter-assessment-1.0` | exposed when API bundle is configured |
+| HTTP API | additive Opportunity Filter fields | `konsider-api-2.0` |
 
 Schema generation remains `contracts/schemas/v3`. The directory number is not a release or catalog
 major. Release 5.1 is additive and optional; it does not authorize the active pointer to select a
@@ -99,10 +99,10 @@ Metric payloads are versioned variants:
 These variants prevent unlike employment and institution metrics from being flattened into one
 misleading numeric model.
 
-## Future assessment
+## Runtime assessment
 
-`OpportunityFilterAssessment` is a standalone domain contract in Phase 6D. It is not present in
-Pydantic API models or OpenAPI.
+`OpportunityFilterAssessment` remains independent of coverage, locality, and profile assessments.
+Phase 6G implements its typed Pydantic and OpenAPI transport without changing the ranking engine.
 
 It owns:
 
@@ -114,7 +114,10 @@ It owns:
 - separate canonical `base_rank` and display `filtered_rank`.
 
 With no filters, every country passes and filtered rank equals base rank. With filters, only rows
-whose every selected state is verified pass. A zero-row result is valid.
+whose every selected state is verified pass. A zero-row result is valid. The service computes the
+canonical full ranking before the indexed filter pass, preserves survivor score and order, then
+applies selected-filter `top_k` with score-boundary ties. The legacy no-filter path keeps its exact
+top-k slice for compatibility.
 
 ## Release 5.1 binding
 
@@ -160,8 +163,11 @@ Reusable logic must move into a tested production module with a versioned policy
 - Phase 6E: five career evidence filters are onboarded in staged immutable fragment
   `phase6e-career-2026-08-03.1`; they remain inactive.
 - Phase 6F: onboard four education filters and complete the nine-filter staged bundle.
-- Phase 6G: implement strict AND evaluation and API transport.
+- Phase 6G: strict AND evaluation and additive API transport complete against
+  `phase6g-api-2026-08-03.1`; active ranking pointer unchanged.
 - Phase 6H: implement UI controls and explanations.
 - Phase 6I: publish, activate, verify and close.
 
-Until those gates complete, the active release, API response and UI remain unchanged.
+Phase 6G changes the API contract additively, but the default runtime has an empty Opportunity
+Filter catalog unless a bundle is explicitly configured. UI work and publication remain gated by
+Phases 6H and 6I.

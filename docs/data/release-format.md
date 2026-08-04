@@ -52,23 +52,33 @@ LF for committed release artifacts. Corrections always create a new release ID.
 
 ## Staged Opportunity Filter extension
 
-Phase 6D defines an additive release-5.1 contract. Phase 6E now exercises it with inactive draft
-fragment `phase6e-career-2026-08-03.1`; it does not publish or activate that fragment. A future 5.1
-release may bind six checksummed sibling files: Opportunity Filter catalog, country evidence,
-source manifest, threshold policies, evidence policy and coverage summary. The OFC catalog remains
-separate from `consumer-catalog.json`, which continues to own score-bearing ordering criteria.
+Phase 6D defines an additive release-5.1 contract. Phase 6E staged five career filters, and Phase 6F
+completed the inactive nine-filter, 819-row candidate `phase6f-complete-2026-08-03.1`. Phase 6G
+produces the deterministic API-integration candidate `phase6g-api-2026-08-03.1` under
+`data/reports/phase6g-2026-08-03/staged-release`. Its nine definitions are active and available
+inside that draft so the API selection contract can be exercised; the draft is neither published
+nor selected by `active.json`.
+
+A future 5.1 release may bind six checksummed sibling files: Opportunity Filter catalog, country
+evidence, source manifest, threshold policies, evidence policy and coverage summary. The OFC
+catalog remains separate from `consumer-catalog.json`, which continues to own score-bearing
+ordering criteria.
 
 Release 5.0 manifests omit the binding and remain valid. A 5.1 bundle must store one explicit state
 for every declared filter-country pair; no loader may infer an omitted row as insufficient. See
 the [Opportunity Filter contracts](../architecture/opportunity-filter-contracts.md).
 
-The Phase 6E staged fragment and replay instructions are documented in
-[Career Opportunity Filter evidence](career-opportunity-evidence.md). The active release remains
-`2026-07-29.2` on release schema 5.0.
+The evidence and replay inputs are documented in [Career Opportunity Filter evidence](career-opportunity-evidence.md)
+and [Education Opportunity Filter evidence](education-opportunity-evidence.md). The Phase 6G
+filter engine is documented in [Opportunity Filter engine](../product/opportunity-filter-engine.md).
+The active ranking release remains `2026-07-29.2` on release schema 5.0.
 
-The catalog is part of the immutable release and is covered by its checksum. There is no active
-catalog alias or runtime catalog override. Historical release-scoped catalogs under
-`data/catalogs/releases/` remain only for opening schema-3/4 history.
+The catalog is part of the immutable Opportunity Filter bundle and is covered by its checksum.
+Phase 6G's optional `KONSIDER_OPPORTUNITY_RELEASE_PATH` loads a named bundle for integration and
+verification; it is not a mutable catalog alias and does not alter the ranking-release pointer.
+Phase 6I must publish and bind the approved bundle before general activation. Historical
+release-scoped ordering catalogs under `data/catalogs/releases/` remain only for opening
+schema-3/4 history.
 
 ## Checksums and replay
 

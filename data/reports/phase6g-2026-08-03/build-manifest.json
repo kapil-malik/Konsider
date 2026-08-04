@@ -1,0 +1,44 @@
+{
+  "active_pointer_changed": false,
+  "artifact_checksums": {
+    "candidate-release-manifest.json": "sha256:749b5e257a93580f0a81da3f7ef67f4d07096c2565e4f4184c3d3c3ae2bd73f8",
+    "opportunity-filter-catalog.json": "sha256:12b7b140178480dfe2bae465b157cd9bf1e51a0d4a08d1840ac2cf389b409e24",
+    "opportunity-filter-coverage-summary.json": "sha256:9568884c30a2bc06719a6132ab8bc99748fa086035958185fb305c9a1dd7c6a3",
+    "opportunity-filter-evidence-policy.json": "sha256:ec6f4ef9cf4e2265840a8b73a6b4cc3af3b0d7689d00fb8cfd13f5217543610c",
+    "opportunity-filter-evidence.jsonl": "sha256:9dfdac004f1b0616db630501f76cc6bdeab141255c149f43d3cd7f67521c64c9",
+    "opportunity-filter-source-manifest.json": "sha256:7ba2f824613b426165ceaf2bacc718a6693ba53ca614a883c6572f2ab9eea097",
+    "opportunity-filter-threshold-policies.json": "sha256:ce4d96be87721d9b02ce6e2f1e68e4bee10cf78627fe0923e825f85d9b408b67"
+  },
+  "assertions": {
+    "active_definition_count_inside_draft": 9,
+    "active_pointer_unchanged": true,
+    "country_count": 91,
+    "evidence_record_count": 819,
+    "final_release_activated": false,
+    "ranking_release_id": "2026-07-29.2"
+  },
+  "build_id": "phase6g-api-integration-1.0",
+  "command": "python -m konsider.ingestion.phase6_opportunity_api_candidate --output data/reports/phase6g-2026-08-03",
+  "generated_at": "2026-08-03T00:00:00+05:30",
+  "input_checksums": {
+    "data/reports/phase6f-2026-08-03/candidate-release-manifest.json": "sha256:dce3ca8f66e28f92a485c8fffa656ce574b281633d63d7c9f50ce24dac3806f2",
+    "data/reports/phase6f-2026-08-03/career-education-crosswalk.json": "sha256:f0e1b786543a66ad2841e8038072da7d497c08affa986efda2ce5cdb837975d3",
+    "data/reports/phase6f-2026-08-03/education-opportunity-filter-catalog.json": "sha256:91483ef5b6d14a1b42e250eb0b4908c7f16b13e94270c3e4167aa2f736e7191c",
+    "data/reports/phase6f-2026-08-03/education-opportunity-filter-evidence.jsonl": "sha256:16a4a9f285a7d0feef215a908553953f19d1f7294fc90c17db7c98af7b1094d7",
+    "data/reports/phase6f-2026-08-03/institution-identity-summary.json": "sha256:525e43bd9d290ee0b78419aea3fcb85036b39d7796b961ed8cc0b3eb337344d2",
+    "data/reports/phase6f-2026-08-03/institution-normalization.jsonl": "sha256:e71e51a8f07c59d243b860feb4a7eb5df055764037cafb22cd31df2584262b0c",
+    "data/reports/phase6f-2026-08-03/opportunity-filter-catalog.json": "sha256:f7f40d58db428e88cf2306e9dcf0a3ad699db5d503c88568fe524a565ee8ad5d",
+    "data/reports/phase6f-2026-08-03/opportunity-filter-coverage-summary.json": "sha256:f82b0ef26417ddd53cca0cba63054d0c1f384cce4e4403d5b05dd119a501e59b",
+    "data/reports/phase6f-2026-08-03/opportunity-filter-evidence-policy.json": "sha256:ec6f4ef9cf4e2265840a8b73a6b4cc3af3b0d7689d00fb8cfd13f5217543610c",
+    "data/reports/phase6f-2026-08-03/opportunity-filter-evidence.jsonl": "sha256:77a8b5d40af667a876736a3529d600388bb31acdc2268e8991eebd4e2421c1aa",
+    "data/reports/phase6f-2026-08-03/opportunity-filter-source-manifest.json": "sha256:9af0df2f3879cca69cbabb0a0e3a0e486e59696ff5684ec1c86907fa4fb2dea0",
+    "data/reports/phase6f-2026-08-03/opportunity-filter-threshold-policies.json": "sha256:ce4d96be87721d9b02ce6e2f1e68e4bee10cf78627fe0923e825f85d9b408b67",
+    "data/reports/phase6f-2026-08-03/research-production-reconciliation.json": "sha256:2dad488409efc9fef03a93059bc78716b033e283385bce2665b07e30530bc8db",
+    "data/reports/phase6f-2026-08-03/source-legal-records.json": "sha256:3fd1d3c62869fe5d36e7999f705e0695760ec48ed5570d3f0bf8b0f39d77208e"
+  },
+  "release_id": "phase6g-api-2026-08-03.1",
+  "schema_version": "phase6g-api-candidate-build-manifest-1.0",
+  "source_release_id": "phase6f-complete-2026-08-03.1",
+  "status": "draft",
+  "ui_authorized": false
+}

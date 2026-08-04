@@ -6,6 +6,7 @@ from collections.abc import Mapping, Sequence
 from math import isfinite
 from typing import Any
 
+from konsider.api.opportunity_filter_service import OpportunityFilterService
 from konsider.domain.locality_models import Phase5Contribution, Phase5RankingResult
 from konsider.domain.phase5_ranking import Phase5RankingError, rank_schema5_release
 from konsider.exceptions import (
@@ -49,8 +50,13 @@ def _source_metadata(source: dict[str, Any]) -> dict[str, Any]:
 class RecommendationService:
     """Expose the structured contract from one validated schema-current release."""
 
-    def __init__(self, release: LoadedCurrentRelease) -> None:
+    def __init__(
+        self,
+        release: LoadedCurrentRelease,
+        opportunity_filters: OpportunityFilterService | None = None,
+    ) -> None:
         self.release = release
+        self.opportunity_filters = opportunity_filters or OpportunityFilterService.empty()
 
     @property
     def release_id(self) -> str:
@@ -114,6 +120,9 @@ class RecommendationService:
             ],
             "preference_presets": catalog["preference_presets"],
         }
+
+    def opportunity_filter_catalog(self) -> dict[str, Any]:
+        return {**self._version_fields(), **self.opportunity_filters.catalog_payload()}
 
     def _resolve_weights(
         self,
@@ -370,6 +379,7 @@ class RecommendationService:
             rows.append(
                 {
                     "rank": row.rank,
+                    "base_rank": row.rank,
                     "country": {
                         "entity_id": entity["entity_id"],
                         "entity_type": entity["entity_type"],
@@ -382,6 +392,11 @@ class RecommendationService:
                     "assessments": {
                         "locality": row.locality_assessment.to_dict(),
                         "profile": row.profile_assessment.to_dict(),
+                        "opportunity": {
+                            "evaluated": False,
+                            "passes": None,
+                            "filter_evidence": [],
+                        },
                     },
                 }
             )
@@ -437,12 +452,50 @@ class RecommendationService:
             "rankings": rows,
         }
 
+    def _apply_opportunity_filters(
+        self,
+        payload: dict[str, Any],
+        filter_ids: Sequence[str],
+        top_k: int | None,
+    ) -> dict[str, Any]:
+        canonical = payload["rankings"]
+        assessment, country_results = self.opportunity_filters.assess_ranked_countries(
+            canonical, filter_ids
+        )
+        selected = tuple(assessment["active_filter_ids"])
+        survivors = []
+        for row in canonical:
+            country_code = row["country"]["country_codes"][0]
+            result = country_results[country_code]
+            row["base_rank"] = result["base_rank"]
+            row["assessments"]["opportunity"] = {
+                "evaluated": True,
+                "passes": result["passes"],
+                "filter_evidence": result["filter_evidence"],
+            }
+            if result["passes"]:
+                row["rank"] = result["filtered_rank"]
+                survivors.append(row)
+
+        if top_k is not None:
+            if top_k > len(canonical):
+                raise InvalidTopKError(top_k, len(canonical))
+            if not selected:
+                survivors = survivors[:top_k]
+            elif len(survivors) > top_k:
+                boundary_score = survivors[top_k - 1]["total_score"]
+                survivors = [row for row in survivors if row["total_score"] >= boundary_score]
+        payload["rankings"] = survivors
+        payload["assessments"]["opportunity"] = assessment
+        return payload
+
     def rank(
         self,
         weights: Mapping[str, float] | None,
         *,
         preference_preset_id: str | None,
         top_k: int | None,
+        opportunity_filter_ids: Sequence[str] = (),
     ) -> dict[str, Any]:
         resolved_weights, resolved_preset = self._resolve_weights(weights, preference_preset_id)
         try:
@@ -453,17 +506,9 @@ class RecommendationService:
             )
         except Phase5RankingError as exc:
             raise InvalidWeightError(str(exc)) from exc
-        eligible = len(result.rankings)
-        if top_k is not None:
-            if top_k > eligible:
-                raise InvalidTopKError(top_k, eligible)
-            result = rank_schema5_release(
-                self.release,
-                resolved_weights,
-                resolved_preference_preset_id=resolved_preset,
-                top_k=top_k,
-            )
-        return self._ranking_payload(result)
+        return self._apply_opportunity_filters(
+            self._ranking_payload(result), opportunity_filter_ids, top_k
+        )
 
     def _requested_country_ids(self, country_codes: Sequence[str]) -> list[str]:
         known = {row["country_codes"][0]: row["entity_id"] for row in self.catalog()["countries"]}
@@ -478,17 +523,30 @@ class RecommendationService:
         weights: Mapping[str, float] | None,
         *,
         preference_preset_id: str | None,
+        opportunity_filter_ids: Sequence[str] = (),
     ) -> dict[str, Any]:
         requested_ids = self._requested_country_ids(country_codes)
         ranking = self.rank(
             weights,
             preference_preset_id=preference_preset_id,
             top_k=None,
+            opportunity_filter_ids=opportunity_filter_ids,
+        )
+        canonical = (
+            ranking
+            if not opportunity_filter_ids
+            else self.rank(
+                weights,
+                preference_preset_id=preference_preset_id,
+                top_k=None,
+                opportunity_filter_ids=(),
+            )
         )
         ranked = {row["country"]["entity_id"]: row for row in ranking["rankings"]}
+        canonical_ranked = {row["country"]["entity_id"]: row for row in canonical["rankings"]}
         excluded = {
             row["country"]["entity_id"]: row
-            for row in ranking["assessments"]["coverage"]["excluded_countries"]
+            for row in canonical["assessments"]["coverage"]["excluded_countries"]
         }
         countries = []
         for entity_id in requested_ids:
@@ -498,9 +556,37 @@ class RecommendationService:
                     {
                         "country": row["country"],
                         "rank": row["rank"],
+                        "base_rank": row["base_rank"],
                         "final_aggregate": row["total_score"],
                         "coverage_excluded": False,
+                        "opportunity_excluded": False,
                         "assessments": row["assessments"],
+                    }
+                )
+            elif entity_id in canonical_ranked:
+                row = canonical_ranked[entity_id]
+                country_code = row["country"]["country_codes"][0]
+                summaries = [
+                    self.opportunity_filters.evidence_summary(filter_id, country_code)
+                    for filter_id in sorted(opportunity_filter_ids)
+                ]
+                countries.append(
+                    {
+                        "country": row["country"],
+                        "rank": None,
+                        "base_rank": row["base_rank"],
+                        "final_aggregate": row["total_score"],
+                        "coverage_excluded": False,
+                        "opportunity_excluded": True,
+                        "assessments": {
+                            "locality": row["assessments"]["locality"],
+                            "profile": row["assessments"]["profile"],
+                            "opportunity": {
+                                "evaluated": True,
+                                "passes": False,
+                                "filter_evidence": summaries,
+                            },
+                        },
                     }
                 )
             else:
@@ -509,19 +595,26 @@ class RecommendationService:
                     {
                         "country": row["country"],
                         "rank": None,
+                        "base_rank": None,
                         "final_aggregate": None,
                         "coverage_excluded": True,
+                        "opportunity_excluded": False,
                         "assessments": {
                             "locality": row["locality_assessment"],
                             "profile": ranking["assessments"]["profile"],
+                            "opportunity": {
+                                "evaluated": False,
+                                "passes": None,
+                                "filter_evidence": [],
+                            },
                         },
                     }
                 )
         active_ids = set(ranking["normalized_weights"])
         criteria = {row["id"]: row for row in self.catalog()["criteria"]}
         contribution_maps = {
-            entity_id: {row["criterion_id"]: row for row in ranked[entity_id]["contributions"]}
-            for entity_id in ranked
+            entity_id: {row["criterion_id"]: row for row in country["contributions"]}
+            for entity_id, country in canonical_ranked.items()
         }
         contribution_maps.update(
             {
@@ -584,11 +677,13 @@ class RecommendationService:
         weights: Mapping[str, float] | None,
         *,
         preference_preset_id: str | None,
+        opportunity_filter_ids: Sequence[str] = (),
     ) -> dict[str, Any]:
         comparison = self.compare(
             [country_code, self._comparison_peer(country_code)],
             weights,
             preference_preset_id=preference_preset_id,
+            opportunity_filter_ids=opportunity_filter_ids,
         )
         country_id = f"country:{country_code}"
         country = next(
@@ -622,6 +717,7 @@ class RecommendationService:
             },
             "country": country["country"],
             "criteria": details,
+            "opportunity_filters": country["assessments"]["opportunity"]["filter_evidence"],
         }
 
     def _comparison_peer(self, country_code: str) -> str:

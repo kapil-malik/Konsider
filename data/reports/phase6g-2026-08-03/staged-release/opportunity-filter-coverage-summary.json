@@ -1,0 +1,89 @@
+{
+  "filters": {
+    "computer_science_ict_education_opportunity": {
+      "assessable_count": 75,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 16,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 45,
+        "VERIFIED_STRONG_SIGNAL": 30
+      }
+    },
+    "engineering_technology_education_opportunity": {
+      "assessable_count": 75,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 16,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 48,
+        "VERIFIED_STRONG_SIGNAL": 27
+      }
+    },
+    "finance_insurance_opportunity": {
+      "assessable_count": 88,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 66,
+        "VERIFIED_STRONG_SIGNAL": 22
+      }
+    },
+    "health_social_work_opportunity": {
+      "assessable_count": 88,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 61,
+        "VERIFIED_STRONG_SIGNAL": 27
+      }
+    },
+    "medicine_health_sciences_education_opportunity": {
+      "assessable_count": 75,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 16,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 45,
+        "VERIFIED_STRONG_SIGNAL": 30
+      }
+    },
+    "natural_sciences_education_opportunity": {
+      "assessable_count": 75,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 16,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 44,
+        "VERIFIED_STRONG_SIGNAL": 31
+      }
+    },
+    "science_engineering_opportunity": {
+      "assessable_count": 67,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 24,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 47,
+        "VERIFIED_STRONG_SIGNAL": 20
+      }
+    },
+    "skilled_trades_construction_opportunity": {
+      "assessable_count": 88,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 3,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 54,
+        "VERIFIED_STRONG_SIGNAL": 34
+      }
+    },
+    "technology_software_opportunity": {
+      "assessable_count": 63,
+      "source_dependency_status": "AVAILABLE",
+      "state_counts": {
+        "INSUFFICIENT_EVIDENCE": 28,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 43,
+        "VERIFIED_STRONG_SIGNAL": 20
+      }
+    }
+  },
+  "release_id": "phase6g-api-2026-08-03.1",
+  "schema_version": "opportunity-filter-coverage-summary-1.0",
+  "stable_country_count": 91,
+  "stable_universe_id": "stable_supported_v1"
+}
