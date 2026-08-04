@@ -1,14 +1,15 @@
 # Konsider web application
 
-The Phase 5F UI is a responsive React, TypeScript, and Vite application over the local FastAPI
+The Phase 6H UI is a responsive React, TypeScript, and Vite application over the local FastAPI
 `/api/v2` contract. It uses TanStack Query for API state, local React state for unapplied guest
 preferences, generated TypeScript types from FastAPI OpenAPI, Vitest and React Testing Library for
 component coverage, and Playwright for focused browser flows.
 
 The browser never scores, normalizes, sorts, selects localities, calculates locality intersections,
 chooses a best common locality, determines assessment statuses, or supplies fallback product data.
-Countries, criteria, preference presets, sources, contributions, structured assessments, flags,
-and release IDs come from the API.
+Countries, criteria, preference presets, Opportunity Filter definitions/evidence, sources,
+contributions, structured assessments, flags, and release IDs come from the API. Opportunity
+Filters are checkbox-only strict restrictions; they never become score weights in the browser.
 The current 91-country release is shown in a bounded desktop table and complete mobile cards.
 Country-name/ISO search and API-derived region filtering are client-side because the bounded global
 response remains small enough that server pagination is not justified.
@@ -49,6 +50,22 @@ KONSIDER_CORS_ORIGINS="http://localhost:5173,http://127.0.0.1:5173" \
   python -m uvicorn konsider.api.app:app --reload
 ```
 
+To exercise the Phase 6H interface against the staged nine-filter candidate, set this additional
+API environment variable before starting Uvicorn. This is a local integration configuration only;
+it does not change the active release pointer.
+
+PowerShell:
+
+```powershell
+$env:KONSIDER_OPPORTUNITY_RELEASE_PATH = "data\reports\phase6g-2026-08-03\staged-release"
+```
+
+Bash:
+
+```bash
+export KONSIDER_OPPORTUNITY_RELEASE_PATH="data/reports/phase6g-2026-08-03/staged-release"
+```
+
 In a second terminal:
 
 ```bash
@@ -78,6 +95,9 @@ pnpm run e2e
 
 Use `pnpm run test:watch` while developing. Playwright uses deterministic mocked API responses and
 starts Vite on port 4173. The normal development UI uses port 5173; FastAPI uses port 8000.
+The browser loads Opportunity Filter definitions from `GET /api/v2/opportunity-filters` and sends
+selected IDs with ranking, comparison, and country-detail requests; the API remains authoritative
+for strict-AND evaluation and evidence explanations.
 
 ## Troubleshooting
 

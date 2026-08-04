@@ -17,6 +17,8 @@ declare const ranking: RankingV2
 void ranking.assessments.coverage.status
 void ranking.assessments.locality.status
 void ranking.assessments.profile.status
+void ranking.assessments.opportunity.status
+void ranking.rankings[0]?.base_rank
 
 // @ts-expect-error API v2 has no duplicate root locality status.
 void ranking.locality_status

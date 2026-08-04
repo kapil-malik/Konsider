@@ -46,6 +46,12 @@ readable schemas, and published release manifests take precedence if prose ever 
   AND evaluation, isolation guarantees, compatibility and API behavior.
 - [Phase 6G implementation report](history/phase6g-opportunity-filter-api.md) - staged API candidate,
   exact runtime contract, verification and Phase 6H/6I gates.
+- [Opportunity Filter UI guide](product/ui.md#phase-6h-opportunity-filter-experience) - Phase 6H
+  controls, result/exclusion explanations, details, comparison and accessibility behavior.
+- [Phase 6H UI test plan](product/phase6h-opportunity-filter-ui-test-plan.md) - interaction,
+  contract, language, responsive and compatibility verification matrix.
+- [Phase 6H implementation report](history/phase6h-opportunity-filter-ui.md) - delivered components,
+  wording safeguards, staged verification and Phase 6I gates.
 - [Terminology glossary](product/terminology-glossary.md) - authoritative meanings for ordering
   criteria, FCC/PCC/LSC, Opportunity Filters, states, confidence, base rank and filtered rank.
 - [Phase 4C coverage contract](data/phase4c-coverage-contract.md) - schema-4 release, catalog,
@@ -125,6 +131,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 6E career Opportunity Filter report](history/phase6e-career-opportunity-evidence.md)
 - [Phase 6F education Opportunity Filter report](history/phase6f-education-opportunity-evidence.md)
 - [Phase 6G Opportunity Filter engine and API report](history/phase6g-opportunity-filter-api.md)
+- [Phase 6H Opportunity Filter UI report](history/phase6h-opportunity-filter-ui.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational

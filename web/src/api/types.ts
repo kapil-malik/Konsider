@@ -13,3 +13,9 @@ export type ContributionV2 = components['schemas']['ContributionV2Response']
 export type ComparisonRequestV2 = components['schemas']['V2ComparisonRequest']
 export type ComparisonV2 = components['schemas']['ComparisonV2Response']
 export type CountryDetailsV2 = components['schemas']['CountryDetailsV2Response']
+export type OpportunityFilterCatalogV2 =
+  components['schemas']['OpportunityFilterCatalogV2Response']
+export type OpportunityFilterDefinitionV2 =
+  components['schemas']['OpportunityFilterDefinitionV2Response']
+export type OpportunityFilterEvidenceV2 =
+  components['schemas']['OpportunityFilterEvidenceSummaryResponse']

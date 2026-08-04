@@ -100,4 +100,17 @@ unchanged:
 - [`../../../docs/history/phase6g-opportunity-filter-api.md`](../../../docs/history/phase6g-opportunity-filter-api.md)
 - [`../../../data/reports/phase6g-2026-08-03`](../../../data/reports/phase6g-2026-08-03)
 
-Prompts `08` and `09` remain sequential future instructions. Phase 6H has not started.
+## Phase 6H UI and explanations
+
+Phase 6H implements grouped checkbox controls, strict-selection requests, removable active filters,
+result and exclusion explanations, country evidence, comparison, responsive behavior and
+accessibility over the staged Phase 6G API candidate. It does not calculate filter states, change
+affinity, activate the candidate or modify the active release pointer:
+
+- [`08_PHASE_6H_OFC_UI_AND_EXPLANATIONS.txt`](08_PHASE_6H_OFC_UI_AND_EXPLANATIONS.txt)
+- [`../../../docs/product/ui.md`](../../../docs/product/ui.md)
+- [`../../../docs/product/phase6h-opportunity-filter-ui-test-plan.md`](../../../docs/product/phase6h-opportunity-filter-ui-test-plan.md)
+- [`../../../docs/history/phase6h-opportunity-filter-ui.md`](../../../docs/history/phase6h-opportunity-filter-ui.md)
+
+Prompt `09` remains the sequential future instruction for publication, final verification and
+Phase 6 closure.

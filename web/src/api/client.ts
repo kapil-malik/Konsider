@@ -4,6 +4,7 @@ import type {
   ComparisonV2,
   CountryDetailsV2,
   ErrorEnvelope,
+  OpportunityFilterCatalogV2,
   RankingRequestV2,
   RankingV2,
   WeightSelectionV2,
@@ -60,6 +61,9 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 
 export const fetchCatalog = (signal?: AbortSignal) =>
   request<CatalogV2>('/catalog', { signal })
+
+export const fetchOpportunityFilters = (signal?: AbortSignal) =>
+  request<OpportunityFilterCatalogV2>('/opportunity-filters', { signal })
 
 export const createRanking = (payload: RankingRequestV2, signal?: AbortSignal) =>
   request<RankingV2>('/rankings', {

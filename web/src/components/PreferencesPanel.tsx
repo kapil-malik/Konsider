@@ -1,6 +1,11 @@
-import type { CatalogCriterionV2, PreferencePreset } from '../api/types'
+import type {
+  CatalogCriterionV2,
+  OpportunityFilterCatalogV2,
+  PreferencePreset,
+} from '../api/types'
 import type { PreferenceDraft } from '../preferences'
 import { ImportanceControl } from './ImportanceControl'
+import { OpportunityFiltersPanel } from './OpportunityFiltersPanel'
 
 type PreferencesPanelProps = {
   criteria: CatalogCriterionV2[]
@@ -8,8 +13,12 @@ type PreferencesPanelProps = {
   draft: PreferenceDraft
   dirty: boolean
   isApplying: boolean
+  opportunityCatalog: OpportunityFilterCatalogV2
+  selectedOpportunityFilterIds: string[]
   onPresetChange: (preset: PreferencePreset) => void
   onWeightChange: (criterionId: string, value: number) => void
+  onOpportunityFilterToggle: (filterId: string) => void
+  onOpportunityFiltersClear: () => void
   onApply: () => void
   onUndo: () => void
 }
@@ -20,8 +29,12 @@ export function PreferencesPanel({
   draft,
   dirty,
   isApplying,
+  opportunityCatalog,
+  selectedOpportunityFilterIds,
   onPresetChange,
   onWeightChange,
+  onOpportunityFilterToggle,
+  onOpportunityFiltersClear,
   onApply,
   onUndo,
 }: PreferencesPanelProps) {
@@ -83,6 +96,14 @@ export function PreferencesPanel({
         </div>
       )}
 
+      <OpportunityFiltersPanel
+        catalog={opportunityCatalog}
+        selectedFilterIds={selectedOpportunityFilterIds}
+        disabled={isApplying}
+        onToggle={onOpportunityFilterToggle}
+        onClear={onOpportunityFiltersClear}
+      />
+
       <div className="apply-bar">
         <button
           className="button button-secondary"
@@ -101,8 +122,8 @@ export function PreferencesPanel({
       </div>
       <p className="apply-hint" aria-live="polite">
         {dirty
-          ? 'Changes are ready to apply.'
-          : 'Your visible ranking matches these priorities.'}
+          ? 'Priority or opportunity-filter changes are ready to apply.'
+          : 'Your visible ranking matches these priorities and opportunity filters.'}
       </p>
     </aside>
   )

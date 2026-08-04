@@ -4,6 +4,8 @@ import type {
   ComparisonV2,
   ContributionV2,
   CountryDetailsV2,
+  OpportunityFilterCatalogV2,
+  OpportunityFilterEvidenceV2,
   RankedCountryV2,
   RankingV2,
 } from '../api/types'
@@ -156,6 +158,147 @@ export const catalogFixture: CatalogV2 = {
     },
   ],
 }
+
+const opportunityDefinition = (
+  id: string,
+  displayName: string,
+  compactLabel: string,
+  category: 'CAREER' | 'EDUCATION',
+  meaning: string,
+  limitations: string[] = [],
+): OpportunityFilterCatalogV2['definitions'][number] => ({
+  id,
+  display_name: displayName,
+  compact_label: compactLabel,
+  category,
+  meaning,
+  limitations,
+  documentation_ref:
+    category === 'CAREER'
+      ? 'docs/data/career-opportunity-evidence.md'
+      : 'docs/data/education-opportunity-evidence.md',
+  coverage: {
+    assessable_count: 4,
+    state_counts: {
+      VERIFIED_STRONG_SIGNAL: 2,
+      STRONG_SIGNAL_NOT_ESTABLISHED: 2,
+      INSUFFICIENT_EVIDENCE: 1,
+    },
+    source_dependency_status: 'AVAILABLE',
+  },
+  source_vintage: [
+    {
+      source_id: category === 'CAREER' ? 'ilo-source' : 'cwts-source',
+      source_version: '2025-v1',
+      publisher: category === 'CAREER' ? 'International Labour Organization' : 'CWTS Leiden Ranking',
+      attribution: 'Source data transformed by Konsider.',
+    },
+  ],
+  active: true,
+  availability: 'AVAILABLE',
+  mode: 'ALL_SELECTED_REQUIRED',
+  eligibility_state: 'VERIFIED_STRONG_SIGNAL',
+  no_score_impact: true,
+})
+
+export const opportunityCatalogFixture: OpportunityFilterCatalogV2 = {
+  ...versionFields,
+  opportunity_release_id: 'phase6g-api-test.1',
+  state_contract_version: 'opportunity-filter-state-1.0',
+  evidence_policy_version: 'opportunity-filter-evidence-policy-1.1',
+  source_bundle_version: 'opportunity-source-test.1',
+  mode: 'ALL_REQUIRED',
+  no_score_impact: true,
+  definitions: [
+    opportunityDefinition(
+      'technology_software_opportunity',
+      'Technology and software employment ecosystem',
+      'Technology and software',
+      'CAREER',
+      'A substantial and established technology/software employment ecosystem.',
+    ),
+    opportunityDefinition(
+      'science_engineering_opportunity',
+      'Science and engineering employment ecosystem',
+      'Science and engineering',
+      'CAREER',
+      'A substantial science and engineering employment ecosystem.',
+    ),
+    opportunityDefinition(
+      'health_social_work_opportunity',
+      'Care-sector employment ecosystem',
+      'Care sector',
+      'CAREER',
+      'A substantial human health and social-work employment ecosystem.',
+      ['Covers human health and social work; it is not doctor-only evidence.'],
+    ),
+    opportunityDefinition(
+      'finance_insurance_opportunity',
+      'Finance and insurance employment ecosystem',
+      'Finance and insurance',
+      'CAREER',
+      'A substantial finance and insurance activity employment ecosystem.',
+      ['Does not describe all business or administration careers.'],
+    ),
+    opportunityDefinition(
+      'skilled_trades_construction_opportunity',
+      'Skilled-trades or construction employment ecosystem',
+      'Skilled trades or construction',
+      'CAREER',
+      'A strong skilled-trades route, construction route, or both.',
+    ),
+    opportunityDefinition(
+      'engineering_technology_education_opportunity',
+      'Physical sciences and engineering research-university ecosystem',
+      'Physical sciences and engineering',
+      'EDUCATION',
+      'A research-intensive university ecosystem in physical sciences and engineering.',
+    ),
+    opportunityDefinition(
+      'computer_science_ict_education_opportunity',
+      'Mathematics and computer science research-university ecosystem',
+      'Mathematics and computer science',
+      'EDUCATION',
+      'A research-intensive university ecosystem in mathematics and computer science.',
+    ),
+    opportunityDefinition(
+      'medicine_health_sciences_education_opportunity',
+      'Biomedical and health sciences research-university ecosystem',
+      'Biomedical and health sciences',
+      'EDUCATION',
+      'A research-intensive university ecosystem in biomedical and health sciences.',
+    ),
+    opportunityDefinition(
+      'natural_sciences_education_opportunity',
+      'Life and earth sciences research-university ecosystem',
+      'Life and earth sciences',
+      'EDUCATION',
+      'A research-intensive university ecosystem in life and earth sciences.',
+    ),
+  ],
+}
+
+export const opportunityEvidence = (
+  filterId: string,
+  state: OpportunityFilterEvidenceV2['state'] = 'VERIFIED_STRONG_SIGNAL',
+  routes: string[] = ['observed_technology'],
+): OpportunityFilterEvidenceV2 => ({
+  filter_id: filterId,
+  state,
+  passes: state === 'VERIFIED_STRONG_SIGNAL',
+  confidence_band: state === 'INSUFFICIENT_EVIDENCE' ? 'LOW' : 'HIGH',
+  establishing_route_ids: state === 'VERIFIED_STRONG_SIGNAL' ? routes : [],
+  reason_codes:
+    state === 'VERIFIED_STRONG_SIGNAL'
+      ? ['APPROVED_STRONG_ROUTE_PASSED']
+      : state === 'STRONG_SIGNAL_NOT_ESTABLISHED'
+        ? ['NO_APPROVED_STRONG_ROUTE_PASSED']
+        : ['COUNTRY_ABSENT_FROM_SOURCE_UNIVERSE'],
+  reference_period: state === 'INSUFFICIENT_EVIDENCE' ? null : '2025',
+  source_ids: state === 'INSUFFICIENT_EVIDENCE' ? [] : ['ilo-source'],
+  limitations: ['Destination-side ecosystem evidence only.'],
+  documentation_ref: 'docs/data/career-opportunity-evidence.md',
+})
 
 const profileAssessment = {
   status: 'NO_PROFILE_CONTEXT' as const,
@@ -437,6 +580,119 @@ export const rankingFixture: RankingV2 = {
   rankings: rankedCountries,
 }
 
+export function rankingWithOpportunityFilters(
+  filterIds = [
+    'technology_software_opportunity',
+    'skilled_trades_construction_opportunity',
+  ],
+  empty = false,
+): RankingV2 {
+  const evidenceFor = (filterId: string) =>
+    opportunityEvidence(
+      filterId,
+      'VERIFIED_STRONG_SIGNAL',
+      filterId === 'skilled_trades_construction_opportunity'
+        ? ['skilled_trades', 'construction']
+        : ['observed_technology'],
+    )
+  const passingCountries = empty
+    ? []
+    : rankedCountries.slice(0, 2).map((country, index) => ({
+        ...country,
+        rank: index + 1,
+        assessments: {
+          ...country.assessments,
+          opportunity: {
+            evaluated: true,
+            passes: true,
+            filter_evidence: filterIds.map(evidenceFor),
+          },
+        },
+      }))
+  const excluded = [
+    {
+      country_code: 'C02',
+      base_rank: 3,
+      exclusion_category: 'STRONG_SIGNAL_NOT_ESTABLISHED' as const,
+      failing_filter_evidence: [
+        opportunityEvidence(filterIds[0], 'STRONG_SIGNAL_NOT_ESTABLISHED'),
+      ],
+    },
+    {
+      country_code: 'C03',
+      base_rank: 4,
+      exclusion_category: 'INSUFFICIENT_EVIDENCE' as const,
+      failing_filter_evidence: [
+        opportunityEvidence(filterIds.at(-1)!, 'INSUFFICIENT_EVIDENCE'),
+      ],
+    },
+    {
+      country_code: 'C04',
+      base_rank: 5,
+      exclusion_category: 'STRONG_SIGNAL_NOT_ESTABLISHED' as const,
+      failing_filter_evidence: [
+        opportunityEvidence(filterIds[0], 'STRONG_SIGNAL_NOT_ESTABLISHED'),
+      ],
+    },
+  ]
+  if (empty) {
+    excluded.unshift(
+      {
+        country_code: 'C00',
+        base_rank: 1,
+        exclusion_category: 'STRONG_SIGNAL_NOT_ESTABLISHED' as const,
+        failing_filter_evidence: [
+          opportunityEvidence(filterIds[0], 'STRONG_SIGNAL_NOT_ESTABLISHED'),
+        ],
+      },
+      {
+        country_code: 'C01',
+        base_rank: 2,
+        exclusion_category: 'INSUFFICIENT_EVIDENCE' as const,
+        failing_filter_evidence: [
+          opportunityEvidence(filterIds.at(-1)!, 'INSUFFICIENT_EVIDENCE'),
+        ],
+      },
+    )
+  }
+  return {
+    ...rankingFixture,
+    assessments: {
+      ...rankingFixture.assessments,
+      opportunity: {
+        status: empty ? 'NO_COUNTRIES_MATCH' : 'FILTERS_APPLIED',
+        mode: 'ALL_REQUIRED',
+        active_filter_ids: [...filterIds].sort(),
+        input_ranked_country_count: 5,
+        passing_country_count: passingCountries.length,
+        excluded_country_count: excluded.length,
+        excluded_counts_by_state: {
+          STRONG_SIGNAL_NOT_ESTABLISHED: empty ? 3 : 2,
+          INSUFFICIENT_EVIDENCE: empty ? 2 : 1,
+        },
+        per_filter: filterIds.map((filterId) => ({
+          filter_id: filterId,
+          input_country_count: 5,
+          passing_country_count: empty ? 0 : 2,
+          state_counts: {
+            VERIFIED_STRONG_SIGNAL: empty ? 0 : 2,
+            STRONG_SIGNAL_NOT_ESTABLISHED: empty ? 3 : 2,
+            INSUFFICIENT_EVIDENCE: empty ? 2 : 1,
+          },
+        })),
+        excluded_countries: excluded,
+        opportunity_release_id: 'phase6g-api-test.1',
+        evidence_policy_version: 'opportunity-filter-evidence-policy-1.1',
+        source_bundle_version: 'opportunity-source-test.1',
+        strict_filter_explanation:
+          'Every selected opportunity filter requires a verified strong signal.',
+        no_score_impact: true,
+      },
+    },
+    rankings: passingCountries,
+  }
+}
+
 export function rankingForLocalityStatus(status: LocalityStatus): RankingV2 {
   const countryStatus =
     status === 'MIXED_COUNTRY_RESULTS' ? 'NO_COMMON_LOCALITY' : status
@@ -584,6 +840,43 @@ export const comparisonFixture: ComparisonV2 = {
   })),
 }
 
+export const comparisonWithOpportunityFixture: ComparisonV2 = (() => {
+  const ranking = rankingWithOpportunityFilters([
+    'skilled_trades_construction_opportunity',
+  ])
+  const verified = opportunityEvidence(
+    'skilled_trades_construction_opportunity',
+    'VERIFIED_STRONG_SIGNAL',
+    ['skilled_trades', 'construction'],
+  )
+  const notEstablished = opportunityEvidence(
+    'skilled_trades_construction_opportunity',
+    'STRONG_SIGNAL_NOT_ESTABLISHED',
+  )
+  return {
+    ...comparisonFixture,
+    assessments: ranking.assessments,
+    countries: comparisonFixture.countries.slice(0, 3).map((country, index) => ({
+      ...country,
+      rank: index === 2 ? null : country.rank,
+      opportunity_excluded: index === 2,
+      assessments: {
+        ...country.assessments,
+        opportunity: {
+          evaluated: true,
+          passes: index !== 2,
+          filter_evidence: [index === 2 ? notEstablished : verified],
+        },
+      },
+    })),
+    requested_country_entity_ids: comparisonFixture.requested_country_entity_ids.slice(0, 3),
+    criterion_rows: comparisonFixture.criterion_rows.map((row) => ({
+      ...row,
+      cells: row.cells.slice(0, 3),
+    })),
+  }
+})()
+
 export const comparisonWithUnavailableFixture: ComparisonV2 = {
   ...comparisonFixture,
   assessments: coverageWarningRanking.assessments,
@@ -682,5 +975,42 @@ export function countryDetailsFixture(
     country,
     criteria,
     opportunity_filters: [],
+  }
+}
+
+export function countryDetailsWithOpportunityFixture(
+  countryIndex = 0,
+  evidence: OpportunityFilterEvidenceV2[] = [
+    opportunityEvidence(
+      'skilled_trades_construction_opportunity',
+      'VERIFIED_STRONG_SIGNAL',
+      ['skilled_trades', 'construction'],
+    ),
+    {
+      ...opportunityEvidence(
+        'medicine_health_sciences_education_opportunity',
+        'INSUFFICIENT_EVIDENCE',
+      ),
+      documentation_ref: 'docs/data/education-opportunity-evidence.md',
+    },
+    opportunityEvidence(
+      'health_social_work_opportunity',
+      'STRONG_SIGNAL_NOT_ESTABLISHED',
+    ),
+  ],
+): CountryDetailsV2 {
+  const base = countryDetailsFixture(countryIndex)
+  const activeFilterIds = evidence.map((item) => item.filter_id).sort()
+  return {
+    ...base,
+    assessments: {
+      ...base.assessments,
+      opportunity: {
+        ...rankingWithOpportunityFilters(activeFilterIds).assessments.opportunity,
+        passing_country_count: 0,
+        excluded_country_count: 1,
+      },
+    },
+    opportunity_filters: evidence,
   }
 }

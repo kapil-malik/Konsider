@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import type {
   ComparisonV2,
   ContributionV2,
+  OpportunityFilterCatalogV2,
 } from '../api/types'
 import {
   LOCALITY_CONTENT,
@@ -11,9 +12,15 @@ import {
   readableCode,
 } from '../localityPresentation'
 import { formatScore } from '../preferences'
+import {
+  OPPORTUNITY_STATE_CONTENT,
+  filterName,
+  routeSummary,
+} from '../opportunityPresentation'
 
 type ComparisonViewProps = {
   comparison: ComparisonV2
+  opportunityCatalog: OpportunityFilterCatalogV2
   onBack: () => void
   onSelectCountry: (countryCode: string) => void
 }
@@ -62,11 +69,17 @@ function ContributionValue({
 
 export function ComparisonView({
   comparison,
+  opportunityCatalog,
   onBack,
   onSelectCountry,
 }: ComparisonViewProps) {
   const headingRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => headingRef.current?.focus(), [])
+  const opportunityDefinitions = new Map(
+    opportunityCatalog.definitions.map((definition) => [definition.id, definition]),
+  )
+  const opportunityFiltersActive =
+    comparison.assessments.opportunity.active_filter_ids.length > 0
 
   return (
     <section className="comparison-panel" aria-labelledby="comparison-heading">
@@ -102,6 +115,15 @@ export function ComparisonView({
           </p>
         </div>
       )}
+      {comparison.countries.some((country) => country.opportunity_excluded) && (
+        <div className="comparison-data-notice opportunity-comparison-notice" role="status">
+          <span aria-hidden="true">○</span>
+          <p>
+            Opportunity-filter excluded countries retain their canonical affinity score and base
+            rank, but are not assigned a filtered rank.
+          </p>
+        </div>
+      )}
 
       <div className="comparison-table-wrap">
         <table className="comparison-table">
@@ -127,6 +149,9 @@ export function ComparisonView({
                     {country.coverage_excluded && (
                       <span className="column-status">Coverage excluded</span>
                     )}
+                    {country.opportunity_excluded && (
+                      <span className="column-status">Opportunity-filter excluded</span>
+                    )}
                   </th>
                 )
               })}
@@ -142,10 +167,14 @@ export function ComparisonView({
                     country.coverage_excluded ? 'unranked-country-column' : undefined
                   }
                 >
-                  {country.final_aggregate !== null && country.rank !== null ? (
+                  {country.final_aggregate !== null ? (
                     <>
                       <strong>{formatScore(country.final_aggregate)}</strong>
-                      <span className="comparison-rank">Rank {country.rank}</span>
+                      <span className="comparison-rank">
+                        {country.rank !== null
+                          ? `${opportunityFiltersActive ? 'Filtered rank' : 'Rank'} ${country.rank}`
+                          : `Base rank ${country.base_rank}`}
+                      </span>
                     </>
                   ) : (
                     <span className="unavailable-cell" aria-label="No partial affinity score">
@@ -189,6 +218,35 @@ export function ComparisonView({
                 )
               })}
             </tr>
+            {comparison.assessments.opportunity.active_filter_ids.map((filterId) => {
+              const definition = opportunityDefinitions.get(filterId)
+              return (
+                <tr className="opportunity-comparison-row" key={`opportunity:${filterId}`}>
+                  <th scope="row">
+                    Opportunity filter
+                    <span>{filterName(definition, filterId)}</span>
+                  </th>
+                  {comparison.countries.map((country) => {
+                    const evidence = country.assessments.opportunity.filter_evidence.find(
+                      (item) => item.filter_id === filterId,
+                    )
+                    if (!evidence) {
+                      return <td key={country.country.entity_id}>Not evaluated</td>
+                    }
+                    const content = OPPORTUNITY_STATE_CONTENT[evidence.state]
+                    const route = routeSummary(evidence)
+                    return (
+                      <td key={country.country.entity_id}>
+                        <span className={`opportunity-state-badge state-${content.className}`}>
+                          <span aria-hidden="true">{content.icon}</span> {content.label}
+                        </span>
+                        {route && <small>Route: {route}</small>}
+                      </td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
             {comparison.criterion_rows.map((row) => (
               <tr key={row.criterion_id}>
                 <th scope="row">
@@ -245,13 +303,40 @@ export function ComparisonView({
               </h3>
               <p>
                 {country.final_aggregate !== null
-                  ? `${formatScore(country.final_aggregate)} · Rank ${country.rank}`
+                  ? `${formatScore(country.final_aggregate)} · ${
+                      country.rank !== null
+                        ? `${opportunityFiltersActive ? 'Filtered rank' : 'Rank'} ${country.rank}`
+                        : `Base rank ${country.base_rank} · Opportunity-filter excluded`
+                    }`
                   : 'Coverage excluded · no final aggregate'}
               </p>
               <p>
                 <strong>Locality:</strong>{' '}
                 {LOCALITY_CONTENT[country.assessments.locality.status].label}
               </p>
+              {comparison.assessments.opportunity.active_filter_ids.length > 0 && (
+                <div className="comparison-opportunity-list">
+                  <strong>Opportunity filters</strong>
+                  <ul>
+                    {comparison.assessments.opportunity.active_filter_ids.map((filterId) => {
+                      const evidence = country.assessments.opportunity.filter_evidence.find(
+                        (item) => item.filter_id === filterId,
+                      )
+                      const content = evidence
+                        ? OPPORTUNITY_STATE_CONTENT[evidence.state]
+                        : null
+                      const route = evidence ? routeSummary(evidence) : ''
+                      return (
+                        <li key={filterId}>
+                          {filterName(opportunityDefinitions.get(filterId), filterId, true)}:{' '}
+                          {content?.label ?? 'Not evaluated'}
+                          {route && <small>Route: {route}</small>}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              )}
               <dl>
                 {comparison.criterion_rows.map((row) => {
                   const cell = row.cells.find(

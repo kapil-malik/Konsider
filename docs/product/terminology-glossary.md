@@ -21,6 +21,18 @@ evidence. LSC describes scope, not coverage or product role.
 **Opportunity Filter** — A filter-only destination-side ecosystem signal. Selecting one restricts
 the already ranked country set and never contributes to score. `OFC` is internal shorthand.
 
+**All selected required** (`ALL_REQUIRED`) — The only Opportunity Filter combination mode. A
+country remains visible only when every selected filter is a verified strong signal. The UI never
+auto-relaxes this selection.
+
+**Opportunity-filter excluded** — A country that remains canonically rankable but fails at least
+one selected Opportunity Filter. Its affinity score and base rank remain valid; it has no filtered
+rank in that response.
+
+**Research-university ecosystem** — The bounded education construct used by the four education
+Opportunity Filters. It describes research-intensive university evidence, not teaching quality,
+programme availability, admission access, affordability, accreditation or applicant eligibility.
+
 ## Opportunity Filter states
 
 **Verified strong signal** (`VERIFIED_STRONG_SIGNAL`) — Complete approved evidence crosses a

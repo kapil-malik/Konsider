@@ -1,10 +1,16 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import { createComparison, createRanking, fetchCatalog } from './api/client'
+import {
+  createComparison,
+  createRanking,
+  fetchCatalog,
+  fetchOpportunityFilters,
+} from './api/client'
 import type {
   CatalogV2,
   ComparisonRequestV2,
+  OpportunityFilterCatalogV2,
   PreferencePreset,
   RankingRequestV2,
   RankingV2,
@@ -94,20 +100,43 @@ function Header({ onOpenSources }: HeaderProps) {
 type ApplyVariables = {
   request: RankingRequestV2
   preference: PreferenceDraft
+  opportunityFilterIds: string[]
+  draftAfterSuccess?: {
+    preference: PreferenceDraft
+    opportunityFilterIds: string[]
+  }
 }
 
-function selectionFor(preference: PreferenceDraft): WeightSelectionV2 {
-  return preference.preferencePresetId
+function selectionFor(
+  preference: PreferenceDraft,
+  opportunityFilterIds: string[] = [],
+): WeightSelectionV2 {
+  const preferenceSelection = preference.preferencePresetId
     ? { preference_preset_id: preference.preferencePresetId }
     : { weights: preference.weights }
+  return opportunityFilterIds.length
+    ? {
+        ...preferenceSelection,
+        opportunity_filters: {
+          mode: 'ALL_REQUIRED',
+          required_filter_ids: [...opportunityFilterIds].sort(),
+        },
+      }
+    : preferenceSelection
 }
+
+const filterSelectionsEqual = (first: string[], second: string[]) =>
+  first.length === second.length &&
+  [...first].sort().every((value, index) => value === [...second].sort()[index])
 
 function Workspace({
   catalog,
+  opportunityCatalog,
   onOpenSources,
   onRankingChange,
 }: {
   catalog: CatalogV2
+  opportunityCatalog: OpportunityFilterCatalogV2
   onOpenSources: () => void
   onRankingChange: (ranking: RankingV2 | null) => void
 }) {
@@ -135,6 +164,7 @@ function Workspace({
     <RankingWorkspace
       key={`${catalog.release_id}:${defaultPreset.id}`}
       catalog={catalog}
+      opportunityCatalog={opportunityCatalog}
       defaultPreset={defaultPreset}
       enabledCriteria={enabledCriteria}
       onOpenSources={onOpenSources}
@@ -145,6 +175,7 @@ function Workspace({
 
 type RankingWorkspaceProps = {
   catalog: CatalogV2
+  opportunityCatalog: OpportunityFilterCatalogV2
   defaultPreset: PreferencePreset
   enabledCriteria: CatalogV2['criteria']
   onOpenSources: () => void
@@ -153,6 +184,7 @@ type RankingWorkspaceProps = {
 
 function RankingWorkspace({
   catalog,
+  opportunityCatalog,
   defaultPreset,
   enabledCriteria,
   onOpenSources,
@@ -165,6 +197,8 @@ function RankingWorkspace({
   const [applied, setApplied] = useState<PreferenceDraft>(() =>
     clonePreference(initialPreference),
   )
+  const [draftOpportunityFilterIds, setDraftOpportunityFilterIds] = useState<string[]>([])
+  const [appliedOpportunityFilterIds, setAppliedOpportunityFilterIds] = useState<string[]>([])
   const [successfulRanking, setSuccessfulRanking] = useState<RankingV2 | null>(null)
   const [detailed, setDetailed] = useState(false)
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
@@ -185,7 +219,16 @@ function RankingWorkspace({
     onSuccess: (ranking, variables) => {
       setSuccessfulRanking(ranking)
       setApplied(clonePreference(variables.preference))
-      setDraft(clonePreference(variables.preference))
+      setAppliedOpportunityFilterIds([...variables.opportunityFilterIds])
+      setDraft(
+        clonePreference(
+          variables.draftAfterSuccess?.preference ?? variables.preference,
+        ),
+      )
+      setDraftOpportunityFilterIds([
+        ...(variables.draftAfterSuccess?.opportunityFilterIds ??
+          variables.opportunityFilterIds),
+      ])
       setComparisonCountries([])
       setComparisonNotice('')
       setSelectedCountry(null)
@@ -203,7 +246,12 @@ function RankingWorkspace({
 
   const ranking = successfulRanking ?? initialRanking.data
   useEffect(() => onRankingChange(ranking ?? null), [onRankingChange, ranking])
-  const dirty = !preferencesEqual(draft, applied)
+  const dirty =
+    !preferencesEqual(draft, applied) ||
+    !filterSelectionsEqual(
+      draftOpportunityFilterIds,
+      appliedOpportunityFilterIds,
+    )
 
   const selectPreset = (preset: PreferencePreset) => {
     setDraft(preferenceFromPreset(preset))
@@ -216,12 +264,51 @@ function RankingWorkspace({
     }))
   }
 
+  const toggleOpportunityFilter = (filterId: string) => {
+    setDraftOpportunityFilterIds((current) =>
+      current.includes(filterId)
+        ? current.filter((id) => id !== filterId)
+        : [...current, filterId],
+    )
+  }
+
   const applyPriorities = () => {
     if (!dirty || applyMutation.isPending) return
     const preference = clonePreference(draft)
+    const opportunityFilterIds = [...draftOpportunityFilterIds].sort()
     applyMutation.mutate({
-      request: selectionFor(preference),
+      request: selectionFor(preference, opportunityFilterIds),
       preference,
+      opportunityFilterIds,
+    })
+  }
+
+  const removeAppliedOpportunityFilter = (filterId: string) => {
+    if (applyMutation.isPending) return
+    const nextApplied = appliedOpportunityFilterIds.filter((id) => id !== filterId)
+    applyMutation.mutate({
+      request: selectionFor(applied, nextApplied),
+      preference: clonePreference(applied),
+      opportunityFilterIds: nextApplied,
+      draftAfterSuccess: {
+        preference: clonePreference(draft),
+        opportunityFilterIds: draftOpportunityFilterIds.filter(
+          (id) => id !== filterId,
+        ),
+      },
+    })
+  }
+
+  const clearAppliedOpportunityFilters = () => {
+    if (applyMutation.isPending || !appliedOpportunityFilterIds.length) return
+    applyMutation.mutate({
+      request: selectionFor(applied),
+      preference: clonePreference(applied),
+      opportunityFilterIds: [],
+      draftAfterSuccess: {
+        preference: clonePreference(draft),
+        opportunityFilterIds: [],
+      },
     })
   }
 
@@ -248,7 +335,7 @@ function RankingWorkspace({
     if (comparisonCountries.length < 2 || comparisonMutation.isPending) return
     comparisonMutation.mutate({
       country_codes: comparisonCountries,
-      ...selectionFor(applied),
+      ...selectionFor(applied, appliedOpportunityFilterIds),
     })
   }
 
@@ -282,7 +369,8 @@ function RankingWorkspace({
         <p className="eyebrow">A clearer way to explore relocation choices</p>
         <h1 id="intro-heading">{INTRODUCTION}</h1>
         <p>
-          Shape the ranking with your priorities, inspect national and locality evidence, and
+          Shape the ranking with your priorities, inspect national, locality, and opportunity
+          evidence, and
           compare the countries that stand out.
         </p>
       </section>
@@ -294,10 +382,17 @@ function RankingWorkspace({
           draft={draft}
           dirty={dirty}
           isApplying={applyMutation.isPending}
+          opportunityCatalog={opportunityCatalog}
+          selectedOpportunityFilterIds={draftOpportunityFilterIds}
           onPresetChange={selectPreset}
           onWeightChange={changeWeight}
+          onOpportunityFilterToggle={toggleOpportunityFilter}
+          onOpportunityFiltersClear={() => setDraftOpportunityFilterIds([])}
           onApply={applyPriorities}
-          onUndo={() => setDraft(clonePreference(applied))}
+          onUndo={() => {
+            setDraft(clonePreference(applied))
+            setDraftOpportunityFilterIds([...appliedOpportunityFilterIds])
+          }}
         />
 
         <div className="ranking-workspace">
@@ -324,6 +419,8 @@ function RankingWorkspace({
             <RankingView
               ranking={ranking}
               criteria={enabledCriteria}
+              countries={catalog.countries}
+              opportunityCatalog={opportunityCatalog}
               detailed={detailed}
               isUpdating={applyMutation.isPending}
               isComparing={comparisonMutation.isPending}
@@ -337,11 +434,14 @@ function RankingWorkspace({
               onToggleComparison={toggleComparison}
               onCompare={compareSelected}
               onOpenSources={onOpenSources}
+              onRemoveOpportunityFilter={removeAppliedOpportunityFilter}
+              onClearOpportunityFilters={clearAppliedOpportunityFilters}
             />
           )}
           {mode === 'comparison' && comparisonMutation.data && (
             <ComparisonView
               comparison={comparisonMutation.data}
+              opportunityCatalog={opportunityCatalog}
               onBack={backToRankings}
               onSelectCountry={selectFromComparison}
             />
@@ -352,7 +452,8 @@ function RankingWorkspace({
       {ranking && mode === 'ranking' && selectedCountry && (
         <CountryDetails
           countryCode={selectedCountry}
-          selection={selectionFor(applied)}
+          selection={selectionFor(applied, appliedOpportunityFilterIds)}
+          opportunityCatalog={opportunityCatalog}
           rankingCountry={rankingCountry}
           countryName={
             rankingCountry?.country.display_name ??
@@ -361,6 +462,16 @@ function RankingWorkspace({
             selectedCountry
           }
           coverageExcluded={Boolean(excludedCountry)}
+          opportunityExcluded={Boolean(
+            ranking.assessments.opportunity.excluded_countries.some(
+              (item) => item.country_code === selectedCountry,
+            ),
+          )}
+          opportunityBaseRank={
+            ranking.assessments.opportunity.excluded_countries.find(
+              (item) => item.country_code === selectedCountry,
+            )?.base_rank ?? null
+          }
           onClose={() => setSelectedCountry(null)}
         />
       )}
@@ -376,6 +487,11 @@ export default function App() {
     queryKey: ['catalog'],
     queryFn: ({ signal }) => fetchCatalog(signal),
   })
+  const opportunityCatalogQuery = useQuery({
+    queryKey: ['opportunity-filters'],
+    queryFn: ({ signal }) => fetchOpportunityFilters(signal),
+  })
+  const catalogError = catalogQuery.error ?? opportunityCatalogQuery.error
   const openSources = () => {
     sourcesReturnFocus.current =
       document.activeElement instanceof HTMLElement ? document.activeElement : null
@@ -392,26 +508,30 @@ export default function App() {
         Skip to main content
       </a>
       <Header onOpenSources={openSources} />
-      {catalogQuery.isPending && (
+      {(catalogQuery.isPending || opportunityCatalogQuery.isPending) && (
         <main id="main-content" className="page-shell initial-loading" aria-live="polite">
           <div className="brand-mark brand-mark-large" aria-hidden="true">
             K
           </div>
           <h1>Loading Konsider…</h1>
-          <p>Connecting to the current country catalog.</p>
+          <p>Connecting to the current country and opportunity-filter catalogs.</p>
         </main>
       )}
-      {catalogQuery.error && (
+      {catalogError && (
         <main id="main-content" className="page-shell initial-error">
           <ErrorNotice
-            error={catalogQuery.error}
-            onRetry={() => void catalogQuery.refetch()}
+            error={catalogError}
+            onRetry={() => {
+              void catalogQuery.refetch()
+              void opportunityCatalogQuery.refetch()
+            }}
           />
         </main>
       )}
-      {catalogQuery.data && (
+      {catalogQuery.data && opportunityCatalogQuery.data && (
         <Workspace
           catalog={catalogQuery.data}
+          opportunityCatalog={opportunityCatalogQuery.data}
           onOpenSources={openSources}
           onRankingChange={setCurrentRanking}
         />

@@ -1,6 +1,6 @@
-# Responsive locality-aware ranking and comparison UI
+# Responsive ranking, Opportunity Filter, and comparison UI
 
-Status: Phase 5H final contract
+Status: Phase 6H staged UI complete; publication remains Phase 6I work
 
 The UI is a comparison and inspection surface over `/api/v2`, not a second recommendation engine.
 It is implemented as one responsive React, TypeScript, and Vite application under `web/`.
@@ -9,6 +9,8 @@ It is implemented as one responsive React, TypeScript, and Vite application unde
 
 - A guest selects one of the server-owned preference presets or edits its enabled priorities
   with accessible six-state controls.
+- A separate **Opportunity filters** section groups five career and four education/research-
+  university signals. Checkbox selection is strict: every selected filter is required.
 - Draft changes do not affect results until **Apply priorities**. **Undo changes** restores the last
   successfully applied profile or custom weights.
 - The ranking shows every API result in a bounded sticky-header desktop table or full-page mobile
@@ -26,7 +28,8 @@ It is implemented as one responsive React, TypeScript, and Vite application unde
 
 - FastAPI remains authoritative for preference presets, readiness, normalization, canonical scores,
   contributions, ranking order, comparisons, structured coverage/locality/profile assessments,
-  locality selection and overlap, and active release selection.
+  Opportunity Filter definitions/states/evaluation, locality selection and overlap, and active
+  release selection.
 - Catalog source metadata is assembled from the validated active release source registry. Published
   release files are not modified.
 - OpenAPI is exported and converted to generated TypeScript component types by
@@ -50,7 +53,8 @@ Component tests cover catalog rendering, readiness and experimental states, slid
 Apply/Undo requests, search, region filtering, result counts, dynamic ranking detail, country
 evidence, comparison limits, guest help, empty results, and structured/network errors. Playwright
 covers the main guest, update, filtering, detail, comparison, source-help, unavailable-release, and
-91-country mobile long-list flows. Commands and local startup are documented in
+91-country mobile long-list flows, plus Opportunity Filter selection, exclusions, evidence,
+comparison and mobile behavior. Commands and local startup are documented in
 [the web guide](../../web/README.md).
 
 ## Phase 2D scale status
@@ -145,3 +149,53 @@ the retired Phase 3/4 payloads and runtime fallbacks for old field names have be
 separate structured assessments. With no applicant profile input, every profile assessment is
 explicitly `NO_PROFILE_CONTEXT`, has no evaluated dimensions, and carries a `NOT_EVALUATED`
 reason. The compile-time negative checks are retained as tests, not production compatibility code.
+
+## Phase 6H Opportunity Filter experience
+
+Opportunity Filters are presented as optional destination evidence, visibly separate from weighted
+ordering priorities. The UI renders the nine available definitions from
+`GET /api/v2/opportunity-filters`; it does not hard-code availability or derive filter states. Five
+career filters and four education/research-university filters appear in independently collapsible
+groups. They use checkboxes only—there are no Opportunity Filter weights, sliders, score controls,
+or alternate combination modes.
+
+Draft filter changes share the existing **Apply priorities** and **Undo changes** transaction with
+preference changes. Applied requests send sorted IDs under `opportunity_filters` with
+`mode: ALL_REQUIRED`. Active chips remove one filter or all filters while preserving the applied
+preference preset or weights. Removing a filter never silently changes a weight, and the service
+never auto-relaxes a zero-match selection.
+
+The result summary distinguishes:
+
+- **Verified strong signal**: the filter passes;
+- **Strong signal not established**: comparable evidence was assessed but did not cross the frozen
+  strong-ecosystem threshold; and
+- **Insufficient evidence**: comparable evidence is not adequate to reach either conclusion and is
+  not negative evidence.
+
+Filtered rows preserve the API affinity score and show filtered rank, base rank, and one compact
+selected-filter summary rather than adding nine table columns. A collapsible exclusion inspector
+shows every excluded country, its base rank, each failing filter and its exact public state. A
+zero-match result is a valid non-error state with current counts and explicit remove-filter actions;
+the unfiltered ranking is never substituted automatically.
+
+Country details show selected-filter state, confidence, reference period, establishing route,
+sources/version/attribution, limitations, and methodology reference. Skilled-trades/construction
+evidence identifies skilled trades, construction, or both. Care-sector wording is limited to human
+health and social work; finance wording is limited to finance and insurance. Education evidence is
+labelled as a research-university ecosystem and repeats the shared limitation that it does not
+establish teaching quality, programme availability, admission access, affordability, accreditation,
+or applicant eligibility. Comparison views retain these filters as a separate evidence domain and
+preserve an opportunity-excluded country's canonical score and base rank.
+
+Desktop retains the compact sticky ranking table. At 760px and below the filter groups, result
+counts, evidence cards, and comparison content stack into full-width cards; the nine-filter grid is
+never presented as a mobile table. Controls meet the existing large-target convention, native
+checkbox and disclosure semantics remain keyboard-operable, every color state also has text and an
+icon, and focus/status behavior uses the existing accessible patterns. No one-off analytics hook was
+added because this codebase has no established product-analytics convention.
+
+See the [Phase 6H test plan](phase6h-opportunity-filter-ui-test-plan.md) and
+[implementation report](../history/phase6h-opportunity-filter-ui.md). The UI is verified against
+the staged nine-filter API candidate; it does not activate that candidate or change
+`data/releases/active.json`.

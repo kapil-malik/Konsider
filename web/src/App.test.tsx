@@ -4,15 +4,25 @@ import userEvent from '@testing-library/user-event'
 import { vi } from 'vitest'
 
 import App from './App'
-import type { CatalogV2, ComparisonV2, RankingV2 } from './api/types'
+import type {
+  CatalogV2,
+  ComparisonV2,
+  CountryDetailsV2,
+  OpportunityFilterCatalogV2,
+  RankingV2,
+} from './api/types'
 import {
   catalogFixture,
   comparisonFixture,
+  comparisonWithOpportunityFixture,
   comparisonWithUnavailableFixture,
   countryDetailsFixture,
+  countryDetailsWithOpportunityFixture,
   coverageWarningRanking,
+  opportunityCatalogFixture,
   rankingFixture,
   rankingForLocalityStatus,
+  rankingWithOpportunityFilters,
 } from './test/fixtures'
 
 type RecordedRequest = { path: string; method: string; body?: unknown }
@@ -28,12 +38,16 @@ function installApi({
   ranking = rankingFixture,
   comparison = comparisonFixture,
   catalog = catalogFixture,
+  opportunityCatalog = opportunityCatalogFixture,
   subsequentRanking = ranking,
+  detailsForCode,
 }: {
   ranking?: RankingV2
   comparison?: ComparisonV2
   catalog?: CatalogV2
+  opportunityCatalog?: OpportunityFilterCatalogV2
   subsequentRanking?: RankingV2
+  detailsForCode?: (code: string) => CountryDetailsV2
 } = {}) {
   const requests: RecordedRequest[] = []
   let rankingCalls = 0
@@ -49,12 +63,17 @@ function installApi({
       const body = init?.body ? JSON.parse(String(init.body)) : undefined
       requests.push({ path: url.pathname, method: init?.method ?? 'GET', body })
       if (url.pathname.endsWith('/catalog')) return jsonResponse(catalog)
+      if (url.pathname.endsWith('/opportunity-filters')) {
+        return jsonResponse(opportunityCatalog)
+      }
       if (url.pathname.endsWith('/rankings')) {
         rankingCalls += 1
         return jsonResponse(rankingCalls === 1 ? ranking : subsequentRanking)
       }
       if (url.pathname.includes('/countries/')) {
-        const excluded = url.pathname.includes('/C04/')
+        const code = url.pathname.split('/countries/')[1]?.split('/')[0] ?? 'C00'
+        if (detailsForCode) return jsonResponse(detailsForCode(code))
+        const excluded = code === 'C04'
         return jsonResponse(countryDetailsFixture(excluded ? 4 : 0, excluded))
       }
       if (url.pathname.endsWith('/comparisons')) return jsonResponse(comparison)
@@ -294,4 +313,237 @@ test('renders empty rankings and structured API failures without fallback data',
       name: 'Country data is temporarily unavailable',
     }),
   ).toBeInTheDocument()
+})
+
+test('renders and keyboard-operates nine grouped Opportunity Filters without weights', async () => {
+  installApi()
+  const user = userEvent.setup()
+  renderApp()
+
+  const heading = await screen.findByRole('heading', { name: 'Opportunity filters' })
+  const panel = heading.closest('section')!
+  expect(within(panel).getByText('Career')).toBeInTheDocument()
+  expect(
+    within(panel).getByText('Education and research universities'),
+  ).toBeInTheDocument()
+  expect(within(panel).getAllByRole('checkbox')).toHaveLength(9)
+  expect(within(panel).queryByRole('slider')).not.toBeInTheDocument()
+  expect(
+    within(panel).getByText(
+      'All selected opportunity filters must have a verified strong signal.',
+    ),
+  ).toBeInTheDocument()
+
+  const technology = within(panel).getByRole('checkbox', {
+    name: /Technology and software/,
+  })
+  technology.focus()
+  await user.keyboard(' ')
+  expect(technology).toBeChecked()
+  expect(within(panel).getByText('1 selected')).toBeInTheDocument()
+  await user.click(
+    within(panel).getByRole('button', { name: 'Clear all opportunity filters' }),
+  )
+  expect(technology).not.toBeChecked()
+
+  await user.click(within(panel).getByText('How opportunity filters work'))
+  expect(
+    within(panel).getByText(/Insufficient evidence is not negative/),
+  ).toBeInTheDocument()
+  expect(
+    within(panel).getByText(/does not establish teaching quality, programme availability/),
+  ).toBeInTheDocument()
+})
+
+test('serializes one and multiple required filters, preserves scores, and exposes removable active chips', async () => {
+  const filtered = rankingWithOpportunityFilters()
+  const requests = installApi({ subsequentRanking: filtered })
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  expect(requests.find((request) => request.path.endsWith('/rankings'))?.body).toEqual({
+    preference_preset_id: 'balanced',
+  })
+  await user.click(
+    screen.getByRole('checkbox', { name: /Technology and software/ }),
+  )
+  await user.click(
+    screen.getByRole('checkbox', { name: /Skilled-trades or construction/ }),
+  )
+  await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
+
+  await screen.findByRole('heading', {
+    name: '2 countries match all selected opportunity filters',
+  })
+  expect(requests.filter((request) => request.path.endsWith('/rankings')).at(-1)?.body).toEqual({
+    preference_preset_id: 'balanced',
+    opportunity_filters: {
+      mode: 'ALL_REQUIRED',
+      required_filter_ids: [
+        'skilled_trades_construction_opportunity',
+        'technology_software_opportunity',
+      ],
+    },
+  })
+  expect(screen.getAllByText('8.5 / 10').length).toBeGreaterThan(0)
+  expect(
+    screen.getByRole('button', {
+      name: 'Remove Technology and software employment ecosystem opportunity filter',
+    }),
+  ).toBeInTheDocument()
+  expect(screen.getAllByText(/Matches 2 filters/).length).toBeGreaterThan(0)
+  expect(screen.getAllByText('Strong signal not established').length).toBeGreaterThan(0)
+  expect(screen.getAllByText('Insufficient evidence').length).toBeGreaterThan(0)
+
+  expect({
+    heading: screen.getByRole('heading', {
+      level: 3,
+      name: '2 countries match all selected opportunity filters',
+    }).textContent,
+    returned: filtered.rankings.map((country) => ({
+      rank: country.rank,
+      baseRank: country.base_rank,
+      score: country.total_score,
+    })),
+    exclusions: filtered.assessments.opportunity.excluded_counts_by_state,
+  }).toMatchInlineSnapshot(`
+    {
+      "exclusions": {
+        "INSUFFICIENT_EVIDENCE": 1,
+        "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
+      },
+      "heading": "2 countries match all selected opportunity filters",
+      "returned": [
+        {
+          "baseRank": 1,
+          "rank": 1,
+          "score": 8.5,
+        },
+        {
+          "baseRank": 2,
+          "rank": 2,
+          "score": 8.1,
+        },
+      ],
+    }
+  `)
+})
+
+test('explains excluded states and country evidence without negative or applicant-success claims', async () => {
+  const filtered = rankingWithOpportunityFilters()
+  const requests = installApi({
+    subsequentRanking: filtered,
+    detailsForCode: (code) =>
+      countryDetailsWithOpportunityFixture(Number(code.slice(-1))),
+  })
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  await user.click(
+    screen.getByRole('checkbox', { name: /Technology and software/ }),
+  )
+  await user.click(
+    screen.getByRole('checkbox', { name: /Skilled-trades or construction/ }),
+  )
+  await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
+  await user.click(await screen.findByText(/Review 3 opportunity-filter excluded countries/))
+  await user.click(screen.getByRole('button', { name: 'Country 3' }))
+
+  expect(
+    await screen.findByRole('heading', { name: 'Opportunity filters', level: 3 }),
+  ).toBeInTheDocument()
+  expect(screen.getByText('Both: skilled trades and construction')).toBeInTheDocument()
+  expect(
+    screen.getAllByText(
+      /Comparable evidence was available, but it did not cross Konsider’s strong-ecosystem threshold/,
+    ).length,
+  ).toBeGreaterThan(0)
+  expect(
+    screen.getAllByText(/does not currently have enough comparable evidence to assess/).length,
+  ).toBeGreaterThan(0)
+  expect(screen.getAllByText(/covers human health and social work/i).length).toBeGreaterThan(0)
+  expect(
+    screen.getAllByText(/does not establish teaching quality, programme availability/).length,
+  ).toBeGreaterThan(0)
+  expect(screen.queryByText(/^no opportunity$/i)).not.toBeInTheDocument()
+  expect(screen.queryByText(/^(weak|bad) country$/i)).not.toBeInTheDocument()
+
+  const detailsRequest = requests.find((request) => request.path.includes('/countries/C02/'))
+  expect(detailsRequest?.body).toMatchObject({
+    opportunity_filters: {
+      mode: 'ALL_REQUIRED',
+      required_filter_ids: [
+        'skilled_trades_construction_opportunity',
+        'technology_software_opportunity',
+      ],
+    },
+  })
+})
+
+test('renders a non-error zero-match state and removes one filter without changing applied weights', async () => {
+  const empty = rankingWithOpportunityFilters(['technology_software_opportunity'], true)
+  const requests = installApi({ subsequentRanking: empty })
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  await user.click(
+    screen.getByRole('checkbox', { name: /Technology and software/ }),
+  )
+  await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
+
+  expect(
+    (
+      await screen.findAllByRole('heading', {
+        name: 'No country matches every selected opportunity filter',
+      })
+    ).length,
+  ).toBeGreaterThan(0)
+  expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+  expect(
+    screen.getAllByText(/some countries may have insufficient comparable evidence/).length,
+  ).toBeGreaterThan(0)
+  await user.click(
+    screen.getByRole('button', { name: 'Remove Technology and software' }),
+  )
+  await waitFor(() =>
+    expect(requests.filter((request) => request.path.endsWith('/rankings'))).toHaveLength(3),
+  )
+  expect(requests.filter((request) => request.path.endsWith('/rankings')).at(-1)?.body).toEqual({
+    preference_preset_id: 'balanced',
+  })
+})
+
+test('keeps Opportunity Filter evidence separate in desktop and mobile comparison presentations', async () => {
+  const filtered = rankingWithOpportunityFilters([
+    'skilled_trades_construction_opportunity',
+  ])
+  const requests = installApi({
+    subsequentRanking: filtered,
+    comparison: comparisonWithOpportunityFixture,
+  })
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  await user.click(
+    screen.getByRole('checkbox', { name: /Skilled-trades or construction/ }),
+  )
+  await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
+  const comparisonBoxes = screen.getAllByRole('checkbox', { name: /Select Country/ })
+  await user.click(comparisonBoxes[0])
+  await user.click(comparisonBoxes[1])
+  await user.click(screen.getByRole('button', { name: 'Compare selected (2)' }))
+
+  expect(await screen.findByRole('heading', { name: 'Compare countries' })).toBeInTheDocument()
+  expect(screen.getAllByText('Opportunity filter').length).toBeGreaterThan(0)
+  expect(screen.getAllByText('Verified strong signal').length).toBeGreaterThan(0)
+  expect(screen.getAllByText('Strong signal not established').length).toBeGreaterThan(0)
+  expect(screen.getAllByText(/Both: skilled trades and construction/).length).toBeGreaterThan(0)
+  expect(screen.getByText(/Opportunity-filter excluded countries retain/)).toBeInTheDocument()
+  expect(requests.find((request) => request.path.endsWith('/comparisons'))?.body).toMatchObject({
+    opportunity_filters: {
+      mode: 'ALL_REQUIRED',
+      required_filter_ids: ['skilled_trades_construction_opportunity'],
+    },
+  })
 })

@@ -1,6 +1,6 @@
 # Opportunity Filter contracts and staged architecture
 
-Status: Phase 6G engine and API complete against a staged candidate; UI and publication pending
+Status: Phase 6G engine/API and Phase 6H UI complete against a staged candidate; publication pending
 
 Date: 2026-08-03
 
@@ -165,9 +165,9 @@ Reusable logic must move into a tested production module with a versioned policy
 - Phase 6F: onboard four education filters and complete the nine-filter staged bundle.
 - Phase 6G: strict AND evaluation and additive API transport complete against
   `phase6g-api-2026-08-03.1`; active ranking pointer unchanged.
-- Phase 6H: implement UI controls and explanations.
+- Phase 6H: UI controls and explanations complete against the staged nine-filter API candidate.
 - Phase 6I: publish, activate, verify and close.
 
 Phase 6G changes the API contract additively, but the default runtime has an empty Opportunity
-Filter catalog unless a bundle is explicitly configured. UI work and publication remain gated by
-Phases 6H and 6I.
+Filter catalog unless a bundle is explicitly configured. Phase 6H does not change that default or
+the active release pointer; publication remains gated by Phase 6I.

@@ -1,6 +1,6 @@
 # Opportunity Filter engine
 
-Status: Phase 6G complete against staged API candidate
+Status: Phase 6G engine/API and Phase 6H UI complete against staged candidate
 
 Date: 2026-08-04
 
@@ -72,7 +72,8 @@ candidate is `data/reports/phase6g-2026-08-03/staged-release`, release
 - `POST /api/v2/countries/{country_code}/details` returns selected-filter evidence summaries.
 
 The OpenAPI contract remains versioned as `konsider-api-2.0`; Phase 6G fields and the catalog route
-are additive. UI controls and presentation are Phase 6H work.
+are additive. Phase 6H consumes these fields through checkbox-only, all-required controls and
+API-owned explanations documented in the [UI guide](ui.md). Publication remains Phase 6I work.
 
 ## Verification contract
 

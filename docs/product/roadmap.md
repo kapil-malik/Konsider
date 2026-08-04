@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 6G filter engine and additive API complete; UI and publication pending
+Status: Phase 6H Opportunity Filter UI complete against staged API; publication pending
 
 Last updated: 2026-08-04
 
@@ -50,11 +50,12 @@ not weighted criteria or PCCs.
 Phase 6D defines the sibling catalog, tri-state evidence, confidence, reason, policy, source,
 coverage, assessment and optional release-5.1 contracts. Phase 6E stages five career filters and
 455 explicit country states. Phase 6F adds four education filters, 364 education rows, and a
-complete 819-row draft candidate. Phase 6G now implements the isolated post-ranking strict-AND
-engine and additive typed API against `phase6g-api-2026-08-03.1`. The canonical ranking engine,
-UI and active release remain unchanged. See the
+complete 819-row draft candidate. Phase 6G implements the isolated post-ranking strict-AND engine
+and additive typed API against `phase6g-api-2026-08-03.1`. Phase 6H implements the separate
+checkbox controls, result/exclusion explanations, details and comparison presentation over that
+typed staged API. The canonical ranking engine and active release remain unchanged. See the
 [Opportunity Filter architecture](../architecture/opportunity-filter-contracts.md) and
-[Opportunity Filter engine](opportunity-filter-engine.md),
+[Opportunity Filter engine](opportunity-filter-engine.md), [UI guide](ui.md),
 [career evidence guide](../data/career-opportunity-evidence.md) and
 [education evidence guide](../data/education-opportunity-evidence.md).
 
@@ -188,8 +189,10 @@ job, licensing, visa, or admission probability.
 - Phase 6G implements indexed strict-AND evaluation after canonical ranking, additive API v2
   selection/catalog/assessment fields, and deterministic compatibility and golden tests. It does
   not activate the staged candidate.
-- Phase 6H UI and Phase 6I publication, release verification and closure remain later sequential
-  phases.
+- Phase 6H implements grouped checkbox controls, Apply/Undo and removable-filter interactions,
+  result/exclusion explanations, evidence details, comparison, responsive behavior and
+  accessibility over the staged API without activating it.
+- Phase 6I publication, release verification and closure remains the final sequential phase.
 
 ## Next phase after Phase 6: structured applicant and household context
 

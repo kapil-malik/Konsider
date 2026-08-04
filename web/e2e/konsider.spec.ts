@@ -3,9 +3,13 @@ import { expect, test, type Page, type Route } from '@playwright/test'
 import {
   catalogFixture,
   comparisonFixture,
+  comparisonWithOpportunityFixture,
   countryDetailsFixture,
+  countryDetailsWithOpportunityFixture,
   coverageWarningRanking,
+  opportunityCatalogFixture,
   rankingFixture,
+  rankingWithOpportunityFilters,
 } from '../src/test/fixtures'
 
 async function json(route: Route, body: unknown, status = 200) {
@@ -16,22 +20,36 @@ async function mockApi(
   page: Page,
   requests: Array<{ path: string; body?: unknown }> = [],
   ranking = rankingFixture,
+  filteredRanking = ranking,
 ) {
   await page.route('http://127.0.0.1:8000/api/**', async (route) => {
     const request = route.request()
     const url = new URL(request.url())
     requests.push({ path: url.pathname, body: request.postDataJSON() })
     if (url.pathname.endsWith('/catalog')) return json(route, catalogFixture)
-    if (url.pathname.endsWith('/rankings')) return json(route, ranking)
+    if (url.pathname.endsWith('/opportunity-filters')) {
+      return json(route, opportunityCatalogFixture)
+    }
+    if (url.pathname.endsWith('/rankings')) {
+      const body = request.postDataJSON() as { opportunity_filters?: unknown } | null
+      return json(route, body?.opportunity_filters ? filteredRanking : ranking)
+    }
     if (url.pathname.includes('/countries/')) {
       const code = url.pathname.split('/countries/')[1]?.split('/')[0] ?? 'C00'
       const index = Number(code.slice(-1))
+      const body = request.postDataJSON() as { opportunity_filters?: unknown } | null
+      if (body?.opportunity_filters) {
+        return json(route, countryDetailsWithOpportunityFixture(Number.isFinite(index) ? index : 0))
+      }
       const excluded = ranking.assessments.coverage.excluded_countries.some(
         (item) => item.country.country_codes.includes(code),
       )
       return json(route, countryDetailsFixture(Number.isFinite(index) ? index : 0, excluded))
     }
-    if (url.pathname.endsWith('/comparisons')) return json(route, comparisonFixture)
+    if (url.pathname.endsWith('/comparisons')) {
+      const body = request.postDataJSON() as { opportunity_filters?: unknown } | null
+      return json(route, body?.opportunity_filters ? comparisonWithOpportunityFixture : comparisonFixture)
+    }
     return json(route, { error: { code: 'not_found', message: 'Not found' } }, 404)
   })
 }
@@ -196,6 +214,97 @@ test('mobile keeps locality evidence, details, and comparison complete without o
   await expect(page.locator('.comparison-card').first()).toContainText('8.5 / 10 · Rank 1')
   await expect(
     page.locator('.comparison-card').first().getByText('Extreme heat exposure', { exact: true }),
+  ).toBeVisible()
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+})
+
+test('applies strict Opportunity Filters and exposes removable evidence and exclusions', async ({
+  page,
+}) => {
+  const requests: Array<{ path: string; body?: unknown }> = []
+  await mockApi(page, requests, rankingFixture, rankingWithOpportunityFilters())
+  await page.goto('/')
+
+  const opportunityPanel = page.locator(
+    'section[aria-labelledby="opportunity-filters-heading"]',
+  )
+  await expect(opportunityPanel.getByRole('checkbox')).toHaveCount(9)
+  await expect(opportunityPanel.getByRole('slider')).toHaveCount(0)
+  await opportunityPanel.getByRole('checkbox', { name: /Technology and software/ }).check()
+  await opportunityPanel.getByRole('checkbox', { name: /Skilled-trades or construction/ }).check()
+  await page.getByRole('button', { name: 'Apply priorities' }).click()
+
+  await expect(
+    page.getByRole('heading', { name: '2 countries match all selected opportunity filters' }),
+  ).toBeVisible()
+  const opportunitySummary = page.getByRole('region', {
+    name: '2 countries match all selected opportunity filters',
+  })
+  await expect(
+    opportunitySummary.getByText('Strong signal not established', { exact: true }),
+  ).toBeVisible()
+  await expect(
+    opportunitySummary.getByText('Insufficient evidence', { exact: true }),
+  ).toBeVisible()
+  await expect(page.getByText('8.5 / 10').first()).toBeVisible()
+  expect(requests.filter((item) => item.path.endsWith('/rankings')).at(-1)?.body).toEqual({
+    preference_preset_id: 'balanced',
+    opportunity_filters: {
+      mode: 'ALL_REQUIRED',
+      required_filter_ids: [
+        'skilled_trades_construction_opportunity',
+        'technology_software_opportunity',
+      ],
+    },
+  })
+
+  await page.getByText(/Review 3 opportunity-filter excluded countries/).click()
+  await page.getByRole('button', { name: 'Country 3' }).click()
+  await expect(page.getByText('Both: skilled trades and construction')).toBeVisible()
+  const details = page.getByRole('region', { name: 'Country 3' })
+  const careEvidence = details
+    .locator('.opportunity-evidence-card')
+    .filter({ hasText: 'Care-sector employment ecosystem' })
+  await expect(
+    careEvidence.locator('p').filter({ hasText: 'This filter covers human health and social work' }),
+  ).toBeVisible()
+})
+
+test('mobile Opportunity Filters remain collapsible, complete, and free of horizontal overflow', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await mockApi(
+    page,
+    [],
+    rankingFixture,
+    rankingWithOpportunityFilters(['skilled_trades_construction_opportunity']),
+  )
+  await page.goto('/')
+
+  const opportunityPanel = page.locator(
+    'section[aria-labelledby="opportunity-filters-heading"]',
+  )
+  await expect(opportunityPanel.locator('.opportunity-group summary').first()).toContainText(
+    'Career',
+  )
+  await expect(opportunityPanel.locator('.opportunity-group summary').nth(1)).toContainText(
+    'Education and research universities',
+  )
+  await expect(opportunityPanel.getByRole('checkbox')).toHaveCount(9)
+  await opportunityPanel
+    .getByRole('checkbox', { name: /Skilled-trades or construction/ })
+    .check()
+  await page.getByRole('button', { name: 'Apply priorities' }).click()
+  await expect(page.locator('.ranking-card').first().getByText(/Matches 1 filter/)).toBeVisible()
+
+  const boxes = page.getByRole('checkbox', { name: /Select Country/ })
+  await boxes.nth(0).check()
+  await boxes.nth(1).check()
+  await page.getByRole('button', { name: 'Compare selected (2)' }).click()
+  await expect(page.getByText('Opportunity filter').first()).toBeVisible()
+  await expect(
+    page.locator('.comparison-cards').getByText(/Both: skilled trades and construction/).first(),
   ).toBeVisible()
   await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
 })

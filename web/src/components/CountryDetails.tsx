@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { fetchCountryDetails } from '../api/client'
 import type {
   CountryDetailsV2,
+  OpportunityFilterCatalogV2,
   RankedCountryV2,
   WeightSelectionV2,
 } from '../api/types'
@@ -17,15 +18,137 @@ import {
   formatScore,
   humanizeUnit,
 } from '../preferences'
+import {
+  EDUCATION_SHARED_LIMITATION,
+  OPPORTUNITY_STATE_CONTENT,
+  filterName,
+  opportunityExplanation,
+  routeSummary,
+} from '../opportunityPresentation'
 import { ErrorNotice } from './ErrorNotice'
 
 type CountryDetailsProps = {
   countryCode: string
   selection: WeightSelectionV2
+  opportunityCatalog: OpportunityFilterCatalogV2
   rankingCountry: RankedCountryV2 | undefined
   countryName: string
   coverageExcluded: boolean
+  opportunityExcluded: boolean
+  opportunityBaseRank: number | null
   onClose: () => void
+}
+
+function OpportunityEvidence({
+  details,
+  catalog,
+}: {
+  details: CountryDetailsV2
+  catalog: OpportunityFilterCatalogV2
+}) {
+  if (!details.opportunity_filters.length) return null
+  const definitions = new Map(
+    catalog.definitions.map((definition) => [definition.id, definition]),
+  )
+  return (
+    <section className="country-opportunity-section" aria-labelledby="country-opportunity-heading">
+      <div className="section-heading-row">
+        <div>
+          <p className="eyebrow">Selected destination evidence</p>
+          <h3 id="country-opportunity-heading">Opportunity filters</h3>
+        </div>
+        <span className="badge badge-scope">No affinity-score impact</span>
+      </div>
+      <p>
+        These states explain the selected filters. They do not estimate personal access to jobs,
+        licences, visas, admissions, credentials, or programmes.
+      </p>
+      <div className="opportunity-evidence-grid">
+        {details.opportunity_filters.map((evidence) => {
+          const definition = definitions.get(evidence.filter_id)
+          const content = OPPORTUNITY_STATE_CONTENT[evidence.state]
+          const route = routeSummary(evidence)
+          const sourceById = new Map(
+            (definition?.source_vintage ?? []).map((source) => [source.source_id, source]),
+          )
+          const limitations = [
+            ...(definition?.limitations ?? []),
+            ...evidence.limitations,
+            ...(definition?.category === 'EDUCATION'
+              ? [EDUCATION_SHARED_LIMITATION]
+              : []),
+          ].filter((item, index, all) => all.indexOf(item) === index)
+          return (
+            <article
+              className={`opportunity-evidence-card state-${content.className}`}
+              key={evidence.filter_id}
+            >
+              <div className="opportunity-evidence-heading">
+                <div>
+                  <p className="eyebrow">
+                    {definition?.category === 'EDUCATION'
+                      ? 'Research-university ecosystem'
+                      : 'Career ecosystem'}
+                  </p>
+                  <h4>{filterName(definition, evidence.filter_id)}</h4>
+                </div>
+                <span className={`opportunity-state-badge state-${content.className}`}>
+                  <span aria-hidden="true">{content.icon}</span> {content.label}
+                </span>
+              </div>
+              <p>{opportunityExplanation(evidence, definition)}</p>
+              <dl className="opportunity-evidence-facts">
+                <div>
+                  <dt>Confidence</dt>
+                  <dd>{evidence.confidence_band}</dd>
+                </div>
+                <div>
+                  <dt>Evidence period</dt>
+                  <dd>{evidence.reference_period ?? 'No comparable period available'}</dd>
+                </div>
+                <div>
+                  <dt>Establishing route</dt>
+                  <dd>{route || 'No establishing route'}</dd>
+                </div>
+              </dl>
+              <div className="opportunity-source-list">
+                <strong>Sources</strong>
+                {evidence.source_ids.length ? (
+                  <ul>
+                    {evidence.source_ids.map((sourceId) => {
+                      const source = sourceById.get(sourceId)
+                      return (
+                        <li key={sourceId}>
+                          {source?.publisher ?? sourceId}
+                          {source?.source_version ? ` · ${source.source_version}` : ''}
+                          {source?.attribution ? ` · ${source.attribution}` : ''}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                ) : (
+                  <p>No comparable source evidence is currently available.</p>
+                )}
+              </div>
+              {limitations.length > 0 && (
+                <details className="opportunity-limitations">
+                  <summary>Limitations</summary>
+                  <ul>
+                    {limitations.map((limitation) => (
+                      <li key={limitation}>{limitation}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+              <p className="methodology-reference">
+                Methodology reference: <code>{evidence.documentation_ref}</code>
+              </p>
+            </article>
+          )
+        })}
+      </div>
+    </section>
+  )
 }
 
 function LocalityAssessment({
@@ -78,9 +201,12 @@ function LocalityAssessment({
 export function CountryDetails({
   countryCode,
   selection,
+  opportunityCatalog,
   rankingCountry,
   countryName,
   coverageExcluded,
+  opportunityExcluded,
+  opportunityBaseRank,
   onClose,
 }: CountryDetailsProps) {
   const headingRef = useRef<HTMLHeadingElement>(null)
@@ -103,7 +229,11 @@ export function CountryDetails({
           </h2>
           {rankingCountry && (
             <p>
-              Rank {rankingCountry.rank} · {formatScore(rankingCountry.total_score)} ·{' '}
+              Rank {rankingCountry.rank}
+              {rankingCountry.base_rank !== rankingCountry.rank
+                ? ` · Base rank ${rankingCountry.base_rank}`
+                : ''}{' '}
+              · {formatScore(rankingCountry.total_score)} ·{' '}
               {rankingCountry.country.region ?? countryCode}
             </p>
           )}
@@ -123,6 +253,17 @@ export function CountryDetails({
         </div>
       )}
 
+      {opportunityExcluded && (
+        <div className="opportunity-excluded-notice" role="status">
+          <strong>Excluded by selected opportunity filters · not in filtered ranking</strong>
+          <p>
+            Canonical base rank {opportunityBaseRank ?? 'unavailable'} is retained. The affinity
+            score and ordering evidence are unchanged; the selected filter evidence is shown
+            below.
+          </p>
+        </div>
+      )}
+
       {detailsQuery.isPending && (
         <div className="loading-block" role="status">
           Loading country evidence…
@@ -136,6 +277,10 @@ export function CountryDetails({
           <LocalityAssessment
             details={detailsQuery.data}
             rankingCountry={rankingCountry}
+          />
+          <OpportunityEvidence
+            details={detailsQuery.data}
+            catalog={opportunityCatalog}
           />
           <div className="metric-grid">
             {detailsQuery.data.criteria.map(({ criterion, evidence }) => {
