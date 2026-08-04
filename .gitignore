@@ -13,6 +13,8 @@ web/coverage/
 web/playwright-report/
 web/test-results/
 .konsider-run/
+.ci-tmp/
+.ci-worktrees/
 .env
 
 # Third-party source bytes are content-addressed and retained locally. They are not committed unless

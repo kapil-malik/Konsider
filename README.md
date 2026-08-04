@@ -4,11 +4,12 @@ Konsider is an evidence-backed country-suitability project. It implements a loca
 refresh worker, immutable versioned releases, a deterministic recommendation service, a typed
 FastAPI v2 API, and a responsive catalog-driven React comparison UI.
 
-Active release `2026-07-29.2` contains 91 countries, 388 selected urban centres, and fourteen
-catalogued criteria. Eight global-core criteria cover all countries; Overall job-market
-opportunity, School education quality, Research and innovation ecosystem, Extreme heat exposure,
-and Projected warm-day frequency (2030) use conditional complete-case ranking. UHC is unavailable,
-while infrastructure, the Phase 4 Wave 2 criteria, and both locality-derived climate criteria are
+Active release `2026-08-04.1` contains 91 countries, 388 selected urban centres, fourteen
+catalogued ordering criteria, and nine filter-only Opportunity Filters. Eight global-core criteria
+cover all countries; Overall job-market opportunity, School education quality, Research and
+innovation ecosystem, Extreme heat exposure, and Projected warm-day frequency (2030) use
+conditional complete-case ranking. UHC is unavailable, while infrastructure, the Phase 4 Wave 2
+criteria, and both locality-derived climate criteria are
 experimental. Legacy fixtures never fill product data. Rankings use complete cases across active
 criteria, keep missing/stale outcomes explicit, and never impute or calculate partial country
 scores.
@@ -76,16 +77,29 @@ rules. Full replay requires ignored raw bytes retained under `data/raw`.
 
 ## Quality gates
 
-```bash
-pytest
-ruff check .
-black --check .
-python -m compileall -q src tests
+Run the complete local equivalent of GitHub Actions before every push, including minor edits:
+
+```text
+python scripts/verify_ci.py
 ```
 
-GitHub Actions runs the backend gates from clean Ubuntu and Windows checkouts.
+The stronger pre-push check verifies the committed `HEAD` in a temporary clean checkout, without
+ignored raw sources or cached dependencies:
 
-Frontend gates are documented in [web/README.md](web/README.md).
+```text
+python scripts/verify_ci.py --clean-revision HEAD
+```
+
+Enable the repository hook once per clone to block pushes when that clean check fails:
+
+```text
+git config core.hooksPath .githooks
+```
+
+Do not skip this for documentation-only changes. GitHub runs backend gates on clean Ubuntu and
+Windows checkouts plus the complete frontend/browser job. The
+[CI preflight guide](docs/operations/ci-preflight.md) documents dependencies, faster iteration
+modes, clean-checkout/newline/raw-file pitfalls, and failure handling.
 
 ## Documentation
 
@@ -93,6 +107,7 @@ Start at the [documentation index](docs/README.md).
 
 - [System architecture](docs/architecture/system-architecture.md)
 - [Local setup](docs/operations/local-setup.md)
+- [CI preflight and pre-push protection](docs/operations/ci-preflight.md)
 - [Worker operations](docs/operations/worker.md)
 - [API operations and reference](docs/operations/api.md)
 - [Release format](docs/data/release-format.md)

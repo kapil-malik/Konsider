@@ -79,6 +79,8 @@ pnpm run e2e
 
 Use `pnpm run test:watch` while developing. Playwright uses deterministic mocked API responses and
 starts Vite on port 4173. The normal development UI uses port 5173; FastAPI uses port 8000.
+Before any push, run `python scripts/verify_ci.py --clean-revision HEAD` from the repository root;
+it includes all commands above and detects generated-contract drift.
 The browser loads Opportunity Filter definitions from `GET /api/v2/opportunity-filters` and sends
 selected IDs with ranking, comparison, and country-detail requests; the API remains authoritative
 for strict-AND evaluation and evidence explanations.

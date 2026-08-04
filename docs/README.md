@@ -8,6 +8,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [System architecture](architecture/system-architecture.md) - implemented boundaries, selected
   next steps, and deferred options.
 - [Local setup](operations/local-setup.md) - install and verify a clean checkout.
+- [CI preflight](operations/ci-preflight.md) - reproduce all Actions gates locally and install the
+  clean-checkout pre-push hook.
 - [Worker operations](operations/worker.md) - refresh, publish, replay, inspect, and roll back data.
 - [API operations and reference](operations/api.md) - configure, start, and use the additive v2 API.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
@@ -96,6 +98,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 ## Operations
 
 - [Local setup](operations/local-setup.md)
+- [CI preflight and pre-push protection](operations/ci-preflight.md)
 - [Worker guide](operations/worker.md)
 - [API guide](operations/api.md)
 - [Phase 4E API contract](operations/phase4e-api-contract.md)

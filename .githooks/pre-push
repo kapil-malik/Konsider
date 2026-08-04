@@ -1,0 +1,29 @@
+#!/bin/sh
+set -eu
+
+git_executable="${KONSIDER_GIT:-$(command -v git)}"
+if [ -z "$git_executable" ]; then
+  echo "pre-push: Git is unavailable; CI parity cannot be verified." >&2
+  exit 1
+fi
+export KONSIDER_GIT="$git_executable"
+
+repo_root="$("$git_executable" rev-parse --show-toplevel)"
+cd "$repo_root"
+
+if [ -n "${KONSIDER_PYTHON:-}" ]; then
+  python_executable="$KONSIDER_PYTHON"
+elif [ -x ".venv/Scripts/python.exe" ]; then
+  python_executable=".venv/Scripts/python.exe"
+elif [ -x ".venv/bin/python" ]; then
+  python_executable=".venv/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+  python_executable="python3"
+elif command -v python >/dev/null 2>&1; then
+  python_executable="python"
+else
+  echo "pre-push: Python is unavailable; CI parity cannot be verified." >&2
+  exit 1
+fi
+
+"$python_executable" scripts/verify_ci.py --clean-revision HEAD

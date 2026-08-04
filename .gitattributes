@@ -8,3 +8,5 @@ data/reports/**/*.jsonl text eol=lf
 data/reports/**/*.md text eol=lf
 tests/fixtures/**/*.json text eol=lf
 tests/fixtures/**/*.jsonl text eol=lf
+# Repository hooks must remain POSIX-shell executable on every platform.
+.githooks/* text eol=lf
