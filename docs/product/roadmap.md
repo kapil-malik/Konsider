@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 7E assessment engine complete; acceptance gate before Phase 7F
+Status: Phase 7F first-wave evidence candidate complete; acceptance gate before Phase 7G
 
 Last updated: 2026-08-05
 
@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks — synthetic assessment engine complete; Phase 7F pending
+## Phase 7: Typed Feasibility Checks — first-wave evidence staged; Phase 7G pending
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -244,9 +244,15 @@ ranges, explicit policy-gated filtering, feasibility summaries and non-persisted
 snapshots. Golden tests preserve ranking, PCC/LSC, locality and Opportunity Filter invariants. See
 the [Phase 7E report](../history/phase7e-tfc-assessment-engine.md).
 
-Phase 7F is the first production evidence-onboarding gate. It must use the Phase 7D source/legal
-workflow, retain the approved three route-only checks and positive/conditional policy, and avoid
-API/UI exposure or activation.
+Phase 7F now stages the approved three route-only checks with 87 exact official page bindings,
+116 named route rules, 273 explicit destination support records, five approved source/legal
+registrations and a passed Phase 7B reconciliation. All policies remain assessment-only and
+positive/conditional; the draft cannot activate and has no API/UI exposure. See the
+[first-wave evidence guide](tfc-first-wave-evidence.md) and
+[Phase 7F report](../history/phase7f-first-wave-onboarding.md).
+
+Phase 7G is the next gate: add profile-context and TFC API behavior against a deliberately selected
+release-6 candidate while preserving guest privacy, compatibility and ranking independence.
 
 ## Future phase: conversational exploration
 

@@ -1,6 +1,6 @@
 # TFC rule and immutable release foundation
 
-Status: Phase 7D synthetic foundation implemented; no production TFC evidence or activation
+Status: Phase 7F production evidence staged on the Phase 7D foundation; no activation
 
 ## Release boundary
 
@@ -17,9 +17,9 @@ copying or mutating it. The candidate binds exactly six checksummed artifacts:
 | `tfc-coverage-summary.json` | Reconciled explicit TFC-country support counts. |
 | `tfc-validation.json` | Reproducible structural and semantic validation result. |
 
-The Phase 7D repository has no publish or activate method. `activation_authorized` and
-`promotion_eligible` are always false. The synthetic catalog is visibly `SYNTHETIC_ONLY` and does
-not replace the approved first-wave Phase 7C catalog.
+The repository has no publish or activate method. `activation_authorized` and
+`promotion_eligible` are always false. Phase 7D's fixture remains visibly `SYNTHETIC_ONLY`;
+Phase 7F adds a non-synthetic `RELEASE_CANDIDATE` containing only the three owner-approved checks.
 
 ## Typed records
 
@@ -70,12 +70,13 @@ evaluation policy and support-state changes.
 
 Releases store destination facts and evaluation policies, never applicant-country outcomes.
 Applicant, household and scenario facts vary by request, can be incomplete, and have stronger
-privacy requirements than immutable public evidence. Phase 7E must combine an effective profile
-snapshot with a loaded rule bundle at request time. Precomputing the Cartesian product would be
-stale, privacy-hostile and impossible to audit against the user's exact snapshot.
+privacy requirements than immutable public evidence. The Phase 7E engine combines an effective
+profile snapshot with a loaded rule bundle at request time. Precomputing the Cartesian product
+would be stale, privacy-hostile and impossible to audit against the user's exact snapshot.
 
 The release contracts structurally exclude profile, session, account, rank, affinity, PCC, LSC and
 Opportunity Filter state fields. API runtime performs no live source calls.
 
-See the [source workflow](../operations/tfc-source-workflow.md), [release format](../data/release-format.md)
-and [Phase 7D report](../history/phase7d-tfc-release-foundation.md).
+See the [first-wave evidence](../product/tfc-first-wave-evidence.md),
+[source workflow](../operations/tfc-source-workflow.md), [release format](../data/release-format.md)
+and [Phase 7F report](../history/phase7f-first-wave-onboarding.md).

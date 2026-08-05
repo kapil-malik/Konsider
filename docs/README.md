@@ -54,6 +54,10 @@ readable schemas, and published release manifests take precedence if prose ever 
   three-route-plus-metric benchmark.
 - [Phase 7E implementation report](history/phase7e-tfc-assessment-engine.md) - evaluation order,
   golden scenarios, invariance, performance and Phase 7F boundary.
+- [First-wave TFC evidence](product/tfc-first-wave-evidence.md) - exact three-check inventory,
+  profile and destination boundaries, official source routes, policy, limitations and replay.
+- [Phase 7F implementation report](history/phase7f-first-wave-onboarding.md) - staged artifacts,
+  reconciliation, source decisions, verification and the Phase 7G gate.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
 - [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,
