@@ -1,0 +1,1669 @@
+{
+  "assets": [
+    {
+      "asset_id": "au_home_affairs_routes-aus-family_accompaniment_reunification",
+      "byte_count": 1273922,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:de2ab3d711406d350540c7d5c69b5ba52b0134a65de75d32091cc41459a60008",
+      "content_type": "text/html; charset=utf-8",
+      "country_code": "AUS",
+      "final_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
+      "required_markers": [
+        "Skills in Demand",
+        "482"
+      ],
+      "route_id": "AU.SID.482.DEPENDANT",
+      "route_name": "Skills in Demand subclass 482 family unit",
+      "source_id": "au_home_affairs_routes",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "au_home_affairs_routes-aus-post_study_work_pathway",
+      "byte_count": 1274090,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:5dc3c844003b7bf2fe5b87a2730591272781512599d8514c06f582d295e5aac8",
+      "content_type": "text/html; charset=utf-8",
+      "country_code": "AUS",
+      "final_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485",
+      "required_markers": [
+        "Temporary Graduate",
+        "485"
+      ],
+      "route_id": "AU.TEMPORARY_GRADUATE.485",
+      "route_name": "Temporary Graduate visa (subclass 485)",
+      "source_id": "au_home_affairs_routes",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "au_home_affairs_routes-aus-skilled_work_route_feasibility",
+      "byte_count": 1273922,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:de2ab3d711406d350540c7d5c69b5ba52b0134a65de75d32091cc41459a60008",
+      "content_type": "text/html; charset=utf-8",
+      "country_code": "AUS",
+      "final_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
+      "required_markers": [
+        "Skills in Demand",
+        "482"
+      ],
+      "route_id": "AU.SID.482",
+      "route_name": "Skills in Demand visa (subclass 482)",
+      "source_id": "au_home_affairs_routes",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "ca_ircc_routes-can-family_accompaniment_reunification",
+      "byte_count": 200524,
+      "capture_method": "BROWSER_RENDERED_DOM_CHECKSUM",
+      "content_checksum": "sha256:cc6a1fb6cb2dff13145c2142d84e87523be6a52d78d406fce08790c0adfdfbfb",
+      "content_type": "text/html; rendered-dom",
+      "country_code": "CAN",
+      "final_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/spouses-dependent-children/eligibility.html",
+      "http_status": 200,
+      "parser_status": "BROWSER_RENDERED_MARKERS_VERIFIED",
+      "requested_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/spouses-dependent-children/eligibility.html",
+      "required_markers": [
+        "family members",
+        "foreign workers"
+      ],
+      "route_id": "CA.FAMILY_OPEN_WORK_PERMIT",
+      "route_name": "Open work permits for family members of foreign workers",
+      "source_id": "ca_ircc_routes",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "ca_ircc_routes-can-post_study_work_pathway",
+      "byte_count": 130368,
+      "capture_method": "BROWSER_RENDERED_DOM_CHECKSUM",
+      "content_checksum": "sha256:c7c90fc4e85f8b836cb76dd5de74959b82ff5e0679d5dc6d8815c25634758b50",
+      "content_type": "text/html; rendered-dom",
+      "country_code": "CAN",
+      "final_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+      "http_status": 200,
+      "parser_status": "BROWSER_RENDERED_MARKERS_VERIFIED",
+      "requested_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+      "required_markers": [
+        "post-graduation work permit",
+        "Who can apply"
+      ],
+      "route_id": "CA.PGWP",
+      "route_name": "Post-graduation work permit",
+      "source_id": "ca_ircc_routes",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "ca_ircc_routes-can-skilled_work_route_feasibility",
+      "byte_count": 186545,
+      "capture_method": "BROWSER_RENDERED_DOM_CHECKSUM",
+      "content_checksum": "sha256:4353ea12067237fab6c7c229e231a0ee942be4e1fe347da47bc4680362146198",
+      "content_type": "text/html; rendered-dom",
+      "country_code": "CAN",
+      "final_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html",
+      "http_status": 200,
+      "parser_status": "BROWSER_RENDERED_MARKERS_VERIFIED",
+      "requested_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html",
+      "required_markers": [
+        "Express Entry",
+        "skilled workers"
+      ],
+      "route_id": "CA.EXPRESS_ENTRY",
+      "route_name": "Express Entry skilled-worker programs",
+      "source_id": "ca_ircc_routes",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-aut",
+      "byte_count": 345771,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:f6fc8de6ba0c0c2185c63272577a1fff6366b4cdc9d1a2c4e0c29ddc69fc575f",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "AUT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-austria_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-austria_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.AUT",
+      "route_name": "EU Blue Card in Austria",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-bel",
+      "byte_count": 345609,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:6c4187aec7c806242c3b19986fab615bc88cd13d403a4359a46ecd368b73e38a",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "BEL",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-belgium_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-belgium_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.BEL",
+      "route_name": "EU Blue Card in Belgium",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-bgr",
+      "byte_count": 345407,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:704eeb9b01b1af4e611c234f87917b142ae1be01f467511f8b866499e1f1211f",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "BGR",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-bulgaria_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-bulgaria_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.BGR",
+      "route_name": "EU Blue Card in Bulgaria",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-cyp",
+      "byte_count": 338387,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:f60415529acbd618d7c857cf5621f383863adc93a1038908db1d05929d95a474",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "CYP",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-cyprus_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-cyprus_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.CYP",
+      "route_name": "EU Blue Card in Cyprus",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-cze",
+      "byte_count": 345432,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:43dbdd0c8fc31cea3452cd05444e3a0e3b3e4be54b699216808100856f548888",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "CZE",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-czechia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-czechia_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.CZE",
+      "route_name": "EU Blue Card in Czechia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-deu",
+      "byte_count": 347093,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:2b7e7b28552ce7579e900dcfbfbbef7adc228cefc82ef855826b858e9a82595e",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "DEU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-germany_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-germany_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.DEU",
+      "route_name": "EU Blue Card in Germany",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-esp",
+      "byte_count": 345067,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:eb47644f84ac7d167c44b6bd8b7897ffa2db756b33d9b7259058f4abee6f250e",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ESP",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-spain_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-spain_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.ESP",
+      "route_name": "EU Blue Card in Spain",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-est",
+      "byte_count": 347230,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:ffb2b8d9493ad1eaf701caac6cdb4c5b93264f8202b64b3c0e6b17ee27cd350a",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "EST",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-estonia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-estonia_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.EST",
+      "route_name": "EU Blue Card in Estonia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-fin",
+      "byte_count": 344450,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:c0aff04cdfeda4df042b3ce0e9650c206735e7b4989dd58dbd2d5972939aede2",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "FIN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-finland_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-finland_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.FIN",
+      "route_name": "EU Blue Card in Finland",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-fra",
+      "byte_count": 345267,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:ce786a318a30db745266af0e7823ace574db7809a14dbd7dbf2c1077c4497db1",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "FRA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-france_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-france_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.FRA",
+      "route_name": "EU Blue Card in France",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-grc",
+      "byte_count": 345248,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:999fd1c708995b176062c9ed0a750d35ef27ac50bc32a1638d7f902795482bc3",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "GRC",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-greece_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-greece_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.GRC",
+      "route_name": "EU Blue Card in Greece",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-hrv",
+      "byte_count": 349526,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:cad3d08b8cdf2fc966e7d4bde7913007a082653f3323390dab0137f53f695087",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "HRV",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-croatia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-croatia_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.HRV",
+      "route_name": "EU Blue Card in Croatia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-hun",
+      "byte_count": 346168,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:3fa66a84b272069494d6574545e04f7a69aea4f8d5ef93227b7bb199710f833b",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "HUN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-hungary_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-hungary_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.HUN",
+      "route_name": "EU Blue Card in Hungary",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-ita",
+      "byte_count": 345621,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:6a49063c5d31d2a16f760cee2f97d92017d52b28bb223096bfbb4852cbf69cd8",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ITA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-italy_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-italy_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.ITA",
+      "route_name": "EU Blue Card in Italy",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-ltu",
+      "byte_count": 347223,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:dbb51ae2455bcf36ac2841ead1e8b15360757f80d5b4cb5e8adcd8abd7bf390b",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LTU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-lithuania_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-lithuania_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.LTU",
+      "route_name": "EU Blue Card in Lithuania",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-lux",
+      "byte_count": 349112,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:249b4eddfdfef6f3a677d21acac07fc8564f09561a1eefdd60748b966e7ddc45",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LUX",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-luxembourg_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-luxembourg_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.LUX",
+      "route_name": "EU Blue Card in Luxembourg",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-lva",
+      "byte_count": 345597,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:8668336dbc6c6a345e478784ccb587cd7d68e259fd8066fc57872b1600a67d19",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LVA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-latvia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-latvia_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.LVA",
+      "route_name": "EU Blue Card in Latvia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-mlt",
+      "byte_count": 345159,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:6c388882770ca7bf88f79856a04a4f57540ef4b4b8f5e4608547178316b0d234",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "MLT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-malta_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-malta_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.MLT",
+      "route_name": "EU Blue Card in Malta",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-nld",
+      "byte_count": 348595,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:0e23ddb54f1c92f60ba4764108d4135106aba8dd10f2fd1567b1b55061123354",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "NLD",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-netherlands_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-netherlands_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.NLD",
+      "route_name": "EU Blue Card in Netherlands",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-pol",
+      "byte_count": 344377,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:4981ccbf6d297aa631f289e706ec2f7b277dbea094c36e0f87732f22d0e57ba6",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "POL",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-poland_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-poland_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.POL",
+      "route_name": "EU Blue Card in Poland",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-prt",
+      "byte_count": 346345,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:bd315d726a9cd2f35f8f950b944cadf1749a72e364c589a683b728a694dc3ae2",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "PRT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-portugal_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-portugal_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.PRT",
+      "route_name": "EU Blue Card in Portugal",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-rou",
+      "byte_count": 344858,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:658e7dc3afbcf2baff4541b620b3ac76e174043d0c64a8859a16ee0a40dac175",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ROU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-romania_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-romania_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.ROU",
+      "route_name": "EU Blue Card in Romania",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-svk",
+      "byte_count": 347732,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:a9cd230ab62e8c3d696432dd4cd4d5f0e8f1222ae4c4f9a37a42cc3afb8f3441",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SVK",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-slovakia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-slovakia_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.SVK",
+      "route_name": "EU Blue Card in Slovak Republic",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-svn",
+      "byte_count": 347673,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:3f2d20e9ae5cfd4140cfb8cfd996f97abdb8d82e468317d74b0b142c2943d3c0",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SVN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-slovenia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-slovenia_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.SVN",
+      "route_name": "EU Blue Card in Slovenia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-blue-card-swe",
+      "byte_count": 346642,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:abf8c118d158d162cb87b20e86ef2bfda9bdb96dd8e9d0868fd2109dbfeb5568",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SWE",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-sweden_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-sweden_en",
+      "required_markers": [
+        "EU Blue card"
+      ],
+      "route_id": "EU.BLUE_CARD.SWE",
+      "route_name": "EU Blue Card in Sweden",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "eu-family-member-aut",
+      "byte_count": 346442,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:089a9bafc78b44090d1a27e7c0f9fb8c460270b0f324983b518144c57aeab625",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "AUT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-austria_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-austria_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.AUT",
+      "route_name": "Family member in Austria",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-bel",
+      "byte_count": 350202,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:d00362d6d9734a2d212c679cd6537eaa4841691760c485d3304d0ba0df7ed828",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "BEL",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-belgium_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-belgium_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.BEL",
+      "route_name": "Family member in Belgium",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-bgr",
+      "byte_count": 346252,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:464fdda25b7082d70b7e1435beb001d67c8e6a10262cbe9c5fd95a3ce255c153",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "BGR",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-bulgaria_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-bulgaria_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.BGR",
+      "route_name": "Family member in Bulgaria",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-cyp",
+      "byte_count": 344323,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:6394a38318e8592c0edf3eae851e123e2dec24e20bc9538150fe2ea725506f9a",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "CYP",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-cyprus_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-cyprus_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.CYP",
+      "route_name": "Family member in Cyprus",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-cze",
+      "byte_count": 354370,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:86852958a5a53f8f2f3691244c00e0bc669915e52ddf2f0f50c45314f3f39430",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "CZE",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-czechia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-czechia_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.CZE",
+      "route_name": "Family member in Czechia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-deu",
+      "byte_count": 350109,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:a64e66fd1fa882906bf8992565b01dc0323613d058db504ce69aa37d021886c7",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "DEU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-germany_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-germany_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.DEU",
+      "route_name": "Family member in Germany",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-esp",
+      "byte_count": 346108,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:6a825217dd07565180a32ca20d3145ba4d72d6f73ef80ac355c960ca86b4c6ca",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ESP",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-spain_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-spain_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.ESP",
+      "route_name": "Family member in Spain",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-est",
+      "byte_count": 355322,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:d109c7f9f6c2570d5f1b212867778447f7900032fad2877317ceeb95cd4509c6",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "EST",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-estonia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-estonia_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.EST",
+      "route_name": "Family member in Estonia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-fin",
+      "byte_count": 348081,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:af894528d659c0a7bee19d9ea3ccb77a3cb84b5ee996a0942e06380afb1752c0",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "FIN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-finland_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-finland_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.FIN",
+      "route_name": "Family member in Finland",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-fra",
+      "byte_count": 357785,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:c01a75ba7ee17a2cbf91db45529c793256e203caef0f6e7d1bc88ec59d194432",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "FRA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-france_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-france_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.FRA",
+      "route_name": "Family member in France",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-grc",
+      "byte_count": 350611,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:747333742d55c0bd3050cca16b787b661b9a178719d6140d14fef4df188fe747",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "GRC",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-greece_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-greece_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.GRC",
+      "route_name": "Family member in Greece",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-hrv",
+      "byte_count": 352870,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:1c74aa88e67d4de70c1bdfb96b14ea9a248b776d83447be0c7c25b036b941cdc",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "HRV",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-croatia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-croatia_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.HRV",
+      "route_name": "Family member in Croatia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-hun",
+      "byte_count": 353179,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:49660456354b24fce9e5bb124c028a3a084a7f7931c12f428d07b22ca2893224",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "HUN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-hungary_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-hungary_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.HUN",
+      "route_name": "Family member in Hungary",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-ita",
+      "byte_count": 349548,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:fe89cd3ee31b8872f21ce1278c16d3b058bca54ba62b8bcba9ec548cdc53761e",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ITA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-italy_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-italy_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.ITA",
+      "route_name": "Family member in Italy",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-ltu",
+      "byte_count": 357626,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:39ed89ae29e53dd014431ad30c8a0c9611ccc1df7e3a0bb6f214af5efa9e80d9",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LTU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-lithuania_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-lithuania_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.LTU",
+      "route_name": "Family member in Lithuania",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-lux",
+      "byte_count": 361859,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:8e2f814e2a8c13fcdf48582a3f661f19009a9c9b60bb72f8a49a8ac793d3b170",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LUX",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-luxembourg_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-luxembourg_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.LUX",
+      "route_name": "Family member in Luxembourg",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-lva",
+      "byte_count": 350108,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:68d130259a6eb85208c00599e86081dc9390db294a5482480db41cbe542ab51a",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LVA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-latvia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-latvia_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.LVA",
+      "route_name": "Family member in Latvia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-mlt",
+      "byte_count": 353260,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:049a2ac28727148f6f92c511aad1bb22ec2d57045b29bf12c0f8a36cd3bcabd1",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "MLT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-malta_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-malta_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.MLT",
+      "route_name": "Family member in Malta",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-nld",
+      "byte_count": 353773,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:5429f171b63f6043d950de86403db5773c08632552c3deb43c97823a9537f2a5",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "NLD",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-netherlands_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-netherlands_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.NLD",
+      "route_name": "Family member in Netherlands",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-pol",
+      "byte_count": 360332,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:3d454a90eeb7b7dbbc85e42701e2bd6dca5e86b7a350bd1d8de8cfd4989a502d",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "POL",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-poland_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-poland_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.POL",
+      "route_name": "Family member in Poland",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-prt",
+      "byte_count": 350053,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:c20014a9c331459834c1dc7c264e43bcedb934f26c634b0e4638a4076008684b",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "PRT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-portugal_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-portugal_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.PRT",
+      "route_name": "Family member in Portugal",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-rou",
+      "byte_count": 350737,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:63fbc4c8526e18882b231e7ef8513e9d9dc7ffe75dcf808c38aba295d10c7f44",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ROU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-romania_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-romania_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.ROU",
+      "route_name": "Family member in Romania",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-svk",
+      "byte_count": 354596,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:618d6a1d8482900b42b62345bf7df71320adeaecfaf8a21b88a0edbc9f22ea4f",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SVK",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-slovakia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-slovakia_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.SVK",
+      "route_name": "Family member in Slovak Republic",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-svn",
+      "byte_count": 360859,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:7bb8d9f008337a926855ebc41017b1868abc09a83e5516bb0f0ab218f8a91e59",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SVN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-slovenia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-slovenia_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.SVN",
+      "route_name": "Family member in Slovenia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-family-member-swe",
+      "byte_count": 348935,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:c5a0b197183cb1359abfc69089df9a2e9758a18183dcf85d5ded2bacd6c62ed4",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SWE",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-sweden_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-sweden_en",
+      "required_markers": [
+        "Family member"
+      ],
+      "route_id": "EU.FAMILY_MEMBER.SWE",
+      "route_name": "Family member in Sweden",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "eu-student-aut",
+      "byte_count": 345942,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:c3ce16487c3a7acd9ecf3ea502873bd1a25b91a34d6ae6439646379fb14d2364",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "AUT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-austria_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-austria_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.AUT",
+      "route_name": "Student post-study pathway in Austria",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-bel",
+      "byte_count": 345632,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:f86364f0f9acc00a596155c3ab8aa81509df32a54a56ef339d51ac231c101638",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "BEL",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-belgium_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-belgium_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.BEL",
+      "route_name": "Student post-study pathway in Belgium",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-bgr",
+      "byte_count": 346163,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:5476c019a391061993f16564fb7e16768e61330bd6ce44094e68a24ce9b4e09d",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "BGR",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-bulgaria_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-bulgaria_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.BGR",
+      "route_name": "Student post-study pathway in Bulgaria",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-cyp",
+      "byte_count": 358061,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:3e8fbf67f731c9e5ffb9793f3113bc1cf6d0a4cb89a0accf5759cfd00ff46e53",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "CYP",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-cyprus_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-cyprus_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.CYP",
+      "route_name": "Student post-study pathway in Cyprus",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-cze",
+      "byte_count": 368293,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:0f64b09a01aa88d3799f6705ea247cffaf992323c21085bf5ce808c802596f0f",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "CZE",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-czechia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-czechia_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.CZE",
+      "route_name": "Student post-study pathway in Czechia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-deu",
+      "byte_count": 353042,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:68c7be0e196728733761fd91f68c1131da7119b61306a886fe5cbb404b9db03a",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "DEU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-germany_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-germany_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.DEU",
+      "route_name": "Student post-study pathway in Germany",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-esp",
+      "byte_count": 346230,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:07950f9edfa4931177df59c629e45b8fd900ad04e0c8d91a6d1a35d02ab29185",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ESP",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-spain_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-spain_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.ESP",
+      "route_name": "Student post-study pathway in Spain",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-est",
+      "byte_count": 348361,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:a4d7a5070c9277f7442351b936443e03c5d4657e445a312f27ed977d8fba0923",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "EST",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-estonia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-estonia_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.EST",
+      "route_name": "Student post-study pathway in Estonia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-fin",
+      "byte_count": 351943,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:19711e7f402244b70c47d0e7e224f691b83f439c0f969e9b08303525010b3c52",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "FIN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-finland_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-finland_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.FIN",
+      "route_name": "Student post-study pathway in Finland",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-fra",
+      "byte_count": 366052,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:389cf2bba7843240d3fa305c01e07b66194ce3ca2a4eb0faf9df5689a1e97ed4",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "FRA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-france_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-france_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.FRA",
+      "route_name": "Student post-study pathway in France",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-grc",
+      "byte_count": 344663,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:577d3f5c4be298da71cabf66622d35525ecdb8e25a088ac5f647793dec75f15b",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "GRC",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-greece_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-greece_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.GRC",
+      "route_name": "Student post-study pathway in Greece",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-hrv",
+      "byte_count": 352361,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:3de57f681ba8ccd871f1ea31599752d3ca912fd583d8167fd07f0243aa478cc5",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "HRV",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-croatia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-croatia_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.HRV",
+      "route_name": "Student post-study pathway in Croatia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-hun",
+      "byte_count": 350203,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:3b6d78d30bd1cb4a33c30af97680ce4b5d38a11808a60f2d754e3fe164c77dae",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "HUN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-hungary_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-hungary_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.HUN",
+      "route_name": "Student post-study pathway in Hungary",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-ita",
+      "byte_count": 350759,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:e92d4807ac33e80b51549259f1135a0d080e42c3b2cae3a784a5d40e733581dc",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ITA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-italy_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-italy_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.ITA",
+      "route_name": "Student post-study pathway in Italy",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-ltu",
+      "byte_count": 357358,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:7493d1b8c6c9b1f9306498be04870f6e47970dd5b76194eac79a916a6622edf7",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LTU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-lithuania_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-lithuania_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.LTU",
+      "route_name": "Student post-study pathway in Lithuania",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-lux",
+      "byte_count": 358676,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:6faa7ac5a82df791ce865a63bcf2ee21e67e5f1a32db71daeb87e574bfeaf48b",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LUX",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-luxembourg_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-luxembourg_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.LUX",
+      "route_name": "Student post-study pathway in Luxembourg",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-lva",
+      "byte_count": 350887,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:cd8abe517fa46f3d89949f4bd74998ebb22a24554976a61bf573a558267bf9bc",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "LVA",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-latvia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-latvia_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.LVA",
+      "route_name": "Student post-study pathway in Latvia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-mlt",
+      "byte_count": 351648,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:82c545b9f879e2c2d61b0a570bee4004fea29cf632f09fc351d6d9db362ab61a",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "MLT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-malta_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-malta_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.MLT",
+      "route_name": "Student post-study pathway in Malta",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-nld",
+      "byte_count": 363008,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:e566e1268621d9c318b9116aef06734421ebe9c2f9785d7870e09623b7a314b8",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "NLD",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.NLD",
+      "route_name": "Student post-study pathway in Netherlands",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-pol",
+      "byte_count": 368553,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:ede8a4e75cf45a8d9c7011da523017953389e2da578f6490175f8fd50e8e906d",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "POL",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-poland_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-poland_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.POL",
+      "route_name": "Student post-study pathway in Poland",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-prt",
+      "byte_count": 348259,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:ee4a6dd5a7573435f75a78a711f4e8525d806b15af960356c9aaa912303148db",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "PRT",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-portugal_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-portugal_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.PRT",
+      "route_name": "Student post-study pathway in Portugal",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-rou",
+      "byte_count": 351401,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:57c1d4ad6d006cc6eea8146edd6c15b8a8ae17a569eafe4a1021929ed3215079",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "ROU",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-romania_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-romania_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.ROU",
+      "route_name": "Student post-study pathway in Romania",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-svk",
+      "byte_count": 359400,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:9295cadc8ee579dfc92df3dabb05f64b32030de6d3d93bda10d81d0abaea3c40",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SVK",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-slovakia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-slovakia_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.SVK",
+      "route_name": "Student post-study pathway in Slovak Republic",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-svn",
+      "byte_count": 358203,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:0e28573aeb14786fff2a008f9361bdbf3219b7009700a6872ee6409110788785",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SVN",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-slovenia_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-slovenia_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.POST_STUDY.SVN",
+      "route_name": "Student post-study pathway in Slovenia",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "eu-student-swe",
+      "byte_count": 357264,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:b02e4d0c84d4a1abe32179b765ecaa8b545f2ad2b541addee8f27b9602260a4d",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "SWE",
+      "final_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-sweden_en",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-sweden_en",
+      "required_markers": [
+        "Student"
+      ],
+      "route_id": "EU.STUDENT.TO_WORK.SWE",
+      "route_name": "Student-to-worker in-country status change in Sweden",
+      "source_id": "eu_immigration_portal",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "uk_home_office_routes-gbr-family_accompaniment_reunification",
+      "byte_count": 166921,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:d04d4d24c194db3e8a6589a870ad66bfb2dda047d5f98aadb88ab756eb3714f6",
+      "content_type": "text/html; charset=utf-8",
+      "country_code": "GBR",
+      "final_url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-worker",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-worker",
+      "required_markers": [
+        "Dependants of a Skilled Worker"
+      ],
+      "route_id": "UK.SKILLED_WORKER.DEPENDANT",
+      "route_name": "Skilled Worker dependant partner or child",
+      "source_id": "uk_home_office_routes",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "uk_home_office_routes-gbr-post_study_work_pathway",
+      "byte_count": 94083,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:a61a8b8ee9202e95f3fbf0e92838bae7bac7c308ee559f9d4b4688f012b50b67",
+      "content_type": "text/html; charset=utf-8",
+      "country_code": "GBR",
+      "final_url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-graduate",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-graduate",
+      "required_markers": [
+        "Appendix Graduate"
+      ],
+      "route_id": "UK.GRADUATE",
+      "route_name": "Graduate route",
+      "source_id": "uk_home_office_routes",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "uk_home_office_routes-gbr-skilled_work_route_feasibility",
+      "byte_count": 166921,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:d04d4d24c194db3e8a6589a870ad66bfb2dda047d5f98aadb88ab756eb3714f6",
+      "content_type": "text/html; charset=utf-8",
+      "country_code": "GBR",
+      "final_url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-worker",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-worker",
+      "required_markers": [
+        "Appendix Skilled Worker",
+        "job offer"
+      ],
+      "route_id": "UK.SKILLED_WORKER",
+      "route_name": "Skilled Worker",
+      "source_id": "uk_home_office_routes",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "asset_id": "us_uscis_routes-usa-family_accompaniment_reunification",
+      "byte_count": 1092319,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:52602c92346f4ca4c75538db99dd152864d99daac8c3d98deff52098ca142c07",
+      "content_type": "application/pdf",
+      "country_code": "USA",
+      "final_url": "https://www.uscis.gov/sites/default/files/document/foia/Nonimmigrant_Services.pdf",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://www.uscis.gov/sites/default/files/document/foia/Nonimmigrant_Services.pdf",
+      "required_markers": [
+        "%PDF"
+      ],
+      "route_id": "US.H4",
+      "route_name": "H-4 dependant status",
+      "source_id": "us_uscis_routes",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "asset_id": "us_uscis_routes-usa-post_study_work_pathway",
+      "byte_count": 201501,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:153932a42dd973dfe6314178d9847f2109dc71a996c6dfac117300c755209f83",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "USA",
+      "final_url": "https://www.uscis.gov/policy-manual/volume-2-part-f-chapter-5",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://www.uscis.gov/node/92821",
+      "required_markers": [
+        "Practical Training",
+        "post-completion"
+      ],
+      "route_id": "US.F1.OPT",
+      "route_name": "F-1 post-completion optional practical training",
+      "source_id": "us_uscis_routes",
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "asset_id": "us_uscis_routes-usa-skilled_work_route_feasibility",
+      "byte_count": 120365,
+      "capture_method": "DIRECT_HTTP_CHECKSUM",
+      "content_checksum": "sha256:666ed6817ba58c3e2cd6a310b90e2e62c6bba06bfc41fbdffa2c3e57ae4badb0",
+      "content_type": "text/html; charset=UTF-8",
+      "country_code": "USA",
+      "final_url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
+      "http_status": 200,
+      "parser_status": "MARKERS_VERIFIED",
+      "requested_url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations",
+      "required_markers": [
+        "H-1B",
+        "specialty occupation"
+      ],
+      "route_id": "US.H1B",
+      "route_name": "H-1B specialty occupations",
+      "source_id": "us_uscis_routes",
+      "tfc_id": "skilled_work_route_feasibility"
+    }
+  ],
+  "captured_at": "2026-08-05T12:00:00Z",
+  "raw_retention_policy": "CHECKSUM_ONLY_NORMALIZED_DERIVATIVE",
+  "schema_version": "tfc-first-wave-source-capture-1.0"
+}

@@ -1,0 +1,46 @@
+{
+  "actual_support_records": 273,
+  "by_tfc": [
+    {
+      "record_count": 91,
+      "support_state_counts": {
+        "EVIDENCE_INSUFFICIENT": 0,
+        "LEGALLY_BLOCKED": 0,
+        "NOT_APPLICABLE_NATIONAL": 0,
+        "STALE": 0,
+        "SUPPORTED": 29,
+        "UNSUPPORTED": 62
+      },
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "record_count": 91,
+      "support_state_counts": {
+        "EVIDENCE_INSUFFICIENT": 0,
+        "LEGALLY_BLOCKED": 0,
+        "NOT_APPLICABLE_NATIONAL": 0,
+        "STALE": 0,
+        "SUPPORTED": 29,
+        "UNSUPPORTED": 62
+      },
+      "tfc_id": "post_study_work_pathway"
+    },
+    {
+      "record_count": 91,
+      "support_state_counts": {
+        "EVIDENCE_INSUFFICIENT": 0,
+        "LEGALLY_BLOCKED": 0,
+        "NOT_APPLICABLE_NATIONAL": 0,
+        "STALE": 0,
+        "SUPPORTED": 29,
+        "UNSUPPORTED": 62
+      },
+      "tfc_id": "skilled_work_route_feasibility"
+    }
+  ],
+  "expected_support_records": 273,
+  "schema_version": "tfc-coverage-summary-1.0",
+  "stable_country_count": 91,
+  "stable_universe_id": "stable_supported_v1",
+  "tfc_count": 3
+}

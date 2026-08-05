@@ -1,0 +1,53 @@
+{
+  "policies": [
+    {
+      "conflict_behavior": "BLOCK_EVALUATION",
+      "effective_selection": "LATEST_NON_OVERLAPPING_RULE_AS_OF_DATE",
+      "expired_rule_behavior": "REJECT",
+      "filter_non_match_behavior": "NOT_FILTERABLE",
+      "future_rule_behavior": "REJECT",
+      "jurisdiction_precedence": [
+        "COUNTRY"
+      ],
+      "negative_result_policy": "POSITIVE_CONDITIONAL_ONLY",
+      "policy_id": "skilled_work_route_feasibility.v1",
+      "policy_version": "1.0",
+      "result_family": "RULE_ROUTE_MATCH",
+      "stale_behavior": "BLOCK_EVALUATION",
+      "tfc_id": "skilled_work_route_feasibility"
+    },
+    {
+      "conflict_behavior": "BLOCK_EVALUATION",
+      "effective_selection": "LATEST_NON_OVERLAPPING_RULE_AS_OF_DATE",
+      "expired_rule_behavior": "REJECT",
+      "filter_non_match_behavior": "NOT_FILTERABLE",
+      "future_rule_behavior": "REJECT",
+      "jurisdiction_precedence": [
+        "COUNTRY"
+      ],
+      "negative_result_policy": "POSITIVE_CONDITIONAL_ONLY",
+      "policy_id": "family_accompaniment_reunification.v1",
+      "policy_version": "1.0",
+      "result_family": "RULE_ROUTE_MATCH",
+      "stale_behavior": "BLOCK_EVALUATION",
+      "tfc_id": "family_accompaniment_reunification"
+    },
+    {
+      "conflict_behavior": "BLOCK_EVALUATION",
+      "effective_selection": "LATEST_NON_OVERLAPPING_RULE_AS_OF_DATE",
+      "expired_rule_behavior": "REJECT",
+      "filter_non_match_behavior": "NOT_FILTERABLE",
+      "future_rule_behavior": "REJECT",
+      "jurisdiction_precedence": [
+        "COUNTRY"
+      ],
+      "negative_result_policy": "POSITIVE_CONDITIONAL_ONLY",
+      "policy_id": "post_study_work_pathway.v1",
+      "policy_version": "1.0",
+      "result_family": "RULE_ROUTE_MATCH",
+      "stale_behavior": "BLOCK_EVALUATION",
+      "tfc_id": "post_study_work_pathway"
+    }
+  ],
+  "schema_version": "tfc-policy-bundles-1.0"
+}

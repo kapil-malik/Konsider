@@ -128,7 +128,7 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["schema_version", "record_id", "record_type", "tfc_id", "route_id", "route_name", "jurisdiction_id", "overrides_record_id", "conditions", "thresholds", "effective_period", "source_references", "evidence_quality"],
+          "required": ["schema_version", "record_id", "record_type", "tfc_id", "route_id", "route_name", "jurisdiction_id", "overrides_record_id", "evaluation_boundary", "conditions", "thresholds", "effective_period", "source_references", "evidence_quality"],
           "properties": {
             "schema_version": {"const": "tfc-rule-evidence-record-1.0"},
             "record_id": {"type": "string"},
@@ -138,6 +138,7 @@
             "route_name": {"type": "string", "minLength": 1},
             "jurisdiction_id": {"type": "string"},
             "overrides_record_id": {"type": ["string", "null"]},
+            "evaluation_boundary": {"enum": ["FULLY_MACHINE_EVALUABLE", "CONDITIONAL_EXTERNAL_CONFIRMATION_REQUIRED"]},
             "conditions": {"type": "array", "items": {"$ref": "#/$defs/condition"}},
             "thresholds": {"type": "array", "items": {"$ref": "#/$defs/threshold"}},
             "effective_period": {"$ref": "#/$defs/period"},

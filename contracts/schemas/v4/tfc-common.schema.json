@@ -5,7 +5,7 @@
   "$defs": {
     "countryCode": {"type": "string", "pattern": "^[A-Z]{3}$"},
     "currencyCode": {"type": "string", "pattern": "^[A-Z]{3}$"},
-    "fieldId": {"type": "string", "pattern": "^(applicant|household|scenario)\\.[a-z][a-z0-9_]*$"},
+    "fieldId": {"type": "string", "pattern": "^(applicant|household|scenario)\\.[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)*$"},
     "tfcId": {"enum": ["skilled_work_route_feasibility", "family_accompaniment_reunification", "post_study_work_pathway"]},
     "provenance": {
       "type": "object",

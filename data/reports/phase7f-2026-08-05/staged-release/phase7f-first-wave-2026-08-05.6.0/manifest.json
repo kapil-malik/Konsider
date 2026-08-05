@@ -1,0 +1,63 @@
+{
+  "activation_authorized": false,
+  "base_release": {
+    "release_checksum": "sha256:34854ec38a5fed7a7455b5a5a0a70dc03f10f88ceda9d19cc0742224b8155493",
+    "release_id": "2026-08-04.1",
+    "schema_version": "konsider-release-5.1"
+  },
+  "file_checksums": {
+    "tfc-catalog.json": "sha256:be063b848eda87a5740bb96eadef591398079ba7f7dbe690044b23777edfd74e",
+    "tfc-coverage-summary.json": "sha256:8189c9c04050751b3e21a6966523312162d11a4de3c4f616e0c2604925a6b567",
+    "tfc-destination-rule-evidence.jsonl": "sha256:669560ed01f155817344d2535d210b68f777308bd350f7bd57f4b7811a5781ef",
+    "tfc-policy-bundles.json": "sha256:b06cf8ce981126659cba6f189e1429026ce98cd39e913b7f1e046b62ea8c88d3",
+    "tfc-source-legal-manifest.json": "sha256:82b7ff3c632a9dd1748ec0fe781c4d76f13899c04bc20d1532a877165ba0d832",
+    "tfc-validation.json": "sha256:cae0e589bec4c04d6e2741d4d40dc7b7a1d78b1a28b57f58382b39fc735e3699"
+  },
+  "release_checksum": "sha256:cbdd22a881435bb94602105d78c4fa9d219030353dc773e07257c8cc5db70452",
+  "release_id": "phase7f-first-wave-2026-08-05.6.0",
+  "schema_version": "konsider-release-6.0",
+  "status": "draft",
+  "synthetic": false,
+  "tfc": {
+    "artifacts": [
+      {
+        "checksum": "sha256:be063b848eda87a5740bb96eadef591398079ba7f7dbe690044b23777edfd74e",
+        "filename": "tfc-catalog.json",
+        "role": "TFC_CATALOG",
+        "schema_version": "tfc-release-catalog-1.0"
+      },
+      {
+        "checksum": "sha256:669560ed01f155817344d2535d210b68f777308bd350f7bd57f4b7811a5781ef",
+        "filename": "tfc-destination-rule-evidence.jsonl",
+        "role": "DESTINATION_RULE_EVIDENCE",
+        "schema_version": "tfc-rule-evidence-record-1.0"
+      },
+      {
+        "checksum": "sha256:b06cf8ce981126659cba6f189e1429026ce98cd39e913b7f1e046b62ea8c88d3",
+        "filename": "tfc-policy-bundles.json",
+        "role": "TFC_POLICY_BUNDLES",
+        "schema_version": "tfc-policy-bundles-1.0"
+      },
+      {
+        "checksum": "sha256:82b7ff3c632a9dd1748ec0fe781c4d76f13899c04bc20d1532a877165ba0d832",
+        "filename": "tfc-source-legal-manifest.json",
+        "role": "TFC_SOURCE_LEGAL_MANIFEST",
+        "schema_version": "tfc-source-legal-manifest-1.0"
+      },
+      {
+        "checksum": "sha256:8189c9c04050751b3e21a6966523312162d11a4de3c4f616e0c2604925a6b567",
+        "filename": "tfc-coverage-summary.json",
+        "role": "TFC_COVERAGE_SUMMARY",
+        "schema_version": "tfc-coverage-summary-1.0"
+      },
+      {
+        "checksum": "sha256:cae0e589bec4c04d6e2741d4d40dc7b7a1d78b1a28b57f58382b39fc735e3699",
+        "filename": "tfc-validation.json",
+        "role": "TFC_VALIDATION",
+        "schema_version": "tfc-validation-report-1.0"
+      }
+    ],
+    "binding_schema_version": "tfc-release-binding-1.0",
+    "target_release_schema_version": "konsider-release-6.0"
+  }
+}

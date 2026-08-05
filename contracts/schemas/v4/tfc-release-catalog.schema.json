@@ -16,10 +16,12 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["tfc_id", "name", "result_family", "policy_id", "input_field_ids", "input_requirements", "filter_capability", "applicable_purposes", "requires_household_relocation"],
+        "required": ["tfc_id", "name", "original_criterion_ids", "user_question", "result_family", "policy_id", "input_field_ids", "input_requirements", "supported_profile_boundary", "supported_destination_codes", "public_limitations", "filter_capability", "applicable_purposes", "requires_household_relocation", "refresh_cadence"],
         "properties": {
           "tfc_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{2,80}$"},
           "name": {"type": "string", "minLength": 1, "maxLength": 120},
+          "original_criterion_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^C[0-9]+$"}},
+          "user_question": {"type": "string", "minLength": 1, "maxLength": 300},
           "result_family": {"enum": ["RULE_ROUTE_MATCH", "SCENARIO_METRIC"]},
           "policy_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
           "input_field_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
@@ -38,8 +40,12 @@
             }
           },
           "filter_capability": {"enum": ["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH_ALLOWED"]},
+          "supported_profile_boundary": {"type": "string", "minLength": 1},
+          "supported_destination_codes": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/countryCode"}},
+          "public_limitations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
           "applicable_purposes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["WORK", "STUDY", "FAMILY", "EXPLORATION"]}},
-          "requires_household_relocation": {"type": "boolean"}
+          "requires_household_relocation": {"type": "boolean"},
+          "refresh_cadence": {"type": "string", "minLength": 1}
         }
       }
     }

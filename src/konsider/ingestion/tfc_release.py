@@ -578,7 +578,10 @@ def make_coverage_summary(
 def build_tfc_release_artifacts(capture: Mapping[str, Any]) -> TfcReleaseArtifacts:
     """Normalize a frozen capture bundle into deterministic immutable release artifacts."""
 
-    if capture.get("schema_version") != "tfc-synthetic-capture-1.0":
+    if capture.get("schema_version") not in {
+        "tfc-synthetic-capture-1.0",
+        "tfc-production-capture-1.0",
+    }:
         raise TfcReleaseError("Unsupported or missing TFC capture schema version.")
     catalog = copy.deepcopy(capture["catalog"])
     policies = copy.deepcopy(capture["policy_bundles"])
@@ -611,6 +614,11 @@ def build_tfc_release_artifacts(capture: Mapping[str, Any]) -> TfcReleaseArtifac
             f"Synthetic capture has unknown support overrides: {unknown_overrides}."
         )
     supports = []
+    default_unsupported_reason = (
+        "DESTINATION_OUTSIDE_APPROVED_SOURCE_BOUNDARY"
+        if capture.get("schema_version") == "tfc-production-capture-1.0"
+        else "SYNTHETIC_UNSUPPORTED"
+    )
     for tfc_id in sorted(tfc_ids):
         for country in COUNTRY_CODES:
             override = overrides.get((tfc_id, country), {})
@@ -626,7 +634,8 @@ def build_tfc_release_artifacts(capture: Mapping[str, Any]) -> TfcReleaseArtifac
                     "jurisdiction_ids": override.get("jurisdiction_ids", [f"country:{country}"]),
                     "rule_record_ids": override.get("rule_record_ids", []),
                     "reason_code": override.get(
-                        "reason_code", None if status == "SUPPORTED" else "SYNTHETIC_UNSUPPORTED"
+                        "reason_code",
+                        None if status == "SUPPORTED" else default_unsupported_reason,
                     ),
                     "evaluated_as_of": capture["validated_as_of"],
                 }

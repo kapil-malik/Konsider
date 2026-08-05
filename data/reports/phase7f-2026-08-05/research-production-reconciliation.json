@@ -1,0 +1,24 @@
+{
+  "actual_supported_count_per_tfc": {
+    "family_accompaniment_reunification": 29,
+    "post_study_work_pathway": 29,
+    "skilled_work_route_feasibility": 29
+  },
+  "discrepancies": [],
+  "expected_supported_count_per_tfc": 29,
+  "production_validation_date": "2026-08-05",
+  "research_cutoff": "2026-08-05",
+  "route_rule_count_per_tfc": {
+    "family_accompaniment_reunification": 58,
+    "post_study_work_pathway": 29,
+    "skilled_work_route_feasibility": 29
+  },
+  "schema_version": "tfc-phase7f-reconciliation-1.0",
+  "source_reference_granularity_change": "Phase 7B source-family references are replaced by owner-authorized exact per-destination page and route identities.",
+  "status": "PASSED",
+  "tfc_ids": [
+    "skilled_work_route_feasibility",
+    "family_accompaniment_reunification",
+    "post_study_work_pathway"
+  ]
+}

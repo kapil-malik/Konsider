@@ -14,28 +14,34 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["source_id", "source_family", "publisher", "responsible_authority", "asset", "access_method", "extracted_at", "effective_from", "effective_to", "checksum", "access_and_licence", "normalized_conclusion", "attribution", "refresh_cadence", "change_detection_method", "parser_version", "manual_review_status"],
+        "required": ["source_id", "source_family", "publisher", "responsible_authority", "asset", "document_id", "edition_version", "access_method", "extracted_at", "verified_at", "effective_from", "effective_to", "checksum", "byte_count", "access_and_licence", "normalized_conclusion", "attribution", "raw_retention_policy", "refresh_cadence", "change_detection_method", "parser_version", "manual_review_status", "production_use_decision"],
         "properties": {
           "source_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
           "source_family": {"enum": ["STRUCTURED_API", "OFFICIAL_TABLE", "OFFICIAL_POLICY_DOCUMENT", "RULE_SCHEDULE", "JURISDICTION_MAPPING", "FORMULA_TABLE"]},
           "publisher": {"type": "string", "minLength": 1},
           "responsible_authority": {"type": "string", "minLength": 1},
           "asset": {"type": "string", "minLength": 1},
+          "document_id": {"type": "string", "minLength": 1},
+          "edition_version": {"type": "string", "minLength": 1},
           "canonical_url": {"type": ["string", "null"], "format": "uri"},
           "access_method": {"type": "string", "minLength": 1},
           "extracted_at": {"type": "string", "format": "date-time"},
+          "verified_at": {"type": "string", "format": "date"},
           "source_published_at": {"type": ["string", "null"], "format": "date"},
           "effective_from": {"type": "string", "format": "date"},
           "effective_to": {"type": ["string", "null"], "format": "date"},
           "checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+          "byte_count": {"type": "integer", "minimum": 0},
           "immutable_identity": {"type": ["string", "null"]},
           "access_and_licence": {"type": "string", "minLength": 1},
           "normalized_conclusion": {"type": "string", "minLength": 1},
           "attribution": {"type": "string", "minLength": 1},
+          "raw_retention_policy": {"enum": ["RETAIN_LAWFUL_RAW", "CHECKSUM_ONLY_NORMALIZED_DERIVATIVE", "DO_NOT_RETAIN"]},
           "refresh_cadence": {"type": "string", "minLength": 1},
           "change_detection_method": {"type": "string", "minLength": 1},
           "parser_version": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
-          "manual_review_status": {"enum": ["NOT_REQUIRED", "PENDING", "APPROVED", "REJECTED"]}
+          "manual_review_status": {"enum": ["NOT_REQUIRED", "PENDING", "APPROVED", "REJECTED"]},
+          "production_use_decision": {"enum": ["SYNTHETIC_ONLY", "APPROVED_STAGED", "LEGALLY_BLOCKED", "HOLD_FOR_REVIEW", "REJECTED"]}
         }
       }
     }

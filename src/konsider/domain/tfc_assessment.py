@@ -134,15 +134,15 @@ def _unknown_field_ids(context: Mapping[str, Any]) -> set[str]:
 
 
 def _resolve_field(context: Mapping[str, Any], field_id: str) -> ResolvedField:
-    namespace, name = field_id.split(".", 1)
-    layer = context.get(namespace)
-    if (
-        not isinstance(layer, Mapping)
-        or field_id in _unknown_field_ids(context)
-        or name not in layer
-    ):
+    path = field_id.split(".")
+    unknown_fields = _unknown_field_ids(context)
+    if any(".".join(path[:index]) in unknown_fields for index in range(2, len(path) + 1)):
         return ResolvedField(False, False)
-    value = layer[name]
+    value: Any = context
+    for segment in path:
+        if not isinstance(value, Mapping) or segment not in value:
+            return ResolvedField(False, False)
+        value = value[segment]
     if value is None or value == "UNKNOWN":
         return ResolvedField(False, False)
     if isinstance(value, Mapping):
@@ -150,6 +150,8 @@ def _resolve_field(context: Mapping[str, Any], field_id: str) -> ResolvedField:
             return ResolvedField(False, False)
         if value.get("state") == "ABSENT":
             return ResolvedField(True, False, value)
+    if isinstance(value, (list, tuple, set, dict)) and not value:
+        return ResolvedField(True, False, value)
     return ResolvedField(True, True, value)
 
 
@@ -304,7 +306,17 @@ def evaluate_route_conditions(
             "status": status,
             "blocking": bool(condition.get("blocking", True)),
         }
-    return [evaluations[condition["condition_id"]] for condition in rule["conditions"]]
+    ordered = [evaluations[condition["condition_id"]] for condition in rule["conditions"]]
+    if rule.get("evaluation_boundary") == "CONDITIONAL_EXTERNAL_CONFIRMATION_REQUIRED":
+        ordered.append(
+            {
+                "condition_id": "external_authority_confirmation",
+                "field_ids": [],
+                "status": "UNKNOWN",
+                "blocking": True,
+            }
+        )
+    return ordered
 
 
 def _route_classification(conditions: Sequence[Mapping[str, Any]]) -> str:
