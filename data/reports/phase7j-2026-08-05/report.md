@@ -43,8 +43,13 @@ python scripts/verify_ci.py --clean-revision HEAD
 ```
 
 Working-tree result: 473 backend tests, 37 frontend unit tests and 14 browser tests passed; all
-static, contract-generation and build checks passed. The final clean-revision result is appended
-after the release and documentation commits are created.
+static, contract-generation and build checks passed.
+
+Clean-revision result at commit `2c0b079`: `CI preflight PASSED` with 464 backend tests passed and
+9 historical tests skipped because their retained raw source artifacts are not checked in. Ruff,
+Black, compile, OpenAPI export, TypeScript, ESLint, 37 frontend unit tests, production build and 14
+Chromium end-to-end tests all passed. The verifier emitted a non-fatal Windows long-path warning
+while deleting its already-removed temporary checkout after reporting success.
 
 ## Rollback drill
 
