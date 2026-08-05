@@ -79,8 +79,8 @@ function installApi({
           : jsonResponse(
               {
                 error: {
-                  code: 'tfc_candidate_unavailable',
-                  message: 'The staged feasibility evidence is unavailable.',
+                  code: 'tfc_release_unavailable',
+                  message: 'The active feasibility evidence is unavailable.',
                   details: {},
                   request_id: null,
                 },

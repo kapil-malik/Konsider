@@ -1082,6 +1082,14 @@ class CurrentReleaseRepository:
             raise CurrentReleaseError(
                 "The active release pointer is unavailable or invalid."
             ) from exc
+        if pointer.get("schema_version") == "konsider-release-6.0":
+            from konsider.ingestion.phase7_release_publication import (
+                load_active_tfc_release,
+            )
+
+            overlay = load_active_tfc_release(self.root, path)
+            assert overlay is not None
+            return self.load(self.root / overlay.manifest["base_release"]["release_id"])
         if pointer.get("schema_version") not in SUPPORTED_RELEASE_SCHEMA_VERSIONS:
             raise CurrentReleaseError(
                 "The active release pointer does not select the schema-current contract."

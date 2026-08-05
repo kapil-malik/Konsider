@@ -1,4 +1,4 @@
-"""Public, stateless API adapter for the separately staged Phase 7 TFC release."""
+"""Public, stateless API adapter for an immutable Phase 7 TFC release."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from typing import Any
 from konsider.domain.tfc_assessment import TfcAssessmentEngine, TfcAssessmentError
 from konsider.exceptions import (
     InvalidProfileContextError,
-    TfcCandidateUnavailableError,
+    TfcReleaseUnavailableError,
     TfcFilterNotAllowedError,
     UnknownTfcError,
     UnsupportedTaxonomyVersionError,
@@ -99,7 +99,7 @@ FIELD_REGISTRY = {
 
 
 class TfcApiService:
-    """Load and assess one immutable, non-active release-6 candidate."""
+    """Load and assess one immutable release-6 overlay."""
 
     def __init__(
         self,
@@ -123,7 +123,7 @@ class TfcApiService:
         try:
             release = TfcCandidateReleaseRepository(path.parent).load(path)
         except (OSError, ValueError, TfcReleaseError) as exc:
-            raise TfcCandidateUnavailableError("The staged TFC candidate is unavailable.") from exc
+            raise TfcReleaseUnavailableError("The staged TFC candidate is unavailable.") from exc
         manifest = release.manifest
         expected_base = {
             "release_id": active_manifest["release_id"],
@@ -138,8 +138,37 @@ class TfcApiService:
             or manifest["base_release"] != expected_base
             or set(definition_ids) != set(FIRST_WAVE_TFC_IDS)
         ):
-            raise TfcCandidateUnavailableError(
+            raise TfcReleaseUnavailableError(
                 "The staged TFC candidate does not match the authorized API boundary."
+            )
+        engine = TfcAssessmentEngine(
+            release.artifacts,
+            active_release_id=active_manifest["release_id"],
+            tfc_release_id=manifest["release_id"],
+        )
+        return cls(release, engine)
+
+    @classmethod
+    def from_published(
+        cls, release: LoadedTfcRelease, active_manifest: Mapping[str, Any]
+    ) -> TfcApiService:
+        manifest = release.manifest
+        expected_base = {
+            "release_id": active_manifest["release_id"],
+            "schema_version": active_manifest["schema_version"],
+            "release_checksum": active_manifest["release_checksum"],
+        }
+        definition_ids = tuple(row["tfc_id"] for row in release.artifacts.catalog["definitions"])
+        if (
+            manifest["status"] != "published"
+            or manifest["synthetic"]
+            or not manifest["activation_authorized"]
+            or manifest["base_release"] != expected_base
+            or release.artifacts.catalog["activation_status"] != "ACTIVE"
+            or set(definition_ids) != set(FIRST_WAVE_TFC_IDS)
+        ):
+            raise TfcReleaseUnavailableError(
+                "The active TFC release does not match the authorized API boundary."
             )
         engine = TfcAssessmentEngine(
             release.artifacts,
@@ -150,7 +179,7 @@ class TfcApiService:
 
     def _require_available(self) -> tuple[LoadedTfcRelease, TfcAssessmentEngine]:
         if self.release is None or self.engine is None:
-            raise TfcCandidateUnavailableError("The staged TFC candidate is unavailable.")
+            raise TfcReleaseUnavailableError("The active TFC release is unavailable.")
         return self.release, self.engine
 
     def catalog(self, version_fields: Mapping[str, Any]) -> dict[str, Any]:
@@ -231,8 +260,8 @@ class TfcApiService:
             **version_fields,
             "tfc_release_id": release.manifest["release_id"],
             "tfc_release_schema_version": release.manifest["schema_version"],
-            "candidate_status": "draft",
-            "activation_authorized": False,
+            "release_status": release.manifest["status"],
+            "activation_authorized": release.manifest["activation_authorized"],
             "available_modes": ["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH"],
             "default_mode": "ASSESS_ONLY",
             "selection_is_explicit": True,

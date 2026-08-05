@@ -1,14 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://konsider.app/schemas/v4/tfc-release-manifest.schema.json",
-  "title": "Konsider release 6 TFC candidate manifest",
+  "title": "Konsider release 6 TFC overlay manifest",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "release_id", "status", "synthetic", "base_release", "tfc", "file_checksums", "release_checksum", "activation_authorized"],
   "properties": {
     "schema_version": {"const": "konsider-release-6.0"},
     "release_id": {"type": "string", "minLength": 1},
-    "status": {"const": "draft"},
+    "status": {"enum": ["draft", "published"]},
     "synthetic": {"type": "boolean"},
     "base_release": {
       "type": "object",
@@ -35,6 +35,21 @@
       }
     },
     "release_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
-    "activation_authorized": {"const": false}
-  }
+    "activation_authorized": {"type": "boolean"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "draft"}}},
+      "then": {"properties": {"activation_authorized": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "published"}}},
+      "then": {
+        "properties": {
+          "activation_authorized": {"const": true},
+          "synthetic": {"const": false}
+        }
+      }
+    }
+  ]
 }

@@ -19,7 +19,7 @@ from konsider.exceptions import (
     InvalidWeightError,
     OpportunityFilterNotActiveError,
     PreferencePresetNotFoundError,
-    TfcCandidateUnavailableError,
+    TfcReleaseUnavailableError,
     TfcFilterNotAllowedError,
     UnknownTfcError,
     UnsupportedTaxonomyVersionError,
@@ -115,16 +115,14 @@ def register_exception_handlers(app: FastAPI) -> None:
             "The supplied profile context cannot be assessed.",
         )
 
-    @app.exception_handler(TfcCandidateUnavailableError)
-    async def tfc_candidate_unavailable_handler(
-        request: Request, exc: TfcCandidateUnavailableError
-    ):
-        LOGGER.error("TFC candidate unavailable")
+    @app.exception_handler(TfcReleaseUnavailableError)
+    async def tfc_release_unavailable_handler(request: Request, exc: TfcReleaseUnavailableError):
+        LOGGER.error("TFC release unavailable")
         return error_response(
             request,
             503,
-            "tfc_candidate_unavailable",
-            "The staged feasibility evidence is unavailable.",
+            "tfc_release_unavailable",
+            "The active feasibility evidence is unavailable.",
         )
 
     @app.exception_handler(UnknownCriterionError)

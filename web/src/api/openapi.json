@@ -2996,7 +2996,6 @@
         "additionalProperties": false,
         "properties": {
           "activation_authorized": {
-            "const": false,
             "title": "Activation Authorized",
             "type": "boolean"
           },
@@ -3016,11 +3015,6 @@
             },
             "title": "Available Modes",
             "type": "array"
-          },
-          "candidate_status": {
-            "const": "draft",
-            "title": "Candidate Status",
-            "type": "string"
           },
           "catalog_schema_version": {
             "title": "Catalog Schema Version",
@@ -3063,6 +3057,14 @@
             "title": "Release Schema Version",
             "type": "string"
           },
+          "release_status": {
+            "enum": [
+              "draft",
+              "published"
+            ],
+            "title": "Release Status",
+            "type": "string"
+          },
           "scoring_method_versions": {
             "items": {
               "type": "string"
@@ -3091,7 +3093,7 @@
           "scoring_method_versions",
           "tfc_release_id",
           "tfc_release_schema_version",
-          "candidate_status",
+          "release_status",
           "activation_authorized",
           "available_modes",
           "default_mode",

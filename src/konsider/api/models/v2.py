@@ -482,8 +482,8 @@ class TfcDefinitionV2Response(ApiModel):
 class TfcCatalogV2Response(V2VersionedResponse):
     tfc_release_id: str
     tfc_release_schema_version: str
-    candidate_status: Literal["draft"]
-    activation_authorized: Literal[False]
+    release_status: Literal["draft", "published"]
+    activation_authorized: bool
     available_modes: list[Literal["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH"]]
     default_mode: Literal["ASSESS_ONLY"]
     selection_is_explicit: Literal[True]

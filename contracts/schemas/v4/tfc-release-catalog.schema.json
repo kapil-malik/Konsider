@@ -9,7 +9,7 @@
     "schema_version": {"const": "tfc-release-catalog-1.0"},
     "catalog_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
     "synthetic": {"type": "boolean"},
-    "activation_status": {"enum": ["SYNTHETIC_ONLY", "CONTRACTS_ONLY", "RELEASE_CANDIDATE"]},
+    "activation_status": {"enum": ["SYNTHETIC_ONLY", "CONTRACTS_ONLY", "RELEASE_CANDIDATE", "ACTIVE"]},
     "definitions": {
       "type": "array",
       "minItems": 1,

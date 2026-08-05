@@ -1112,7 +1112,7 @@ export const tfcCatalogFixture: TfcCatalogV2 = {
   ...versionFields,
   tfc_release_id: 'phase7f-test.1',
   tfc_release_schema_version: 'konsider-release-6.0',
-  candidate_status: 'draft',
+  release_status: 'published',
   activation_authorized: false,
   available_modes: ['ASSESS_ONLY', 'REQUIRE_SUPPORTED_MATCH'],
   default_mode: 'ASSESS_ONLY',

@@ -29,6 +29,7 @@ from konsider.api.settings import ApiSettings
 from konsider.api.tfc_service import TfcApiService
 from konsider.api.v2_service import RecommendationService
 from konsider.ingestion.current_release import CurrentReleaseError, CurrentReleaseRepository
+from konsider.ingestion.phase7_release_publication import load_active_tfc_release
 
 ERROR_RESPONSES = {
     422: {"model": ErrorResponse, "description": "Invalid request"},
@@ -50,9 +51,10 @@ def _default_service_factory(settings: ApiSettings) -> RecommendationService:
         else OpportunityFilterService.empty()
     )
     try:
+        tfc_release = load_active_tfc_release(settings.release_root, settings.active_release_path)
         tfc_service = (
-            TfcApiService.from_candidate(settings.tfc_candidate_path, release.manifest)
-            if settings.tfc_candidate_path is not None
+            TfcApiService.from_published(tfc_release, release.manifest)
+            if tfc_release is not None
             else TfcApiService.unavailable()
         )
     except Exception as exc:

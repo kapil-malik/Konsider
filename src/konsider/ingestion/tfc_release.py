@@ -1,4 +1,4 @@
-"""Deterministic, draft-only release foundation for destination-side TFC artifacts."""
+"""Deterministic release foundation for destination-side TFC artifacts."""
 
 from __future__ import annotations
 
@@ -543,7 +543,11 @@ def validate_tfc_release_artifacts(
         "schema_version": "tfc-validation-report-1.0",
         "validated_as_of": validated_as_of,
         "structural_passed": not issues,
-        "promotion_eligible": False,
+        "promotion_eligible": bool(
+            not issues
+            and artifacts.catalog.get("activation_status") == "ACTIVE"
+            and not artifacts.catalog.get("synthetic", True)
+        ),
         "checks": checks,
         "issues": sorted(issues, key=lambda issue: (issue["code"], issue["record_ids"])),
     }
@@ -667,7 +671,7 @@ def _artifact_bytes(artifacts: TfcReleaseArtifacts) -> dict[str, bytes]:
 
 
 class TfcCandidateReleaseRepository:
-    """Writes and loads release-6 drafts; publication and activation are intentionally absent."""
+    """Writes deterministic release-6 drafts and strictly loads immutable overlays."""
 
     def __init__(self, release_root: Path | str) -> None:
         self.release_root = Path(release_root)

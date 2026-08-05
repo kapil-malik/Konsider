@@ -78,8 +78,8 @@ class InvalidOpportunityFilterSelectionError(RecommendationError):
     pass
 
 
-class TfcCandidateUnavailableError(RecommendationError):
-    """Raised when the separately staged TFC candidate cannot be used."""
+class TfcReleaseUnavailableError(RecommendationError):
+    """Raised when the selected TFC release cannot be used."""
 
 
 class UnknownTfcError(RecommendationError):

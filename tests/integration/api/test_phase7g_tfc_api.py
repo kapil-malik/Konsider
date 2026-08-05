@@ -31,7 +31,13 @@ TFC_IDS = {
 
 @pytest.fixture(scope="module")
 def client() -> TestClient:
-    with TestClient(create_app()) as current:
+    release = CurrentReleaseRepository(ROOT / "data" / "releases").load(
+        ROOT / "data" / "releases" / "2026-08-04.1"
+    )
+    opportunity = OpportunityFilterService.from_release(release.path, release.manifest)
+    tfc = TfcApiService.from_candidate(CANDIDATE, release.manifest)
+    service = RecommendationService(release, opportunity, tfc)
+    with TestClient(create_app(service=service)) as current:
         yield current
 
 
@@ -72,7 +78,7 @@ def test_catalog_exposes_only_the_frozen_first_wave_and_privacy_contract(
     response = client.get("/api/v2/tfcs")
     assert response.status_code == 200
     body = response.json()
-    assert body["candidate_status"] == "draft"
+    assert body["release_status"] == "draft"
     assert body["activation_authorized"] is False
     assert body["selection_is_explicit"] is True
     assert body["persisted_server_side"] is False
@@ -364,4 +370,4 @@ def test_unavailable_candidate_does_not_break_legacy_rankings() -> None:
             json={"top_k": 3, "feasibility": {"tfc_ids": ["skilled_work_route_feasibility"]}},
         )
         assert selected.status_code == 503
-        assert selected.json()["error"]["code"] == "tfc_candidate_unavailable"
+        assert selected.json()["error"]["code"] == "tfc_release_unavailable"

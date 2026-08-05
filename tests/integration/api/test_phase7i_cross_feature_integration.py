@@ -2,16 +2,37 @@ from __future__ import annotations
 
 import copy
 import json
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 
 from konsider.api.app import create_app
+from konsider.api.opportunity_filter_service import OpportunityFilterService
+from konsider.api.tfc_service import TfcApiService
+from konsider.api.v2_service import RecommendationService
+from konsider.ingestion.current_release import CurrentReleaseRepository
+
+ROOT = Path(__file__).resolve().parents[3]
+CANDIDATE = (
+    ROOT
+    / "data"
+    / "reports"
+    / "phase7f-2026-08-05"
+    / "staged-release"
+    / "phase7f-first-wave-2026-08-05.6.0"
+)
 
 
 @pytest.fixture(scope="module")
 def client() -> TestClient:
-    with TestClient(create_app()) as current:
+    release = CurrentReleaseRepository(ROOT / "data" / "releases").load(
+        ROOT / "data" / "releases" / "2026-08-04.1"
+    )
+    opportunity = OpportunityFilterService.from_release(release.path, release.manifest)
+    tfc = TfcApiService.from_candidate(CANDIDATE, release.manifest)
+    service = RecommendationService(release, opportunity, tfc)
+    with TestClient(create_app(service=service)) as current:
         yield current
 
 
