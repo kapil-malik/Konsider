@@ -274,7 +274,10 @@ def test_phase6f_candidate_remains_draft_after_final_activation() -> None:
     assert loaded.manifest["release_id"] == "2026-08-04.1"
     assert "opportunity_filters" in loaded.manifest
     assert loaded.manifest["schema_version"] == "konsider-release-5.1"
-    assert _json(ROOT / "data" / "releases" / "active.json")["release_id"] == "2026-08-04.1"
+    assert _json(ROOT / "data" / "releases" / "active.json") == {
+        "release_id": "2026-08-05.1",
+        "schema_version": "konsider-release-6.0",
+    }
 
 
 def test_no_opportunity_artifact_contains_score_or_weight_fields() -> None:

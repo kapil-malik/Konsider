@@ -297,7 +297,10 @@ def test_phase6e_candidate_remains_draft_after_final_activation() -> None:
     assert "opportunity_filters" in loaded.manifest
     assert loaded.manifest["schema_version"] == "konsider-release-5.1"
     active_pointer = _json(ROOT / "data" / "releases" / "active.json")
-    assert active_pointer["release_id"] == "2026-08-04.1"
+    assert active_pointer == {
+        "release_id": "2026-08-05.1",
+        "schema_version": "konsider-release-6.0",
+    }
 
 
 def _without_checksum_fields(value: object) -> object:

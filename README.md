@@ -4,8 +4,9 @@ Konsider is an evidence-backed country-suitability project. It implements a loca
 refresh worker, immutable versioned releases, a deterministic recommendation service, a typed
 FastAPI v2 API, and a responsive catalog-driven React comparison UI.
 
-Active release `2026-08-04.1` contains 91 countries, 388 selected urban centres, fourteen
-catalogued ordering criteria, and nine filter-only Opportunity Filters. Eight global-core criteria
+Active schema-6.0 overlay `2026-08-05.1` adds three assessment-only Typed Feasibility Checks to
+checksum-bound ranking base `2026-08-04.1`. The base contains 91 countries, 388 selected urban
+centres, fourteen catalogued ordering criteria, and nine filter-only Opportunity Filters. Eight global-core criteria
 cover all countries; Overall job-market opportunity, School education quality, Research and
 innovation ecosystem, Extreme heat exposure, and Projected warm-day frequency (2030) use
 conditional complete-case ranking. UHC is unavailable, while infrastructure, the Phase 4 Wave 2
@@ -123,4 +124,4 @@ Start at the [documentation index](docs/README.md).
 - [Phase 5 verification report](data/reports/phase5i-2026-07-29/report.md)
 - [Historical phase workspaces](project-history/README.md)
 - [Phase 6 closure report](docs/history/phase6-closure-report.md)
-- [Active release report](docs/history/releases/2026-08-04.1.md)
+- [Active release report](docs/history/releases/2026-08-05.1.md)
