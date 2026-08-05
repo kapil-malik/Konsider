@@ -84,14 +84,21 @@ release-scoped ordering catalogs under `data/catalogs/releases/` remain only for
 
 ## Draft Phase 7 TFC extension
 
-Phase 7C defines `tfc-release-binding-1.0` as a standalone target for a future additive/major
-`konsider-release-6.0`. It binds a TFC catalog, destination route/rule evidence, policy bundles,
-source/legal manifest, coverage summary and validation report. Release 6 must retain the complete
-release-5.1 ranking and Opportunity Filter contract.
+Phase 7C defines `tfc-release-binding-1.0`; Phase 7D implements the draft-only
+`konsider-release-6.0` manifest and candidate repository. A candidate binds the immutable checksum
+of a release-5.1 base plus a TFC catalog, typed destination rule/evidence JSONL, policy bundles,
+source/legal manifest, coverage summary and validation report.
 
-No release-6 manifest, staged evidence or runtime loader exists yet. Profile inputs and TFC outcomes
-are request-time data and are prohibited from immutable releases. Active release `2026-08-04.1`
-remains unchanged. See [TFC contracts](../architecture/tfc-contracts.md).
+The rule/evidence union contains explicit jurisdictions, one support row per staged TFC and stable
+country, route rules and typed metric formulas. Missing support rows are invalid. Every mutable rule
+has effective, verification, staleness, supersession and conflict metadata. The writer uses sorted
+LF-stable serialization and SHA-256; replay compares all payloads and the manifest byte-for-byte.
+
+The Phase 7D repository deliberately has no publication or activation method. Its committed input
+is fictional, its catalog is `SYNTHETIC_ONLY`, and its scenario metric is an architecture fixture,
+not an approved TFC. Profile inputs and computed outcomes remain request-time data and are
+prohibited from immutable releases. Active release `2026-08-04.1` remains unchanged. See the
+[TFC release foundation](../architecture/tfc-release-foundation.md).
 
 ## Checksums and replay
 

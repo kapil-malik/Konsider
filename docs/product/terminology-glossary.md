@@ -105,3 +105,21 @@ one route condition remains unknown or unmet.
 **No supported route match** (`NO_SUPPORTED_ROUTE_MATCH`) — A guarded result allowed only when the
 frozen supported inventory is explicitly complete. It never means permanent legal impossibility and
 is not authorized by the current first-wave source policy.
+
+**Destination support record** — The single explicit release record for one TFC-country pair. It
+states supported, evidence insufficient, legally blocked, stale, not applicable nationally or
+unsupported; absence is never interpreted as a state.
+
+**TFC jurisdiction** — A typed country, region, city, institution or regulator/service-authority
+identity used by destination rules. It is separate from route IDs and canonical country codes.
+
+**TFC evaluation policy** — Immutable data controlling effective-date selection, jurisdiction
+precedence, conflict and staleness handling, and whether negative route conclusions are permitted.
+Substantive policy changes are reviewed as artifact diffs, not hidden parser changes.
+
+**TFC semantic diff** — A review artifact that separately identifies source input, normalized
+rule, effective date, evaluation policy and destination support-state changes between candidates.
+
+**Synthetic TFC release candidate** — A draft-only release-6 overlay used to prove schemas,
+validation and deterministic replay. It cannot be published or activated and conveys no real-world
+destination conclusion.

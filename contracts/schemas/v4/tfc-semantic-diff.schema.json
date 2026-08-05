@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-semantic-diff.schema.json",
+  "title": "TFC semantic release diff 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "from_release_id", "to_release_id", "change_counts", "changes"],
+  "properties": {
+    "schema_version": {"const": "tfc-semantic-diff-1.0"},
+    "from_release_id": {"type": "string", "minLength": 1},
+    "to_release_id": {"type": "string", "minLength": 1},
+    "change_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["SOURCE_INPUT_CHANGED", "NORMALIZED_RULE_CHANGED", "EFFECTIVE_DATE_CHANGED", "EVALUATION_POLICY_CHANGED", "SUPPORT_STATE_CHANGED"],
+      "properties": {
+        "SOURCE_INPUT_CHANGED": {"type": "integer", "minimum": 0},
+        "NORMALIZED_RULE_CHANGED": {"type": "integer", "minimum": 0},
+        "EFFECTIVE_DATE_CHANGED": {"type": "integer", "minimum": 0},
+        "EVALUATION_POLICY_CHANGED": {"type": "integer", "minimum": 0},
+        "SUPPORT_STATE_CHANGED": {"type": "integer", "minimum": 0}
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["change_type", "identity", "before", "after"],
+        "properties": {
+          "change_type": {"enum": ["SOURCE_INPUT_CHANGED", "NORMALIZED_RULE_CHANGED", "EFFECTIVE_DATE_CHANGED", "EVALUATION_POLICY_CHANGED", "SUPPORT_STATE_CHANGED"]},
+          "identity": {"type": "string", "minLength": 1},
+          "before": {},
+          "after": {}
+        }
+      }
+    }
+  }
+}

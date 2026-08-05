@@ -304,3 +304,10 @@ Schema-3/4 releases and their release-scoped catalogs are immutable audit record
 eligible targets for `active.json` and the public API has no compatibility path for them. Internal
 audit code must explicitly construct `PublishedReleaseRepository(release_id="...")`; there is no
 default or legacy active pointer. Never rewrite a historical release or catalog snapshot.
+
+## Phase 7 TFC candidate workflow
+
+The Phase 7D destination-rule worker is documented separately in the
+[TFC source and rule workflow](tfc-source-workflow.md). It supports checksum-verified injected
+capture, offline deterministic build, draft load, replay and semantic diff. It has no production
+source registrations, publish command, activation command or API-runtime network path.

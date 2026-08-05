@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-release-manifest.schema.json",
+  "title": "Konsider release 6 TFC candidate manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_id", "status", "synthetic", "base_release", "tfc", "file_checksums", "release_checksum", "activation_authorized"],
+  "properties": {
+    "schema_version": {"const": "konsider-release-6.0"},
+    "release_id": {"type": "string", "minLength": 1},
+    "status": {"const": "draft"},
+    "synthetic": {"type": "boolean"},
+    "base_release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["release_id", "schema_version", "release_checksum"],
+      "properties": {
+        "release_id": {"type": "string", "minLength": 1},
+        "schema_version": {"const": "konsider-release-5.1"},
+        "release_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+      }
+    },
+    "tfc": {"$ref": "tfc-release-binding.schema.json"},
+    "file_checksums": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tfc-catalog.json", "tfc-destination-rule-evidence.jsonl", "tfc-policy-bundles.json", "tfc-source-legal-manifest.json", "tfc-coverage-summary.json", "tfc-validation.json"],
+      "properties": {
+        "tfc-catalog.json": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "tfc-destination-rule-evidence.jsonl": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "tfc-policy-bundles.json": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "tfc-source-legal-manifest.json": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "tfc-coverage-summary.json": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "tfc-validation.json": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+      }
+    },
+    "release_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "activation_authorized": {"const": false}
+  }
+}

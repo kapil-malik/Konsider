@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-source-legal-manifest.schema.json",
+  "title": "TFC source and legal manifest 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "synthetic", "sources"],
+  "properties": {
+    "schema_version": {"const": "tfc-source-legal-manifest-1.0"},
+    "synthetic": {"type": "boolean"},
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "source_family", "publisher", "responsible_authority", "asset", "access_method", "extracted_at", "effective_from", "effective_to", "checksum", "access_and_licence", "normalized_conclusion", "attribution", "refresh_cadence", "change_detection_method", "parser_version", "manual_review_status"],
+        "properties": {
+          "source_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+          "source_family": {"enum": ["STRUCTURED_API", "OFFICIAL_TABLE", "OFFICIAL_POLICY_DOCUMENT", "RULE_SCHEDULE", "JURISDICTION_MAPPING", "FORMULA_TABLE"]},
+          "publisher": {"type": "string", "minLength": 1},
+          "responsible_authority": {"type": "string", "minLength": 1},
+          "asset": {"type": "string", "minLength": 1},
+          "canonical_url": {"type": ["string", "null"], "format": "uri"},
+          "access_method": {"type": "string", "minLength": 1},
+          "extracted_at": {"type": "string", "format": "date-time"},
+          "source_published_at": {"type": ["string", "null"], "format": "date"},
+          "effective_from": {"type": "string", "format": "date"},
+          "effective_to": {"type": ["string", "null"], "format": "date"},
+          "checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+          "immutable_identity": {"type": ["string", "null"]},
+          "access_and_licence": {"type": "string", "minLength": 1},
+          "normalized_conclusion": {"type": "string", "minLength": 1},
+          "attribution": {"type": "string", "minLength": 1},
+          "refresh_cadence": {"type": "string", "minLength": 1},
+          "change_detection_method": {"type": "string", "minLength": 1},
+          "parser_version": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+          "manual_review_status": {"enum": ["NOT_REQUIRED", "PENDING", "APPROVED", "REJECTED"]}
+        }
+      }
+    }
+  }
+}

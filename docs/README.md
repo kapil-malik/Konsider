@@ -42,6 +42,12 @@ readable schemas, and published release manifests take precedence if prose ever 
   evaluation, browser consent, redaction, export and deletion policy.
 - [Phase 7C implementation report](history/phase7c-tfc-profile-contracts.md) - chosen contracts,
   exact enums, fixtures, compatibility and owner gates before Phase 7D.
+- [TFC release foundation](architecture/tfc-release-foundation.md) - typed destination rules,
+  complete support matrices, deterministic release-6 candidates and semantic diffs.
+- [TFC source and rule workflow](operations/tfc-source-workflow.md) - capture, normalization,
+  legal review, effective dates, replay and research-to-production promotion.
+- [Phase 7D implementation report](history/phase7d-tfc-release-foundation.md) - synthetic artifact
+  inventory, compatibility, deterministic replay and Phase 7E boundary.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
 - [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,

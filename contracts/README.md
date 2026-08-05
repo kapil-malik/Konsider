@@ -16,9 +16,12 @@ evidence, policy, source, coverage and future assessment contracts. The active r
 
 `contracts/schemas/v4` defines the inactive Phase 7 target contracts for applicant, household and
 scenario context; immutable effective snapshots; field privacy metadata; the three-item first-wave
-Typed Feasibility Check catalog; route/rule outcomes; sibling profile/feasibility assessments; and a
-standalone future release-6 TFC binding. It does not modify the active loader or OpenAPI surface,
-define scenario-metric results, bind production evidence or activate a release.
+Typed Feasibility Check catalog; route/rule outcomes; and sibling profile/feasibility assessments.
+Phase 7D adds bounded source/legal, jurisdiction, destination-support, route-rule, synthetic metric
+formula, evaluation-policy, coverage, validation, semantic-diff and release-6 candidate contracts.
+It does not modify the active loader or OpenAPI surface, bind production evidence or activate a
+release. The metric artifact family is proven with fictional data and is not a product-approved
+metric TFC.
 
 FastAPI-generated `/openapi.json` is authoritative for HTTP request, response, and error shapes. It
 is generated from strict Pydantic transport models and exported at
@@ -33,3 +36,5 @@ is generated from strict Pydantic transport models and exported at
 - [Opportunity Filter decision](../docs/architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md)
 - [Typed Feasibility Check contracts](../docs/architecture/tfc-contracts.md)
 - [Profile and scenario contracts](../docs/architecture/profile-scenario-contracts.md)
+- [TFC immutable release foundation](../docs/architecture/tfc-release-foundation.md)
+- [TFC source workflow](../docs/operations/tfc-source-workflow.md)

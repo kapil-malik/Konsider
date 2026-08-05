@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 7C contracts complete; owner gate before Phase 7D
+Status: Phase 7D release foundation complete; acceptance gate before Phase 7E
 
 Last updated: 2026-08-05
 
@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks — contracts complete; owner approval pending
+## Phase 7: Typed Feasibility Checks — release foundation complete; Phase 7E pending
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -231,10 +231,17 @@ Until the Phase 7D owner gate and later Phase 7 gates pass:
 - do not add authentication, server-side saved profiles, sync, chat or conversational memory; and
 - keep C05 locality research as an independent fast follow with its own source and identity gates.
 
-Before Phase 7D, the owner must confirm assessment-only behavior versus explicit supported-route
-post-ranking filtering, the 30-day cap for optional consented same-device retention, release 6.0 as
-the TFC binding target, and positive/conditional-only first-wave policy. No production evidence is
-onboarded until Phase 7F.
+Phase 7D now implements typed destination support, jurisdiction, route/rule and synthetic metric
+formula artifacts; audited source/legal registrations; effective-date and conflict validation;
+an explicit support row for every staged TFC-country pair; deterministic release-6 candidate
+assembly and replay; and five-category semantic diffs. Its only input is visibly fictional, and the
+draft repository cannot publish or activate. See the
+[Phase 7D report](../history/phase7d-tfc-release-foundation.md).
+
+Phase 7E may implement request-time assessment against these immutable artifacts after owner
+acceptance. It must use synthetic or staged test data, keep assessment-only behavior as the
+default, preserve all ranking/OFC/locality invariants and leave first-wave evidence onboarding to
+Phase 7F.
 
 ## Future phase: conversational exploration
 

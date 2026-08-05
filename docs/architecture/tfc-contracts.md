@@ -1,6 +1,6 @@
 # Typed Feasibility Check contracts
 
-Status: Phase 7C contracts accepted in code; runtime and evidence not implemented
+Status: Phase 7D synthetic release foundation implemented; assessment runtime and production evidence not implemented
 
 ## Boundary
 
@@ -34,6 +34,11 @@ Generation 4 defines:
 - sibling profile/feasibility assessment placement;
 - browser retention policy; and
 - the standalone release-6 TFC binding.
+
+Phase 7D extends generation 4 with bounded source/legal, jurisdiction, destination-support,
+route-rule, synthetic metric-formula, evaluation-policy, coverage, validation, semantic-diff and
+release-6 candidate-manifest contracts. The metric family is synthetic infrastructure proof only;
+the approved first wave remains route-only.
 
 It deliberately does not define a scenario-metric or advisory result. Adding either requires a new
 owner-approved source gate and result schema.
@@ -128,10 +133,10 @@ exactly six checksummed sibling artifacts:
 5. coverage summary; and
 6. validation report.
 
-Release 6 must retain the full release-5.1 ranking and Opportunity Filter contract. Profile values
-and outcomes are request-time data and are prohibited from immutable releases. Phase 7C defines
-only the standalone binding; Phase 7D will implement a complete draft release-6 foundation. No
-release is staged or activated here.
+Release 6 retains the full release-5.1 ranking and Opportunity Filter contract through an immutable
+base-release identity and checksum. Profile values and outcomes are request-time data and are
+prohibited from immutable releases. Phase 7D implements draft write/load/replay and semantic diff
+with fictional artifacts only. It exposes no publication or activation path.
 
 ## Compatibility
 

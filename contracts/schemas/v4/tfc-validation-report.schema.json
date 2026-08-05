@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-validation-report.schema.json",
+  "title": "TFC release validation report 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "validated_as_of", "structural_passed", "promotion_eligible", "checks", "issues"],
+  "properties": {
+    "schema_version": {"const": "tfc-validation-report-1.0"},
+    "validated_as_of": {"type": "string", "format": "date"},
+    "structural_passed": {"type": "boolean"},
+    "promotion_eligible": {"const": false},
+    "checks": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity", "message", "record_ids"],
+        "properties": {
+          "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]+$"},
+          "severity": {"enum": ["ERROR", "WARNING"]},
+          "message": {"type": "string", "minLength": 1},
+          "record_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

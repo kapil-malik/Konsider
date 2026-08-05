@@ -1,0 +1,246 @@
+{
+  "schema_version": "tfc-synthetic-capture-1.0",
+  "release_id": "synthetic-phase7d-6.0",
+  "validated_as_of": "2026-08-05",
+  "catalog": {
+    "schema_version": "tfc-release-catalog-1.0",
+    "catalog_id": "synthetic-phase7d",
+    "synthetic": true,
+    "activation_status": "SYNTHETIC_ONLY",
+    "definitions": [
+      {
+        "tfc_id": "synthetic_skilled_route",
+        "name": "Fictional skilled route foundation check",
+        "result_family": "RULE_ROUTE_MATCH",
+        "policy_id": "synthetic_skilled_route.v1",
+        "input_field_ids": ["applicant.age_years", "applicant.occupation", "scenario.job_offer"]
+      },
+      {
+        "tfc_id": "synthetic_housing_metric",
+        "name": "Fictional housing scenario metric",
+        "result_family": "SCENARIO_METRIC",
+        "policy_id": "synthetic_housing_metric.v1",
+        "input_field_ids": ["scenario.housing_assumptions", "scenario.budget_assumptions"]
+      }
+    ]
+  },
+  "policy_bundles": {
+    "schema_version": "tfc-policy-bundles-1.0",
+    "policies": [
+      {
+        "policy_id": "synthetic_skilled_route.v1",
+        "tfc_id": "synthetic_skilled_route",
+        "policy_version": "1.0",
+        "result_family": "RULE_ROUTE_MATCH",
+        "effective_selection": "LATEST_NON_OVERLAPPING_RULE_AS_OF_DATE",
+        "conflict_behavior": "BLOCK_EVALUATION",
+        "stale_behavior": "BLOCK_EVALUATION",
+        "future_rule_behavior": "REJECT",
+        "expired_rule_behavior": "REJECT",
+        "negative_result_policy": "POSITIVE_CONDITIONAL_ONLY",
+        "jurisdiction_precedence": ["REGION", "COUNTRY"]
+      },
+      {
+        "policy_id": "synthetic_housing_metric.v1",
+        "tfc_id": "synthetic_housing_metric",
+        "policy_version": "1.0",
+        "result_family": "SCENARIO_METRIC",
+        "effective_selection": "LATEST_NON_OVERLAPPING_RULE_AS_OF_DATE",
+        "conflict_behavior": "BLOCK_EVALUATION",
+        "stale_behavior": "BLOCK_EVALUATION",
+        "future_rule_behavior": "REJECT",
+        "expired_rule_behavior": "REJECT",
+        "negative_result_policy": "POSITIVE_CONDITIONAL_ONLY",
+        "jurisdiction_precedence": ["COUNTRY"]
+      }
+    ]
+  },
+  "source_legal_manifest": {
+    "schema_version": "tfc-source-legal-manifest-1.0",
+    "synthetic": true,
+    "sources": [
+      {
+        "source_id": "fictional_route_schedule",
+        "source_family": "RULE_SCHEDULE",
+        "publisher": "Fictional Mobility Office",
+        "responsible_authority": "Fictional Route Directorate",
+        "asset": "fictional-route-schedule-2026.json",
+        "canonical_url": "https://example.invalid/fictional/route-schedule",
+        "access_method": "Synthetic offline fixture",
+        "extracted_at": "2026-08-01T10:00:00Z",
+        "source_published_at": "2026-07-20",
+        "effective_from": "2026-01-01",
+        "effective_to": null,
+        "checksum": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "immutable_identity": "fictional-route-schedule@2026",
+        "access_and_licence": "Fictional public-domain synthetic fixture",
+        "normalized_conclusion": "Synthetic national and regional route conditions for architecture testing only.",
+        "attribution": "Fictional Mobility Office; generated synthetic fixture.",
+        "refresh_cadence": "Synthetic annual schedule",
+        "change_detection_method": "Asset checksum and normalized semantic diff",
+        "parser_version": "synthetic_route_parser_v1",
+        "manual_review_status": "APPROVED"
+      },
+      {
+        "source_id": "fictional_jurisdiction_map",
+        "source_family": "JURISDICTION_MAPPING",
+        "publisher": "Fictional Geography Registry",
+        "responsible_authority": "Fictional Mapping Authority",
+        "asset": "fictional-jurisdictions-2026.csv",
+        "canonical_url": "https://example.invalid/fictional/jurisdictions",
+        "access_method": "Synthetic offline fixture",
+        "extracted_at": "2026-08-01T10:00:00Z",
+        "source_published_at": "2026-07-01",
+        "effective_from": "2026-01-01",
+        "effective_to": null,
+        "checksum": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "immutable_identity": "fictional-jurisdictions@2026",
+        "access_and_licence": "Fictional public-domain synthetic fixture",
+        "normalized_conclusion": "Synthetic region is a child of the canonical country jurisdiction.",
+        "attribution": "Fictional Geography Registry; generated synthetic fixture.",
+        "refresh_cadence": "Synthetic annual mapping",
+        "change_detection_method": "Asset checksum and jurisdiction identity diff",
+        "parser_version": "synthetic_jurisdiction_parser_v1",
+        "manual_review_status": "APPROVED"
+      },
+      {
+        "source_id": "fictional_formula_table",
+        "source_family": "FORMULA_TABLE",
+        "publisher": "Fictional Housing Office",
+        "responsible_authority": "Fictional Housing Statistics Unit",
+        "asset": "fictional-housing-formula-2026.csv",
+        "canonical_url": "https://example.invalid/fictional/housing-formula",
+        "access_method": "Synthetic offline fixture",
+        "extracted_at": "2026-08-01T10:00:00Z",
+        "source_published_at": "2026-07-15",
+        "effective_from": "2026-01-01",
+        "effective_to": null,
+        "checksum": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "immutable_identity": "fictional-housing-formula@2026",
+        "access_and_licence": "Fictional public-domain synthetic fixture",
+        "normalized_conclusion": "Synthetic coefficients demonstrate typed formula components only.",
+        "attribution": "Fictional Housing Office; generated synthetic fixture.",
+        "refresh_cadence": "Synthetic quarterly table",
+        "change_detection_method": "Asset checksum and component diff",
+        "parser_version": "synthetic_formula_parser_v1",
+        "manual_review_status": "APPROVED"
+      }
+    ]
+  },
+  "additional_jurisdictions": [
+    {
+      "schema_version": "tfc-rule-evidence-record-1.0",
+      "record_id": "jurisdiction:region:DE-FX",
+      "record_type": "JURISDICTION",
+      "jurisdiction_id": "region:DE-FX",
+      "level": "REGION",
+      "country_code": "DEU",
+      "parent_jurisdiction_id": "country:DEU",
+      "name": "Fictional North Region",
+      "mapping_status": "ACTIVE"
+    }
+  ],
+  "rules": [
+    {
+      "schema_version": "tfc-rule-evidence-record-1.0",
+      "record_id": "rule:synthetic_skilled_route:deu:a:v1",
+      "record_type": "ROUTE_RULE",
+      "tfc_id": "synthetic_skilled_route",
+      "route_id": "FX.HIGH_SKILL_A",
+      "route_name": "Fictional national specialist route",
+      "jurisdiction_id": "country:DEU",
+      "overrides_record_id": null,
+      "conditions": [
+        {"condition_id": "age_limit", "condition_type": "THRESHOLD", "field_id": "applicant.age_years", "operator": "LTE", "expected_value": null, "threshold_id": "maximum_age"},
+        {"condition_id": "job_offer", "condition_type": "FIELD_PRESENT", "field_id": "scenario.job_offer", "operator": "PRESENT", "expected_value": null, "threshold_id": null}
+      ],
+      "thresholds": [{"threshold_id": "maximum_age", "value": 55, "unit": "years"}],
+      "effective_period": {"effective_from": "2026-01-01", "effective_to": null, "source_published_at": "2026-07-20", "verified_at": "2026-08-01", "stale_after": "2027-08-01", "supersedes_record_id": null, "conflict_status": "NONE", "conflict_resolution": null},
+      "source_references": [{"source_id": "fictional_route_schedule", "asset_id": "fictional-route-schedule-2026.json", "locator": "routes/FX.HIGH_SKILL_A"}],
+      "evidence_quality": "HIGH"
+    },
+    {
+      "schema_version": "tfc-rule-evidence-record-1.0",
+      "record_id": "rule:synthetic_skilled_route:deu:b:v1",
+      "record_type": "ROUTE_RULE",
+      "tfc_id": "synthetic_skilled_route",
+      "route_id": "FX.HIGH_SKILL_B",
+      "route_name": "Fictional advanced qualification route",
+      "jurisdiction_id": "country:DEU",
+      "overrides_record_id": null,
+      "conditions": [{"condition_id": "occupation", "condition_type": "FIELD_PRESENT", "field_id": "applicant.occupation", "operator": "PRESENT", "expected_value": null, "threshold_id": null}],
+      "thresholds": [],
+      "effective_period": {"effective_from": "2026-01-01", "effective_to": null, "source_published_at": "2026-07-20", "verified_at": "2026-08-01", "stale_after": "2027-08-01", "supersedes_record_id": null, "conflict_status": "NONE", "conflict_resolution": null},
+      "source_references": [{"source_id": "fictional_route_schedule", "asset_id": "fictional-route-schedule-2026.json", "locator": "routes/FX.HIGH_SKILL_B"}],
+      "evidence_quality": "HIGH"
+    },
+    {
+      "schema_version": "tfc-rule-evidence-record-1.0",
+      "record_id": "rule:synthetic_skilled_route:deu:north:v1",
+      "record_type": "ROUTE_RULE",
+      "tfc_id": "synthetic_skilled_route",
+      "route_id": "FX.HIGH_SKILL_A",
+      "route_name": "Fictional North Region specialist override",
+      "jurisdiction_id": "region:DE-FX",
+      "overrides_record_id": "rule:synthetic_skilled_route:deu:a:v1",
+      "conditions": [{"condition_id": "regional_offer", "condition_type": "FIELD_PRESENT", "field_id": "scenario.job_offer", "operator": "PRESENT", "expected_value": null, "threshold_id": null}],
+      "thresholds": [],
+      "effective_period": {"effective_from": "2026-06-01", "effective_to": null, "source_published_at": "2026-05-15", "verified_at": "2026-08-01", "stale_after": "2027-08-01", "supersedes_record_id": null, "conflict_status": "NONE", "conflict_resolution": null},
+      "source_references": [{"source_id": "fictional_route_schedule", "asset_id": "fictional-route-schedule-2026.json", "locator": "regional-overrides/DE-FX"}, {"source_id": "fictional_jurisdiction_map", "asset_id": "fictional-jurisdictions-2026.csv", "locator": "DE-FX"}],
+      "evidence_quality": "HIGH"
+    },
+    {
+      "schema_version": "tfc-rule-evidence-record-1.0",
+      "record_id": "rule:synthetic_skilled_route:can:conflict:v1",
+      "record_type": "ROUTE_RULE",
+      "tfc_id": "synthetic_skilled_route",
+      "route_id": "FX.CONFLICT_ROUTE",
+      "route_name": "Fictional conflicting authority route",
+      "jurisdiction_id": "country:CAN",
+      "overrides_record_id": null,
+      "conditions": [],
+      "thresholds": [],
+      "effective_period": {"effective_from": "2026-01-01", "effective_to": null, "source_published_at": "2026-07-20", "verified_at": "2026-08-01", "stale_after": "2027-08-01", "supersedes_record_id": null, "conflict_status": "UNRESOLVED", "conflict_resolution": "Synthetic authorities disagree; evaluation is blocked."},
+      "source_references": [{"source_id": "fictional_route_schedule", "asset_id": "fictional-route-schedule-2026.json", "locator": "conflicts/CAN"}],
+      "evidence_quality": "LOW"
+    },
+    {
+      "schema_version": "tfc-rule-evidence-record-1.0",
+      "record_id": "rule:synthetic_skilled_route:usa:stale:v1",
+      "record_type": "ROUTE_RULE",
+      "tfc_id": "synthetic_skilled_route",
+      "route_id": "FX.STALE_ROUTE",
+      "route_name": "Fictional stale route",
+      "jurisdiction_id": "country:USA",
+      "overrides_record_id": null,
+      "conditions": [],
+      "thresholds": [],
+      "effective_period": {"effective_from": "2025-01-01", "effective_to": null, "source_published_at": "2025-01-01", "verified_at": "2025-01-01", "stale_after": "2026-07-01", "supersedes_record_id": null, "conflict_status": "NONE", "conflict_resolution": null},
+      "source_references": [{"source_id": "fictional_route_schedule", "asset_id": "fictional-route-schedule-2026.json", "locator": "stale/USA"}],
+      "evidence_quality": "LOW"
+    },
+    {
+      "schema_version": "tfc-rule-evidence-record-1.0",
+      "record_id": "formula:synthetic_housing_metric:aus:v1",
+      "record_type": "METRIC_FORMULA",
+      "tfc_id": "synthetic_housing_metric",
+      "metric_id": "fictional_housing_budget_fit",
+      "jurisdiction_id": "country:AUS",
+      "formula_type": "WEIGHTED_SUM",
+      "output_unit": "synthetic_index_points",
+      "components": [
+        {"component_id": "housing", "field_id": "scenario.housing_assumptions", "coefficient": 0.6, "unit": "synthetic_index_points"},
+        {"component_id": "budget", "field_id": "scenario.budget_assumptions", "coefficient": 0.4, "unit": "synthetic_index_points"}
+      ],
+      "effective_period": {"effective_from": "2026-01-01", "effective_to": null, "source_published_at": "2026-07-15", "verified_at": "2026-08-01", "stale_after": "2027-08-01", "supersedes_record_id": null, "conflict_status": "NONE", "conflict_resolution": null},
+      "source_references": [{"source_id": "fictional_formula_table", "asset_id": "fictional-housing-formula-2026.csv", "locator": "formula/FICTIONAL_HOUSING"}],
+      "evidence_quality": "HIGH"
+    }
+  ],
+  "support_overrides": [
+    {"tfc_id": "synthetic_skilled_route", "country_code": "DEU", "support_status": "SUPPORTED", "jurisdiction_ids": ["country:DEU", "region:DE-FX"], "rule_record_ids": ["rule:synthetic_skilled_route:deu:a:v1", "rule:synthetic_skilled_route:deu:b:v1", "rule:synthetic_skilled_route:deu:north:v1"], "reason_code": null},
+    {"tfc_id": "synthetic_skilled_route", "country_code": "CAN", "support_status": "EVIDENCE_INSUFFICIENT", "jurisdiction_ids": ["country:CAN"], "rule_record_ids": ["rule:synthetic_skilled_route:can:conflict:v1"], "reason_code": "UNRESOLVED_AUTHORITY_CONFLICT"},
+    {"tfc_id": "synthetic_skilled_route", "country_code": "USA", "support_status": "STALE", "jurisdiction_ids": ["country:USA"], "rule_record_ids": ["rule:synthetic_skilled_route:usa:stale:v1"], "reason_code": "SOURCE_STALE"},
+    {"tfc_id": "synthetic_housing_metric", "country_code": "AUS", "support_status": "SUPPORTED", "jurisdiction_ids": ["country:AUS"], "rule_record_ids": ["formula:synthetic_housing_metric:aus:v1"], "reason_code": null}
+  ]
+}

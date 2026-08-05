@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-release-catalog.schema.json",
+  "title": "TFC immutable release catalog 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "catalog_id", "synthetic", "activation_status", "definitions"],
+  "properties": {
+    "schema_version": {"const": "tfc-release-catalog-1.0"},
+    "catalog_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+    "synthetic": {"type": "boolean"},
+    "activation_status": {"enum": ["SYNTHETIC_ONLY", "CONTRACTS_ONLY", "RELEASE_CANDIDATE"]},
+    "definitions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tfc_id", "name", "result_family", "policy_id", "input_field_ids"],
+        "properties": {
+          "tfc_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{2,80}$"},
+          "name": {"type": "string", "minLength": 1, "maxLength": 120},
+          "result_family": {"enum": ["RULE_ROUTE_MATCH", "SCENARIO_METRIC"]},
+          "policy_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+          "input_field_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}}
+        }
+      }
+    }
+  }
+}

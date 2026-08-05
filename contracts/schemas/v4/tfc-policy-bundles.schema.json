@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-policy-bundles.schema.json",
+  "title": "TFC evaluation policy bundles 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "policies"],
+  "properties": {
+    "schema_version": {"const": "tfc-policy-bundles-1.0"},
+    "policies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["policy_id", "tfc_id", "policy_version", "result_family", "effective_selection", "conflict_behavior", "stale_behavior", "future_rule_behavior", "expired_rule_behavior", "negative_result_policy", "jurisdiction_precedence"],
+        "properties": {
+          "policy_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+          "tfc_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{2,80}$"},
+          "policy_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
+          "result_family": {"enum": ["RULE_ROUTE_MATCH", "SCENARIO_METRIC"]},
+          "effective_selection": {"const": "LATEST_NON_OVERLAPPING_RULE_AS_OF_DATE"},
+          "conflict_behavior": {"const": "BLOCK_EVALUATION"},
+          "stale_behavior": {"const": "BLOCK_EVALUATION"},
+          "future_rule_behavior": {"const": "REJECT"},
+          "expired_rule_behavior": {"const": "REJECT"},
+          "negative_result_policy": {"enum": ["POSITIVE_CONDITIONAL_ONLY", "COMPLETE_INVENTORY_REQUIRED"]},
+          "jurisdiction_precedence": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"enum": ["COUNTRY", "REGION", "CITY", "INSTITUTION", "REGULATOR"]}
+          }
+        }
+      }
+    }
+  }
+}

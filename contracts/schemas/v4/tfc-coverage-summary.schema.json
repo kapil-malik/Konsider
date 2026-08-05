@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-coverage-summary.schema.json",
+  "title": "TFC explicit destination coverage summary 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "stable_universe_id", "stable_country_count", "tfc_count", "expected_support_records", "actual_support_records", "by_tfc"],
+  "properties": {
+    "schema_version": {"const": "tfc-coverage-summary-1.0"},
+    "stable_universe_id": {"const": "stable_supported_v1"},
+    "stable_country_count": {"const": 91},
+    "tfc_count": {"type": "integer", "minimum": 1},
+    "expected_support_records": {"type": "integer", "minimum": 91},
+    "actual_support_records": {"type": "integer", "minimum": 0},
+    "by_tfc": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tfc_id", "record_count", "support_state_counts"],
+        "properties": {
+          "tfc_id": {"type": "string"},
+          "record_count": {"type": "integer", "minimum": 0},
+          "support_state_counts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["SUPPORTED", "EVIDENCE_INSUFFICIENT", "LEGALLY_BLOCKED", "STALE", "NOT_APPLICABLE_NATIONAL", "UNSUPPORTED"],
+            "properties": {
+              "SUPPORTED": {"type": "integer", "minimum": 0},
+              "EVIDENCE_INSUFFICIENT": {"type": "integer", "minimum": 0},
+              "LEGALLY_BLOCKED": {"type": "integer", "minimum": 0},
+              "STALE": {"type": "integer", "minimum": 0},
+              "NOT_APPLICABLE_NATIONAL": {"type": "integer", "minimum": 0},
+              "UNSUPPORTED": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}
