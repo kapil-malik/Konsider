@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-scenario-snapshot.schema.json",
+  "title": "Request-scoped TFC scenario result snapshot 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "snapshot_id", "active_release_id", "tfc_release_id", "policy_versions", "source_versions", "effective_profile_context_hash", "selected_tfc_ids", "evaluation_date", "base_ranking_reference", "country_outcomes", "assumptions", "warnings", "persisted_server_side"],
+  "properties": {
+    "schema_version": {"const": "tfc-scenario-snapshot-1.0"},
+    "snapshot_id": {"type": "string", "pattern": "^snapshot:[a-f0-9]{16}:[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "active_release_id": {"type": "string", "minLength": 1},
+    "tfc_release_id": {"type": "string", "minLength": 1},
+    "policy_versions": {"type": "object", "additionalProperties": {"type": "string"}},
+    "source_versions": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}},
+    "effective_profile_context_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "selected_tfc_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "evaluation_date": {"type": "string", "format": "date"},
+    "base_ranking_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["release_id", "country_count", "ordering_checksum"],
+      "properties": {
+        "release_id": {"type": "string"},
+        "country_count": {"type": "integer", "minimum": 0},
+        "ordering_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+      }
+    },
+    "country_outcomes": {"type": "array", "items": {"$ref": "tfc-engine-assessment.schema.json#/$defs/countryAssessment"}},
+    "assumptions": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "warnings": {"type": "array", "items": {"$ref": "tfc-engine-assessment.schema.json#/$defs/warning"}},
+    "persisted_server_side": {"const": false}
+  }
+}

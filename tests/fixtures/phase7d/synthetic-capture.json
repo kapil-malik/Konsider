@@ -13,14 +13,29 @@
         "name": "Fictional skilled route foundation check",
         "result_family": "RULE_ROUTE_MATCH",
         "policy_id": "synthetic_skilled_route.v1",
-        "input_field_ids": ["applicant.age_years", "applicant.occupation", "scenario.job_offer"]
+        "input_field_ids": ["applicant.age_years", "applicant.occupation", "scenario.job_offer"],
+        "input_requirements": [
+          {"field_id": "scenario.job_offer", "requirement": "ALWAYS_REQUIRED", "when_field_id": null, "when_equals": null},
+          {"field_id": "applicant.age_years", "requirement": "OPTIONAL_EXPLANATORY", "when_field_id": null, "when_equals": null},
+          {"field_id": "applicant.occupation", "requirement": "OPTIONAL_EXPLANATORY", "when_field_id": null, "when_equals": null}
+        ],
+        "filter_capability": "REQUIRE_SUPPORTED_MATCH_ALLOWED",
+        "applicable_purposes": ["WORK", "EXPLORATION"],
+        "requires_household_relocation": false
       },
       {
         "tfc_id": "synthetic_housing_metric",
         "name": "Fictional housing scenario metric",
         "result_family": "SCENARIO_METRIC",
         "policy_id": "synthetic_housing_metric.v1",
-        "input_field_ids": ["scenario.housing_assumptions", "scenario.budget_assumptions"]
+        "input_field_ids": ["scenario.housing_cost", "scenario.monthly_budget"],
+        "input_requirements": [
+          {"field_id": "scenario.housing_cost", "requirement": "ALWAYS_REQUIRED", "when_field_id": null, "when_equals": null},
+          {"field_id": "scenario.monthly_budget", "requirement": "ALWAYS_REQUIRED", "when_field_id": null, "when_equals": null}
+        ],
+        "filter_capability": "ASSESS_ONLY",
+        "applicable_purposes": ["EXPLORATION"],
+        "requires_household_relocation": false
       }
     ]
   },
@@ -37,7 +52,8 @@
         "stale_behavior": "BLOCK_EVALUATION",
         "future_rule_behavior": "REJECT",
         "expired_rule_behavior": "REJECT",
-        "negative_result_policy": "POSITIVE_CONDITIONAL_ONLY",
+        "negative_result_policy": "COMPLETE_INVENTORY_REQUIRED",
+        "filter_non_match_behavior": "EXCLUDE_WITH_REASON",
         "jurisdiction_precedence": ["REGION", "COUNTRY"]
       },
       {
@@ -51,6 +67,7 @@
         "future_rule_behavior": "REJECT",
         "expired_rule_behavior": "REJECT",
         "negative_result_policy": "POSITIVE_CONDITIONAL_ONLY",
+        "filter_non_match_behavior": "NOT_FILTERABLE",
         "jurisdiction_precedence": ["COUNTRY"]
       }
     ]
@@ -168,7 +185,7 @@
       "route_name": "Fictional advanced qualification route",
       "jurisdiction_id": "country:DEU",
       "overrides_record_id": null,
-      "conditions": [{"condition_id": "occupation", "condition_type": "FIELD_PRESENT", "field_id": "applicant.occupation", "operator": "PRESENT", "expected_value": null, "threshold_id": null}],
+      "conditions": [{"condition_id": "occupation", "condition_type": "TAXONOMY_MEMBERSHIP", "field_id": "applicant.occupation", "operator": "IN", "expected_value": ["2512"], "threshold_id": null}],
       "thresholds": [],
       "effective_period": {"effective_from": "2026-01-01", "effective_to": null, "source_published_at": "2026-07-20", "verified_at": "2026-08-01", "stale_after": "2027-08-01", "supersedes_record_id": null, "conflict_status": "NONE", "conflict_resolution": null},
       "source_references": [{"source_id": "fictional_route_schedule", "asset_id": "fictional-route-schedule-2026.json", "locator": "routes/FX.HIGH_SKILL_B"}],
@@ -227,10 +244,16 @@
       "metric_id": "fictional_housing_budget_fit",
       "jurisdiction_id": "country:AUS",
       "formula_type": "WEIGHTED_SUM",
-      "output_unit": "synthetic_index_points",
+      "output_unit": "AUD_per_month",
+      "output_currency": "AUD",
+      "output_period": "MONTHLY",
+      "rounding": {"mode": "HALF_UP", "decimal_places": 2},
+      "assumptions": ["Synthetic component values use the same currency and monthly period."],
+      "exchange_rate_policy": "NONE",
+      "locality_requirement": "OPTIONAL_TARGET_LOCALITY",
       "components": [
-        {"component_id": "housing", "field_id": "scenario.housing_assumptions", "coefficient": 0.6, "unit": "synthetic_index_points"},
-        {"component_id": "budget", "field_id": "scenario.budget_assumptions", "coefficient": 0.4, "unit": "synthetic_index_points"}
+        {"component_id": "housing", "field_id": "scenario.housing_cost", "coefficient": 0.6, "unit": "AUD_per_month"},
+        {"component_id": "budget", "field_id": "scenario.monthly_budget", "coefficient": 0.4, "unit": "AUD_per_month"}
       ],
       "effective_period": {"effective_from": "2026-01-01", "effective_to": null, "source_published_at": "2026-07-15", "verified_at": "2026-08-01", "stale_after": "2027-08-01", "supersedes_record_id": null, "conflict_status": "NONE", "conflict_resolution": null},
       "source_references": [{"source_id": "fictional_formula_table", "asset_id": "fictional-housing-formula-2026.csv", "locator": "formula/FICTIONAL_HOUSING"}],

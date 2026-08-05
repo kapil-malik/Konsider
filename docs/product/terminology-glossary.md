@@ -123,3 +123,14 @@ rule, effective date, evaluation policy and destination support-state changes be
 **Synthetic TFC release candidate** — A draft-only release-6 overlay used to prove schemas,
 validation and deterministic replay. It cannot be published or activated and conveys no real-world
 destination conclusion.
+
+**Assess only** (`ASSESS_ONLY`) — The default TFC mode. Feasibility outcomes are attached to the
+copied ranking assessment without excluding countries or changing rank, score or contribution.
+
+**Require supported match** (`REQUIRE_SUPPORTED_MATCH`) — An explicitly requested post-ranking
+projection available only to authorized route/rule TFCs. Survivors retain base order and affinity;
+metric thresholds cannot use this mode.
+
+**Scenario result snapshot** — A request-scoped, non-persisted record of release, policy and source
+versions, opaque effective-context hash, selected TFCs, evaluation date, base-order identity,
+outcomes, assumptions and warnings. It does not contain profile objects or raw profile values.

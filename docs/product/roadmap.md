@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 7D release foundation complete; acceptance gate before Phase 7E
+Status: Phase 7E assessment engine complete; acceptance gate before Phase 7F
 
 Last updated: 2026-08-05
 
@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks — release foundation complete; Phase 7E pending
+## Phase 7: Typed Feasibility Checks — synthetic assessment engine complete; Phase 7F pending
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -238,10 +238,15 @@ assembly and replay; and five-category semantic diffs. Its only input is visibly
 draft repository cannot publish or activate. See the
 [Phase 7D report](../history/phase7d-tfc-release-foundation.md).
 
-Phase 7E may implement request-time assessment against these immutable artifacts after owner
-acceptance. It must use synthetic or staged test data, keep assessment-only behavior as the
-default, preserve all ranking/OFC/locality invariants and leave first-wave evidence onboarding to
-Phase 7F.
+Phase 7E now implements request-time context normalization and hashing, input sufficiency,
+applicability, effective jurisdiction/rule selection, multiple-route aggregation, synthetic metric
+ranges, explicit policy-gated filtering, feasibility summaries and non-persisted scenario
+snapshots. Golden tests preserve ranking, PCC/LSC, locality and Opportunity Filter invariants. See
+the [Phase 7E report](../history/phase7e-tfc-assessment-engine.md).
+
+Phase 7F is the first production evidence-onboarding gate. It must use the Phase 7D source/legal
+workflow, retain the approved three route-only checks and positive/conditional policy, and avoid
+API/UI exposure or activation.
 
 ## Future phase: conversational exploration
 

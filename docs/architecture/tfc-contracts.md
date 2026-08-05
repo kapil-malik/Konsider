@@ -1,6 +1,6 @@
 # Typed Feasibility Check contracts
 
-Status: Phase 7D synthetic release foundation implemented; assessment runtime and production evidence not implemented
+Status: Phase 7E synthetic assessment engine implemented; API/UI and production evidence not implemented
 
 ## Boundary
 
@@ -39,6 +39,11 @@ Phase 7D extends generation 4 with bounded source/legal, jurisdiction, destinati
 route-rule, synthetic metric-formula, evaluation-policy, coverage, validation, semantic-diff and
 release-6 candidate-manifest contracts. The metric family is synthetic infrastructure proof only;
 the approved first wave remains route-only.
+
+Phase 7E adds a typed domain assessment and non-persisted scenario snapshot. The engine normalizes
+request context, resolves support and effective rules, evaluates bounded route conditions and
+synthetic metric formulas, preserves route detail and can create an explicitly requested
+supported-route projection without changing canonical affinity or base rank.
 
 It deliberately does not define a scenario-metric or advisory result. Adding either requires a new
 owner-approved source gate and result schema.
@@ -143,3 +148,7 @@ with fictional artifacts only. It exposes no publication or activation path.
 Historical v1-v3 schemas are unchanged. Contract tests load the active release through the existing
 repository, validate its generation-3 manifest and assert that the active OpenAPI document exposes
 no TFC path or model. Current ranking, OFC, PCC, locality, API and UI behavior are unchanged.
+
+The Phase 7E engine is not wired into FastAPI. See the
+[domain behavior](../product/tfc-assessment-engine.md) and
+[performance report](../product/tfc-assessment-performance.md).

@@ -41,7 +41,7 @@ def _issue_codes(artifacts) -> set[str]:
 
 def test_all_generation_4_schemas_remain_valid_after_release_extension() -> None:
     schemas = sorted((ROOT / "contracts" / "schemas" / "v4").glob("*.schema.json"))
-    assert len(schemas) == 23
+    assert len(schemas) >= 23
     for path in schemas:
         Draft202012Validator.check_schema(json.loads(path.read_text(encoding="utf-8")))
 

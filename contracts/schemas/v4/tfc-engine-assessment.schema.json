@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-engine-assessment.schema.json",
+  "title": "TFC domain-engine assessment 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "profile_context_status", "execution_status", "filter_mode", "selected_tfc_ids", "input_required_fields", "status_counts", "matched_route_count", "metric_result_count", "no_change_affinity", "warnings", "countries"],
+  "properties": {
+    "schema_version": {"const": "tfc-engine-assessment-1.0"},
+    "profile_context_status": {"enum": ["NO_PROFILE_CONTEXT", "PARTIAL_PROFILE_CONTEXT", "COMPLETE_PROFILE_CONTEXT"]},
+    "execution_status": {"enum": ["NO_TFC_SELECTED", "NOT_EXECUTED_NO_CONTEXT", "EXECUTED"]},
+    "filter_mode": {"enum": ["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH"]},
+    "selected_tfc_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/tfcId"}},
+    "input_required_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+    "status_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["EVALUATED", "INPUT_REQUIRED", "DESTINATION_EVIDENCE_INSUFFICIENT", "UNSUPPORTED", "NOT_APPLICABLE", "EVALUATION_ERROR"],
+      "properties": {
+        "EVALUATED": {"type": "integer", "minimum": 0},
+        "INPUT_REQUIRED": {"type": "integer", "minimum": 0},
+        "DESTINATION_EVIDENCE_INSUFFICIENT": {"type": "integer", "minimum": 0},
+        "UNSUPPORTED": {"type": "integer", "minimum": 0},
+        "NOT_APPLICABLE": {"type": "integer", "minimum": 0},
+        "EVALUATION_ERROR": {"type": "integer", "minimum": 0}
+      }
+    },
+    "matched_route_count": {"type": "integer", "minimum": 0},
+    "metric_result_count": {"type": "integer", "minimum": 0},
+    "no_change_affinity": {"const": true},
+    "warnings": {"type": "array", "items": {"$ref": "#/$defs/warning"}},
+    "countries": {"type": "array", "items": {"$ref": "#/$defs/countryAssessment"}}
+  },
+  "$defs": {
+    "tfcId": {"type": "string", "pattern": "^[a-z][a-z0-9_]{2,80}$"},
+    "warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "tfc_id", "country_code", "record_ids"],
+      "properties": {
+        "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]+$"},
+        "tfc_id": {"oneOf": [{"$ref": "#/$defs/tfcId"}, {"type": "null"}]},
+        "country_code": {"oneOf": [{"$ref": "tfc-common.schema.json#/$defs/countryCode"}, {"type": "null"}]},
+        "record_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "conditionEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition_id", "field_ids", "status", "blocking"],
+      "properties": {
+        "condition_id": {"type": "string"},
+        "field_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+        "status": {"enum": ["MET", "UNMET", "UNKNOWN", "NOT_APPLICABLE"]},
+        "blocking": {"type": "boolean"}
+      }
+    },
+    "routeEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route_id", "route_name", "jurisdiction_id", "classification", "conditions", "source_ids", "effective_from", "effective_to", "evidence_quality"],
+      "properties": {
+        "route_id": {"type": "string"},
+        "route_name": {"type": "string"},
+        "jurisdiction_id": {"type": "string"},
+        "classification": {"enum": ["MATCH", "CONDITIONAL", "NO_MATCH"]},
+        "conditions": {"type": "array", "items": {"$ref": "#/$defs/conditionEvaluation"}},
+        "source_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "effective_from": {"type": "string", "format": "date"},
+        "effective_to": {"type": ["string", "null"], "format": "date"},
+        "evidence_quality": {"enum": ["HIGH", "MEDIUM", "LOW"]}
+      }
+    },
+    "routeResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result_type", "match_classification", "routes", "matched_route_ids", "route_inventory_complete", "legal_impossibility_disclaimer"],
+      "properties": {
+        "result_type": {"const": "ROUTE_RULE"},
+        "match_classification": {"enum": ["SUPPORTED_ROUTE_MATCH", "CONDITIONAL_ROUTE_MATCH", "NO_SUPPORTED_ROUTE_MATCH"]},
+        "routes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/routeEvaluation"}},
+        "matched_route_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "route_inventory_complete": {"type": "boolean"},
+        "legal_impossibility_disclaimer": {"const": "No supported-route match is not a permanent legal impossibility."}
+      }
+    },
+    "metricComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "field_id", "status", "contribution_minimum", "contribution_maximum", "unit"],
+      "properties": {
+        "component_id": {"type": "string"},
+        "field_id": {"$ref": "tfc-common.schema.json#/$defs/fieldId"},
+        "status": {"enum": ["EVALUATED", "MISSING", "INCOMPATIBLE_UNIT"]},
+        "contribution_minimum": {"type": ["number", "null"]},
+        "contribution_maximum": {"type": ["number", "null"]},
+        "unit": {"type": "string"}
+      }
+    },
+    "metricResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result_type", "metric_id", "formula_type", "value", "minimum", "maximum", "unit", "currency", "period", "components", "assumptions", "rounding", "locality_id", "source_ids", "effective_from", "effective_to", "evidence_quality"],
+      "properties": {
+        "result_type": {"const": "SCENARIO_METRIC"},
+        "metric_id": {"type": "string"},
+        "formula_type": {"const": "WEIGHTED_SUM"},
+        "value": {"type": ["number", "null"]},
+        "minimum": {"type": "number"},
+        "maximum": {"type": "number"},
+        "unit": {"type": "string"},
+        "currency": {"type": ["string", "null"]},
+        "period": {"enum": ["NONE", "HOURLY", "MONTHLY", "ANNUAL"]},
+        "components": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/metricComponent"}},
+        "assumptions": {"type": "array", "items": {"type": "string"}},
+        "rounding": {"type": "object"},
+        "locality_id": {"type": ["string", "null"]},
+        "source_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "effective_from": {"type": "string", "format": "date"},
+        "effective_to": {"type": ["string", "null"], "format": "date"},
+        "evidence_quality": {"enum": ["HIGH", "MEDIUM", "LOW"]}
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tfc_id", "country_code", "common_status", "reason_codes", "input_required_fields", "result", "warnings"],
+      "properties": {
+        "tfc_id": {"$ref": "#/$defs/tfcId"},
+        "country_code": {"$ref": "tfc-common.schema.json#/$defs/countryCode"},
+        "common_status": {"enum": ["EVALUATED", "INPUT_REQUIRED", "DESTINATION_EVIDENCE_INSUFFICIENT", "UNSUPPORTED", "NOT_APPLICABLE", "EVALUATION_ERROR"]},
+        "reason_codes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]+$"}},
+        "input_required_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+        "result": {"oneOf": [{"$ref": "#/$defs/routeResult"}, {"$ref": "#/$defs/metricResult"}, {"type": "null"}]},
+        "warnings": {"type": "array", "items": {"$ref": "#/$defs/warning"}}
+      }
+    },
+    "countryAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country_code", "base_rank", "filtered_rank", "affinity_score_before", "affinity_score_after", "no_change_affinity", "outcomes"],
+      "properties": {
+        "country_code": {"$ref": "tfc-common.schema.json#/$defs/countryCode"},
+        "base_rank": {"type": "integer", "minimum": 1},
+        "filtered_rank": {"type": ["integer", "null"], "minimum": 1},
+        "affinity_score_before": {"type": "number"},
+        "affinity_score_after": {"type": "number"},
+        "no_change_affinity": {"const": true},
+        "outcomes": {"type": "array", "items": {"$ref": "#/$defs/outcome"}}
+      }
+    }
+  }
+}

@@ -19,8 +19,9 @@ scenario context; immutable effective snapshots; field privacy metadata; the thr
 Typed Feasibility Check catalog; route/rule outcomes; and sibling profile/feasibility assessments.
 Phase 7D adds bounded source/legal, jurisdiction, destination-support, route-rule, synthetic metric
 formula, evaluation-policy, coverage, validation, semantic-diff and release-6 candidate contracts.
-It does not modify the active loader or OpenAPI surface, bind production evidence or activate a
-release. The metric artifact family is proven with fictional data and is not a product-approved
+Phase 7E adds typed domain-assessment and non-persisted scenario-snapshot contracts. It does not
+modify the active loader or OpenAPI surface, bind production evidence or activate a release. The
+metric artifact and result family are proven with fictional data and are not a product-approved
 metric TFC.
 
 FastAPI-generated `/openapi.json` is authoritative for HTTP request, response, and error shapes. It
@@ -38,3 +39,5 @@ is generated from strict Pydantic transport models and exported at
 - [Profile and scenario contracts](../docs/architecture/profile-scenario-contracts.md)
 - [TFC immutable release foundation](../docs/architecture/tfc-release-foundation.md)
 - [TFC source workflow](../docs/operations/tfc-source-workflow.md)
+- [TFC assessment engine](../docs/product/tfc-assessment-engine.md)
+- [TFC assessment performance](../docs/product/tfc-assessment-performance.md)

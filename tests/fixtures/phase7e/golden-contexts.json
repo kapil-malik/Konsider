@@ -1,0 +1,76 @@
+{
+  "complete_work": {
+    "applicant": {
+      "citizenships": ["ind"],
+      "age_years": 31,
+      "occupation": {"user_text": " Software   engineer ", "taxonomy_id": "isco08", "taxonomy_version": "2008", "code": "2512", "mapping_state": "MAPPED"},
+      "qualifications": [{"level": "MASTERS"}],
+      "unknown_fields": []
+    },
+    "household": {"partner_status": "NONE", "dependants": [], "unknown_fields": []},
+    "scenario": {
+      "purpose": "WORK",
+      "target_country_codes": ["deu"],
+      "target_region_ids": [],
+      "target_locality_ids": [],
+      "job_offer": {"state": "PRESENT", "role": "Synthetic specialist", "salary": {"amount": 72000, "currency": "eur", "period": "ANNUAL"}},
+      "relocation_composition": "APPLICANT_ONLY",
+      "unknown_fields": []
+    }
+  },
+  "conditional_work": {
+    "applicant": {
+      "age_years": null,
+      "occupation": {"user_text": "Unresolved occupation", "code": null, "mapping_state": "UNRESOLVED"},
+      "qualifications": [],
+      "unknown_fields": ["applicant.age_years"]
+    },
+    "household": {"partner_status": "NONE", "dependants": [], "unknown_fields": []},
+    "scenario": {"purpose": "WORK", "target_region_ids": [], "target_locality_ids": [], "job_offer": {"state": "PRESENT"}, "relocation_composition": "APPLICANT_ONLY", "unknown_fields": []}
+  },
+  "no_match_work": {
+    "applicant": {
+      "age_years": 60,
+      "occupation": {"user_text": "Synthetic other occupation", "code": "9999", "mapping_state": "MAPPED"},
+      "qualifications": [],
+      "unknown_fields": []
+    },
+    "household": {"partner_status": "NONE", "dependants": [], "unknown_fields": []},
+    "scenario": {"purpose": "WORK", "target_region_ids": [], "target_locality_ids": [], "job_offer": {"state": "ABSENT"}, "relocation_composition": "APPLICANT_ONLY", "unknown_fields": []}
+  },
+  "partial_work": {
+    "applicant": {"age_years": 31, "occupation": null, "qualifications": [], "unknown_fields": ["applicant.occupation"]},
+    "household": {"partner_status": "UNKNOWN", "dependants": [], "unknown_fields": []},
+    "scenario": {"purpose": "WORK", "target_region_ids": [], "target_locality_ids": [], "relocation_composition": "UNKNOWN", "unknown_fields": ["scenario.job_offer"]}
+  },
+  "regional_work": {
+    "applicant": {"age_years": 60, "occupation": {"user_text": "Synthetic other occupation", "code": "9999", "mapping_state": "MAPPED"}, "qualifications": [], "unknown_fields": []},
+    "household": {"partner_status": "NONE", "dependants": [], "unknown_fields": []},
+    "scenario": {"purpose": "WORK", "target_region_ids": ["region:DE-FX"], "target_locality_ids": [], "job_offer": {"state": "PRESENT"}, "relocation_composition": "APPLICANT_ONLY", "unknown_fields": []}
+  },
+  "metric_range": {
+    "applicant": {"age_years": 31, "occupation": {"user_text": "Software engineer", "code": "2512", "mapping_state": "MAPPED"}, "qualifications": [], "unknown_fields": []},
+    "household": {"partner_status": "NONE", "dependants": [], "unknown_fields": []},
+    "scenario": {
+      "purpose": "EXPLORATION",
+      "target_region_ids": [],
+      "target_locality_ids": ["city:synthetic-sydney"],
+      "job_offer": {"state": "PRESENT"},
+      "housing_cost": {"minimum": 1400, "maximum": 1800, "unit": "AUD_per_month", "currency": "AUD", "period": "MONTHLY"},
+      "monthly_budget": {"minimum": 2500, "maximum": 3000, "unit": "AUD_per_month", "currency": "AUD", "period": "MONTHLY"},
+      "metric_assumptions": ["Synthetic values only"],
+      "relocation_composition": "APPLICANT_ONLY",
+      "unknown_fields": []
+    }
+  },
+  "study": {
+    "applicant": {"age_years": 24, "occupation": null, "qualifications": [{"level": "BACHELORS"}], "unknown_fields": []},
+    "household": {"partner_status": "NONE", "dependants": [], "unknown_fields": []},
+    "scenario": {"purpose": "STUDY", "target_region_ids": [], "target_locality_ids": [], "job_offer": {"state": "ABSENT"}, "relocation_composition": "APPLICANT_ONLY", "unknown_fields": []}
+  },
+  "family": {
+    "applicant": {"age_years": 35, "occupation": null, "qualifications": [], "unknown_fields": []},
+    "household": {"partner_status": "SPOUSE", "partner_accompanying": true, "dependants": [{"role": "DEPENDENT_CHILD", "relocating": true, "age_band": "UNDER_18"}], "unknown_fields": []},
+    "scenario": {"purpose": "FAMILY", "target_region_ids": [], "target_locality_ids": [], "job_offer": {"state": "ABSENT"}, "relocation_composition": "WITH_PARTNER_AND_DEPENDANTS", "unknown_fields": []}
+  }
+}

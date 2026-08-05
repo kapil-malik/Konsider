@@ -48,6 +48,12 @@ readable schemas, and published release manifests take precedence if prose ever 
   legal review, effective dates, replay and research-to-production promotion.
 - [Phase 7D implementation report](history/phase7d-tfc-release-foundation.md) - synthetic artifact
   inventory, compatibility, deterministic replay and Phase 7E boundary.
+- [TFC assessment engine](product/tfc-assessment-engine.md) - normalization, sufficiency, typed
+  route/metric evaluation, explicit filtering, invariants and scenario snapshots.
+- [Phase 7E performance](product/tfc-assessment-performance.md) - reproducible 91-country,
+  three-route-plus-metric benchmark.
+- [Phase 7E implementation report](history/phase7e-tfc-assessment-engine.md) - evaluation order,
+  golden scenarios, invariance, performance and Phase 7F boundary.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
 - [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,
