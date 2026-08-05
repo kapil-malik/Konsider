@@ -7,6 +7,7 @@ import type {
   OpportunityFilterCatalogV2,
   RankedCountryV2,
   RankingV2,
+  TfcCatalogV2,
 } from '../api/types'
 import {
   LOCALITY_CONTENT,
@@ -21,6 +22,10 @@ import {
 } from '../opportunityPresentation'
 import { formatScore } from '../preferences'
 import { AssessmentSummary } from './AssessmentSummary'
+import {
+  CountryFeasibilitySummary,
+  FeasibilitySummary,
+} from './FeasibilitySummary'
 
 const contributionFor = (
   country: RankedCountryV2,
@@ -174,6 +179,7 @@ type RankingViewProps = {
   criteria: CatalogCriterionV2[]
   countries: CatalogV2['countries']
   opportunityCatalog: OpportunityFilterCatalogV2
+  tfcCatalog: TfcCatalogV2 | null
   detailed: boolean
   isUpdating: boolean
   isComparing: boolean
@@ -189,6 +195,7 @@ type RankingViewProps = {
   onOpenSources: () => void
   onRemoveOpportunityFilter: (filterId: string) => void
   onClearOpportunityFilters: () => void
+  onEditSituation: () => void
 }
 
 export function RankingView({
@@ -196,6 +203,7 @@ export function RankingView({
   criteria,
   countries,
   opportunityCatalog,
+  tfcCatalog,
   detailed,
   isUpdating,
   isComparing,
@@ -211,6 +219,7 @@ export function RankingView({
   onOpenSources,
   onRemoveOpportunityFilter,
   onClearOpportunityFilters,
+  onEditSituation,
 }: RankingViewProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [region, setRegion] = useState('')
@@ -272,6 +281,15 @@ export function RankingView({
         onRemoveOpportunityFilter={onRemoveOpportunityFilter}
         onClearOpportunityFilters={onClearOpportunityFilters}
       />
+
+      {ranking.assessments.feasibility && tfcCatalog && (
+        <FeasibilitySummary
+          assessment={ranking.assessments.feasibility}
+          catalog={tfcCatalog}
+          isUpdating={isUpdating}
+          onEditSituation={onEditSituation}
+        />
+      )}
 
       <div className="rank-scope">
         <strong>Server-ranked countries for the applied priorities</strong>
@@ -382,6 +400,9 @@ export function RankingView({
                   {ranking.assessments.opportunity.active_filter_ids.length > 0 && (
                     <th scope="col">Opportunity filters</th>
                   )}
+                  {ranking.assessments.feasibility && tfcCatalog && (
+                    <th scope="col">Feasibility checks</th>
+                  )}
                   {detailed &&
                     criteria.map((criterion) => (
                       <th scope="col" key={criterion.id} title={criterion.display_name}>
@@ -435,6 +456,15 @@ export function RankingView({
                           <CountryOpportunitySummary
                             country={country}
                             catalog={opportunityCatalog}
+                            detailed={detailed}
+                          />
+                        </td>
+                      )}
+                      {ranking.assessments.feasibility && tfcCatalog && (
+                        <td>
+                          <CountryFeasibilitySummary
+                            assessment={country.assessments.feasibility}
+                            catalog={tfcCatalog}
                             detailed={detailed}
                           />
                         </td>
@@ -499,6 +529,13 @@ export function RankingView({
                     catalog={opportunityCatalog}
                     detailed={detailed}
                   />
+                  {ranking.assessments.feasibility && tfcCatalog && (
+                    <CountryFeasibilitySummary
+                      assessment={country.assessments.feasibility}
+                      catalog={tfcCatalog}
+                      detailed
+                    />
+                  )}
                   {detailed && (
                     <div className="mobile-score-list">
                       {criteria.map((criterion) => {

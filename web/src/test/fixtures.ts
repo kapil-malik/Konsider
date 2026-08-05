@@ -8,6 +8,9 @@ import type {
   OpportunityFilterEvidenceV2,
   RankedCountryV2,
   RankingV2,
+  TfcAssessmentV2,
+  TfcCatalogV2,
+  TfcCountryAssessmentV2,
 } from '../api/types'
 
 const versionFields = {
@@ -975,6 +978,295 @@ export function countryDetailsFixture(
     country,
     criteria,
     opportunity_filters: [],
+  }
+}
+
+const firstWaveDefinitions: TfcCatalogV2['definitions'] = [
+  {
+    id: 'skilled_work_route_feasibility',
+    display_name: 'Highly qualified work route check',
+    original_criterion_ids: ['C32'],
+    user_question: 'Which supported highly qualified work route appears to match this snapshot?',
+    check_kind: 'RULE_ROUTE_MATCH',
+    supported_profile_boundary: 'Declared occupation, qualification, offer, destination and date.',
+    supported_destination_codes: ['C00', 'C01'],
+    input_requirements: [
+      ['applicant.occupation', 'ALWAYS_REQUIRED'],
+      ['applicant.qualifications', 'ALWAYS_REQUIRED'],
+      ['scenario.job_offer', 'ALWAYS_REQUIRED'],
+      ['scenario.target_country_codes', 'ALWAYS_REQUIRED'],
+      ['scenario.target_date', 'ALWAYS_REQUIRED'],
+    ].map(([field_id, requirement]) => ({
+      field_id,
+      requirement: requirement as 'ALWAYS_REQUIRED',
+      when_field_id: null,
+      when_equals: null,
+    })),
+    limitations: ['A route match is a bounded source-based screening result, not legal advice.'],
+    filter_capability: 'ASSESS_ONLY',
+    applicable_purposes: ['WORK', 'EXPLORATION'],
+    refresh_cadence: 'Quarterly',
+    policy_id: 'work.v1',
+    policy_version: '1.0',
+    source_summary: [
+      {
+        source_id: 'fictional-work-source',
+        publisher: 'Fictional Immigration Authority',
+        verified_at: '2026-08-05',
+        effective_from: '2026-08-05',
+        effective_to: null,
+        attribution: 'Fictional test source.',
+      },
+    ],
+    effective_from: '2026-08-05',
+    stale_after: '2026-11-05',
+    sort_order: 10,
+    no_score_impact: true,
+  },
+  {
+    id: 'family_accompaniment_reunification',
+    display_name: 'Dependants on supported work and study routes',
+    original_criterion_ids: ['C36'],
+    user_question: 'Do declared family roles fit a supported primary route?',
+    check_kind: 'RULE_ROUTE_MATCH',
+    supported_profile_boundary: 'Declared household attached to a supported primary route.',
+    supported_destination_codes: ['C00', 'C01'],
+    input_requirements: [
+      'household.dependants',
+      'household.partner_status',
+      'scenario.primary_route_id',
+      'scenario.target_country_codes',
+      'scenario.target_date',
+    ].map((field_id) => ({
+      field_id,
+      requirement: 'ALWAYS_REQUIRED' as const,
+      when_field_id: null,
+      when_equals: null,
+    })),
+    limitations: ['This is not a general family-reunification check.'],
+    filter_capability: 'ASSESS_ONLY',
+    applicable_purposes: ['WORK', 'STUDY', 'FAMILY', 'EXPLORATION'],
+    refresh_cadence: 'Quarterly',
+    policy_id: 'family.v1',
+    policy_version: '1.0',
+    source_summary: [],
+    effective_from: '2026-08-05',
+    stale_after: '2026-11-05',
+    sort_order: 20,
+    no_score_impact: true,
+  },
+  {
+    id: 'post_study_work_pathway',
+    display_name: 'Post-study stay and work route check',
+    original_criterion_ids: ['C35'],
+    user_question: 'Does this study scenario fit a supported post-study route?',
+    check_kind: 'RULE_ROUTE_MATCH',
+    supported_profile_boundary: 'Declared institution, study and completion scenario.',
+    supported_destination_codes: ['C00', 'C01'],
+    input_requirements: [
+      'scenario.intended_study',
+      'scenario.target_country_codes',
+      'scenario.target_date',
+    ].map((field_id) => ({
+      field_id,
+      requirement: 'ALWAYS_REQUIRED' as const,
+      when_field_id: null,
+      when_equals: null,
+    })),
+    limitations: ['Planned completion remains provisional.'],
+    filter_capability: 'ASSESS_ONLY',
+    applicable_purposes: ['STUDY', 'EXPLORATION'],
+    refresh_cadence: 'Quarterly',
+    policy_id: 'study.v1',
+    policy_version: '1.0',
+    source_summary: [],
+    effective_from: '2026-08-05',
+    stale_after: '2026-11-05',
+    sort_order: 30,
+    no_score_impact: true,
+  },
+]
+
+const registryField = (
+  field_id: string,
+  prompt: string,
+  sensitivity: TfcCatalogV2['field_registry'][number]['sensitivity'] = 'MODERATE_CONSEQUENTIAL',
+) => ({
+  field_id,
+  data_type: 'string',
+  validation: 'Fictional test validation.',
+  sensitivity,
+  default_retention: 'NEVER_RETAIN_BY_DEFAULT' as const,
+  consumer_tfc_ids: firstWaveDefinitions
+    .filter((definition) =>
+      definition.input_requirements.some((item) => item.field_id === field_id),
+    )
+    .map((definition) => definition.id),
+  prompt,
+  help_text: `Why we ask for ${prompt.toLocaleLowerCase()}.`,
+  may_be_omitted: true,
+  may_be_stored_locally: true,
+})
+
+export const tfcCatalogFixture: TfcCatalogV2 = {
+  ...versionFields,
+  tfc_release_id: 'phase7f-test.1',
+  tfc_release_schema_version: 'konsider-release-6.0',
+  candidate_status: 'draft',
+  activation_authorized: false,
+  available_modes: ['ASSESS_ONLY', 'REQUIRE_SUPPORTED_MATCH'],
+  default_mode: 'ASSESS_ONLY',
+  selection_is_explicit: true,
+  persisted_server_side: false,
+  no_score_impact: true,
+  definitions: firstWaveDefinitions,
+  field_registry: [
+    registryField('applicant.citizenships', 'Citizenship(s)', 'HIGH_PERSONAL'),
+    registryField('applicant.occupation', 'Current occupation'),
+    registryField('applicant.qualifications', 'Qualifications', 'HIGH_CONSEQUENTIAL'),
+    registryField('household.dependants', 'Dependants', 'HIGH_PERSONAL'),
+    registryField('household.partner_status', 'Partner status', 'HIGH_PERSONAL'),
+    registryField('scenario.job_offer', 'Job offer', 'HIGH_CONSEQUENTIAL'),
+    registryField('scenario.intended_study', 'Intended study', 'HIGH_CONSEQUENTIAL'),
+    registryField('scenario.primary_route_id', 'Primary route'),
+    registryField('scenario.target_country_codes', 'Target destinations', 'LOW'),
+    registryField('scenario.target_date', 'Target date', 'LOW'),
+  ],
+}
+
+const tfcCountryAssessment = (
+  index: number,
+  status: 'EVALUATED' | 'INPUT_REQUIRED' | 'UNSUPPORTED' =
+    index === 0 ? 'EVALUATED' : index === 1 ? 'INPUT_REQUIRED' : 'UNSUPPORTED',
+): TfcCountryAssessmentV2 => ({
+  country_code: `C0${index}`,
+  base_rank: index + 1,
+  filtered_rank: null,
+  affinity_score_before: 8.5 - index * 0.4,
+  affinity_score_after: 8.5 - index * 0.4,
+  no_change_affinity: true,
+  outcomes: [
+    {
+      tfc_id: 'skilled_work_route_feasibility',
+      country_code: `C0${index}`,
+      common_status: status,
+      reason_codes:
+        status === 'EVALUATED'
+          ? ['ROUTE_CONDITIONALLY_MATCHED']
+          : status === 'INPUT_REQUIRED'
+            ? ['PROFILE_FIELDS_MISSING']
+            : ['DESTINATION_NOT_SUPPORTED'],
+      input_required_fields: status === 'INPUT_REQUIRED' ? ['scenario.job_offer'] : [],
+      result:
+        status === 'EVALUATED'
+          ? {
+              result_type: 'ROUTE_RULE',
+              match_classification: 'CONDITIONAL_ROUTE_MATCH',
+              routes: [
+                {
+                  route_id: 'FX.WORK.1',
+                  route_name: 'Fictional skilled work route',
+                  jurisdiction_id: `country:C0${index}`,
+                  classification: 'CONDITIONAL',
+                  conditions: [
+                    {
+                      condition_id: 'external_authority_confirmation',
+                      field_ids: [],
+                      status: 'UNKNOWN',
+                      blocking: true,
+                    },
+                  ],
+                  source_ids: ['fictional-work-source'],
+                  effective_from: '2026-08-05',
+                  effective_to: null,
+                  evidence_quality: 'MEDIUM',
+                },
+              ],
+              matched_route_ids: ['FX.WORK.1'],
+              route_inventory_complete: false,
+              legal_impossibility_disclaimer:
+                'No supported-route match is not a permanent legal impossibility.',
+            }
+          : null,
+      warnings: [],
+    },
+  ],
+})
+
+const tfcAssessment: TfcAssessmentV2 = {
+  schema_version: 'tfc-engine-assessment-1.0',
+  profile_context_status: 'PARTIAL_PROFILE_CONTEXT',
+  execution_status: 'EXECUTED',
+  filter_mode: 'ASSESS_ONLY',
+  selected_tfc_ids: ['skilled_work_route_feasibility'],
+  input_required_fields: ['scenario.job_offer'],
+  status_counts: {
+    EVALUATED: 1,
+    INPUT_REQUIRED: 1,
+    DESTINATION_EVIDENCE_INSUFFICIENT: 0,
+    UNSUPPORTED: 3,
+    NOT_APPLICABLE: 0,
+    EVALUATION_ERROR: 0,
+  },
+  matched_route_count: 0,
+  metric_result_count: 0,
+  no_change_affinity: true,
+  warnings: [],
+  countries: Array.from({ length: 5 }, (_, index) => tfcCountryAssessment(index)),
+  profile_context_summary: {
+    provided_layers: ['applicant', 'household', 'scenario'],
+    unknown_field_ids: ['scenario.job_offer'],
+    returned_profile_values: false,
+    persisted_server_side: false,
+  },
+  snapshot: {
+    snapshot_id: 'snapshot:fictional:2026-08-05',
+    tfc_release_id: 'phase7f-test.1',
+    policy_versions: { skilled_work_route_feasibility: '1.0' },
+    source_versions: { 'fictional-work-source': 'sha256:fictional' },
+    effective_profile_context_hash: 'sha256:fictional-context',
+    evaluation_date: '2026-08-05',
+    base_ranking_reference: {
+      release_id: 'test-release',
+      country_count: 5,
+      ordering_checksum: 'sha256:fictional-order',
+    },
+    persisted_server_side: false,
+  },
+}
+
+export const rankingWithFeasibility: RankingV2 = {
+  ...rankingFixture,
+  assessments: { ...rankingFixture.assessments, feasibility: tfcAssessment },
+  rankings: rankedCountries.map((country, index) => ({
+    ...country,
+    assessments: {
+      ...country.assessments,
+      feasibility: tfcCountryAssessment(index),
+    },
+  })),
+}
+
+export const comparisonWithFeasibilityFixture: ComparisonV2 = {
+  ...comparisonFixture,
+  assessments: { ...comparisonFixture.assessments, feasibility: tfcAssessment },
+  countries: comparisonFixture.countries.map((country, index) => ({
+    ...country,
+    assessments: {
+      ...country.assessments,
+      feasibility: tfcCountryAssessment(index),
+    },
+  })),
+}
+
+export function countryDetailsWithFeasibilityFixture(index = 0): CountryDetailsV2 {
+  return {
+    ...countryDetailsFixture(index),
+    assessments: {
+      ...countryDetailsFixture(index).assessments,
+      feasibility: tfcAssessment,
+    },
+    feasibility: tfcCountryAssessment(index),
   }
 }
 

@@ -4,6 +4,7 @@ import type {
   ComparisonV2,
   ContributionV2,
   OpportunityFilterCatalogV2,
+  TfcCatalogV2,
 } from '../api/types'
 import {
   LOCALITY_CONTENT,
@@ -17,10 +18,13 @@ import {
   filterName,
   routeSummary,
 } from '../opportunityPresentation'
+import { tfcName, tfcOutcomeContent } from '../tfcPresentation'
+import { CountryFeasibilitySummary } from './FeasibilitySummary'
 
 type ComparisonViewProps = {
   comparison: ComparisonV2
   opportunityCatalog: OpportunityFilterCatalogV2
+  tfcCatalog: TfcCatalogV2 | null
   onBack: () => void
   onSelectCountry: (countryCode: string) => void
 }
@@ -70,6 +74,7 @@ function ContributionValue({
 export function ComparisonView({
   comparison,
   opportunityCatalog,
+  tfcCatalog,
   onBack,
   onSelectCountry,
 }: ComparisonViewProps) {
@@ -80,6 +85,9 @@ export function ComparisonView({
   )
   const opportunityFiltersActive =
     comparison.assessments.opportunity.active_filter_ids.length > 0
+  const tfcDefinitions = new Map(
+    (tfcCatalog?.definitions ?? []).map((definition) => [definition.id, definition]),
+  )
 
   return (
     <section className="comparison-panel" aria-labelledby="comparison-heading">
@@ -247,6 +255,32 @@ export function ComparisonView({
                 </tr>
               )
             })}
+            {tfcCatalog &&
+              comparison.assessments.feasibility?.selected_tfc_ids.map((tfcId) => (
+                <tr className="feasibility-comparison-row" key={`feasibility:${tfcId}`}>
+                  <th scope="row">
+                    Feasibility check
+                    <span>{tfcName(tfcDefinitions.get(tfcId), tfcId)}</span>
+                  </th>
+                  {comparison.countries.map((country) => {
+                    const outcome = country.assessments.feasibility?.outcomes.find(
+                      (item) => item.tfc_id === tfcId,
+                    )
+                    if (!outcome) return <td key={country.country.entity_id}>Not evaluated</td>
+                    const content = tfcOutcomeContent(outcome)
+                    return (
+                      <td key={country.country.entity_id}>
+                        <span className={`tfc-status-badge tfc-tone-${content.tone}`}>
+                          <span aria-hidden="true">{content.icon}</span> {content.label}
+                        </span>
+                        {outcome.input_required_fields.length > 0 && (
+                          <small>{outcome.input_required_fields.length} more inputs requested</small>
+                        )}
+                      </td>
+                    )
+                  })}
+                </tr>
+              ))}
             {comparison.criterion_rows.map((row) => (
               <tr key={row.criterion_id}>
                 <th scope="row">
@@ -335,6 +369,16 @@ export function ComparisonView({
                       )
                     })}
                   </ul>
+                </div>
+              )}
+              {tfcCatalog && country.assessments.feasibility && (
+                <div className="comparison-feasibility-list">
+                  <strong>Feasibility checks</strong>
+                  <CountryFeasibilitySummary
+                    assessment={country.assessments.feasibility}
+                    catalog={tfcCatalog}
+                    detailed
+                  />
                 </div>
               )}
               <dl>

@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 7G stateless TFC API complete; acceptance gate before Phase 7H
+Status: Phase 7H guest-first TFC UI complete; Phase 7I integration gate next
 
 Last updated: 2026-08-05
 
@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks — stateless API complete; Phase 7H pending
+## Phase 7: Typed Feasibility Checks - guest UI complete; Phase 7I pending
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -258,8 +258,16 @@ transport. Empty selection remains exactly legacy-compatible. The release-6 cand
 draft and non-active, and all three checks reject filtering because their policies are
 assessment-only. See the [Phase 7G report](../history/phase7g-stateless-tfc-api.md).
 
-Phase 7H is the next gate: build the guest-first profile UI and explicit local-retention controls
-over this catalog-driven API without adding accounts or server persistence.
+Phase 7H now adds a guided **Your situation** flow over the catalog-driven API. Guests explicitly
+choose checks, provide only relevant applicant/household/scenario facts, preserve unknowns, review
+assumptions and see route or metric outcomes separately from affinity, locality and Opportunity
+evidence. Ranking, details and comparison reuse one effective scenario selection. Tab retention is
+the default; versioned 30-day device storage is opt-in, with clear and privacy-reduced
+export/validated-import controls. No account, server persistence, analytics, profile URL or UI-side
+eligibility rule was added.
+
+Phase 7I is the next gate: verify the combined OFC, locality and TFC experience end to end against
+the staged contracts without changing the three checks from assessment-only behavior.
 
 ## Future phase: conversational exploration
 

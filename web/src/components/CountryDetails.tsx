@@ -6,6 +6,7 @@ import type {
   CountryDetailsV2,
   OpportunityFilterCatalogV2,
   RankedCountryV2,
+  TfcCatalogV2,
   WeightSelectionV2,
 } from '../api/types'
 import {
@@ -26,11 +27,13 @@ import {
   routeSummary,
 } from '../opportunityPresentation'
 import { ErrorNotice } from './ErrorNotice'
+import { FeasibilityEvidence } from './FeasibilitySummary'
 
 type CountryDetailsProps = {
   countryCode: string
   selection: WeightSelectionV2
   opportunityCatalog: OpportunityFilterCatalogV2
+  tfcCatalog: TfcCatalogV2 | null
   rankingCountry: RankedCountryV2 | undefined
   countryName: string
   coverageExcluded: boolean
@@ -202,6 +205,7 @@ export function CountryDetails({
   countryCode,
   selection,
   opportunityCatalog,
+  tfcCatalog,
   rankingCountry,
   countryName,
   coverageExcluded,
@@ -282,6 +286,12 @@ export function CountryDetails({
             details={detailsQuery.data}
             catalog={opportunityCatalog}
           />
+          {tfcCatalog && (
+            <FeasibilityEvidence
+              assessment={detailsQuery.data.feasibility}
+              catalog={tfcCatalog}
+            />
+          )}
           <div className="metric-grid">
             {detailsQuery.data.criteria.map(({ criterion, evidence }) => {
               const contribution = evidence.contribution

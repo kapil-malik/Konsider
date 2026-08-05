@@ -19,3 +19,10 @@ export type OpportunityFilterDefinitionV2 =
   components['schemas']['OpportunityFilterDefinitionV2Response']
 export type OpportunityFilterEvidenceV2 =
   components['schemas']['OpportunityFilterEvidenceSummaryResponse']
+export type TfcCatalogV2 = components['schemas']['TfcCatalogV2Response']
+export type TfcDefinitionV2 = components['schemas']['TfcDefinitionV2Response']
+export type TfcFieldDefinitionV2 = components['schemas']['TfcFieldDefinitionV2Response']
+export type TfcAssessmentSelectionV2 = components['schemas']['TfcAssessmentSelectionRequest']
+export type TfcAssessmentV2 = components['schemas']['TfcAssessmentV2Response']
+export type TfcCountryAssessmentV2 = components['schemas']['TfcCountryAssessmentV2Response']
+export type TfcOutcomeV2 = components['schemas']['TfcOutcomeV2Response']

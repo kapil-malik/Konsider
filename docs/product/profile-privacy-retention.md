@@ -1,11 +1,12 @@
 # Profile privacy and retention
 
-Status: Phase 7G transport enforcement implemented; Phase 7H browser retention pending
+Status: Phase 7H browser retention and portability implemented
 
 ## Defaults
 
-Phase 7 is guest-first. Profile values exist in browser tab memory and in the stateless evaluation
-request only. The server does not persist them. Closing the tab clears the default context.
+Phase 7 is guest-first. Profile values exist in tab-scoped `sessionStorage` and in the stateless
+evaluation request only. The server does not persist them. Closing the tab clears the default
+context. The ranking remains usable without any profile or TFC selection.
 
 Profile values are prohibited in:
 
@@ -36,19 +37,28 @@ documents are not part of Phase 7 profile contracts.
 
 ## Same-device retention
 
-Persistent browser storage is off by default. A later UI may offer it only when the user explicitly
-chooses it. The consent marker records the policy version and consent time; stored data expires
-within 30 days and is cleared when profile or policy versions become incompatible.
+Persistent browser storage is off by default. The **Remember my situation on this device** control
+is explicit and unchecked initially. When selected, the versioned applicant, household and bounded
+scenario document is copied to `localStorage` with a 30-day expiry. Invalid, expired or incompatible
+documents are deleted on load and the guest is notified. Turning retention off on a later save or
+using **Clear remembered data** removes the durable copy; the current tab copy remains until it is
+separately cleared.
 
 Exact birth date may never enter same-device retention. A user can clear all local profile and
 scenario data without an account.
 
 ## Export and redaction
 
-Export is user-initiated. The default export omits exact birth date and generalizes sensitive age,
-household and citizenship details according to the field registry. A future full-fidelity export
-would require a separate explicit action and warning. Imports preserve provenance and never imply
-verification.
+Export is user-initiated and uses `konsider-situation-1.0`. The default export contains no
+assessment results, source URLs or snapshot hash. It omits citizenship and resets household/age
+details to explicit unknown values. Exact birth date is not collected. A future full-fidelity
+export would require a separate explicit action and warning. Imports validate the schema, bounded
+scenario count, required structure, enum values and active-scenario identity, then show a preview
+before replacing the draft. Imports never imply verification.
+
+No profile values are placed in URLs or analytics. The browser sends them only in explicit API v2
+POST bodies after **Save and assess**. Opening, cancelling or editing the flow does not request an
+assessment.
 
 ## Server and future accounts
 

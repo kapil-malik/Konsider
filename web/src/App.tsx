@@ -6,6 +6,7 @@ import {
   createRanking,
   fetchCatalog,
   fetchOpportunityFilters,
+  fetchTfcs,
 } from './api/client'
 import type {
   CatalogV2,
@@ -14,6 +15,7 @@ import type {
   PreferencePreset,
   RankingRequestV2,
   RankingV2,
+  TfcCatalogV2,
   WeightSelectionV2,
 } from './api/types'
 import { ComparisonView } from './components/ComparisonView'
@@ -22,6 +24,7 @@ import { ErrorNotice } from './components/ErrorNotice'
 import { PreferencesPanel } from './components/PreferencesPanel'
 import { RankingView } from './components/RankingView'
 import { SourcesDialog } from './components/SourcesDialog'
+import { SituationDialog } from './components/SituationDialog'
 import { countryCode } from './localityPresentation'
 import {
   clonePreference,
@@ -29,6 +32,15 @@ import {
   preferencesEqual,
   type PreferenceDraft,
 } from './preferences'
+import {
+  activeScenario,
+  clearRememberedSituation,
+  feasibilityFor,
+  loadSituation,
+  persistSituation,
+  situationSummary,
+  type SituationDocument,
+} from './situation'
 
 const INTRODUCTION = 'Discover countries that better match your priorities.'
 
@@ -75,7 +87,7 @@ function Header({ onOpenSources }: HeaderProps) {
           <div className="guest-menu-popover" role="menu" aria-label="Guest session menu">
             <div className="guest-explanation">
               <strong>Guest session</strong>
-              <p>Your priorities and selections are not saved.</p>
+              <p>Your situation stays in this tab unless you choose device storage.</p>
             </div>
             {['How Konsider works', 'Data & Sources'].map((label) => (
               <button
@@ -101,6 +113,8 @@ type ApplyVariables = {
   request: RankingRequestV2
   preference: PreferenceDraft
   opportunityFilterIds: string[]
+  situation?: SituationDocument
+  rememberSituation?: boolean
   draftAfterSuccess?: {
     preference: PreferenceDraft
     opportunityFilterIds: string[]
@@ -110,19 +124,24 @@ type ApplyVariables = {
 function selectionFor(
   preference: PreferenceDraft,
   opportunityFilterIds: string[] = [],
+  situation?: SituationDocument,
 ): WeightSelectionV2 {
+  const feasibility = situation ? feasibilityFor(situation) : null
   const preferenceSelection = preference.preferencePresetId
     ? { preference_preset_id: preference.preferencePresetId }
     : { weights: preference.weights }
-  return opportunityFilterIds.length
-    ? {
-        ...preferenceSelection,
+  return {
+    ...preferenceSelection,
+    ...(opportunityFilterIds.length
+      ? {
         opportunity_filters: {
           mode: 'ALL_REQUIRED',
           required_filter_ids: [...opportunityFilterIds].sort(),
         },
       }
-    : preferenceSelection
+      : {}),
+    ...(feasibility ? { feasibility } : {}),
+  }
 }
 
 const filterSelectionsEqual = (first: string[], second: string[]) =>
@@ -132,11 +151,17 @@ const filterSelectionsEqual = (first: string[], second: string[]) =>
 function Workspace({
   catalog,
   opportunityCatalog,
+  tfcCatalog,
+  tfcCatalogError,
+  onRetryTfcCatalog,
   onOpenSources,
   onRankingChange,
 }: {
   catalog: CatalogV2
   opportunityCatalog: OpportunityFilterCatalogV2
+  tfcCatalog: TfcCatalogV2 | null
+  tfcCatalogError: Error | null
+  onRetryTfcCatalog: () => void
   onOpenSources: () => void
   onRankingChange: (ranking: RankingV2 | null) => void
 }) {
@@ -165,6 +190,9 @@ function Workspace({
       key={`${catalog.release_id}:${defaultPreset.id}`}
       catalog={catalog}
       opportunityCatalog={opportunityCatalog}
+      tfcCatalog={tfcCatalog}
+      tfcCatalogError={tfcCatalogError}
+      onRetryTfcCatalog={onRetryTfcCatalog}
       defaultPreset={defaultPreset}
       enabledCriteria={enabledCriteria}
       onOpenSources={onOpenSources}
@@ -176,6 +204,9 @@ function Workspace({
 type RankingWorkspaceProps = {
   catalog: CatalogV2
   opportunityCatalog: OpportunityFilterCatalogV2
+  tfcCatalog: TfcCatalogV2 | null
+  tfcCatalogError: Error | null
+  onRetryTfcCatalog: () => void
   defaultPreset: PreferencePreset
   enabledCriteria: CatalogV2['criteria']
   onOpenSources: () => void
@@ -185,12 +216,16 @@ type RankingWorkspaceProps = {
 function RankingWorkspace({
   catalog,
   opportunityCatalog,
+  tfcCatalog,
+  tfcCatalogError,
+  onRetryTfcCatalog,
   defaultPreset,
   enabledCriteria,
   onOpenSources,
   onRankingChange,
 }: RankingWorkspaceProps) {
   const initialPreference = preferenceFromPreset(defaultPreset)
+  const [initialSituation] = useState(loadSituation)
   const [draft, setDraft] = useState<PreferenceDraft>(() =>
     clonePreference(initialPreference),
   )
@@ -199,6 +234,12 @@ function RankingWorkspace({
   )
   const [draftOpportunityFilterIds, setDraftOpportunityFilterIds] = useState<string[]>([])
   const [appliedOpportunityFilterIds, setAppliedOpportunityFilterIds] = useState<string[]>([])
+  const [appliedSituation, setAppliedSituation] = useState<SituationDocument>(
+    initialSituation.situation,
+  )
+  const [situationRemembered, setSituationRemembered] = useState(initialSituation.remembered)
+  const [situationNotice, setSituationNotice] = useState(initialSituation.warning ?? '')
+  const [situationOpen, setSituationOpen] = useState(false)
   const [successfulRanking, setSuccessfulRanking] = useState<RankingV2 | null>(null)
   const [detailed, setDetailed] = useState(false)
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
@@ -208,11 +249,26 @@ function RankingWorkspace({
   const rankingScrollRef = useRef<HTMLDivElement>(null)
   const compareButtonRef = useRef<HTMLButtonElement>(null)
   const rankingScrollTop = useRef(0)
+  const situationReturnFocus = useRef<HTMLElement | null>(null)
+
+  const openSituation = () => {
+    situationReturnFocus.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null
+    setSituationOpen(true)
+  }
+
+  const closeSituation = () => {
+    setSituationOpen(false)
+    window.requestAnimationFrame(() => situationReturnFocus.current?.focus())
+  }
 
   const initialRanking = useQuery({
     queryKey: ['ranking', 'initial', catalog.release_id, defaultPreset.id],
     queryFn: ({ signal }) =>
-      createRanking({ preference_preset_id: defaultPreset.id }, signal),
+      createRanking(
+        selectionFor(initialPreference, [], initialSituation.situation),
+        signal,
+      ),
   })
   const applyMutation = useMutation({
     mutationFn: ({ request }: ApplyVariables) => createRanking(request),
@@ -220,6 +276,12 @@ function RankingWorkspace({
       setSuccessfulRanking(ranking)
       setApplied(clonePreference(variables.preference))
       setAppliedOpportunityFilterIds([...variables.opportunityFilterIds])
+      if (variables.situation) {
+        setAppliedSituation(variables.situation)
+        const remember = Boolean(variables.rememberSituation)
+        setSituationRemembered(remember)
+        persistSituation(variables.situation, remember)
+      }
       setDraft(
         clonePreference(
           variables.draftAfterSuccess?.preference ?? variables.preference,
@@ -234,6 +296,10 @@ function RankingWorkspace({
       setSelectedCountry(null)
       setMode('ranking')
       comparisonMutation.reset()
+      setSituationOpen(false)
+      if (variables.situation) {
+        window.requestAnimationFrame(() => situationReturnFocus.current?.focus())
+      }
     },
   })
   const comparisonMutation = useMutation({
@@ -245,6 +311,10 @@ function RankingWorkspace({
   })
 
   const ranking = successfulRanking ?? initialRanking.data
+  const appliedPresetName = applied.preferencePresetId
+    ? catalog.preference_presets.find((preset) => preset.id === applied.preferencePresetId)?.name ??
+      applied.preferencePresetId
+    : 'Custom weights'
   useEffect(() => onRankingChange(ranking ?? null), [onRankingChange, ranking])
   const dirty =
     !preferencesEqual(draft, applied) ||
@@ -277,7 +347,7 @@ function RankingWorkspace({
     const preference = clonePreference(draft)
     const opportunityFilterIds = [...draftOpportunityFilterIds].sort()
     applyMutation.mutate({
-      request: selectionFor(preference, opportunityFilterIds),
+      request: selectionFor(preference, opportunityFilterIds, appliedSituation),
       preference,
       opportunityFilterIds,
     })
@@ -287,7 +357,7 @@ function RankingWorkspace({
     if (applyMutation.isPending) return
     const nextApplied = appliedOpportunityFilterIds.filter((id) => id !== filterId)
     applyMutation.mutate({
-      request: selectionFor(applied, nextApplied),
+      request: selectionFor(applied, nextApplied, appliedSituation),
       preference: clonePreference(applied),
       opportunityFilterIds: nextApplied,
       draftAfterSuccess: {
@@ -302,7 +372,7 @@ function RankingWorkspace({
   const clearAppliedOpportunityFilters = () => {
     if (applyMutation.isPending || !appliedOpportunityFilterIds.length) return
     applyMutation.mutate({
-      request: selectionFor(applied),
+      request: selectionFor(applied, [], appliedSituation),
       preference: clonePreference(applied),
       opportunityFilterIds: [],
       draftAfterSuccess: {
@@ -335,7 +405,22 @@ function RankingWorkspace({
     if (comparisonCountries.length < 2 || comparisonMutation.isPending) return
     comparisonMutation.mutate({
       country_codes: comparisonCountries,
-      ...selectionFor(applied, appliedOpportunityFilterIds),
+      ...selectionFor(applied, appliedOpportunityFilterIds, appliedSituation),
+    })
+  }
+
+  const applySituation = (situation: SituationDocument, remember: boolean) => {
+    if (applyMutation.isPending) return
+    applyMutation.mutate({
+      request: selectionFor(applied, appliedOpportunityFilterIds, situation),
+      preference: clonePreference(applied),
+      opportunityFilterIds: [...appliedOpportunityFilterIds],
+      situation,
+      rememberSituation: remember,
+      draftAfterSuccess: {
+        preference: clonePreference(draft),
+        opportunityFilterIds: [...draftOpportunityFilterIds],
+      },
     })
   }
 
@@ -374,6 +459,24 @@ function RankingWorkspace({
           compare the countries that stand out.
         </p>
       </section>
+
+      <section className="context-summary-strip" aria-label="Applied exploration context">
+        <div><span>Priorities</span><strong>{appliedPresetName}</strong></div>
+        <div><span>Opportunity</span><strong>{appliedOpportunityFilterIds.length ? `${appliedOpportunityFilterIds.length} selected` : 'No filters'}</strong></div>
+        <div><span>Your situation</span><strong>{situationSummary(appliedSituation)}</strong></div>
+        <div><span>Feasibility checks</span><strong>{activeScenario(appliedSituation).selectedTfcIds.length ? `${activeScenario(appliedSituation).selectedTfcIds.length} selected` : 'None selected'}</strong></div>
+        <button type="button" className="button button-secondary" disabled={!tfcCatalog} onClick={openSituation}>
+          {activeScenario(appliedSituation).selectedTfcIds.length ? 'Edit situation' : 'Add your situation'}
+        </button>
+      </section>
+
+      {situationNotice && <div className="storage-notice" role="status"><span>{situationNotice}</span><button className="text-button" onClick={() => setSituationNotice('')}>Dismiss</button></div>}
+      {tfcCatalogError && (
+        <div className="storage-notice tfc-unavailable-notice" role="status">
+          <span>Feasibility checks are temporarily unavailable. Country ranking still works.</span>
+          <button className="text-button" onClick={onRetryTfcCatalog}>Retry checks</button>
+        </div>
+      )}
 
       <div className="workspace-grid">
         <PreferencesPanel
@@ -421,6 +524,7 @@ function RankingWorkspace({
               criteria={enabledCriteria}
               countries={catalog.countries}
               opportunityCatalog={opportunityCatalog}
+              tfcCatalog={tfcCatalog}
               detailed={detailed}
               isUpdating={applyMutation.isPending}
               isComparing={comparisonMutation.isPending}
@@ -436,12 +540,14 @@ function RankingWorkspace({
               onOpenSources={onOpenSources}
               onRemoveOpportunityFilter={removeAppliedOpportunityFilter}
               onClearOpportunityFilters={clearAppliedOpportunityFilters}
+              onEditSituation={openSituation}
             />
           )}
           {mode === 'comparison' && comparisonMutation.data && (
             <ComparisonView
               comparison={comparisonMutation.data}
               opportunityCatalog={opportunityCatalog}
+              tfcCatalog={tfcCatalog}
               onBack={backToRankings}
               onSelectCountry={selectFromComparison}
             />
@@ -452,8 +558,9 @@ function RankingWorkspace({
       {ranking && mode === 'ranking' && selectedCountry && (
         <CountryDetails
           countryCode={selectedCountry}
-          selection={selectionFor(applied, appliedOpportunityFilterIds)}
+          selection={selectionFor(applied, appliedOpportunityFilterIds, appliedSituation)}
           opportunityCatalog={opportunityCatalog}
+          tfcCatalog={tfcCatalog}
           rankingCountry={rankingCountry}
           countryName={
             rankingCountry?.country.display_name ??
@@ -475,6 +582,21 @@ function RankingWorkspace({
           onClose={() => setSelectedCountry(null)}
         />
       )}
+      {tfcCatalog && (
+        <SituationDialog
+          open={situationOpen}
+          situation={appliedSituation}
+          catalog={tfcCatalog}
+          remembered={situationRemembered}
+          onClose={closeSituation}
+          onApply={applySituation}
+          onClearRemembered={() => {
+            clearRememberedSituation()
+            setSituationRemembered(false)
+            setSituationNotice('Remembered device data was cleared. This tab still has the current situation.')
+          }}
+        />
+      )}
     </main>
   )
 }
@@ -490,6 +612,11 @@ export default function App() {
   const opportunityCatalogQuery = useQuery({
     queryKey: ['opportunity-filters'],
     queryFn: ({ signal }) => fetchOpportunityFilters(signal),
+  })
+  const tfcCatalogQuery = useQuery({
+    queryKey: ['tfcs'],
+    queryFn: ({ signal }) => fetchTfcs(signal),
+    retry: false,
   })
   const catalogError = catalogQuery.error ?? opportunityCatalogQuery.error
   const openSources = () => {
@@ -532,6 +659,9 @@ export default function App() {
         <Workspace
           catalog={catalogQuery.data}
           opportunityCatalog={opportunityCatalogQuery.data}
+          tfcCatalog={tfcCatalogQuery.data ?? null}
+          tfcCatalogError={tfcCatalogQuery.error}
+          onRetryTfcCatalog={() => void tfcCatalogQuery.refetch()}
           onOpenSources={openSources}
           onRankingChange={setCurrentRanking}
         />

@@ -7,6 +7,7 @@ import type {
   OpportunityFilterCatalogV2,
   RankingRequestV2,
   RankingV2,
+  TfcCatalogV2,
   WeightSelectionV2,
 } from './types'
 
@@ -64,6 +65,9 @@ export const fetchCatalog = (signal?: AbortSignal) =>
 
 export const fetchOpportunityFilters = (signal?: AbortSignal) =>
   request<OpportunityFilterCatalogV2>('/opportunity-filters', { signal })
+
+export const fetchTfcs = (signal?: AbortSignal) =>
+  request<TfcCatalogV2>('/tfcs', { signal })
 
 export const createRanking = (payload: RankingRequestV2, signal?: AbortSignal) =>
   request<RankingV2>('/rankings', {

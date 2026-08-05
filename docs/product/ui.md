@@ -1,6 +1,6 @@
 # Responsive ranking, Opportunity Filter, and comparison UI
 
-Status: Phase 6 complete; Opportunity Filter UI active
+Status: Phase 7H guest-first situation and feasibility UI implemented
 
 The UI is a comparison and inspection surface over `/api/v2`, not a second recommendation engine.
 It is implemented as one responsive React, TypeScript, and Vite application under `web/`.
@@ -199,3 +199,40 @@ See the [Phase 6H test plan](phase6h-opportunity-filter-ui-test-plan.md) and
 [implementation report](../history/phase6h-opportunity-filter-ui.md). The UI is verified against
 the staged nine-filter API candidate; it does not activate that candidate or change
 `data/releases/active.json`.
+
+## Phase 7H guest situation and feasibility experience
+
+The ranking remains the first screen and works without profile context. A compact applied-context
+strip keeps four concepts separate: ordering priorities, Opportunity Filters, the active local
+scenario and explicitly selected feasibility checks. **Add your situation** opens a guided modal;
+no permanent profile form competes with ranking controls.
+
+The flow asks purpose first, then shows API-catalogued checks relevant to that purpose without
+selecting any automatically. After the guest selects checks, the details step renders only their
+declared input requirements and field-registry help/sensitivity labels. Applicant and household
+facts are shared across up to three named browser-local scenarios; purpose, destinations, date,
+offer, route and study assumptions stay scenario-specific. Scenarios can be added, duplicated,
+removed and switched. Unknown values remain explicit and may produce `INPUT_REQUIRED`.
+
+**Save and assess** is the only action that submits the draft. Requests use generated API v2 types,
+sorted TFC IDs and `ASSESS_ONLY`; the first-wave policies do not expose a feasibility filter. The
+browser does not implement route, eligibility, support or metric rules. Catalog failure disables
+only the situation flow, leaving legacy ranking available.
+
+Feasibility is a sibling presentation to affinity, coverage, locality, profile and Opportunity
+evidence. Ranking summaries show selected checks, evaluation/input-required counts, unchanged-
+affinity wording and scenario snapshot metadata. Country details show route conditions, sources,
+effective dates, limitations and metric assumptions/ranges. Comparison sends the same explicit
+selection and keeps one feasibility row/card per check alongside, rather than inside, ordering or
+Opportunity evidence.
+
+Tab-scoped session storage is the default. Device storage is an explicit unchecked opt-in with a
+30-day expiry, version invalidation, shared-device caution and independent clear control. Clear
+current is confirmed separately. Export produces versioned JSON without assessment results,
+citizenship or household details; import validates and previews before use. Profile values never
+enter URLs, analytics or server persistence.
+
+The modal traps focus, closes on Escape, restores the invoking control, uses native labelled
+controls and text-plus-icon status, and becomes a full-screen surface at 760px and below. See the
+[Phase 7H test plan](phase7h-guest-profile-ui-test-plan.md) and
+[implementation report](../history/phase7h-guest-profile-ui.md).

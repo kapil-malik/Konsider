@@ -60,6 +60,12 @@ readable schemas, and published release manifests take precedence if prose ever 
   reconciliation, source decisions, verification and the Phase 7G gate.
 - [Phase 7G implementation report](history/phase7g-stateless-tfc-api.md) - additive v2 request and
   response contracts, field registry, privacy controls, compatibility and the Phase 7H boundary.
+- [Phase 7H UI guide](product/ui.md#phase-7h-guest-situation-and-feasibility-experience) - guided
+  guest context, explicit TFC selection, result separation and browser state ownership.
+- [Phase 7H UI test plan](product/phase7h-guest-profile-ui-test-plan.md) - interaction, privacy,
+  responsive, accessibility and API-boundary verification.
+- [Phase 7H implementation report](history/phase7h-guest-profile-ui.md) - delivered experience,
+  retention behavior, safeguards and Phase 7I boundary.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
 - [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,
@@ -173,6 +179,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 6F education Opportunity Filter report](history/phase6f-education-opportunity-evidence.md)
 - [Phase 6G Opportunity Filter engine and API report](history/phase6g-opportunity-filter-api.md)
 - [Phase 6H Opportunity Filter UI report](history/phase6h-opportunity-filter-ui.md)
+- [Phase 7H guest profile UI report](history/phase7h-guest-profile-ui.md)
 - [Phase 6 closure report](history/phase6-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 

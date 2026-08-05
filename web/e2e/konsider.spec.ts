@@ -3,13 +3,17 @@ import { expect, test, type Page, type Route } from '@playwright/test'
 import {
   catalogFixture,
   comparisonFixture,
+  comparisonWithFeasibilityFixture,
   comparisonWithOpportunityFixture,
   countryDetailsFixture,
+  countryDetailsWithFeasibilityFixture,
   countryDetailsWithOpportunityFixture,
   coverageWarningRanking,
   opportunityCatalogFixture,
   rankingFixture,
+  rankingWithFeasibility,
   rankingWithOpportunityFilters,
+  tfcCatalogFixture,
 } from '../src/test/fixtures'
 
 async function json(route: Route, body: unknown, status = 200) {
@@ -30,14 +34,25 @@ async function mockApi(
     if (url.pathname.endsWith('/opportunity-filters')) {
       return json(route, opportunityCatalogFixture)
     }
+    if (url.pathname.endsWith('/tfcs')) return json(route, tfcCatalogFixture)
     if (url.pathname.endsWith('/rankings')) {
-      const body = request.postDataJSON() as { opportunity_filters?: unknown } | null
+      const body = request.postDataJSON() as {
+        opportunity_filters?: unknown
+        feasibility?: unknown
+      } | null
+      if (body?.feasibility) return json(route, rankingWithFeasibility)
       return json(route, body?.opportunity_filters ? filteredRanking : ranking)
     }
     if (url.pathname.includes('/countries/')) {
       const code = url.pathname.split('/countries/')[1]?.split('/')[0] ?? 'C00'
       const index = Number(code.slice(-1))
-      const body = request.postDataJSON() as { opportunity_filters?: unknown } | null
+      const body = request.postDataJSON() as {
+        opportunity_filters?: unknown
+        feasibility?: unknown
+      } | null
+      if (body?.feasibility) {
+        return json(route, countryDetailsWithFeasibilityFixture(Number.isFinite(index) ? index : 0))
+      }
       if (body?.opportunity_filters) {
         return json(route, countryDetailsWithOpportunityFixture(Number.isFinite(index) ? index : 0))
       }
@@ -47,7 +62,11 @@ async function mockApi(
       return json(route, countryDetailsFixture(Number.isFinite(index) ? index : 0, excluded))
     }
     if (url.pathname.endsWith('/comparisons')) {
-      const body = request.postDataJSON() as { opportunity_filters?: unknown } | null
+      const body = request.postDataJSON() as {
+        opportunity_filters?: unknown
+        feasibility?: unknown
+      } | null
+      if (body?.feasibility) return json(route, comparisonWithFeasibilityFixture)
       return json(route, body?.opportunity_filters ? comparisonWithOpportunityFixture : comparisonFixture)
     }
     return json(route, { error: { code: 'not_found', message: 'Not found' } }, 404)
@@ -307,4 +326,71 @@ test('mobile Opportunity Filters remain collapsible, complete, and free of horiz
     page.locator('.comparison-cards').getByText(/Both: skilled trades and construction/).first(),
   ).toBeVisible()
   await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+})
+
+test('guest situation explicitly assesses one TFC and reuses the snapshot in details and comparison', async ({
+  page,
+}) => {
+  const requests: Array<{ path: string; body?: unknown }> = []
+  await mockApi(page, requests)
+  await page.goto('/')
+
+  const opener = page.getByRole('button', { name: 'Add your situation' })
+  await opener.click()
+  const dialog = page.getByRole('dialog', { name: 'Your situation' })
+  await dialog.getByRole('radio', { name: 'Work' }).check()
+  await dialog.getByRole('button', { name: 'Continue' }).click()
+  await dialog.getByRole('checkbox', { name: /Highly qualified work route check/ }).check()
+  await dialog.getByRole('button', { name: 'Continue' }).click()
+  await dialog.getByRole('textbox', { name: /Target destinations/ }).fill('DEU')
+  await dialog.getByLabel(/Target date/).fill('2026-08-05')
+  await dialog.getByRole('textbox', { name: /Current occupation/ }).fill('Civil engineer')
+  await dialog.getByRole('combobox', { name: /Qualifications/ }).selectOption('MASTERS')
+  await dialog.getByRole('button', { name: 'Continue' }).click()
+  await dialog.getByRole('button', { name: 'Save and assess' }).click()
+
+  await expect(page.getByRole('button', { name: 'Edit situation' }).first()).toBeFocused()
+  await expect(page.getByText('Additional inputs requested')).toBeVisible()
+  const rankingRequest = requests.filter((item) => item.path.endsWith('/rankings')).at(-1)
+  expect(rankingRequest?.body).toMatchObject({
+    preference_preset_id: 'balanced',
+    feasibility: {
+      tfc_ids: ['skilled_work_route_feasibility'],
+      mode: 'ASSESS_ONLY',
+      scenario_context: {
+        purpose: 'WORK',
+        target_country_codes: ['DEU'],
+        job_offer: { state: 'UNKNOWN' },
+      },
+    },
+  })
+  expect(await page.evaluate(() => localStorage.getItem('konsider:situation:remembered'))).toBeNull()
+
+  await page.locator('.ranking-table tbody tr').first().click()
+  await expect(page.getByText('Fictional skilled work route')).toBeVisible()
+  await page.getByRole('button', { name: 'Close country details' }).click()
+  const boxes = page.getByRole('checkbox', { name: /Select Country/ })
+  await boxes.nth(0).check()
+  await boxes.nth(1).check()
+  await page.getByRole('button', { name: 'Compare selected (2)' }).click()
+  await expect(page.getByText('Feasibility check').first()).toBeVisible()
+  expect(requests.find((item) => item.path.endsWith('/comparisons'))?.body).toMatchObject({
+    feasibility: { tfc_ids: ['skilled_work_route_feasibility'] },
+  })
+})
+
+test('mobile situation flow is full-screen, keyboard closable, and has no horizontal overflow', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await mockApi(page)
+  await page.goto('/')
+  const opener = page.getByRole('button', { name: 'Add your situation' })
+  await opener.click()
+  const dialog = page.getByRole('dialog', { name: 'Your situation' })
+  await expect(dialog).toBeVisible()
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+  await page.keyboard.press('Escape')
+  await expect(dialog).toBeHidden()
+  await expect(opener).toBeFocused()
 })

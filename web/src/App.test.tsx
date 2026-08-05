@@ -10,6 +10,7 @@ import type {
   CountryDetailsV2,
   OpportunityFilterCatalogV2,
   RankingV2,
+  TfcCatalogV2,
 } from './api/types'
 import {
   catalogFixture,
@@ -23,6 +24,10 @@ import {
   rankingFixture,
   rankingForLocalityStatus,
   rankingWithOpportunityFilters,
+  rankingWithFeasibility,
+  tfcCatalogFixture,
+  comparisonWithFeasibilityFixture,
+  countryDetailsWithFeasibilityFixture,
 } from './test/fixtures'
 
 type RecordedRequest = { path: string; method: string; body?: unknown }
@@ -39,6 +44,7 @@ function installApi({
   comparison = comparisonFixture,
   catalog = catalogFixture,
   opportunityCatalog = opportunityCatalogFixture,
+  tfcCatalog = tfcCatalogFixture,
   subsequentRanking = ranking,
   detailsForCode,
 }: {
@@ -46,6 +52,7 @@ function installApi({
   comparison?: ComparisonV2
   catalog?: CatalogV2
   opportunityCatalog?: OpportunityFilterCatalogV2
+  tfcCatalog?: TfcCatalogV2 | null
   subsequentRanking?: RankingV2
   detailsForCode?: (code: string) => CountryDetailsV2
 } = {}) {
@@ -65,6 +72,21 @@ function installApi({
       if (url.pathname.endsWith('/catalog')) return jsonResponse(catalog)
       if (url.pathname.endsWith('/opportunity-filters')) {
         return jsonResponse(opportunityCatalog)
+      }
+      if (url.pathname.endsWith('/tfcs')) {
+        return tfcCatalog
+          ? jsonResponse(tfcCatalog)
+          : jsonResponse(
+              {
+                error: {
+                  code: 'tfc_candidate_unavailable',
+                  message: 'The staged feasibility evidence is unavailable.',
+                  details: {},
+                  request_id: null,
+                },
+              },
+              503,
+            )
       }
       if (url.pathname.endsWith('/rankings')) {
         rankingCalls += 1
@@ -99,6 +121,46 @@ function renderApp() {
       <App />
     </QueryClientProvider>,
   )
+}
+
+async function configureWorkSituation(
+  user: ReturnType<typeof userEvent.setup>,
+  { remember = false, includeOffer = false } = {},
+) {
+  await user.click(screen.getByRole('button', { name: 'Add your situation' }))
+  const dialog = screen.getByRole('dialog', { name: 'Your situation' })
+  await user.click(within(dialog).getByRole('radio', { name: 'Work' }))
+  await user.click(within(dialog).getByRole('button', { name: 'Continue' }))
+  await user.click(
+    within(dialog).getByRole('checkbox', {
+      name: /Highly qualified work route check/,
+    }),
+  )
+  await user.click(within(dialog).getByRole('button', { name: 'Continue' }))
+  await user.type(within(dialog).getByRole('textbox', { name: /Target destinations/ }), 'DEU')
+  fireEvent.change(within(dialog).getByLabelText(/Target date/), {
+    target: { value: '2026-08-05' },
+  })
+  await user.type(within(dialog).getByRole('textbox', { name: /Current occupation/ }), 'Fictional analyst')
+  await user.selectOptions(
+    within(dialog).getByRole('combobox', { name: /Qualifications/ }),
+    'MASTERS',
+  )
+  if (includeOffer) {
+    await user.selectOptions(
+      within(dialog).getByRole('combobox', { name: /Job offer/ }),
+      'PRESENT',
+    )
+  }
+  await user.click(within(dialog).getByRole('button', { name: 'Continue' }))
+  if (remember) {
+    await user.click(
+      within(dialog).getByRole('checkbox', {
+        name: 'Remember my situation on this device',
+      }),
+    )
+  }
+  await user.click(within(dialog).getByRole('button', { name: 'Save and assess' }))
 }
 
 test('renders API-owned coverage, scope, experimental, and locality threshold indicators', async () => {
@@ -546,4 +608,149 @@ test('keeps Opportunity Filter evidence separate in desktop and mobile compariso
       required_filter_ids: ['skilled_trades_construction_opportunity'],
     },
   })
+})
+
+test('opens and cancels the guided situation flow without changing the ranking request', async () => {
+  const requests = installApi()
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  const opener = screen.getByRole('button', { name: 'Add your situation' })
+  await user.click(opener)
+  const dialog = screen.getByRole('dialog', { name: 'Your situation' })
+  expect(within(dialog).getByText(/Nothing is selected automatically/)).toBeInTheDocument()
+  await user.click(within(dialog).getByRole('button', { name: 'Cancel' }))
+  expect(screen.queryByRole('dialog', { name: 'Your situation' })).not.toBeInTheDocument()
+  expect(opener).toHaveFocus()
+  expect(requests.filter((request) => request.path.endsWith('/rankings'))).toHaveLength(1)
+})
+
+test('progressively selects a TFC, preserves unknown offer state, and renders input requests', async () => {
+  const requests = installApi({ subsequentRanking: rankingWithFeasibility })
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  await configureWorkSituation(user)
+
+  await screen.findByRole('heading', { name: 'Feasibility checks', level: 3 })
+  expect(screen.getByText('Additional inputs requested')).toBeInTheDocument()
+  expect(screen.getAllByText('More information required').length).toBeGreaterThan(0)
+  const request = requests.filter((item) => item.path.endsWith('/rankings')).at(-1)
+  expect(request?.body).toMatchObject({
+    preference_preset_id: 'balanced',
+    feasibility: {
+      tfc_ids: ['skilled_work_route_feasibility'],
+      mode: 'ASSESS_ONLY',
+      profile_context: {
+        occupation: {
+          user_text: 'Fictional analyst',
+          mapping_state: 'UNRESOLVED',
+        },
+        qualifications: [{ level: 'MASTERS' }],
+      },
+      scenario_context: {
+        purpose: 'WORK',
+        target_country_codes: ['DEU'],
+        target_date: '2026-08-05',
+        job_offer: { state: 'UNKNOWN' },
+      },
+    },
+  })
+  expect(sessionStorage.getItem('konsider:situation:session')).toContain(
+    'skilled_work_route_feasibility',
+  )
+  expect(localStorage.getItem('konsider:situation:remembered')).toBeNull()
+})
+
+test('uses one situation snapshot for route details and country comparison', async () => {
+  const requests = installApi({
+    subsequentRanking: rankingWithFeasibility,
+    comparison: comparisonWithFeasibilityFixture,
+    detailsForCode: (code) => countryDetailsWithFeasibilityFixture(Number(code.slice(-1))),
+  })
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  await configureWorkSituation(user, { includeOffer: true })
+  expect((await screen.findAllByText('Conditional route match found')).length).toBeGreaterThan(0)
+
+  await user.click(screen.getAllByRole('button', { name: 'View country details' })[0])
+  expect(
+    (await screen.findAllByRole('heading', { name: 'Feasibility checks', level: 3 })).length,
+  ).toBeGreaterThan(1)
+  expect(screen.getByText('Fictional skilled work route')).toBeInTheDocument()
+  expect(screen.getByText(/external authority confirmation/i)).toBeInTheDocument()
+  await user.click(screen.getByRole('button', { name: 'Close country details' }))
+
+  const boxes = screen.getAllByRole('checkbox', { name: /Select Country/ })
+  await user.click(boxes[0])
+  await user.click(boxes[1])
+  await user.click(screen.getByRole('button', { name: 'Compare selected (2)' }))
+  expect(await screen.findByRole('heading', { name: 'Compare countries' })).toBeInTheDocument()
+  expect(screen.getAllByText('Feasibility check').length).toBeGreaterThan(0)
+  const comparisonRequest = requests.find((item) => item.path.endsWith('/comparisons'))
+  expect(comparisonRequest?.body).toMatchObject({
+    feasibility: {
+      tfc_ids: ['skilled_work_route_feasibility'],
+      scenario_context: { target_date: '2026-08-05' },
+    },
+  })
+})
+
+test('restores session context and stores it locally only after explicit opt-in', async () => {
+  const firstRequests = installApi({ subsequentRanking: rankingWithFeasibility })
+  const user = userEvent.setup()
+  const first = renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  await configureWorkSituation(user, { remember: true, includeOffer: true })
+  expect((await screen.findAllByText('Conditional route match found')).length).toBeGreaterThan(0)
+  expect(localStorage.getItem('konsider:situation:remembered')).toContain(
+    'konsider-situation-storage-1.0',
+  )
+  expect(firstRequests.filter((item) => item.path.endsWith('/rankings'))).toHaveLength(2)
+
+  first.unmount()
+  const restoredRequests = installApi({ ranking: rankingWithFeasibility })
+  renderApp()
+  expect(await screen.findByRole('button', { name: 'Edit situation' })).toBeInTheDocument()
+  await waitFor(() =>
+    expect(restoredRequests.find((item) => item.path.endsWith('/rankings'))?.body).toHaveProperty(
+      'feasibility',
+    ),
+  )
+})
+
+test('validates imported versions and keeps TFC catalog failure non-blocking', async () => {
+  installApi({ tfcCatalog: null })
+  const unavailableApp = renderApp()
+  expect(await screen.findByRole('heading', { name: 'Country ranking' })).toBeInTheDocument()
+  expect(
+    screen.getByText('Feasibility checks are temporarily unavailable. Country ranking still works.'),
+  ).toBeInTheDocument()
+
+  unavailableApp.unmount()
+  sessionStorage.clear()
+  localStorage.clear()
+  installApi()
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findAllByRole('heading', { name: 'Country ranking' })
+  const addButtons = screen.getAllByRole('button', { name: 'Add your situation' })
+  await user.click(addButtons.at(-1)!)
+  const dialog = screen.getByRole('dialog', { name: 'Your situation' })
+  await user.click(within(dialog).getByRole('button', { name: /Review/ }))
+  const file = new File(
+    [JSON.stringify({ schema_version: 'konsider-situation-9.0' })],
+    'old-situation.json',
+    { type: 'application/json' },
+  )
+  Object.defineProperty(file, 'text', {
+    value: async () => JSON.stringify({ schema_version: 'konsider-situation-9.0' }),
+  })
+  const importInput = dialog.querySelector<HTMLInputElement>('input[type="file"]')
+  expect(importInput).not.toBeNull()
+  await user.upload(importInput!, file)
+  expect(await within(dialog).findByRole('alert')).toHaveTextContent(
+    'This file is not konsider-situation-1.0.',
+  )
 })
