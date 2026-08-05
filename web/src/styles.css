@@ -2872,6 +2872,37 @@ input[type="checkbox"] {
   margin-top: 0.3rem;
 }
 
+.tfc-comparison-evidence {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  color: var(--muted);
+}
+
+.cross-feature-explanation {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.75rem 0;
+  padding: 0.65rem 0.75rem;
+  border-left: 3px solid #67837e;
+  background: #f2f6f5;
+  color: #334b52;
+  font-size: 0.76rem;
+}
+
+.cross-feature-explanation p {
+  margin: 0;
+}
+
+.cross-feature-comparison-row {
+  background: #f7f9f8;
+}
+
+.cross-feature-comparison-row .cross-feature-explanation {
+  margin: 0;
+  min-width: 12rem;
+}
+
 .comparison-feasibility-list {
   margin: 0.7rem 0;
   padding: 0.65rem;

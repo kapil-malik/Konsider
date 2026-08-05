@@ -1,19 +1,23 @@
 import type {
+  OpportunityFilterEvidenceV2,
   TfcAssessmentV2,
   TfcCatalogV2,
   TfcCountryAssessmentV2,
   TfcOutcomeV2,
 } from '../api/types'
+import { crossFeatureExplanations } from '../crossFeaturePresentation'
 import { readableTfcCode, tfcName, tfcOutcomeContent } from '../tfcPresentation'
 
 export function CountryFeasibilitySummary({
   assessment,
   catalog,
   detailed = false,
+  showEvidence = false,
 }: {
   assessment: TfcCountryAssessmentV2 | null | undefined
   catalog: TfcCatalogV2
   detailed?: boolean
+  showEvidence?: boolean
 }) {
   if (!assessment) return null
   const definitions = new Map(catalog.definitions.map((item) => [item.id, item]))
@@ -21,17 +25,87 @@ export function CountryFeasibilitySummary({
     <div className="country-feasibility-summary">
       {assessment.outcomes.map((outcome) => {
         const content = tfcOutcomeContent(outcome)
+        const definition = definitions.get(outcome.tfc_id)
         return (
           <div className={`tfc-outcome-line tfc-tone-${content.tone}`} key={outcome.tfc_id}>
             <span aria-hidden="true">{content.icon}</span>
             <span>
               <strong>{content.label}</strong>
-              {detailed && <small>{tfcName(definitions.get(outcome.tfc_id), outcome.tfc_id)}</small>}
+              {detailed && <small>{tfcName(definition, outcome.tfc_id)}</small>}
+              {showEvidence && <OutcomeEvidenceSummary outcome={outcome} />}
+              {showEvidence && definition && (
+                <small>
+                  Check evidence effective {definition.effective_from} · review by{' '}
+                  {definition.stale_after}
+                </small>
+              )}
             </span>
           </div>
         )
       })}
     </div>
+  )
+}
+
+export function OutcomeEvidenceSummary({ outcome }: { outcome: TfcOutcomeV2 }) {
+  const result = outcome.result
+  if (!result) return null
+  if ('routes' in result) {
+    return (
+      <span className="tfc-comparison-evidence">
+        {result.routes.map((route) => (
+          <small key={`${route.route_id}:${route.jurisdiction_id}`}>
+            {route.route_name} · effective {route.effective_from} · sources{' '}
+            {route.source_ids.join(', ')}
+          </small>
+        ))}
+      </span>
+    )
+  }
+  return (
+    <span className="tfc-comparison-evidence">
+      <small>
+        {result.value ?? `${result.minimum}–${result.maximum}`}{' '}
+        {result.currency ?? result.unit} · {result.period.toLocaleLowerCase()} · effective{' '}
+        {result.effective_from}
+      </small>
+    </span>
+  )
+}
+
+export function CrossFeatureExplanation({
+  assessment,
+  opportunityEvidence,
+  localityStatus,
+  finalAggregate,
+}: {
+  assessment: TfcCountryAssessmentV2 | null | undefined
+  opportunityEvidence: OpportunityFilterEvidenceV2[]
+  localityStatus:
+    | 'NO_ACTIVE_LOCALITY_CRITERIA'
+    | 'BELOW_ANALYSIS_THRESHOLD'
+    | 'ONE_ACTIVE_LOCALITY_CRITERION'
+    | 'COMMON_LOCALITY_AVAILABLE'
+    | 'PARTIAL_OVERLAP'
+    | 'NO_COMMON_LOCALITY'
+    | 'INSUFFICIENT_LOCALITY_EVIDENCE'
+    | 'MIXED_COUNTRY_RESULTS'
+  finalAggregate: number | null
+}) {
+  if (!assessment) return null
+  const explanations = crossFeatureExplanations({
+    assessment,
+    opportunityEvidence,
+    localityStatus,
+    finalAggregate,
+  })
+  if (!explanations.length) return null
+  return (
+    <aside className="cross-feature-explanation" aria-label="How these results relate">
+      {explanations.map((explanation) => (
+        <p key={explanation}>{explanation}</p>
+      ))}
+    </aside>
   )
 }
 

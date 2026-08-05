@@ -1259,6 +1259,44 @@ export const comparisonWithFeasibilityFixture: ComparisonV2 = {
   })),
 }
 
+export const rankingWithOpportunityAndFeasibility: RankingV2 = (() => {
+  const opportunity = rankingWithOpportunityFilters([
+    'skilled_trades_construction_opportunity',
+  ])
+  return {
+    ...opportunity,
+    assessments: { ...opportunity.assessments, feasibility: tfcAssessment },
+    rankings: opportunity.rankings.map((country) => {
+      const index = Number(country.country.country_codes[0]?.slice(-1))
+      return {
+        ...country,
+        assessments: {
+          ...country.assessments,
+          feasibility: tfcCountryAssessment(index),
+        },
+      }
+    }),
+  }
+})()
+
+export const comparisonWithOpportunityAndFeasibilityFixture: ComparisonV2 = (() => {
+  const opportunity = comparisonWithOpportunityFixture
+  return {
+    ...opportunity,
+    assessments: { ...opportunity.assessments, feasibility: tfcAssessment },
+    countries: opportunity.countries.map((country, index) => ({
+      ...country,
+      assessments: {
+        ...country.assessments,
+        feasibility:
+          index === 2
+            ? tfcCountryAssessment(index, 'EVALUATED')
+            : tfcCountryAssessment(index),
+      },
+    })),
+  }
+})()
+
 export function countryDetailsWithFeasibilityFixture(index = 0): CountryDetailsV2 {
   return {
     ...countryDetailsFixture(index),
@@ -1267,6 +1305,26 @@ export function countryDetailsWithFeasibilityFixture(index = 0): CountryDetailsV
       feasibility: tfcAssessment,
     },
     feasibility: tfcCountryAssessment(index),
+  }
+}
+
+export function countryDetailsWithOpportunityAndFeasibilityFixture(
+  index = 0,
+): CountryDetailsV2 {
+  const evidence = [
+    opportunityEvidence(
+      'skilled_trades_construction_opportunity',
+      index === 2 ? 'STRONG_SIGNAL_NOT_ESTABLISHED' : 'VERIFIED_STRONG_SIGNAL',
+      index === 2 ? [] : ['skilled_trades', 'construction'],
+    ),
+  ]
+  const base = countryDetailsWithOpportunityFixture(index, evidence)
+  const feasibility =
+    index === 2 ? tfcCountryAssessment(index, 'EVALUATED') : tfcCountryAssessment(index)
+  return {
+    ...base,
+    assessments: { ...base.assessments, feasibility: tfcAssessment },
+    feasibility,
   }
 }
 

@@ -66,6 +66,14 @@ readable schemas, and published release manifests take precedence if prose ever 
   responsive, accessibility and API-boundary verification.
 - [Phase 7H implementation report](history/phase7h-guest-profile-ui.md) - delivered experience,
   retention behavior, safeguards and Phase 7I boundary.
+- [TFC cross-feature behavior](product/tfc-cross-feature-behavior.md) - Phase 7I signal ordering,
+  orthogonality, comparison behavior and live-versus-synthetic boundary.
+- [Phase 7I scenario matrix](product/phase7i-scenario-matrix.md) - fictional profiles, combined
+  feature cases and their machine-readable golden fixture.
+- [Phase 7I UI test plan](product/phase7i-ui-test-plan.md) - combined desktop, mobile,
+  accessibility and wording coverage.
+- [Phase 7I verification report](history/phase7i-cross-feature-verification.md) - invariance,
+  regression, replay, generated-contract and clean-checkout evidence.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
 - [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,
@@ -180,6 +188,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 6G Opportunity Filter engine and API report](history/phase6g-opportunity-filter-api.md)
 - [Phase 6H Opportunity Filter UI report](history/phase6h-opportunity-filter-ui.md)
 - [Phase 7H guest profile UI report](history/phase7h-guest-profile-ui.md)
+- [Phase 7I cross-feature verification](history/phase7i-cross-feature-verification.md)
 - [Phase 6 closure report](history/phase6-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 

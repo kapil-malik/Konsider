@@ -19,7 +19,11 @@ import {
   routeSummary,
 } from '../opportunityPresentation'
 import { tfcName, tfcOutcomeContent } from '../tfcPresentation'
-import { CountryFeasibilitySummary } from './FeasibilitySummary'
+import {
+  CountryFeasibilitySummary,
+  CrossFeatureExplanation,
+  OutcomeEvidenceSummary,
+} from './FeasibilitySummary'
 
 type ComparisonViewProps = {
   comparison: ComparisonV2
@@ -268,6 +272,7 @@ export function ComparisonView({
                     )
                     if (!outcome) return <td key={country.country.entity_id}>Not evaluated</td>
                     const content = tfcOutcomeContent(outcome)
+                    const definition = tfcDefinitions.get(tfcId)
                     return (
                       <td key={country.country.entity_id}>
                         <span className={`tfc-status-badge tfc-tone-${content.tone}`}>
@@ -276,11 +281,33 @@ export function ComparisonView({
                         {outcome.input_required_fields.length > 0 && (
                           <small>{outcome.input_required_fields.length} more inputs requested</small>
                         )}
+                        <OutcomeEvidenceSummary outcome={outcome} />
+                        {definition && (
+                          <small>
+                            Check evidence effective {definition.effective_from} · review by{' '}
+                            {definition.stale_after}
+                          </small>
+                        )}
                       </td>
                     )
                   })}
                 </tr>
               ))}
+            {tfcCatalog && comparison.assessments.feasibility && (
+              <tr className="cross-feature-comparison-row">
+                <th scope="row">How the signals relate</th>
+                {comparison.countries.map((country) => (
+                  <td key={country.country.entity_id}>
+                    <CrossFeatureExplanation
+                      assessment={country.assessments.feasibility}
+                      opportunityEvidence={country.assessments.opportunity.filter_evidence}
+                      localityStatus={country.assessments.locality.status}
+                      finalAggregate={country.final_aggregate}
+                    />
+                  </td>
+                ))}
+              </tr>
+            )}
             {comparison.criterion_rows.map((row) => (
               <tr key={row.criterion_id}>
                 <th scope="row">
@@ -378,6 +405,13 @@ export function ComparisonView({
                     assessment={country.assessments.feasibility}
                     catalog={tfcCatalog}
                     detailed
+                    showEvidence
+                  />
+                  <CrossFeatureExplanation
+                    assessment={country.assessments.feasibility}
+                    opportunityEvidence={country.assessments.opportunity.filter_evidence}
+                    localityStatus={country.assessments.locality.status}
+                    finalAggregate={country.final_aggregate}
                   />
                 </div>
               )}

@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 7H guest-first TFC UI complete; Phase 7I integration gate next
+Status: Phase 7I cross-feature integration complete; Phase 7J release gate next
 
 Last updated: 2026-08-05
 
@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks - guest UI complete; Phase 7I pending
+## Phase 7: Typed Feasibility Checks - cross-feature integration complete; Phase 7J pending
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -266,8 +266,17 @@ the default; versioned 30-day device storage is opt-in, with clear and privacy-r
 export/validated-import controls. No account, server persistence, analytics, profile URL or UI-side
 eligibility rule was added.
 
-Phase 7I is the next gate: verify the combined OFC, locality and TFC experience end to end against
-the staged contracts without changing the three checks from assessment-only behavior.
+Phase 7I now verifies the combined affinity, PCC, locality, Opportunity Filter and TFC experience
+end to end. It preserves canonical rank and every pre-TFC assessment, adds bounded explanations for
+independent signals, exposes TFC source/effective-date evidence in comparison, and covers desktop
+and mobile journeys. The live matrix uses only the staged three-check assessment-only candidate;
+licensing, locality-cost and explicit-filter cases remain synthetic engine tests. See the
+[cross-feature behavior guide](tfc-cross-feature-behavior.md),
+[scenario matrix](phase7i-scenario-matrix.md), [UI test plan](phase7i-ui-test-plan.md) and
+[verification report](../history/phase7i-cross-feature-verification.md).
+
+Phase 7J is the next gate: owner approval, immutable release-6 publication and activation, final
+compatibility/replay evidence and Phase 7 closure. Phase 7I does not activate the staged candidate.
 
 ## Future phase: conversational exploration
 

@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
 import {
   createComparison,
@@ -250,6 +250,14 @@ function RankingWorkspace({
   const compareButtonRef = useRef<HTMLButtonElement>(null)
   const rankingScrollTop = useRef(0)
   const situationReturnFocus = useRef<HTMLElement | null>(null)
+  const situationWasOpen = useRef(false)
+
+  useLayoutEffect(() => {
+    if (situationWasOpen.current && !situationOpen) {
+      situationReturnFocus.current?.focus()
+    }
+    situationWasOpen.current = situationOpen
+  }, [situationOpen])
 
   const openSituation = () => {
     situationReturnFocus.current =
@@ -259,7 +267,6 @@ function RankingWorkspace({
 
   const closeSituation = () => {
     setSituationOpen(false)
-    window.requestAnimationFrame(() => situationReturnFocus.current?.focus())
   }
 
   const initialRanking = useQuery({
@@ -297,9 +304,6 @@ function RankingWorkspace({
       setMode('ranking')
       comparisonMutation.reset()
       setSituationOpen(false)
-      if (variables.situation) {
-        window.requestAnimationFrame(() => situationReturnFocus.current?.focus())
-      }
     },
   })
   const comparisonMutation = useMutation({

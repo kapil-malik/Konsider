@@ -100,3 +100,59 @@ test('serializes explicit unknowns and keeps feasibility assessment-only', () =>
     },
   })
 })
+
+test('reuses applicant facts across independent work, family, and study scenarios', () => {
+  const situation = createEmptySituation()
+  situation.applicant.occupation = 'Fictional civil engineer'
+  situation.applicant.qualificationLevel = 'MASTERS'
+  const work = activeScenario(situation)
+  Object.assign(work, {
+    id: 'work',
+    name: 'Solo work move',
+    purpose: 'WORK',
+    selectedTfcIds: ['skilled_work_route_feasibility'],
+    targetCountries: 'DEU',
+  })
+  const family = {
+    ...structuredClone(work),
+    id: 'family',
+    name: 'Family move',
+    purpose: 'FAMILY' as const,
+    selectedTfcIds: ['family_accompaniment_reunification'],
+    targetCountries: 'AUS',
+    primaryRouteId: 'AU.SID.482',
+    relocationComposition: 'WITH_PARTNER_AND_DEPENDANTS' as const,
+  }
+  const study = {
+    ...structuredClone(work),
+    id: 'study',
+    name: 'Study move',
+    purpose: 'STUDY' as const,
+    selectedTfcIds: ['post_study_work_pathway'],
+    targetCountries: 'AUS',
+    studyInstitution: 'Fictional University',
+    studyField: 'Fictional Computing',
+    studyCompletionDate: '2027-06-30',
+  }
+  situation.scenarios = [work, family, study]
+
+  const selections = situation.scenarios.map((scenario) => {
+    situation.active_scenario_id = scenario.id
+    return feasibilityFor(situation)!
+  })
+  expect(selections.map((selection) => selection.profile_context)).toEqual([
+    selections[0].profile_context,
+    selections[0].profile_context,
+    selections[0].profile_context,
+  ])
+  expect(selections.map((selection) => selection.scenario_context!.purpose)).toEqual([
+    'WORK',
+    'FAMILY',
+    'STUDY',
+  ])
+  expect(selections.map((selection) => selection.tfc_ids)).toEqual([
+    ['skilled_work_route_feasibility'],
+    ['family_accompaniment_reunification'],
+    ['post_study_work_pathway'],
+  ])
+})

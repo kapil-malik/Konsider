@@ -134,3 +134,23 @@ metric thresholds cannot use this mode.
 **Scenario result snapshot** — A request-scoped, non-persisted record of release, policy and source
 versions, opaque effective-context hash, selected TFCs, evaluation date, base-order identity,
 outcomes, assumptions and warnings. It does not contain profile objects or raw profile values.
+
+## Cross-feature explanations
+
+These templates explain independent signals without merging them into one conclusion:
+
+- **Strong ecosystem but access conditions unmet:** “The selected opportunity ecosystem has a
+  verified strong signal, but no supported route matched the current scenario.”
+- **Supported route without broad ecosystem signal:** “A supported route matched the current
+  scenario, but the selected opportunity ecosystem signal was not established.”
+- **Attractive destination without current route match:** “This destination remains attractive
+  under your priorities, but no supported route matched the current scenario.”
+- **Route match with locality trade-off:** “A supported route matched, while locality compatibility
+  or housing trade-offs remain separate.”
+- **Evidence unavailable:** “Personal feasibility evidence is unavailable for this destination.
+  Its country evidence and rank remain unchanged.”
+- **More input required:** “More information is needed before personal feasibility can be assessed.
+  The country evidence above remains unchanged.”
+
+These statements are explanatory combinations, not new statuses. The underlying coverage,
+locality, Opportunity Filter and TFC fields remain independently inspectable.

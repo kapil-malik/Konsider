@@ -4,14 +4,17 @@ import {
   catalogFixture,
   comparisonFixture,
   comparisonWithFeasibilityFixture,
+  comparisonWithOpportunityAndFeasibilityFixture,
   comparisonWithOpportunityFixture,
   countryDetailsFixture,
   countryDetailsWithFeasibilityFixture,
+  countryDetailsWithOpportunityAndFeasibilityFixture,
   countryDetailsWithOpportunityFixture,
   coverageWarningRanking,
   opportunityCatalogFixture,
   rankingFixture,
   rankingWithFeasibility,
+  rankingWithOpportunityAndFeasibility,
   rankingWithOpportunityFilters,
   tfcCatalogFixture,
 } from '../src/test/fixtures'
@@ -40,6 +43,9 @@ async function mockApi(
         opportunity_filters?: unknown
         feasibility?: unknown
       } | null
+      if (body?.feasibility && body?.opportunity_filters) {
+        return json(route, rankingWithOpportunityAndFeasibility)
+      }
       if (body?.feasibility) return json(route, rankingWithFeasibility)
       return json(route, body?.opportunity_filters ? filteredRanking : ranking)
     }
@@ -50,6 +56,14 @@ async function mockApi(
         opportunity_filters?: unknown
         feasibility?: unknown
       } | null
+      if (body?.feasibility && body?.opportunity_filters) {
+        return json(
+          route,
+          countryDetailsWithOpportunityAndFeasibilityFixture(
+            Number.isFinite(index) ? index : 0,
+          ),
+        )
+      }
       if (body?.feasibility) {
         return json(route, countryDetailsWithFeasibilityFixture(Number.isFinite(index) ? index : 0))
       }
@@ -66,11 +80,29 @@ async function mockApi(
         opportunity_filters?: unknown
         feasibility?: unknown
       } | null
+      if (body?.feasibility && body?.opportunity_filters) {
+        return json(route, comparisonWithOpportunityAndFeasibilityFixture)
+      }
       if (body?.feasibility) return json(route, comparisonWithFeasibilityFixture)
       return json(route, body?.opportunity_filters ? comparisonWithOpportunityFixture : comparisonFixture)
     }
     return json(route, { error: { code: 'not_found', message: 'Not found' } }, 404)
   })
+}
+
+async function applyWorkSituation(page: Page) {
+  await page.getByRole('button', { name: 'Add your situation' }).click()
+  const dialog = page.getByRole('dialog', { name: 'Your situation' })
+  await dialog.getByRole('radio', { name: 'Work' }).check()
+  await dialog.getByRole('button', { name: 'Continue' }).click()
+  await dialog.getByRole('checkbox', { name: /Highly qualified work route check/ }).check()
+  await dialog.getByRole('button', { name: 'Continue' }).click()
+  await dialog.getByRole('textbox', { name: /Target destinations/ }).fill('DEU')
+  await dialog.getByLabel(/Target date/).fill('2026-08-05')
+  await dialog.getByRole('textbox', { name: /Current occupation/ }).fill('Civil engineer')
+  await dialog.getByRole('combobox', { name: /Qualifications/ }).selectOption('MASTERS')
+  await dialog.getByRole('button', { name: 'Continue' }).click()
+  await dialog.getByRole('button', { name: 'Save and assess' }).click()
 }
 
 test('initial guest ranking and explicit priority update use the v2 contract', async ({ page }) => {
@@ -377,6 +409,90 @@ test('guest situation explicitly assesses one TFC and reuses the snapshot in det
   expect(requests.find((item) => item.path.endsWith('/comparisons'))?.body).toMatchObject({
     feasibility: { tfc_ids: ['skilled_work_route_feasibility'] },
   })
+})
+
+test('strict OFC, locality, and TFC evidence remain separate across details and comparison', async ({
+  page,
+}) => {
+  const requests: Array<{ path: string; body?: unknown }> = []
+  await mockApi(
+    page,
+    requests,
+    rankingFixture,
+    rankingWithOpportunityFilters(['skilled_trades_construction_opportunity']),
+  )
+  await page.goto('/')
+
+  await page
+    .getByRole('checkbox', { name: /Skilled-trades or construction employment ecosystem/ })
+    .check()
+  await page.getByRole('button', { name: 'Apply priorities' }).click()
+  await applyWorkSituation(page)
+
+  const rankingRequest = requests.filter((item) => item.path.endsWith('/rankings')).at(-1)
+  expect(rankingRequest?.body).toMatchObject({
+    opportunity_filters: {
+      mode: 'ALL_REQUIRED',
+      required_filter_ids: ['skilled_trades_construction_opportunity'],
+    },
+    feasibility: {
+      mode: 'ASSESS_ONLY',
+      tfc_ids: ['skilled_work_route_feasibility'],
+    },
+  })
+  await expect(page.getByRole('columnheader', { name: 'Opportunity filters' })).toBeVisible()
+  await expect(page.getByRole('columnheader', { name: 'Feasibility checks' })).toBeVisible()
+  await expect(page.getByText('Common locality available').first()).toBeVisible()
+
+  await page.locator('.ranking-table tbody tr').first().click()
+  await expect(page.getByText('Routes evaluated')).toBeVisible()
+  await page.getByText('Conditions and sources').click()
+  await expect(page.getByText(/Sources: fictional-work-source/)).toBeVisible()
+  await page.getByText('Sources and limitations').click()
+  await expect(page.getByText(/Evidence effective 2026-08-05/)).toBeVisible()
+  await page.getByRole('button', { name: 'Close country details' }).click()
+
+  const boxes = page.getByRole('checkbox', { name: /Select Country/ })
+  await boxes.nth(0).check()
+  await boxes.nth(1).check()
+  await page.getByRole('button', { name: 'Compare selected (2)' }).click()
+  await expect(page.getByText('How the signals relate').first()).toBeVisible()
+  await expect(page.getByText(/sources fictional-work-source/).first()).toBeVisible()
+  await expect(page.getByText(/Check evidence effective 2026-08-05/).first()).toBeVisible()
+  await expect(page.getByText(/Filtered rank/).first()).toBeVisible()
+})
+
+test('mobile combined evidence remains complete and free of horizontal overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await mockApi(
+    page,
+    [],
+    rankingFixture,
+    rankingWithOpportunityFilters(['skilled_trades_construction_opportunity']),
+  )
+  await page.goto('/')
+  await page
+    .getByRole('checkbox', { name: /Skilled-trades or construction employment ecosystem/ })
+    .check()
+  await page.getByRole('button', { name: 'Apply priorities' }).click()
+  await applyWorkSituation(page)
+
+  await expect(
+    page.locator('.ranking-card').first().getByText('Conditional route match found'),
+  ).toBeVisible()
+  await expect(page.locator('.ranking-card').first().getByText(/Matches 1 filter/)).toBeVisible()
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+
+  const boxes = page.getByRole('checkbox', { name: /Select Country/ })
+  await boxes.nth(0).check()
+  await boxes.nth(1).check()
+  await page.getByRole('button', { name: 'Compare selected (2)' }).click()
+  const comparisonCards = page.locator('.comparison-cards')
+  await expect(comparisonCards.getByText(/sources fictional-work-source/).first()).toBeVisible()
+  await expect(
+    comparisonCards.getByText(/Check evidence effective 2026-08-05/).first(),
+  ).toBeVisible()
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
 })
 
 test('mobile situation flow is full-screen, keyboard closable, and has no horizontal overflow', async ({

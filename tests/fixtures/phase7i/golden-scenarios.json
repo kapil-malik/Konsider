@@ -1,0 +1,33 @@
+{
+  "schema_version": "phase7i-golden-scenarios-1.0",
+  "fictional_profiles": {
+    "work_applicant": {"purpose": "WORK", "household": "SOLO"},
+    "regulated_professional": {"purpose": "WORK", "household": "SOLO"},
+    "international_student": {"purpose": "STUDY", "household": "SOLO"},
+    "family_relocation": {"purpose": "FAMILY", "household": "PARTNER_AND_CHILD"}
+  },
+  "scenarios": [
+    {"id": "work_supported", "profile": "work_applicant", "surface": "LIVE_FIRST_WAVE", "tags": ["CAREER_OFC", "TFC_MATCH"], "expected": "SUPPORTED_ROUTE_MATCH"},
+    {"id": "work_conditional", "profile": "work_applicant", "surface": "LIVE_FIRST_WAVE", "tags": ["CAREER_OFC", "TFC_CONDITIONAL"], "expected": "CONDITIONAL_ROUTE_MATCH"},
+    {"id": "work_no_route", "profile": "work_applicant", "surface": "LIVE_FIRST_WAVE", "tags": ["CAREER_OFC", "TFC_NO_MATCH"], "expected": "NO_SUPPORTED_ROUTE_MATCH"},
+    {"id": "work_input_required", "profile": "work_applicant", "surface": "LIVE_FIRST_WAVE", "tags": ["MISSING_INPUT"], "expected": "INPUT_REQUIRED"},
+    {"id": "work_route_without_ecosystem", "profile": "work_applicant", "surface": "LIVE_FIRST_WAVE", "tags": ["OFC_INSUFFICIENT", "TFC_MATCH"], "expected": "INDEPENDENT_SIGNALS"},
+    {"id": "licensing_supported", "profile": "regulated_professional", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["CARE_OFC", "LICENSING_MATCH"], "expected": "SUPPORTED_ROUTE_MATCH"},
+    {"id": "licensing_conditional", "profile": "regulated_professional", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["CARE_OFC", "LICENSING_CONDITIONAL"], "expected": "CONDITIONAL_ROUTE_MATCH"},
+    {"id": "licensing_evidence_unsupported", "profile": "regulated_professional", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["LICENSING_UNSUPPORTED"], "expected": "UNSUPPORTED"},
+    {"id": "licensing_regional_regulator", "profile": "regulated_professional", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["REGIONAL_RULE"], "expected": "REGION_OVERRIDES_COUNTRY"},
+    {"id": "licensing_language_input_required", "profile": "regulated_professional", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["LANGUAGE_INPUT", "QUALIFICATION_INPUT"], "expected": "INPUT_REQUIRED"},
+    {"id": "post_study_supported", "profile": "international_student", "surface": "LIVE_FIRST_WAVE", "tags": ["EDUCATION_OFC", "POST_STUDY_TFC"], "expected": "ROUTE_RESULT"},
+    {"id": "post_study_degree_missing", "profile": "international_student", "surface": "LIVE_FIRST_WAVE", "tags": ["MISSING_INTENDED_DEGREE"], "expected": "INPUT_REQUIRED"},
+    {"id": "post_study_source_warning", "profile": "international_student", "surface": "LIVE_FIRST_WAVE", "tags": ["SOURCE_DATE_WARNING"], "expected": "EFFECTIVE_DATE_VISIBLE"},
+    {"id": "household_common_locality", "profile": "family_relocation", "surface": "LIVE_RANKING_PLUS_SCENARIO", "tags": ["TWO_LSCS", "COMMON_LOCALITY"], "expected": "COUNTRY_RESULT_PRESERVED"},
+    {"id": "household_no_common_locality", "profile": "family_relocation", "surface": "LIVE_RANKING_PLUS_SCENARIO", "tags": ["TWO_LSCS", "NO_COMMON_LOCALITY"], "expected": "COUNTRY_RESULT_PRESERVED"},
+    {"id": "household_target_city_metric", "profile": "family_relocation", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["TARGET_CITY", "HOUSING_METRIC"], "expected": "SELECTED_LOCALITY_USED"},
+    {"id": "household_unsupported_city", "profile": "family_relocation", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["TARGET_CITY_UNSUPPORTED"], "expected": "COUNTRY_RESULT_PRESERVED"},
+    {"id": "pcc_with_tfc", "profile": "work_applicant", "surface": "LIVE_FIRST_WAVE", "tags": ["PCC_ACTIVE", "TFC_MATCH", "R0_R1"], "expected": "EXCLUDED_COUNTRIES_NOT_REVIVED"},
+    {"id": "strict_ofc_and", "profile": "work_applicant", "surface": "LIVE_FIRST_WAVE", "tags": ["OFC_STRICT_AND", "TFC_MATCH"], "expected": "OFC_STATE_PRESERVED"},
+    {"id": "explicit_feasibility_filter", "profile": "work_applicant", "surface": "SYNTHETIC_ENGINE_ONLY", "tags": ["EXPLICIT_FILTER", "TIE_ORDER"], "expected": "SURVIVOR_ORDER_PRESERVED"},
+    {"id": "same_applicant_three_scenarios", "profile": "work_applicant", "surface": "LIVE_BROWSER_STATE", "tags": ["WORK_SCENARIO", "FAMILY_SCENARIO", "STUDY_SCENARIO"], "expected": "DISTINCT_SNAPSHOTS_SHARED_APPLICANT"},
+    {"id": "mobile_combined_evidence", "profile": "work_applicant", "surface": "LIVE_BROWSER_STATE", "tags": ["MOBILE_UI", "OFC_STRICT_AND", "TWO_TFC_KINDS"], "expected": "NO_HORIZONTAL_OVERFLOW"}
+  ]
+}

@@ -27,7 +27,10 @@ import {
   routeSummary,
 } from '../opportunityPresentation'
 import { ErrorNotice } from './ErrorNotice'
-import { FeasibilityEvidence } from './FeasibilitySummary'
+import {
+  CrossFeatureExplanation,
+  FeasibilityEvidence,
+} from './FeasibilitySummary'
 
 type CountryDetailsProps = {
   countryCode: string
@@ -287,10 +290,24 @@ export function CountryDetails({
             catalog={opportunityCatalog}
           />
           {tfcCatalog && (
-            <FeasibilityEvidence
-              assessment={detailsQuery.data.feasibility}
-              catalog={tfcCatalog}
-            />
+            <>
+              <CrossFeatureExplanation
+                assessment={detailsQuery.data.feasibility}
+                opportunityEvidence={detailsQuery.data.opportunity_filters}
+                localityStatus={
+                  rankingCountry?.assessments.locality.status ??
+                  detailsQuery.data.assessments.coverage.excluded_countries.find(
+                    (item) => item.country.entity_id === detailsQuery.data?.country.entity_id,
+                  )?.locality_assessment.status ??
+                  detailsQuery.data.assessments.locality.status
+                }
+                finalAggregate={rankingCountry?.total_score ?? null}
+              />
+              <FeasibilityEvidence
+                assessment={detailsQuery.data.feasibility}
+                catalog={tfcCatalog}
+              />
+            </>
           )}
           <div className="metric-grid">
             {detailsQuery.data.criteria.map(({ criterion, evidence }) => {

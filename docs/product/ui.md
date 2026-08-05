@@ -236,3 +236,23 @@ The modal traps focus, closes on Escape, restores the invoking control, uses nat
 controls and text-plus-icon status, and becomes a full-screen surface at 760px and below. See the
 [Phase 7H test plan](phase7h-guest-profile-ui-test-plan.md) and
 [implementation report](../history/phase7h-guest-profile-ui.md).
+
+## Phase 7I cross-feature experience
+
+Combined views keep their evidence domains in a stable reading order: affinity and base rank,
+coverage, locality, Opportunity evidence, feasibility, then assumptions or missing information.
+Six bounded templates explain useful disagreements, such as a strong ecosystem with unresolved
+personal access or a route match with a locality trade-off. They never synthesize a new status or
+alter any underlying result.
+
+Country details place the combined explanation between Opportunity and feasibility evidence.
+Comparison preserves one scenario snapshot and keeps Opportunity evidence and each selected TFC in
+separate rows or mobile sections. Expanded TFC evidence includes route or metric effective dates,
+source IDs and catalog review dates; an unavailable metric remains unavailable and is never shown
+as zero. Base and filtered ranks remain distinct.
+
+Desktop and mobile use the same data and explanation order. At the mobile breakpoint the visible
+comparison cards, disclosures and evidence metadata fit without horizontal overflow; the hidden
+desktop table is not treated as the accessible representation. See the
+[cross-feature behavior guide](tfc-cross-feature-behavior.md),
+[scenario matrix](phase7i-scenario-matrix.md) and [Phase 7I UI test plan](phase7i-ui-test-plan.md).
