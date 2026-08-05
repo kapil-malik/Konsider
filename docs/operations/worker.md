@@ -305,9 +305,25 @@ eligible targets for `active.json` and the public API has no compatibility path 
 audit code must explicitly construct `PublishedReleaseRepository(release_id="...")`; there is no
 default or legacy active pointer. Never rewrite a historical release or catalog snapshot.
 
-## Phase 7 TFC candidate workflow
+## Phase 7 TFC release workflow
 
-The Phase 7D destination-rule worker is documented separately in the
-[TFC source and rule workflow](tfc-source-workflow.md). It supports checksum-verified injected
-capture, offline deterministic build, draft load, replay and semantic diff. It has no production
-source registrations, publish command, activation command or API-runtime network path.
+The destination-rule worker is documented in the
+[TFC source and rule workflow](tfc-source-workflow.md). The finalized lifecycle has separate build,
+publish, replay, activate and rollback commands and no API-runtime source calls:
+
+```powershell
+python -m konsider.ingestion.phase7_release_publication build
+python -m konsider.ingestion.phase7_release_publication publish
+python -m konsider.ingestion.phase7_release_publication replay
+python -m konsider.ingestion.phase7_release_publication activate
+```
+
+Build writes under `data/releases/.draft/` and must not change `active.json`. Publish validates the
+owner gate and creates immutable `data/releases/2026-08-05.1/`. Activation validates the published
+overlay and atomically changes the pointer. Restart the API after pointer changes.
+
+Rollback preserves both immutable releases:
+
+```powershell
+python -m konsider.ingestion.phase7_release_publication rollback --release-id 2026-08-04.1
+```

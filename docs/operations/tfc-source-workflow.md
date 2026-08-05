@@ -106,6 +106,12 @@ python scripts\build_phase7f_tfc_candidate.py replay `
   --release data\reports\phase7f-2026-08-05\staged-release\phase7f-first-wave-2026-08-05.6.0
 ```
 
+The final production overlay can be replayed independently:
+
+```powershell
+python -m konsider.ingestion.phase7_release_publication replay --release-id 2026-08-05.1
+```
+
 ## Research-to-production promotion
 
 Research establishes source feasibility but cannot be copied directly into a release. Promotion
@@ -113,6 +119,7 @@ requires owner-approved TFC identity and result semantics, lawful captured bytes
 and version, exact normalized records, explicit 91-country support, legal/manual review, complete
 validation, deterministic replay, semantic-diff review and a new immutable release ID.
 
-Phase 7F completed the first-wave evidence onboarding. The candidate remains outside
-`data/releases`, and the repository still provides no publication command. See the
-[first-wave evidence guide](../product/tfc-first-wave-evidence.md).
+Phase 7F completed first-wave evidence onboarding. Phase 7J then revalidated the exact owner scope,
+support matrix, source/legal manifest and replay before publishing immutable release
+`2026-08-05.1`. Future corrections or source changes require a new release ID; never edit the
+published directory. See the [first-wave evidence guide](../product/tfc-first-wave-evidence.md).

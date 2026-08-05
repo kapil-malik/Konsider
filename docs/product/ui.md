@@ -256,3 +256,11 @@ comparison cards, disclosures and evidence metadata fit without horizontal overf
 desktop table is not treated as the accessible representation. See the
 [cross-feature behavior guide](tfc-cross-feature-behavior.md),
 [scenario matrix](phase7i-scenario-matrix.md) and [Phase 7I UI test plan](phase7i-ui-test-plan.md).
+
+## Phase 7J released experience
+
+The same experience now reads published overlay `2026-08-05.1` through the active API. The catalog
+shows exactly the three approved checks and labels every one **Assessment only**. A destination
+outside the 29/91 source inventory is described as unsupported by this evidence boundary, never as
+having no route. No licensing or metric candidate is rendered. Live desktop and 390px-wide smoke
+tests confirmed the selection and details flow after activation.

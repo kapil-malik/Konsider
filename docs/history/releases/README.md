@@ -17,7 +17,8 @@ ever disagrees.
 | `2026-07-28.2` | Schema-v4 Wave 2 release; three conditional criteria. | [Report](2026-07-28.2.md) |
 | `2026-07-29.1` | First schema-v5 production locality criterion (C66). | [Report](2026-07-29.1.md) |
 | `2026-07-29.2` | Prior schema-v5.0 release; second production locality criterion (C67). | [Report](2026-07-29.2.md) |
-| `2026-08-04.1` | Active schema-v5.1 release; nine filter-only Opportunity Filters. | [Report](2026-08-04.1.md) |
+| `2026-08-04.1` | Immutable schema-v5.1 ranking base; nine filter-only Opportunity Filters. | [Report](2026-08-04.1.md) |
+| `2026-08-05.1` | Active schema-v6.0 overlay; three assessment-only TFCs. | [Report](2026-08-05.1.md) |
 
 `2026-07-21.1` exists separately because `2026-07-20.2` checksummed CRLF working-tree bytes while
 Git stores LF blobs. The correction preserves parsed observations, scores, attempts, readiness,
@@ -29,6 +30,7 @@ in the old manifest describe pre-normalised Windows bytes rather than the commit
 successor was rebuilt from the retained raw artifacts and preserves observations, scores, attempts,
 sources, sensitivity results, readiness, and API behavior.
 
-`data/releases/active.json` currently selects `2026-08-04.1`. Historical releases are not current
-operational references. See [release format](../../data/release-format.md) and the
+`data/releases/active.json` currently selects `2026-08-05.1`, which checksum-binds and resolves
+the unchanged `2026-08-04.1` ranking base. Historical releases are not current operational
+references. See [release format](../../data/release-format.md) and the
 [worker guide](../../operations/worker.md).

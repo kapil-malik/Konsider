@@ -189,9 +189,11 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 6H Opportunity Filter UI report](history/phase6h-opportunity-filter-ui.md)
 - [Phase 7H guest profile UI report](history/phase7h-guest-profile-ui.md)
 - [Phase 7I cross-feature verification](history/phase7i-cross-feature-verification.md)
+- [Phase 7 closure report](history/phase7-closure-report.md)
+- [Release 2026-08-05.1](history/releases/2026-08-05.1.md)
 - [Phase 6 closure report](history/phase6-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active runtime serves schema-5.1 release `2026-08-04.1`; older immutable releases
-are available only through explicitly constructed internal historical loaders.
+instructions. The active runtime serves schema-6.0 overlay `2026-08-05.1`, resolving immutable
+schema-5.1 ranking base `2026-08-04.1`; older releases require explicit historical loaders.

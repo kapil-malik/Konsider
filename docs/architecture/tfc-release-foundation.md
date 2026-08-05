@@ -1,10 +1,10 @@
 # TFC rule and immutable release foundation
 
-Status: Phase 7F production evidence staged on the Phase 7D foundation; no activation
+Status: Phase 7J production release published and active
 
 ## Release boundary
 
-A release-6 TFC candidate is a draft-only immutable overlay on an identified release-5.1 base. The
+A release-6 TFC release is an immutable overlay on an identified release-5.1 base. The
 base checksum preserves the complete ranking, locality and Opportunity Filter release without
 copying or mutating it. The candidate binds exactly six checksummed artifacts:
 
@@ -17,9 +17,11 @@ copying or mutating it. The candidate binds exactly six checksummed artifacts:
 | `tfc-coverage-summary.json` | Reconciled explicit TFC-country support counts. |
 | `tfc-validation.json` | Reproducible structural and semantic validation result. |
 
-The repository has no publish or activate method. `activation_authorized` and
-`promotion_eligible` are always false. Phase 7D's fixture remains visibly `SYNTHETIC_ONLY`;
-Phase 7F adds a non-synthetic `RELEASE_CANDIDATE` containing only the three owner-approved checks.
+Draft assembly remains non-activating. Publication requires a non-synthetic `ACTIVE` catalog,
+owner-approved scope, validation with `promotion_eligible: true`, a matching immutable base and an
+unchanged active pointer during build. Publication writes a new immutable directory; activation
+atomically replaces only `active.json`. Release `2026-08-05.1` contains only the three approved
+checks and is the active overlay. Phase 7D's synthetic fixture remains permanently in test scope.
 
 ## Typed records
 
@@ -66,6 +68,10 @@ Replay rebuilds into a temporary directory and compares all six payloads plus `m
 byte-for-byte. A semantic diff separately reports source input, normalized rule, effective date,
 evaluation policy and support-state changes.
 
+`CurrentReleaseRepository` resolves the active overlay's checksum-bound base for ranking while
+`TfcApiService` reads only the published overlay. Production has no staged-candidate setting.
+Rollback validates the base and atomically restores its pointer without mutating either release.
+
 ## Request-time outcomes
 
 Releases store destination facts and evaluation policies, never applicant-country outcomes.
@@ -79,4 +85,4 @@ Opportunity Filter state fields. API runtime performs no live source calls.
 
 See the [first-wave evidence](../product/tfc-first-wave-evidence.md),
 [source workflow](../operations/tfc-source-workflow.md), [release format](../data/release-format.md)
-and [Phase 7F report](../history/phase7f-first-wave-onboarding.md).
+and [Phase 7 closure report](../history/phase7-closure-report.md).

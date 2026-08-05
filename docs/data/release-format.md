@@ -82,10 +82,10 @@ The catalog is part of the immutable release and is covered by both its artifact
 release file-checksum map. The runtime has no mutable Opportunity Filter catalog alias. Historical
 release-scoped ordering catalogs under `data/catalogs/releases/` remain only for opening history.
 
-## Draft Phase 7 TFC extension
+## Published Phase 7 TFC extension
 
-Phase 7C defines `tfc-release-binding-1.0`; Phase 7D implements the draft-only
-`konsider-release-6.0` manifest and candidate repository. A candidate binds the immutable checksum
+Phase 7C defines `tfc-release-binding-1.0`; Phase 7D introduced the draft
+`konsider-release-6.0` manifest and Phase 7J added publication and activation. An overlay binds the immutable checksum
 of a release-5.1 base plus a TFC catalog, typed destination rule/evidence JSONL, policy bundles,
 source/legal manifest, coverage summary and validation report.
 
@@ -94,10 +94,11 @@ country, route rules and typed metric formulas. Missing support rows are invalid
 has effective, verification, staleness, supersession and conflict metadata. The writer uses sorted
 LF-stable serialization and SHA-256; replay compares all payloads and the manifest byte-for-byte.
 
-The Phase 7D repository deliberately has no publication or activation method. Its committed input
-is fictional, its catalog is `SYNTHETIC_ONLY`, and its scenario metric is an architecture fixture,
-not an approved TFC. Profile inputs and computed outcomes remain request-time data and are
-prohibited from immutable releases. Active release `2026-08-04.1` remains unchanged. See the
+Drafts remain outside the active namespace and cannot authorize activation. Publication requires
+an `ACTIVE`, non-synthetic, promotion-eligible catalog and writes an immutable directory before a
+separate atomic pointer change. Profile inputs and computed outcomes remain request-time data and
+are prohibited from immutable releases. Active overlay `2026-08-05.1` binds ranking base
+`2026-08-04.1`; the base files remain unchanged. See the
 [TFC release foundation](../architecture/tfc-release-foundation.md).
 
 ## Checksums and replay

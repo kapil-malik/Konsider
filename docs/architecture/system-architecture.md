@@ -1,6 +1,6 @@
 # System architecture
 
-Status: authoritative architecture as of 2026-08-04
+Status: authoritative architecture as of 2026-08-05
 
 Konsider separates data acquisition, immutable publication, deterministic recommendation logic,
 HTTP transport, and the browser UI. Scoring and readiness rules have one server-side owner.
@@ -25,16 +25,16 @@ CurrentReleaseRepository ----> RecommendationService --> FastAPI /api/v2 ---> Re
                          release catalog              OpenAPI + JSON responses
 ```
 
-The active schema-5.1 release is `2026-08-04.1`. It is the only release selected by the public
-runtime. Historical schema-3/4 releases remain immutable and can be opened only by an explicitly
-configured internal historical loader; they are never an alternate active API path.
+The active pointer selects schema-6.0 overlay `2026-08-05.1`. The repository validates its six TFC
+payloads and checksum-bound schema-5.1 base `2026-08-04.1`, then exposes one joined in-memory
+snapshot. Historical schema-3/4 releases remain immutable and require an explicit internal loader.
 
 - The worker downloads ten registered official-source distributions, captures exact raw bytes,
   parses observations, computes versioned canonical scores, validates readiness, and publishes an
   immutable release only when the gate passes.
-- `CurrentReleaseRepository` validates the schema-5 active pointer, payload checksums, catalogs,
-  geography, policies, outcomes, readiness, scoring versions, provenance, and optional OFC binding
-  before joining data.
+- `CurrentReleaseRepository` resolves either a schema-5 base or the base referenced by a validated
+  active schema-6 TFC overlay. It validates checksums, catalogs, geography, policies, outcomes,
+  readiness, scoring versions, provenance and OFC binding before joining data.
 - `RecommendationService` owns weight selection, normalization, contribution calculations,
   deterministic ranking, comparison, and country breakdowns.
 - FastAPI and Pydantic provide a thin versioned transport. One validated release snapshot is loaded
@@ -45,8 +45,8 @@ configured internal historical loader; they are never an alternate active API pa
   flags, assessments, and release labels from `/api/v2`. TanStack Query owns API work; local state
   owns guest edits.
 
-The active release is `2026-08-04.1`: 91 countries, 388 frozen urban centres, fourteen
-catalogued criteria. Extreme heat exposure and Projected warm-day frequency (2030) are experimental
+The active overlay is `2026-08-05.1`; its base contains 91 countries, 388 frozen urban centres and
+fourteen catalogued criteria. Extreme heat exposure and Projected warm-day frequency (2030) are experimental
 locality-derived criteria with 89/91 country coverage. Coverage, locality compatibility, and
 applicant-profile applicability, and filter-only opportunity remain independent structured
 assessments.
@@ -93,6 +93,7 @@ query, persistence, or retrieval requirements justify them.
 | Ranking semantics | `RecommendationService` | FastAPI routes and UI |
 | HTTP shapes and errors | FastAPI OpenAPI/Pydantic models | Hand-written frontend guesses |
 | Active dataset selection | `data/releases/active.json` | Per-request client input |
+| TFC support, rules and policy | Active schema-6 overlay | Profile context, API and UI |
 
 ## Primary flows
 
@@ -114,9 +115,11 @@ count changes require a deliberate source and data review.
 
 ### API startup and request
 
-At startup the API resolves and validates the active snapshot. Healthy requests reuse that in-memory
-snapshot. Initialization failures leave the process running in controlled degraded mode; health and
-product endpoints return safe `503` envelopes. Changing the pointer requires a restart.
+At startup the API resolves and validates the active pointer. For schema 6 it loads the immutable
+TFC overlay and checksum-bound ranking base as one snapshot. Healthy requests reuse it in memory;
+there is no candidate-path override. Initialization failures leave the process in controlled
+degraded mode and product endpoints return safe `503` envelopes. Changing the pointer requires a
+restart.
 
 ### Ranking
 

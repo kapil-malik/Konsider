@@ -1,6 +1,6 @@
 # First-wave Typed Feasibility Check evidence
 
-Status: Phase 7F candidate exposed through the Phase 7G stateless API; not active and no UI
+Status: published and active in release `2026-08-05.1`
 
 ## Frozen scope
 
@@ -113,7 +113,7 @@ worker capture was not reliable; the other 84 use direct HTTP checksums.
 
 ## Effective and refresh policy
 
-The candidate was verified on `2026-08-05`; its rules become stale after `2026-11-05`. Future,
+The release was verified on `2026-08-05`; its rules become stale after `2026-11-05`. Future,
 expired, stale, conflicting or unavailable rules block evaluation. Refresh requires recapture,
 checksum and semantic-diff review, research reconciliation, candidate rebuild and deterministic
 replay. No runtime source calls occur.
@@ -137,5 +137,6 @@ python scripts\build_phase7f_tfc_candidate.py replay `
   --release data\reports\phase7f-2026-08-05\staged-release\phase7f-first-wave-2026-08-05.6.0
 ```
 
-Replay must report `PASSED` with no mismatched files. The candidate is a draft overlay on active
-release `2026-08-04.1`; `activation_authorized` remains false.
+Replay must report `PASSED` with no mismatched files. Phase 7J published the same validated payload
+as active schema-6.0 overlay `2026-08-05.1`, with `activation_authorized: true`, on unchanged base
+release `2026-08-04.1`.

@@ -1,14 +1,14 @@
 # Konsider API operations and contract
 
-Status: authoritative Phase 7G additive v2 contract
+Status: authoritative Phase 7J published v2 contract
 
 Contract version: `konsider-api-2.0`
 
-Active release: `2026-08-04.1`
+Active release: `2026-08-05.1` (ranking base `2026-08-04.1`)
 
-Konsider exposes one structured API over the schema-current immutable ranking release selected by
-`data/releases/active.json`. Release `2026-08-04.1` binds the active Opportunity Filter catalog and
-evidence in the same checksummed publication envelope. The generated
+Konsider exposes one structured API over the schema-current immutable snapshot selected by
+`data/releases/active.json`. Active schema-6.0 overlay `2026-08-05.1` binds the TFC evidence and
+checksum-identifies schema-5.1 ranking/OFC base `2026-08-04.1`. The generated
 [`contracts/openapi/konsider-api-2.0.json`](../../contracts/openapi/konsider-api-2.0.json)
 document is authoritative. Undocumented request fields are rejected.
 
@@ -26,14 +26,14 @@ The default service is `http://127.0.0.1:8000`. Swagger UI is at `/docs` and Ope
 | Setting | Meaning | Default |
 | --- | --- | --- |
 | `KONSIDER_RELEASE_ROOT` | Immutable release directories. | `data/releases` |
-| `KONSIDER_ACTIVE_RELEASE_PATH` | Schema-5 active pointer. | `data/releases/active.json` |
+| `KONSIDER_ACTIVE_RELEASE_PATH` | Schema-current active pointer. | `data/releases/active.json` |
 | `KONSIDER_ENVIRONMENT` | Deployment label. | `development` |
 | `KONSIDER_LOG_LEVEL` | Python log level. | `INFO` |
 | `KONSIDER_CORS_ORIGINS` | Comma-separated browser origins. | none |
-| `KONSIDER_TFC_CANDIDATE_PATH` | Validated draft release-6 TFC candidate. | Phase 7F staged candidate |
 
-Neither catalog accepts a runtime override. Catalog 3 and the sibling Opportunity Filter catalog
-are bound to and checksummed by the selected immutable release.
+No catalog accepts a runtime override. Catalog 3 and the sibling Opportunity Filter catalog are
+bound by the base; the TFC catalog is bound by the active overlay. Production never loads a staged
+candidate path.
 
 ## Public routes
 
@@ -51,7 +51,7 @@ There are no public v1 routes or aliases.
 
 ## Typed Feasibility Checks
 
-Phase 7G evolves API v2 additively. Ranking, comparison and details accept an optional
+API v2 ranking, comparison and details accept an optional
 `feasibility` object. TFC selection is explicit; purpose never silently selects checks. Omission,
 or an empty `tfc_ids` list, takes the legacy path and omits all feasibility response fields.
 

@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks - cross-feature integration complete; Phase 7J pending
+## Phase 7: Typed Feasibility Checks - complete
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -275,8 +275,22 @@ licensing, locality-cost and explicit-filter cases remain synthetic engine tests
 [scenario matrix](phase7i-scenario-matrix.md), [UI test plan](phase7i-ui-test-plan.md) and
 [verification report](../history/phase7i-cross-feature-verification.md).
 
-Phase 7J is the next gate: owner approval, immutable release-6 publication and activation, final
-compatibility/replay evidence and Phase 7 closure. Phase 7I does not activate the staged candidate.
+Phase 7J published and activated immutable schema-6.0 overlay `2026-08-05.1`. The production API
+now loads the three approved assessment-only checks only through the active pointer, while the
+ranking and Opportunity Filter data continue to resolve from checksum-bound base `2026-08-04.1`.
+Final replay, compatibility, privacy, browser and rollback verification passed. See the
+[Phase 7 closure report](../history/phase7-closure-report.md).
+
+## Recommended Phase 8: TFC maintenance and measured expansion
+
+- Re-verify official route sources on their declared cadence and review semantic changes before
+  publishing successor overlays.
+- Measure whether users understand conditional results and the 29/91 source boundary without
+  collecting raw profile values.
+- Gate a second route-check wave, locality depth or occupation mapping on source quality and
+  demonstrated user need.
+- Keep authentication and server-saved profiles deferred until evidence shows that cross-device
+  continuity or data loss is a material problem.
 
 ## Future phase: conversational exploration
 
