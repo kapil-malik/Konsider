@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/effective-profile-context.schema.json",
+  "title": "EffectiveProfileContext 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "applicant", "household", "scenario", "selected_tfc_ids", "resolved_taxonomy_versions", "snapshot_hash", "evaluation_timestamp", "retention"],
+  "properties": {
+    "schema_version": {"const": "effective-profile-context-1.0"},
+    "applicant": {"$ref": "applicant-profile.schema.json"},
+    "household": {"$ref": "household-profile.schema.json"},
+    "scenario": {"$ref": "exploration-scenario.schema.json"},
+    "selected_tfc_ids": {"type": "array", "maxItems": 3, "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/tfcId"}},
+    "resolved_taxonomy_versions": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}},
+    "snapshot_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "evaluation_timestamp": {"type": "string", "format": "date-time"},
+    "retention": {"$ref": "tfc-common.schema.json#/$defs/retentionState"}
+  }
+}

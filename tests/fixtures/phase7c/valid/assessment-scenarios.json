@@ -1,0 +1,18 @@
+{
+  "schema_version": "phase7c-assessment-scenario-fixtures-1.0",
+  "fixtures_are_synthetic": true,
+  "scenarios": {
+    "multiple_tfc_types": {
+      "country_code": "AUS",
+      "selected_tfc_ids": ["skilled_work_route_feasibility", "family_accompaniment_reunification", "post_study_work_pathway"],
+      "outcome_fixture_names": ["route_match", "household_dependent_result", "region_dependent_result"],
+      "filter_mode": "ASSESSMENT_ONLY"
+    },
+    "optional_explicit_filtering_capability": {
+      "country_code": "DEU",
+      "selected_tfc_ids": ["skilled_work_route_feasibility"],
+      "outcome_fixture_names": ["route_match"],
+      "filter_mode": "EXPLICIT_SUPPORTED_ROUTE_FILTER"
+    }
+  }
+}

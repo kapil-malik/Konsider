@@ -1,0 +1,15 @@
+{
+  "schema_version": "applicant-profile-1.0",
+  "citizenships": [],
+  "country_of_residence": null,
+  "age_years": null,
+  "date_of_birth": null,
+  "occupation": null,
+  "specialization": null,
+  "experience_years": null,
+  "qualifications": [],
+  "professional_registrations": [],
+  "languages": [],
+  "unknown_fields": ["applicant.citizenships", "applicant.occupation", "applicant.qualifications"],
+  "field_provenance": {}
+}

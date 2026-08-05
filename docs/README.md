@@ -34,6 +34,14 @@ readable schemas, and published release manifests take precedence if prose ever 
   target versions, fixtures, and migration plan.
 - [Opportunity Filter contracts](architecture/opportunity-filter-contracts.md) - filter-only
   product role, tri-state evidence, release-5.1 binding, fixtures, validation and staged rollout.
+- [Typed Feasibility Check contracts](architecture/tfc-contracts.md) - Phase 7 route-only product
+  role, typed outcomes, assessment placement, release-6 target binding and compatibility boundary.
+- [Applicant, household and scenario contracts](architecture/profile-scenario-contracts.md) -
+  explicit profile layers, unknowns, provenance and immutable effective-context snapshots.
+- [Profile privacy and retention](product/profile-privacy-retention.md) - guest-first stateless
+  evaluation, browser consent, redaction, export and deletion policy.
+- [Phase 7C implementation report](history/phase7c-tfc-profile-contracts.md) - chosen contracts,
+  exact enums, fixtures, compatibility and owner gates before Phase 7D.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
 - [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,
@@ -94,6 +102,14 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [ADR 008: Schema-5 orchestration and country outcomes](architecture/decisions/008-schema5-orchestration-and-country-outcomes.md)
 - [ADR 009: Deterministic locality aggregation and overlap](architecture/decisions/009-deterministic-locality-aggregation-and-overlap.md)
 - [ADR 010: Opportunity Filters as filter-only contracts](architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md)
+- [ADR 011: TFCs as a sibling product role](architecture/decisions/011-tfcs-as-sibling-product-role.md)
+- [ADR 012: Applicant, household and scenario separation](architecture/decisions/012-applicant-household-and-scenario-separation.md)
+- [ADR 013: Effective profile context snapshots](architecture/decisions/013-effective-profile-context-snapshots.md)
+- [ADR 014: Guest-first stateless evaluation](architecture/decisions/014-guest-first-stateless-evaluation.md)
+- [ADR 015: Explicit browser retention consent](architecture/decisions/015-explicit-browser-retention-consent.md)
+- [ADR 016: Typed TFC outcomes](architecture/decisions/016-typed-tfc-outcomes.md)
+- [ADR 017: TFC assessment independence](architecture/decisions/017-tfc-assessment-independence.md)
+- [ADR 018: Persistence as an adapter](architecture/decisions/018-persistence-as-adapter.md)
 
 ## Operations
 

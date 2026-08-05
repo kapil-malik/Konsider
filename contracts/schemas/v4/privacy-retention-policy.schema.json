@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/privacy-retention-policy.schema.json",
+  "title": "Profile privacy and retention policy 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "server_persistence", "default_browser_retention", "device_storage", "logs", "urls", "analytics", "export", "clear_delete", "version_invalidation"],
+  "properties": {
+    "schema_version": {"const": "profile-retention-policy-1.0"},
+    "server_persistence": {"const": "NONE"},
+    "default_browser_retention": {"const": "TAB_MEMORY_ONLY"},
+    "device_storage": {"type": "object", "additionalProperties": false, "required": ["requires_explicit_consent", "maximum_days", "consent_marker_required"], "properties": {"requires_explicit_consent": {"const": true}, "maximum_days": {"const": 30}, "consent_marker_required": {"const": true}}},
+    "logs": {"const": "PROFILE_VALUES_PROHIBITED"},
+    "urls": {"const": "PROFILE_VALUES_PROHIBITED"},
+    "analytics": {"const": "PROFILE_VALUES_PROHIBITED"},
+    "export": {"const": "USER_INITIATED_REDACTED_BY_DEFAULT"},
+    "clear_delete": {"const": "AVAILABLE_WITHOUT_ACCOUNT"},
+    "version_invalidation": {"const": "CLEAR_ON_INCOMPATIBLE_SCHEMA_OR_POLICY_VERSION"}
+  }
+}

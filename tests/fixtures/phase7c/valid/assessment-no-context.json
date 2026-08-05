@@ -1,0 +1,18 @@
+{
+  "schema_version": "tfc-assessment-1.0",
+  "profile": {
+    "context_status": "NO_PROFILE_CONTEXT",
+    "snapshot_hash": null,
+    "evaluated_dimensions": [],
+    "retention": null
+  },
+  "feasibility": {
+    "execution_status": "NOT_EXECUTED_NO_CONTEXT",
+    "selected_tfc_ids": ["skilled_work_route_feasibility", "family_accompaniment_reunification", "post_study_work_pathway"],
+    "filter_mode": "ASSESSMENT_ONLY",
+    "input_required_fields": [],
+    "source_effective_dates": {},
+    "status_counts": {"EVALUATED": 0, "INPUT_REQUIRED": 0, "DESTINATION_EVIDENCE_INSUFFICIENT": 0, "UNSUPPORTED": 0, "NOT_APPLICABLE": 0, "EVALUATION_ERROR": 0},
+    "countries": []
+  }
+}

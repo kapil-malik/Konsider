@@ -1,0 +1,16 @@
+{
+  "schema_version": "exploration-scenario-1.0",
+  "purpose": "EXPLORATION",
+  "target_date": "2026-10-01",
+  "target_country_codes": ["CAN"],
+  "target_region_ids": [],
+  "job_offer": null,
+  "intended_occupation": null,
+  "intended_study": null,
+  "primary_route_id": null,
+  "relocation_composition": "APPLICANT_ONLY",
+  "selected_tfc_ids": [],
+  "feasibility_filter_mode": "ASSESSMENT_ONLY",
+  "unknown_fields": [],
+  "field_provenance": {}
+}

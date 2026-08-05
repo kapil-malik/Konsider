@@ -70,3 +70,38 @@ does not replace or mutate base rank.
 
 **Preference preset** — A named set of ordering-criterion weights. It is not an applicant profile
 and does not select Opportunity Filters.
+
+## Profile context and feasibility
+
+**Applicant profile** (`ApplicantProfile`) — Relatively stable, explicitly supplied applicant facts
+such as citizenship, occupation, experience, qualifications and language evidence. It contains no
+authentication fields and is not a preference preset.
+
+**Household profile** (`HouseholdProfile`) — Anonymous partner and dependent composition relevant to
+a declared relocation scenario. It contains roles and age bands, not names or document identifiers.
+
+**Exploration scenario** (`ExplorationScenario`) — A specific purpose, destination, target date,
+offer/study plan, relocation composition and selected TFC set. Changing a scenario does not mutate
+the underlying applicant or household profile.
+
+**Effective profile context** (`EffectiveProfileContext`) — An immutable request-scoped snapshot of
+normalized applicant, household and scenario values, taxonomy versions and selected TFCs. Its hash
+identifies evaluated facts; it does not require server persistence.
+
+**Typed Feasibility Check** (`TFC`) — A sibling applicant-context assessment that checks an explicit
+scenario against immutable destination rules. It is not an ordering criterion, PCC/LSC, Opportunity
+Filter, affinity contribution or legal guarantee.
+
+**TFC common status** — Execution state shared by TFCs: evaluated, input required, destination
+evidence insufficient, unsupported, not applicable or technical evaluation error. It does not carry
+the substantive route result.
+
+**Supported route match** (`SUPPORTED_ROUTE_MATCH`) — A named route matches the supplied facts under
+the frozen evidence, without predicting sponsorship, authorization or grant.
+
+**Conditional route match** (`CONDITIONAL_ROUTE_MATCH`) — A named route appears relevant but at least
+one route condition remains unknown or unmet.
+
+**No supported route match** (`NO_SUPPORTED_ROUTE_MATCH`) — A guarded result allowed only when the
+frozen supported inventory is explicitly complete. It never means permanent legal impossibility and
+is not authorized by the current first-wave source policy.

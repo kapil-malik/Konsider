@@ -1,0 +1,27 @@
+{
+  "schema_version": "profile-export-1.0",
+  "exported_at": "2026-08-05T10:30:00Z",
+  "redaction_mode": "DEFAULT_REDACTED",
+  "source_schema_versions": ["applicant-profile-1.0", "household-profile-1.0", "exploration-scenario-1.0"],
+  "omitted_fields": ["applicant.date_of_birth", "applicant.specialization", "household.child_ages", "scenario.job_offer"],
+  "applicant": {
+    "citizenship_count": 1,
+    "age_band": "30_34",
+    "occupation_category": "ICT professionals",
+    "qualification_levels": ["MASTERS"],
+    "language_evidence_count": 1
+  },
+  "household": {
+    "partner_declared": true,
+    "dependant_age_bands": ["UNDER_18"]
+  },
+  "scenarios": [
+    {
+      "purpose": "EXPLORATION",
+      "target_date": "2026-10-01",
+      "target_country_codes": ["DEU", "GBR"],
+      "selected_tfc_ids": ["skilled_work_route_feasibility", "family_accompaniment_reunification", "post_study_work_pathway"],
+      "relocation_composition": "WITH_PARTNER_AND_DEPENDANTS"
+    }
+  ]
+}

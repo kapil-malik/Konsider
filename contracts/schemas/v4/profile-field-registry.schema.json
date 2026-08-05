@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/profile-field-registry.schema.json",
+  "title": "Profile field registry 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "fields"],
+  "properties": {
+    "schema_version": {"const": "profile-field-registry-1.0"},
+    "fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field_id", "data_type", "validation", "sensitivity", "default_retention", "consumer_tfc_ids", "prompt", "help_text", "may_be_omitted", "may_be_stored_locally", "exportability", "redaction"],
+        "properties": {
+          "field_id": {"$ref": "tfc-common.schema.json#/$defs/fieldId"},
+          "data_type": {"type": "string", "minLength": 1},
+          "validation": {"type": "string", "minLength": 1},
+          "sensitivity": {"enum": ["LOW", "MODERATE_PERSONAL", "MODERATE_CONSEQUENTIAL", "HIGH_PERSONAL", "HIGH_FINANCIAL", "HIGH_CONSEQUENTIAL"]},
+          "default_retention": {"enum": ["TAB_MEMORY_ONLY", "NEVER_RETAIN_BY_DEFAULT"]},
+          "consumer_tfc_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/tfcId"}},
+          "prompt": {"type": "string", "minLength": 1},
+          "help_text": {"type": "string", "minLength": 1},
+          "may_be_omitted": {"type": "boolean"},
+          "may_be_stored_locally": {"type": "boolean"},
+          "exportability": {"enum": ["USER_INITIATED_EXPORT", "REDACT_FROM_DEFAULT_EXPORT"]},
+          "redaction": {"enum": ["NONE", "OMIT", "GENERALIZE"]}
+        }
+      }
+    }
+  }
+}

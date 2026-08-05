@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/applicant-profile.schema.json",
+  "title": "ApplicantProfile 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "citizenships", "qualifications", "professional_registrations", "languages", "unknown_fields", "field_provenance"],
+  "properties": {
+    "schema_version": {"const": "applicant-profile-1.0"},
+    "profile_id": {"type": "string", "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}$"},
+    "citizenships": {"type": "array", "maxItems": 4, "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/countryCode"}},
+    "country_of_residence": {"oneOf": [{"$ref": "tfc-common.schema.json#/$defs/countryCode"}, {"type": "null"}]},
+    "age_years": {"type": ["integer", "null"], "minimum": 0, "maximum": 120},
+    "date_of_birth": {"type": ["string", "null"], "format": "date"},
+    "occupation": {"oneOf": [{"$ref": "tfc-common.schema.json#/$defs/taxonomyReference"}, {"type": "null"}]},
+    "specialization": {"type": ["string", "null"], "maxLength": 200},
+    "experience_years": {"type": ["number", "null"], "minimum": 0, "maximum": 80, "multipleOf": 0.5},
+    "qualifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["level", "field", "awarding_country", "institution", "completion_year", "recognition_state"],
+        "properties": {
+          "level": {"enum": ["SECONDARY", "VOCATIONAL", "BACHELORS", "MASTERS", "DOCTORATE", "OTHER", "UNKNOWN"]},
+          "field": {"$ref": "tfc-common.schema.json#/$defs/taxonomyReference"},
+          "awarding_country": {"oneOf": [{"$ref": "tfc-common.schema.json#/$defs/countryCode"}, {"type": "null"}]},
+          "institution": {"type": ["string", "null"], "maxLength": 200},
+          "completion_year": {"type": ["integer", "null"], "minimum": 1900, "maximum": 2200},
+          "recognition_state": {"enum": ["NOT_ASSESSED", "RECOGNIZED_BY_SOURCE", "UNRESOLVED"]}
+        }
+      }
+    },
+    "professional_registrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["profession", "jurisdiction", "status"],
+        "properties": {
+          "profession": {"type": "string", "minLength": 1},
+          "jurisdiction": {"type": "string", "minLength": 1},
+          "status": {"enum": ["ACTIVE", "EXPIRED", "PENDING", "UNKNOWN"]},
+          "expires_on": {"type": ["string", "null"], "format": "date"}
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["language", "evidence_type", "level_or_score"],
+        "properties": {
+          "language": {"type": "string", "minLength": 2, "maxLength": 80},
+          "evidence_type": {"enum": ["SELF_ASSESSED", "NAMED_TEST", "UNKNOWN"]},
+          "test_name": {"type": ["string", "null"], "maxLength": 100},
+          "level_or_score": {"type": ["string", "null"], "maxLength": 40},
+          "valid_until": {"type": ["string", "null"], "format": "date"}
+        }
+      }
+    },
+    "unknown_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+    "field_provenance": {"type": "object", "additionalProperties": {"$ref": "tfc-common.schema.json#/$defs/provenance"}}
+  }
+}

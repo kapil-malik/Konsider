@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/household-profile.schema.json",
+  "title": "HouseholdProfile 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "partner_status", "partner_accompanying", "partner_work_intent", "dependants", "unknown_fields", "field_provenance"],
+  "properties": {
+    "schema_version": {"const": "household-profile-1.0"},
+    "household_id": {"type": "string", "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}$"},
+    "partner_status": {"enum": ["NONE", "SPOUSE", "CIVIL_PARTNER", "UNMARRIED_PARTNER", "UNKNOWN"]},
+    "partner_accompanying": {"type": ["boolean", "null"]},
+    "partner_work_intent": {"enum": ["WORK", "STUDY", "NEITHER", "UNKNOWN"]},
+    "dependants": {
+      "type": "array",
+      "maxItems": 19,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "relocating", "age_band"],
+        "properties": {
+          "role": {"enum": ["DEPENDENT_CHILD", "STEPCHILD", "OTHER_DEPENDANT"]},
+          "relocating": {"type": ["boolean", "null"]},
+          "age_band": {"enum": ["UNDER_18", "AGE_18_TO_20", "AGE_21_TO_22", "AGE_23_TO_25", "OVER_25", "UNKNOWN"]},
+          "age_years": {"type": ["integer", "null"], "minimum": 0, "maximum": 120}
+        }
+      }
+    },
+    "unknown_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+    "field_provenance": {"type": "object", "additionalProperties": {"$ref": "tfc-common.schema.json#/$defs/provenance"}}
+  }
+}

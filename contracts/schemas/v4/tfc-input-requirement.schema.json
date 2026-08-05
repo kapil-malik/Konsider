@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-input-requirement.schema.json",
+  "title": "TFC input requirement 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["field_id", "requirement", "condition", "reason"],
+  "properties": {
+    "field_id": {"$ref": "tfc-common.schema.json#/$defs/fieldId"},
+    "requirement": {"enum": ["ALWAYS_REQUIRED", "CONDITIONALLY_REQUIRED", "OPTIONAL_EXPLANATORY", "NOT_USED"]},
+    "condition": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operator", "field_id", "value"],
+          "properties": {
+            "operator": {"enum": ["DESTINATION_RULE_REQUIRES_FIELD", "FIELD_EQUALS", "FIELD_PRESENT", "HOUSEHOLD_ROLE_DECLARED"]},
+            "field_id": {"$ref": "tfc-common.schema.json#/$defs/fieldId"},
+            "value": {"type": ["string", "number", "boolean", "null"]}
+          }
+        }
+      ]
+    },
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"requirement": {"const": "CONDITIONALLY_REQUIRED"}}},
+      "then": {"properties": {"condition": {"type": "object"}}},
+      "else": {"properties": {"condition": {"type": "null"}}}
+    }
+  ]
+}

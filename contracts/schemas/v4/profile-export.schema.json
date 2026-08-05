@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/profile-export.schema.json",
+  "title": "Redacted guest profile export 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "exported_at", "redaction_mode", "source_schema_versions", "omitted_fields", "applicant", "household", "scenarios"],
+  "properties": {
+    "schema_version": {"const": "profile-export-1.0"},
+    "exported_at": {"type": "string", "format": "date-time"},
+    "redaction_mode": {"const": "DEFAULT_REDACTED"},
+    "source_schema_versions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "omitted_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+    "applicant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["citizenship_count", "age_band", "occupation_category", "qualification_levels", "language_evidence_count"],
+      "properties": {
+        "citizenship_count": {"type": "integer", "minimum": 0, "maximum": 4},
+        "age_band": {"enum": ["UNDER_18", "18_24", "25_29", "30_34", "35_39", "40_49", "50_59", "60_PLUS", "UNKNOWN"]},
+        "occupation_category": {"type": ["string", "null"], "maxLength": 40},
+        "qualification_levels": {"type": "array", "uniqueItems": true, "items": {"enum": ["SECONDARY", "VOCATIONAL", "BACHELORS", "MASTERS", "DOCTORATE", "OTHER", "UNKNOWN"]}},
+        "language_evidence_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "household": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["partner_declared", "dependant_age_bands"],
+      "properties": {
+        "partner_declared": {"type": "boolean"},
+        "dependant_age_bands": {"type": "array", "items": {"enum": ["UNDER_18", "AGE_18_TO_20", "AGE_21_TO_22", "AGE_23_TO_25", "OVER_25", "UNKNOWN"]}}
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["purpose", "target_date", "target_country_codes", "selected_tfc_ids", "relocation_composition"],
+        "properties": {
+          "purpose": {"enum": ["WORK", "STUDY", "FAMILY", "EXPLORATION"]},
+          "target_date": {"type": "string", "format": "date"},
+          "target_country_codes": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/countryCode"}},
+          "selected_tfc_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/tfcId"}},
+          "relocation_composition": {"enum": ["APPLICANT_ONLY", "WITH_PARTNER", "WITH_DEPENDANTS", "WITH_PARTNER_AND_DEPENDANTS", "UNKNOWN"]}
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 7A discovery complete; Phase 7B source gate next
+Status: Phase 7C contracts complete; owner gate before Phase 7D
 
 Last updated: 2026-08-05
 
@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks — source gate passed; owner approval pending
+## Phase 7: Typed Feasibility Checks — contracts complete; owner approval pending
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -211,13 +211,18 @@ Immigration Portal 25 plus Australia, Canada, the United Kingdom and the United 
 other stable destinations explicit as unsupported. See the
 [Phase 7B source-feasibility report](../research/phase7b-tfc-source-feasibility.md).
 
-The minimum-three gate passes, but owner approval is required before Phase 7C. All three qualified
-checks use `RULE_ROUTE_MATCH`, so Phase 7C must be narrowed to a route/rule-match contract rather
-than a speculative generic multi-result engine. Permanent residence, professional licensing,
-employment deductions, reference-city rent and healthcare affordability remain targeted follow-up
-research. Phase 7B does not publish production contracts, workers, API fields, UI or evidence.
+The owner approved those three checks for Phase 7C. Phase 7C now defines separate applicant,
+household and scenario contracts, immutable effective-context snapshots, guest-first retention,
+typed route outcomes, sibling feasibility assessments and a standalone future release-6 binding.
+See the [TFC contracts](../architecture/tfc-contracts.md) and
+[Phase 7C report](../history/phase7c-tfc-profile-contracts.md). The active release, API, UI,
+ranking, locality and Opportunity Filter behavior remain unchanged.
 
-Until owner approval and the later Phase 7 gates pass:
+All three checks use `RULE_ROUTE_MATCH`, so the contract is route-only rather than a speculative
+generic multi-result engine. Permanent residence, professional licensing, employment deductions,
+reference-city rent and healthcare affordability remain targeted follow-up research.
+
+Until the Phase 7D owner gate and later Phase 7 gates pass:
 
 - keep applicant, household and scenario facts separate from preference presets and immutable
   destination evidence;
@@ -226,10 +231,10 @@ Until owner approval and the later Phase 7 gates pass:
 - do not add authentication, server-side saved profiles, sync, chat or conversational memory; and
 - keep C05 locality research as an independent fast follow with its own source and identity gates.
 
-Before Phase 7C, the owner must approve the exact first-wave list and names, supported profile and
-destination boundaries, route-only result-family scope, post-ranking filter policy, and device or
-session retention direction. The initial evidence boundary permits positive and conditional route
-matches only; it does not support a complete negative no-route conclusion.
+Before Phase 7D, the owner must confirm assessment-only behavior versus explicit supported-route
+post-ranking filtering, the 30-day cap for optional consented same-device retention, release 6.0 as
+the TFC binding target, and positive/conditional-only first-wave policy. No production evidence is
+onboarded until Phase 7F.
 
 ## Future phase: conversational exploration
 

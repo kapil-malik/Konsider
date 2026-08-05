@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-release-binding.schema.json",
+  "title": "Draft TFC release binding 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["binding_schema_version", "target_release_schema_version", "artifacts"],
+  "properties": {
+    "binding_schema_version": {"const": "tfc-release-binding-1.0"},
+    "target_release_schema_version": {"const": "konsider-release-6.0"},
+    "artifacts": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "filename", "schema_version", "checksum"],
+        "properties": {
+          "role": {"enum": ["TFC_CATALOG", "DESTINATION_RULE_EVIDENCE", "TFC_POLICY_BUNDLES", "TFC_SOURCE_LEGAL_MANIFEST", "TFC_COVERAGE_SUMMARY", "TFC_VALIDATION"]},
+          "filename": {"type": "string", "pattern": "^tfc-[a-z0-9-]+\\.(json|jsonl)$"},
+          "schema_version": {"type": "string", "pattern": "^tfc-[a-z0-9-]+-1\\.0$"},
+          "checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+        }
+      }
+    }
+  }
+}

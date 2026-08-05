@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-outcome.schema.json",
+  "title": "Typed Feasibility Check outcome 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "tfc_id", "country_code", "common_status", "reason_codes", "input_required_fields", "result", "evaluated_at", "snapshot_hash"],
+  "properties": {
+    "schema_version": {"const": "tfc-outcome-1.0"},
+    "tfc_id": {"$ref": "tfc-common.schema.json#/$defs/tfcId"},
+    "country_code": {"$ref": "tfc-common.schema.json#/$defs/countryCode"},
+    "common_status": {"enum": ["EVALUATED", "INPUT_REQUIRED", "DESTINATION_EVIDENCE_INSUFFICIENT", "UNSUPPORTED", "NOT_APPLICABLE", "EVALUATION_ERROR"]},
+    "reason_codes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["ROUTE_MATCHED", "ROUTE_CONDITIONALLY_MATCHED", "NO_SUPPORTED_ROUTE_MATCH", "PROFILE_FIELDS_MISSING", "DESTINATION_SOURCE_MISSING", "DESTINATION_EVIDENCE_CONFLICT", "DESTINATION_NOT_SUPPORTED", "PROFILE_BOUNDARY_UNSUPPORTED", "HOUSEHOLD_NOT_RELOCATING", "NO_TFC_SELECTED", "TECHNICAL_FAILURE"]}},
+    "input_required_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+    "result": {"oneOf": [{"$ref": "tfc-route-result.schema.json"}, {"type": "null"}]},
+    "evaluated_at": {"type": "string", "format": "date-time"},
+    "snapshot_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"common_status": {"const": "EVALUATED"}}},
+      "then": {"properties": {"result": {"$ref": "tfc-route-result.schema.json"}, "input_required_fields": {"maxItems": 0}}},
+      "else": {"properties": {"result": {"type": "null"}}}
+    },
+    {
+      "if": {"properties": {"common_status": {"const": "INPUT_REQUIRED"}}},
+      "then": {"properties": {"input_required_fields": {"minItems": 1}}}
+    }
+  ]
+}

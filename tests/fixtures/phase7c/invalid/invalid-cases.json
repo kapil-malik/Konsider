@@ -1,0 +1,14 @@
+{
+  "schema_version": "phase7c-invalid-fixtures-1.0",
+  "fixtures_are_synthetic": true,
+  "cases": {
+    "tfc_weight_field": {"base_fixture": "tfc-catalog.json", "target": "definition", "mutation": {"weight": 5}},
+    "ofc_state_in_tfc_payload": {"base_fixture": "route-outcomes.json#route_match", "target": "outcome", "mutation": {"state": "VERIFIED_STRONG_SIGNAL"}},
+    "profile_data_in_release_artifact": {"base_fixture": "tfc-release-binding.json", "target": "binding", "mutation": {"profile_data": {"citizenships": ["IND"]}}},
+    "hidden_account_identifier": {"base_fixture": "effective-profile-context.json", "target": "context", "mutation": {"account_id": "synthetic-account"}},
+    "missing_source_effective_metadata": {"base_fixture": "route-outcomes.json#route_match", "target": "route_result", "remove": "evidence"},
+    "route_without_evaluated_identity": {"base_fixture": "route-outcomes.json#route_match", "target": "route_result", "mutation": {"supported_routes_evaluated": []}},
+    "numeric_result_without_units": {"target": "outcome", "payload": {"schema_version": "tfc-outcome-1.0", "tfc_id": "skilled_work_route_feasibility", "country_code": "DEU", "common_status": "EVALUATED", "reason_codes": ["ROUTE_MATCHED"], "input_required_fields": [], "result": {"schema_version": "scenario-metric-result-1.0", "value": 42, "assumptions": []}, "evaluated_at": "2026-08-05T10:00:00Z", "snapshot_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},
+    "sensitive_silent_persistence": {"base_fixture": "profile-field-registry.json", "target": "field:applicant.citizenships", "mutation": {"default_retention": "DEVICE_WITHOUT_CONSENT"}}
+  }
+}

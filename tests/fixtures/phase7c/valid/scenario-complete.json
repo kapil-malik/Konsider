@@ -1,0 +1,35 @@
+{
+  "schema_version": "exploration-scenario-1.0",
+  "scenario_id": "fictional-scenario-river",
+  "purpose": "EXPLORATION",
+  "target_date": "2026-10-01",
+  "target_country_codes": ["DEU", "GBR"],
+  "target_region_ids": ["region:DE-BE"],
+  "job_offer": {
+    "state": "PRESENT",
+    "role": "Software engineer",
+    "employer_region_id": "region:DE-BE",
+    "sponsorship_state": "CONFIRMED",
+    "salary": {"amount": 72000, "currency": "EUR", "period": "ANNUAL"}
+  },
+  "intended_occupation": {"user_text": "Software engineer", "taxonomy_id": "isco08", "taxonomy_version": "2008", "code": "2512", "mapping_state": "MAPPED"},
+  "intended_study": {
+    "institution": {"user_text": "Fictional Westhaven University", "taxonomy_id": "synthetic-institutions", "taxonomy_version": "1", "code": "FWU-001", "mapping_state": "MAPPED"},
+    "qualification_level": "MASTERS",
+    "field": {"user_text": "Computer science", "taxonomy_id": "isced-f-2013", "taxonomy_version": "2013", "code": "0613", "mapping_state": "MAPPED"},
+    "duration_months": 24,
+    "mode": "IN_PERSON",
+    "completion_date": "2027-06-30",
+    "completion_state": "PLANNED"
+  },
+  "primary_route_id": "DEU.EU_BLUE_CARD",
+  "relocation_composition": "WITH_PARTNER_AND_DEPENDANTS",
+  "selected_tfc_ids": ["skilled_work_route_feasibility", "family_accompaniment_reunification", "post_study_work_pathway"],
+  "feasibility_filter_mode": "ASSESSMENT_ONLY",
+  "unknown_fields": [],
+  "field_provenance": {
+    "scenario.target_date": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"},
+    "scenario.job_offer": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"},
+    "scenario.primary_route_id": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"}
+  }
+}

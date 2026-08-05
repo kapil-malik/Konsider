@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-catalog.schema.json",
+  "title": "TFC catalog 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_contract_version", "activation_status", "stable_universe_id", "definitions"],
+  "properties": {
+    "schema_version": {"const": "tfc-catalog-1.0"},
+    "release_contract_version": {"const": "tfc-release-binding-1.0"},
+    "activation_status": {"enum": ["CONTRACTS_ONLY", "STAGED", "ACTIVE"]},
+    "stable_universe_id": {"const": "stable_supported_v1"},
+    "definitions": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "tfc-definition.schema.json"}}
+  }
+}

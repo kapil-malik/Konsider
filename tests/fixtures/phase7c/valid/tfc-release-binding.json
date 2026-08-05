@@ -1,0 +1,12 @@
+{
+  "binding_schema_version": "tfc-release-binding-1.0",
+  "target_release_schema_version": "konsider-release-6.0",
+  "artifacts": [
+    {"role": "TFC_CATALOG", "filename": "tfc-catalog.json", "schema_version": "tfc-catalog-1.0", "checksum": "sha256:1111111111111111111111111111111111111111111111111111111111111111"},
+    {"role": "DESTINATION_RULE_EVIDENCE", "filename": "tfc-destination-rule-evidence.jsonl", "schema_version": "tfc-destination-rule-evidence-1.0", "checksum": "sha256:2222222222222222222222222222222222222222222222222222222222222222"},
+    {"role": "TFC_POLICY_BUNDLES", "filename": "tfc-policy-bundles.json", "schema_version": "tfc-policy-bundles-1.0", "checksum": "sha256:3333333333333333333333333333333333333333333333333333333333333333"},
+    {"role": "TFC_SOURCE_LEGAL_MANIFEST", "filename": "tfc-source-legal-manifest.json", "schema_version": "tfc-source-legal-manifest-1.0", "checksum": "sha256:4444444444444444444444444444444444444444444444444444444444444444"},
+    {"role": "TFC_COVERAGE_SUMMARY", "filename": "tfc-coverage-summary.json", "schema_version": "tfc-coverage-summary-1.0", "checksum": "sha256:5555555555555555555555555555555555555555555555555555555555555555"},
+    {"role": "TFC_VALIDATION", "filename": "tfc-validation.json", "schema_version": "tfc-validation-1.0", "checksum": "sha256:6666666666666666666666666666666666666666666666666666666666666666"}
+  ]
+}

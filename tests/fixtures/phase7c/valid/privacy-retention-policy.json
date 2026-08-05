@@ -1,0 +1,12 @@
+{
+  "schema_version": "profile-retention-policy-1.0",
+  "server_persistence": "NONE",
+  "default_browser_retention": "TAB_MEMORY_ONLY",
+  "device_storage": {"requires_explicit_consent": true, "maximum_days": 30, "consent_marker_required": true},
+  "logs": "PROFILE_VALUES_PROHIBITED",
+  "urls": "PROFILE_VALUES_PROHIBITED",
+  "analytics": "PROFILE_VALUES_PROHIBITED",
+  "export": "USER_INITIATED_REDACTED_BY_DEFAULT",
+  "clear_delete": "AVAILABLE_WITHOUT_ACCOUNT",
+  "version_invalidation": "CLEAR_ON_INCOMPATIBLE_SCHEMA_OR_POLICY_VERSION"
+}

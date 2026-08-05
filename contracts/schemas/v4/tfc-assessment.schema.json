@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v4/tfc-assessment.schema.json",
+  "title": "Profile and feasibility assessment 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "profile", "feasibility"],
+  "properties": {
+    "schema_version": {"const": "tfc-assessment-1.0"},
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["context_status", "snapshot_hash", "evaluated_dimensions", "retention"],
+      "properties": {
+        "context_status": {"enum": ["NO_PROFILE_CONTEXT", "PARTIAL_PROFILE_CONTEXT", "COMPLETE_PROFILE_CONTEXT"]},
+        "snapshot_hash": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
+        "evaluated_dimensions": {"type": "array", "uniqueItems": true, "items": {"enum": ["APPLICANT", "HOUSEHOLD", "SCENARIO"]}},
+        "retention": {"oneOf": [{"$ref": "tfc-common.schema.json#/$defs/retentionState"}, {"type": "null"}]}
+      }
+    },
+    "feasibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_status", "selected_tfc_ids", "filter_mode", "input_required_fields", "source_effective_dates", "status_counts", "countries"],
+      "properties": {
+        "execution_status": {"enum": ["NO_TFC_SELECTED", "NOT_EXECUTED_NO_CONTEXT", "EXECUTED"]},
+        "selected_tfc_ids": {"type": "array", "maxItems": 3, "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/tfcId"}},
+        "filter_mode": {"enum": ["ASSESSMENT_ONLY", "EXPLICIT_SUPPORTED_ROUTE_FILTER"]},
+        "input_required_fields": {"type": "array", "uniqueItems": true, "items": {"$ref": "tfc-common.schema.json#/$defs/fieldId"}},
+        "source_effective_dates": {"type": "object", "additionalProperties": {"type": "string", "format": "date"}},
+        "status_counts": {"type": "object", "additionalProperties": false, "required": ["EVALUATED", "INPUT_REQUIRED", "DESTINATION_EVIDENCE_INSUFFICIENT", "UNSUPPORTED", "NOT_APPLICABLE", "EVALUATION_ERROR"], "properties": {"EVALUATED": {"type": "integer", "minimum": 0}, "INPUT_REQUIRED": {"type": "integer", "minimum": 0}, "DESTINATION_EVIDENCE_INSUFFICIENT": {"type": "integer", "minimum": 0}, "UNSUPPORTED": {"type": "integer", "minimum": 0}, "NOT_APPLICABLE": {"type": "integer", "minimum": 0}, "EVALUATION_ERROR": {"type": "integer", "minimum": 0}}},
+        "countries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["country_code", "base_rank", "feasibility_filtered_position", "outcomes"],
+            "properties": {
+              "country_code": {"$ref": "tfc-common.schema.json#/$defs/countryCode"},
+              "base_rank": {"type": "integer", "minimum": 1},
+              "feasibility_filtered_position": {"type": ["integer", "null"], "minimum": 1},
+              "outcomes": {"type": "array", "maxItems": 3, "items": {"$ref": "tfc-outcome.schema.json"}}
+            }
+          }
+        }
+      }
+    }
+  }
+}

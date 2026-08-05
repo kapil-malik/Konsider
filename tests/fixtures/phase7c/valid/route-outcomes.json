@@ -1,0 +1,170 @@
+{
+  "schema_version": "phase7c-route-outcome-fixtures-1.0",
+  "fixtures_are_synthetic": true,
+  "outcomes": {
+    "route_match": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "skilled_work_route_feasibility",
+      "country_code": "DEU",
+      "common_status": "EVALUATED",
+      "reason_codes": ["ROUTE_MATCHED"],
+      "input_required_fields": [],
+      "result": {
+        "schema_version": "tfc-route-result-1.0",
+        "match_classification": "SUPPORTED_ROUTE_MATCH",
+        "supported_routes_evaluated": [{"route_id": "DEU.EU_BLUE_CARD", "route_name": "Synthetic EU Blue Card example", "authority_id": "DEU.IMMIGRATION"}],
+        "matched_route_ids": ["DEU.EU_BLUE_CARD"],
+        "route_inventory_complete": false,
+        "met_conditions": [{"condition_id": "job_offer", "label": "Qualifying job offer declared", "field_ids": ["scenario.job_offer"]}],
+        "unmet_conditions": [],
+        "unknown_conditions": [],
+        "blocking_conditions": [],
+        "evidence": [{"source_id": "SYNTHETIC_DEU_ROUTE_SOURCE", "asset_id": "synthetic://deu/blue-card", "effective_from": "2026-01-01", "effective_to": null, "captured_at": "2026-08-05T09:00:00Z", "checksum": "sha256:1111111111111111111111111111111111111111111111111111111111111111"}],
+        "caveats": ["Synthetic contract fixture; a match is not a visa decision."],
+        "legal_impossibility_disclaimer": "No supported-route match is not a permanent legal impossibility."
+      },
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "conditional_route_match": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "skilled_work_route_feasibility",
+      "country_code": "GBR",
+      "common_status": "EVALUATED",
+      "reason_codes": ["ROUTE_CONDITIONALLY_MATCHED"],
+      "input_required_fields": [],
+      "result": {
+        "schema_version": "tfc-route-result-1.0",
+        "match_classification": "CONDITIONAL_ROUTE_MATCH",
+        "supported_routes_evaluated": [{"route_id": "GBR.SKILLED_WORKER", "route_name": "Synthetic Skilled Worker example", "authority_id": "GBR.HOME_OFFICE"}],
+        "matched_route_ids": ["GBR.SKILLED_WORKER"],
+        "route_inventory_complete": false,
+        "met_conditions": [{"condition_id": "occupation", "label": "Declared occupation is in the synthetic supported set", "field_ids": ["applicant.occupation"]}],
+        "unmet_conditions": [],
+        "unknown_conditions": [{"condition_id": "salary_threshold", "label": "Salary threshold still needs an effective-date check", "field_ids": ["scenario.job_offer"]}],
+        "blocking_conditions": [],
+        "evidence": [{"source_id": "SYNTHETIC_GBR_ROUTE_SOURCE", "asset_id": "synthetic://gbr/skilled-worker", "effective_from": "2026-07-01", "effective_to": null, "captured_at": "2026-08-05T09:00:00Z", "checksum": "sha256:2222222222222222222222222222222222222222222222222222222222222222"}],
+        "caveats": ["Synthetic contract fixture; sponsorship and grant are external decisions."],
+        "legal_impossibility_disclaimer": "No supported-route match is not a permanent legal impossibility."
+      },
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "no_supported_route_match": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "skilled_work_route_feasibility",
+      "country_code": "CAN",
+      "common_status": "EVALUATED",
+      "reason_codes": ["NO_SUPPORTED_ROUTE_MATCH"],
+      "input_required_fields": [],
+      "result": {
+        "schema_version": "tfc-route-result-1.0",
+        "match_classification": "NO_SUPPORTED_ROUTE_MATCH",
+        "supported_routes_evaluated": [{"route_id": "CAN.SYNTHETIC_COMPLETE_ROUTE", "route_name": "Synthetic complete-inventory example", "authority_id": "CAN.IRCC"}],
+        "matched_route_ids": [],
+        "route_inventory_complete": true,
+        "met_conditions": [],
+        "unmet_conditions": [{"condition_id": "route_condition", "label": "Synthetic required route condition was not met", "field_ids": ["scenario.job_offer"]}],
+        "unknown_conditions": [],
+        "blocking_conditions": [{"condition_id": "complete_inventory_boundary", "label": "Conclusion applies only to the frozen supported inventory", "field_ids": []}],
+        "evidence": [{"source_id": "SYNTHETIC_CAN_COMPLETE_SOURCE", "asset_id": "synthetic://can/complete-inventory", "effective_from": "2026-01-01", "effective_to": "2026-12-31", "captured_at": "2026-08-05T09:00:00Z", "checksum": "sha256:3333333333333333333333333333333333333333333333333333333333333333"}],
+        "caveats": ["Contract-shape fixture only; the approved Phase 7B first-wave source bundle does not yet authorize this conclusion."],
+        "legal_impossibility_disclaimer": "No supported-route match is not a permanent legal impossibility."
+      },
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "input_required": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "skilled_work_route_feasibility",
+      "country_code": "DEU",
+      "common_status": "INPUT_REQUIRED",
+      "reason_codes": ["PROFILE_FIELDS_MISSING"],
+      "input_required_fields": ["applicant.occupation", "applicant.qualifications"],
+      "result": null,
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "unsupported_destination": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "post_study_work_pathway",
+      "country_code": "IND",
+      "common_status": "UNSUPPORTED",
+      "reason_codes": ["DESTINATION_NOT_SUPPORTED"],
+      "input_required_fields": [],
+      "result": null,
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "insufficient_evidence": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "post_study_work_pathway",
+      "country_code": "NLD",
+      "common_status": "DESTINATION_EVIDENCE_INSUFFICIENT",
+      "reason_codes": ["DESTINATION_EVIDENCE_CONFLICT"],
+      "input_required_fields": [],
+      "result": null,
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "household_not_relocating": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "family_accompaniment_reunification",
+      "country_code": "AUS",
+      "common_status": "NOT_APPLICABLE",
+      "reason_codes": ["HOUSEHOLD_NOT_RELOCATING"],
+      "input_required_fields": [],
+      "result": null,
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "household_dependent_result": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "family_accompaniment_reunification",
+      "country_code": "DEU",
+      "common_status": "EVALUATED",
+      "reason_codes": ["ROUTE_CONDITIONALLY_MATCHED"],
+      "input_required_fields": [],
+      "result": {
+        "schema_version": "tfc-route-result-1.0",
+        "match_classification": "CONDITIONAL_ROUTE_MATCH",
+        "supported_routes_evaluated": [{"route_id": "DEU.EU_BLUE_CARD.DEPENDANTS", "route_name": "Synthetic Blue Card dependant example", "authority_id": "DEU.IMMIGRATION"}],
+        "matched_route_ids": ["DEU.EU_BLUE_CARD.DEPENDANTS"],
+        "route_inventory_complete": false,
+        "met_conditions": [{"condition_id": "partner_role", "label": "Partner role declared", "field_ids": ["household.partner_status"]}],
+        "unmet_conditions": [],
+        "unknown_conditions": [{"condition_id": "child_age", "label": "Exact child age may be required", "field_ids": ["household.child_ages"]}],
+        "blocking_conditions": [],
+        "evidence": [{"source_id": "SYNTHETIC_DEU_FAMILY_SOURCE", "asset_id": "synthetic://deu/dependants", "effective_from": "2026-01-01", "effective_to": null, "captured_at": "2026-08-05T09:00:00Z", "checksum": "sha256:4444444444444444444444444444444444444444444444444444444444444444"}],
+        "caveats": ["Synthetic fixture limited to partner and dependent-child conditions on the declared route."],
+        "legal_impossibility_disclaimer": "No supported-route match is not a permanent legal impossibility."
+      },
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    },
+    "region_dependent_result": {
+      "schema_version": "tfc-outcome-1.0",
+      "tfc_id": "post_study_work_pathway",
+      "country_code": "AUS",
+      "common_status": "EVALUATED",
+      "reason_codes": ["ROUTE_CONDITIONALLY_MATCHED"],
+      "input_required_fields": [],
+      "result": {
+        "schema_version": "tfc-route-result-1.0",
+        "match_classification": "CONDITIONAL_ROUTE_MATCH",
+        "supported_routes_evaluated": [{"route_id": "AUS.485.REGIONAL_SYNTHETIC", "route_name": "Synthetic regional graduate example", "authority_id": "AUS.HOME_AFFAIRS"}],
+        "matched_route_ids": ["AUS.485.REGIONAL_SYNTHETIC"],
+        "route_inventory_complete": false,
+        "met_conditions": [{"condition_id": "qualification", "label": "Synthetic qualification condition met", "field_ids": ["scenario.qualification_level"]}],
+        "unmet_conditions": [],
+        "unknown_conditions": [{"condition_id": "regional_location", "label": "Regional study and residence identity unresolved", "field_ids": ["scenario.target_regions"]}],
+        "blocking_conditions": [],
+        "evidence": [{"source_id": "SYNTHETIC_AUS_POSTSTUDY_SOURCE", "asset_id": "synthetic://aus/post-study-regional", "effective_from": "2026-01-01", "effective_to": null, "captured_at": "2026-08-05T09:00:00Z", "checksum": "sha256:5555555555555555555555555555555555555555555555555555555555555555"}],
+        "caveats": ["Synthetic fixture; future completion and regional conditions remain provisional."],
+        "legal_impossibility_disclaimer": "No supported-route match is not a permanent legal impossibility."
+      },
+      "evaluated_at": "2026-08-05T10:02:00Z",
+      "snapshot_hash": "sha256:056b835bd0b9c75a291fbfae20616e22400bf1080444d080449ab4599e748a61"
+    }
+  }
+}

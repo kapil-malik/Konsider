@@ -1,0 +1,15 @@
+{
+  "schema_version": "household-profile-1.0",
+  "household_id": "fictional-household-river",
+  "partner_status": "SPOUSE",
+  "partner_accompanying": true,
+  "partner_work_intent": "WORK",
+  "dependants": [
+    {"role": "DEPENDENT_CHILD", "relocating": true, "age_band": "UNDER_18", "age_years": null}
+  ],
+  "unknown_fields": ["household.child_ages"],
+  "field_provenance": {
+    "household.partner_status": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"},
+    "household.dependants": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"}
+  }
+}

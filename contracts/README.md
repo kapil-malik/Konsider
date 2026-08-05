@@ -6,13 +6,19 @@ criterion-country outcomes. Unchanged source, observation, and score rows contin
 against v1. Producers own valid output; consumers negotiate compatible majors before joining or
 serving records. Published schemas are not silently weakened to accept invalid historical data.
 
-`contracts/schemas/v3` defines the active Phase 5 domain/release contract: release 5, catalog 3,
+`contracts/schemas/v3` defines the active Phase 5/6 domain and release contract: release 5,
+catalog 3,
 canonical geographic entities, entity-neutral observations/scores, versioned locality policies,
 replayable multiple-source lineage, preference presets, and API v2 assessment envelopes. Phase 6D
 adds an optional release-5.1 Opportunity Filter binding plus standalone filter definition,
-evidence, policy, source, coverage and future assessment contracts. The active release remains
-`2026-07-29.2` on release 5.0. Phase 6D fixtures remain synthetic and test-only; Phase 6E uses the
-contracts for a checksum-bound, inactive five-career-filter staged fragment.
+evidence, policy, source, coverage and future assessment contracts. The active release is
+`2026-08-04.1` on release 5.1.
+
+`contracts/schemas/v4` defines the inactive Phase 7 target contracts for applicant, household and
+scenario context; immutable effective snapshots; field privacy metadata; the three-item first-wave
+Typed Feasibility Check catalog; route/rule outcomes; sibling profile/feasibility assessments; and a
+standalone future release-6 TFC binding. It does not modify the active loader or OpenAPI surface,
+define scenario-metric results, bind production evidence or activate a release.
 
 FastAPI-generated `/openapi.json` is authoritative for HTTP request, response, and error shapes. It
 is generated from strict Pydantic transport models and exported at
@@ -25,3 +31,5 @@ is generated from strict Pydantic transport models and exported at
 - [Immutable release decision](../docs/architecture/decisions/001-immutable-release-artifacts.md)
 - [Opportunity Filter contracts](../docs/architecture/opportunity-filter-contracts.md)
 - [Opportunity Filter decision](../docs/architecture/decisions/010-opportunity-filters-as-filter-only-contracts.md)
+- [Typed Feasibility Check contracts](../docs/architecture/tfc-contracts.md)
+- [Profile and scenario contracts](../docs/architecture/profile-scenario-contracts.md)

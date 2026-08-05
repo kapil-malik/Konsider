@@ -82,6 +82,17 @@ The catalog is part of the immutable release and is covered by both its artifact
 release file-checksum map. The runtime has no mutable Opportunity Filter catalog alias. Historical
 release-scoped ordering catalogs under `data/catalogs/releases/` remain only for opening history.
 
+## Draft Phase 7 TFC extension
+
+Phase 7C defines `tfc-release-binding-1.0` as a standalone target for a future additive/major
+`konsider-release-6.0`. It binds a TFC catalog, destination route/rule evidence, policy bundles,
+source/legal manifest, coverage summary and validation report. Release 6 must retain the complete
+release-5.1 ranking and Opportunity Filter contract.
+
+No release-6 manifest, staged evidence or runtime loader exists yet. Profile inputs and TFC outcomes
+are request-time data and are prohibited from immutable releases. Active release `2026-08-04.1`
+remains unchanged. See [TFC contracts](../architecture/tfc-contracts.md).
+
 ## Checksums and replay
 
 `manifest.file_checksums` maps every release payload to SHA-256 over exact committed bytes.

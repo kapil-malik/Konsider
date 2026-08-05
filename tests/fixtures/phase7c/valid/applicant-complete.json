@@ -1,0 +1,31 @@
+{
+  "schema_version": "applicant-profile-1.0",
+  "profile_id": "fictional-profile-river",
+  "citizenships": ["IND"],
+  "country_of_residence": "IND",
+  "age_years": 31,
+  "date_of_birth": null,
+  "occupation": {"user_text": "Software engineer", "taxonomy_id": "isco08", "taxonomy_version": "2008", "code": "2512", "mapping_state": "MAPPED"},
+  "specialization": "Distributed systems",
+  "experience_years": 7.5,
+  "qualifications": [
+    {
+      "level": "MASTERS",
+      "field": {"user_text": "Computer science", "taxonomy_id": "isced-f-2013", "taxonomy_version": "2013", "code": "0613", "mapping_state": "MAPPED"},
+      "awarding_country": "IND",
+      "institution": "Fictional Northbridge Institute",
+      "completion_year": 2018,
+      "recognition_state": "NOT_ASSESSED"
+    }
+  ],
+  "professional_registrations": [],
+  "languages": [
+    {"language": "English", "evidence_type": "NAMED_TEST", "test_name": "Synthetic English Test", "level_or_score": "C1", "valid_until": "2027-12-31"}
+  ],
+  "unknown_fields": [],
+  "field_provenance": {
+    "applicant.citizenships": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"},
+    "applicant.occupation": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"},
+    "applicant.age_years": {"source": "USER_SUPPLIED", "captured_at": "2026-08-05T10:00:00Z"}
+  }
+}
