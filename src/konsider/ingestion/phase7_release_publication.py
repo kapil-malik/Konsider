@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import copy
 import json
 import os
@@ -24,6 +25,7 @@ from konsider.ingestion.tfc_release import (
 FINAL_RELEASE_ID = "2026-08-05.1"
 BASE_RELEASE_ID = "2026-08-04.1"
 RELEASE_SCHEMA_VERSION = "konsider-release-6.0"
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -262,3 +264,85 @@ __all__ = [
     "replay_release",
     "rollback_to_base",
 ]
+
+
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--release-root", type=Path, default=PROJECT_ROOT / "data" / "releases")
+    parser.add_argument(
+        "--report-root",
+        type=Path,
+        default=PROJECT_ROOT / "data" / "reports" / "phase7j-2026-08-05",
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    build = subparsers.add_parser("build")
+    build.add_argument(
+        "--production-capture",
+        type=Path,
+        default=(
+            PROJECT_ROOT / "data" / "reports" / "phase7f-2026-08-05" / "production-capture.json"
+        ),
+    )
+    build.add_argument("--release-id", default=FINAL_RELEASE_ID)
+    build.add_argument("--base-release-id", default=BASE_RELEASE_ID)
+    publish = subparsers.add_parser("publish")
+    publish.add_argument("--release-id", default=FINAL_RELEASE_ID)
+    activate = subparsers.add_parser("activate")
+    activate.add_argument("--release-id", default=FINAL_RELEASE_ID)
+    replay = subparsers.add_parser("replay")
+    replay.add_argument("--release-id", default=FINAL_RELEASE_ID)
+    replay.add_argument(
+        "--production-capture",
+        type=Path,
+        default=(
+            PROJECT_ROOT / "data" / "reports" / "phase7f-2026-08-05" / "production-capture.json"
+        ),
+    )
+    rollback = subparsers.add_parser("rollback")
+    rollback.add_argument("--release-id", default=BASE_RELEASE_ID)
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = _parse_args()
+    if args.command == "build":
+        path = build_release(
+            release_root=args.release_root,
+            production_capture=args.production_capture,
+            report_root=args.report_root,
+            release_id=args.release_id,
+            base_release_id=args.base_release_id,
+        )
+        result: Any = {"status": "BUILT", "path": str(path)}
+    elif args.command == "publish":
+        path = publish_release(
+            args.release_id,
+            release_root=args.release_root,
+            report_root=args.report_root,
+        )
+        result = {"status": "PUBLISHED", "path": str(path)}
+    elif args.command == "activate":
+        path = activate_release(
+            args.release_id,
+            release_root=args.release_root,
+            report_root=args.report_root,
+        )
+        result = {"status": "ACTIVE", "pointer": str(path)}
+    elif args.command == "replay":
+        mismatches = replay_release(
+            args.release_root / args.release_id,
+            production_capture=args.production_capture,
+        )
+        result = {
+            "status": "PASSED" if not mismatches else "FAILED",
+            "mismatched_files": list(mismatches),
+        }
+    else:
+        path = rollback_to_base(release_root=args.release_root, release_id=args.release_id)
+        result = {"status": "ROLLED_BACK", "pointer": str(path)}
+    print(json.dumps(result, sort_keys=True))
+    return 0 if result["status"] != "FAILED" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
