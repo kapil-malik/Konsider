@@ -150,7 +150,9 @@ def test_catalog_contains_exactly_three_inactive_route_checks() -> None:
     definitions = catalog["definitions"]
     assert {definition["id"] for definition in definitions} == APPROVED_FIRST_WAVE_IDS
     assert all(definition["check_kind"] == "RULE_ROUTE_MATCH" for definition in definitions)
-    assert all(definition["result_schema_id"] == "tfc-route-result-1.0" for definition in definitions)
+    assert all(
+        definition["result_schema_id"] == "tfc-route-result-1.0" for definition in definitions
+    )
     assert all(definition["filter_capability"] == "ASSESSMENT_ONLY" for definition in definitions)
     assert all(len(definition["supported_destination_codes"]) == 29 for definition in definitions)
 

@@ -93,7 +93,9 @@ def validate_applicant_profile(profile: Mapping[str, Any]) -> None:
     if any(not field.startswith("applicant.") for field in unknown):
         raise TfcContractError("Applicant unknown fields must use the applicant namespace.")
     if profile.get("date_of_birth") is not None and profile.get("age_years") is not None:
-        raise TfcContractError("Use age_years normally; date_of_birth is exception-only, not additive.")
+        raise TfcContractError(
+            "Use age_years normally; date_of_birth is exception-only, not additive."
+        )
 
 
 def validate_household_profile(profile: Mapping[str, Any]) -> None:
@@ -101,8 +103,8 @@ def validate_household_profile(profile: Mapping[str, Any]) -> None:
     unknown = set(profile["unknown_fields"])
     if any(not field.startswith("household.") for field in unknown):
         raise TfcContractError("Household unknown fields must use the household namespace.")
-    declared_size = 1 + int(profile["partner_status"] not in {"NONE", "UNKNOWN"}) + len(
-        profile["dependants"]
+    declared_size = (
+        1 + int(profile["partner_status"] not in {"NONE", "UNKNOWN"}) + len(profile["dependants"])
     )
     if declared_size > 20:
         raise TfcContractError("Declared household composition exceeds the supported boundary.")
@@ -181,10 +183,14 @@ def validate_route_result(result: Mapping[str, Any]) -> None:
         raise TfcContractError("Evaluated route identities must be unique.")
     if not set(matched).issubset(evaluated):
         raise TfcContractError("Matched routes must be identified in supported_routes_evaluated.")
-    if classification in {
-        RouteMatchClassification.SUPPORTED_ROUTE_MATCH,
-        RouteMatchClassification.CONDITIONAL_ROUTE_MATCH,
-    } and not matched:
+    if (
+        classification
+        in {
+            RouteMatchClassification.SUPPORTED_ROUTE_MATCH,
+            RouteMatchClassification.CONDITIONAL_ROUTE_MATCH,
+        }
+        and not matched
+    ):
         raise TfcContractError("Positive and conditional classifications require a matched route.")
     if classification == RouteMatchClassification.CONDITIONAL_ROUTE_MATCH and not (
         result["unknown_conditions"] or result["unmet_conditions"]
