@@ -294,6 +294,7 @@ def test_openapi_declares_only_the_final_public_routes_and_every_status() -> Non
         "/api/v2/comparisons",
         "/api/v2/countries/{country_code}/details",
         "/api/v2/opportunity-filters",
+        "/api/v2/tfcs",
     }
     serialized = str(schema)
     for status in (

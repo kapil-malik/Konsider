@@ -84,6 +84,16 @@
           "coverage": {
             "$ref": "#/components/schemas/CoverageAssessmentV2Response"
           },
+          "feasibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcAssessmentV2Response"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "locality": {
             "$ref": "#/components/schemas/ResponseLocalityAssessmentV2Response"
           },
@@ -738,6 +748,16 @@
       "CountryAssessmentsV2Response": {
         "additionalProperties": false,
         "properties": {
+          "feasibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcCountryAssessmentV2Response"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "locality": {
             "$ref": "#/components/schemas/CountryLocalityAssessmentResponse"
           },
@@ -798,6 +818,16 @@
             },
             "title": "Criteria",
             "type": "array"
+          },
+          "feasibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcCountryAssessmentV2Response"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "normalized_weights": {
             "additionalProperties": {
@@ -2692,6 +2722,1929 @@
         "title": "SourceMetadataResponse",
         "type": "object"
       },
+      "TfcApplicantContextRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "age_years": {
+            "anyOf": [
+              {
+                "maximum": 120.0,
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Age Years"
+          },
+          "citizenships": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 4,
+            "title": "Citizenships",
+            "type": "array"
+          },
+          "country_of_residence": {
+            "anyOf": [
+              {
+                "pattern": "^[A-Za-z]{3}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country Of Residence"
+          },
+          "experience_years": {
+            "anyOf": [
+              {
+                "maximum": 80.0,
+                "minimum": 0.0,
+                "multipleOf": 0.5,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Experience Years"
+          },
+          "occupation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcTaxonomyReferenceRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "qualifications": {
+            "items": {
+              "$ref": "#/components/schemas/TfcQualificationRequest"
+            },
+            "title": "Qualifications",
+            "type": "array"
+          },
+          "unknown_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unknown Fields",
+            "type": "array"
+          }
+        },
+        "title": "TfcApplicantContextRequest",
+        "type": "object"
+      },
+      "TfcAssessmentSelectionRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "household_context": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcHouseholdContextRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mode": {
+            "default": "ASSESS_ONLY",
+            "enum": [
+              "ASSESS_ONLY",
+              "REQUIRE_SUPPORTED_MATCH"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "profile_context": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcApplicantContextRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scenario_context": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcScenarioContextRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tfc_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 3,
+            "title": "Tfc Ids",
+            "type": "array"
+          }
+        },
+        "title": "TfcAssessmentSelectionRequest",
+        "type": "object"
+      },
+      "TfcAssessmentV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "countries": {
+            "items": {
+              "$ref": "#/components/schemas/TfcCountryAssessmentV2Response"
+            },
+            "title": "Countries",
+            "type": "array"
+          },
+          "execution_status": {
+            "enum": [
+              "NO_TFC_SELECTED",
+              "NOT_EXECUTED_NO_CONTEXT",
+              "EXECUTED"
+            ],
+            "title": "Execution Status",
+            "type": "string"
+          },
+          "filter_mode": {
+            "enum": [
+              "ASSESS_ONLY",
+              "REQUIRE_SUPPORTED_MATCH"
+            ],
+            "title": "Filter Mode",
+            "type": "string"
+          },
+          "input_required_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Input Required Fields",
+            "type": "array"
+          },
+          "matched_route_count": {
+            "minimum": 0.0,
+            "title": "Matched Route Count",
+            "type": "integer"
+          },
+          "metric_result_count": {
+            "minimum": 0.0,
+            "title": "Metric Result Count",
+            "type": "integer"
+          },
+          "no_change_affinity": {
+            "const": true,
+            "title": "No Change Affinity",
+            "type": "boolean"
+          },
+          "profile_context_status": {
+            "enum": [
+              "NO_PROFILE_CONTEXT",
+              "PARTIAL_PROFILE_CONTEXT",
+              "COMPLETE_PROFILE_CONTEXT"
+            ],
+            "title": "Profile Context Status",
+            "type": "string"
+          },
+          "profile_context_summary": {
+            "$ref": "#/components/schemas/TfcProfileContextSummaryV2Response"
+          },
+          "schema_version": {
+            "const": "tfc-engine-assessment-1.0",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "selected_tfc_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Selected Tfc Ids",
+            "type": "array"
+          },
+          "snapshot": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcSnapshotMetadataV2Response"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status_counts": {
+            "$ref": "#/components/schemas/TfcStatusCountsV2Response"
+          },
+          "warnings": {
+            "items": {
+              "$ref": "#/components/schemas/TfcWarningV2Response"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "schema_version",
+          "profile_context_status",
+          "execution_status",
+          "filter_mode",
+          "selected_tfc_ids",
+          "input_required_fields",
+          "status_counts",
+          "matched_route_count",
+          "metric_result_count",
+          "no_change_affinity",
+          "warnings",
+          "countries",
+          "profile_context_summary",
+          "snapshot"
+        ],
+        "title": "TfcAssessmentV2Response",
+        "type": "object"
+      },
+      "TfcBaseRankingReferenceV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "country_count": {
+            "minimum": 0.0,
+            "title": "Country Count",
+            "type": "integer"
+          },
+          "ordering_checksum": {
+            "title": "Ordering Checksum",
+            "type": "string"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "release_id",
+          "country_count",
+          "ordering_checksum"
+        ],
+        "title": "TfcBaseRankingReferenceV2Response",
+        "type": "object"
+      },
+      "TfcCatalogV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "activation_authorized": {
+            "const": false,
+            "title": "Activation Authorized",
+            "type": "boolean"
+          },
+          "api_contract_version": {
+            "const": "konsider-api-2.0",
+            "default": "konsider-api-2.0",
+            "title": "Api Contract Version",
+            "type": "string"
+          },
+          "available_modes": {
+            "items": {
+              "enum": [
+                "ASSESS_ONLY",
+                "REQUIRE_SUPPORTED_MATCH"
+              ],
+              "type": "string"
+            },
+            "title": "Available Modes",
+            "type": "array"
+          },
+          "candidate_status": {
+            "const": "draft",
+            "title": "Candidate Status",
+            "type": "string"
+          },
+          "catalog_schema_version": {
+            "title": "Catalog Schema Version",
+            "type": "string"
+          },
+          "default_mode": {
+            "const": "ASSESS_ONLY",
+            "title": "Default Mode",
+            "type": "string"
+          },
+          "definitions": {
+            "items": {
+              "$ref": "#/components/schemas/TfcDefinitionV2Response"
+            },
+            "title": "Definitions",
+            "type": "array"
+          },
+          "field_registry": {
+            "items": {
+              "$ref": "#/components/schemas/TfcFieldDefinitionV2Response"
+            },
+            "title": "Field Registry",
+            "type": "array"
+          },
+          "no_score_impact": {
+            "const": true,
+            "title": "No Score Impact",
+            "type": "boolean"
+          },
+          "persisted_server_side": {
+            "const": false,
+            "title": "Persisted Server Side",
+            "type": "boolean"
+          },
+          "release_id": {
+            "title": "Release Id",
+            "type": "string"
+          },
+          "release_schema_version": {
+            "title": "Release Schema Version",
+            "type": "string"
+          },
+          "scoring_method_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scoring Method Versions",
+            "type": "array"
+          },
+          "selection_is_explicit": {
+            "const": true,
+            "title": "Selection Is Explicit",
+            "type": "boolean"
+          },
+          "tfc_release_id": {
+            "title": "Tfc Release Id",
+            "type": "string"
+          },
+          "tfc_release_schema_version": {
+            "title": "Tfc Release Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "release_id",
+          "release_schema_version",
+          "catalog_schema_version",
+          "scoring_method_versions",
+          "tfc_release_id",
+          "tfc_release_schema_version",
+          "candidate_status",
+          "activation_authorized",
+          "available_modes",
+          "default_mode",
+          "selection_is_explicit",
+          "persisted_server_side",
+          "no_score_impact",
+          "definitions",
+          "field_registry"
+        ],
+        "title": "TfcCatalogV2Response",
+        "type": "object"
+      },
+      "TfcConditionEvaluationV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "blocking": {
+            "title": "Blocking",
+            "type": "boolean"
+          },
+          "condition_id": {
+            "title": "Condition Id",
+            "type": "string"
+          },
+          "field_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Field Ids",
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "MET",
+              "UNMET",
+              "UNKNOWN",
+              "NOT_APPLICABLE"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "condition_id",
+          "field_ids",
+          "status",
+          "blocking"
+        ],
+        "title": "TfcConditionEvaluationV2Response",
+        "type": "object"
+      },
+      "TfcCountryAssessmentV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "affinity_score_after": {
+            "title": "Affinity Score After",
+            "type": "number"
+          },
+          "affinity_score_before": {
+            "title": "Affinity Score Before",
+            "type": "number"
+          },
+          "base_rank": {
+            "minimum": 1.0,
+            "title": "Base Rank",
+            "type": "integer"
+          },
+          "country_code": {
+            "pattern": "^[A-Z]{3}$",
+            "title": "Country Code",
+            "type": "string"
+          },
+          "filtered_rank": {
+            "anyOf": [
+              {
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filtered Rank"
+          },
+          "no_change_affinity": {
+            "const": true,
+            "title": "No Change Affinity",
+            "type": "boolean"
+          },
+          "outcomes": {
+            "items": {
+              "$ref": "#/components/schemas/TfcOutcomeV2Response"
+            },
+            "title": "Outcomes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "country_code",
+          "base_rank",
+          "affinity_score_before",
+          "affinity_score_after",
+          "no_change_affinity",
+          "outcomes"
+        ],
+        "title": "TfcCountryAssessmentV2Response",
+        "type": "object"
+      },
+      "TfcDefinitionV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "applicable_purposes": {
+            "items": {
+              "enum": [
+                "WORK",
+                "STUDY",
+                "FAMILY",
+                "EXPLORATION"
+              ],
+              "type": "string"
+            },
+            "title": "Applicable Purposes",
+            "type": "array"
+          },
+          "check_kind": {
+            "enum": [
+              "RULE_ROUTE_MATCH",
+              "SCENARIO_METRIC"
+            ],
+            "title": "Check Kind",
+            "type": "string"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string"
+          },
+          "effective_from": {
+            "format": "date",
+            "title": "Effective From",
+            "type": "string"
+          },
+          "filter_capability": {
+            "enum": [
+              "ASSESS_ONLY",
+              "REQUIRE_SUPPORTED_MATCH_ALLOWED"
+            ],
+            "title": "Filter Capability",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "input_requirements": {
+            "items": {
+              "$ref": "#/components/schemas/TfcInputRequirementV2Response"
+            },
+            "title": "Input Requirements",
+            "type": "array"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Limitations",
+            "type": "array"
+          },
+          "no_score_impact": {
+            "const": true,
+            "title": "No Score Impact",
+            "type": "boolean"
+          },
+          "original_criterion_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Original Criterion Ids",
+            "type": "array"
+          },
+          "policy_id": {
+            "title": "Policy Id",
+            "type": "string"
+          },
+          "policy_version": {
+            "title": "Policy Version",
+            "type": "string"
+          },
+          "refresh_cadence": {
+            "title": "Refresh Cadence",
+            "type": "string"
+          },
+          "sort_order": {
+            "minimum": 1.0,
+            "title": "Sort Order",
+            "type": "integer"
+          },
+          "source_summary": {
+            "items": {
+              "$ref": "#/components/schemas/TfcSourceSummaryV2Response"
+            },
+            "title": "Source Summary",
+            "type": "array"
+          },
+          "stale_after": {
+            "format": "date",
+            "title": "Stale After",
+            "type": "string"
+          },
+          "supported_destination_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Supported Destination Codes",
+            "type": "array"
+          },
+          "supported_profile_boundary": {
+            "title": "Supported Profile Boundary",
+            "type": "string"
+          },
+          "user_question": {
+            "title": "User Question",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "display_name",
+          "original_criterion_ids",
+          "user_question",
+          "check_kind",
+          "supported_profile_boundary",
+          "supported_destination_codes",
+          "input_requirements",
+          "limitations",
+          "filter_capability",
+          "applicable_purposes",
+          "refresh_cadence",
+          "policy_id",
+          "policy_version",
+          "source_summary",
+          "effective_from",
+          "stale_after",
+          "sort_order",
+          "no_score_impact"
+        ],
+        "title": "TfcDefinitionV2Response",
+        "type": "object"
+      },
+      "TfcDependantRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "age_band": {
+            "enum": [
+              "UNDER_18",
+              "AGE_18_TO_20",
+              "AGE_21_TO_22",
+              "AGE_23_TO_25",
+              "OVER_25",
+              "UNKNOWN"
+            ],
+            "title": "Age Band",
+            "type": "string"
+          },
+          "age_years": {
+            "anyOf": [
+              {
+                "maximum": 120.0,
+                "minimum": 0.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Age Years"
+          },
+          "relocating": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relocating"
+          },
+          "role": {
+            "enum": [
+              "DEPENDENT_CHILD",
+              "STEPCHILD",
+              "OTHER_DEPENDANT"
+            ],
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "age_band"
+        ],
+        "title": "TfcDependantRequest",
+        "type": "object"
+      },
+      "TfcFieldDefinitionV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "consumer_tfc_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Consumer Tfc Ids",
+            "type": "array"
+          },
+          "data_type": {
+            "title": "Data Type",
+            "type": "string"
+          },
+          "default_retention": {
+            "enum": [
+              "TAB_MEMORY_ONLY",
+              "NEVER_RETAIN_BY_DEFAULT"
+            ],
+            "title": "Default Retention",
+            "type": "string"
+          },
+          "field_id": {
+            "title": "Field Id",
+            "type": "string"
+          },
+          "help_text": {
+            "title": "Help Text",
+            "type": "string"
+          },
+          "may_be_omitted": {
+            "title": "May Be Omitted",
+            "type": "boolean"
+          },
+          "may_be_stored_locally": {
+            "title": "May Be Stored Locally",
+            "type": "boolean"
+          },
+          "prompt": {
+            "title": "Prompt",
+            "type": "string"
+          },
+          "sensitivity": {
+            "enum": [
+              "LOW",
+              "MODERATE_PERSONAL",
+              "MODERATE_CONSEQUENTIAL",
+              "HIGH_PERSONAL",
+              "HIGH_CONSEQUENTIAL"
+            ],
+            "title": "Sensitivity",
+            "type": "string"
+          },
+          "validation": {
+            "title": "Validation",
+            "type": "string"
+          }
+        },
+        "required": [
+          "field_id",
+          "data_type",
+          "validation",
+          "sensitivity",
+          "default_retention",
+          "consumer_tfc_ids",
+          "prompt",
+          "help_text",
+          "may_be_omitted",
+          "may_be_stored_locally"
+        ],
+        "title": "TfcFieldDefinitionV2Response",
+        "type": "object"
+      },
+      "TfcHouseholdContextRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "dependants": {
+            "items": {
+              "$ref": "#/components/schemas/TfcDependantRequest"
+            },
+            "maxItems": 19,
+            "title": "Dependants",
+            "type": "array"
+          },
+          "partner_accompanying": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Partner Accompanying"
+          },
+          "partner_status": {
+            "default": "UNKNOWN",
+            "enum": [
+              "NONE",
+              "SPOUSE",
+              "CIVIL_PARTNER",
+              "UNMARRIED_PARTNER",
+              "UNKNOWN"
+            ],
+            "title": "Partner Status",
+            "type": "string"
+          },
+          "partner_work_intent": {
+            "default": "UNKNOWN",
+            "enum": [
+              "WORK",
+              "STUDY",
+              "NEITHER",
+              "UNKNOWN"
+            ],
+            "title": "Partner Work Intent",
+            "type": "string"
+          },
+          "unknown_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unknown Fields",
+            "type": "array"
+          }
+        },
+        "title": "TfcHouseholdContextRequest",
+        "type": "object"
+      },
+      "TfcInputRequirementV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "field_id": {
+            "title": "Field Id",
+            "type": "string"
+          },
+          "requirement": {
+            "enum": [
+              "ALWAYS_REQUIRED",
+              "CONDITIONALLY_REQUIRED",
+              "OPTIONAL_EXPLANATORY"
+            ],
+            "title": "Requirement",
+            "type": "string"
+          },
+          "when_equals": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "When Equals"
+          },
+          "when_field_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "When Field Id"
+          }
+        },
+        "required": [
+          "field_id",
+          "requirement",
+          "when_field_id",
+          "when_equals"
+        ],
+        "title": "TfcInputRequirementV2Response",
+        "type": "object"
+      },
+      "TfcIntendedStudyRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "completion_date": {
+            "format": "date",
+            "title": "Completion Date",
+            "type": "string"
+          },
+          "completion_state": {
+            "enum": [
+              "COMPLETED",
+              "CURRENT",
+              "PLANNED"
+            ],
+            "title": "Completion State",
+            "type": "string"
+          },
+          "duration_months": {
+            "maximum": 120.0,
+            "minimum": 1.0,
+            "title": "Duration Months",
+            "type": "integer"
+          },
+          "field": {
+            "$ref": "#/components/schemas/TfcTaxonomyReferenceRequest"
+          },
+          "institution": {
+            "$ref": "#/components/schemas/TfcTaxonomyReferenceRequest"
+          },
+          "mode": {
+            "enum": [
+              "IN_PERSON",
+              "HYBRID",
+              "ONLINE",
+              "UNKNOWN"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "qualification_level": {
+            "enum": [
+              "VOCATIONAL",
+              "BACHELORS",
+              "MASTERS",
+              "DOCTORATE",
+              "OTHER",
+              "UNKNOWN"
+            ],
+            "title": "Qualification Level",
+            "type": "string"
+          }
+        },
+        "required": [
+          "institution",
+          "qualification_level",
+          "field",
+          "duration_months",
+          "mode",
+          "completion_date",
+          "completion_state"
+        ],
+        "title": "TfcIntendedStudyRequest",
+        "type": "object"
+      },
+      "TfcJobOfferRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "employer_region_id": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employer Region Id"
+          },
+          "role": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Role"
+          },
+          "salary": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcMoneyRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sponsorship_state": {
+            "default": "UNKNOWN",
+            "enum": [
+              "CONFIRMED",
+              "NOT_CONFIRMED",
+              "NOT_APPLICABLE",
+              "UNKNOWN"
+            ],
+            "title": "Sponsorship State",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "PRESENT",
+              "ABSENT",
+              "UNKNOWN"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "state"
+        ],
+        "title": "TfcJobOfferRequest",
+        "type": "object"
+      },
+      "TfcMetricComponentV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "component_id": {
+            "title": "Component Id",
+            "type": "string"
+          },
+          "contribution_maximum": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contribution Maximum"
+          },
+          "contribution_minimum": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contribution Minimum"
+          },
+          "field_id": {
+            "title": "Field Id",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "EVALUATED",
+              "MISSING",
+              "INCOMPATIBLE_UNIT"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "component_id",
+          "field_id",
+          "status",
+          "contribution_minimum",
+          "contribution_maximum",
+          "unit"
+        ],
+        "title": "TfcMetricComponentV2Response",
+        "type": "object"
+      },
+      "TfcMetricResultV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Assumptions",
+            "type": "array"
+          },
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/TfcMetricComponentV2Response"
+            },
+            "title": "Components",
+            "type": "array"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "effective_from": {
+            "format": "date",
+            "title": "Effective From",
+            "type": "string"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "evidence_quality": {
+            "enum": [
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ],
+            "title": "Evidence Quality",
+            "type": "string"
+          },
+          "formula_type": {
+            "title": "Formula Type",
+            "type": "string"
+          },
+          "locality_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Locality Id"
+          },
+          "maximum": {
+            "title": "Maximum",
+            "type": "number"
+          },
+          "metric_id": {
+            "title": "Metric Id",
+            "type": "string"
+          },
+          "minimum": {
+            "title": "Minimum",
+            "type": "number"
+          },
+          "period": {
+            "enum": [
+              "NONE",
+              "HOURLY",
+              "MONTHLY",
+              "ANNUAL"
+            ],
+            "title": "Period",
+            "type": "string"
+          },
+          "result_type": {
+            "const": "SCENARIO_METRIC",
+            "title": "Result Type",
+            "type": "string"
+          },
+          "rounding": {
+            "additionalProperties": true,
+            "title": "Rounding",
+            "type": "object"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Source Ids",
+            "type": "array"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "result_type",
+          "metric_id",
+          "formula_type",
+          "value",
+          "minimum",
+          "maximum",
+          "unit",
+          "currency",
+          "period",
+          "components",
+          "assumptions",
+          "rounding",
+          "locality_id",
+          "source_ids",
+          "effective_from",
+          "effective_to",
+          "evidence_quality"
+        ],
+        "title": "TfcMetricResultV2Response",
+        "type": "object"
+      },
+      "TfcMoneyRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "minimum": 0.0,
+            "title": "Amount",
+            "type": "number"
+          },
+          "currency": {
+            "pattern": "^[A-Za-z]{3}$",
+            "title": "Currency",
+            "type": "string"
+          },
+          "period": {
+            "enum": [
+              "HOURLY",
+              "MONTHLY",
+              "ANNUAL"
+            ],
+            "title": "Period",
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "currency",
+          "period"
+        ],
+        "title": "TfcMoneyRequest",
+        "type": "object"
+      },
+      "TfcOutcomeV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "common_status": {
+            "enum": [
+              "EVALUATED",
+              "INPUT_REQUIRED",
+              "DESTINATION_EVIDENCE_INSUFFICIENT",
+              "UNSUPPORTED",
+              "NOT_APPLICABLE",
+              "EVALUATION_ERROR"
+            ],
+            "title": "Common Status",
+            "type": "string"
+          },
+          "country_code": {
+            "pattern": "^[A-Z]{3}$",
+            "title": "Country Code",
+            "type": "string"
+          },
+          "input_required_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Input Required Fields",
+            "type": "array"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reason Codes",
+            "type": "array"
+          },
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcRouteResultV2Response"
+              },
+              {
+                "$ref": "#/components/schemas/TfcMetricResultV2Response"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result"
+          },
+          "tfc_id": {
+            "title": "Tfc Id",
+            "type": "string"
+          },
+          "warnings": {
+            "items": {
+              "$ref": "#/components/schemas/TfcWarningV2Response"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "tfc_id",
+          "country_code",
+          "common_status",
+          "reason_codes",
+          "input_required_fields",
+          "result",
+          "warnings"
+        ],
+        "title": "TfcOutcomeV2Response",
+        "type": "object"
+      },
+      "TfcProfileContextSummaryV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "persisted_server_side": {
+            "const": false,
+            "title": "Persisted Server Side",
+            "type": "boolean"
+          },
+          "provided_layers": {
+            "items": {
+              "enum": [
+                "applicant",
+                "household",
+                "scenario"
+              ],
+              "type": "string"
+            },
+            "title": "Provided Layers",
+            "type": "array"
+          },
+          "returned_profile_values": {
+            "const": false,
+            "title": "Returned Profile Values",
+            "type": "boolean"
+          },
+          "unknown_field_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unknown Field Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "provided_layers",
+          "unknown_field_ids",
+          "returned_profile_values",
+          "persisted_server_side"
+        ],
+        "title": "TfcProfileContextSummaryV2Response",
+        "type": "object"
+      },
+      "TfcQualificationRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "awarding_country": {
+            "anyOf": [
+              {
+                "pattern": "^[A-Za-z]{3}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awarding Country"
+          },
+          "completion_year": {
+            "anyOf": [
+              {
+                "maximum": 2200.0,
+                "minimum": 1900.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completion Year"
+          },
+          "field": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcTaxonomyReferenceRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "institution": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Institution"
+          },
+          "level": {
+            "enum": [
+              "SECONDARY",
+              "VOCATIONAL",
+              "BACHELORS",
+              "MASTERS",
+              "DOCTORATE",
+              "OTHER",
+              "UNKNOWN"
+            ],
+            "title": "Level",
+            "type": "string"
+          },
+          "recognition_state": {
+            "anyOf": [
+              {
+                "enum": [
+                  "NOT_ASSESSED",
+                  "RECOGNIZED_BY_SOURCE",
+                  "UNRESOLVED"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recognition State"
+          }
+        },
+        "required": [
+          "level"
+        ],
+        "title": "TfcQualificationRequest",
+        "type": "object"
+      },
+      "TfcRouteEvaluationV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "classification": {
+            "enum": [
+              "MATCH",
+              "CONDITIONAL",
+              "NO_MATCH"
+            ],
+            "title": "Classification",
+            "type": "string"
+          },
+          "conditions": {
+            "items": {
+              "$ref": "#/components/schemas/TfcConditionEvaluationV2Response"
+            },
+            "title": "Conditions",
+            "type": "array"
+          },
+          "effective_from": {
+            "format": "date",
+            "title": "Effective From",
+            "type": "string"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "evidence_quality": {
+            "enum": [
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ],
+            "title": "Evidence Quality",
+            "type": "string"
+          },
+          "jurisdiction_id": {
+            "title": "Jurisdiction Id",
+            "type": "string"
+          },
+          "route_id": {
+            "title": "Route Id",
+            "type": "string"
+          },
+          "route_name": {
+            "title": "Route Name",
+            "type": "string"
+          },
+          "source_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Source Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "route_id",
+          "route_name",
+          "jurisdiction_id",
+          "classification",
+          "conditions",
+          "source_ids",
+          "effective_from",
+          "effective_to",
+          "evidence_quality"
+        ],
+        "title": "TfcRouteEvaluationV2Response",
+        "type": "object"
+      },
+      "TfcRouteResultV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "legal_impossibility_disclaimer": {
+            "title": "Legal Impossibility Disclaimer",
+            "type": "string"
+          },
+          "match_classification": {
+            "enum": [
+              "SUPPORTED_ROUTE_MATCH",
+              "CONDITIONAL_ROUTE_MATCH",
+              "NO_SUPPORTED_ROUTE_MATCH"
+            ],
+            "title": "Match Classification",
+            "type": "string"
+          },
+          "matched_route_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Matched Route Ids",
+            "type": "array"
+          },
+          "result_type": {
+            "const": "ROUTE_RULE",
+            "title": "Result Type",
+            "type": "string"
+          },
+          "route_inventory_complete": {
+            "title": "Route Inventory Complete",
+            "type": "boolean"
+          },
+          "routes": {
+            "items": {
+              "$ref": "#/components/schemas/TfcRouteEvaluationV2Response"
+            },
+            "title": "Routes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "result_type",
+          "match_classification",
+          "routes",
+          "matched_route_ids",
+          "route_inventory_complete",
+          "legal_impossibility_disclaimer"
+        ],
+        "title": "TfcRouteResultV2Response",
+        "type": "object"
+      },
+      "TfcScenarioContextRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "intended_occupation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcTaxonomyReferenceRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "intended_study": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcIntendedStudyRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "job_offer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcJobOfferRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "primary_route_id": {
+            "anyOf": [
+              {
+                "maxLength": 160,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Primary Route Id"
+          },
+          "purpose": {
+            "default": "EXPLORATION",
+            "enum": [
+              "WORK",
+              "STUDY",
+              "FAMILY",
+              "EXPLORATION"
+            ],
+            "title": "Purpose",
+            "type": "string"
+          },
+          "relocation_composition": {
+            "default": "UNKNOWN",
+            "enum": [
+              "APPLICANT_ONLY",
+              "WITH_PARTNER",
+              "WITH_DEPENDANTS",
+              "WITH_PARTNER_AND_DEPENDANTS",
+              "UNKNOWN"
+            ],
+            "title": "Relocation Composition",
+            "type": "string"
+          },
+          "target_country_codes": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 91,
+            "title": "Target Country Codes",
+            "type": "array"
+          },
+          "target_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Date"
+          },
+          "target_locality_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Target Locality Ids",
+            "type": "array"
+          },
+          "target_region_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Target Region Ids",
+            "type": "array"
+          },
+          "unknown_fields": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Unknown Fields",
+            "type": "array"
+          }
+        },
+        "title": "TfcScenarioContextRequest",
+        "type": "object"
+      },
+      "TfcSnapshotMetadataV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "base_ranking_reference": {
+            "$ref": "#/components/schemas/TfcBaseRankingReferenceV2Response"
+          },
+          "effective_profile_context_hash": {
+            "title": "Effective Profile Context Hash",
+            "type": "string"
+          },
+          "evaluation_date": {
+            "format": "date",
+            "title": "Evaluation Date",
+            "type": "string"
+          },
+          "persisted_server_side": {
+            "const": false,
+            "title": "Persisted Server Side",
+            "type": "boolean"
+          },
+          "policy_versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Policy Versions",
+            "type": "object"
+          },
+          "snapshot_id": {
+            "title": "Snapshot Id",
+            "type": "string"
+          },
+          "source_versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Source Versions",
+            "type": "object"
+          },
+          "tfc_release_id": {
+            "title": "Tfc Release Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "snapshot_id",
+          "tfc_release_id",
+          "policy_versions",
+          "source_versions",
+          "effective_profile_context_hash",
+          "evaluation_date",
+          "base_ranking_reference",
+          "persisted_server_side"
+        ],
+        "title": "TfcSnapshotMetadataV2Response",
+        "type": "object"
+      },
+      "TfcSourceSummaryV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "attribution": {
+            "title": "Attribution",
+            "type": "string"
+          },
+          "effective_from": {
+            "format": "date",
+            "title": "Effective From",
+            "type": "string"
+          },
+          "effective_to": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective To"
+          },
+          "publisher": {
+            "title": "Publisher",
+            "type": "string"
+          },
+          "source_id": {
+            "title": "Source Id",
+            "type": "string"
+          },
+          "verified_at": {
+            "format": "date",
+            "title": "Verified At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "publisher",
+          "verified_at",
+          "effective_from",
+          "effective_to",
+          "attribution"
+        ],
+        "title": "TfcSourceSummaryV2Response",
+        "type": "object"
+      },
+      "TfcStatusCountsV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "DESTINATION_EVIDENCE_INSUFFICIENT": {
+            "minimum": 0.0,
+            "title": "Destination Evidence Insufficient",
+            "type": "integer"
+          },
+          "EVALUATED": {
+            "minimum": 0.0,
+            "title": "Evaluated",
+            "type": "integer"
+          },
+          "EVALUATION_ERROR": {
+            "minimum": 0.0,
+            "title": "Evaluation Error",
+            "type": "integer"
+          },
+          "INPUT_REQUIRED": {
+            "minimum": 0.0,
+            "title": "Input Required",
+            "type": "integer"
+          },
+          "NOT_APPLICABLE": {
+            "minimum": 0.0,
+            "title": "Not Applicable",
+            "type": "integer"
+          },
+          "UNSUPPORTED": {
+            "minimum": 0.0,
+            "title": "Unsupported",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "EVALUATED",
+          "INPUT_REQUIRED",
+          "DESTINATION_EVIDENCE_INSUFFICIENT",
+          "UNSUPPORTED",
+          "NOT_APPLICABLE",
+          "EVALUATION_ERROR"
+        ],
+        "title": "TfcStatusCountsV2Response",
+        "type": "object"
+      },
+      "TfcTaxonomyReferenceRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "mapping_state": {
+            "enum": [
+              "MAPPED",
+              "UNRESOLVED",
+              "UNKNOWN"
+            ],
+            "title": "Mapping State",
+            "type": "string"
+          },
+          "taxonomy_id": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Taxonomy Id"
+          },
+          "taxonomy_version": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Taxonomy Version"
+          },
+          "user_text": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "User Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_text",
+          "mapping_state"
+        ],
+        "title": "TfcTaxonomyReferenceRequest",
+        "type": "object"
+      },
+      "TfcWarningV2Response": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "country_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country Code"
+          },
+          "record_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Record Ids",
+            "type": "array"
+          },
+          "tfc_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tfc Id"
+          }
+        },
+        "required": [
+          "code",
+          "tfc_id",
+          "country_code",
+          "record_ids"
+        ],
+        "title": "TfcWarningV2Response",
+        "type": "object"
+      },
       "V2ComparisonRequest": {
         "additionalProperties": false,
         "properties": {
@@ -2703,6 +4656,16 @@
             "minItems": 2,
             "title": "Country Codes",
             "type": "array"
+          },
+          "feasibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcAssessmentSelectionRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "opportunity_filters": {
             "anyOf": [
@@ -2750,6 +4713,16 @@
       "V2RankingRequest": {
         "additionalProperties": false,
         "properties": {
+          "feasibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcAssessmentSelectionRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "opportunity_filters": {
             "anyOf": [
               {
@@ -2799,6 +4772,16 @@
       "V2WeightSelection": {
         "additionalProperties": false,
         "properties": {
+          "feasibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcAssessmentSelectionRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "opportunity_filters": {
             "anyOf": [
               {
@@ -3175,6 +5158,54 @@
           }
         },
         "summary": "Rank countries with structured coverage, locality, and profile assessments"
+      }
+    },
+    "/api/v2/tfcs": {
+      "get": {
+        "operationId": "tfcs_api_v2_tfcs_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TfcCatalogV2Response"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Invalid request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unexpected internal failure"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Active release unavailable"
+          }
+        },
+        "summary": "Retrieve explicitly selectable typed feasibility checks"
       }
     }
   }

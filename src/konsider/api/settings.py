@@ -21,6 +21,7 @@ class ApiSettings:
     environment: str = "development"
     log_level: str = "INFO"
     cors_origins: tuple[str, ...] = ()
+    tfc_candidate_path: Path | None = None
 
     @classmethod
     def from_env(cls, environ: Mapping[str, str] | None = None) -> ApiSettings:
@@ -33,6 +34,14 @@ class ApiSettings:
             for origin in values.get("KONSIDER_CORS_ORIGINS", "").split(",")
             if origin.strip()
         )
+        default_tfc_candidate = (
+            PROJECT_ROOT
+            / "data"
+            / "reports"
+            / "phase7f-2026-08-05"
+            / "staged-release"
+            / "phase7f-first-wave-2026-08-05.6.0"
+        )
         return cls(
             release_root=release_root,
             active_release_path=_configured_path(
@@ -41,4 +50,7 @@ class ApiSettings:
             environment=values.get("KONSIDER_ENVIRONMENT", "development"),
             log_level=values.get("KONSIDER_LOG_LEVEL", "INFO").upper(),
             cors_origins=origins,
+            tfc_candidate_path=_configured_path(
+                values.get("KONSIDER_TFC_CANDIDATE_PATH"), default_tfc_candidate
+            ),
         )

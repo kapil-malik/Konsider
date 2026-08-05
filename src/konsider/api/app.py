@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from konsider.api.dependencies import get_recommendation_service
@@ -18,12 +18,15 @@ from konsider.api.models.v2 import (
     HealthV2Response,
     OpportunityFilterCatalogV2Response,
     RankingV2Response,
+    TfcCatalogV2Response,
+    TfcAssessmentSelectionRequest,
     V2ComparisonRequest,
     V2RankingRequest,
     V2WeightSelection,
 )
 from konsider.api.opportunity_filter_service import OpportunityFilterService
 from konsider.api.settings import ApiSettings
+from konsider.api.tfc_service import TfcApiService
 from konsider.api.v2_service import RecommendationService
 from konsider.ingestion.current_release import CurrentReleaseError, CurrentReleaseRepository
 
@@ -46,7 +49,15 @@ def _default_service_factory(settings: ApiSettings) -> RecommendationService:
         if "opportunity_filters" in release.manifest
         else OpportunityFilterService.empty()
     )
-    return RecommendationService(release, opportunity_filters)
+    try:
+        tfc_service = (
+            TfcApiService.from_candidate(settings.tfc_candidate_path, release.manifest)
+            if settings.tfc_candidate_path is not None
+            else TfcApiService.unavailable()
+        )
+    except Exception as exc:
+        tfc_service = TfcApiService.unavailable(str(exc))
+    return RecommendationService(release, opportunity_filters, tfc_service)
 
 
 def _opportunity_filter_ids(payload: V2WeightSelection) -> list[str]:
@@ -55,6 +66,33 @@ def _opportunity_filter_ids(payload: V2WeightSelection) -> list[str]:
         if payload.opportunity_filters is not None
         else []
     )
+
+
+def _feasibility(payload: V2WeightSelection) -> dict | None:
+    selection = payload.feasibility
+    if selection is None or not selection.tfc_ids:
+        return None
+    context = {}
+    for request_name, engine_name in (
+        ("profile_context", "applicant"),
+        ("household_context", "household"),
+        ("scenario_context", "scenario"),
+    ):
+        layer = getattr(selection, request_name)
+        if layer is not None:
+            context[engine_name] = layer.model_dump(mode="json", exclude_unset=True)
+    return {
+        "tfc_ids": selection.tfc_ids,
+        "mode": selection.mode,
+        "context": context or None,
+    }
+
+
+def _protect_profile_response(response: Response, selection: TfcAssessmentSelectionRequest | None):
+    if selection is not None and selection.tfc_ids:
+        response.headers["Cache-Control"] = "private, no-store"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
 
 
 def create_app(
@@ -84,6 +122,16 @@ def create_app(
     )
     application.state.settings = resolved_settings
     register_exception_handlers(application)
+
+    @application.middleware("http")
+    async def private_post_responses(request, call_next):
+        response = await call_next(request)
+        if request.method == "POST" and request.url.path.startswith("/api/v2/"):
+            response.headers["Cache-Control"] = "private, no-store"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+        return response
+
     if resolved_settings.cors_origins:
         application.add_middleware(
             CORSMiddleware,
@@ -124,61 +172,82 @@ def create_app(
             current.opportunity_filter_catalog()
         )
 
+    @application.get(
+        "/api/v2/tfcs",
+        response_model=TfcCatalogV2Response,
+        responses=ERROR_RESPONSES,
+        summary="Retrieve explicitly selectable typed feasibility checks",
+    )
+    def tfcs(current: RecommendationService = Depends(get_recommendation_service)):
+        return TfcCatalogV2Response.model_validate(current.tfc_catalog())
+
     @application.post(
         "/api/v2/rankings",
         response_model=RankingV2Response,
+        response_model_exclude_unset=True,
         responses=ERROR_RESPONSES,
         summary="Rank countries with structured coverage, locality, and profile assessments",
     )
     def rankings(
         payload: V2RankingRequest,
+        response: Response,
         current: RecommendationService = Depends(get_recommendation_service),
     ):
+        _protect_profile_response(response, payload.feasibility)
         return RankingV2Response.model_validate(
             current.rank(
                 payload.weights,
                 preference_preset_id=payload.preference_preset_id,
                 top_k=payload.top_k,
                 opportunity_filter_ids=_opportunity_filter_ids(payload),
+                feasibility=_feasibility(payload),
             )
         )
 
     @application.post(
         "/api/v2/comparisons",
         response_model=ComparisonV2Response,
+        response_model_exclude_unset=True,
         responses={404: {"model": ErrorResponse}, **ERROR_RESPONSES},
         summary="Compare countries without client-side coverage or locality logic",
     )
     def comparisons(
         payload: V2ComparisonRequest,
+        response: Response,
         current: RecommendationService = Depends(get_recommendation_service),
     ):
+        _protect_profile_response(response, payload.feasibility)
         return ComparisonV2Response.model_validate(
             current.compare(
                 payload.country_codes,
                 payload.weights,
                 preference_preset_id=payload.preference_preset_id,
                 opportunity_filter_ids=_opportunity_filter_ids(payload),
+                feasibility=_feasibility(payload),
             )
         )
 
     @application.post(
         "/api/v2/countries/{country_code}/details",
         response_model=CountryDetailsV2Response,
+        response_model_exclude_unset=True,
         responses={404: {"model": ErrorResponse}, **ERROR_RESPONSES},
         summary="Retrieve country evidence in the context of one weight selection",
     )
     def country_details(
         country_code: str,
         payload: V2WeightSelection,
+        response: Response,
         current: RecommendationService = Depends(get_recommendation_service),
     ):
+        _protect_profile_response(response, payload.feasibility)
         return CountryDetailsV2Response.model_validate(
             current.country_details(
                 country_code.upper(),
                 payload.weights,
                 preference_preset_id=payload.preference_preset_id,
                 opportunity_filter_ids=_opportunity_filter_ids(payload),
+                feasibility=_feasibility(payload),
             )
         )
 

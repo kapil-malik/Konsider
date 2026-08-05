@@ -7,6 +7,7 @@ from math import isfinite
 from typing import Any
 
 from konsider.api.opportunity_filter_service import OpportunityFilterService
+from konsider.api.tfc_service import TfcApiService
 from konsider.domain.locality_models import Phase5Contribution, Phase5RankingResult
 from konsider.domain.phase5_ranking import Phase5RankingError, rank_schema5_release
 from konsider.exceptions import (
@@ -54,9 +55,11 @@ class RecommendationService:
         self,
         release: LoadedCurrentRelease,
         opportunity_filters: OpportunityFilterService | None = None,
+        tfc_service: TfcApiService | None = None,
     ) -> None:
         self.release = release
         self.opportunity_filters = opportunity_filters or OpportunityFilterService.empty()
+        self.tfc_service = tfc_service or TfcApiService.unavailable()
 
     @property
     def release_id(self) -> str:
@@ -85,6 +88,9 @@ class RecommendationService:
             ),
             "ready_for_rankings": bool(self.release.validation["product_ready"]),
         }
+
+    def tfc_catalog(self) -> dict[str, Any]:
+        return self.tfc_service.catalog(self._version_fields())
 
     def _catalog_criterion(self, criterion: dict[str, Any]) -> dict[str, Any]:
         lineages = {row["lineage_id"]: row for row in self.release.artifacts.source_lineages}
@@ -496,6 +502,7 @@ class RecommendationService:
         preference_preset_id: str | None,
         top_k: int | None,
         opportunity_filter_ids: Sequence[str] = (),
+        feasibility: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
         resolved_weights, resolved_preset = self._resolve_weights(weights, preference_preset_id)
         try:
@@ -506,8 +513,16 @@ class RecommendationService:
             )
         except Phase5RankingError as exc:
             raise InvalidWeightError(str(exc)) from exc
-        return self._apply_opportunity_filters(
+        payload = self._apply_opportunity_filters(
             self._ranking_payload(result), opportunity_filter_ids, top_k
+        )
+        if feasibility is None or not feasibility["tfc_ids"]:
+            return payload
+        return self.tfc_service.assess(
+            payload,
+            selected_tfc_ids=feasibility["tfc_ids"],
+            mode=feasibility["mode"],
+            context=feasibility["context"],
         )
 
     def _requested_country_ids(self, country_codes: Sequence[str]) -> list[str]:
@@ -524,6 +539,7 @@ class RecommendationService:
         *,
         preference_preset_id: str | None,
         opportunity_filter_ids: Sequence[str] = (),
+        feasibility: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
         requested_ids = self._requested_country_ids(country_codes)
         ranking = self.rank(
@@ -531,6 +547,7 @@ class RecommendationService:
             preference_preset_id=preference_preset_id,
             top_k=None,
             opportunity_filter_ids=opportunity_filter_ids,
+            feasibility=feasibility,
         )
         canonical = (
             ranking
@@ -540,6 +557,7 @@ class RecommendationService:
                 preference_preset_id=preference_preset_id,
                 top_k=None,
                 opportunity_filter_ids=(),
+                feasibility=feasibility,
             )
         )
         ranked = {row["country"]["entity_id"]: row for row in ranking["rankings"]}
@@ -586,6 +604,11 @@ class RecommendationService:
                                 "passes": False,
                                 "filter_evidence": summaries,
                             },
+                            **(
+                                {"feasibility": row["assessments"]["feasibility"]}
+                                if "feasibility" in row["assessments"]
+                                else {}
+                            ),
                         },
                     }
                 )
@@ -678,12 +701,14 @@ class RecommendationService:
         *,
         preference_preset_id: str | None,
         opportunity_filter_ids: Sequence[str] = (),
+        feasibility: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
         comparison = self.compare(
             [country_code, self._comparison_peer(country_code)],
             weights,
             preference_preset_id=preference_preset_id,
             opportunity_filter_ids=opportunity_filter_ids,
+            feasibility=feasibility,
         )
         country_id = f"country:{country_code}"
         country = next(
@@ -718,6 +743,11 @@ class RecommendationService:
             "country": country["country"],
             "criteria": details,
             "opportunity_filters": country["assessments"]["opportunity"]["filter_evidence"],
+            **(
+                {"feasibility": country["assessments"]["feasibility"]}
+                if "feasibility" in country["assessments"]
+                else {}
+            ),
         }
 
     def _comparison_peer(self, country_code: str) -> str:

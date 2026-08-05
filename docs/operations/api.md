@@ -1,6 +1,6 @@
 # Konsider API operations and contract
 
-Status: authoritative active Phase 6 public contract
+Status: authoritative Phase 7G additive v2 contract
 
 Contract version: `konsider-api-2.0`
 
@@ -30,6 +30,7 @@ The default service is `http://127.0.0.1:8000`. Swagger UI is at `/docs` and Ope
 | `KONSIDER_ENVIRONMENT` | Deployment label. | `development` |
 | `KONSIDER_LOG_LEVEL` | Python log level. | `INFO` |
 | `KONSIDER_CORS_ORIGINS` | Comma-separated browser origins. | none |
+| `KONSIDER_TFC_CANDIDATE_PATH` | Validated draft release-6 TFC candidate. | Phase 7F staged candidate |
 
 Neither catalog accepts a runtime override. Catalog 3 and the sibling Opportunity Filter catalog
 are bound to and checksummed by the selected immutable release.
@@ -41,11 +42,62 @@ are bound to and checksummed by the selected immutable release.
 | `GET` | `/api/v2/health` | Report active-release readiness. |
 | `GET` | `/api/v2/catalog` | Return criteria, canonical countries, and preference presets. |
 | `GET` | `/api/v2/opportunity-filters` | Return the loaded filter-only catalog and coverage summary. |
+| `GET` | `/api/v2/tfcs` | Return selectable TFCs, input requirements and the field registry. |
 | `POST` | `/api/v2/rankings` | Rank countries with structured assessments. |
 | `POST` | `/api/v2/comparisons` | Compare two to ten countries. |
 | `POST` | `/api/v2/countries/{country_code}/details` | Return contextual country evidence. |
 
 There are no public v1 routes or aliases.
+
+## Typed Feasibility Checks
+
+Phase 7G evolves API v2 additively. Ranking, comparison and details accept an optional
+`feasibility` object. TFC selection is explicit; purpose never silently selects checks. Omission,
+or an empty `tfc_ids` list, takes the legacy path and omits all feasibility response fields.
+
+```json
+{
+  "preference_preset_id": "equal_weight_mvp",
+  "top_k": 10,
+  "feasibility": {
+    "tfc_ids": ["skilled_work_route_feasibility"],
+    "mode": "ASSESS_ONLY",
+    "profile_context": {
+      "citizenships": ["IND"],
+      "occupation": {
+        "user_text": "Fictional systems analyst",
+        "taxonomy_id": "isco08",
+        "taxonomy_version": "2008",
+        "code": "2511",
+        "mapping_state": "MAPPED"
+      },
+      "qualifications": [{"level": "MASTERS"}]
+    },
+    "scenario_context": {
+      "purpose": "WORK",
+      "target_country_codes": ["DEU"],
+      "target_date": "2026-08-05",
+      "job_offer": {"state": "PRESENT"}
+    }
+  }
+}
+```
+
+The API returns a response-level `assessments.feasibility` plus matching per-country feasibility
+assessments. Outcomes distinguish evaluated, input-required, evidence-insufficient, unsupported
+and not-applicable states. Route results include matched route IDs, condition states, sources and
+effective dates. The response contains a context hash and sanitized snapshot metadata, never the
+submitted values. Missing TFC inputs are normally a successful `INPUT_REQUIRED` outcome.
+
+`ASSESS_ONLY` is the default. `REQUIRE_SUPPORTED_MATCH` is represented for future policies, but
+all three first-wave definitions are assessment-only; selecting filter mode returns
+`feasibility_filter_not_allowed`. TFCs never alter weights, contributions, affinity scores, PCC,
+LSC or OFC results.
+
+`GET /api/v2/tfcs` is the source of form labels, requirements, supported destinations,
+sensitivity/retention hints, limitations, source summaries and filter capability. The first wave
+contains three `RULE_ROUTE_MATCH` checks. `SCENARIO_METRIC` remains a typed response family but has
+no production first-wave definition.
 
 ## Weight selection
 
@@ -149,6 +201,11 @@ Opportunity Filter selection errors use stable 422 codes:
 - `unknown_opportunity_filter`;
 - `opportunity_filter_not_active`; and
 - `invalid_opportunity_filter_selection`.
+
+Feasibility errors use stable codes: `invalid_profile_field`,
+`unsupported_taxonomy_version`, `selected_tfc_unavailable`,
+`unsupported_feasibility_mode`, `feasibility_filter_not_allowed`,
+`invalid_profile_context`, and `tfc_candidate_unavailable`.
 
 The bundle is parsed and cross-validated once at application startup. Request-time assessment uses
 indexed definitions and country evidence only; it performs no source I/O. Opportunity Filters do

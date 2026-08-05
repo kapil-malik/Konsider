@@ -275,6 +275,7 @@ def test_release5_0_compatibility_and_phase6g_api_surface_is_additive() -> None:
         "locality",
         "profile",
         "opportunity",
+        "feasibility",
     }
 
     openapi = json.loads(

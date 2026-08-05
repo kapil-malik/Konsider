@@ -1,6 +1,6 @@
 # First-wave Typed Feasibility Check evidence
 
-Status: Phase 7F staged candidate; not active and not exposed through API or UI
+Status: Phase 7F candidate exposed through the Phase 7G stateless API; not active and no UI
 
 ## Frozen scope
 

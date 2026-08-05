@@ -1,6 +1,6 @@
 # Typed Feasibility Check contracts
 
-Status: Phase 7E synthetic assessment engine implemented; API/UI and production evidence not implemented
+Status: Phase 7G stateless API implemented over the Phase 7F candidate; UI and activation pending
 
 ## Boundary
 
@@ -145,10 +145,9 @@ with fictional artifacts only. It exposes no publication or activation path.
 
 ## Compatibility
 
-Historical v1-v3 schemas are unchanged. Contract tests load the active release through the existing
-repository, validate its generation-3 manifest and assert that the active OpenAPI document exposes
-no TFC path or model. Current ranking, OFC, PCC, locality, API and UI behavior are unchanged.
-
-The Phase 7E engine is not wired into FastAPI. See the
-[domain behavior](../product/tfc-assessment-engine.md) and
-[performance report](../product/tfc-assessment-performance.md).
+Historical v1-v3 schemas and the active schema-5.1 release are unchanged. Phase 7G adds optional
+API v2 request and response fields plus `/api/v2/tfcs`; omitted or empty selection preserves the
+legacy payload. The release-6 candidate remains separately loaded, draft and non-active. See the
+[domain behavior](../product/tfc-assessment-engine.md),
+[performance report](../product/tfc-assessment-performance.md) and
+[Phase 7G report](../history/phase7g-stateless-tfc-api.md).

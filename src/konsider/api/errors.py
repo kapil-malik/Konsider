@@ -14,10 +14,15 @@ from konsider.exceptions import (
     CountryNotFoundError,
     CriterionNotReadyError,
     InvalidTopKError,
+    InvalidProfileContextError,
     InvalidOpportunityFilterSelectionError,
     InvalidWeightError,
     OpportunityFilterNotActiveError,
     PreferencePresetNotFoundError,
+    TfcCandidateUnavailableError,
+    TfcFilterNotAllowedError,
+    UnknownTfcError,
+    UnsupportedTaxonomyVersionError,
     UnknownCriterionError,
     UnknownOpportunityFilterError,
 )
@@ -49,6 +54,16 @@ def error_response(
 def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(RequestValidationError)
     async def request_validation_handler(request: Request, exc: RequestValidationError):
+        locations = [tuple(str(part) for part in item["loc"]) for item in exc.errors()]
+        if any("feasibility" in location and location[-1] == "mode" for location in locations):
+            code = "unsupported_feasibility_mode"
+            message = "The requested feasibility mode is unsupported."
+        elif any("feasibility" in location for location in locations):
+            code = "invalid_profile_field"
+            message = "One or more feasibility profile fields are invalid."
+        else:
+            code = "request_validation_failed"
+            message = "The request payload is invalid."
         details = {
             "errors": [
                 {
@@ -59,8 +74,57 @@ def register_exception_handlers(app: FastAPI) -> None:
                 for item in exc.errors()
             ]
         }
+        return error_response(request, 422, code, message, details)
+
+    @app.exception_handler(UnknownTfcError)
+    async def unknown_tfc_handler(request: Request, exc: UnknownTfcError):
         return error_response(
-            request, 422, "request_validation_failed", "The request payload is invalid.", details
+            request,
+            422,
+            "selected_tfc_unavailable",
+            "One or more selected feasibility checks are unavailable.",
+            {"tfc_ids": exc.tfc_ids},
+        )
+
+    @app.exception_handler(TfcFilterNotAllowedError)
+    async def tfc_filter_not_allowed_handler(request: Request, exc: TfcFilterNotAllowedError):
+        return error_response(
+            request,
+            422,
+            "feasibility_filter_not_allowed",
+            "The selected feasibility checks are assessment-only.",
+            {"tfc_ids": exc.tfc_ids},
+        )
+
+    @app.exception_handler(UnsupportedTaxonomyVersionError)
+    async def unsupported_taxonomy_handler(request: Request, exc: UnsupportedTaxonomyVersionError):
+        return error_response(
+            request,
+            422,
+            "unsupported_taxonomy_version",
+            "A mapped profile field uses an unsupported taxonomy version.",
+            {"field_ids": exc.field_ids},
+        )
+
+    @app.exception_handler(InvalidProfileContextError)
+    async def invalid_profile_handler(request: Request, exc: InvalidProfileContextError):
+        return error_response(
+            request,
+            422,
+            "invalid_profile_context",
+            "The supplied profile context cannot be assessed.",
+        )
+
+    @app.exception_handler(TfcCandidateUnavailableError)
+    async def tfc_candidate_unavailable_handler(
+        request: Request, exc: TfcCandidateUnavailableError
+    ):
+        LOGGER.error("TFC candidate unavailable")
+        return error_response(
+            request,
+            503,
+            "tfc_candidate_unavailable",
+            "The staged feasibility evidence is unavailable.",
         )
 
     @app.exception_handler(UnknownCriterionError)

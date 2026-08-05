@@ -1,6 +1,6 @@
 # Profile privacy and retention
 
-Status: Phase 7C policy contract
+Status: Phase 7G transport enforcement implemented; Phase 7H browser retention pending
 
 ## Defaults
 
@@ -16,6 +16,13 @@ Profile values are prohibited in:
 
 Operational telemetry may record schema versions, selected TFC IDs and aggregate outcome statuses,
 but not field values, unknown-field lists or snapshot contents.
+
+Phase 7G accepts profile-bearing data only in POST bodies. API request bodies are not logged, error
+payloads omit submitted values, and all API v2 POST responses carry `Cache-Control: private,
+no-store`, `Pragma: no-cache` and `Expires: 0`. Runtime assessment performs no profile writes. The
+returned snapshot is metadata only: it contains IDs, policy/source versions, an opaque context
+hash, evaluation date and base-ranking reference. It does not contain the effective context or
+country-outcome copy held by the domain snapshot during the request.
 
 ## Sensitivity and minimization
 

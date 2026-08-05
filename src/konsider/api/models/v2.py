@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import date
+from typing import Any, Literal
 
 from pydantic import Field, field_validator, model_validator
 
@@ -62,10 +63,170 @@ class OpportunityFilterSelection(ApiModel):
         return sorted(value)
 
 
+class TfcTaxonomyReferenceRequest(ApiModel):
+    user_text: str = Field(min_length=1, max_length=200)
+    taxonomy_id: str | None = Field(default=None, min_length=1, max_length=80)
+    taxonomy_version: str | None = Field(default=None, min_length=1, max_length=40)
+    code: str | None = Field(default=None, min_length=1, max_length=80)
+    mapping_state: Literal["MAPPED", "UNRESOLVED", "UNKNOWN"]
+
+
+class TfcMoneyRequest(ApiModel):
+    amount: float = Field(ge=0)
+    currency: str = Field(pattern=r"^[A-Za-z]{3}$")
+    period: Literal["HOURLY", "MONTHLY", "ANNUAL"]
+
+    @field_validator("currency")
+    @classmethod
+    def normalize_currency(cls, value: str) -> str:
+        return value.upper()
+
+
+class TfcQualificationRequest(ApiModel):
+    level: Literal[
+        "SECONDARY",
+        "VOCATIONAL",
+        "BACHELORS",
+        "MASTERS",
+        "DOCTORATE",
+        "OTHER",
+        "UNKNOWN",
+    ]
+    field: TfcTaxonomyReferenceRequest | None = None
+    awarding_country: str | None = Field(default=None, pattern=r"^[A-Za-z]{3}$")
+    institution: str | None = Field(default=None, max_length=200)
+    completion_year: int | None = Field(default=None, ge=1900, le=2200)
+    recognition_state: Literal["NOT_ASSESSED", "RECOGNIZED_BY_SOURCE", "UNRESOLVED"] | None = None
+
+    @field_validator("awarding_country")
+    @classmethod
+    def normalize_awarding_country(cls, value: str | None) -> str | None:
+        return value.upper() if value is not None else None
+
+
+class TfcApplicantContextRequest(ApiModel):
+    citizenships: list[str] = Field(default_factory=list, max_length=4)
+    country_of_residence: str | None = Field(default=None, pattern=r"^[A-Za-z]{3}$")
+    age_years: int | None = Field(default=None, ge=0, le=120)
+    occupation: TfcTaxonomyReferenceRequest | None = None
+    experience_years: float | None = Field(default=None, ge=0, le=80, multiple_of=0.5)
+    qualifications: list[TfcQualificationRequest] = Field(default_factory=list)
+    unknown_fields: list[str] = Field(default_factory=list)
+
+    @field_validator("citizenships")
+    @classmethod
+    def normalize_citizenships(cls, value: list[str]) -> list[str]:
+        normalized = [item.upper() for item in value]
+        if any(len(item) != 3 or not item.isalpha() for item in normalized):
+            raise ValueError("Citizenships must use ISO3 country codes.")
+        if len(normalized) != len(set(normalized)):
+            raise ValueError("Citizenships must be unique.")
+        return sorted(normalized)
+
+    @field_validator("country_of_residence")
+    @classmethod
+    def normalize_residence(cls, value: str | None) -> str | None:
+        return value.upper() if value is not None else None
+
+
+class TfcDependantRequest(ApiModel):
+    role: Literal["DEPENDENT_CHILD", "STEPCHILD", "OTHER_DEPENDANT"]
+    relocating: bool | None = None
+    age_band: Literal[
+        "UNDER_18",
+        "AGE_18_TO_20",
+        "AGE_21_TO_22",
+        "AGE_23_TO_25",
+        "OVER_25",
+        "UNKNOWN",
+    ]
+    age_years: int | None = Field(default=None, ge=0, le=120)
+
+
+class TfcHouseholdContextRequest(ApiModel):
+    partner_status: Literal["NONE", "SPOUSE", "CIVIL_PARTNER", "UNMARRIED_PARTNER", "UNKNOWN"] = (
+        "UNKNOWN"
+    )
+    partner_accompanying: bool | None = None
+    partner_work_intent: Literal["WORK", "STUDY", "NEITHER", "UNKNOWN"] = "UNKNOWN"
+    dependants: list[TfcDependantRequest] = Field(default_factory=list, max_length=19)
+    unknown_fields: list[str] = Field(default_factory=list)
+
+
+class TfcJobOfferRequest(ApiModel):
+    state: Literal["PRESENT", "ABSENT", "UNKNOWN"]
+    role: str | None = Field(default=None, max_length=200)
+    employer_region_id: str | None = Field(default=None, max_length=120)
+    sponsorship_state: Literal["CONFIRMED", "NOT_CONFIRMED", "NOT_APPLICABLE", "UNKNOWN"] = (
+        "UNKNOWN"
+    )
+    salary: TfcMoneyRequest | None = None
+
+
+class TfcIntendedStudyRequest(ApiModel):
+    institution: TfcTaxonomyReferenceRequest
+    qualification_level: Literal[
+        "VOCATIONAL", "BACHELORS", "MASTERS", "DOCTORATE", "OTHER", "UNKNOWN"
+    ]
+    field: TfcTaxonomyReferenceRequest
+    duration_months: int = Field(ge=1, le=120)
+    mode: Literal["IN_PERSON", "HYBRID", "ONLINE", "UNKNOWN"]
+    completion_date: date
+    completion_state: Literal["COMPLETED", "CURRENT", "PLANNED"]
+
+
+class TfcScenarioContextRequest(ApiModel):
+    purpose: Literal["WORK", "STUDY", "FAMILY", "EXPLORATION"] = "EXPLORATION"
+    target_date: date | None = None
+    target_country_codes: list[str] = Field(default_factory=list, max_length=91)
+    target_region_ids: list[str] = Field(default_factory=list)
+    target_locality_ids: list[str] = Field(default_factory=list)
+    job_offer: TfcJobOfferRequest | None = None
+    intended_occupation: TfcTaxonomyReferenceRequest | None = None
+    intended_study: TfcIntendedStudyRequest | None = None
+    primary_route_id: str | None = Field(default=None, max_length=160)
+    relocation_composition: Literal[
+        "APPLICANT_ONLY",
+        "WITH_PARTNER",
+        "WITH_DEPENDANTS",
+        "WITH_PARTNER_AND_DEPENDANTS",
+        "UNKNOWN",
+    ] = "UNKNOWN"
+    unknown_fields: list[str] = Field(default_factory=list)
+
+    @field_validator("target_country_codes")
+    @classmethod
+    def normalize_target_countries(cls, value: list[str]) -> list[str]:
+        normalized = [item.upper() for item in value]
+        if any(len(item) != 3 or not item.isalpha() for item in normalized):
+            raise ValueError("Target destinations must use ISO3 country codes.")
+        if len(normalized) != len(set(normalized)):
+            raise ValueError("Target destinations must be unique.")
+        return sorted(normalized)
+
+
+class TfcAssessmentSelectionRequest(ApiModel):
+    tfc_ids: list[str] = Field(default_factory=list, max_length=3)
+    mode: Literal["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH"] = "ASSESS_ONLY"
+    profile_context: TfcApplicantContextRequest | None = None
+    household_context: TfcHouseholdContextRequest | None = None
+    scenario_context: TfcScenarioContextRequest | None = None
+
+    @field_validator("tfc_ids")
+    @classmethod
+    def unique_tfc_ids(cls, value: list[str]) -> list[str]:
+        if len(value) != len(set(value)):
+            raise ValueError("TFC IDs must be unique.")
+        if any(not item for item in value):
+            raise ValueError("TFC IDs must be non-empty.")
+        return sorted(value)
+
+
 class V2WeightSelection(ApiModel):
     weights: dict[str, float] | None = None
     preference_preset_id: str | None = Field(default=None, min_length=1)
     opportunity_filters: OpportunityFilterSelection | None = None
+    feasibility: TfcAssessmentSelectionRequest | None = None
 
     _strict_weights = field_validator("weights", mode="before")(_validate_weights)
 
@@ -263,6 +424,73 @@ class OpportunityFilterCatalogV2Response(V2VersionedResponse):
     mode: Literal["ALL_REQUIRED"]
     no_score_impact: Literal[True]
     definitions: list[OpportunityFilterDefinitionV2Response]
+
+
+class TfcFieldDefinitionV2Response(ApiModel):
+    field_id: str
+    data_type: str
+    validation: str
+    sensitivity: Literal[
+        "LOW", "MODERATE_PERSONAL", "MODERATE_CONSEQUENTIAL", "HIGH_PERSONAL", "HIGH_CONSEQUENTIAL"
+    ]
+    default_retention: Literal["TAB_MEMORY_ONLY", "NEVER_RETAIN_BY_DEFAULT"]
+    consumer_tfc_ids: list[str]
+    prompt: str
+    help_text: str
+    may_be_omitted: bool
+    may_be_stored_locally: bool
+
+
+class TfcInputRequirementV2Response(ApiModel):
+    field_id: str
+    requirement: Literal["ALWAYS_REQUIRED", "CONDITIONALLY_REQUIRED", "OPTIONAL_EXPLANATORY"]
+    when_field_id: str | None
+    when_equals: str | float | bool | None
+
+
+class TfcSourceSummaryV2Response(ApiModel):
+    source_id: str
+    publisher: str
+    verified_at: date
+    effective_from: date
+    effective_to: date | None
+    attribution: str
+
+
+class TfcDefinitionV2Response(ApiModel):
+    id: str
+    display_name: str
+    original_criterion_ids: list[str]
+    user_question: str
+    check_kind: Literal["RULE_ROUTE_MATCH", "SCENARIO_METRIC"]
+    supported_profile_boundary: str
+    supported_destination_codes: list[str]
+    input_requirements: list[TfcInputRequirementV2Response]
+    limitations: list[str]
+    filter_capability: Literal["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH_ALLOWED"]
+    applicable_purposes: list[Literal["WORK", "STUDY", "FAMILY", "EXPLORATION"]]
+    refresh_cadence: str
+    policy_id: str
+    policy_version: str
+    source_summary: list[TfcSourceSummaryV2Response]
+    effective_from: date
+    stale_after: date
+    sort_order: int = Field(ge=1)
+    no_score_impact: Literal[True]
+
+
+class TfcCatalogV2Response(V2VersionedResponse):
+    tfc_release_id: str
+    tfc_release_schema_version: str
+    candidate_status: Literal["draft"]
+    activation_authorized: Literal[False]
+    available_modes: list[Literal["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH"]]
+    default_mode: Literal["ASSESS_ONLY"]
+    selection_is_explicit: Literal[True]
+    persisted_server_side: Literal[False]
+    no_score_impact: Literal[True]
+    definitions: list[TfcDefinitionV2Response]
+    field_registry: list[TfcFieldDefinitionV2Response]
 
 
 class HealthV2Response(V2VersionedResponse):
@@ -512,17 +740,164 @@ class ResponseLocalityAssessmentV2Response(ApiModel):
     reasons: list[AssessmentReasonResponse]
 
 
+class TfcWarningV2Response(ApiModel):
+    code: str
+    tfc_id: str | None
+    country_code: str | None
+    record_ids: list[str]
+
+
+class TfcConditionEvaluationV2Response(ApiModel):
+    condition_id: str
+    field_ids: list[str]
+    status: Literal["MET", "UNMET", "UNKNOWN", "NOT_APPLICABLE"]
+    blocking: bool
+
+
+class TfcRouteEvaluationV2Response(ApiModel):
+    route_id: str
+    route_name: str
+    jurisdiction_id: str
+    classification: Literal["MATCH", "CONDITIONAL", "NO_MATCH"]
+    conditions: list[TfcConditionEvaluationV2Response]
+    source_ids: list[str]
+    effective_from: date
+    effective_to: date | None
+    evidence_quality: Literal["HIGH", "MEDIUM", "LOW"]
+
+
+class TfcRouteResultV2Response(ApiModel):
+    result_type: Literal["ROUTE_RULE"]
+    match_classification: Literal[
+        "SUPPORTED_ROUTE_MATCH", "CONDITIONAL_ROUTE_MATCH", "NO_SUPPORTED_ROUTE_MATCH"
+    ]
+    routes: list[TfcRouteEvaluationV2Response]
+    matched_route_ids: list[str]
+    route_inventory_complete: bool
+    legal_impossibility_disclaimer: str
+
+
+class TfcMetricComponentV2Response(ApiModel):
+    component_id: str
+    field_id: str
+    status: Literal["EVALUATED", "MISSING", "INCOMPATIBLE_UNIT"]
+    contribution_minimum: float | None
+    contribution_maximum: float | None
+    unit: str
+
+
+class TfcMetricResultV2Response(ApiModel):
+    result_type: Literal["SCENARIO_METRIC"]
+    metric_id: str
+    formula_type: str
+    value: float | None
+    minimum: float
+    maximum: float
+    unit: str
+    currency: str | None
+    period: Literal["NONE", "HOURLY", "MONTHLY", "ANNUAL"]
+    components: list[TfcMetricComponentV2Response]
+    assumptions: list[str]
+    rounding: dict[str, Any]
+    locality_id: str | None
+    source_ids: list[str]
+    effective_from: date
+    effective_to: date | None
+    evidence_quality: Literal["HIGH", "MEDIUM", "LOW"]
+
+
+class TfcOutcomeV2Response(ApiModel):
+    tfc_id: str
+    country_code: str = Field(pattern=r"^[A-Z]{3}$")
+    common_status: Literal[
+        "EVALUATED",
+        "INPUT_REQUIRED",
+        "DESTINATION_EVIDENCE_INSUFFICIENT",
+        "UNSUPPORTED",
+        "NOT_APPLICABLE",
+        "EVALUATION_ERROR",
+    ]
+    reason_codes: list[str]
+    input_required_fields: list[str]
+    result: TfcRouteResultV2Response | TfcMetricResultV2Response | None
+    warnings: list[TfcWarningV2Response]
+
+
+class TfcCountryAssessmentV2Response(ApiModel):
+    country_code: str = Field(pattern=r"^[A-Z]{3}$")
+    base_rank: int = Field(ge=1)
+    filtered_rank: int | None = Field(default=None, ge=1)
+    affinity_score_before: float
+    affinity_score_after: float
+    no_change_affinity: Literal[True]
+    outcomes: list[TfcOutcomeV2Response]
+
+
+class TfcProfileContextSummaryV2Response(ApiModel):
+    provided_layers: list[Literal["applicant", "household", "scenario"]]
+    unknown_field_ids: list[str]
+    returned_profile_values: Literal[False]
+    persisted_server_side: Literal[False]
+
+
+class TfcBaseRankingReferenceV2Response(ApiModel):
+    release_id: str
+    country_count: int = Field(ge=0)
+    ordering_checksum: str
+
+
+class TfcSnapshotMetadataV2Response(ApiModel):
+    snapshot_id: str
+    tfc_release_id: str
+    policy_versions: dict[str, str]
+    source_versions: dict[str, str]
+    effective_profile_context_hash: str
+    evaluation_date: date
+    base_ranking_reference: TfcBaseRankingReferenceV2Response
+    persisted_server_side: Literal[False]
+
+
+class TfcStatusCountsV2Response(ApiModel):
+    EVALUATED: int = Field(ge=0)
+    INPUT_REQUIRED: int = Field(ge=0)
+    DESTINATION_EVIDENCE_INSUFFICIENT: int = Field(ge=0)
+    UNSUPPORTED: int = Field(ge=0)
+    NOT_APPLICABLE: int = Field(ge=0)
+    EVALUATION_ERROR: int = Field(ge=0)
+
+
+class TfcAssessmentV2Response(ApiModel):
+    schema_version: Literal["tfc-engine-assessment-1.0"]
+    profile_context_status: Literal[
+        "NO_PROFILE_CONTEXT", "PARTIAL_PROFILE_CONTEXT", "COMPLETE_PROFILE_CONTEXT"
+    ]
+    execution_status: Literal["NO_TFC_SELECTED", "NOT_EXECUTED_NO_CONTEXT", "EXECUTED"]
+    filter_mode: Literal["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH"]
+    selected_tfc_ids: list[str]
+    input_required_fields: list[str]
+    status_counts: TfcStatusCountsV2Response
+    matched_route_count: int = Field(ge=0)
+    metric_result_count: int = Field(ge=0)
+    no_change_affinity: Literal[True]
+    warnings: list[TfcWarningV2Response]
+    countries: list[TfcCountryAssessmentV2Response]
+    profile_context_summary: TfcProfileContextSummaryV2Response
+    snapshot: TfcSnapshotMetadataV2Response | None
+
+
 class AssessmentsV2Response(ApiModel):
     coverage: CoverageAssessmentV2Response
     locality: ResponseLocalityAssessmentV2Response
     profile: ProfileAssessmentResponse
     opportunity: OpportunityAssessmentV2Response
+    feasibility: TfcAssessmentV2Response | None = None
 
 
 class CountryAssessmentsV2Response(ApiModel):
     locality: CountryLocalityAssessmentResponse
     profile: ProfileAssessmentResponse
     opportunity: CountryOpportunityAssessmentV2Response
+    feasibility: TfcCountryAssessmentV2Response | None = None
 
 
 class RankedCountryV2Response(ApiModel):
@@ -604,3 +979,4 @@ class CountryDetailsV2Response(V2VersionedResponse):
     country: GeographicEntityResponse
     criteria: list[CountryCriterionDetailV2Response]
     opportunity_filters: list[OpportunityFilterEvidenceSummaryResponse]
+    feasibility: TfcCountryAssessmentV2Response | None = None

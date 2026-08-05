@@ -1,6 +1,6 @@
 # Typed Feasibility Check assessment engine
 
-Status: Phase 7E synthetic domain engine implemented; API, UI and production evidence deferred
+Status: Phase 7G API integrated with Phase 7F evidence; UI and activation deferred
 
 ## Domain boundary
 
@@ -10,7 +10,8 @@ profile normalization, input sufficiency, TFC applicability, support resolution,
 metric calculation, feasibility projection and scenario snapshots.
 
 It does not calculate ranking, weights, affinity, PCC complete-case unions, LSC aggregation or
-Opportunity Filter states. FastAPI and React do not implement or expose these rules in Phase 7E.
+Opportunity Filter states. Phase 7G exposes these rules through FastAPI after canonical ranking
+and OFC evaluation; React integration remains Phase 7H work.
 
 ## Evaluation order
 

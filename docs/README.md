@@ -58,6 +58,8 @@ readable schemas, and published release manifests take precedence if prose ever 
   profile and destination boundaries, official source routes, policy, limitations and replay.
 - [Phase 7F implementation report](history/phase7f-first-wave-onboarding.md) - staged artifacts,
   reconciliation, source decisions, verification and the Phase 7G gate.
+- [Phase 7G implementation report](history/phase7g-stateless-tfc-api.md) - additive v2 request and
+  response contracts, field registry, privacy controls, compatibility and the Phase 7H boundary.
 - [Phase 6D Opportunity Filter contract report](history/phase6d-opportunity-filter-contracts.md) -
   architecture decision, exact enums, compatibility evidence, changed paths and owner gates.
 - [Career Opportunity Filter evidence](data/career-opportunity-evidence.md) - Phase 6E constructs,

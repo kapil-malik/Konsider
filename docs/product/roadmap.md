@@ -1,6 +1,6 @@
 # Product roadmap
 
-Status: Phase 7F first-wave evidence candidate complete; acceptance gate before Phase 7G
+Status: Phase 7G stateless TFC API complete; acceptance gate before Phase 7H
 
 Last updated: 2026-08-05
 
@@ -195,7 +195,7 @@ job, licensing, visa, or admission probability.
   accessibility over the staged API without activating it.
 - Phase 6I published and activated `2026-08-04.1`, verified compatibility, and closed Phase 6.
 
-## Phase 7: Typed Feasibility Checks — first-wave evidence staged; Phase 7G pending
+## Phase 7: Typed Feasibility Checks — stateless API complete; Phase 7H pending
 
 Phase 7A defines Typed Feasibility Checks as optional, guest-first assessments of an explicit
 applicant, household and exploration-scenario snapshot. TFCs are sibling assessments, not ordering
@@ -247,12 +247,19 @@ the [Phase 7E report](../history/phase7e-tfc-assessment-engine.md).
 Phase 7F now stages the approved three route-only checks with 87 exact official page bindings,
 116 named route rules, 273 explicit destination support records, five approved source/legal
 registrations and a passed Phase 7B reconciliation. All policies remain assessment-only and
-positive/conditional; the draft cannot activate and has no API/UI exposure. See the
+positive/conditional; the draft cannot activate. See the
 [first-wave evidence guide](tfc-first-wave-evidence.md) and
 [Phase 7F report](../history/phase7f-first-wave-onboarding.md).
 
-Phase 7G is the next gate: add profile-context and TFC API behavior against a deliberately selected
-release-6 candidate while preserving guest privacy, compatibility and ranking independence.
+Phase 7G now exposes that deliberately selected candidate through additive API v2 contracts. It
+adds the TFC catalog/field registry and explicit stateless context on ranking, comparison and
+details; returns typed outcomes and sanitized snapshot metadata; and enforces private/no-store
+transport. Empty selection remains exactly legacy-compatible. The release-6 candidate remains
+draft and non-active, and all three checks reject filtering because their policies are
+assessment-only. See the [Phase 7G report](../history/phase7g-stateless-tfc-api.md).
+
+Phase 7H is the next gate: build the guest-first profile UI and explicit local-retention controls
+over this catalog-driven API without adding accounts or server persistence.
 
 ## Future phase: conversational exploration
 

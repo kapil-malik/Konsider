@@ -298,7 +298,7 @@ def test_invalid_fixture_register_covers_every_required_rejection() -> None:
         validate_profile_field_registry(registry)
 
 
-def test_active_release_and_api_remain_unchanged_and_tfc_free() -> None:
+def test_active_release_remains_tfc_free_while_phase7g_api_is_additive() -> None:
     active_release = ROOT / "data" / "releases" / "2026-08-04.1"
     manifest = json.loads((active_release / "manifest.json").read_text(encoding="utf-8"))
     validate_contract(manifest, "release-manifest", context="active manifest", schema_generation=3)
@@ -309,8 +309,8 @@ def test_active_release_and_api_remain_unchanged_and_tfc_free() -> None:
     openapi = json.loads(
         (ROOT / "contracts" / "openapi" / "konsider-api-2.0.json").read_text(encoding="utf-8")
     )
-    assert "/api/v2/tfcs" not in openapi["paths"]
-    assert "TypedFeasibilityCheck" not in json.dumps(openapi, sort_keys=True)
+    assert "/api/v2/tfcs" in openapi["paths"]
+    assert "TfcCatalogV2Response" in json.dumps(openapi, sort_keys=True)
 
 
 def test_schema_validator_rejects_direct_ofc_state_and_numeric_result() -> None:

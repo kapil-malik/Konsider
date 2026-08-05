@@ -78,5 +78,31 @@ class InvalidOpportunityFilterSelectionError(RecommendationError):
     pass
 
 
+class TfcCandidateUnavailableError(RecommendationError):
+    """Raised when the separately staged TFC candidate cannot be used."""
+
+
+class UnknownTfcError(RecommendationError):
+    def __init__(self, tfc_ids: list[str]) -> None:
+        self.tfc_ids = tfc_ids
+        super().__init__(f"Unknown TFC ID(s): {tfc_ids}")
+
+
+class TfcFilterNotAllowedError(RecommendationError):
+    def __init__(self, tfc_ids: list[str]) -> None:
+        self.tfc_ids = tfc_ids
+        super().__init__("The selected TFC policy does not permit filtering.")
+
+
+class UnsupportedTaxonomyVersionError(RecommendationError):
+    def __init__(self, field_ids: list[str]) -> None:
+        self.field_ids = field_ids
+        super().__init__("One or more taxonomy versions are unsupported.")
+
+
+class InvalidProfileContextError(RecommendationError):
+    """Raised for profile contract failures without retaining or echoing values."""
+
+
 class RankingIntegrityError(RecommendationError):
     """Raised when a validated release cannot satisfy one ranking invariant."""
