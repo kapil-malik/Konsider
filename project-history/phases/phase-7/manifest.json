@@ -1,0 +1,21 @@
+{
+  "title": "Konsider Phase 7 \u2014 Typed Feasibility Checks and Guest Profile Context",
+  "generated_date": "2026-08-05",
+  "file_count": 13,
+  "execution_order": [
+    "00_README.md",
+    "01_PHASE_7A_TFC_DISCOVERY_AND_PRODUCT_BOUNDARY.md",
+    "02_PHASE_7B_TFC_SOURCE_FEASIBILITY_AND_OWNER_GATE.md",
+    "03_PHASE_7C_PROFILE_CONTEXT_PRIVACY_AND_CONTRACTS.md",
+    "04_PHASE_7D_GENERIC_TFC_RULE_AND_RELEASE_FOUNDATION.md",
+    "05_PHASE_7E_TFC_ASSESSMENT_ENGINE_AND_SCENARIO_SNAPSHOTS.md",
+    "06_PHASE_7F_FIRST_WAVE_TFC_EVIDENCE_ONBOARDING.md",
+    "07_PHASE_7G_PROFILE_CONTEXT_AND_TFC_API.md",
+    "08_PHASE_7H_GUEST_FIRST_PROFILE_UI_AND_LOCAL_PERSISTENCE.md",
+    "09_PHASE_7I_OFC_LOCALITY_TFC_INTEGRATION_AND_END_TO_END.md",
+    "10_PHASE_7J_RELEASE_VERIFICATION_AND_CLOSURE.md"
+  ],
+  "minimum_qualification_gate": 3,
+  "preferred_first_wave": "3-5 TFCs",
+  "terminology": "Typed Feasibility Check (TFC)"
+}

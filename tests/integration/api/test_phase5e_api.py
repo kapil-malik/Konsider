@@ -62,6 +62,13 @@ def test_v2_current_release_catalog_uses_clean_names_and_orthogonal_metadata(
         "PRIMARY_OBSERVATION",
         "ENTITY_UNIVERSE",
     }
+    assert len(body["country_coverage"]) == 3
+    usa = next(
+        item for item in body["country_coverage"] if item["country"]["country_codes"] == ["USA"]
+    )
+    usa_locality = next(item for item in usa["criteria"] if item["criterion_id"] == "L1")
+    assert usa_locality["outcome"] == "missing"
+    assert usa_locality["reason_codes"]
 
 
 def test_v2_ranking_exposes_locality_provenance_and_orthogonal_assessments(

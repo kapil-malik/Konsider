@@ -26,6 +26,7 @@ import {
   CountryFeasibilitySummary,
   FeasibilitySummary,
 } from './FeasibilitySummary'
+import { CountrySearchAutocomplete } from './CountryAutocomplete'
 
 const contributionFor = (
   country: RankedCountryV2,
@@ -33,76 +34,35 @@ const contributionFor = (
 ): ContributionV2 | undefined =>
   country.contributions.find((item) => item.criterion_id === criterionId)
 
-function DetailedContribution({
-  contribution,
-  criterion,
-}: {
-  contribution: ContributionV2
-  criterion: CatalogCriterionV2
-}) {
-  const localityDerived =
-    contribution.derivation === 'AGGREGATED_FROM_LOCALITIES'
+function CriterionSymbols({ criterion }: { criterion: CatalogCriterionV2 }) {
+  const isPartial = criterion.coverage.mode === 'CONDITIONAL_COMPLETE_CASE'
+  const isLocality = criterion.scope.derivation === 'AGGREGATED_FROM_LOCALITIES'
   return (
-    <details className="contribution-details">
-      <summary>
-        {contribution.score.toFixed(1)} ·{' '}
-        {localityDerived ? 'Locality-derived' : 'National'}
-      </summary>
-      <dl>
-        <div>
-          <dt>Country score</dt>
-          <dd>{formatScore(contribution.score)}</dd>
-        </div>
-        <div>
-          <dt>Derivation</dt>
-          <dd>{localityDerived ? 'Aggregated from localities' : 'Direct national evidence'}</dd>
-        </div>
-        {localityDerived && (
-          <>
-            <div>
-              <dt>Contributing localities</dt>
-              <dd>
-                {contribution.contributing_localities
-                  .map(
-                    (item) =>
-                      `${item.locality.display_name} (${item.input_score.toFixed(1)})`,
-                  )
-                  .join(', ')}
-              </dd>
-            </div>
-            <div>
-              <dt>Aggregation policy</dt>
-              <dd>
-                {contribution.aggregation_policy?.method.replaceAll('_', ' ')} ·{' '}
-                <code>{contribution.aggregation_policy?.policy_id}</code>
-              </dd>
-            </div>
-          </>
-        )}
-        <div>
-          <dt>Source and period</dt>
-          <dd>
-            {contribution.sources
-              .map((source) => source.publisher ?? source.source_id)
-              .join(', ')}
-            {contribution.observations[0]
-              ? ` · ${contribution.observations[0].reference_start} to ${contribution.observations[0].reference_end}`
-              : ''}
-          </dd>
-        </div>
-      </dl>
-      {criterion.caveats.map((caveat) => (
-        <p key={caveat}>
-          <strong>Caveat:</strong> {caveat}
-        </p>
-      ))}
-    </details>
+    <span className="criterion-table-symbols">
+      <span
+        className="criterion-symbol"
+        aria-label={isPartial ? 'Partial-coverage criterion' : 'Full-coverage criterion'}
+        title={isPartial ? 'Partial-coverage criterion' : 'Full-coverage criterion'}
+      >
+        <span aria-hidden="true">{isPartial ? '◐' : '●'}</span>
+      </span>
+      {isLocality && (
+        <span className="criterion-symbol" aria-label="Locality-derived criterion" title="Locality-derived criterion">
+          <span aria-hidden="true">⌖</span>
+        </span>
+      )}
+      {criterion.experimental && (
+        <span className="criterion-symbol experimental-symbol" aria-label="Experimental criterion" title="Experimental criterion">
+          <span aria-hidden="true">◇</span>
+        </span>
+      )}
+    </span>
   )
 }
 
 function CountryLocalitySummary({ country }: { country: RankedCountryV2 }) {
   const assessment = country.assessments.locality
-  if (assessment.status === 'NO_ACTIVE_LOCALITY_CRITERIA') return <span>National evidence</span>
+  if (assessment.status === 'NO_ACTIVE_LOCALITY_CRITERIA') return <span>-</span>
   const contributions = localityContributions(country)
   const names = contributingLocalityNames(country)
   const bestCommon = localityName(
@@ -191,6 +151,7 @@ type RankingViewProps = {
   onDetailedChange: (value: boolean) => void
   onSelectCountry: (countryCode: string) => void
   onToggleComparison: (countryCode: string) => void
+  onClearComparison: () => void
   onCompare: () => void
   onOpenSources: () => void
   onRemoveOpportunityFilter: (filterId: string) => void
@@ -215,6 +176,7 @@ export function RankingView({
   onDetailedChange,
   onSelectCountry,
   onToggleComparison,
+  onClearComparison,
   onCompare,
   onOpenSources,
   onRemoveOpportunityFilter,
@@ -240,10 +202,10 @@ export function RankingView({
       (country) =>
         (!region || country.country.region === region) &&
         (!query ||
-          country.country.display_name.toLocaleLowerCase().includes(query) ||
+          country.country.display_name.toLocaleLowerCase().startsWith(query) ||
           countryCode(country.country.entity_id)
             .toLocaleLowerCase()
-            .includes(query)),
+            .startsWith(query)),
     )
   }, [ranking.rankings, region, searchTerm])
 
@@ -302,11 +264,11 @@ export function RankingView({
       <div className="ranking-filters" role="search" aria-label="Filter country ranking">
         <label>
           <span>Search countries</span>
-          <input
-            type="search"
+          <CountrySearchAutocomplete
+            countries={countries}
             value={searchTerm}
             placeholder="Country name or code"
-            onChange={(event) => setSearchTerm(event.currentTarget.value)}
+            onChange={setSearchTerm}
           />
         </label>
         <label>
@@ -331,16 +293,28 @@ export function RankingView({
           />
           <span>Show detailed evidence</span>
         </label>
-        <button
-          ref={compareButtonRef}
-          className="button button-primary"
-          disabled={comparisonCountries.length < 2 || isComparing}
-          onClick={onCompare}
-        >
-          {isComparing
-            ? 'Preparing comparison…'
-            : `Compare selected (${comparisonCountries.length})`}
-        </button>
+        <div className="comparison-actions">
+          {comparisonCountries.length > 0 && (
+            <button
+              type="button"
+              className="button button-secondary clear-selection-button"
+              disabled={isComparing}
+              onClick={onClearComparison}
+            >
+              Clear selection
+            </button>
+          )}
+          <button
+            ref={compareButtonRef}
+            className="button button-primary"
+            disabled={comparisonCountries.length < 2 || isComparing}
+            onClick={onCompare}
+          >
+            {isComparing
+              ? 'Preparing comparison…'
+              : `Compare selected (${comparisonCountries.length})`}
+          </button>
+        </div>
       </div>
       <p id="comparison-limit" className="comparison-guidance" aria-live="polite">
         {comparisonNotice || 'Select 2–4 countries to compare.'}
@@ -406,11 +380,8 @@ export function RankingView({
                   {detailed &&
                     criteria.map((criterion) => (
                       <th scope="col" key={criterion.id} title={criterion.display_name}>
-                        <span>{criterion.category}</span>
-                        {criterion.scope.derivation ===
-                          'AGGREGATED_FROM_LOCALITIES' && (
-                          <span className="table-badge">⌖ Locality</span>
-                        )}
+                        <span>{criterion.display_name}</span>
+                        <CriterionSymbols criterion={criterion} />
                       </th>
                     ))}
                 </tr>
@@ -475,10 +446,7 @@ export function RankingView({
                           return (
                             <td key={criterion.id} className="criterion-score-cell">
                               {contribution ? (
-                                <DetailedContribution
-                                  contribution={contribution}
-                                  criterion={criterion}
-                                />
+                                contribution.score.toFixed(1)
                               ) : (
                                 '—'
                               )}
@@ -542,12 +510,12 @@ export function RankingView({
                         const contribution = contributionFor(country, criterion.id)
                         return (
                           <div key={criterion.id}>
-                            <strong>{criterion.display_name}</strong>
+                            <strong>
+                              {criterion.display_name}
+                              <CriterionSymbols criterion={criterion} />
+                            </strong>
                             {contribution ? (
-                              <DetailedContribution
-                                contribution={contribution}
-                                criterion={criterion}
-                              />
+                              <span>{contribution.score.toFixed(1)}</span>
                             ) : (
                               <span>—</span>
                             )}

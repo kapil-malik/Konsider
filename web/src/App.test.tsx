@@ -137,7 +137,7 @@ async function configureWorkSituation(
     }),
   )
   await user.click(within(dialog).getByRole('button', { name: 'Continue' }))
-  await user.type(within(dialog).getByRole('textbox', { name: /Target destinations/ }), 'DEU')
+  await user.type(within(dialog).getByRole('combobox', { name: /Target destinations/ }), 'DEU')
   fireEvent.change(within(dialog).getByLabelText(/Target date/), {
     target: { value: '2026-08-05' },
   })
@@ -163,7 +163,7 @@ async function configureWorkSituation(
   await user.click(within(dialog).getByRole('button', { name: 'Save and assess' }))
 }
 
-test('renders API-owned coverage, scope, experimental, and locality threshold indicators', async () => {
+test('renders compact accessible criterion symbols and source links', async () => {
   installApi()
   const user = userEvent.setup()
   renderApp()
@@ -175,28 +175,27 @@ test('renders API-owned coverage, scope, experimental, and locality threshold in
   expect(
     screen.getByRole('slider', { name: 'Extreme heat exposure' }),
   ).toHaveValue('0.6')
-  expect(screen.getAllByText('⌖ Locality-derived').length).toBeGreaterThan(0)
-  expect(screen.getByText('◇ Experimental')).toBeInTheDocument()
-  expect(screen.getByText('! Limited coverage')).toBeInTheDocument()
-  expect(screen.getByText('4/5 countries')).toBeInTheDocument()
-  expect(
-    screen.getByText('Locality compatibility will be assessed when applied.'),
-  ).toBeInTheDocument()
+  expect(screen.getAllByLabelText('Locality-derived criterion').length).toBeGreaterThan(0)
+  expect(screen.getByLabelText('Experimental criterion')).toBeInTheDocument()
+  expect(screen.getAllByLabelText('Partial-coverage criterion').length).toBeGreaterThan(0)
+  expect(screen.getByLabelText('4 of 5 countries covered')).toHaveTextContent('4/5')
+  expect(screen.queryByText('! Limited coverage')).not.toBeInTheDocument()
+  expect(screen.queryByText('Coverage and scope details')).not.toBeInTheDocument()
 
   const heat = screen.getByRole('slider', { name: 'Extreme heat exposure' })
   heat.focus()
   fireEvent.keyDown(heat, { key: 'ArrowLeft' })
   expect(heat).toHaveValue('0.4')
-  expect(
-    screen.getByText(/Locality provenance remains available; prominent analysis begins at Medium/),
-  ).toBeInTheDocument()
-  expect(
-    screen.queryByText('Locality compatibility will be assessed when applied.'),
-  ).not.toBeInTheDocument()
+  expect(screen.queryByText(/Locality provenance remains available/)).not.toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Open criteria and sources for Extreme heat exposure' }))
+  const directDialog = screen.getByRole('dialog', { name: 'Criteria and sources' })
+  expect(within(directDialog).getByText('Extreme heat exposure')).toBeInTheDocument()
+  await user.click(within(directDialog).getByRole('button', { name: 'Close Criteria and sources' }))
 
   await user.click(screen.getByRole('button', { name: /Guest/ }))
-  await user.click(screen.getByRole('menuitem', { name: 'Data & Sources' }))
-  const dialog = screen.getByRole('dialog', { name: 'Data & Sources' })
+  await user.click(screen.getByRole('menuitem', { name: 'Criteria and sources' }))
+  const dialog = screen.getByRole('dialog', { name: 'Criteria and sources' })
   expect(within(dialog).getByText('Extreme heat exposure')).toBeInTheDocument()
   expect(within(dialog).getByText('major-cities-v1')).toBeInTheDocument()
   expect(within(dialog).getByText('Top n mean ·')).toBeInTheDocument()
@@ -236,6 +235,25 @@ test('uses preference_preset_id until an edit creates custom weights', async () 
   })
 })
 
+test('opens all three helper pages and filters the country coverage table', async () => {
+  installApi()
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  await user.click(screen.getByRole('button', { name: /Guest/ }))
+  expect(screen.getByRole('menuitem', { name: 'How Konsider works' })).toBeInTheDocument()
+  expect(screen.getByRole('menuitem', { name: 'Criteria and sources' })).toBeInTheDocument()
+  await user.click(screen.getByRole('menuitem', { name: 'Countries and coverage' }))
+
+  const dialog = screen.getByRole('dialog', { name: 'Countries and coverage' })
+  expect(within(dialog).getByRole('row', { name: /C04 Country 5 2\/4 available/ })).toBeInTheDocument()
+  expect(within(dialog).getByText('Extreme heat exposure')).toBeInTheDocument()
+  await user.type(within(dialog).getByRole('searchbox', { name: 'Search countries' }), 'c03')
+  expect(within(dialog).getByRole('row', { name: /C03 Country 4/ })).toBeInTheDocument()
+  expect(within(dialog).queryByRole('row', { name: /C00 Country 1/ })).not.toBeInTheDocument()
+})
+
 test.each([
   ['NO_ACTIVE_LOCALITY_CRITERIA', 'National evidence only'],
   ['BELOW_ANALYSIS_THRESHOLD', 'Locality evidence retained'],
@@ -247,27 +265,37 @@ test.each([
   ['MIXED_COUNTRY_RESULTS', 'Locality results vary by country'],
 ] as const)('renders the %s locality status supplied by the API', async (status, label) => {
   installApi({ ranking: rankingForLocalityStatus(status) })
+  const user = userEvent.setup()
   renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  await user.click(screen.getByRole('button', { name: /Guest/ }))
+  await user.click(screen.getByRole('menuitem', { name: 'How Konsider works' }))
   expect(
     await screen.findByRole('status', { name: `Locality status: ${label}` }),
   ).toBeInTheDocument()
 })
 
-test('keeps coverage, locality, and profile summaries separate', async () => {
+test('keeps coverage, locality, and profile explanations together in How Konsider works', async () => {
   installApi({ ranking: coverageWarningRanking })
+  const user = userEvent.setup()
   renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+  expect(screen.queryByRole('status', { name: /Coverage status/ })).not.toBeInTheDocument()
+  await user.click(screen.getByRole('button', { name: /Guest/ }))
+  await user.click(screen.getByRole('menuitem', { name: 'How Konsider works' }))
+  const dialog = screen.getByRole('dialog', { name: 'How Konsider works' })
   expect(
-    await screen.findByRole('status', {
+    within(dialog).getByRole('status', {
       name: 'Coverage status: Limited-coverage ranking',
     }),
   ).toBeInTheDocument()
   expect(
-    screen.getByRole('status', {
+    within(dialog).getByRole('status', {
       name: 'Locality status: Strong options are in different localities',
     }),
   ).toBeInTheDocument()
   expect(
-    screen.getByRole('status', {
+    within(dialog).getByRole('status', {
       name: 'Profile status: No applicant profile assessed',
     }),
   ).toBeInTheDocument()
@@ -276,7 +304,7 @@ test('keeps coverage, locality, and profile summaries separate', async () => {
   ).toBeGreaterThan(0)
 })
 
-test('shows locality names, detailed derivation, policy, source, period, and caveat', async () => {
+test('shows criterion names, symbols, and score-only detailed ranking cells', async () => {
   installApi()
   const user = userEvent.setup()
   renderApp()
@@ -284,12 +312,14 @@ test('shows locality names, detailed derivation, policy, source, period, and cav
 
   expect(screen.getAllByText('Best common: Harbor City 1').length).toBeGreaterThan(0)
   await user.click(screen.getByLabelText('Show detailed evidence'))
-  const heatDetails = screen.getAllByText(/Locality-derived/, { selector: 'summary' })[0]
-  await user.click(heatDetails)
-  expect(screen.getAllByText(/Harbor City 1 \(8.8\)/).length).toBeGreaterThan(0)
-  expect(screen.getAllByText('top-two:heat').length).toBeGreaterThan(0)
-  expect(screen.getAllByText(/Public Data Publisher · 2025-01-01 to 2025-12-31/).length).toBeGreaterThan(0)
-  expect(screen.getAllByText(/Extreme heat exposure caveat/).length).toBeGreaterThan(0)
+  const heatHeader = screen.getByRole('columnheader', { name: /Extreme heat exposure/ })
+  expect(within(heatHeader).getByLabelText('Full-coverage criterion')).toBeInTheDocument()
+  expect(within(heatHeader).getByLabelText('Locality-derived criterion')).toBeInTheDocument()
+  expect(within(heatHeader).getByLabelText('Experimental criterion')).toBeInTheDocument()
+  expect(screen.queryByRole('columnheader', { name: /Climate and environment/ })).not.toBeInTheDocument()
+  expect(screen.queryByText('top-two:heat')).not.toBeInTheDocument()
+  expect(screen.queryByText(/Extreme heat exposure caveat/)).not.toBeInTheDocument()
+  expect(document.querySelector('.criterion-score-cell details')).not.toBeInTheDocument()
 })
 
 test('country details distinguish locality advice from coverage exclusion', async () => {
@@ -339,10 +369,10 @@ test('comparison shows aggregates, locality provenance, status, and unavailable 
     await screen.findByRole('heading', { name: 'Compare countries' }),
   ).toBeInTheDocument()
   expect(screen.getAllByText('Coverage excluded').length).toBeGreaterThan(0)
-  expect(screen.getAllByText('⌖ Locality-derived').length).toBeGreaterThan(0)
+  expect(screen.getAllByLabelText('Locality-derived criterion').length).toBeGreaterThan(0)
   expect(screen.getAllByText(/Harbor City/).length).toBeGreaterThan(0)
   expect(screen.getAllByLabelText(/Data not available: Source value missing/).length).toBeGreaterThan(0)
-  expect(screen.getByText(/No partial aggregate is fabricated/)).toBeInTheDocument()
+  expect(screen.queryByText(/come directly from the API/)).not.toBeInTheDocument()
 })
 
 test('renders empty rankings and structured API failures without fallback data', async () => {
@@ -384,10 +414,19 @@ test('renders and keyboard-operates nine grouped Opportunity Filters without wei
 
   const heading = await screen.findByRole('heading', { name: 'Opportunity filters' })
   const panel = heading.closest('section')!
-  expect(within(panel).getByText('Career')).toBeInTheDocument()
-  expect(
-    within(panel).getByText('Education and research universities'),
-  ).toBeInTheDocument()
+  const careerGroup = within(panel).getByText('Career')
+  const educationGroup = within(panel).getByText('Education')
+  expect(careerGroup.closest('details')).not.toHaveAttribute('open')
+  expect(educationGroup.closest('details')).not.toHaveAttribute('open')
+  expect(within(panel).getByLabelText('0 of 5 filters selected')).toHaveTextContent(
+    '0/5 selected',
+  )
+  expect(within(panel).getByLabelText('0 of 4 filters selected')).toHaveTextContent(
+    '0/4 selected',
+  )
+  expect(within(panel).queryByText('Education and research universities')).not.toBeInTheDocument()
+  await user.click(careerGroup)
+  await user.click(educationGroup)
   expect(within(panel).getAllByRole('checkbox')).toHaveLength(9)
   expect(within(panel).queryByRole('slider')).not.toBeInTheDocument()
   expect(
@@ -403,17 +442,29 @@ test('renders and keyboard-operates nine grouped Opportunity Filters without wei
   await user.keyboard(' ')
   expect(technology).toBeChecked()
   expect(within(panel).getByText('1 selected')).toBeInTheDocument()
+  expect(within(panel).getByLabelText('1 of 5 filters selected')).toHaveTextContent(
+    '1/5 selected',
+  )
+  expect(within(panel).getByLabelText('0 of 4 filters selected')).toHaveTextContent(
+    '0/4 selected',
+  )
   await user.click(
     within(panel).getByRole('button', { name: 'Clear all opportunity filters' }),
   )
   expect(technology).not.toBeChecked()
 
-  await user.click(within(panel).getByText('How opportunity filters work'))
+  expect(within(panel).queryByText('How opportunity filters work')).not.toBeInTheDocument()
+  await user.click(
+    within(panel).getByRole('button', {
+      name: 'Open criteria and sources for opportunity filters',
+    }),
+  )
+  const dialog = screen.getByRole('dialog', { name: 'Criteria and sources' })
   expect(
-    within(panel).getByText(/Insufficient evidence is not negative/),
+    within(dialog).getByText(/Insufficient evidence is not negative/),
   ).toBeInTheDocument()
   expect(
-    within(panel).getByText(/does not establish teaching quality, programme availability/),
+    within(dialog).getByText(/does not establish teaching quality, programme availability/),
   ).toBeInTheDocument()
 })
 
@@ -608,6 +659,26 @@ test('keeps Opportunity Filter evidence separate in desktop and mobile compariso
       required_filter_ids: ['skilled_trades_construction_opportunity'],
     },
   })
+})
+
+test('clears selected comparison countries and shows no locality context as a hyphen', async () => {
+  installApi({ ranking: rankingForLocalityStatus('NO_ACTIVE_LOCALITY_CRITERIA') })
+  const user = userEvent.setup()
+  renderApp()
+  await screen.findByRole('heading', { name: 'Country ranking' })
+
+  expect(screen.getAllByText('-').length).toBeGreaterThan(0)
+  const comparisonBoxes = screen.getAllByRole('checkbox', { name: /Select Country/ })
+  await user.click(comparisonBoxes[0])
+  await user.click(comparisonBoxes[1])
+  expect(screen.getByRole('button', { name: 'Compare selected (2)' })).toBeEnabled()
+
+  await user.click(screen.getByRole('button', { name: 'Clear selection' }))
+
+  expect(comparisonBoxes[0]).not.toBeChecked()
+  expect(comparisonBoxes[1]).not.toBeChecked()
+  expect(screen.getByRole('button', { name: 'Compare selected (0)' })).toBeDisabled()
+  expect(screen.queryByRole('button', { name: 'Clear selection' })).not.toBeInTheDocument()
 })
 
 test('opens and cancels the guided situation flow without changing the ranking request', async () => {

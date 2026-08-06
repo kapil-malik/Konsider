@@ -372,10 +372,22 @@ class PreferencePresetResponse(ApiModel):
     weights: dict[str, float]
 
 
+class CountryCriterionCoverageResponse(ApiModel):
+    criterion_id: str
+    outcome: Outcome
+    reason_codes: list[str]
+
+
+class CountryCoverageResponse(ApiModel):
+    country: GeographicEntityResponse
+    criteria: list[CountryCriterionCoverageResponse]
+
+
 class CatalogV2Response(V2VersionedResponse):
     coverage_policy_version: str
     stable_universe_id: str
     countries: list[GeographicEntityResponse]
+    country_coverage: list[CountryCoverageResponse]
     criteria: list[CatalogCriterionV2Response]
     preference_presets: list[PreferencePresetResponse]
 

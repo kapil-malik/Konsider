@@ -245,6 +245,13 @@
             "title": "Countries",
             "type": "array"
           },
+          "country_coverage": {
+            "items": {
+              "$ref": "#/components/schemas/CountryCoverageResponse"
+            },
+            "title": "Country Coverage",
+            "type": "array"
+          },
           "coverage_policy_version": {
             "title": "Coverage Policy Version",
             "type": "string"
@@ -291,6 +298,7 @@
           "coverage_policy_version",
           "stable_universe_id",
           "countries",
+          "country_coverage",
           "criteria",
           "preference_presets"
         ],
@@ -774,6 +782,61 @@
           "opportunity"
         ],
         "title": "CountryAssessmentsV2Response",
+        "type": "object"
+      },
+      "CountryCoverageResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "country": {
+            "$ref": "#/components/schemas/GeographicEntityResponse"
+          },
+          "criteria": {
+            "items": {
+              "$ref": "#/components/schemas/CountryCriterionCoverageResponse"
+            },
+            "title": "Criteria",
+            "type": "array"
+          }
+        },
+        "required": [
+          "country",
+          "criteria"
+        ],
+        "title": "CountryCoverageResponse",
+        "type": "object"
+      },
+      "CountryCriterionCoverageResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "criterion_id": {
+            "title": "Criterion Id",
+            "type": "string"
+          },
+          "outcome": {
+            "enum": [
+              "valid",
+              "missing",
+              "stale",
+              "invalid",
+              "rejected"
+            ],
+            "title": "Outcome",
+            "type": "string"
+          },
+          "reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reason Codes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "criterion_id",
+          "outcome",
+          "reason_codes"
+        ],
+        "title": "CountryCriterionCoverageResponse",
         "type": "object"
       },
       "CountryCriterionDetailV2Response": {

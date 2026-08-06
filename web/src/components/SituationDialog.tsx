@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react'
 
-import type { TfcCatalogV2, TfcFieldDefinitionV2 } from '../api/types'
+import type { CatalogV2, TfcCatalogV2, TfcFieldDefinitionV2 } from '../api/types'
 import {
   MAX_SCENARIOS,
   activeScenario,
@@ -15,6 +15,7 @@ import {
   type SituationDocument,
   type SituationScenario,
 } from '../situation'
+import { CountryCodeAutocomplete } from './CountryAutocomplete'
 
 const STEPS = ['Purpose', 'Checks', 'Details', 'Review'] as const
 
@@ -22,6 +23,7 @@ type SituationDialogProps = {
   open: boolean
   situation: SituationDocument
   catalog: TfcCatalogV2
+  countries: CatalogV2['countries']
   remembered: boolean
   onClose: () => void
   onApply: (situation: SituationDocument, remember: boolean) => void
@@ -53,6 +55,7 @@ export function SituationDialog({
   open,
   situation,
   catalog,
+  countries,
   remembered,
   onClose,
   onApply,
@@ -383,10 +386,11 @@ export function SituationDialog({
                     <legend>Scenario assumptions</legend>
                     <label className="form-field">
                       <span>{fields.get('scenario.target_country_codes')?.prompt ?? 'Target destinations'} {requiredFieldIds.has('scenario.target_country_codes') && <em>Required</em>}</span>
-                      <input
+                      <CountryCodeAutocomplete
+                        countries={countries}
                         value={scenario.targetCountries}
                         placeholder="DEU, CAN"
-                        onChange={(event) => updateScenario({ targetCountries: event.currentTarget.value })}
+                        onChange={(targetCountries) => updateScenario({ targetCountries })}
                       />
                       <FieldHelp field={fields.get('scenario.target_country_codes')} />
                     </label>
@@ -406,8 +410,11 @@ export function SituationDialog({
                       <legend>Applicant</legend>
                       <label className="form-field">
                         <span>{fields.get('applicant.citizenships')?.prompt ?? 'Citizenship(s)'}</span>
-                        <input value={draft.applicant.citizenships} placeholder="IND" onChange={(event) => {
-                          const citizenships = event.currentTarget.value
+                        <CountryCodeAutocomplete
+                          countries={countries}
+                          value={draft.applicant.citizenships}
+                          placeholder="IND"
+                          onChange={(citizenships) => {
                           setDraft((current) => ({ ...current, applicant: { ...current.applicant, citizenships } }))
                         }} />
                         <FieldHelp field={fields.get('applicant.citizenships')} />

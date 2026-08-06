@@ -29,6 +29,24 @@ export const countries = Array.from({ length: 5 }, (_, index) => ({
   region: `Region ${index + 1}`,
 }))
 
+export const countryCoverage = countries.map((country, index) => ({
+  country,
+  criteria: [
+    { criterion_id: 'air', outcome: 'valid' as const, reason_codes: [] },
+    {
+      criterion_id: 'heat',
+      outcome: index === 4 ? ('missing' as const) : ('valid' as const),
+      reason_codes: index === 4 ? ['SOURCE_VALUE_MISSING'] : [],
+    },
+    { criterion_id: 'jobs', outcome: 'valid' as const, reason_codes: [] },
+    {
+      criterion_id: 'health',
+      outcome: 'missing' as const,
+      reason_codes: ['CRITERION_NOT_READY'],
+    },
+  ],
+}))
+
 const source = {
   source_id: 'public-source',
   role: 'PRIMARY_OBSERVATION' as const,
@@ -145,6 +163,7 @@ export const catalogFixture: CatalogV2 = {
   coverage_policy_version: 'coverage-policy-v1',
   stable_universe_id: 'test-country-universe',
   countries,
+  country_coverage: countryCoverage,
   criteria: [airCriterion, heatCriterion, jobsCriterion, unavailableCriterion],
   preference_presets: [
     {

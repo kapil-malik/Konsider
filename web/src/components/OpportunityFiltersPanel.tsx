@@ -1,5 +1,4 @@
 import type { OpportunityFilterCatalogV2 } from '../api/types'
-import { EDUCATION_SHARED_LIMITATION } from '../opportunityPresentation'
 
 type OpportunityFiltersPanelProps = {
   catalog: OpportunityFilterCatalogV2
@@ -7,6 +6,7 @@ type OpportunityFiltersPanelProps = {
   disabled: boolean
   onToggle: (filterId: string) => void
   onClear: () => void
+  onOpenSources: () => void
 }
 
 export function OpportunityFiltersPanel({
@@ -15,6 +15,7 @@ export function OpportunityFiltersPanel({
   disabled,
   onToggle,
   onClear,
+  onOpenSources,
 }: OpportunityFiltersPanelProps) {
   const definitions = catalog.definitions.filter(
     (definition) => definition.active && definition.availability === 'AVAILABLE',
@@ -23,7 +24,7 @@ export function OpportunityFiltersPanel({
     { category: 'CAREER' as const, label: 'Career' },
     {
       category: 'EDUCATION' as const,
-      label: 'Education and research universities',
+      label: 'Education',
     },
   ]
 
@@ -35,7 +36,18 @@ export function OpportunityFiltersPanel({
       <div className="opportunity-filter-heading">
         <div>
           <p className="eyebrow">Optional destination evidence</p>
-          <h2 id="opportunity-filters-heading">Opportunity filters</h2>
+          <div className="opportunity-filter-title">
+            <h2 id="opportunity-filters-heading">Opportunity filters</h2>
+            <button
+              className="criterion-source-link"
+              type="button"
+              onClick={onOpenSources}
+              aria-label="Open criteria and sources for opportunity filters"
+              title="Open criteria and sources"
+            >
+              ↗
+            </button>
+          </div>
         </div>
         <span className="filter-count" aria-live="polite">
           {selectedFilterIds.length} selected
@@ -49,29 +61,6 @@ export function OpportunityFiltersPanel({
         <strong>All selected opportunity filters must have a verified strong signal.</strong>
       </p>
 
-      <details className="opportunity-help">
-        <summary>How opportunity filters work</summary>
-        <div>
-          <p>
-            Only a verified strong signal passes. Insufficient evidence is not negative and does
-            not mean an opportunity is absent. Filters never change weights, affinity scores, or
-            the order of countries that pass.
-          </p>
-          <p>{EDUCATION_SHARED_LIMITATION}</p>
-          <p>
-            Evidence freshness is shown in country details. Read the{' '}
-            <a
-              href="https://github.com/kapil-malik/Konsider/blob/main/docs/product/opportunity-filter-engine.md"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Opportunity Filter methodology (opens in a new tab)
-            </a>
-            .
-          </p>
-        </div>
-      </details>
-
       {!definitions.length ? (
         <div className="inline-message inline-message-warning" role="status">
           Opportunity filters are not available in this configured API release.
@@ -82,10 +71,18 @@ export function OpportunityFiltersPanel({
             const members = definitions.filter(
               (definition) => definition.category === group.category,
             )
+            const selectedCount = members.filter((definition) =>
+              selectedFilterIds.includes(definition.id),
+            ).length
             return (
-              <details className="opportunity-group" open key={group.category}>
+              <details className="opportunity-group" key={group.category}>
                 <summary>
-                  {group.label} <span>{members.length}</span>
+                  {group.label}{' '}
+                  <span
+                    aria-label={`${selectedCount} of ${members.length} filters selected`}
+                  >
+                    {selectedCount}/{members.length} selected
+                  </span>
                 </summary>
                 <div className="opportunity-options">
                   {members.map((definition) => {

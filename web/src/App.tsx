@@ -23,7 +23,7 @@ import { CountryDetails } from './components/CountryDetails'
 import { ErrorNotice } from './components/ErrorNotice'
 import { PreferencesPanel } from './components/PreferencesPanel'
 import { RankingView } from './components/RankingView'
-import { SourcesDialog } from './components/SourcesDialog'
+import { SourcesDialog, type HelperPage } from './components/SourcesDialog'
 import { SituationDialog } from './components/SituationDialog'
 import { countryCode } from './localityPresentation'
 import {
@@ -45,10 +45,10 @@ import {
 const INTRODUCTION = 'Discover countries that better match your priorities.'
 
 type HeaderProps = {
-  onOpenSources: () => void
+  onOpenHelper: (page: HelperPage) => void
 }
 
-function Header({ onOpenSources }: HeaderProps) {
+function Header({ onOpenHelper }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const guestButtonRef = useRef<HTMLButtonElement>(null)
@@ -89,14 +89,18 @@ function Header({ onOpenSources }: HeaderProps) {
               <strong>Guest session</strong>
               <p>Your situation stays in this tab unless you choose device storage.</p>
             </div>
-            {['How Konsider works', 'Data & Sources'].map((label) => (
+            {[
+              { label: 'How Konsider works', page: 'how' },
+              { label: 'Criteria and sources', page: 'criteria' },
+              { label: 'Countries and coverage', page: 'countries' },
+            ].map(({ label, page }) => (
               <button
                 role="menuitem"
                 key={label}
                 onClick={() => {
                   guestButtonRef.current?.focus()
                   setMenuOpen(false)
-                  onOpenSources()
+                  onOpenHelper(page as HelperPage)
                 }}
               >
                 {label}
@@ -413,6 +417,11 @@ function RankingWorkspace({
     })
   }
 
+  const clearComparison = () => {
+    setComparisonCountries([])
+    setComparisonNotice('')
+  }
+
   const applySituation = (situation: SituationDocument, remember: boolean) => {
     if (applyMutation.isPending) return
     applyMutation.mutate({
@@ -495,6 +504,7 @@ function RankingWorkspace({
           onWeightChange={changeWeight}
           onOpportunityFilterToggle={toggleOpportunityFilter}
           onOpportunityFiltersClear={() => setDraftOpportunityFilterIds([])}
+          onOpenSources={onOpenSources}
           onApply={applyPriorities}
           onUndo={() => {
             setDraft(clonePreference(applied))
@@ -540,6 +550,7 @@ function RankingWorkspace({
               onDetailedChange={setDetailed}
               onSelectCountry={setSelectedCountry}
               onToggleComparison={toggleComparison}
+              onClearComparison={clearComparison}
               onCompare={compareSelected}
               onOpenSources={onOpenSources}
               onRemoveOpportunityFilter={removeAppliedOpportunityFilter}
@@ -591,6 +602,7 @@ function RankingWorkspace({
           open={situationOpen}
           situation={appliedSituation}
           catalog={tfcCatalog}
+          countries={catalog.countries}
           remembered={situationRemembered}
           onClose={closeSituation}
           onApply={applySituation}
@@ -606,7 +618,7 @@ function RankingWorkspace({
 }
 
 export default function App() {
-  const [sourcesOpen, setSourcesOpen] = useState(false)
+  const [helperPage, setHelperPage] = useState<HelperPage | null>(null)
   const [currentRanking, setCurrentRanking] = useState<RankingV2 | null>(null)
   const sourcesReturnFocus = useRef<HTMLElement | null>(null)
   const catalogQuery = useQuery({
@@ -623,13 +635,13 @@ export default function App() {
     retry: false,
   })
   const catalogError = catalogQuery.error ?? opportunityCatalogQuery.error
-  const openSources = () => {
+  const openHelper = (page: HelperPage) => {
     sourcesReturnFocus.current =
       document.activeElement instanceof HTMLElement ? document.activeElement : null
-    setSourcesOpen(true)
+    setHelperPage(page)
   }
   const closeSources = () => {
-    setSourcesOpen(false)
+    setHelperPage(null)
     window.requestAnimationFrame(() => sourcesReturnFocus.current?.focus())
   }
 
@@ -638,7 +650,7 @@ export default function App() {
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
-      <Header onOpenSources={openSources} />
+      <Header onOpenHelper={openHelper} />
       {(catalogQuery.isPending || opportunityCatalogQuery.isPending) && (
         <main id="main-content" className="page-shell initial-loading" aria-live="polite">
           <div className="brand-mark brand-mark-large" aria-hidden="true">
@@ -666,14 +678,17 @@ export default function App() {
           tfcCatalog={tfcCatalogQuery.data ?? null}
           tfcCatalogError={tfcCatalogQuery.error}
           onRetryTfcCatalog={() => void tfcCatalogQuery.refetch()}
-          onOpenSources={openSources}
+          onOpenSources={() => openHelper('criteria')}
           onRankingChange={setCurrentRanking}
         />
       )}
-      {sourcesOpen && catalogQuery.data && (
+      {helperPage && catalogQuery.data && opportunityCatalogQuery.data && (
         <SourcesDialog
           catalog={catalogQuery.data}
+          opportunityCatalog={opportunityCatalogQuery.data}
+          tfcCatalog={tfcCatalogQuery.data ?? null}
           ranking={currentRanking}
+          initialPage={helperPage}
           onClose={closeSources}
         />
       )}

@@ -5,9 +5,6 @@ import type {
   RankingV2,
 } from '../api/types'
 import {
-  COVERAGE_CONTENT,
-  LOCALITY_CONTENT,
-  PROFILE_CONTENT,
   countryCode,
   readableCode,
 } from '../localityPresentation'
@@ -27,36 +24,6 @@ type AssessmentSummaryProps = {
   onClearOpportunityFilters: () => void
 }
 
-function AssessmentNotice({
-  domain,
-  content,
-}: {
-  domain: string
-  content: {
-    label: string
-    message: string
-    prominence: 'neutral' | 'mild' | 'caution' | 'strong'
-    icon: string
-  }
-}) {
-  return (
-    <article
-      className={`assessment-notice assessment-${content.prominence}`}
-      role="status"
-      aria-label={`${domain} status: ${content.label}`}
-    >
-      <span className="assessment-icon" aria-hidden="true">
-        {content.icon}
-      </span>
-      <div>
-        <span className="assessment-domain">{domain}</span>
-        <strong>{content.label}</strong>
-        <p>{content.message}</p>
-      </div>
-    </article>
-  )
-}
-
 export function AssessmentSummary({
   ranking,
   criteria,
@@ -69,7 +36,6 @@ export function AssessmentSummary({
 }: AssessmentSummaryProps) {
   const coverage = ranking.assessments.coverage
   const locality = ranking.assessments.locality
-  const profile = ranking.assessments.profile
   const opportunity = ranking.assessments.opportunity
   const criterionNames = new Map(
     criteria.map((criterion) => [criterion.id, criterion.display_name]),
@@ -83,21 +49,6 @@ export function AssessmentSummary({
 
   return (
     <div className="assessment-summary">
-      <div className="assessment-domain-grid">
-        <AssessmentNotice
-          domain="Coverage"
-          content={COVERAGE_CONTENT[coverage.status]}
-        />
-        <AssessmentNotice
-          domain="Locality"
-          content={LOCALITY_CONTENT[locality.status]}
-        />
-        <AssessmentNotice
-          domain="Profile"
-          content={PROFILE_CONTENT[profile.status]}
-        />
-      </div>
-
       {opportunity.active_filter_ids.length > 0 && (
         <section
           className={`opportunity-result-summary opportunity-${opportunity.status.toLocaleLowerCase()}`}

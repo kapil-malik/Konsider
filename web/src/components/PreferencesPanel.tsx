@@ -21,6 +21,7 @@ type PreferencesPanelProps = {
   onOpportunityFiltersClear: () => void
   onApply: () => void
   onUndo: () => void
+  onOpenSources: () => void
 }
 
 export function PreferencesPanel({
@@ -37,6 +38,7 @@ export function PreferencesPanel({
   onOpportunityFiltersClear,
   onApply,
   onUndo,
+  onOpenSources,
 }: PreferencesPanelProps) {
   const selectedPreset = presets.find(
     (preset) => preset.id === draft.preferencePresetId,
@@ -87,6 +89,7 @@ export function PreferencesPanel({
               value={draft.weights[criterion.id] ?? 0}
               disabled={isApplying}
               onChange={(value) => onWeightChange(criterion.id, value)}
+              onOpenSources={onOpenSources}
             />
           ))}
         </div>
@@ -96,12 +99,21 @@ export function PreferencesPanel({
         </div>
       )}
 
+      <div className="criterion-legend" aria-label="Criterion symbol legend">
+        <span><b aria-hidden="true">●</b> Full coverage</span>
+        <span><b aria-hidden="true">◐</b> Partial coverage</span>
+        <span><b aria-hidden="true">⌖</b> Locality-derived</span>
+        <span><b aria-hidden="true">◇</b> Experimental</span>
+        <button type="button" className="text-button" onClick={onOpenSources}>Criteria and sources</button>
+      </div>
+
       <OpportunityFiltersPanel
         catalog={opportunityCatalog}
         selectedFilterIds={selectedOpportunityFilterIds}
         disabled={isApplying}
         onToggle={onOpportunityFilterToggle}
         onClear={onOpportunityFiltersClear}
+        onOpenSources={onOpenSources}
       />
 
       <div className="apply-bar">

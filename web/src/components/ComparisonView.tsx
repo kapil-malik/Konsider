@@ -7,9 +7,7 @@ import type {
   TfcCatalogV2,
 } from '../api/types'
 import {
-  LOCALITY_CONTENT,
   countryCode,
-  localityName,
   readableCode,
 } from '../localityPresentation'
 import { formatScore } from '../preferences'
@@ -21,7 +19,6 @@ import {
 import { tfcName, tfcOutcomeContent } from '../tfcPresentation'
 import {
   CountryFeasibilitySummary,
-  CrossFeatureExplanation,
   OutcomeEvidenceSummary,
 } from './FeasibilitySummary'
 
@@ -59,17 +56,14 @@ function ContributionValue({
     <div className="comparison-value">
       <strong>{contribution.score.toFixed(1)}</strong>
       {contribution.derivation === 'AGGREGATED_FROM_LOCALITIES' && (
-        <>
-          <span className="badge badge-scope">⌖ Locality-derived</span>
-          <span className="comparison-localities">
-            {contribution.contributing_localities
-              .map(
-                (item) =>
-                  `${item.locality.display_name} ${item.input_score.toFixed(1)}`,
-              )
-              .join(', ')}
-          </span>
-        </>
+        <span className="comparison-localities">
+          {contribution.contributing_localities
+            .map(
+              (item) =>
+                `${item.locality.display_name} ${item.input_score.toFixed(1)}`,
+            )
+            .join(', ')}
+        </span>
       )}
     </div>
   )
@@ -104,10 +98,6 @@ export function ComparisonView({
           <h2 id="comparison-heading" ref={headingRef} tabIndex={-1}>
             Compare countries
           </h2>
-          <p>
-            Scores, locality provenance, and unavailable evidence come directly from the API. No
-            partial aggregate is fabricated.
-          </p>
         </div>
         <button
           className="icon-button"
@@ -197,39 +187,6 @@ export function ComparisonView({
                 </td>
               ))}
             </tr>
-            <tr>
-              <th scope="row">Locality assessment</th>
-              {comparison.countries.map((country) => {
-                const locality = country.assessments.locality
-                const contributions = comparison.criterion_rows.flatMap((row) =>
-                  row.cells
-                    .filter(
-                      (cell) =>
-                        cell.country.entity_id === country.country.entity_id &&
-                        cell.contribution,
-                    )
-                    .map((cell) => cell.contribution as ContributionV2),
-                )
-                const bestCommon = localityName(
-                  locality.best_common_locality_entity_id,
-                  contributions,
-                )
-                return (
-                  <td key={country.country.entity_id}>
-                    <strong>{LOCALITY_CONTENT[locality.status].label}</strong>
-                    {bestCommon && <span>Best common: {bestCommon}</span>}
-                    {!bestCommon && locality.common_locality_entity_ids.length > 0 && (
-                      <span>
-                        Common evidence:{' '}
-                        {locality.common_locality_entity_ids
-                          .map((id) => localityName(id, contributions))
-                          .join(', ')}
-                      </span>
-                    )}
-                  </td>
-                )
-              })}
-            </tr>
             {comparison.assessments.opportunity.active_filter_ids.map((filterId) => {
               const definition = opportunityDefinitions.get(filterId)
               return (
@@ -293,31 +250,28 @@ export function ComparisonView({
                   })}
                 </tr>
               ))}
-            {tfcCatalog && comparison.assessments.feasibility && (
-              <tr className="cross-feature-comparison-row">
-                <th scope="row">How the signals relate</th>
-                {comparison.countries.map((country) => (
-                  <td key={country.country.entity_id}>
-                    <CrossFeatureExplanation
-                      assessment={country.assessments.feasibility}
-                      opportunityEvidence={country.assessments.opportunity.filter_evidence}
-                      localityStatus={country.assessments.locality.status}
-                      finalAggregate={country.final_aggregate}
-                    />
-                  </td>
-                ))}
-              </tr>
-            )}
             {comparison.criterion_rows.map((row) => (
               <tr key={row.criterion_id}>
                 <th scope="row">
                   {row.criterion_name}
                   <span className="row-badges">
                     {row.coverage.mode === 'CONDITIONAL_COMPLETE_CASE' && (
-                      <span className="badge badge-limited">! Limited coverage</span>
+                      <span
+                        className="criterion-symbol coverage-symbol is-partial"
+                        aria-label="Partial-coverage criterion"
+                        title="Partial-coverage criterion"
+                      >
+                        <span aria-hidden="true">◐</span>
+                      </span>
                     )}
                     {row.scope.derivation === 'AGGREGATED_FROM_LOCALITIES' && (
-                      <span className="badge badge-scope">⌖ Locality-derived</span>
+                      <span
+                        className="criterion-symbol locality-symbol"
+                        aria-label="Locality-derived criterion"
+                        title="Locality-derived criterion"
+                      >
+                        <span aria-hidden="true">⌖</span>
+                      </span>
                     )}
                   </span>
                 </th>
@@ -371,10 +325,6 @@ export function ComparisonView({
                     }`
                   : 'Coverage excluded · no final aggregate'}
               </p>
-              <p>
-                <strong>Locality:</strong>{' '}
-                {LOCALITY_CONTENT[country.assessments.locality.status].label}
-              </p>
               {comparison.assessments.opportunity.active_filter_ids.length > 0 && (
                 <div className="comparison-opportunity-list">
                   <strong>Opportunity filters</strong>
@@ -406,12 +356,6 @@ export function ComparisonView({
                     catalog={tfcCatalog}
                     detailed
                     showEvidence
-                  />
-                  <CrossFeatureExplanation
-                    assessment={country.assessments.feasibility}
-                    opportunityEvidence={country.assessments.opportunity.filter_evidence}
-                    localityStatus={country.assessments.locality.status}
-                    finalAggregate={country.final_aggregate}
                   />
                 </div>
               )}

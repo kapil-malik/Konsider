@@ -4,6 +4,7 @@ export type ErrorEnvelope = components['schemas']['ErrorResponse']
 
 export type CatalogV2 = components['schemas']['CatalogV2Response']
 export type CatalogCriterionV2 = components['schemas']['CatalogCriterionV2Response']
+export type CountryCoverageV2 = components['schemas']['CountryCoverageResponse']
 export type PreferencePreset = components['schemas']['PreferencePresetResponse']
 export type RankingRequestV2 = components['schemas']['V2RankingRequest']
 export type WeightSelectionV2 = components['schemas']['V2WeightSelection']

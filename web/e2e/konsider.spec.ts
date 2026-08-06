@@ -97,12 +97,26 @@ async function applyWorkSituation(page: Page) {
   await dialog.getByRole('button', { name: 'Continue' }).click()
   await dialog.getByRole('checkbox', { name: /Highly qualified work route check/ }).check()
   await dialog.getByRole('button', { name: 'Continue' }).click()
-  await dialog.getByRole('textbox', { name: /Target destinations/ }).fill('DEU')
+  await dialog.getByRole('combobox', { name: /Target destinations/ }).fill('DEU')
   await dialog.getByLabel(/Target date/).fill('2026-08-05')
   await dialog.getByRole('textbox', { name: /Current occupation/ }).fill('Civil engineer')
   await dialog.getByRole('combobox', { name: /Qualifications/ }).selectOption('MASTERS')
   await dialog.getByRole('button', { name: 'Continue' }).click()
   await dialog.getByRole('button', { name: 'Save and assess' }).click()
+}
+
+async function expandOpportunityGroups(page: Page) {
+  const panel = page.locator('section[aria-labelledby="opportunity-filters-heading"]')
+  await expect(panel).toBeVisible()
+  const groups = panel.locator('.opportunity-group')
+  await expect(groups).toHaveCount(2)
+  for (let index = 0; index < await groups.count(); index += 1) {
+    const group = groups.nth(index)
+    if (!(await group.evaluate((element) => element.hasAttribute('open')))) {
+      await group.locator('summary').click()
+    }
+  }
+  return panel
 }
 
 test('initial guest ranking and explicit priority update use the v2 contract', async ({ page }) => {
@@ -112,13 +126,6 @@ test('initial guest ranking and explicit priority update use the v2 contract', a
 
   await expect(page.getByRole('heading', { name: 'Country ranking' })).toBeVisible()
   await expect(page.getByRole('button', { name: /Guest/ })).toBeVisible()
-  await expect(
-    page.getByRole('status', { name: 'Coverage status: Full coverage' }),
-  ).toBeVisible()
-  await expect(
-    page.getByRole('status', { name: 'Locality status: Common locality available' }),
-  ).toBeVisible()
-
   const rankingCallsBeforeApply = requests.filter((item) => item.path.endsWith('/rankings')).length
   await page.getByLabel('Preference preset').selectOption('climate')
   await page.getByRole('slider', { name: 'Air quality' }).press('ArrowRight')
@@ -152,14 +159,6 @@ test('coverage exclusion and locality advice remain distinct', async ({ page }) 
   await mockApi(page, [], coverageWarningRanking)
   await page.goto('/')
 
-  await expect(
-    page.getByRole('status', { name: 'Coverage status: Limited-coverage ranking' }),
-  ).toBeVisible()
-  await expect(
-    page.getByRole('status', {
-      name: 'Locality status: Strong options are in different localities',
-    }),
-  ).toBeVisible()
   await expect(page.getByText(/affinity score is unchanged/i).first()).toBeVisible()
   await page.getByText(/Review 1 coverage-excluded country/).click()
   await page.getByRole('button', { name: 'Country 5' }).click()
@@ -179,8 +178,8 @@ test('selects countries, compares, and returns without refetching ranking', asyn
   await page.getByRole('button', { name: 'Compare selected (3)' }).click()
 
   await expect(page.getByRole('heading', { name: 'Compare countries' })).toBeVisible()
-  await expect(page.getByText('Locality-derived').first()).toBeVisible()
-  await expect(page.getByText(/Best common: Harbor City/).first()).toBeVisible()
+  await expect(page.getByLabel('Locality-derived criterion').first()).toBeVisible()
+  await expect(page.getByText(/Harbor City/).first()).toBeVisible()
   const rankingCallsBeforeBack = requests.filter((item) => item.path.endsWith('/rankings')).length
   await page.getByRole('button', { name: '← Back to rankings' }).click()
   await expect(page.getByRole('heading', { name: 'Country ranking' })).toBeVisible()
@@ -189,18 +188,16 @@ test('selects countries, compares, and returns without refetching ranking', asyn
   )
 })
 
-test('opens and closes Data & Sources from the Guest menu', async ({ page }) => {
+test('opens and closes Criteria and sources from the Guest menu', async ({ page }) => {
   await mockApi(page)
   await page.goto('/')
   await page.getByRole('button', { name: /Guest/ }).click()
-  await page.getByRole('menuitem', { name: 'Data & Sources' }).click()
-  const dialog = page.getByRole('dialog', { name: 'Data & Sources' })
+  await page.getByRole('menuitem', { name: 'Criteria and sources' }).click()
+  const dialog = page.getByRole('dialog', { name: 'Criteria and sources' })
   await expect(dialog).toBeVisible()
   await expect(dialog.getByRole('heading', { name: 'Extreme heat exposure' })).toBeVisible()
-  await expect(dialog.getByText(/Previously called: Extreme-weather risk/)).toBeVisible()
-  await expect(dialog.getByText(/Locality evidence · Aggregated from localities/)).toBeVisible()
   await expect(dialog.getByText('top-two:heat')).toBeVisible()
-  await dialog.getByRole('button', { name: 'Close Data and Sources' }).click()
+  await dialog.getByRole('button', { name: 'Close Criteria and sources' }).click()
   await expect(dialog).toBeHidden()
 })
 
@@ -208,11 +205,11 @@ test('search and region filters update visible and total result counts', async (
   await mockApi(page)
   await page.goto('/')
 
-  await page.getByRole('searchbox', { name: 'Search countries' }).fill('C03')
+  await page.getByRole('combobox', { name: 'Search countries' }).fill('C03')
   await expect(page.getByText(/Showing 1 of 5 returned countries/)).toBeVisible()
   await expect(page.locator('.ranking-table tbody tr[data-country-code="C03"]')).toBeVisible()
 
-  await page.getByRole('combobox', { name: 'Region' }).selectOption('Region 2')
+  await page.locator('.ranking-filters select').selectOption('Region 2')
   await expect(page.getByRole('heading', { name: 'No countries match these filters' })).toBeVisible()
   await expect(page.getByText(/Showing 0 of 5 returned countries/)).toBeVisible()
 })
@@ -245,14 +242,6 @@ test('mobile keeps locality evidence, details, and comparison complete without o
   await mockApi(page)
   await page.goto('/')
   await page.getByLabel('Show detailed evidence').check()
-  await expect(
-    page
-      .locator('.ranking-card[data-country-code="C00"]')
-      .getByText('Extreme heat exposure', { exact: true }),
-  ).toBeVisible()
-  await expect(
-    page.locator('.ranking-card[data-country-code="C00"]').getByText('Locality-derived'),
-  ).toBeVisible()
   await page.locator('.ranking-card[data-country-code="C00"] .text-button').click()
   await expect(page.getByRole('heading', { name: 'Country 1', level: 2 })).toBeVisible()
   await page.getByRole('button', { name: 'Close country details' }).click()
@@ -276,9 +265,7 @@ test('applies strict Opportunity Filters and exposes removable evidence and excl
   await mockApi(page, requests, rankingFixture, rankingWithOpportunityFilters())
   await page.goto('/')
 
-  const opportunityPanel = page.locator(
-    'section[aria-labelledby="opportunity-filters-heading"]',
-  )
+  const opportunityPanel = await expandOpportunityGroups(page)
   await expect(opportunityPanel.getByRole('checkbox')).toHaveCount(9)
   await expect(opportunityPanel.getByRole('slider')).toHaveCount(0)
   await opportunityPanel.getByRole('checkbox', { name: /Technology and software/ }).check()
@@ -340,8 +327,10 @@ test('mobile Opportunity Filters remain collapsible, complete, and free of horiz
     'Career',
   )
   await expect(opportunityPanel.locator('.opportunity-group summary').nth(1)).toContainText(
-    'Education and research universities',
+    'Education',
   )
+  await expect(opportunityPanel.getByRole('checkbox')).toHaveCount(0)
+  await expandOpportunityGroups(page)
   await expect(opportunityPanel.getByRole('checkbox')).toHaveCount(9)
   await opportunityPanel
     .getByRole('checkbox', { name: /Skilled-trades or construction/ })
@@ -374,7 +363,7 @@ test('guest situation explicitly assesses one TFC and reuses the snapshot in det
   await dialog.getByRole('button', { name: 'Continue' }).click()
   await dialog.getByRole('checkbox', { name: /Highly qualified work route check/ }).check()
   await dialog.getByRole('button', { name: 'Continue' }).click()
-  await dialog.getByRole('textbox', { name: /Target destinations/ }).fill('DEU')
+  await dialog.getByRole('combobox', { name: /Target destinations/ }).fill('DEU')
   await dialog.getByLabel(/Target date/).fill('2026-08-05')
   await dialog.getByRole('textbox', { name: /Current occupation/ }).fill('Civil engineer')
   await dialog.getByRole('combobox', { name: /Qualifications/ }).selectOption('MASTERS')
@@ -423,8 +412,10 @@ test('strict OFC, locality, and TFC evidence remain separate across details and 
   )
   await page.goto('/')
 
+  await expandOpportunityGroups(page)
+
   await page
-    .getByRole('checkbox', { name: /Skilled-trades or construction employment ecosystem/ })
+    .getByRole('checkbox', { name: /Skilled-trades or construction/ })
     .check()
   await page.getByRole('button', { name: 'Apply priorities' }).click()
   await applyWorkSituation(page)
@@ -456,7 +447,7 @@ test('strict OFC, locality, and TFC evidence remain separate across details and 
   await boxes.nth(0).check()
   await boxes.nth(1).check()
   await page.getByRole('button', { name: 'Compare selected (2)' }).click()
-  await expect(page.getByText('How the signals relate').first()).toBeVisible()
+  await expect(page.getByText('How the signals relate')).toHaveCount(0)
   await expect(page.getByText(/sources fictional-work-source/).first()).toBeVisible()
   await expect(page.getByText(/Check evidence effective 2026-08-05/).first()).toBeVisible()
   await expect(page.getByText(/Filtered rank/).first()).toBeVisible()
@@ -471,8 +462,9 @@ test('mobile combined evidence remains complete and free of horizontal overflow'
     rankingWithOpportunityFilters(['skilled_trades_construction_opportunity']),
   )
   await page.goto('/')
+  await expandOpportunityGroups(page)
   await page
-    .getByRole('checkbox', { name: /Skilled-trades or construction employment ecosystem/ })
+    .getByRole('checkbox', { name: /Skilled-trades or construction/ })
     .check()
   await page.getByRole('button', { name: 'Apply priorities' }).click()
   await applyWorkSituation(page)

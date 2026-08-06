@@ -115,11 +115,30 @@ class RecommendationService:
             for row in sorted(entities.values(), key=lambda item: item["entity_id"])
             if row["entity_type"] == "COUNTRY"
         ]
+        outcomes_by_country: dict[str, list[dict[str, Any]]] = {}
+        for outcome in self.release.artifacts.criterion_outcomes:
+            outcomes_by_country.setdefault(outcome["subject"]["entity_id"], []).append(
+                {
+                    "criterion_id": outcome["criterion_id"],
+                    "outcome": outcome["outcome"],
+                    "reason_codes": outcome["reason_codes"],
+                }
+            )
         return {
             **self._version_fields(),
             "coverage_policy_version": catalog["coverage_policy_version"],
             "stable_universe_id": catalog["stable_universe_id"],
             "countries": countries,
+            "country_coverage": [
+                {
+                    "country": country,
+                    "criteria": sorted(
+                        outcomes_by_country.get(country["entity_id"], []),
+                        key=lambda item: item["criterion_id"],
+                    ),
+                }
+                for country in countries
+            ],
             "criteria": [
                 self._catalog_criterion(row)
                 for row in sorted(catalog["criteria"], key=lambda item: item["id"])
