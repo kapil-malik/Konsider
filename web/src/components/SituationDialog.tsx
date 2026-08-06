@@ -331,7 +331,7 @@ export function SituationDialog({
                   .sort((first, second) => {
                     const firstRecommended = first.applicable_purposes.includes(scenario.purpose)
                     const secondRecommended = second.applicable_purposes.includes(scenario.purpose)
-                    return Number(secondRecommended) - Number(firstRecommended) || first.sort_order - second.sort_order
+                    return Number(secondRecommended) - Number(firstRecommended) || first.sortOrder - second.sortOrder
                   })
                   .map((definition) => {
                     const selected = scenario.selectedTfcIds.includes(definition.id)
@@ -351,7 +351,7 @@ export function SituationDialog({
                         />
                         <span>
                           <span className="option-heading">
-                            <strong>{definition.display_name}</strong>
+                            <strong>{definition.displayName}</strong>
                             {recommended && <span className="recommendation-badge">Relevant to {purposeLabel(scenario.purpose)}</span>}
                           </span>
                           <small>{definition.user_question}</small>
@@ -559,7 +559,7 @@ export function SituationDialog({
               </div>
               <dl className="situation-review">
                 <div><dt>Active scenario</dt><dd>{situationSummary(draft)}</dd></div>
-                <div><dt>Checks that will run</dt><dd>{selectedDefinitions.length ? selectedDefinitions.map((item) => item.display_name).join(', ') : 'None'}</dd></div>
+                <div><dt>Checks that will run</dt><dd>{selectedDefinitions.length ? selectedDefinitions.map((item) => item.displayName).join(', ') : 'None'}</dd></div>
                 <div><dt>Unknown or incomplete</dt><dd>{[...requiredFieldIds].filter((id) => {
                   if (id === 'applicant.occupation') return !draft.applicant.occupation.trim() || draft.applicant.occupationUnknown
                   if (id === 'applicant.qualifications') return draft.applicant.qualificationLevel === 'UNKNOWN'

@@ -23,6 +23,10 @@ from konsider.ingestion.current_release import LoadedCurrentRelease
 API_CONTRACT_VERSION = "konsider-api-2.0"
 
 
+def _display_name(definition: Mapping[str, Any]) -> str:
+    return str(definition.get("displayName", definition.get("display_name")))
+
+
 def _reason(
     code: str,
     *,
@@ -99,7 +103,13 @@ class RecommendationService:
             for lineage_id in criterion["coverage"]["source_lineage_ids"]
             for source in lineages[lineage_id]["sources"]
         ]
-        return {**criterion, "sources": sources}
+        result = {**criterion, "sources": sources}
+        if "displayName" in result:
+            result["display_name"] = result.pop("displayName")
+            result["category"] = result.pop("sectionName") or ""
+            for field in ("compactName", "sectionId", "sortOrder"):
+                result.pop(field, None)
+        return result
 
     def catalog(self) -> dict[str, Any]:
         catalog = self.release.artifacts.consumer_catalog
@@ -288,7 +298,7 @@ class RecommendationService:
         lineage_ids = list(outcome["source_lineage_ids"])
         return {
             "criterion_id": contribution.criterion_id,
-            "criterion_name": criterion["display_name"],
+            "criterion_name": _display_name(criterion),
             "source_scope": criterion["scope"]["evidence_level"],
             "result_scope": "COUNTRY",
             "derivation": criterion["scope"]["derivation"],
@@ -688,7 +698,7 @@ class RecommendationService:
             rows.append(
                 {
                     "criterion_id": criterion_id,
-                    "criterion_name": criteria[criterion_id]["display_name"],
+                    "criterion_name": _display_name(criteria[criterion_id]),
                     "coverage": criteria[criterion_id]["coverage"],
                     "scope": criteria[criterion_id]["scope"],
                     "cells": cells,

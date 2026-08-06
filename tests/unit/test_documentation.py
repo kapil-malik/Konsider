@@ -56,7 +56,7 @@ def test_documented_api_paths_match_openapi() -> None:
     documented = {
         path
         for document in documents
-        for path in re.findall(r"`(/api/v[12]/[^`]+)`", document.read_text(encoding="utf-8"))
+        for path in re.findall(r"`(/api/v[123]/[^`]+)`", document.read_text(encoding="utf-8"))
     }
     openapi = create_app().openapi()
     assert documented == set(openapi["paths"])

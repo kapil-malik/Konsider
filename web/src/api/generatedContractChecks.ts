@@ -5,7 +5,7 @@ import type {
   RankingV2,
 } from './types'
 
-// Compile-time assertions against generated konsider-api-types-2.0.
+// Compile-time assertions against generated konsider-api-types-3.0.
 const validRequest: RankingRequestV2 = { preference_preset_id: 'balanced' }
 void validRequest
 
@@ -32,6 +32,7 @@ void catalog.profiles
 declare const contribution: ContributionV2
 void contribution.contributing_localities
 void contribution.aggregation_policy
+void contribution.displayName
 
 // @ts-expect-error Locality provenance is structured, not a free-text city field.
 void contribution.city

@@ -8,6 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from konsider.domain.display_catalog import ProductDisplayCatalog
 from konsider.ingestion.countries import COUNTRY_CODES, COUNTRY_UNIVERSE
 from konsider.ingestion.coverage_validation import validate_coverage_release
 from konsider.ingestion.models import (
@@ -137,17 +138,32 @@ def build_wave2_catalog(
     *,
     base_catalog: dict[str, object],
     coverage: list[CriterionCoverage],
+    display_catalog: ProductDisplayCatalog,
 ) -> dict[str, object]:
     coverage_by_id = {item.criterion_id: item.to_dict() for item in coverage}
-    criteria = [
-        {**item, "coverage": coverage_by_id[item["id"]]} for item in base_catalog["criteria"]
-    ]
+    criteria = []
+    for item in base_catalog["criteria"]:
+        display = display_catalog.definition("ORDERING_CRITERION", item["id"])
+        if display.section_name is None:
+            raise ValueError(f"Ordering criterion {item['id']} has no display section.")
+        criteria.append(
+            {
+                **item,
+                "display_name": display.display_name,
+                "category": display.section_name,
+                "coverage": coverage_by_id[item["id"]],
+            }
+        )
+    school_display = display_catalog.definition("ORDERING_CRITERION", SCHOOL_ID)
+    innovation_display = display_catalog.definition("ORDERING_CRITERION", INNOVATION_ID)
+    if school_display.section_name is None or innovation_display.section_name is None:
+        raise ValueError("Wave 2 ordering criteria require display sections.")
     criteria.extend(
         [
             {
                 "id": SCHOOL_ID,
-                "display_name": "School education quality",
-                "category": "Education and human capital",
+                "display_name": school_display.display_name,
+                "category": school_display.section_name,
                 "description": (
                     "National learning-adjusted years of schooling, combining expected schooling "
                     "quantity with harmonized learning outcomes."
@@ -175,8 +191,8 @@ def build_wave2_catalog(
             },
             {
                 "id": INNOVATION_ID,
-                "display_name": "Research and innovation ecosystem",
-                "category": "Education, research and innovation",
+                "display_name": innovation_display.display_name,
+                "category": innovation_display.section_name,
                 "description": (
                     "WIPO's published Innovation outputs sub-index, covering national knowledge, "
                     "technology, and creative outputs."
@@ -341,6 +357,7 @@ def build_wave2_release(
     wipo_raw_path: Path,
     release_root: Path,
     report_root: Path,
+    display_catalog: ProductDisplayCatalog,
     publish: bool,
     created_at: str | None = None,
     wipo_retrieved_at: str = "2026-07-28T07:05:47+00:00",
@@ -397,7 +414,11 @@ def build_wave2_release(
     if not validation.structural_passed or not validation.product_ready:
         issues = "; ".join(item.message for item in validation.issues)
         raise ValueError(f"Wave 2 schema-4 validation did not pass: {issues}")
-    catalog = build_wave2_catalog(base_catalog=base_catalog, coverage=coverage)
+    catalog = build_wave2_catalog(
+        base_catalog=base_catalog,
+        coverage=coverage,
+        display_catalog=display_catalog,
+    )
     catalog_output_path.parent.mkdir(parents=True, exist_ok=True)
     _write_json(catalog_output_path, catalog)
     sensitivity = sensitivity_experiments(observations)

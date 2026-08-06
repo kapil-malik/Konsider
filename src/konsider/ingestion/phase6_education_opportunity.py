@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 from konsider.contracts import validate_contract
+from konsider.domain.display_catalog import ProductDisplayCatalog, load_product_display_catalog
 from konsider.domain.opportunity_filters import (
     OpportunityFilterState,
     validate_opportunity_filter_catalog,
@@ -41,6 +42,10 @@ PHASE6C_FIXTURE = (
 UNIVERSE_PATH = ROOT / "data" / "country-universes" / "stable-supported-v1.json"
 ACTIVE_RELEASE_PATH = ROOT / "data" / "releases" / "2026-07-29.2"
 DEFAULT_OUTPUT_ROOT = ROOT / "data" / "reports" / "phase6f-2026-08-03"
+DISPLAY_CATALOG_PATH = ROOT / "data" / "catalogs" / "product-display-catalog.json"
+DISPLAY_CATALOG_SCHEMA_PATH = (
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json"
+)
 
 RELEASE_ID = "phase6f-complete-2026-08-03.1"
 BUILD_ID = "phase6f-education-promotion-1.0"
@@ -73,8 +78,6 @@ class EducationOpportunityBuildError(ValueError):
 @dataclass(frozen=True)
 class EducationFilterConfig:
     filter_id: str
-    display_name: str
-    compact_label: str
     source_field: str
     source_field_slug: str
     sort_order: int
@@ -89,8 +92,6 @@ class EducationFilterConfig:
 FILTERS = (
     EducationFilterConfig(
         "engineering_technology_education_opportunity",
-        "Physical sciences and engineering research-university ecosystem",
-        "Engineering and technology research",
         "Physical sciences and engineering",
         "physical-sciences-engineering",
         6,
@@ -106,8 +107,6 @@ FILTERS = (
     ),
     EducationFilterConfig(
         "computer_science_ict_education_opportunity",
-        "Mathematics and computer science research-university ecosystem",
-        "Mathematics and computer science research",
         "Mathematics and computer science",
         "mathematics-computer-science",
         7,
@@ -123,8 +122,6 @@ FILTERS = (
     ),
     EducationFilterConfig(
         "medicine_health_sciences_education_opportunity",
-        "Biomedical and health sciences research-university ecosystem",
-        "Biomedical and health sciences research",
         "Biomedical and health sciences",
         "biomedical-health",
         8,
@@ -140,8 +137,6 @@ FILTERS = (
     ),
     EducationFilterConfig(
         "natural_sciences_education_opportunity",
-        "Life and earth sciences research-university ecosystem",
-        "Life and earth sciences research",
         "Life and earth sciences",
         "life-earth-sciences",
         9,
@@ -157,6 +152,23 @@ FILTERS = (
     ),
 )
 FILTER_BY_ID = {item.filter_id: item for item in FILTERS}
+MEANING_BY_ID = {
+    "engineering_technology_education_opportunity": (
+        "A substantial and established physical sciences and engineering "
+        "research-university ecosystem."
+    ),
+    "computer_science_ict_education_opportunity": (
+        "A substantial and established mathematics and computer science "
+        "research-university ecosystem."
+    ),
+    "medicine_health_sciences_education_opportunity": (
+        "A substantial and established biomedical and health sciences "
+        "research-university ecosystem."
+    ),
+    "natural_sciences_education_opportunity": (
+        "A substantial and established life and earth sciences research-university ecosystem."
+    ),
+}
 
 
 def _read_json(path: Path) -> Any:
@@ -525,17 +537,24 @@ def _education_evidence(row: Mapping[str, Any], config: EducationFilterConfig) -
     }
 
 
-def _education_definition(config: EducationFilterConfig) -> dict[str, Any]:
+def _education_definition(
+    config: EducationFilterConfig, display_catalog: ProductDisplayCatalog
+) -> dict[str, Any]:
+    display = display_catalog.definition("OPPORTUNITY_FILTER", config.filter_id)
+    if display.compact_name is None or display.section_id != "education":
+        raise EducationOpportunityBuildError(
+            f"Invalid education display metadata for {config.filter_id}."
+        )
     return {
         "id": config.filter_id,
-        "display_name": config.display_name,
-        "compact_label": config.compact_label,
+        "display_name": display.display_name,
+        "compact_label": display.compact_name,
         "category": "EDUCATION",
         "construct": (
             f"Country-level scale, breadth, and global prominence of research-intensive universities "
             f"in {config.source_field.lower()}, using the frozen CWTS Leiden Open 2025 release."
         ),
-        "meaning": f"A substantial and established {config.display_name.lower()}.",
+        "meaning": MEANING_BY_ID[config.filter_id],
         "does_not_mean": [
             "Teaching quality or programme quality",
             "Programme availability, admissions, or student access",
@@ -602,14 +621,24 @@ def _consolidated_career_artifacts() -> tuple[list[dict[str, Any]], list[dict[st
     return definitions, rows
 
 
-def _catalog(career_definitions: list[dict[str, Any]]) -> dict[str, Any]:
+def _catalog(
+    career_definitions: list[dict[str, Any]], display_catalog: ProductDisplayCatalog
+) -> dict[str, Any]:
+    technical_ids = {item["id"] for item in career_definitions} | set(FILTER_BY_ID)
+    catalog_ids = {item.id for item in display_catalog.definitions("OPPORTUNITY_FILTER")}
+    if technical_ids != catalog_ids:
+        raise EducationOpportunityBuildError(
+            f"Opportunity Filter display ID mismatch: technical={sorted(technical_ids)}, "
+            f"catalog={sorted(catalog_ids)}."
+        )
     return {
         "schema_version": "opportunity-filter-catalog-1.0",
         "compatible_release_schema_major": 5,
         "stable_universe_id": "stable_supported_v1",
         "activation_status": "STAGED_CONTRACT_ONLY",
         "state_contract_version": "opportunity-filter-state-1.0",
-        "definitions": career_definitions + [_education_definition(config) for config in FILTERS],
+        "definitions": career_definitions
+        + [_education_definition(config, display_catalog) for config in FILTERS],
     }
 
 
@@ -931,7 +960,10 @@ def _candidate_manifest(
 
 
 def build_education_opportunity_bundle(
-    output_root: Path = DEFAULT_OUTPUT_ROOT, *, verify_raw: bool = False
+    output_root: Path = DEFAULT_OUTPUT_ROOT,
+    *,
+    display_catalog: ProductDisplayCatalog,
+    verify_raw: bool = False,
 ) -> dict[str, Any]:
     """Build and validate the staged nine-filter Phase 6F release fragment."""
 
@@ -966,7 +998,7 @@ def build_education_opportunity_bundle(
     ]
     career_definitions, career_rows = _consolidated_career_artifacts()
     all_rows = career_rows + education_rows
-    catalog = _catalog(career_definitions)
+    catalog = _catalog(career_definitions, display_catalog)
     threshold_policies = _threshold_policies()
     evidence_policy = _evidence_policy()
     source_manifest = _source_manifest()
@@ -1100,8 +1132,13 @@ def _parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = _parse_args()
+    display_catalog = load_product_display_catalog(
+        DISPLAY_CATALOG_PATH, DISPLAY_CATALOG_SCHEMA_PATH
+    )
     manifest = build_education_opportunity_bundle(
-        args.output, verify_raw=args.verify_retained_sources
+        args.output,
+        display_catalog=display_catalog,
+        verify_raw=args.verify_retained_sources,
     )
     print(
         f"build={manifest['build_id']} filters={manifest['assertions']['combined_filter_count']} "

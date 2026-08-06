@@ -38,7 +38,7 @@ export function AssessmentSummary({
   const locality = ranking.assessments.locality
   const opportunity = ranking.assessments.opportunity
   const criterionNames = new Map(
-    criteria.map((criterion) => [criterion.id, criterion.display_name]),
+    criteria.map((criterion) => [criterion.id, criterion.displayName]),
   )
   const opportunityDefinitions = new Map(
     opportunityCatalog.definitions.map((definition) => [definition.id, definition]),
@@ -94,8 +94,8 @@ export function AssessmentSummary({
                   type="button"
                   className="active-filter-chip"
                   disabled={isUpdating}
-                  title={definition?.display_name ?? filterId}
-                  aria-label={`Remove ${definition?.display_name ?? filterId} opportunity filter`}
+                  title={definition?.displayName ?? filterId}
+                  aria-label={`Remove ${definition?.displayName ?? filterId} opportunity filter`}
                   onClick={() => onRemoveOpportunityFilter(filterId)}
                   key={filterId}
                 >

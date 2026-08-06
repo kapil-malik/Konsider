@@ -8,7 +8,7 @@ Last updated: 2026-08-05
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v2 transport, and responsive React UI are
-implemented. Active release `2026-08-04.1` exposes the stable 91-country universe, 388 frozen
+implemented. Active overlay `2026-08-07.2` resolves base `2026-08-07.1` and exposes the stable 91-country universe, 388 frozen
 urban centres, and fourteen available criteria. Eight are 91/91 global-core criteria; Overall job-market opportunity, School
 education quality, and Research and innovation ecosystem are conditional criteria, and UHC remains
 diagnostic-only. Infrastructure and the two Wave 2 additions are experimental. Phase 4's ranking
@@ -280,6 +280,10 @@ now loads the three approved assessment-only checks only through the active poin
 ranking and Opportunity Filter data continue to resolve from checksum-bound base `2026-08-04.1`.
 Final replay, compatibility, privacy, browser and rollback verification passed. See the
 [Phase 7 closure report](../history/phase7-closure-report.md).
+
+The display-metadata centralization migration subsequently published and activated schema-6.1
+overlay `2026-08-07.2`, bound to schema-5.2 base `2026-08-07.1`. It preserves product wording and
+technical outcomes while moving criterion, OFC, and TFC display metadata to one catalog and API v3.
 
 ## Recommended Phase 8: TFC maintenance and measured expansion
 

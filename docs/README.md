@@ -142,6 +142,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [ADR 016: Typed TFC outcomes](architecture/decisions/016-typed-tfc-outcomes.md)
 - [ADR 017: TFC assessment independence](architecture/decisions/017-tfc-assessment-independence.md)
 - [ADR 018: Persistence as an adapter](architecture/decisions/018-persistence-as-adapter.md)
+- [ADR 019: Centralized display metadata and release versioning](architecture/decisions/019-centralized-display-metadata-and-release-versioning.md)
 
 ## Operations
 
@@ -191,9 +192,10 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 7I cross-feature verification](history/phase7i-cross-feature-verification.md)
 - [Phase 7 closure report](history/phase7-closure-report.md)
 - [Release 2026-08-05.1](history/releases/2026-08-05.1.md)
+- [Release 2026-08-07.2](history/releases/2026-08-07.2.md)
 - [Phase 6 closure report](history/phase6-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active runtime serves schema-6.0 overlay `2026-08-05.1`, resolving immutable
-schema-5.1 ranking base `2026-08-04.1`; older releases require explicit historical loaders.
+instructions. The active runtime serves schema-6.1 overlay `2026-08-07.2`, resolving immutable
+schema-5.2 ranking base `2026-08-07.1`; older releases require explicit historical loaders.

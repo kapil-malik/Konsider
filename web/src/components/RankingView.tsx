@@ -379,8 +379,8 @@ export function RankingView({
                   )}
                   {detailed &&
                     criteria.map((criterion) => (
-                      <th scope="col" key={criterion.id} title={criterion.display_name}>
-                        <span>{criterion.display_name}</span>
+                      <th scope="col" key={criterion.id} title={criterion.displayName}>
+                        <span>{criterion.displayName}</span>
                         <CriterionSymbols criterion={criterion} />
                       </th>
                     ))}
@@ -511,7 +511,7 @@ export function RankingView({
                         return (
                           <div key={criterion.id}>
                             <strong>
-                              {criterion.display_name}
+                              {criterion.displayName}
                               <CriterionSymbols criterion={criterion} />
                             </strong>
                             {contribution ? (

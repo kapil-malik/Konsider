@@ -1,4 +1,4 @@
-"""Export authoritative API v2 OpenAPI and generated TypeScript component types."""
+"""Export authoritative API v3 OpenAPI and generated TypeScript component types."""
 
 from __future__ import annotations
 
@@ -57,13 +57,13 @@ serialized_openapi = json.dumps(openapi, indent=2, sort_keys=True) + "\n"
 (api_directory / "openapi.json").write_text(serialized_openapi, encoding="utf-8")
 contract_directory = ROOT / "contracts" / "openapi"
 contract_directory.mkdir(parents=True, exist_ok=True)
-(contract_directory / "konsider-api-2.0.json").write_text(
+(contract_directory / "konsider-api-3.0.json").write_text(
     serialized_openapi,
     encoding="utf-8",
 )
 
 component_lines = [
-    "// konsider-api-types-2.0",
+    "// konsider-api-types-3.0",
     "// Generated from FastAPI OpenAPI by scripts/export_openapi.py. Do not edit.",
     "export interface components {",
     "  schemas: {",

@@ -282,10 +282,10 @@ def test_semantic_diff_exposes_all_reviewable_policy_change_categories(tmp_path:
     assert {change["change_type"] for change in diff["changes"]} == set(diff["change_counts"])
 
 
-def test_active_legacy_release_remains_loadable_and_unchanged() -> None:
+def test_active_display_release_remains_loadable_and_unchanged() -> None:
     before = (ROOT / "data" / "releases" / "active.json").read_bytes()
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
     after = (ROOT / "data" / "releases" / "active.json").read_bytes()
-    assert loaded.manifest["schema_version"] == "konsider-release-5.1"
-    assert loaded.manifest["release_id"] == "2026-08-04.1"
+    assert loaded.manifest["schema_version"] == "konsider-release-5.2"
+    assert loaded.manifest["release_id"] == "2026-08-07.1"
     assert before == after

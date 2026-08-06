@@ -74,8 +74,8 @@ def test_final_payload_preserves_prior_ranking_exactly() -> None:
 
 def test_default_application_loads_final_active_release_without_override() -> None:
     active = CurrentReleaseRepository(RELEASES).load_active()
-    assert active.manifest["release_id"] == FINAL_RELEASE_ID
-    assert active.manifest["schema_version"] == "konsider-release-5.1"
+    assert active.manifest["release_id"] == "2026-08-07.1"
+    assert active.manifest["schema_version"] == "konsider-release-5.2"
     assert active.manifest["artifact_counts"]["opportunity_filter_definitions"] == 9
     assert active.manifest["artifact_counts"]["opportunity_filter_evidence"] == 819
 
@@ -93,7 +93,7 @@ def test_default_application_loads_final_active_release_without_override() -> No
             },
         )
     assert health.status_code == catalog.status_code == ranking.status_code == 200
-    assert health.json()["release_id"] == FINAL_RELEASE_ID
-    assert catalog.json()["opportunity_release_id"] == FINAL_RELEASE_ID
+    assert health.json()["release_id"] == "2026-08-07.1"
+    assert catalog.json()["opportunity_release_id"] == "2026-08-07.1"
     assert len(catalog.json()["definitions"]) == 9
     assert ranking.json()["assessments"]["opportunity"]["passing_country_count"] == 20

@@ -39,12 +39,12 @@ export function ImportanceControl({
   return (
     <div className="importance-control" data-criterion-id={criterion.id}>
       <div className="importance-heading">
-        <label htmlFor={`importance-${criterion.id}`}>{criterion.display_name}</label>
+        <label htmlFor={`importance-${criterion.id}`}>{criterion.displayName}</label>
         <button
           className="criterion-source-link"
           type="button"
           onClick={onOpenSources}
-          aria-label={`Open criteria and sources for ${criterion.display_name}`}
+          aria-label={`Open criteria and sources for ${criterion.displayName}`}
           title="Open criteria and sources"
         >
           ↗

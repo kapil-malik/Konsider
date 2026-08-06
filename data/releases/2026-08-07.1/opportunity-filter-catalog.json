@@ -1,0 +1,528 @@
+{
+  "activation_status": "ACTIVE",
+  "compatible_release_schema_major": 5,
+  "definitions": [
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "EMPLOYMENT_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Technology and software",
+      "construct": "Employment in ISCO-08 groups 25 and 35, measured as national scale and share.",
+      "displayName": "Technology and software employment ecosystem",
+      "documentation_ref": "docs/data/career-opportunity-evidence.md",
+      "does_not_mean": [
+        "Live vacancies or hiring probability",
+        "Salary or job quality",
+        "Licensing or qualification recognition",
+        "Visa access or applicant success",
+        "Absence of employment when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "technology_software_opportunity",
+      "meaning": "A substantial and established technology/software employment ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 72,
+        "policy_id": "career-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "DIRECT",
+        "evidence_level": "COUNTRY",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "career",
+      "sectionName": "Career",
+      "sortOrder": 10,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "MULTI_SOURCE",
+        "required_source_ids": [
+          "ilo_observed_occupation_oc2",
+          "statcan_2021_census_noc",
+          "eurostat_lfsa_egai2d"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "career-p60-technology_software_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "EMPLOYMENT_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Science and engineering",
+      "construct": "Employment in ISCO-08 groups 21 and 31, measured as national scale and share.",
+      "displayName": "Science and engineering employment ecosystem",
+      "documentation_ref": "docs/data/career-opportunity-evidence.md",
+      "does_not_mean": [
+        "Live vacancies or hiring probability",
+        "Salary or job quality",
+        "Licensing or qualification recognition",
+        "Visa access or applicant success",
+        "Absence of employment when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "science_engineering_opportunity",
+      "meaning": "A substantial and established science/engineering employment ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 72,
+        "policy_id": "career-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "DIRECT",
+        "evidence_level": "COUNTRY",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "career",
+      "sectionName": "Career",
+      "sortOrder": 20,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "MULTI_SOURCE",
+        "required_source_ids": [
+          "ilo_observed_occupation_oc2",
+          "eurostat_lfsa_egai2d"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "career-p60-science_engineering_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "EMPLOYMENT_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Care sector",
+      "construct": "Employment in ISIC Rev.4 section Q (human health and social work), measured as national scale and share.",
+      "displayName": "Care-sector employment ecosystem",
+      "documentation_ref": "docs/data/career-opportunity-evidence.md",
+      "does_not_mean": [
+        "Live vacancies or hiring probability",
+        "Salary or job quality",
+        "Licensing or qualification recognition",
+        "Visa access or applicant success",
+        "Absence of employment when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "health_social_work_opportunity",
+      "meaning": "A substantial and established care-sector employment ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 36,
+        "policy_id": "career-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "DIRECT",
+        "evidence_level": "COUNTRY",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "career",
+      "sectionName": "Career",
+      "sortOrder": 30,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "SINGLE_SOURCE",
+        "required_source_ids": [
+          "ilo_modelled_economic_activity_2025"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "career-p60-health_social_work_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "EMPLOYMENT_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Finance and insurance",
+      "construct": "Employment in ISIC Rev.4 section K, measured as national scale and share.",
+      "displayName": "Finance and insurance employment ecosystem",
+      "documentation_ref": "docs/data/career-opportunity-evidence.md",
+      "does_not_mean": [
+        "Live vacancies or hiring probability",
+        "Salary or job quality",
+        "Licensing or qualification recognition",
+        "Visa access or applicant success",
+        "Absence of employment when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "finance_insurance_opportunity",
+      "meaning": "A substantial and established finance and insurance employment ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 36,
+        "policy_id": "career-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "DIRECT",
+        "evidence_level": "COUNTRY",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "career",
+      "sectionName": "Career",
+      "sortOrder": 40,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "SINGLE_SOURCE",
+        "required_source_ids": [
+          "ilo_modelled_economic_activity_2025"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "career-p60-finance_insurance_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "EMPLOYMENT_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Skilled trades or construction",
+      "construct": "ISCO-08 major group 7 employment OR ISIC Rev.4 section F construction employment, with both routes retained separately.",
+      "displayName": "Skilled-trades or construction employment ecosystem",
+      "documentation_ref": "docs/data/career-opportunity-evidence.md",
+      "does_not_mean": [
+        "Live vacancies or hiring probability",
+        "Salary or job quality",
+        "Licensing or qualification recognition",
+        "Visa access or applicant success",
+        "Absence of employment when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "skilled_trades_construction_opportunity",
+      "meaning": "A substantial and established skilled-trades or construction employment ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 36,
+        "policy_id": "career-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "DIRECT",
+        "evidence_level": "COUNTRY",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "career",
+      "sectionName": "Career",
+      "sortOrder": 50,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "MULTI_ROUTE",
+        "required_source_ids": [
+          "ilo_modelled_occupation_2025",
+          "ilo_modelled_economic_activity_2025"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "career-p60-skilled_trades_construction_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "RESEARCH_UNIVERSITY_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Engineering and technology research",
+      "construct": "Country-level scale, breadth, and global prominence of research-intensive universities in physical sciences and engineering, using the frozen CWTS Leiden Open 2025 release.",
+      "displayName": "Physical sciences and engineering research-university ecosystem",
+      "documentation_ref": "docs/data/education-opportunity-evidence.md",
+      "does_not_mean": [
+        "Teaching quality or programme quality",
+        "Programme availability, admissions, or student access",
+        "Tuition, scholarships, or affordability",
+        "Accreditation, qualification recognition, or licensing",
+        "Visa access, campus locality, language, employment outcomes, or applicant success",
+        "Absence of universities when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "engineering_technology_education_opportunity",
+      "meaning": "A substantial and established physical sciences and engineering research-university ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 36,
+        "policy_id": "education-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "AGGREGATED_FROM_INSTITUTIONS",
+        "evidence_level": "INSTITUTION",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "education",
+      "sectionName": "Education",
+      "sortOrder": 60,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "MULTI_SOURCE",
+        "required_source_ids": [
+          "cwts_leiden_open_2025_results",
+          "ror_via_cwts_workbook"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "education-p60-engineering_technology_education_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "RESEARCH_UNIVERSITY_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Mathematics and computer science research",
+      "construct": "Country-level scale, breadth, and global prominence of research-intensive universities in mathematics and computer science, using the frozen CWTS Leiden Open 2025 release.",
+      "displayName": "Mathematics and computer science research-university ecosystem",
+      "documentation_ref": "docs/data/education-opportunity-evidence.md",
+      "does_not_mean": [
+        "Teaching quality or programme quality",
+        "Programme availability, admissions, or student access",
+        "Tuition, scholarships, or affordability",
+        "Accreditation, qualification recognition, or licensing",
+        "Visa access, campus locality, language, employment outcomes, or applicant success",
+        "Absence of universities when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "computer_science_ict_education_opportunity",
+      "meaning": "A substantial and established mathematics and computer science research-university ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 36,
+        "policy_id": "education-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "AGGREGATED_FROM_INSTITUTIONS",
+        "evidence_level": "INSTITUTION",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "education",
+      "sectionName": "Education",
+      "sortOrder": 70,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "MULTI_SOURCE",
+        "required_source_ids": [
+          "cwts_leiden_open_2025_results",
+          "ror_via_cwts_workbook"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "education-p60-computer_science_ict_education_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "RESEARCH_UNIVERSITY_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Biomedical and health sciences research",
+      "construct": "Country-level scale, breadth, and global prominence of research-intensive universities in biomedical and health sciences, using the frozen CWTS Leiden Open 2025 release.",
+      "displayName": "Biomedical and health sciences research-university ecosystem",
+      "documentation_ref": "docs/data/education-opportunity-evidence.md",
+      "does_not_mean": [
+        "Teaching quality or programme quality",
+        "Programme availability, admissions, or student access",
+        "Tuition, scholarships, or affordability",
+        "Accreditation, qualification recognition, or licensing",
+        "Visa access, campus locality, language, employment outcomes, or applicant success",
+        "Absence of universities when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "medicine_health_sciences_education_opportunity",
+      "meaning": "A substantial and established biomedical and health sciences research-university ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 36,
+        "policy_id": "education-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "AGGREGATED_FROM_INSTITUTIONS",
+        "evidence_level": "INSTITUTION",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "education",
+      "sectionName": "Education",
+      "sortOrder": 80,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "MULTI_SOURCE",
+        "required_source_ids": [
+          "cwts_leiden_open_2025_results",
+          "ror_via_cwts_workbook"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "education-p60-medicine_health_sciences_education_opportunity-1.0"
+    },
+    {
+      "active": true,
+      "applicability": {
+        "dimensions": [
+          "RESEARCH_UNIVERSITY_ECOSYSTEM"
+        ],
+        "mode": "DESTINATION_SIDE"
+      },
+      "availability": "AVAILABLE",
+      "compactName": "Life and earth sciences research",
+      "construct": "Country-level scale, breadth, and global prominence of research-intensive universities in life and earth sciences, using the frozen CWTS Leiden Open 2025 release.",
+      "displayName": "Life and earth sciences research-university ecosystem",
+      "documentation_ref": "docs/data/education-opportunity-evidence.md",
+      "does_not_mean": [
+        "Teaching quality or programme quality",
+        "Programme availability, admissions, or student access",
+        "Tuition, scholarships, or affordability",
+        "Accreditation, qualification recognition, or licensing",
+        "Visa access, campus locality, language, employment outcomes, or applicant success",
+        "Absence of universities when a strong signal is not established"
+      ],
+      "evidence_policy_version": "opportunity-filter-evidence-policy-1.1",
+      "filter_behavior": {
+        "changes_affinity_score": false,
+        "changes_survivor_order": false,
+        "combination": "ALL_SELECTED_REQUIRED",
+        "eligibility_state": "VERIFIED_STRONG_SIGNAL"
+      },
+      "id": "natural_sciences_education_opportunity",
+      "meaning": "A substantial and established life and earth sciences research-university ecosystem.",
+      "product_role": "OPPORTUNITY_FILTER",
+      "refresh_policy": {
+        "cadence": "SOURCE_RELEASE",
+        "fail_closed": true,
+        "maximum_age_months": 36,
+        "policy_id": "education-opportunity-source-release-review-1.0"
+      },
+      "scope": {
+        "derivation": "AGGREGATED_FROM_INSTITUTIONS",
+        "evidence_level": "INSTITUTION",
+        "result_level": "COUNTRY"
+      },
+      "sectionId": "education",
+      "sectionName": "Education",
+      "sortOrder": 90,
+      "source_bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+      "source_dependency": {
+        "failure_state": "INSUFFICIENT_EVIDENCE",
+        "mode": "MULTI_SOURCE",
+        "required_source_ids": [
+          "cwts_leiden_open_2025_results",
+          "ror_via_cwts_workbook"
+        ]
+      },
+      "state_contract_version": "opportunity-filter-state-1.0",
+      "threshold_policy_version": "education-p60-natural_sciences_education_opportunity-1.0"
+    }
+  ],
+  "schema_version": "opportunity-filter-catalog-2.0",
+  "sections": [
+    {
+      "sectionId": "career",
+      "sectionName": "Career",
+      "sortOrder": 10
+    },
+    {
+      "sectionId": "education",
+      "sectionName": "Education",
+      "sortOrder": 20
+    }
+  ],
+  "stable_universe_id": "stable_supported_v1",
+  "state_contract_version": "opportunity-filter-state-1.0"
+}

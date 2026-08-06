@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v5/consumer-catalog.schema.json",
+  "title": "Consumer catalog 4.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "compatible_release_schema_major", "target_api_contract_version", "coverage_policy_version", "stable_universe_id", "geographic_entities", "criteria", "locality_universes", "aggregation_policies", "preference_presets"],
+  "properties": {
+    "schema_version": {"const": "consumer-catalog-4.0"},
+    "compatible_release_schema_major": {"const": 5},
+    "target_api_contract_version": {"const": "konsider-api-3.0"},
+    "coverage_policy_version": {"type": "string", "minLength": 1},
+    "stable_universe_id": {"type": "string", "minLength": 1},
+    "geographic_entities": {"type": "array", "minItems": 1, "items": {"$ref": "https://konsider.app/schemas/v3/geographic-entity.schema.json"}},
+    "criteria": {"type": "array", "minItems": 1, "items": {"$ref": "criterion-definition.schema.json"}},
+    "locality_universes": {"type": "array", "items": {"$ref": "https://konsider.app/schemas/v3/locality-universe.schema.json"}},
+    "aggregation_policies": {"type": "array", "items": {"$ref": "https://konsider.app/schemas/v3/locality-aggregation-policy.schema.json"}},
+    "preference_presets": {"type": "array", "items": {"$ref": "https://konsider.app/schemas/v3/consumer-catalog.schema.json#/$defs/preferencePreset"}}
+  }
+}

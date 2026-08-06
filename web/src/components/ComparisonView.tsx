@@ -253,7 +253,7 @@ export function ComparisonView({
             {comparison.criterion_rows.map((row) => (
               <tr key={row.criterion_id}>
                 <th scope="row">
-                  {row.criterion_name}
+                  {row.displayName}
                   <span className="row-badges">
                     {row.coverage.mode === 'CONDITIONAL_COMPLETE_CASE' && (
                       <span
@@ -366,7 +366,7 @@ export function ComparisonView({
                   )
                   return (
                     <div key={row.criterion_id}>
-                      <dt>{row.criterion_name}</dt>
+                      <dt>{row.displayName}</dt>
                       <dd>
                         {cell ? (
                           <ContributionValue

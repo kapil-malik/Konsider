@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pytest
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.ingestion.phase4f import build_c11_release
 from konsider.ingestion.worker import replay
 from konsider.repositories.published_release_repository import PublishedReleaseRepository
@@ -16,6 +17,10 @@ PROBE_ARTIFACT_MANIFEST = (
     / "feasibility-probes"
     / "phase3e-2026-07-26-c11-online"
     / "raw-artifacts.json"
+)
+DISPLAY_CATALOG = load_product_display_catalog(
+    PROJECT_ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    PROJECT_ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
 )
 
 
@@ -36,6 +41,7 @@ def _build(root: Path, release_id: str):
         probe_artifact_manifest=PROBE_ARTIFACT_MANIFEST,
         release_root=root / "releases",
         report_root=root / "report",
+        display_catalog=DISPLAY_CATALOG,
         publish=True,
         created_at="2026-07-28T00:00:00+00:00",
     )

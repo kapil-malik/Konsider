@@ -8,6 +8,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.ingestion.tfc_first_wave import (
     build_first_wave_production_capture,
     capture_source_inventory,
@@ -94,8 +95,12 @@ def _capture(args: argparse.Namespace) -> int:
 def _build(args: argparse.Namespace) -> int:
     source_capture = _read_json(args.source_capture)
     validate_source_capture(source_capture)
+    display_catalog = load_product_display_catalog(
+        args.display_catalog, args.display_catalog_schema
+    )
     production_capture = build_first_wave_production_capture(
         source_capture,
+        display_catalog=display_catalog,
         release_id=args.release_id,
         validation_date=args.validation_date,
     )
@@ -156,6 +161,8 @@ def _parse_args() -> argparse.Namespace:
     capture.add_argument("--output", type=Path, required=True)
     build = subparsers.add_parser("build")
     build.add_argument("--source-capture", type=Path, required=True)
+    build.add_argument("--display-catalog", type=Path, required=True)
+    build.add_argument("--display-catalog-schema", type=Path, required=True)
     build.add_argument("--research-support", type=Path, required=True)
     build.add_argument("--base-release", type=Path, required=True)
     build.add_argument("--release-id", required=True)

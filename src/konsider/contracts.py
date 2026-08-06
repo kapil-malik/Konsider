@@ -66,7 +66,7 @@ def _validator(schema_name: str, schema_generation: int) -> Draft202012Validator
     schema_path = SCHEMA_BASE / f"v{schema_generation}" / f"{schema_name}.schema.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     registry = Registry()
-    for candidate in schema_path.parent.glob("*.schema.json"):
+    for candidate in SCHEMA_BASE.glob("**/*.schema.json"):
         candidate_schema = json.loads(candidate.read_text(encoding="utf-8"))
         registry = registry.with_resource(
             candidate_schema["$id"], Resource.from_contents(candidate_schema)

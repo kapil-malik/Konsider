@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v5/opportunity-filter-catalog.schema.json",
+  "title": "Opportunity Filter catalog 2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "compatible_release_schema_major", "stable_universe_id", "activation_status", "state_contract_version", "sections", "definitions"],
+  "properties": {
+    "schema_version": {"const": "opportunity-filter-catalog-2.0"},
+    "compatible_release_schema_major": {"const": 5},
+    "stable_universe_id": {"type": "string", "minLength": 1},
+    "activation_status": {"const": "ACTIVE"},
+    "state_contract_version": {"const": "opportunity-filter-state-1.0"},
+    "sections": {"type": "array", "minItems": 2, "items": {"type": "object", "additionalProperties": false, "required": ["sectionId", "sectionName", "sortOrder"], "properties": {"sectionId": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}, "sectionName": {"type": "string", "minLength": 1}, "sortOrder": {"type": "integer", "minimum": 0}}}},
+    "definitions": {"type": "array", "minItems": 9, "maxItems": 9, "items": {"$ref": "opportunity-filter-definition.schema.json"}}
+  }
+}

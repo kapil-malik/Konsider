@@ -80,7 +80,7 @@ function OpportunityEvidence({
           const limitations = [
             ...(definition?.limitations ?? []),
             ...evidence.limitations,
-            ...(definition?.category === 'EDUCATION'
+            ...(definition?.sectionId === 'education'
               ? [EDUCATION_SHARED_LIMITATION]
               : []),
           ].filter((item, index, all) => all.indexOf(item) === index)
@@ -92,7 +92,7 @@ function OpportunityEvidence({
               <div className="opportunity-evidence-heading">
                 <div>
                   <p className="eyebrow">
-                    {definition?.category === 'EDUCATION'
+                    {definition?.sectionId === 'education'
                       ? 'Research-university ecosystem'
                       : 'Career ecosystem'}
                   </p>
@@ -321,8 +321,8 @@ export function CountryDetails({
                 >
                   <div className="metric-card-heading">
                     <div>
-                      <p className="eyebrow">{criterion.category}</p>
-                      <h3>{criterion.display_name}</h3>
+                      <p className="eyebrow">{criterion.sectionName}</p>
+                      <h3>{criterion.displayName}</h3>
                     </div>
                     {contribution ? (
                       <strong className="metric-score">

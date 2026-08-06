@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/authoring/product-display-catalog.schema.json",
+  "title": "Konsider product display catalog 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "catalogVersion", "sections", "definitions"],
+  "properties": {
+    "schemaVersion": {"const": "konsider-product-display-catalog-1.0"},
+    "catalogVersion": {"type": "string", "minLength": 1},
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["productRole", "sectionId", "sectionName", "sortOrder"],
+        "properties": {
+          "productRole": {"$ref": "#/$defs/productRole"},
+          "sectionId": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "sectionName": {"type": "string", "minLength": 1},
+          "sortOrder": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "definitions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "productRole",
+          "id",
+          "displayName",
+          "compactName",
+          "sectionId",
+          "sortOrder"
+        ],
+        "properties": {
+          "productRole": {"$ref": "#/$defs/productRole"},
+          "id": {"type": "string", "minLength": 1},
+          "displayName": {"type": "string", "minLength": 1},
+          "compactName": {"type": ["string", "null"], "minLength": 1},
+          "sectionId": {
+            "oneOf": [
+              {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+              {"type": "null"}
+            ]
+          },
+          "sortOrder": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "productRole": {
+      "enum": ["ORDERING_CRITERION", "OPPORTUNITY_FILTER", "TYPED_FEASIBILITY_CHECK"]
+    }
+  }
+}

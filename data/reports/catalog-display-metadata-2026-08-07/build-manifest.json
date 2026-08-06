@@ -1,0 +1,21 @@
+{
+  "baseReleaseChecksum": "sha256:de50b4e34102866e8cbec6a869a51993fda5ac84eb30c71449f31e57ecebfd87",
+  "baseReleaseId": "2026-08-07.1",
+  "displayCatalog": {
+    "catalog_version": "2026-08-06.1",
+    "checksum": "sha256:757bacd1519507620502f72ed8ab0936317bc60761ed5ccfafb271be4578e2d4",
+    "schema_version": "konsider-product-display-catalog-1.0"
+  },
+  "displayMetadataEquivalence": {
+    "definition_count": 26,
+    "report_checksum": "sha256:46e242ae39090bcd85abe2a4fab978f1f8720fb6dbd10dab26405c29989bce1f",
+    "sourceBaseReleaseId": "2026-08-04.1",
+    "sourceOverlayReleaseId": "2026-08-05.1",
+    "status": "PASSED"
+  },
+  "overlayReleaseChecksum": "sha256:c725c7c58d102482156d093a4b2719a309410e17265e2c0c7291531cb656759c",
+  "overlayReleaseId": "2026-08-07.2",
+  "rollbackReleaseId": "2026-08-05.1",
+  "schemaVersion": "catalog-display-metadata-migration-build-1.0",
+  "status": "ACTIVE"
+}

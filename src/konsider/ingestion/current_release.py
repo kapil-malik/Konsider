@@ -27,8 +27,9 @@ from konsider.text_io import write_text_lf
 
 RELEASE_SCHEMA_VERSION = "konsider-release-5.0"
 OPPORTUNITY_RELEASE_SCHEMA_VERSION = "konsider-release-5.1"
+DISPLAY_RELEASE_SCHEMA_VERSION = "konsider-release-5.2"
 SUPPORTED_RELEASE_SCHEMA_VERSIONS = frozenset(
-    {RELEASE_SCHEMA_VERSION, OPPORTUNITY_RELEASE_SCHEMA_VERSION}
+    {RELEASE_SCHEMA_VERSION, OPPORTUNITY_RELEASE_SCHEMA_VERSION, DISPLAY_RELEASE_SCHEMA_VERSION}
 )
 VALIDATION_SCHEMA_VERSION = "validation-5.0"
 PAYLOAD_FILES = (
@@ -161,11 +162,14 @@ def validate_current_artifacts(artifacts: CurrentReleaseArtifacts) -> dict[str, 
     for rows, schema_name in row_sets:
         _validate_rows(rows, schema_name, issues)
     try:
+        catalog_generation = (
+            5 if artifacts.consumer_catalog.get("schema_version") == "consumer-catalog-4.0" else 3
+        )
         validate_contract(
             artifacts.consumer_catalog,
             "consumer-catalog",
             context="consumer catalog",
-            schema_generation=3,
+            schema_generation=catalog_generation,
         )
     except ContractError as exc:
         issues.append(_issue("CONTRACT_INVALID", str(exc), "consumer-catalog"))
@@ -1082,7 +1086,7 @@ class CurrentReleaseRepository:
             raise CurrentReleaseError(
                 "The active release pointer is unavailable or invalid."
             ) from exc
-        if pointer.get("schema_version") == "konsider-release-6.0":
+        if pointer.get("schema_version") in {"konsider-release-6.0", "konsider-release-6.1"}:
             from konsider.ingestion.phase7_release_publication import (
                 load_active_tfc_release,
             )
@@ -1107,11 +1111,14 @@ class CurrentReleaseRepository:
     def load(self, path: Path | str) -> LoadedCurrentRelease:
         release_path = Path(path)
         manifest = json.loads((release_path / "manifest.json").read_text(encoding="utf-8"))
+        manifest_generation = (
+            5 if manifest.get("schema_version") == DISPLAY_RELEASE_SCHEMA_VERSION else 3
+        )
         validate_contract(
             manifest,
             "release-manifest",
             context="release manifest",
-            schema_generation=3,
+            schema_generation=manifest_generation,
         )
         if manifest["schema_version"] not in SUPPORTED_RELEASE_SCHEMA_VERSIONS:
             raise CurrentReleaseError(
@@ -1211,8 +1218,13 @@ class CurrentReleaseRepository:
                     context=f"published threshold policy {policy['policy_version']}",
                     schema_generation=3,
                 )
-            if coverage_summary["release_id"] != manifest["release_id"] or any(
-                row["release_id"] != manifest["release_id"] for row in evidence_rows
+            expected_evidence_release_id = manifest["release_id"]
+            if manifest["schema_version"] == DISPLAY_RELEASE_SCHEMA_VERSION:
+                expected_evidence_release_id = manifest["display_metadata_equivalence"][
+                    "source_release_id"
+                ]
+            if coverage_summary["release_id"] != expected_evidence_release_id or any(
+                row["release_id"] != expected_evidence_release_id for row in evidence_rows
             ):
                 raise CurrentReleaseError(
                     "Opportunity Filter artifacts and release manifest IDs disagree."

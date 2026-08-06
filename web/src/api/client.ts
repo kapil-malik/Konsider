@@ -1,17 +1,17 @@
 import type {
-  CatalogV2,
-  ComparisonRequestV2,
-  ComparisonV2,
-  CountryDetailsV2,
+  CatalogV3,
+  ComparisonRequestV3,
+  ComparisonV3,
+  CountryDetailsV3,
   ErrorEnvelope,
-  OpportunityFilterCatalogV2,
-  RankingRequestV2,
-  RankingV2,
-  TfcCatalogV2,
-  WeightSelectionV2,
+  OpportunityFilterCatalogV3,
+  RankingRequestV3,
+  RankingV3,
+  TfcCatalogV3,
+  WeightSelectionV3,
 } from './types'
 
-const DEFAULT_API_BASE_URL = 'http://127.0.0.1:8000/api/v2'
+const DEFAULT_API_BASE_URL = 'http://127.0.0.1:8000/api/v3'
 const API_BASE_URL = (import.meta.env.VITE_KONSIDER_API_BASE_URL || DEFAULT_API_BASE_URL).replace(
   /\/$/,
   '',
@@ -61,16 +61,16 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 }
 
 export const fetchCatalog = (signal?: AbortSignal) =>
-  request<CatalogV2>('/catalog', { signal })
+  request<CatalogV3>('/catalog', { signal })
 
 export const fetchOpportunityFilters = (signal?: AbortSignal) =>
-  request<OpportunityFilterCatalogV2>('/opportunity-filters', { signal })
+  request<OpportunityFilterCatalogV3>('/opportunity-filters', { signal })
 
 export const fetchTfcs = (signal?: AbortSignal) =>
-  request<TfcCatalogV2>('/tfcs', { signal })
+  request<TfcCatalogV3>('/tfcs', { signal })
 
-export const createRanking = (payload: RankingRequestV2, signal?: AbortSignal) =>
-  request<RankingV2>('/rankings', {
+export const createRanking = (payload: RankingRequestV3, signal?: AbortSignal) =>
+  request<RankingV3>('/rankings', {
     method: 'POST',
     body: JSON.stringify(payload),
     signal,
@@ -78,17 +78,17 @@ export const createRanking = (payload: RankingRequestV2, signal?: AbortSignal) =
 
 export const fetchCountryDetails = (
   countryCode: string,
-  payload: WeightSelectionV2,
+  payload: WeightSelectionV3,
   signal?: AbortSignal,
 ) =>
-  request<CountryDetailsV2>(`/countries/${encodeURIComponent(countryCode)}/details`, {
+  request<CountryDetailsV3>(`/countries/${encodeURIComponent(countryCode)}/details`, {
     method: 'POST',
     body: JSON.stringify(payload),
     signal,
   })
 
-export const createComparison = (payload: ComparisonRequestV2, signal?: AbortSignal) =>
-  request<ComparisonV2>('/comparisons', {
+export const createComparison = (payload: ComparisonRequestV3, signal?: AbortSignal) =>
+  request<ComparisonV3>('/comparisons', {
     method: 'POST',
     body: JSON.stringify(payload),
     signal,

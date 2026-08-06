@@ -41,4 +41,4 @@ export function tfcOutcomeContent(outcome: TfcOutcomeV2) {
 export const tfcName = (
   definition: TfcDefinitionV2 | undefined,
   fallback: string,
-) => definition?.display_name ?? readableTfcCode(fallback)
+) => definition?.displayName ?? readableTfcCode(fallback)

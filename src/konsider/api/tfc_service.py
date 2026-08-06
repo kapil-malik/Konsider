@@ -24,6 +24,11 @@ from konsider.ingestion.tfc_release import (
 
 SUPPORTED_TAXONOMIES = {"isco08": {"2008"}}
 
+
+def _definition_id(definition: Mapping[str, Any]) -> str:
+    return str(definition.get("id", definition.get("tfc_id")))
+
+
 FIELD_REGISTRY = {
     "applicant.citizenships": (
         "array<iso3-country-code>",
@@ -130,7 +135,9 @@ class TfcApiService:
             "schema_version": active_manifest["schema_version"],
             "release_checksum": active_manifest["release_checksum"],
         }
-        definition_ids = tuple(row["tfc_id"] for row in release.artifacts.catalog["definitions"])
+        definition_ids = tuple(
+            _definition_id(row) for row in release.artifacts.catalog["definitions"]
+        )
         if (
             manifest["status"] != "draft"
             or manifest["synthetic"]
@@ -158,7 +165,9 @@ class TfcApiService:
             "schema_version": active_manifest["schema_version"],
             "release_checksum": active_manifest["release_checksum"],
         }
-        definition_ids = tuple(row["tfc_id"] for row in release.artifacts.catalog["definitions"])
+        definition_ids = tuple(
+            _definition_id(row) for row in release.artifacts.catalog["definitions"]
+        )
         if (
             manifest["status"] != "published"
             or manifest["synthetic"]
@@ -190,7 +199,7 @@ class TfcApiService:
         definitions = []
         consumers: dict[str, list[str]] = {field_id: [] for field_id in FIELD_REGISTRY}
         for order, definition in enumerate(artifacts.catalog["definitions"], start=1):
-            tfc_id = definition["tfc_id"]
+            tfc_id = _definition_id(definition)
             for field_id in definition["input_field_ids"]:
                 consumers.setdefault(field_id, []).append(tfc_id)
             records = [row for row in artifacts.rule_evidence if row.get("tfc_id") == tfc_id]
@@ -209,7 +218,7 @@ class TfcApiService:
             definitions.append(
                 {
                     "id": tfc_id,
-                    "display_name": definition["name"],
+                    "display_name": definition.get("displayName", definition.get("name")),
                     "original_criterion_ids": definition["original_criterion_ids"],
                     "user_question": definition["user_question"],
                     "check_kind": definition["result_family"],
@@ -235,7 +244,7 @@ class TfcApiService:
                     ],
                     "effective_from": min(effective_dates),
                     "stale_after": min(stale_dates),
-                    "sort_order": order * 10,
+                    "sort_order": definition.get("sortOrder", order * 10),
                     "no_score_impact": True,
                 }
             )

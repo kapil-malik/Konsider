@@ -8,6 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from konsider.domain.display_catalog import ProductDisplayCatalog
 from konsider.ingestion.countries import COUNTRY_CODES, COUNTRY_UNIVERSE
 from konsider.ingestion.coverage_validation import (
     COVERAGE_POLICY_VERSION,
@@ -142,6 +143,7 @@ def build_consumer_catalog_v2(
     *,
     base_catalog: dict[str, object],
     coverage: list[CriterionCoverage],
+    display_catalog: ProductDisplayCatalog,
 ) -> dict[str, object]:
     """Migrate the production catalog to schema 2 and add the approved PCC."""
 
@@ -149,13 +151,21 @@ def build_consumer_catalog_v2(
     criteria = []
     for item in base_catalog["criteria"]:
         criterion = dict(item)
+        display = display_catalog.definition("ORDERING_CRITERION", criterion["id"])
+        if display.section_name is None:
+            raise ValueError(f"Ordering criterion {criterion['id']} has no display section.")
+        criterion["display_name"] = display.display_name
+        criterion["category"] = display.section_name
         criterion["coverage"] = coverage_by_id[criterion["id"]]
         criteria.append(criterion)
+    display = display_catalog.definition("ORDERING_CRITERION", C11_CRITERION_ID)
+    if display.section_name is None:
+        raise ValueError(f"Ordering criterion {C11_CRITERION_ID} has no display section.")
     criteria.append(
         {
             "id": C11_CRITERION_ID,
-            "display_name": "Overall job-market opportunity",
-            "category": "Jobs and economic opportunity",
+            "display_name": display.display_name,
+            "category": display.section_name,
             "description": (
                 "Harmonised national labour-market conditions derived from employment, labour-"
                 "force participation and unemployment modelled estimates."
@@ -217,6 +227,7 @@ def _write_report(
     *,
     report_root: Path,
     release_id: str,
+    criterion_name: str,
     coverage: list[CriterionCoverage],
     outcomes,
     sensitivity: dict[str, object],
@@ -233,7 +244,7 @@ def _write_report(
         "schema_version": "phase4f-onboarding-report-1.0",
         "release_id": release_id,
         "criterion_id": C11_CRITERION_ID,
-        "criterion_name": "Overall job-market opportunity",
+        "criterion_name": criterion_name,
         "decision": "PRODUCTION_ONBOARDED",
         "source_id": C11_SOURCE_ID,
         "source_version": SOURCES[C11_SOURCE_ID].source_version,
@@ -322,6 +333,7 @@ def build_c11_release(
     probe_artifact_manifest: Path,
     release_root: Path,
     report_root: Path,
+    display_catalog: ProductDisplayCatalog,
     publish: bool,
     created_at: str | None = None,
 ) -> Path:
@@ -377,6 +389,7 @@ def build_c11_release(
     catalog = build_consumer_catalog_v2(
         base_catalog=base_catalog,
         coverage=coverage,
+        display_catalog=display_catalog,
     )
     catalog_v2_path.parent.mkdir(parents=True, exist_ok=True)
     _write_json(catalog_v2_path, catalog)
@@ -384,6 +397,9 @@ def build_c11_release(
     _write_report(
         report_root=report_root,
         release_id=release_id,
+        criterion_name=display_catalog.definition(
+            "ORDERING_CRITERION", C11_CRITERION_ID
+        ).display_name,
         coverage=coverage,
         outcomes=outcomes,
         sensitivity=sensitivity,

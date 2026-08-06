@@ -14,7 +14,7 @@ from typing import Mapping, Sequence
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED_API_FILES = (
-    Path("contracts/openapi/konsider-api-2.0.json"),
+    Path("contracts/openapi/konsider-api-3.0.json"),
     Path("web/src/api/openapi.json"),
     Path("web/src/api/schema.d.ts"),
 )

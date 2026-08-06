@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pytest
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.ingestion.phase4_wave2 import build_wave2_release
 from konsider.ingestion.worker import replay
 from konsider.repositories.published_release_repository import PublishedReleaseRepository
@@ -18,6 +19,10 @@ SCHOOL_PROBE_ARTIFACT_MANIFEST = (
     / "raw-artifacts.json"
 )
 WIPO_RAW_PATH = PROJECT_ROOT / "data" / "raw" / "wave2-probes" / "wipo-gii-2025.xlsx"
+DISPLAY_CATALOG = load_product_display_catalog(
+    PROJECT_ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    PROJECT_ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+)
 
 
 @pytest.fixture(autouse=True)
@@ -39,6 +44,7 @@ def _build(root: Path, release_id: str):
         wipo_raw_path=WIPO_RAW_PATH,
         release_root=root / "releases",
         report_root=root / "report",
+        display_catalog=DISPLAY_CATALOG,
         publish=True,
         created_at="2026-07-28T08:00:00+00:00",
     )

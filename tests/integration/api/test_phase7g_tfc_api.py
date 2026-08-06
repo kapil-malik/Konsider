@@ -91,18 +91,21 @@ def test_catalog_exposes_only_the_frozen_first_wave_and_privacy_contract(
     assert all(row["default_retention"] == "NEVER_RETAIN_BY_DEFAULT" for row in fields.values())
 
 
-def test_candidate_is_still_non_active_and_bound_to_the_active_release_base() -> None:
+def test_candidate_is_still_non_active_and_bound_to_its_historical_base() -> None:
     manifest = json.loads((CANDIDATE / "manifest.json").read_text(encoding="utf-8"))
     active = json.loads((ROOT / "data" / "releases" / "active.json").read_text(encoding="utf-8"))
     assert manifest["status"] == "draft"
     assert manifest["activation_authorized"] is False
-    assert active["release_id"] == "2026-08-05.1"
+    assert active["release_id"] == "2026-08-07.2"
+    assert active["schema_version"] == "konsider-release-6.1"
     published = json.loads(
         (ROOT / "data" / "releases" / active["release_id"] / "manifest.json").read_text(
             encoding="utf-8"
         )
     )
-    assert manifest["base_release"] == published["base_release"]
+    assert manifest["base_release"]["release_id"] == "2026-08-04.1"
+    assert manifest["base_release"]["schema_version"] == "konsider-release-5.1"
+    assert manifest["base_release"] != published["base_release"]
 
 
 def test_omitted_and_empty_tfc_selection_are_exactly_legacy_compatible(

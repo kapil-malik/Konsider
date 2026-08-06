@@ -98,8 +98,15 @@ class TfcReplayResult:
 
 
 def _contract(payload: Any, schema: str, context: str) -> None:
+    generation = 4
+    if isinstance(payload, Mapping) and payload.get("schema_version") in {
+        "konsider-release-6.1",
+        "tfc-release-catalog-2.0",
+        "tfc-release-binding-2.0",
+    }:
+        generation = 5
     try:
-        validate_contract(payload, schema, context=context, schema_generation=4)
+        validate_contract(payload, schema, context=context, schema_generation=generation)
     except ContractError as exc:
         raise TfcReleaseError(str(exc)) from exc
 
@@ -128,6 +135,10 @@ def _release_checksum(manifest: Mapping[str, Any]) -> str:
     unsigned = {key: value for key, value in manifest.items() if key != "release_checksum"}
     canonical = json.dumps(unsigned, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
     return _checksum(canonical.encode("utf-8"))
+
+
+def _definition_id(definition: Mapping[str, Any]) -> str:
+    return str(definition.get("id", definition.get("tfc_id")))
 
 
 def _walk_keys(value: Any) -> Iterable[str]:
@@ -199,7 +210,7 @@ def validate_tfc_release_artifacts(
         )
 
     definitions = artifacts.catalog["definitions"]
-    tfc_ids = [row["tfc_id"] for row in definitions]
+    tfc_ids = [_definition_id(row) for row in definitions]
     policy_ids = [row["policy_id"] for row in artifacts.policy_bundles["policies"]]
     if len(tfc_ids) != len(set(tfc_ids)):
         issues.append(_issue("DUPLICATE_TFC_ID", "Release catalog TFC IDs must be unique."))
@@ -208,18 +219,19 @@ def validate_tfc_release_artifacts(
     policy_by_id = {row["policy_id"]: row for row in artifacts.policy_bundles["policies"]}
     for definition in definitions:
         policy = policy_by_id.get(definition["policy_id"])
-        if policy is None or policy["tfc_id"] != definition["tfc_id"]:
+        definition_id = _definition_id(definition)
+        if policy is None or policy["tfc_id"] != definition_id:
             issues.append(
                 _issue(
                     "BROKEN_POLICY_BINDING",
-                    f"TFC {definition['tfc_id']} does not bind its own evaluation policy.",
+                    f"TFC {definition_id} does not bind its own evaluation policy.",
                 )
             )
         elif policy["result_family"] != definition["result_family"]:
             issues.append(
                 _issue(
                     "RESULT_FAMILY_MISMATCH",
-                    f"TFC {definition['tfc_id']} and its policy disagree on result family.",
+                    f"TFC {definition_id} and its policy disagree on result family.",
                 )
             )
 
@@ -297,7 +309,7 @@ def validate_tfc_release_artifacts(
 
     rules = [row for row in records if row["record_type"] in {"ROUTE_RULE", "METRIC_FORMULA"}]
     rules_by_identity: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
-    catalog_families = {row["tfc_id"]: row["result_family"] for row in definitions}
+    catalog_families = {_definition_id(row): row["result_family"] for row in definitions}
     for row in rules:
         record_id = row["record_id"]
         expected_family = (

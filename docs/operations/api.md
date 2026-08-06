@@ -1,15 +1,15 @@
 # Konsider API operations and contract
 
-Status: authoritative Phase 7J published v2 contract
+Status: authoritative API v3 contract with bounded v2 rollback compatibility
 
-Contract version: `konsider-api-2.0`
+Contract version: `konsider-api-3.0`
 
-Active release: `2026-08-05.1` (ranking base `2026-08-04.1`)
+Active release: `2026-08-07.2` (ranking base `2026-08-07.1`)
 
 Konsider exposes one structured API over the schema-current immutable snapshot selected by
-`data/releases/active.json`. Active schema-6.0 overlay `2026-08-05.1` binds the TFC evidence and
-checksum-identifies schema-5.1 ranking/OFC base `2026-08-04.1`. The generated
-[`contracts/openapi/konsider-api-2.0.json`](../../contracts/openapi/konsider-api-2.0.json)
+`data/releases/active.json`. Active schema-6.1 overlay `2026-08-07.2` binds the TFC evidence and
+checksum-identifies schema-5.2 ranking/OFC base `2026-08-07.1`. The generated
+[`contracts/openapi/konsider-api-3.0.json`](../../contracts/openapi/konsider-api-3.0.json)
 document is authoritative. Undocumented request fields are rejected.
 
 ## Start
@@ -39,19 +39,20 @@ candidate path.
 
 | Method | Route | Purpose |
 | --- | --- | --- |
-| `GET` | `/api/v2/health` | Report active-release readiness. |
-| `GET` | `/api/v2/catalog` | Return criteria, canonical countries, and preference presets. |
-| `GET` | `/api/v2/opportunity-filters` | Return the loaded filter-only catalog and coverage summary. |
-| `GET` | `/api/v2/tfcs` | Return selectable TFCs, input requirements and the field registry. |
-| `POST` | `/api/v2/rankings` | Rank countries with structured assessments. |
-| `POST` | `/api/v2/comparisons` | Compare two to ten countries. |
-| `POST` | `/api/v2/countries/{country_code}/details` | Return contextual country evidence. |
-
-There are no public v1 routes or aliases.
+| `GET` | `/api/v3/health` | Report active-release readiness. |
+| `GET` | `/api/v3/catalog` | Return criteria, canonical countries, and preference presets. |
+| `GET` | `/api/v3/opportunity-filters` | Return catalog-grouped filter definitions and coverage. |
+| `GET` | `/api/v3/tfcs` | Return selectable TFCs, input requirements and the field registry. |
+| `POST` | `/api/v3/rankings` | Rank countries with structured assessments. |
+| `POST` | `/api/v3/comparisons` | Compare two to ten countries. |
+| `POST` | `/api/v3/countries/{country_code}/details` | Return contextual country evidence. |
+API v3 is the UI contract and exposes uniform display metadata. API v2 remains temporarily for
+local rollback and historical integration tests, but is omitted from the authoritative OpenAPI
+surface. There are no public v1 routes or aliases.
 
 ## Typed Feasibility Checks
 
-API v2 ranking, comparison and details accept an optional
+API v3 ranking, comparison and details accept an optional
 `feasibility` object. TFC selection is explicit; purpose never silently selects checks. Omission,
 or an empty `tfc_ids` list, takes the legacy path and omits all feasibility response fields.
 
@@ -94,7 +95,7 @@ all three first-wave definitions are assessment-only; selecting filter mode retu
 `feasibility_filter_not_allowed`. TFCs never alter weights, contributions, affinity scores, PCC,
 LSC or OFC results.
 
-`GET /api/v2/tfcs` is the source of form labels, requirements, supported destinations,
+`GET /api/v3/tfcs` is the source of form labels, requirements, supported destinations,
 sensitivity/retention hints, limitations, source summaries and filter capability. The first wave
 contains three `RULE_ROUTE_MATCH` checks. `SCENARIO_METRIC` remains a typed response family but has
 no production first-wave definition.

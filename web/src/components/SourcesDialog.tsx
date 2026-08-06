@@ -193,7 +193,7 @@ function RankingCriterion({ criterion, ranking }: { criterion: CatalogCriterionV
       <div className="source-criterion-heading">
         <div>
           <p className="eyebrow">{criterionKind(criterion)}</p>
-          <h4>{criterion.display_name}</h4>
+          <h4>{criterion.displayName}</h4>
         </div>
         <div className="badge-row">
           {!criterion.ready && <span className="badge badge-unavailable">! Unavailable</span>}
@@ -260,7 +260,7 @@ function CriteriaPage({ catalog, opportunityCatalog, tfcCatalog, ranking }: Omit
       <div className="source-criteria-list compact-source-list">
         {opportunityCatalog.definitions.map((definition) => (
           <article className="source-criterion" key={definition.id}>
-            <div className="source-criterion-heading"><div><p className="eyebrow">{readableCode(definition.category)}</p><h4>{definition.display_name}</h4></div><span className="badge badge-scope">{definition.coverage.assessable_count} assessable</span></div>
+            <div className="source-criterion-heading"><div><p className="eyebrow">{definition.sectionName}</p><h4>{definition.displayName}</h4></div><span className="badge badge-scope">{definition.coverage.assessable_count} assessable</span></div>
             <p>{definition.meaning}</p>
             {definition.source_vintage.map((source) => <div className="source-record" key={`${definition.id}:${source.source_id}`}><div><span>Source</span><strong>{source.publisher}</strong></div><div><span>Version</span><strong>{source.source_version}</strong></div></div>)}
             {definition.limitations.length > 0 && <p className="transformation-note">{definition.limitations.join(' ')}</p>}
@@ -272,7 +272,7 @@ function CriteriaPage({ catalog, opportunityCatalog, tfcCatalog, ranking }: Omit
       <div className="source-criteria-list compact-source-list">
         {tfcCatalog ? tfcCatalog.definitions.map((definition) => (
           <article className="source-criterion" key={definition.id}>
-            <div className="source-criterion-heading"><div><p className="eyebrow">{readableCode(definition.check_kind)}</p><h4>{definition.display_name}</h4></div><span className="badge badge-scope">{definition.supported_destination_codes.length} destinations</span></div>
+            <div className="source-criterion-heading"><div><p className="eyebrow">{readableCode(definition.check_kind)}</p><h4>{definition.displayName}</h4></div><span className="badge badge-scope">{definition.supported_destination_codes.length} destinations</span></div>
             <p>{definition.user_question}</p>
             <p>{definition.supported_profile_boundary}</p>
             {definition.source_summary.map((source) => <div className="source-record" key={`${definition.id}:${source.source_id}`}><div><span>Source</span><strong>{source.publisher}</strong></div><div><span>Effective</span><strong>{source.effective_from} onward</strong></div></div>)}
@@ -286,7 +286,7 @@ function CriteriaPage({ catalog, opportunityCatalog, tfcCatalog, ranking }: Omit
 
 function CountriesPage({ catalog }: { catalog: CatalogV2 }) {
   const [query, setQuery] = useState('')
-  const criterionNames = useMemo(() => new Map(catalog.criteria.map((criterion) => [criterion.id, criterion.display_name])), [catalog.criteria])
+  const criterionNames = useMemo(() => new Map(catalog.criteria.map((criterion) => [criterion.id, criterion.displayName])), [catalog.criteria])
   const rows = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase()
     return catalog.country_coverage.filter(({ country }) => !normalized || country.display_name.toLocaleLowerCase().startsWith(normalized) || countryCode(country.entity_id).toLocaleLowerCase().startsWith(normalized))

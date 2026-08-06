@@ -104,9 +104,20 @@ EXPECTED_RELEASE_ARTIFACTS = {
 }
 
 
-def _contract(payload: Any, schema_name: str, context: str) -> None:
+def _contract(
+    payload: Any, schema_name: str, context: str, *, generation: int | None = None
+) -> None:
+    selected_generation = generation or 3
+    if isinstance(payload, Mapping) and payload.get("schema_version") in {
+        "konsider-release-5.2",
+        "opportunity-filter-catalog-2.0",
+        "opportunity-filter-definition-2.0",
+    }:
+        selected_generation = 5
     try:
-        validate_contract(payload, schema_name, context=context, schema_generation=3)
+        validate_contract(
+            payload, schema_name, context=context, schema_generation=selected_generation
+        )
     except ContractError as exc:
         raise OpportunityFilterContractError(str(exc)) from exc
 
@@ -123,13 +134,26 @@ def validate_opportunity_filter_catalog(catalog: Mapping[str, Any]) -> None:
     _contract(catalog, "opportunity-filter-catalog", "Opportunity Filter catalog")
     definitions = catalog["definitions"]
     ids = [row["id"] for row in definitions]
-    orders = [row["sort_order"] for row in definitions]
+    order_key = (
+        "sortOrder"
+        if catalog["schema_version"] == "opportunity-filter-catalog-2.0"
+        else "sort_order"
+    )
+    orders = [row[order_key] for row in definitions]
     if len(ids) != len(set(ids)):
         raise OpportunityFilterContractError("Opportunity Filter IDs must be unique.")
     if len(orders) != len(set(orders)):
         raise OpportunityFilterContractError("Opportunity Filter sort orders must be unique.")
+    definition_generation = (
+        5 if catalog["schema_version"] == "opportunity-filter-catalog-2.0" else 3
+    )
     for definition in definitions:
-        validate_opportunity_filter_definition(definition)
+        _contract(
+            definition,
+            "opportunity-filter-definition",
+            "Opportunity Filter definition",
+            generation=definition_generation,
+        )
     if catalog["activation_status"] == "ACTIVE":
         if len(definitions) != 9 or not all(row["active"] for row in definitions):
             raise OpportunityFilterContractError(

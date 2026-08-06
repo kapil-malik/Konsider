@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.api.opportunity_filter_service import OpportunityFilterService
 from konsider.api.tfc_service import TfcApiService
 from konsider.api.v2_service import RecommendationService
@@ -26,6 +27,10 @@ from konsider.ingestion.tfc_release import TfcCandidateReleaseRepository, TfcRel
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_RELEASES = ROOT / "data" / "releases"
 PRODUCTION_CAPTURE = ROOT / "data" / "reports" / "phase7f-2026-08-05" / "production-capture.json"
+DISPLAY_CATALOG = load_product_display_catalog(
+    ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+)
 
 
 def _json(path: Path) -> dict:
@@ -54,6 +59,7 @@ def _prepare(tmp_path: Path) -> tuple[Path, Path]:
 def _publish(tmp_path: Path) -> tuple[Path, Path, Path]:
     releases, reports = _prepare(tmp_path)
     build_release(
+        display_catalog=DISPLAY_CATALOG,
         release_root=releases,
         production_capture=PRODUCTION_CAPTURE,
         report_root=reports,
@@ -85,6 +91,7 @@ def test_build_publish_activate_and_rollback_are_strict_and_atomic(tmp_path: Pat
     releases, reports = _prepare(tmp_path)
     before = (releases / "active.json").read_bytes()
     draft = build_release(
+        display_catalog=DISPLAY_CATALOG,
         release_root=releases,
         production_capture=PRODUCTION_CAPTURE,
         report_root=reports,
@@ -95,7 +102,14 @@ def test_build_publish_activate_and_rollback_are_strict_and_atomic(tmp_path: Pat
     assert not loaded_draft.manifest["activation_authorized"]
     assert loaded_draft.artifacts.catalog["activation_status"] == "ACTIVE"
     assert loaded_draft.artifacts.validation["promotion_eligible"]
-    assert replay_release(draft, production_capture=PRODUCTION_CAPTURE) == ()
+    assert (
+        replay_release(
+            draft,
+            display_catalog=DISPLAY_CATALOG,
+            production_capture=PRODUCTION_CAPTURE,
+        )
+        == ()
+    )
 
     published = publish_release(FINAL_RELEASE_ID, release_root=releases, report_root=reports)
     assert (releases / "active.json").read_bytes() == before
@@ -129,7 +143,14 @@ def test_build_publish_activate_and_rollback_are_strict_and_atomic(tmp_path: Pat
 
 def test_final_release_replays_and_corruption_fails_closed(tmp_path: Path) -> None:
     releases, reports, published = _publish(tmp_path)
-    assert replay_release(published, production_capture=PRODUCTION_CAPTURE) == ()
+    assert (
+        replay_release(
+            published,
+            display_catalog=DISPLAY_CATALOG,
+            production_capture=PRODUCTION_CAPTURE,
+        )
+        == ()
+    )
     activate_release(FINAL_RELEASE_ID, release_root=releases, report_root=reports)
     catalog = published / "tfc-catalog.json"
     catalog.write_bytes(catalog.read_bytes() + b"\n")

@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.domain.opportunity_filters import validate_opportunity_filter_release_bundle
 from konsider.ingestion import phase6_education_opportunity as phase6f
 from konsider.ingestion.current_release import CurrentReleaseRepository
@@ -15,6 +16,10 @@ from konsider.ingestion.current_release import CurrentReleaseRepository
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "data" / "reports" / "phase6f-2026-08-03"
 STAGED_ROOT = REPORT_ROOT / "staged-release"
+DISPLAY_CATALOG = load_product_display_catalog(
+    ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+)
 
 
 def _json(path: Path) -> dict:
@@ -271,12 +276,12 @@ def test_phase6f_candidate_remains_draft_after_final_activation() -> None:
     assert manifest["status"] == "draft"
     validate_opportunity_filter_release_bundle(manifest, catalog, _rows(), countries)
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
-    assert loaded.manifest["release_id"] == "2026-08-04.1"
+    assert loaded.manifest["release_id"] == "2026-08-07.1"
     assert "opportunity_filters" in loaded.manifest
-    assert loaded.manifest["schema_version"] == "konsider-release-5.1"
+    assert loaded.manifest["schema_version"] == "konsider-release-5.2"
     assert _json(ROOT / "data" / "releases" / "active.json") == {
-        "release_id": "2026-08-05.1",
-        "schema_version": "konsider-release-6.0",
+        "release_id": "2026-08-07.2",
+        "schema_version": "konsider-release-6.1",
     }
 
 
@@ -300,5 +305,5 @@ def test_no_opportunity_artifact_contains_score_or_weight_fields() -> None:
 def test_regeneration_is_semantically_identical_without_raw_source_dependency() -> None:
     with tempfile.TemporaryDirectory(dir=ROOT / "data" / "reports") as temporary:
         generated = Path(temporary) / "generated"
-        phase6f.build_education_opportunity_bundle(generated)
+        phase6f.build_education_opportunity_bundle(generated, display_catalog=DISPLAY_CATALOG)
         assert _semantic_tree(generated) == _semantic_tree(REPORT_ROOT)

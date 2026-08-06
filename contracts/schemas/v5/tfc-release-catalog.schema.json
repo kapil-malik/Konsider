@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v5/tfc-release-catalog.schema.json",
+  "title": "TFC immutable release catalog 2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "catalog_id", "synthetic", "activation_status", "definitions"],
+  "properties": {
+    "schema_version": {"const": "tfc-release-catalog-2.0"},
+    "catalog_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+    "synthetic": {"type": "boolean"},
+    "activation_status": {"enum": ["RELEASE_CANDIDATE", "ACTIVE"]},
+    "definitions": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/definition"}}
+  },
+  "$defs": {
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "displayName", "compactName", "sectionId", "sectionName", "sortOrder", "original_criterion_ids", "user_question", "result_family", "policy_id", "input_field_ids", "input_requirements", "supported_profile_boundary", "supported_destination_codes", "public_limitations", "filter_capability", "applicable_purposes", "requires_household_relocation", "refresh_cadence"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{2,80}$"},
+        "displayName": {"type": "string", "minLength": 1, "maxLength": 120},
+        "compactName": {"type": ["string", "null"], "minLength": 1},
+        "sectionId": {"type": ["string", "null"], "pattern": "^[a-z][a-z0-9_]*$"},
+        "sectionName": {"type": ["string", "null"], "minLength": 1},
+        "sortOrder": {"type": "integer", "minimum": 0},
+        "original_criterion_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^C[0-9]+$"}},
+        "user_question": {"type": "string", "minLength": 1, "maxLength": 300},
+        "result_family": {"enum": ["RULE_ROUTE_MATCH", "SCENARIO_METRIC"]},
+        "policy_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+        "input_field_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "https://konsider.app/schemas/v4/tfc-common.schema.json#/$defs/fieldId"}},
+        "input_requirements": {"type": "array", "items": {"$ref": "https://konsider.app/schemas/v4/tfc-release-catalog.schema.json#/properties/definitions/items/properties/input_requirements/items"}},
+        "filter_capability": {"enum": ["ASSESS_ONLY", "REQUIRE_SUPPORTED_MATCH_ALLOWED"]},
+        "supported_profile_boundary": {"type": "string", "minLength": 1},
+        "supported_destination_codes": {"type": "array", "uniqueItems": true, "items": {"$ref": "https://konsider.app/schemas/v4/tfc-common.schema.json#/$defs/countryCode"}},
+        "public_limitations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "applicable_purposes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["WORK", "STUDY", "FAMILY", "EXPLORATION"]}},
+        "requires_household_relocation": {"type": "boolean"},
+        "refresh_cadence": {"type": "string", "minLength": 1}
+      },
+      "allOf": [{"if": {"properties": {"sectionId": {"type": "string"}}, "required": ["sectionId"]}, "then": {"properties": {"sectionName": {"type": "string"}}}, "else": {"properties": {"sectionName": {"type": "null"}}}}]
+    }
+  }
+}

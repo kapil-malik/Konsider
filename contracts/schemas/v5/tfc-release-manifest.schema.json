@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://konsider.app/schemas/v5/tfc-release-manifest.schema.json",
+  "title": "Konsider release 6.1 TFC overlay manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_id", "status", "synthetic", "base_release", "display_catalog", "display_metadata_equivalence", "tfc", "file_checksums", "release_checksum", "activation_authorized"],
+  "properties": {
+    "schema_version": {"const": "konsider-release-6.1"},
+    "release_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["draft", "published"]},
+    "synthetic": {"const": false},
+    "base_release": {"type": "object", "additionalProperties": false, "required": ["release_id", "schema_version", "release_checksum"], "properties": {"release_id": {"type": "string", "minLength": 1}, "schema_version": {"const": "konsider-release-5.2"}, "release_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}}},
+    "display_catalog": {"$ref": "https://konsider.app/schemas/v5/release-manifest.schema.json#/$defs/displayCatalogBinding"},
+    "display_metadata_equivalence": {"type": "object", "additionalProperties": false, "required": ["status", "definition_count", "report_checksum", "source_release_id"], "properties": {"status": {"const": "PASSED"}, "definition_count": {"const": 26}, "report_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}, "source_release_id": {"type": "string", "minLength": 1}}},
+    "tfc": {"$ref": "tfc-release-binding.schema.json"},
+    "file_checksums": {"type": "object", "minProperties": 6, "maxProperties": 6, "additionalProperties": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}},
+    "release_checksum": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "activation_authorized": {"type": "boolean"}
+  },
+  "allOf": [{"if": {"properties": {"status": {"const": "draft"}}}, "then": {"properties": {"activation_authorized": {"const": false}}}}, {"if": {"properties": {"status": {"const": "published"}}}, "then": {"properties": {"activation_authorized": {"const": true}}}}]
+}

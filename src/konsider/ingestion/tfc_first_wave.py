@@ -12,6 +12,7 @@ from datetime import date, datetime, timedelta
 from html.parser import HTMLParser
 from typing import Any, Callable, Mapping, Sequence
 
+from konsider.domain.display_catalog import ProductDisplayCatalog
 from konsider.ingestion.countries import COUNTRIES, COUNTRY_CODES
 from konsider.ingestion.tfc_release import TfcReleaseError
 
@@ -547,7 +548,13 @@ def _source_manifest(capture: Mapping[str, Any], validation_date: str) -> dict[s
     }
 
 
-def _catalog() -> dict[str, Any]:
+def _catalog(display_catalog: ProductDisplayCatalog) -> dict[str, Any]:
+    catalog_ids = {item.id for item in display_catalog.definitions("TYPED_FEASIBILITY_CHECK")}
+    if catalog_ids != set(FIRST_WAVE_TFC_IDS):
+        raise TfcReleaseError(
+            f"TFC display ID mismatch: technical={sorted(FIRST_WAVE_TFC_IDS)}, "
+            f"catalog={sorted(catalog_ids)}."
+        )
     common_limitations = [
         "A route match is a bounded source-based screening result, not legal advice or an application decision.",
         "External authority, recognition, sponsorship, quota, and discretionary requirements keep first-wave matches conditional.",
@@ -561,7 +568,9 @@ def _catalog() -> dict[str, Any]:
         "definitions": [
             {
                 "tfc_id": "skilled_work_route_feasibility",
-                "name": "Highly qualified work route check",
+                "name": display_catalog.definition(
+                    "TYPED_FEASIBILITY_CHECK", "skilled_work_route_feasibility"
+                ).display_name,
                 "original_criterion_ids": ["C32"],
                 "user_question": "Which supported highly qualified work route appears to match this declared snapshot?",
                 "result_family": "RULE_ROUTE_MATCH",
@@ -622,7 +631,9 @@ def _catalog() -> dict[str, Any]:
             },
             {
                 "tfc_id": "family_accompaniment_reunification",
-                "name": "Dependants on supported work and study routes",
+                "name": display_catalog.definition(
+                    "TYPED_FEASIBILITY_CHECK", "family_accompaniment_reunification"
+                ).display_name,
                 "original_criterion_ids": ["C36"],
                 "user_question": "Do declared partner or dependent-child roles conditionally fit a supported primary work or study route?",
                 "result_family": "RULE_ROUTE_MATCH",
@@ -679,7 +690,9 @@ def _catalog() -> dict[str, Any]:
             },
             {
                 "tfc_id": "post_study_work_pathway",
-                "name": "Post-study stay and work route check",
+                "name": display_catalog.definition(
+                    "TYPED_FEASIBILITY_CHECK", "post_study_work_pathway"
+                ).display_name,
                 "original_criterion_ids": ["C35"],
                 "user_question": "Does this declared study scenario conditionally fit a supported post-study stay or work route?",
                 "result_family": "RULE_ROUTE_MATCH",
@@ -947,7 +960,11 @@ def _rules_for_asset(asset: Mapping[str, Any], validation_date: str) -> list[dic
 
 
 def build_first_wave_production_capture(
-    source_capture: Mapping[str, Any], *, release_id: str, validation_date: str
+    source_capture: Mapping[str, Any],
+    *,
+    display_catalog: ProductDisplayCatalog,
+    release_id: str,
+    validation_date: str,
 ) -> dict[str, Any]:
     validate_source_capture(source_capture)
     date.fromisoformat(validation_date)
@@ -976,7 +993,7 @@ def build_first_wave_production_capture(
         "schema_version": PRODUCTION_CAPTURE_SCHEMA_VERSION,
         "release_id": release_id,
         "validated_as_of": validation_date,
-        "catalog": _catalog(),
+        "catalog": _catalog(display_catalog),
         "policy_bundles": _policies(),
         "source_legal_manifest": _source_manifest(source_capture, validation_date),
         "additional_jurisdictions": [],

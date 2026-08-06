@@ -17,7 +17,7 @@ def test_default_paths_load_the_schema_current_release_from_any_working_director
         response = client.get("/api/v2/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-08-04.1"
+    assert response.json()["release_id"] == "2026-08-07.1"
 
 
 def test_missing_release_returns_safe_503(tmp_path) -> None:
@@ -79,13 +79,13 @@ def test_unexpected_service_failure_returns_safe_500() -> None:
 def test_openapi_has_only_the_final_structured_public_surface() -> None:
     schema = create_app().openapi()
     assert set(schema["paths"]) == {
-        "/api/v2/health",
-        "/api/v2/catalog",
-        "/api/v2/rankings",
-        "/api/v2/comparisons",
-        "/api/v2/countries/{country_code}/details",
-        "/api/v2/opportunity-filters",
-        "/api/v2/tfcs",
+        "/api/v3/health",
+        "/api/v3/catalog",
+        "/api/v3/rankings",
+        "/api/v3/comparisons",
+        "/api/v3/countries/{country_code}/details",
+        "/api/v3/opportunity-filters",
+        "/api/v3/tfcs",
     }
     serialized = json.dumps(schema)
     for removed in (

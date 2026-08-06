@@ -22,6 +22,7 @@ from decimal import Decimal, ROUND_HALF_EVEN
 from pathlib import Path
 from typing import Any
 
+from konsider.domain.display_catalog import ProductDisplayCatalog, load_product_display_catalog
 from konsider.domain.locality_aggregation import aggregate_locality_criterion
 from konsider.ingestion.current_release import (
     CriterionBuildResult,
@@ -50,12 +51,15 @@ UNIVERSE_LINEAGE_ID = "lineage:ghsl-ucdb-r2024a-v1.2:locality-universe"
 ATTEMPTED_AT = "2026-07-29T00:00:00+05:30"
 MINIMUM_POPULATION = 50_000
 MAXIMUM_LOCALITIES_PER_COUNTRY = 5
+DISPLAY_CATALOG_PATH = Path("data/catalogs/product-display-catalog.json")
+DISPLAY_CATALOG_SCHEMA_PATH = Path(
+    "contracts/schemas/authoring/product-display-catalog.schema.json"
+)
 
 
 @dataclass(frozen=True)
 class LocalityCriterionConfig:
     criterion_id: str
-    display_name: str
     historical_names: tuple[str, ...]
     description: str
     field: str
@@ -74,7 +78,6 @@ class LocalityCriterionConfig:
 
 C66 = LocalityCriterionConfig(
     criterion_id="C66",
-    display_name="Extreme heat exposure",
     historical_names=("Extreme-weather risk",),
     description=(
         "Locality-derived annual mean number of days when daily maximum Universal Thermal "
@@ -112,7 +115,6 @@ C66 = LocalityCriterionConfig(
 
 C67 = LocalityCriterionConfig(
     criterion_id="C67",
-    display_name="Projected warm-day frequency (2030)",
     historical_names=("Long-term climate-change exposure",),
     description=(
         "Locality-derived projected percentage of days when daily maximum temperature exceeds "
@@ -567,6 +569,7 @@ def _build_inputs(
     universe_path: Path,
     archive_path: Path,
     locality_criterion_ids: tuple[str, ...],
+    display_catalog: ProductDisplayCatalog | None,
 ) -> tuple[
     dict[str, Any],
     tuple[dict[str, Any], ...],
@@ -601,6 +604,11 @@ def _build_inputs(
     lineages: list[dict[str, Any]] = []
     for criterion in base_catalog["criteria"]:
         criterion_id = criterion["id"]
+        display = (
+            display_catalog.definition("ORDERING_CRITERION", criterion_id)
+            if display_catalog is not None
+            else None
+        )
         lineage = _migrated_lineage(
             criterion_id,
             base_manifest,
@@ -625,9 +633,9 @@ def _build_inputs(
         criteria.append(
             {
                 "id": criterion_id,
-                "display_name": criterion["display_name"],
+                "display_name": display.display_name if display else criterion["display_name"],
                 "historical_names": [],
-                "category": criterion["category"],
+                "category": display.section_name if display else criterion["category"],
                 "description": criterion["description"],
                 "direction": criterion["direction"],
                 "raw_unit": criterion["raw_unit"],
@@ -665,6 +673,15 @@ def _build_inputs(
     aggregation_policies = []
     for criterion_id in locality_criterion_ids:
         config = CRITERIA[criterion_id]
+        display = (
+            display_catalog.definition("ORDERING_CRITERION", config.criterion_id)
+            if display_catalog is not None
+            else None
+        )
+        if display is not None and display.section_name is None:
+            raise CurrentReleaseError(
+                f"Ordering criterion {config.criterion_id} requires display section metadata."
+            )
         lineage_ids = [config.source_lineage_id, UNIVERSE_LINEAGE_ID]
         counts = {"valid": 89, "missing": 2, "stale": 0, "invalid": 0, "rejected": 0}
         coverage = _coverage(
@@ -680,9 +697,9 @@ def _build_inputs(
         criteria.append(
             {
                 "id": config.criterion_id,
-                "display_name": config.display_name,
+                "display_name": display.display_name if display else config.criterion_id,
                 "historical_names": list(config.historical_names),
-                "category": "Climate and environment",
+                "category": display.section_name if display else config.criterion_id,
                 "description": config.description,
                 "direction": "lower_is_better",
                 "raw_unit": config.raw_unit,
@@ -943,6 +960,7 @@ def build_locality_release(
     *,
     release_id: str,
     locality_criterion_ids: tuple[str, ...],
+    display_catalog: ProductDisplayCatalog,
     base_release_path: Path = Path(f"data/releases/{BASE_RELEASE_ID}"),
     base_catalog_path: Path = Path(f"data/catalogs/releases/{BASE_RELEASE_ID}.json"),
     universe_path: Path = Path("data/country-universes/stable-supported-v1.json"),
@@ -963,6 +981,7 @@ def build_locality_release(
         universe_path=universe_path,
         archive_path=archive_path,
         locality_criterion_ids=locality_criterion_ids,
+        display_catalog=display_catalog,
     )
     (
         catalog,
@@ -1036,6 +1055,7 @@ def replay_locality_release(
             universe_path=universe_path,
             archive_path=archive_path,
             locality_criterion_ids=locality_criterion_ids,
+            display_catalog=None,
         )
     )
     attempted_values = {row["attempted_at"] for row in loaded.artifacts.criterion_outcomes}
@@ -1094,9 +1114,13 @@ def main() -> int:
         return 0 if status == "PASSED" else 1
     if not args.criteria:
         raise SystemExit("--criterion is required when building a release")
+    display_catalog = load_product_display_catalog(
+        DISPLAY_CATALOG_PATH, DISPLAY_CATALOG_SCHEMA_PATH
+    )
     published, replay_status = build_locality_release(
         release_id=args.release_id,
         locality_criterion_ids=tuple(args.criteria),
+        display_catalog=display_catalog,
         archive_path=args.archive,
         activate=args.activate,
     )

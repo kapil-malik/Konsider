@@ -135,8 +135,13 @@ class OpportunityFilterService:
                 )
         evidence_rows = _read_jsonl(root / "opportunity-filter-evidence.jsonl")
         coverage_summary = _read_json(root / "opportunity-filter-coverage-summary.json")
-        if coverage_summary.get("release_id") != manifest["release_id"] or any(
-            row.get("release_id") != manifest["release_id"] for row in evidence_rows
+        expected_source_release_id = manifest["release_id"]
+        if manifest.get("schema_version") == "konsider-release-5.2":
+            expected_source_release_id = manifest["display_metadata_equivalence"][
+                "source_release_id"
+            ]
+        if coverage_summary.get("release_id") != expected_source_release_id or any(
+            row.get("release_id") != expected_source_release_id for row in evidence_rows
         ):
             raise OpportunityFilterBundleError(
                 "Opportunity Filter API artifacts and release identity disagree."
@@ -161,17 +166,21 @@ class OpportunityFilterService:
     def catalog_payload(self) -> dict[str, Any]:
         definitions = []
         coverage = self.coverage_summary.get("filters", {})
+        modern = self.catalog.get("schema_version") == "opportunity-filter-catalog-2.0"
+        order_key = "sortOrder" if modern else "sort_order"
         for filter_id, definition in sorted(
-            self._definitions.items(), key=lambda item: item[1]["sort_order"]
+            self._definitions.items(), key=lambda item: item[1][order_key]
         ):
             source_ids = definition["source_dependency"]["required_source_ids"]
             sources = [self._sources[source_id] for source_id in source_ids]
             definitions.append(
                 {
                     "id": filter_id,
-                    "display_name": definition["display_name"],
-                    "compact_label": definition["compact_label"],
-                    "category": definition["category"],
+                    "display_name": definition.get("displayName", definition.get("display_name")),
+                    "compact_label": definition.get("compactName", definition.get("compact_label")),
+                    "category": (
+                        str(definition["sectionId"]).upper() if modern else definition["category"]
+                    ),
                     "meaning": definition["meaning"],
                     "limitations": definition["does_not_mean"],
                     "documentation_ref": definition["documentation_ref"],
@@ -236,10 +245,15 @@ class OpportunityFilterService:
         }
 
     def all_country_evidence(self, country_code: str) -> list[dict[str, Any]]:
+        order_key = (
+            "sortOrder"
+            if self.catalog.get("schema_version") == "opportunity-filter-catalog-2.0"
+            else "sort_order"
+        )
         return [
             self.evidence_summary(filter_id, country_code)
             for filter_id in sorted(
-                self._definitions, key=lambda item: self._definitions[item]["sort_order"]
+                self._definitions, key=lambda item: self._definitions[item][order_key]
             )
         ]
 

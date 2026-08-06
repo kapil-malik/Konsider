@@ -119,7 +119,7 @@ async function expandOpportunityGroups(page: Page) {
   return panel
 }
 
-test('initial guest ranking and explicit priority update use the v2 contract', async ({ page }) => {
+test('initial guest ranking and explicit priority update use the v3 contract', async ({ page }) => {
   const requests: Array<{ path: string; body?: unknown }> = []
   await mockApi(page, requests)
   await page.goto('/')
@@ -215,7 +215,7 @@ test('search and region filters update visible and total result counts', async (
 })
 
 test('shows a controlled unavailable-release state', async ({ page }) => {
-  await page.route('**/api/v2/catalog', (route) =>
+  await page.route('**/api/v3/catalog', (route) =>
     json(
       route,
       {

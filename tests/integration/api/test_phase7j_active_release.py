@@ -6,6 +6,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.api.app import create_app
 from konsider.api.settings import ApiSettings
 from konsider.ingestion.phase7_release_publication import (
@@ -18,6 +19,10 @@ from konsider.ingestion.phase7_release_publication import (
 
 ROOT = Path(__file__).resolve().parents[3]
 PRODUCTION_CAPTURE = ROOT / "data" / "reports" / "phase7f-2026-08-05" / "production-capture.json"
+DISPLAY_CATALOG = load_product_display_catalog(
+    ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+)
 
 
 def _settings(tmp_path: Path) -> ApiSettings:
@@ -34,6 +39,7 @@ def _settings(tmp_path: Path) -> ApiSettings:
         encoding="utf-8",
     )
     build_release(
+        display_catalog=DISPLAY_CATALOG,
         release_root=releases,
         production_capture=PRODUCTION_CAPTURE,
         report_root=reports,

@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.ingestion.phase4_wave2 import build_wave2_release
 
 
@@ -47,6 +48,10 @@ def main() -> int:
     )
     parser.add_argument("--created-at")
     args = parser.parse_args()
+    display_catalog = load_product_display_catalog(
+        Path("data/catalogs/product-display-catalog.json"),
+        Path("contracts/schemas/authoring/product-display-catalog.schema.json"),
+    )
     path = build_wave2_release(
         release_id=args.release_id,
         base_release_path=args.base_release,
@@ -56,6 +61,7 @@ def main() -> int:
         wipo_raw_path=args.wipo_raw,
         release_root=args.release_root,
         report_root=args.report_root,
+        display_catalog=display_catalog,
         publish=args.publish,
         created_at=args.created_at,
     )

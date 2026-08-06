@@ -1,0 +1,191 @@
+{
+  "definitionCount": 26,
+  "definitions": [
+    {
+      "compactName": null,
+      "displayName": "Extreme heat exposure",
+      "id": "C66",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Climate and environment"
+    },
+    {
+      "compactName": null,
+      "displayName": "Projected warm-day frequency (2030)",
+      "id": "C67",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Climate and environment"
+    },
+    {
+      "compactName": null,
+      "displayName": "Population-weighted PM2.5 exposure",
+      "id": "ambient_pm25_population_weighted",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Environment"
+    },
+    {
+      "compactName": null,
+      "displayName": "Established immigrant presence",
+      "id": "established_immigrant_presence",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Integration context"
+    },
+    {
+      "compactName": null,
+      "displayName": "Broad household-consumption relative cost",
+      "id": "household_consumption_price_level_us_100",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Affordability"
+    },
+    {
+      "compactName": null,
+      "displayName": "Infrastructure readiness — experimental",
+      "id": "infrastructure_readiness_composite",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Infrastructure"
+    },
+    {
+      "compactName": null,
+      "displayName": "Intentional homicide rate",
+      "id": "intentional_homicide_rate",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Safety"
+    },
+    {
+      "compactName": null,
+      "displayName": "Overall job-market opportunity",
+      "id": "overall_job_market_opportunity",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Jobs and economic opportunity"
+    },
+    {
+      "compactName": null,
+      "displayName": "Political stability",
+      "id": "political_stability",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Safety"
+    },
+    {
+      "compactName": null,
+      "displayName": "Research and innovation ecosystem",
+      "id": "research_innovation_ecosystem",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Education, research and innovation"
+    },
+    {
+      "compactName": null,
+      "displayName": "Rule of law",
+      "id": "rule_of_law",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Institutions"
+    },
+    {
+      "compactName": null,
+      "displayName": "School education quality",
+      "id": "school_education_quality",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Education and human capital"
+    },
+    {
+      "compactName": null,
+      "displayName": "UHC service coverage — unavailable/non-ready",
+      "id": "uhc_service_coverage_index",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Healthcare"
+    },
+    {
+      "compactName": null,
+      "displayName": "Women's legal and economic equality",
+      "id": "women_legal_economic_equality",
+      "productRole": "ORDERING_CRITERION",
+      "sectionName": "Equality"
+    },
+    {
+      "compactName": "Technology and software",
+      "displayName": "Technology and software employment ecosystem",
+      "id": "technology_software_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Career"
+    },
+    {
+      "compactName": "Science and engineering",
+      "displayName": "Science and engineering employment ecosystem",
+      "id": "science_engineering_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Career"
+    },
+    {
+      "compactName": "Care sector",
+      "displayName": "Care-sector employment ecosystem",
+      "id": "health_social_work_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Career"
+    },
+    {
+      "compactName": "Finance and insurance",
+      "displayName": "Finance and insurance employment ecosystem",
+      "id": "finance_insurance_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Career"
+    },
+    {
+      "compactName": "Skilled trades or construction",
+      "displayName": "Skilled-trades or construction employment ecosystem",
+      "id": "skilled_trades_construction_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Career"
+    },
+    {
+      "compactName": "Engineering and technology research",
+      "displayName": "Physical sciences and engineering research-university ecosystem",
+      "id": "engineering_technology_education_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Education"
+    },
+    {
+      "compactName": "Mathematics and computer science research",
+      "displayName": "Mathematics and computer science research-university ecosystem",
+      "id": "computer_science_ict_education_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Education"
+    },
+    {
+      "compactName": "Biomedical and health sciences research",
+      "displayName": "Biomedical and health sciences research-university ecosystem",
+      "id": "medicine_health_sciences_education_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Education"
+    },
+    {
+      "compactName": "Life and earth sciences research",
+      "displayName": "Life and earth sciences research-university ecosystem",
+      "id": "natural_sciences_education_opportunity",
+      "productRole": "OPPORTUNITY_FILTER",
+      "sectionName": "Education"
+    },
+    {
+      "compactName": null,
+      "displayName": "Highly qualified work route check",
+      "id": "skilled_work_route_feasibility",
+      "productRole": "TYPED_FEASIBILITY_CHECK",
+      "sectionName": null
+    },
+    {
+      "compactName": null,
+      "displayName": "Dependants on supported work and study routes",
+      "id": "family_accompaniment_reunification",
+      "productRole": "TYPED_FEASIBILITY_CHECK",
+      "sectionName": null
+    },
+    {
+      "compactName": null,
+      "displayName": "Post-study stay and work route check",
+      "id": "post_study_work_pathway",
+      "productRole": "TYPED_FEASIBILITY_CHECK",
+      "sectionName": null
+    }
+  ],
+  "schemaVersion": "konsider-display-metadata-equivalence-1.0",
+  "sourceBaseReleaseId": "2026-08-04.1",
+  "sourceOverlayReleaseId": "2026-08-05.1",
+  "status": "PASSED"
+}

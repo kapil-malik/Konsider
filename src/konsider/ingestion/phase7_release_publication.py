@@ -10,6 +10,7 @@ import tempfile
 from pathlib import Path
 from typing import Any, Mapping
 
+from konsider.domain.display_catalog import ProductDisplayCatalog, load_product_display_catalog
 from konsider.ingestion.current_release import CurrentReleaseRepository
 from konsider.ingestion.tfc_first_wave import FIRST_WAVE_TFC_IDS
 from konsider.ingestion.tfc_release import (
@@ -25,7 +26,12 @@ from konsider.ingestion.tfc_release import (
 FINAL_RELEASE_ID = "2026-08-05.1"
 BASE_RELEASE_ID = "2026-08-04.1"
 RELEASE_SCHEMA_VERSION = "konsider-release-6.0"
+SUPPORTED_RELEASE_SCHEMA_VERSIONS = frozenset({RELEASE_SCHEMA_VERSION, "konsider-release-6.1"})
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DISPLAY_CATALOG_PATH = PROJECT_ROOT / "data" / "catalogs" / "product-display-catalog.json"
+DISPLAY_CATALOG_SCHEMA_PATH = (
+    PROJECT_ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json"
+)
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -41,7 +47,9 @@ def _write_json(path: Path, payload: Mapping[str, Any]) -> None:
 
 def _owner_gate(loaded: LoadedTfcRelease) -> None:
     artifacts = loaded.artifacts
-    definition_ids = tuple(row["tfc_id"] for row in artifacts.catalog["definitions"])
+    definition_ids = tuple(
+        row.get("id", row.get("tfc_id")) for row in artifacts.catalog["definitions"]
+    )
     if set(definition_ids) != set(FIRST_WAVE_TFC_IDS) or len(definition_ids) < 3:
         raise TfcReleaseError("The release does not satisfy the owner-approved minimum-three gate.")
     if any(row["filter_capability"] != "ASSESS_ONLY" for row in artifacts.catalog["definitions"]):
@@ -62,6 +70,7 @@ def _owner_gate(loaded: LoadedTfcRelease) -> None:
 
 def build_release(
     *,
+    display_catalog: ProductDisplayCatalog,
     release_root: Path,
     production_capture: Path,
     report_root: Path,
@@ -74,6 +83,14 @@ def build_release(
     pointer_before = pointer_path.read_bytes()
     base = CurrentReleaseRepository(release_root).load(release_root / base_release_id)
     capture = copy.deepcopy(_read_json(production_capture))
+    definitions = {item["tfc_id"]: item for item in capture["catalog"]["definitions"]}
+    catalog_ids = {item.id for item in display_catalog.definitions("TYPED_FEASIBILITY_CHECK")}
+    if set(definitions) != catalog_ids or catalog_ids != set(FIRST_WAVE_TFC_IDS):
+        raise TfcReleaseError("The TFC technical and display ID inventories disagree.")
+    for tfc_id, definition in definitions.items():
+        definition["name"] = display_catalog.definition(
+            "TYPED_FEASIBILITY_CHECK", tfc_id
+        ).display_name
     capture["catalog"]["activation_status"] = "ACTIVE"
     artifacts = build_tfc_release_artifacts(capture)
     draft = TfcCandidateReleaseRepository(release_root / ".draft").write_draft(
@@ -144,7 +161,7 @@ def load_active_tfc_release(
     """Load the active release-6 overlay, or return none for a schema-5 pointer."""
 
     pointer = _read_json(pointer_path or release_root / "active.json")
-    if pointer.get("schema_version") != RELEASE_SCHEMA_VERSION:
+    if pointer.get("schema_version") not in SUPPORTED_RELEASE_SCHEMA_VERSIONS:
         return None
     release_id = pointer.get("release_id")
     if not isinstance(release_id, str) or not release_id:
@@ -208,6 +225,7 @@ def rollback_to_base(*, release_root: Path, release_id: str = BASE_RELEASE_ID) -
 def replay_release(
     release_path: Path,
     *,
+    display_catalog: ProductDisplayCatalog,
     production_capture: Path,
 ) -> tuple[str, ...]:
     """Rebuild a published overlay offline and return mismatched filenames."""
@@ -235,6 +253,7 @@ def replay_release(
             },
         )
         build_release(
+            display_catalog=display_catalog,
             release_root=root,
             production_capture=production_capture,
             report_root=reports,
@@ -306,7 +325,11 @@ def _parse_args() -> argparse.Namespace:
 def main() -> int:
     args = _parse_args()
     if args.command == "build":
+        display_catalog = load_product_display_catalog(
+            DISPLAY_CATALOG_PATH, DISPLAY_CATALOG_SCHEMA_PATH
+        )
         path = build_release(
+            display_catalog=display_catalog,
             release_root=args.release_root,
             production_capture=args.production_capture,
             report_root=args.report_root,
@@ -329,8 +352,12 @@ def main() -> int:
         )
         result = {"status": "ACTIVE", "pointer": str(path)}
     elif args.command == "replay":
+        display_catalog = load_product_display_catalog(
+            DISPLAY_CATALOG_PATH, DISPLAY_CATALOG_SCHEMA_PATH
+        )
         mismatches = replay_release(
             args.release_root / args.release_id,
+            display_catalog=display_catalog,
             production_capture=args.production_capture,
         )
         result = {

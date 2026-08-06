@@ -3,6 +3,7 @@ import json
 import re
 from pathlib import Path
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.domain.tfc_assessment import TfcAssessmentEngine
 from konsider.ingestion.countries import COUNTRY_CODES
 from konsider.ingestion.tfc_first_wave import (
@@ -29,6 +30,10 @@ RESEARCH_SUPPORT_PATH = (
 )
 CANDIDATE = REPORT / "staged-release" / "phase7f-first-wave-2026-08-05.6.0"
 ACTIVE_RELEASE = ROOT / "data" / "releases" / "2026-08-04.1"
+DISPLAY_CATALOG = load_product_display_catalog(
+    ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+)
 
 
 def _json(path: Path) -> dict:
@@ -326,6 +331,7 @@ def test_staged_candidate_is_non_active_and_replays_without_diff() -> None:
 def test_generated_production_capture_is_deterministic_from_frozen_source_capture() -> None:
     rebuilt = build_first_wave_production_capture(
         _json(SOURCE_CAPTURE_PATH),
+        display_catalog=DISPLAY_CATALOG,
         release_id="phase7f-first-wave-2026-08-05.6.0",
         validation_date="2026-08-05",
     )

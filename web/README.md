@@ -1,7 +1,7 @@
 # Konsider web application
 
 The Phase 6H UI is a responsive React, TypeScript, and Vite application over the local FastAPI
-`/api/v2` contract. It uses TanStack Query for API state, local React state for unapplied guest
+`/api/v3` contract. It uses TanStack Query for API state, local React state for unapplied guest
 preferences, generated TypeScript types from FastAPI OpenAPI, Vitest and React Testing Library for
 component coverage, and Playwright for focused browser flows.
 
@@ -25,7 +25,7 @@ response remains small enough that server pagination is not justified.
 Copy `.env.example` to `.env.local` only when the API is not available at the default URL:
 
 ```text
-VITE_KONSIDER_API_BASE_URL=http://127.0.0.1:8000/api/v2
+VITE_KONSIDER_API_BASE_URL=http://127.0.0.1:8000/api/v3
 ```
 
 Only browser-safe `VITE_` variables belong here. Do not add secrets.
@@ -81,14 +81,14 @@ Use `pnpm run test:watch` while developing. Playwright uses deterministic mocked
 starts Vite on port 4173. The normal development UI uses port 5173; FastAPI uses port 8000.
 Before any push, run `python scripts/verify_ci.py --clean-revision HEAD` from the repository root;
 it includes all commands above and detects generated-contract drift.
-The browser loads Opportunity Filter definitions from `GET /api/v2/opportunity-filters` and sends
+The browser loads Opportunity Filter definitions from `GET /api/v3/opportunity-filters` and sends
 selected IDs with ranking, comparison, and country-detail requests; the API remains authoritative
 for strict-AND evaluation and evidence explanations.
 
 ## Troubleshooting
 
 - **The UI says it cannot reach the API:** start Uvicorn and confirm
-  <http://127.0.0.1:8000/api/v2/health> returns `200`.
+  <http://127.0.0.1:8000/api/v3/health> returns `200`.
 - **The browser reports a CORS failure:** add the exact Vite origin to
   `KONSIDER_CORS_ORIGINS`, then restart Uvicorn.
 - **Generated types changed unexpectedly:** confirm the intended Python environment and active

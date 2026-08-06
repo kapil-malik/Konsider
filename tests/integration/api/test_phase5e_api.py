@@ -295,13 +295,13 @@ def test_profile_assessment_cannot_claim_evaluation_without_profile_input() -> N
 def test_openapi_declares_only_the_final_public_routes_and_every_status() -> None:
     schema = create_app().openapi()
     assert set(schema["paths"]) == {
-        "/api/v2/health",
-        "/api/v2/catalog",
-        "/api/v2/rankings",
-        "/api/v2/comparisons",
-        "/api/v2/countries/{country_code}/details",
-        "/api/v2/opportunity-filters",
-        "/api/v2/tfcs",
+        "/api/v3/health",
+        "/api/v3/catalog",
+        "/api/v3/rankings",
+        "/api/v3/comparisons",
+        "/api/v3/countries/{country_code}/details",
+        "/api/v3/opportunity-filters",
+        "/api/v3/tfcs",
     }
     serialized = str(schema)
     for status in (
@@ -324,13 +324,13 @@ def test_exported_openapi_and_generated_types_match_application() -> None:
     root = Path(__file__).resolve().parents[3]
     expected = create_app().openapi()
     contract = json.loads(
-        (root / "contracts" / "openapi" / "konsider-api-2.0.json").read_text(encoding="utf-8")
+        (root / "contracts" / "openapi" / "konsider-api-3.0.json").read_text(encoding="utf-8")
     )
     web_copy = json.loads(
         (root / "web" / "src" / "api" / "openapi.json").read_text(encoding="utf-8")
     )
     generated = (root / "web" / "src" / "api" / "schema.d.ts").read_text(encoding="utf-8")
     assert contract == web_copy == expected
-    assert generated.startswith("// konsider-api-types-2.0\n")
+    assert generated.startswith("// konsider-api-types-3.0\n")
     for component_name in expected["components"]["schemas"]:
         assert f'"{component_name}":' in generated

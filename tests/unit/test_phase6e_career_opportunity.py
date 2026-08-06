@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.domain.opportunity_filters import (
     validate_opportunity_filter_catalog,
     validate_opportunity_filter_coverage_summary,
@@ -29,6 +30,10 @@ EXPECTED_COUNTS = {
     "finance_insurance_opportunity": (22, 66, 3),
     "skilled_trades_construction_opportunity": (34, 54, 3),
 }
+DISPLAY_CATALOG = load_product_display_catalog(
+    ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+)
 
 
 def _json(path: Path) -> dict:
@@ -293,13 +298,13 @@ def test_phase6e_candidate_remains_draft_after_final_activation() -> None:
     validate_opportunity_filter_release_bundle(manifest, catalog, rows, countries)
 
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
-    assert loaded.manifest["release_id"] == "2026-08-04.1"
+    assert loaded.manifest["release_id"] == "2026-08-07.1"
     assert "opportunity_filters" in loaded.manifest
-    assert loaded.manifest["schema_version"] == "konsider-release-5.1"
+    assert loaded.manifest["schema_version"] == "konsider-release-5.2"
     active_pointer = _json(ROOT / "data" / "releases" / "active.json")
     assert active_pointer == {
-        "release_id": "2026-08-05.1",
-        "schema_version": "konsider-release-6.0",
+        "release_id": "2026-08-07.2",
+        "schema_version": "konsider-release-6.1",
     }
 
 
@@ -324,5 +329,5 @@ def test_regeneration_preserves_product_bytes_without_raw_source_dependency(
     }
     monkeypatch.setattr(phase6e, "RETAINED_RAW_SOURCES", missing_sources)
     generated = tmp_path / "generated"
-    phase6e.build_career_opportunity_bundle(generated)
+    phase6e.build_career_opportunity_bundle(generated, display_catalog=DISPLAY_CATALOG)
     assert _semantic_tree(generated) == _semantic_tree(REPORT_ROOT)

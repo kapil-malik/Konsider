@@ -1,5 +1,9 @@
 # Worker operations
 
+The active display-metadata migration is overlay `2026-08-07.2`, bound to base `2026-08-07.1`.
+Its checksum-backed evidence and rollback record are under
+`data/reports/catalog-display-metadata-2026-08-07/`.
+
 The local Python worker downloads registered official data, captures exact raw bytes, parses
 source-neutral observations, computes versioned canonical scores, validates a candidate, and
 publishes a new immutable release. It does not serve API requests, modify published releases, fill

@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 from konsider.contracts import validate_contract
+from konsider.domain.display_catalog import ProductDisplayCatalog, load_product_display_catalog
 from konsider.domain.opportunity_filters import (
     validate_opportunity_filter_catalog,
     validate_opportunity_filter_coverage_summary,
@@ -32,6 +33,10 @@ DEFAULT_RELEASE_ROOT = ROOT / "data" / "releases"
 DEFAULT_CATALOG_ROOT = ROOT / "data" / "catalogs" / "releases"
 DEFAULT_STAGED_ROOT = ROOT / "data" / "reports" / "phase6g-2026-08-03" / "staged-release"
 DEFAULT_REPORT_ROOT = ROOT / "data" / "reports" / "phase6i-2026-08-04"
+DISPLAY_CATALOG_PATH = ROOT / "data" / "catalogs" / "product-display-catalog.json"
+DISPLAY_CATALOG_SCHEMA_PATH = (
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json"
+)
 BUILD_ID = "phase6i-release-publication-1.0"
 GENERATED_AT = "2026-08-04T00:00:00+05:30"
 
@@ -59,27 +64,22 @@ OPPORTUNITY_ARTIFACTS = {
     ),
 }
 
-EXPECTED_NAMES = {
-    "technology_software_opportunity": "Technology and software employment ecosystem",
-    "science_engineering_opportunity": "Science and engineering employment ecosystem",
-    "health_social_work_opportunity": "Care-sector employment ecosystem",
-    "finance_insurance_opportunity": "Finance and insurance employment ecosystem",
-    "skilled_trades_construction_opportunity": (
-        "Skilled-trades or construction employment ecosystem"
-    ),
-    "engineering_technology_education_opportunity": (
-        "Physical sciences and engineering research-university ecosystem"
-    ),
-    "computer_science_ict_education_opportunity": (
-        "Mathematics and computer science research-university ecosystem"
-    ),
-    "medicine_health_sciences_education_opportunity": (
-        "Biomedical and health sciences research-university ecosystem"
-    ),
-    "natural_sciences_education_opportunity": (
-        "Life and earth sciences research-university ecosystem"
-    ),
-}
+EXPECTED_FILTER_IDS = frozenset(
+    {
+        "technology_software_opportunity",
+        "science_engineering_opportunity",
+        "health_social_work_opportunity",
+        "finance_insurance_opportunity",
+        "skilled_trades_construction_opportunity",
+        "engineering_technology_education_opportunity",
+        "computer_science_ict_education_opportunity",
+        "medicine_health_sciences_education_opportunity",
+        "natural_sciences_education_opportunity",
+    }
+)
+HELD_FILTER_IDS = frozenset(
+    {"business_finance_education_opportunity", "broad_university_excellence_opportunity"}
+)
 
 EXPECTED_STATE_COUNTS = {
     "technology_software_opportunity": (20, 43, 28),
@@ -193,10 +193,25 @@ def _validate_accepted_product(
     catalog: Mapping[str, Any],
     rows: list[dict[str, Any]],
     coverage: Mapping[str, Any],
+    display_catalog: ProductDisplayCatalog,
 ) -> None:
     definitions = {row["id"]: row for row in catalog["definitions"]}
-    if {item: definitions[item]["display_name"] for item in definitions} != EXPECTED_NAMES:
-        raise Phase6ReleaseError("The final nine public Opportunity Filter names disagree.")
+    if set(definitions) != EXPECTED_FILTER_IDS:
+        raise Phase6ReleaseError("The final Opportunity Filter ID inventory disagrees.")
+    catalog_ids = {item.id for item in display_catalog.definitions("OPPORTUNITY_FILTER")}
+    if catalog_ids != EXPECTED_FILTER_IDS:
+        raise Phase6ReleaseError("The authoritative Opportunity Filter ID inventory disagrees.")
+    for filter_id, definition in definitions.items():
+        display = display_catalog.definition("OPPORTUNITY_FILTER", filter_id)
+        expected_category = display.section_id.upper() if display.section_id else None
+        if (
+            definition["display_name"] != display.display_name
+            or definition["compact_label"] != display.compact_name
+            or definition["category"] != expected_category
+        ):
+            raise Phase6ReleaseError(
+                f"Opportunity Filter display metadata differs for {filter_id}."
+            )
     if catalog["activation_status"] != "ACTIVE" or any(
         not row["active"] or row["availability"] != "AVAILABLE" for row in definitions.values()
     ):
@@ -209,7 +224,7 @@ def _validate_accepted_product(
         raise Phase6ReleaseError("Opportunity Filter definitions cannot contain ranking fields.")
 
     actual_counts: dict[str, tuple[int, int, int]] = {}
-    for filter_id in EXPECTED_NAMES:
+    for filter_id in EXPECTED_FILTER_IDS:
         counts = Counter(row["state"] for row in rows if row["filter_id"] == filter_id)
         actual_counts[filter_id] = tuple(counts[state] for state in STATE_ORDER)
     if actual_counts != EXPECTED_STATE_COUNTS:
@@ -217,7 +232,7 @@ def _validate_accepted_product(
 
     if any(
         coverage["filters"][filter_id]["assessable_count"] != 75
-        for filter_id in EXPECTED_NAMES
+        for filter_id in EXPECTED_FILTER_IDS
         if definitions[filter_id]["category"] == "EDUCATION"
     ):
         raise Phase6ReleaseError(
@@ -254,13 +269,13 @@ def _validate_accepted_product(
             "Skilled, construction and both-route attribution must remain visible."
         )
 
-    lowered_names = " ".join(EXPECTED_NAMES.values()).lower()
-    if "business education" in lowered_names or "broad university excellence" in lowered_names:
+    if HELD_FILTER_IDS & set(definitions):
         raise Phase6ReleaseError("Held education constructs cannot enter the final catalog.")
 
 
 def build_release(
     *,
+    display_catalog: ProductDisplayCatalog,
     release_root: Path = DEFAULT_RELEASE_ROOT,
     catalog_root: Path = DEFAULT_CATALOG_ROOT,
     active_pointer: Path | None = None,
@@ -327,7 +342,7 @@ def build_release(
             context=policy["policy_version"],
             schema_generation=3,
         )
-    _validate_accepted_product(catalog, rows, coverage)
+    _validate_accepted_product(catalog, rows, coverage, display_catalog)
 
     draft.mkdir(parents=True)
     for filename in PAYLOAD_FILES:
@@ -468,7 +483,12 @@ def _parse_args() -> argparse.Namespace:
 def main() -> int:
     args = _parse_args()
     if args.command == "build":
-        release_id, path = build_release(release_id=args.release_id)
+        display_catalog = load_product_display_catalog(
+            DISPLAY_CATALOG_PATH, DISPLAY_CATALOG_SCHEMA_PATH
+        )
+        release_id, path = build_release(
+            display_catalog=display_catalog, release_id=args.release_id
+        )
         print(f"release={release_id} status=draft path={path}")
     elif args.command == "publish":
         path = publish_release(args.release_id)

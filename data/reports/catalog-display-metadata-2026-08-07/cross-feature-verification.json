@@ -1,0 +1,173 @@
+{
+  "cases": [
+    {
+      "name": "catalog",
+      "semanticChecksum": "sha256:174b7af5b5a7fea3de33d40cd86c0a50981bf7f4b1b62449e934d2dce84d09da",
+      "status": "PASSED"
+    },
+    {
+      "name": "opportunity_filter_catalog",
+      "semanticChecksum": "sha256:f2622198def7c08ae7dd9720b0d3ec0759972745a60cb6d3e9cff387b8521ce8",
+      "status": "PASSED"
+    },
+    {
+      "name": "tfc_catalog",
+      "semanticChecksum": "sha256:57d8d22ceeb9105ff94135d3d35d65da45d551a33667ee03e9ddae6c00e51797",
+      "status": "PASSED"
+    },
+    {
+      "name": "ranking",
+      "semanticChecksum": "sha256:c59e1c052cae85fb2ef57159eb1f86b9ba5ff08086718c7fbfc11329d64a8b7a",
+      "status": "PASSED"
+    },
+    {
+      "name": "ranking_with_ofc",
+      "semanticChecksum": "sha256:0f175f7b1bd8841ebcd3c9e53702e498fa8d841fba426106b629440155cf7838",
+      "status": "PASSED"
+    },
+    {
+      "name": "ranking_with_tfc",
+      "semanticChecksum": "sha256:6d2a596313e981f076acbc9eb7669f9bc10b1a443a232b39a76ae10f0959ce5e",
+      "status": "PASSED"
+    },
+    {
+      "name": "comparison",
+      "semanticChecksum": "sha256:3e4d53e2b502ff0d3fae4b294156b012bbb74ad6261547137ef236985db9be99",
+      "status": "PASSED"
+    },
+    {
+      "name": "country_details",
+      "semanticChecksum": "sha256:9ee188deed320f4b5eb91d3ecd50d3d0148f74a342b0f5b570bab3ceba5c01b0",
+      "status": "PASSED"
+    }
+  ],
+  "schemaVersion": "catalog-display-metadata-cross-feature-verification-1.0",
+  "sourceBaseReleaseId": "2026-08-04.1",
+  "sourceOverlayReleaseId": "2026-08-05.1",
+  "status": "PASSED",
+  "targetBaseReleaseId": "2026-08-07.1",
+  "targetOverlayReleaseId": "2026-08-07.2",
+  "unchangedArtifactCount": 20,
+  "unchangedArtifacts": [
+    {
+      "checksum": "sha256:1baa3a335647438f355276a1d0930a44891859dd3a972c48dc762bec0642fbb9",
+      "filename": "aggregation-policies.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:ceffc088f1a4c406480299146d31f6c7a8772e6f8c28a21e9137dd3ecd2d1d1a",
+      "filename": "criterion-outcomes.jsonl",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:84a2e095b8b48b8921b70790b070e67588405779b39d20ae2114045956c984c9",
+      "filename": "criterion-policies.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:0705182adb53bbea08cee67c91430c01a7c2e1279baa45fc9793b1e710742a22",
+      "filename": "derived-country-evidence.jsonl",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:958ceff1a51ceaca638c9954f160d4cee11603645ca6df4464e29b14534ce66e",
+      "filename": "geographic-entities.jsonl",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:9b10bbf44053fa22e24b49bd4bdf091b222035b2fad7aa7bf2d2c663e6cc7520",
+      "filename": "locality-universes.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:2dbc9bb28381ca137a35b7fcfc352e18c9ef3031736ccd1e13f5efcf6921bd99",
+      "filename": "observations.jsonl",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:8f3dfc37a21ba2b48c3bc3074050ff4f4947aa53b81509b4f6d36930f0038e01",
+      "filename": "opportunity-filter-coverage-summary.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:ec6f4ef9cf4e2265840a8b73a6b4cc3af3b0d7689d00fb8cfd13f5217543610c",
+      "filename": "opportunity-filter-evidence-policy.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:1be74fa5004caffa9f46a4616bbbcfe93fcb81a5daf74ead97d91ec868d8c25c",
+      "filename": "opportunity-filter-evidence.jsonl",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:5abfc32a221a9adbea8fcb9f72b608297feafdd00dc8df0961317c1f558170be",
+      "filename": "opportunity-filter-source-manifest.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:ce4d96be87721d9b02ce6e2f1e68e4bee10cf78627fe0923e825f85d9b408b67",
+      "filename": "opportunity-filter-threshold-policies.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:0ad27f6a9d735dbad16be26f7e152de97dd986f8a97ee31d47b2fd9e6c560e57",
+      "filename": "scores.jsonl",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:82d93ba21bc866eac8cf91d92cbfb7b7065b33c32978c9b23a65378c77054e31",
+      "filename": "source-lineages.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:be9dea2971bea51fc3e88d46f13eba506c3352bf1a34760eea6b5ec02d799ca1",
+      "filename": "validation.json",
+      "sourceReleaseId": "2026-08-04.1",
+      "targetReleaseId": "2026-08-07.1"
+    },
+    {
+      "checksum": "sha256:8189c9c04050751b3e21a6966523312162d11a4de3c4f616e0c2604925a6b567",
+      "filename": "tfc-coverage-summary.json",
+      "sourceReleaseId": "2026-08-05.1",
+      "targetReleaseId": "2026-08-07.2"
+    },
+    {
+      "checksum": "sha256:669560ed01f155817344d2535d210b68f777308bd350f7bd57f4b7811a5781ef",
+      "filename": "tfc-destination-rule-evidence.jsonl",
+      "sourceReleaseId": "2026-08-05.1",
+      "targetReleaseId": "2026-08-07.2"
+    },
+    {
+      "checksum": "sha256:b06cf8ce981126659cba6f189e1429026ce98cd39e913b7f1e046b62ea8c88d3",
+      "filename": "tfc-policy-bundles.json",
+      "sourceReleaseId": "2026-08-05.1",
+      "targetReleaseId": "2026-08-07.2"
+    },
+    {
+      "checksum": "sha256:82b7ff3c632a9dd1748ec0fe781c4d76f13899c04bc20d1532a877165ba0d832",
+      "filename": "tfc-source-legal-manifest.json",
+      "sourceReleaseId": "2026-08-05.1",
+      "targetReleaseId": "2026-08-07.2"
+    },
+    {
+      "checksum": "sha256:1c469a0d7f5fb4b02b3afacd686c941d2f779b34985b78e3d8c9626438b7d547",
+      "filename": "tfc-validation.json",
+      "sourceReleaseId": "2026-08-05.1",
+      "targetReleaseId": "2026-08-07.2"
+    }
+  ]
+}

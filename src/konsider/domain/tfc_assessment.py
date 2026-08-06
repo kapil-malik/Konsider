@@ -385,7 +385,9 @@ class TfcAssessmentEngine:
         self.artifacts = artifacts
         self.active_release_id = active_release_id
         self.tfc_release_id = tfc_release_id
-        self.definitions = {row["tfc_id"]: row for row in artifacts.catalog["definitions"]}
+        self.definitions = {
+            str(row.get("id", row.get("tfc_id"))): row for row in artifacts.catalog["definitions"]
+        }
         self.policies = {row["tfc_id"]: row for row in artifacts.policy_bundles["policies"]}
         self.records = {row["record_id"]: row for row in artifacts.rule_evidence}
         self.support = {
@@ -407,9 +409,9 @@ class TfcAssessmentEngine:
         if unknown:
             raise TfcAssessmentError(f"Unknown TFC IDs: {','.join(unknown)}.")
         return tuple(
-            definition["tfc_id"]
+            str(definition.get("id", definition.get("tfc_id")))
             for definition in self.artifacts.catalog["definitions"]
-            if definition["tfc_id"] in selected_tfc_ids
+            if str(definition.get("id", definition.get("tfc_id"))) in selected_tfc_ids
         )
 
     def _applicable(self, definition: Mapping[str, Any], context: Mapping[str, Any]) -> bool:

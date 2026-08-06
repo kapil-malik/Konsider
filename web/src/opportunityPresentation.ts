@@ -87,5 +87,5 @@ export function filterName(
   compact = false,
 ): string {
   if (!definition) return filterId
-  return compact ? definition.compact_label ?? definition.display_name : definition.display_name
+  return compact ? definition.compactName ?? definition.displayName : definition.displayName
 }

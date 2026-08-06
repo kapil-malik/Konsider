@@ -20,13 +20,7 @@ export function OpportunityFiltersPanel({
   const definitions = catalog.definitions.filter(
     (definition) => definition.active && definition.availability === 'AVAILABLE',
   )
-  const groups = [
-    { category: 'CAREER' as const, label: 'Career' },
-    {
-      category: 'EDUCATION' as const,
-      label: 'Education',
-    },
-  ]
+  const groups = [...catalog.sections].sort((first, second) => first.sortOrder - second.sortOrder)
 
   return (
     <section
@@ -69,15 +63,15 @@ export function OpportunityFiltersPanel({
         <div className="opportunity-groups">
           {groups.map((group) => {
             const members = definitions.filter(
-              (definition) => definition.category === group.category,
-            )
+              (definition) => definition.sectionId === group.sectionId,
+            ).sort((first, second) => first.sortOrder - second.sortOrder)
             const selectedCount = members.filter((definition) =>
               selectedFilterIds.includes(definition.id),
             ).length
             return (
-              <details className="opportunity-group" key={group.category}>
+              <details className="opportunity-group" key={group.sectionId}>
                 <summary>
-                  {group.label}{' '}
+                  {group.sectionName}{' '}
                   <span
                     aria-label={`${selectedCount} of ${members.length} filters selected`}
                   >
@@ -90,20 +84,20 @@ export function OpportunityFiltersPanel({
                     return (
                       <label
                         className={`opportunity-option${checked ? ' opportunity-option-selected' : ''}`}
-                        title={definition.display_name}
+                        title={definition.displayName}
                         key={definition.id}
                       >
                         <input
                           type="checkbox"
                           checked={checked}
                           disabled={disabled}
-                          aria-label={definition.display_name}
+                          aria-label={definition.displayName}
                           aria-describedby={`${definition.id}-meaning`}
                           onChange={() => onToggle(definition.id)}
                         />
                         <span>
                           <strong>
-                            {definition.compact_label ?? definition.display_name}
+                            {definition.compactName ?? definition.displayName}
                           </strong>
                           <small id={`${definition.id}-meaning`}>
                             {definition.meaning}

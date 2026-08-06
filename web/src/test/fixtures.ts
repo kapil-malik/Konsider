@@ -118,9 +118,12 @@ const criterion = (
   } = {},
 ): CatalogCriterionV2 => ({
   id,
-  display_name: displayName,
+  displayName,
+  compactName: null,
+  sectionId: category.toLocaleLowerCase(),
+  sectionName: category,
+  sortOrder: { air: 10, heat: 20, jobs: 30, health: 40 }[id] ?? 100,
   historical_names: id === 'heat' ? ['Extreme-weather risk'] : [],
-  category,
   description: `${displayName} description.`,
   direction: 'higher_is_better',
   raw_unit: 'index',
@@ -190,9 +193,11 @@ const opportunityDefinition = (
   limitations: string[] = [],
 ): OpportunityFilterCatalogV2['definitions'][number] => ({
   id,
-  display_name: displayName,
-  compact_label: compactLabel,
-  category,
+  displayName,
+  compactName: compactLabel,
+  sectionId: category.toLocaleLowerCase(),
+  sectionName: category === 'CAREER' ? 'Career' : 'Education',
+  sortOrder: id.length,
   meaning,
   limitations,
   documentation_ref:
@@ -231,6 +236,10 @@ export const opportunityCatalogFixture: OpportunityFilterCatalogV2 = {
   source_bundle_version: 'opportunity-source-test.1',
   mode: 'ALL_REQUIRED',
   no_score_impact: true,
+  sections: [
+    { sectionId: 'career', sectionName: 'Career', sortOrder: 10 },
+    { sectionId: 'education', sectionName: 'Education', sortOrder: 20 },
+  ],
   definitions: [
     opportunityDefinition(
       'technology_software_opportunity',
@@ -368,7 +377,7 @@ const directContribution = (
   score: number,
 ): ContributionV2 => ({
   criterion_id: criterionValue.id,
-  criterion_name: criterionValue.display_name,
+  displayName: criterionValue.displayName,
   source_scope: 'COUNTRY',
   result_scope: 'COUNTRY',
   derivation: 'DIRECT',
@@ -406,7 +415,7 @@ const localityContribution = (
   })
   return {
     criterion_id: criterionValue.id,
-    criterion_name: criterionValue.display_name,
+    displayName: criterionValue.displayName,
     source_scope: 'LOCALITY',
     result_scope: 'COUNTRY',
     derivation: 'AGGREGATED_FROM_LOCALITIES',
@@ -840,7 +849,7 @@ export const comparisonFixture: ComparisonV2 = {
   })),
   criterion_rows: [airCriterion, heatCriterion].map((criterionValue) => ({
     criterion_id: criterionValue.id,
-    criterion_name: criterionValue.display_name,
+    displayName: criterionValue.displayName,
     coverage: criterionValue.coverage,
     scope: criterionValue.scope,
     cells: rankedCountries.slice(0, 4).map((country) => {
@@ -926,7 +935,7 @@ export const comparisonWithUnavailableFixture: ComparisonV2 = {
     ...comparisonFixture.criterion_rows,
     {
       criterion_id: jobsCriterion.id,
-      criterion_name: jobsCriterion.display_name,
+      displayName: jobsCriterion.displayName,
       coverage: jobsCriterion.coverage,
       scope: jobsCriterion.scope,
       cells: [
@@ -1003,7 +1012,10 @@ export function countryDetailsFixture(
 const firstWaveDefinitions: TfcCatalogV2['definitions'] = [
   {
     id: 'skilled_work_route_feasibility',
-    display_name: 'Highly qualified work route check',
+    displayName: 'Highly qualified work route check',
+    compactName: null,
+    sectionId: null,
+    sectionName: null,
     original_criterion_ids: ['C32'],
     user_question: 'Which supported highly qualified work route appears to match this snapshot?',
     check_kind: 'RULE_ROUTE_MATCH',
@@ -1039,12 +1051,15 @@ const firstWaveDefinitions: TfcCatalogV2['definitions'] = [
     ],
     effective_from: '2026-08-05',
     stale_after: '2026-11-05',
-    sort_order: 10,
+    sortOrder: 10,
     no_score_impact: true,
   },
   {
     id: 'family_accompaniment_reunification',
-    display_name: 'Dependants on supported work and study routes',
+    displayName: 'Dependants on supported work and study routes',
+    compactName: null,
+    sectionId: null,
+    sectionName: null,
     original_criterion_ids: ['C36'],
     user_question: 'Do declared family roles fit a supported primary route?',
     check_kind: 'RULE_ROUTE_MATCH',
@@ -1071,12 +1086,15 @@ const firstWaveDefinitions: TfcCatalogV2['definitions'] = [
     source_summary: [],
     effective_from: '2026-08-05',
     stale_after: '2026-11-05',
-    sort_order: 20,
+    sortOrder: 20,
     no_score_impact: true,
   },
   {
     id: 'post_study_work_pathway',
-    display_name: 'Post-study stay and work route check',
+    displayName: 'Post-study stay and work route check',
+    compactName: null,
+    sectionId: null,
+    sectionName: null,
     original_criterion_ids: ['C35'],
     user_question: 'Does this study scenario fit a supported post-study route?',
     check_kind: 'RULE_ROUTE_MATCH',
@@ -1101,7 +1119,7 @@ const firstWaveDefinitions: TfcCatalogV2['definitions'] = [
     source_summary: [],
     effective_from: '2026-08-05',
     stale_after: '2026-11-05',
-    sort_order: 30,
+    sortOrder: 30,
     no_score_impact: true,
   },
 ]

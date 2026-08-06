@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from konsider.domain.display_catalog import load_product_display_catalog
 from konsider.api.opportunity_filter_service import OpportunityFilterService
 from konsider.ingestion.current_release import (
     PAYLOAD_FILES,
@@ -25,6 +26,10 @@ SOURCE_RELEASES = ROOT / "data" / "releases"
 STAGED = ROOT / "data" / "reports" / "phase6g-2026-08-03" / "staged-release"
 BASE_RELEASE_ID = "2026-07-29.2"
 FINAL_RELEASE_ID = "2026-08-04.1"
+DISPLAY_CATALOG = load_product_display_catalog(
+    ROOT / "data" / "catalogs" / "product-display-catalog.json",
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+)
 
 
 def _json(path: Path) -> dict:
@@ -66,6 +71,7 @@ def test_build_publish_activate_lifecycle_is_immutable_and_atomic(tmp_path: Path
     }
 
     release_id, draft = build_release(
+        display_catalog=DISPLAY_CATALOG,
         release_root=releases,
         catalog_root=catalogs,
         staged_root=STAGED,
@@ -112,6 +118,7 @@ def test_build_publish_activate_lifecycle_is_immutable_and_atomic(tmp_path: Path
 def test_bound_opportunity_payload_corruption_fails_closed(tmp_path: Path) -> None:
     releases, catalogs, reports = _prepare_release_roots(tmp_path)
     build_release(
+        display_catalog=DISPLAY_CATALOG,
         release_root=releases,
         catalog_root=catalogs,
         staged_root=STAGED,
@@ -137,6 +144,7 @@ def test_bound_opportunity_payload_corruption_fails_closed(tmp_path: Path) -> No
 def test_final_release_rebuild_is_byte_identical(tmp_path: Path) -> None:
     releases, catalogs, reports = _prepare_release_roots(tmp_path)
     _, draft = build_release(
+        display_catalog=DISPLAY_CATALOG,
         release_root=releases,
         catalog_root=catalogs,
         staged_root=STAGED,

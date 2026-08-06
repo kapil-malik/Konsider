@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 from konsider.contracts import validate_contract
+from konsider.domain.display_catalog import ProductDisplayCatalog, load_product_display_catalog
 from konsider.domain.opportunity_filters import (
     OpportunityFilterState,
     validate_opportunity_filter_catalog,
@@ -30,6 +31,10 @@ PHASE6B1_ROOT = ROOT / "data" / "reports" / "phase6b1-2026-08-03"
 UNIVERSE_PATH = ROOT / "data" / "country-universes" / "stable-supported-v1.json"
 ACTIVE_RELEASE_PATH = ROOT / "data" / "releases" / "2026-07-29.2"
 DEFAULT_OUTPUT_ROOT = ROOT / "data" / "reports" / "phase6e-2026-08-03"
+DISPLAY_CATALOG_PATH = ROOT / "data" / "catalogs" / "product-display-catalog.json"
+DISPLAY_CATALOG_SCHEMA_PATH = (
+    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json"
+)
 
 RELEASE_ID = "phase6e-career-2026-08-03.1"
 BUILD_ID = "phase6e-career-promotion-1.0"
@@ -50,10 +55,6 @@ class CareerOpportunityBuildError(ValueError):
 @dataclass(frozen=True)
 class CareerFilterConfig:
     filter_id: str
-    display_name: str
-    compact_label: str
-    construct: str
-    meaning: str
     sort_order: int
     route_ids: tuple[str, ...]
     source_ids: tuple[str, ...]
@@ -68,10 +69,6 @@ class CareerFilterConfig:
 FILTERS = (
     CareerFilterConfig(
         "technology_software_opportunity",
-        "Technology and software employment ecosystem",
-        "Technology and software",
-        "Employment in ISCO-08 groups 25 and 35, measured as national scale and share.",
-        "A substantial and established technology/software employment ecosystem.",
         1,
         ("observed_technology", "canada_technology", "malta_technology"),
         ("ilo_observed_occupation_oc2", "statcan_2021_census_noc", "eurostat_lfsa_egai2d"),
@@ -80,10 +77,6 @@ FILTERS = (
     ),
     CareerFilterConfig(
         "science_engineering_opportunity",
-        "Science and engineering employment ecosystem",
-        "Science and engineering",
-        "Employment in ISCO-08 groups 21 and 31, measured as national scale and share.",
-        "A substantial and established science/engineering employment ecosystem.",
         2,
         (
             "observed_science_engineering",
@@ -96,10 +89,6 @@ FILTERS = (
     ),
     CareerFilterConfig(
         "health_social_work_opportunity",
-        "Care-sector employment ecosystem",
-        "Care sector",
-        "Employment in ISIC Rev.4 section Q (human health and social work), measured as national scale and share.",
-        "A substantial and established care-sector employment ecosystem.",
         3,
         ("health_social_work",),
         ("ilo_modelled_economic_activity_2025",),
@@ -108,10 +97,6 @@ FILTERS = (
     ),
     CareerFilterConfig(
         "finance_insurance_opportunity",
-        "Finance and insurance employment ecosystem",
-        "Finance and insurance",
-        "Employment in ISIC Rev.4 section K, measured as national scale and share.",
-        "A substantial and established finance and insurance employment ecosystem.",
         4,
         ("finance_insurance",),
         ("ilo_modelled_economic_activity_2025",),
@@ -120,10 +105,6 @@ FILTERS = (
     ),
     CareerFilterConfig(
         "skilled_trades_construction_opportunity",
-        "Skilled-trades or construction employment ecosystem",
-        "Skilled trades or construction",
-        "ISCO-08 major group 7 employment OR ISIC Rev.4 section F construction employment, with both routes retained separately.",
-        "A substantial and established skilled-trades or construction employment ecosystem.",
         5,
         ("skilled_trades", "construction"),
         ("ilo_modelled_occupation_2025", "ilo_modelled_economic_activity_2025"),
@@ -132,6 +113,34 @@ FILTERS = (
     ),
 )
 FILTER_BY_ID = {item.filter_id: item for item in FILTERS}
+
+DEFINITION_COPY = {
+    "technology_software_opportunity": {
+        "construct": "Employment in ISCO-08 groups 25 and 35, measured as national scale and share.",
+        "meaning": "A substantial and established technology/software employment ecosystem.",
+        "route_description": "Frozen P60 scale/share route for Technology and software employment ecosystem.",
+    },
+    "science_engineering_opportunity": {
+        "construct": "Employment in ISCO-08 groups 21 and 31, measured as national scale and share.",
+        "meaning": "A substantial and established science/engineering employment ecosystem.",
+        "route_description": "Frozen P60 scale/share route for Science and engineering employment ecosystem.",
+    },
+    "health_social_work_opportunity": {
+        "construct": "Employment in ISIC Rev.4 section Q (human health and social work), measured as national scale and share.",
+        "meaning": "A substantial and established care-sector employment ecosystem.",
+        "route_description": "Frozen P60 scale/share route for Care-sector employment ecosystem.",
+    },
+    "finance_insurance_opportunity": {
+        "construct": "Employment in ISIC Rev.4 section K, measured as national scale and share.",
+        "meaning": "A substantial and established finance and insurance employment ecosystem.",
+        "route_description": "Frozen P60 scale/share route for Finance and insurance employment ecosystem.",
+    },
+    "skilled_trades_construction_opportunity": {
+        "construct": "ISCO-08 major group 7 employment OR ISIC Rev.4 section F construction employment, with both routes retained separately.",
+        "meaning": "A substantial and established skilled-trades or construction employment ecosystem.",
+        "route_description": "Frozen P60 scale/share route for Skilled-trades or construction employment ecosystem.",
+    },
+}
 
 HISTORICAL_ROUTE_IDS = {
     "observed_technology_occupation": "observed_technology",
@@ -681,14 +690,22 @@ def _gap_evidence(row: Mapping[str, Any], config: CareerFilterConfig) -> dict[st
     }
 
 
-def _definition(config: CareerFilterConfig) -> dict[str, Any]:
+def _definition(
+    config: CareerFilterConfig, display_catalog: ProductDisplayCatalog
+) -> dict[str, Any]:
+    display = display_catalog.definition("OPPORTUNITY_FILTER", config.filter_id)
+    if display.compact_name is None or display.section_id != "career":
+        raise CareerOpportunityBuildError(
+            f"Invalid career display metadata for {config.filter_id}."
+        )
+    copy = DEFINITION_COPY[config.filter_id]
     return {
         "id": config.filter_id,
-        "display_name": config.display_name,
-        "compact_label": config.compact_label,
+        "display_name": display.display_name,
+        "compact_label": display.compact_name,
         "category": "CAREER",
-        "construct": config.construct,
-        "meaning": config.meaning,
+        "construct": copy["construct"],
+        "meaning": copy["meaning"],
         "does_not_mean": [
             "Live vacancies or hiring probability",
             "Salary or job quality",
@@ -727,14 +744,25 @@ def _definition(config: CareerFilterConfig) -> dict[str, Any]:
     }
 
 
-def _catalog() -> dict[str, Any]:
+def _catalog(display_catalog: ProductDisplayCatalog) -> dict[str, Any]:
+    configured_ids = set(FILTER_BY_ID)
+    catalog_ids = {
+        item.id
+        for item in display_catalog.definitions("OPPORTUNITY_FILTER")
+        if item.section_id == "career"
+    }
+    if configured_ids != catalog_ids:
+        raise CareerOpportunityBuildError(
+            f"Career display ID mismatch: configured={sorted(configured_ids)}, "
+            f"catalog={sorted(catalog_ids)}."
+        )
     return {
         "schema_version": "opportunity-filter-catalog-1.0",
         "compatible_release_schema_major": 5,
         "stable_universe_id": "stable_supported_v1",
         "activation_status": "STAGED_CONTRACT_ONLY",
         "state_contract_version": "opportunity-filter-state-1.0",
-        "definitions": [_definition(config) for config in FILTERS],
+        "definitions": [_definition(config, display_catalog) for config in FILTERS],
     }
 
 
@@ -763,7 +791,7 @@ def _threshold_policies(base_rows: Mapping[tuple[str, str], Mapping[str, Any]]) 
             routes.append(
                 {
                     "route_id": route_id,
-                    "description": f"Frozen P60 scale/share route for {config.display_name}.",
+                    "description": DEFINITION_COPY[config.filter_id]["route_description"],
                     "rule": "(scale >= P60 AND share >= P60) OR (scale >= P80 AND share >= P40) OR (share >= P80 AND scale >= P40)",
                     "parameters": {
                         **thresholds,
@@ -1102,7 +1130,10 @@ def _candidate_manifest(
 
 
 def build_career_opportunity_bundle(
-    output_root: Path = DEFAULT_OUTPUT_ROOT, *, verify_raw: bool = False
+    output_root: Path = DEFAULT_OUTPUT_ROOT,
+    *,
+    display_catalog: ProductDisplayCatalog,
+    verify_raw: bool = False,
 ) -> dict[str, Any]:
     """Build and validate the staged five-filter Phase 6E release fragment."""
 
@@ -1140,7 +1171,7 @@ def build_career_opportunity_bundle(
                 else _base_evidence(base_rows[pair], config)
             )
 
-    catalog = _catalog()
+    catalog = _catalog(display_catalog)
     threshold_policies = _threshold_policies(base_rows)
     evidence_policy = _evidence_policy()
     source_manifest = _source_manifest()
@@ -1243,7 +1274,14 @@ def _parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = _parse_args()
-    manifest = build_career_opportunity_bundle(args.output, verify_raw=args.verify_retained_sources)
+    display_catalog = load_product_display_catalog(
+        DISPLAY_CATALOG_PATH, DISPLAY_CATALOG_SCHEMA_PATH
+    )
+    manifest = build_career_opportunity_bundle(
+        args.output,
+        display_catalog=display_catalog,
+        verify_raw=args.verify_retained_sources,
+    )
     print(
         f"build={manifest['build_id']} filters={manifest['assertions']['filter_count']} "
         f"records={manifest['assertions']['evidence_record_count']} activation=false"
