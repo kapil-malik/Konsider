@@ -8,15 +8,18 @@ ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "tests" / "fixtures" / "catalog-display-metadata-golden.json"
 
 
-def test_golden_inventory_matches_immutable_source_releases() -> None:
+def test_golden_inventory_matches_source_release_pair() -> None:
     inventory = json.loads(FIXTURE.read_text(encoding="utf-8"))
     source = inventory["sourceReleases"]
+    release_root = ROOT / "data" / "releases"
+    if not (release_root / source["baseReleaseId"]).is_dir():
+        release_root /= ".draft"
     subprocess.run(
         [
             sys.executable,
             str(ROOT / "scripts" / "generate_display_metadata_inventory.py"),
             "--release-root",
-            str(ROOT / "data" / "releases"),
+            str(release_root),
             "--base-release-id",
             source["baseReleaseId"],
             "--overlay-release-id",

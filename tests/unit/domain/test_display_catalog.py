@@ -27,7 +27,7 @@ def test_authoring_schema_is_valid_and_catalog_loads() -> None:
     Draft202012Validator.check_schema(schema)
     catalog = load_product_display_catalog(CATALOG_PATH, SCHEMA_PATH)
     assert catalog.schema_version == "konsider-product-display-catalog-1.0"
-    assert catalog.catalog_version == "2026-08-06.1"
+    assert catalog.catalog_version == "2026-08-07.1"
     assert catalog.checksum.startswith("sha256:")
     assert [
         len(catalog.definitions(role))
@@ -50,12 +50,13 @@ def test_definition_resolves_immutable_section_metadata() -> None:
         definition.display_name = "Changed"  # type: ignore[misc]
 
 
-def test_null_section_and_compact_name_are_preserved() -> None:
+def test_nullable_display_fields_are_preserved() -> None:
     catalog = load_product_display_catalog(CATALOG_PATH, SCHEMA_PATH)
     definition = catalog.definition("TYPED_FEASIBILITY_CHECK", "post_study_work_pathway")
-    assert definition.compact_name is None
+    assert definition.compact_name == "Work options after College"
     assert definition.section_id is None
     assert definition.section_name is None
+    assert catalog.definition("ORDERING_CRITERION", "political_stability").compact_name is None
 
 
 @pytest.mark.parametrize(

@@ -1,0 +1,303 @@
+{
+  "activation_status": "ACTIVE",
+  "catalog_id": "phase7f-first-wave",
+  "definitions": [
+    {
+      "applicable_purposes": [
+        "WORK",
+        "EXPLORATION"
+      ],
+      "compactName": "Work VISA",
+      "displayName": "Highly qualified work route check",
+      "filter_capability": "ASSESS_ONLY",
+      "id": "skilled_work_route_feasibility",
+      "input_field_ids": [
+        "applicant.citizenships",
+        "applicant.occupation",
+        "applicant.qualifications",
+        "scenario.job_offer",
+        "scenario.target_country_codes",
+        "scenario.target_date"
+      ],
+      "input_requirements": [
+        {
+          "field_id": "applicant.citizenships",
+          "requirement": "OPTIONAL_EXPLANATORY",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "applicant.occupation",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "applicant.qualifications",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.job_offer",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.target_country_codes",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.target_date",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        }
+      ],
+      "original_criterion_ids": [
+        "C32"
+      ],
+      "policy_id": "skilled_work_route_feasibility.v1",
+      "public_limitations": [
+        "A route match is a bounded source-based screening result, not legal advice or an application decision.",
+        "External authority, recognition, sponsorship, quota, and discretionary requirements keep first-wave matches conditional.",
+        "No conclusion is made about routes outside the frozen named-route inventory."
+      ],
+      "refresh_cadence": "Before every evidence release and at least quarterly.",
+      "requires_household_relocation": false,
+      "result_family": "RULE_ROUTE_MATCH",
+      "sectionId": null,
+      "sectionName": null,
+      "sortOrder": 10,
+      "supported_destination_codes": [
+        "AUS",
+        "AUT",
+        "BEL",
+        "BGR",
+        "CAN",
+        "CYP",
+        "CZE",
+        "DEU",
+        "ESP",
+        "EST",
+        "FIN",
+        "FRA",
+        "GBR",
+        "GRC",
+        "HRV",
+        "HUN",
+        "ITA",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MLT",
+        "NLD",
+        "POL",
+        "PRT",
+        "ROU",
+        "SVK",
+        "SVN",
+        "SWE",
+        "USA"
+      ],
+      "supported_profile_boundary": "Guest-entered occupation, qualification, explicit job-offer state, citizenship where relevant, destination, and snapshot date.",
+      "user_question": "Which supported highly qualified work route appears to match this declared snapshot?"
+    },
+    {
+      "applicable_purposes": [
+        "WORK",
+        "STUDY",
+        "FAMILY",
+        "EXPLORATION"
+      ],
+      "compactName": "Dependents on Work VISA",
+      "displayName": "Dependants on supported work and study routes",
+      "filter_capability": "ASSESS_ONLY",
+      "id": "family_accompaniment_reunification",
+      "input_field_ids": [
+        "household.dependants",
+        "household.partner_status",
+        "scenario.primary_route_id",
+        "scenario.target_country_codes",
+        "scenario.target_date"
+      ],
+      "input_requirements": [
+        {
+          "field_id": "household.dependants",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "household.partner_status",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.primary_route_id",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.target_country_codes",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.target_date",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        }
+      ],
+      "original_criterion_ids": [
+        "C36"
+      ],
+      "policy_id": "family_accompaniment_reunification.v1",
+      "public_limitations": [
+        "A route match is a bounded source-based screening result, not legal advice or an application decision.",
+        "External authority, recognition, sponsorship, quota, and discretionary requirements keep first-wave matches conditional.",
+        "No conclusion is made about routes outside the frozen named-route inventory.",
+        "This is not a general family-reunification check and does not establish partner work rights."
+      ],
+      "refresh_cadence": "Before every evidence release and at least quarterly.",
+      "requires_household_relocation": true,
+      "result_family": "RULE_ROUTE_MATCH",
+      "sectionId": null,
+      "sectionName": null,
+      "sortOrder": 20,
+      "supported_destination_codes": [
+        "AUS",
+        "AUT",
+        "BEL",
+        "BGR",
+        "CAN",
+        "CYP",
+        "CZE",
+        "DEU",
+        "ESP",
+        "EST",
+        "FIN",
+        "FRA",
+        "GBR",
+        "GRC",
+        "HRV",
+        "HUN",
+        "ITA",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MLT",
+        "NLD",
+        "POL",
+        "PRT",
+        "ROU",
+        "SVK",
+        "SVN",
+        "SWE",
+        "USA"
+      ],
+      "supported_profile_boundary": "Declared partner relationship category and dependent-child roles attached only to a frozen first-wave primary route.",
+      "user_question": "Do declared partner or dependent-child roles conditionally fit a supported primary work or study route?"
+    },
+    {
+      "applicable_purposes": [
+        "STUDY",
+        "EXPLORATION"
+      ],
+      "compactName": "Work options after College",
+      "displayName": "Post-study stay and work route check",
+      "filter_capability": "ASSESS_ONLY",
+      "id": "post_study_work_pathway",
+      "input_field_ids": [
+        "applicant.citizenships",
+        "scenario.intended_study",
+        "scenario.target_country_codes",
+        "scenario.target_date"
+      ],
+      "input_requirements": [
+        {
+          "field_id": "applicant.citizenships",
+          "requirement": "OPTIONAL_EXPLANATORY",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.intended_study",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.target_country_codes",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        },
+        {
+          "field_id": "scenario.target_date",
+          "requirement": "ALWAYS_REQUIRED",
+          "when_equals": null,
+          "when_field_id": null
+        }
+      ],
+      "original_criterion_ids": [
+        "C35"
+      ],
+      "policy_id": "post_study_work_pathway.v1",
+      "public_limitations": [
+        "A route match is a bounded source-based screening result, not legal advice or an application decision.",
+        "External authority, recognition, sponsorship, quota, and discretionary requirements keep first-wave matches conditional.",
+        "No conclusion is made about routes outside the frozen named-route inventory.",
+        "Planned future completion remains provisional and institution or program eligibility is never inferred."
+      ],
+      "refresh_cadence": "Before every evidence release and at least quarterly.",
+      "requires_household_relocation": false,
+      "result_family": "RULE_ROUTE_MATCH",
+      "sectionId": null,
+      "sectionName": null,
+      "sortOrder": 30,
+      "supported_destination_codes": [
+        "AUS",
+        "AUT",
+        "BEL",
+        "BGR",
+        "CAN",
+        "CYP",
+        "CZE",
+        "DEU",
+        "ESP",
+        "EST",
+        "FIN",
+        "FRA",
+        "GBR",
+        "GRC",
+        "HRV",
+        "HUN",
+        "ITA",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MLT",
+        "NLD",
+        "POL",
+        "PRT",
+        "ROU",
+        "SVK",
+        "SVN",
+        "SWE",
+        "USA"
+      ],
+      "supported_profile_boundary": "Declared institution identity, qualification, study duration/mode, completion state, destination, and snapshot date.",
+      "user_question": "Does this declared study scenario conditionally fit a supported post-study stay or work route?"
+    }
+  ],
+  "schema_version": "tfc-release-catalog-2.0",
+  "synthetic": false
+}

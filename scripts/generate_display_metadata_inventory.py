@@ -120,6 +120,7 @@ def main() -> int:
     parser.add_argument("--base-release-id")
     parser.add_argument("--overlay-release-id")
     parser.add_argument("--check", type=Path)
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     inventory = build_inventory(
         args.release_root,
@@ -130,6 +131,9 @@ def main() -> int:
     if args.check is not None:
         if args.check.read_text(encoding="utf-8") != rendered:
             raise SystemExit(f"Display metadata differs from {args.check}")
+        return 0
+    if args.output is not None:
+        args.output.write_text(rendered, encoding="utf-8", newline="\n")
         return 0
     print(rendered, end="")
     return 0

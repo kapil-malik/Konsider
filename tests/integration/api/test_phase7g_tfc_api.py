@@ -96,7 +96,7 @@ def test_candidate_is_still_non_active_and_bound_to_its_historical_base() -> Non
     active = json.loads((ROOT / "data" / "releases" / "active.json").read_text(encoding="utf-8"))
     assert manifest["status"] == "draft"
     assert manifest["activation_authorized"] is False
-    assert active["release_id"] == "2026-08-07.2"
+    assert active["release_id"] == "2026-08-07.4"
     assert active["schema_version"] == "konsider-release-6.1"
     published = json.loads(
         (ROOT / "data" / "releases" / active["release_id"] / "manifest.json").read_text(

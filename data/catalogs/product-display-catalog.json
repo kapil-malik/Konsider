@@ -1,6 +1,6 @@
 {
   "schemaVersion": "konsider-product-display-catalog-1.0",
-  "catalogVersion": "2026-08-06.1",
+  "catalogVersion": "2026-08-07.1",
   "sections": [
     {"productRole": "ORDERING_CRITERION", "sectionId": "climate_environment", "sectionName": "Climate and environment", "sortOrder": 10},
     {"productRole": "ORDERING_CRITERION", "sectionId": "environment", "sectionName": "Environment", "sortOrder": 20},
@@ -20,67 +20,51 @@
   "definitions": [
     {
       "productRole": "ORDERING_CRITERION",
-      "id": "C66",
-      "displayName": "Extreme heat exposure",
-      "compactName": null,
-      "sectionId": "climate_environment",
+      "id": "intentional_homicide_rate",
+      "displayName": "Intentional homicide rate",
+      "compactName": "Crime rate",
+      "sectionId": "safety",
       "sortOrder": 10
-    },
-    {
-      "productRole": "ORDERING_CRITERION",
-      "id": "C67",
-      "displayName": "Projected warm-day frequency (2030)",
-      "compactName": null,
-      "sectionId": "climate_environment",
-      "sortOrder": 20
     },
     {
       "productRole": "ORDERING_CRITERION",
       "id": "ambient_pm25_population_weighted",
       "displayName": "Population-weighted PM2.5 exposure",
-      "compactName": null,
+      "compactName": "Pollution (PM2.5)",
       "sectionId": "environment",
+      "sortOrder": 20
+    },
+    {
+      "productRole": "ORDERING_CRITERION",
+      "id": "infrastructure_readiness_composite",
+      "displayName": "Infrastructure readiness — experimental",
+      "compactName": "Infrastructure",
+      "sectionId": "infrastructure",
       "sortOrder": 30
     },
     {
       "productRole": "ORDERING_CRITERION",
-      "id": "established_immigrant_presence",
-      "displayName": "Established immigrant presence",
-      "compactName": null,
-      "sectionId": "integration_context",
+      "id": "rule_of_law",
+      "displayName": "Rule of law",
+      "compactName": "Law and order",
+      "sectionId": "safety",
       "sortOrder": 40
     },
     {
       "productRole": "ORDERING_CRITERION",
       "id": "household_consumption_price_level_us_100",
       "displayName": "Broad household-consumption relative cost",
-      "compactName": null,
-      "sectionId": "affordability",
+      "compactName": "Cost of living",
+      "sectionId": "jobs_economic_opportunity",
       "sortOrder": 50
-    },
-    {
-      "productRole": "ORDERING_CRITERION",
-      "id": "infrastructure_readiness_composite",
-      "displayName": "Infrastructure readiness — experimental",
-      "compactName": null,
-      "sectionId": "infrastructure",
-      "sortOrder": 60
-    },
-    {
-      "productRole": "ORDERING_CRITERION",
-      "id": "intentional_homicide_rate",
-      "displayName": "Intentional homicide rate",
-      "compactName": null,
-      "sectionId": "safety",
-      "sortOrder": 70
     },
     {
       "productRole": "ORDERING_CRITERION",
       "id": "overall_job_market_opportunity",
       "displayName": "Overall job-market opportunity",
-      "compactName": null,
+      "compactName": "Job opportunities",
       "sectionId": "jobs_economic_opportunity",
-      "sortOrder": 80
+      "sortOrder": 60
     },
     {
       "productRole": "ORDERING_CRITERION",
@@ -88,46 +72,62 @@
       "displayName": "Political stability",
       "compactName": null,
       "sectionId": "safety",
-      "sortOrder": 90
+      "sortOrder": 70
     },
     {
       "productRole": "ORDERING_CRITERION",
-      "id": "research_innovation_ecosystem",
-      "displayName": "Research and innovation ecosystem",
-      "compactName": null,
-      "sectionId": "education_research_innovation",
-      "sortOrder": 100
-    },
-    {
-      "productRole": "ORDERING_CRITERION",
-      "id": "rule_of_law",
-      "displayName": "Rule of law",
-      "compactName": null,
-      "sectionId": "institutions",
-      "sortOrder": 110
-    },
-    {
-      "productRole": "ORDERING_CRITERION",
-      "id": "school_education_quality",
-      "displayName": "School education quality",
-      "compactName": null,
-      "sectionId": "education_human_capital",
-      "sortOrder": 120
-    },
-    {
-      "productRole": "ORDERING_CRITERION",
-      "id": "uhc_service_coverage_index",
-      "displayName": "UHC service coverage — unavailable/non-ready",
-      "compactName": null,
-      "sectionId": "healthcare",
-      "sortOrder": 130
+      "id": "established_immigrant_presence",
+      "displayName": "Established immigrant presence",
+      "compactName": "Immigrant friendly",
+      "sectionId": "integration_context",
+      "sortOrder": 80
     },
     {
       "productRole": "ORDERING_CRITERION",
       "id": "women_legal_economic_equality",
       "displayName": "Women's legal and economic equality",
-      "compactName": null,
+      "compactName": "Women equality",
       "sectionId": "equality",
+      "sortOrder": 90
+    },
+    {
+      "productRole": "ORDERING_CRITERION",
+      "id": "school_education_quality",
+      "displayName": "School education quality",
+      "compactName": "Education quality",
+      "sectionId": "education_research_innovation",
+      "sortOrder": 100
+    },
+    {
+      "productRole": "ORDERING_CRITERION",
+      "id": "research_innovation_ecosystem",
+      "displayName": "Research and innovation ecosystem",
+      "compactName": "Research & innovation",
+      "sectionId": "education_research_innovation",
+      "sortOrder": 110
+    },
+    {
+      "productRole": "ORDERING_CRITERION",
+      "id": "C66",
+      "displayName": "Extreme heat exposure",
+      "compactName": "Heat exposure",
+      "sectionId": "environment",
+      "sortOrder": 120
+    },
+    {
+      "productRole": "ORDERING_CRITERION",
+      "id": "C67",
+      "displayName": "Projected warm-day frequency (2030)",
+      "compactName": "Warm-day frequency (2030)",
+      "sectionId": "environment",
+      "sortOrder": 130
+    },
+    {
+      "productRole": "ORDERING_CRITERION",
+      "id": "uhc_service_coverage_index",
+      "displayName": "UHC service coverage — unavailable/non-ready",
+      "compactName": "UHC service coverage",
+      "sectionId": "healthcare",
       "sortOrder": 140
     },
     {
@@ -174,7 +174,7 @@
       "productRole": "OPPORTUNITY_FILTER",
       "id": "engineering_technology_education_opportunity",
       "displayName": "Physical sciences and engineering research-university ecosystem",
-      "compactName": "Engineering and technology research",
+      "compactName": "Engg and tech research",
       "sectionId": "education",
       "sortOrder": 60
     },
@@ -182,7 +182,7 @@
       "productRole": "OPPORTUNITY_FILTER",
       "id": "computer_science_ict_education_opportunity",
       "displayName": "Mathematics and computer science research-university ecosystem",
-      "compactName": "Mathematics and computer science research",
+      "compactName": "Mathematics and CS research",
       "sectionId": "education",
       "sortOrder": 70
     },
@@ -190,7 +190,7 @@
       "productRole": "OPPORTUNITY_FILTER",
       "id": "medicine_health_sciences_education_opportunity",
       "displayName": "Biomedical and health sciences research-university ecosystem",
-      "compactName": "Biomedical and health sciences research",
+      "compactName": "Medical research",
       "sectionId": "education",
       "sortOrder": 80
     },
@@ -206,7 +206,7 @@
       "productRole": "TYPED_FEASIBILITY_CHECK",
       "id": "skilled_work_route_feasibility",
       "displayName": "Highly qualified work route check",
-      "compactName": null,
+      "compactName": "Work VISA",
       "sectionId": null,
       "sortOrder": 10
     },
@@ -214,7 +214,7 @@
       "productRole": "TYPED_FEASIBILITY_CHECK",
       "id": "family_accompaniment_reunification",
       "displayName": "Dependants on supported work and study routes",
-      "compactName": null,
+      "compactName": "Dependents on Work VISA",
       "sectionId": null,
       "sortOrder": 20
     },
@@ -222,7 +222,7 @@
       "productRole": "TYPED_FEASIBILITY_CHECK",
       "id": "post_study_work_pathway",
       "displayName": "Post-study stay and work route check",
-      "compactName": null,
+      "compactName": "Work options after College",
       "sectionId": null,
       "sortOrder": 30
     }

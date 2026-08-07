@@ -1,0 +1,306 @@
+{
+  "changeCount": 42,
+  "changes": [
+    {
+      "after": "Mathematics and CS research",
+      "before": "Mathematics and computer science research",
+      "field": "compactName",
+      "id": "computer_science_ict_education_opportunity",
+      "productRole": "OPPORTUNITY_FILTER"
+    },
+    {
+      "after": "Engg and tech research",
+      "before": "Engineering and technology research",
+      "field": "compactName",
+      "id": "engineering_technology_education_opportunity",
+      "productRole": "OPPORTUNITY_FILTER"
+    },
+    {
+      "after": "Medical research",
+      "before": "Biomedical and health sciences research",
+      "field": "compactName",
+      "id": "medicine_health_sciences_education_opportunity",
+      "productRole": "OPPORTUNITY_FILTER"
+    },
+    {
+      "after": "Heat exposure",
+      "before": null,
+      "field": "compactName",
+      "id": "C66",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "environment",
+      "before": "climate_environment",
+      "field": "sectionId",
+      "id": "C66",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Environment",
+      "before": "Climate and environment",
+      "field": "sectionName",
+      "id": "C66",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 120,
+      "before": 10,
+      "field": "sortOrder",
+      "id": "C66",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Warm-day frequency (2030)",
+      "before": null,
+      "field": "compactName",
+      "id": "C67",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "environment",
+      "before": "climate_environment",
+      "field": "sectionId",
+      "id": "C67",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Environment",
+      "before": "Climate and environment",
+      "field": "sectionName",
+      "id": "C67",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 130,
+      "before": 20,
+      "field": "sortOrder",
+      "id": "C67",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Pollution (PM2.5)",
+      "before": null,
+      "field": "compactName",
+      "id": "ambient_pm25_population_weighted",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 20,
+      "before": 30,
+      "field": "sortOrder",
+      "id": "ambient_pm25_population_weighted",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Immigrant friendly",
+      "before": null,
+      "field": "compactName",
+      "id": "established_immigrant_presence",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 80,
+      "before": 40,
+      "field": "sortOrder",
+      "id": "established_immigrant_presence",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Cost of living",
+      "before": null,
+      "field": "compactName",
+      "id": "household_consumption_price_level_us_100",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "jobs_economic_opportunity",
+      "before": "affordability",
+      "field": "sectionId",
+      "id": "household_consumption_price_level_us_100",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Jobs and economic opportunity",
+      "before": "Affordability",
+      "field": "sectionName",
+      "id": "household_consumption_price_level_us_100",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Infrastructure",
+      "before": null,
+      "field": "compactName",
+      "id": "infrastructure_readiness_composite",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 30,
+      "before": 60,
+      "field": "sortOrder",
+      "id": "infrastructure_readiness_composite",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Crime rate",
+      "before": null,
+      "field": "compactName",
+      "id": "intentional_homicide_rate",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 10,
+      "before": 70,
+      "field": "sortOrder",
+      "id": "intentional_homicide_rate",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Job opportunities",
+      "before": null,
+      "field": "compactName",
+      "id": "overall_job_market_opportunity",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 60,
+      "before": 80,
+      "field": "sortOrder",
+      "id": "overall_job_market_opportunity",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 70,
+      "before": 90,
+      "field": "sortOrder",
+      "id": "political_stability",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Research & innovation",
+      "before": null,
+      "field": "compactName",
+      "id": "research_innovation_ecosystem",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 110,
+      "before": 100,
+      "field": "sortOrder",
+      "id": "research_innovation_ecosystem",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Law and order",
+      "before": null,
+      "field": "compactName",
+      "id": "rule_of_law",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "safety",
+      "before": "institutions",
+      "field": "sectionId",
+      "id": "rule_of_law",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Safety",
+      "before": "Institutions",
+      "field": "sectionName",
+      "id": "rule_of_law",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 40,
+      "before": 110,
+      "field": "sortOrder",
+      "id": "rule_of_law",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Education quality",
+      "before": null,
+      "field": "compactName",
+      "id": "school_education_quality",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "education_research_innovation",
+      "before": "education_human_capital",
+      "field": "sectionId",
+      "id": "school_education_quality",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Education, research and innovation",
+      "before": "Education and human capital",
+      "field": "sectionName",
+      "id": "school_education_quality",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 100,
+      "before": 120,
+      "field": "sortOrder",
+      "id": "school_education_quality",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "UHC service coverage",
+      "before": null,
+      "field": "compactName",
+      "id": "uhc_service_coverage_index",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 140,
+      "before": 130,
+      "field": "sortOrder",
+      "id": "uhc_service_coverage_index",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Women equality",
+      "before": null,
+      "field": "compactName",
+      "id": "women_legal_economic_equality",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": 90,
+      "before": 140,
+      "field": "sortOrder",
+      "id": "women_legal_economic_equality",
+      "productRole": "ORDERING_CRITERION"
+    },
+    {
+      "after": "Dependents on Work VISA",
+      "before": null,
+      "field": "compactName",
+      "id": "family_accompaniment_reunification",
+      "productRole": "TYPED_FEASIBILITY_CHECK"
+    },
+    {
+      "after": "Work options after College",
+      "before": null,
+      "field": "compactName",
+      "id": "post_study_work_pathway",
+      "productRole": "TYPED_FEASIBILITY_CHECK"
+    },
+    {
+      "after": "Work VISA",
+      "before": null,
+      "field": "compactName",
+      "id": "skilled_work_route_feasibility",
+      "productRole": "TYPED_FEASIBILITY_CHECK"
+    }
+  ],
+  "definitionCount": 26,
+  "networkAccess": "NONE",
+  "nonCatalogArtifacts": "COPIED_BYTE_FOR_BYTE",
+  "schemaVersion": "konsider-display-metadata-change-report-1.0",
+  "sourceBaseReleaseId": "2026-08-07.1",
+  "sourceOverlayReleaseId": "2026-08-07.2",
+  "status": "PASSED"
+}

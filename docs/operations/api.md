@@ -4,11 +4,11 @@ Status: authoritative API v3 contract with bounded v2 rollback compatibility
 
 Contract version: `konsider-api-3.0`
 
-Active release: `2026-08-07.2` (ranking base `2026-08-07.1`)
+Active release: `2026-08-07.4` (ranking base `2026-08-07.3`)
 
 Konsider exposes one structured API over the schema-current immutable snapshot selected by
-`data/releases/active.json`. Active schema-6.1 overlay `2026-08-07.2` binds the TFC evidence and
-checksum-identifies schema-5.2 ranking/OFC base `2026-08-07.1`. The generated
+`data/releases/active.json`. Active schema-6.1 overlay `2026-08-07.4` binds the TFC evidence and
+checksum-identifies schema-5.2 ranking/OFC base `2026-08-07.3`. The generated
 [`contracts/openapi/konsider-api-3.0.json`](../../contracts/openapi/konsider-api-3.0.json)
 document is authoritative. Undocumented request fields are rejected.
 

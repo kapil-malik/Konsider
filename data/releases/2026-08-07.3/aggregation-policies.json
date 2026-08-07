@@ -1,0 +1,58 @@
+[
+  {
+    "eligible_locality_universe": {
+      "locality_universe_id": "ghsl-ucdb-top5-population-v1",
+      "locality_universe_version": "1.0"
+    },
+    "locality_type": "CITY",
+    "minimum_valid_localities": 1,
+    "one_locality_treatment": "USE_AVAILABLE",
+    "policy_id": "c66-extreme-heat-top2-v1",
+    "policy_version": "1.0",
+    "required_lineage_roles": [
+      "PRIMARY_OBSERVATION",
+      "ENTITY_UNIVERSE"
+    ],
+    "result_criterion_id": "C66",
+    "result_level": "COUNTRY",
+    "score_precision": 8,
+    "score_range": {
+      "maximum": 10,
+      "minimum": 0
+    },
+    "selection": {
+      "method": "TOP_N_MEAN",
+      "n": 2
+    },
+    "source_criterion_id": "C66",
+    "tie_handling": "STABLE_ENTITY_ID"
+  },
+  {
+    "eligible_locality_universe": {
+      "locality_universe_id": "ghsl-ucdb-top5-population-v1",
+      "locality_universe_version": "1.0"
+    },
+    "locality_type": "CITY",
+    "minimum_valid_localities": 1,
+    "one_locality_treatment": "USE_AVAILABLE",
+    "policy_id": "c67-projected-warm-days-top2-v1",
+    "policy_version": "1.0",
+    "required_lineage_roles": [
+      "PRIMARY_OBSERVATION",
+      "ENTITY_UNIVERSE"
+    ],
+    "result_criterion_id": "C67",
+    "result_level": "COUNTRY",
+    "score_precision": 8,
+    "score_range": {
+      "maximum": 10,
+      "minimum": 0
+    },
+    "selection": {
+      "method": "TOP_N_MEAN",
+      "n": 2
+    },
+    "source_criterion_id": "C67",
+    "tie_handling": "STABLE_ENTITY_ID"
+  }
+]

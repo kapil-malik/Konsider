@@ -11,6 +11,8 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [CI preflight](operations/ci-preflight.md) - reproduce all Actions gates locally and install the
   clean-checkout pre-push hook.
 - [Worker operations](operations/worker.md) - refresh, publish, replay, inspect, and roll back data.
+- [Display-metadata-only releases](operations/display-metadata-release.md) - edit the centralized
+  catalog and safely prepare, publish, activate, or roll back an offline display-only release pair.
 - [API operations and reference](operations/api.md) - configure, start, and use the additive v2 API.
 - [Product roadmap](product/roadmap.md) - current position and forward plan.
 - [Phase 4A uncertainty-aware ranking policy](product/uncertainty-aware-ranking.md) - approved
@@ -149,6 +151,7 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Local setup](operations/local-setup.md)
 - [CI preflight and pre-push protection](operations/ci-preflight.md)
 - [Worker guide](operations/worker.md)
+- [Display-metadata-only release workflow](operations/display-metadata-release.md)
 - [API guide](operations/api.md)
 - [Phase 4E API contract](operations/phase4e-api-contract.md)
 - [Local deployment](operations/deployment-local.md)
@@ -193,9 +196,10 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 7 closure report](history/phase7-closure-report.md)
 - [Release 2026-08-05.1](history/releases/2026-08-05.1.md)
 - [Release 2026-08-07.2](history/releases/2026-08-07.2.md)
+- [Release 2026-08-07.4](history/releases/2026-08-07.4.md)
 - [Phase 6 closure report](history/phase6-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active runtime serves schema-6.1 overlay `2026-08-07.2`, resolving immutable
-schema-5.2 ranking base `2026-08-07.1`; older releases require explicit historical loaders.
+instructions. The active runtime serves schema-6.1 overlay `2026-08-07.4`, resolving immutable
+schema-5.2 ranking base `2026-08-07.3`; older releases require explicit historical loaders.

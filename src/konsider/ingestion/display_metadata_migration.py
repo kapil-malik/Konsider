@@ -159,7 +159,11 @@ def _equivalence_report(
             for item in definitions
         )
     golden = _read_json(ROOT / "tests" / "fixtures" / "catalog-display-metadata-golden.json")
-    if resolved != golden["definitions"]:
+
+    def identity(item: dict[str, Any]) -> tuple[str, str]:
+        return item["productRole"], item["id"]
+
+    if sorted(resolved, key=identity) != sorted(golden["definitions"], key=identity):
         raise DisplayMetadataMigrationError(
             "New catalogs differ from the golden display inventory."
         )

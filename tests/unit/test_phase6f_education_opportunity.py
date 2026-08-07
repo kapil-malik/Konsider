@@ -276,11 +276,11 @@ def test_phase6f_candidate_remains_draft_after_final_activation() -> None:
     assert manifest["status"] == "draft"
     validate_opportunity_filter_release_bundle(manifest, catalog, _rows(), countries)
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
-    assert loaded.manifest["release_id"] == "2026-08-07.1"
+    assert loaded.manifest["release_id"] == "2026-08-07.3"
     assert "opportunity_filters" in loaded.manifest
     assert loaded.manifest["schema_version"] == "konsider-release-5.2"
     assert _json(ROOT / "data" / "releases" / "active.json") == {
-        "release_id": "2026-08-07.2",
+        "release_id": "2026-08-07.4",
         "schema_version": "konsider-release-6.1",
     }
 
@@ -302,8 +302,28 @@ def test_no_opportunity_artifact_contains_score_or_weight_fields() -> None:
         walk(row)
 
 
-def test_regeneration_is_semantically_identical_without_raw_source_dependency() -> None:
+def test_regeneration_is_semantically_identical_without_raw_source_dependency(
+    tmp_path: Path,
+) -> None:
+    payload = _json(ROOT / "data" / "catalogs" / "product-display-catalog.json")
+    staged = _json(STAGED_ROOT / "opportunity-filter-catalog.json")
+    authoring = {
+        item["id"]: item
+        for item in payload["definitions"]
+        if item["productRole"] == "OPPORTUNITY_FILTER"
+    }
+    for definition in staged["definitions"]:
+        item = authoring[definition["id"]]
+        item["displayName"] = definition["display_name"]
+        item["compactName"] = definition["compact_label"]
+        item["sectionId"] = definition["category"].lower()
+    catalog_path = tmp_path / "historical-product-display-catalog.json"
+    catalog_path.write_text(json.dumps(payload), encoding="utf-8")
+    historical_catalog = load_product_display_catalog(
+        catalog_path,
+        ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+    )
     with tempfile.TemporaryDirectory(dir=ROOT / "data" / "reports") as temporary:
         generated = Path(temporary) / "generated"
-        phase6f.build_education_opportunity_bundle(generated, display_catalog=DISPLAY_CATALOG)
+        phase6f.build_education_opportunity_bundle(generated, display_catalog=historical_catalog)
         assert _semantic_tree(generated) == _semantic_tree(REPORT_ROOT)

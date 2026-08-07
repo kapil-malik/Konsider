@@ -26,10 +26,6 @@ SOURCE_RELEASES = ROOT / "data" / "releases"
 STAGED = ROOT / "data" / "reports" / "phase6g-2026-08-03" / "staged-release"
 BASE_RELEASE_ID = "2026-07-29.2"
 FINAL_RELEASE_ID = "2026-08-04.1"
-DISPLAY_CATALOG = load_product_display_catalog(
-    ROOT / "data" / "catalogs" / "product-display-catalog.json",
-    ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
-)
 
 
 def _json(path: Path) -> dict:
@@ -56,6 +52,27 @@ def _prepare_release_roots(tmp_path: Path) -> tuple[Path, Path, Path]:
     return releases, catalogs, reports
 
 
+def _historical_display_catalog(tmp_path: Path):
+    payload = _json(ROOT / "data" / "catalogs" / "product-display-catalog.json")
+    staged = _json(STAGED / "opportunity-filter-catalog.json")
+    authoring = {
+        item["id"]: item
+        for item in payload["definitions"]
+        if item["productRole"] == "OPPORTUNITY_FILTER"
+    }
+    for definition in staged["definitions"]:
+        item = authoring[definition["id"]]
+        item["displayName"] = definition["display_name"]
+        item["compactName"] = definition["compact_label"]
+        item["sectionId"] = definition["category"].lower()
+    path = tmp_path / "historical-product-display-catalog.json"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    return load_product_display_catalog(
+        path,
+        ROOT / "contracts" / "schemas" / "authoring" / "product-display-catalog.schema.json",
+    )
+
+
 def test_release_id_sequence_is_monotonic(tmp_path: Path) -> None:
     (tmp_path / "2026-08-04.1").mkdir()
     (tmp_path / "2026-08-04.3").mkdir()
@@ -71,7 +88,7 @@ def test_build_publish_activate_lifecycle_is_immutable_and_atomic(tmp_path: Path
     }
 
     release_id, draft = build_release(
-        display_catalog=DISPLAY_CATALOG,
+        display_catalog=_historical_display_catalog(tmp_path),
         release_root=releases,
         catalog_root=catalogs,
         staged_root=STAGED,
@@ -118,7 +135,7 @@ def test_build_publish_activate_lifecycle_is_immutable_and_atomic(tmp_path: Path
 def test_bound_opportunity_payload_corruption_fails_closed(tmp_path: Path) -> None:
     releases, catalogs, reports = _prepare_release_roots(tmp_path)
     build_release(
-        display_catalog=DISPLAY_CATALOG,
+        display_catalog=_historical_display_catalog(tmp_path),
         release_root=releases,
         catalog_root=catalogs,
         staged_root=STAGED,
@@ -144,7 +161,7 @@ def test_bound_opportunity_payload_corruption_fails_closed(tmp_path: Path) -> No
 def test_final_release_rebuild_is_byte_identical(tmp_path: Path) -> None:
     releases, catalogs, reports = _prepare_release_roots(tmp_path)
     _, draft = build_release(
-        display_catalog=DISPLAY_CATALOG,
+        display_catalog=_historical_display_catalog(tmp_path),
         release_root=releases,
         catalog_root=catalogs,
         staged_root=STAGED,
