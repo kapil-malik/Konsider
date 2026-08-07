@@ -120,6 +120,29 @@ def test_v2_ranking_exposes_locality_provenance_and_orthogonal_assessments(
     assert unavailable["contribution"] is None
 
 
+def test_v3_ranking_defaults_to_all_results_and_projects_compact_contributions(
+    current_client: TestClient,
+) -> None:
+    selection = {"weights": {"N1": 1}}
+    omitted = current_client.post("/api/v3/rankings", json=selection)
+    explicit_null = current_client.post("/api/v3/rankings", json={**selection, "top_k": None})
+    limited = current_client.post("/api/v3/rankings", json={**selection, "top_k": 2})
+
+    assert omitted.status_code == explicit_null.status_code == limited.status_code == 200
+    assert len(omitted.json()["rankings"]) == len(explicit_null.json()["rankings"]) == 3
+    assert len(limited.json()["rankings"]) == 2
+    contribution = omitted.json()["rankings"][0]["contributions"][0]
+    assert set(contribution) == {
+        "criterion_id",
+        "displayName",
+        "derivation",
+        "score",
+        "normalized_weight",
+        "contribution",
+        "contributing_localities",
+    }
+
+
 def test_v2_comparison_and_country_details_need_no_client_side_intersection(
     current_client: TestClient,
 ) -> None:

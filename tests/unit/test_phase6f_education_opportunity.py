@@ -276,11 +276,11 @@ def test_phase6f_candidate_remains_draft_after_final_activation() -> None:
     assert manifest["status"] == "draft"
     validate_opportunity_filter_release_bundle(manifest, catalog, _rows(), countries)
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
-    assert loaded.manifest["release_id"] == "2026-08-07.3"
+    assert loaded.manifest["release_id"] == "2026-08-08.1"
     assert "opportunity_filters" in loaded.manifest
     assert loaded.manifest["schema_version"] == "konsider-release-5.2"
     assert _json(ROOT / "data" / "releases" / "active.json") == {
-        "release_id": "2026-08-07.4",
+        "release_id": "2026-08-08.2",
         "schema_version": "konsider-release-6.1",
     }
 

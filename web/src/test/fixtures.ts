@@ -173,7 +173,7 @@ export const catalogFixture: CatalogV2 = {
       id: 'balanced',
       name: 'Balanced',
       description: 'Balanced national and locality priorities.',
-      weights: { air: 1, heat: 0.6, jobs: 0.4 },
+      weights: { air: 0.6, heat: 0.6, jobs: 0.6 },
     },
     {
       id: 'climate',
@@ -527,7 +527,7 @@ const countryLocalityAssessment = (
 const rankedCountry = (
   index: number,
   localityStatus: LocalityStatus = 'COMMON_LOCALITY_AVAILABLE',
-): RankedCountryV2 => ({
+): Omit<RankedCountryV2, 'contributions'> & { contributions: ContributionV2[] } => ({
   rank: index + 1,
   base_rank: index + 1,
   country: countries[index],

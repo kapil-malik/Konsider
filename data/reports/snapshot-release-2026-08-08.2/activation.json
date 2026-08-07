@@ -1,0 +1,18 @@
+{
+  "active": {
+    "release_id": "2026-08-08.2",
+    "schema_version": "konsider-release-6.1"
+  },
+  "baseRelease": {
+    "release_checksum": "sha256:dcf4143594161e51a51311f3166c9b76da29fc35529b879039b71082a0cac3ad",
+    "release_id": "2026-08-08.1",
+    "schema_version": "konsider-release-5.2"
+  },
+  "overlayReleaseChecksum": "sha256:e76cd7c582c1f28bb71d453f92d0b5e96103dd9fb854899008d067fdd54f5844",
+  "rollback": {
+    "release_id": "2026-08-07.4",
+    "schema_version": "konsider-release-6.1"
+  },
+  "schemaVersion": "catalog-display-metadata-activation-1.0",
+  "status": "ACTIVE"
+}

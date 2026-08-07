@@ -32,6 +32,7 @@ from konsider.api.models.v3 import (
     OpportunityFilterCatalogV3Response,
     RankingV3Response,
     TfcCatalogV3Response,
+    V3RankingRequest,
 )
 from konsider.api.opportunity_filter_service import OpportunityFilterService
 from konsider.api.settings import ApiSettings
@@ -292,7 +293,7 @@ def create_app(
         summary="Rank countries using the API v3 display contract",
     )
     def rankings_v3(
-        payload: V2RankingRequest,
+        payload: V3RankingRequest,
         response: Response,
         current: RecommendationService = Depends(get_recommendation_service),
     ):

@@ -35,7 +35,7 @@ WIPO_DOWNLOAD_URL = "https://www.wipo.int/edocs/pubdocs/en/wipo-pub-2000-2025-te
 NEW_CRITERIA = (SCHOOL_ID, INNOVATION_ID)
 MINIMUM_GLOBAL_CORE_COUNT = 8
 PROFILE_WEIGHTS = {
-    "equal_weight_mvp": {SCHOOL_ID: 1.0, INNOVATION_ID: 1.0},
+    "equal_weight_mvp": {SCHOOL_ID: 0.6, INNOVATION_ID: 0.6},
     "safety_and_stability": {SCHOOL_ID: 0.4, INNOVATION_ID: 0.4},
     "affordability_first": {SCHOOL_ID: 0.4, INNOVATION_ID: 0.4},
     "quality_of_life": {SCHOOL_ID: 1.0, INNOVATION_ID: 0.8},

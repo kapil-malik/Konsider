@@ -980,17 +980,17 @@
       "id": "equal_weight_mvp",
       "name": "Balanced",
       "weights": {
-        "ambient_pm25_population_weighted": 1,
-        "established_immigrant_presence": 1,
-        "household_consumption_price_level_us_100": 1,
-        "infrastructure_readiness_composite": 1,
-        "intentional_homicide_rate": 1,
-        "overall_job_market_opportunity": 1.0,
-        "political_stability": 1,
-        "research_innovation_ecosystem": 1.0,
-        "rule_of_law": 1,
-        "school_education_quality": 1.0,
-        "women_legal_economic_equality": 1
+        "ambient_pm25_population_weighted": 0.6,
+        "established_immigrant_presence": 0.6,
+        "household_consumption_price_level_us_100": 0.6,
+        "infrastructure_readiness_composite": 0.6,
+        "intentional_homicide_rate": 0.6,
+        "overall_job_market_opportunity": 0.6,
+        "political_stability": 0.6,
+        "research_innovation_ecosystem": 0.6,
+        "rule_of_law": 0.6,
+        "school_education_quality": 0.6,
+        "women_legal_economic_equality": 0.6
       }
     },
     {

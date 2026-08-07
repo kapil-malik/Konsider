@@ -1,0 +1,129 @@
+{
+  "build_id": "phase6i-release-publication-1.0",
+  "bundle_id": "complete-opportunity-sources",
+  "bundle_version": "complete-opportunity-source-bundle-2026-08-03.1",
+  "generated_at": "2026-08-04T00:00:00+05:30",
+  "schema_version": "opportunity-filter-source-manifest-1.0",
+  "sources": [
+    {
+      "asset_uri": "data/raw/phase6a/ilostat-emp-oc2.csv",
+      "attribution": "Source: ILOSTAT, EMP_TEMP_SEX_OC2_NB_A; adapted by Konsider.",
+      "canonical_page_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_OC2_NB_A&format=csv",
+      "checksum": "sha256:aaadd9ad52c88af5b00edce9c78821481d352251fe1ee944bb9bff299bdd04d4",
+      "licence_id": "CC-BY-4.0",
+      "publisher": "International Labour Organization",
+      "retention_policy": "IGNORED_LOCAL",
+      "reuse_status": "APPROVED",
+      "source_id": "ilo_observed_occupation_oc2",
+      "source_version": "EMP_TEMP_SEX_OC2_NB_A:2026-08-02-capture"
+    },
+    {
+      "asset_uri": "data/raw/phase6b/ilo-modelled-employment-occupation-2025.csv",
+      "attribution": "Source: ILO modelled estimates, November 2025 edition; adapted by Konsider.",
+      "canonical_page_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2EMP_SEX_OCU_NB_A&format=csv",
+      "checksum": "sha256:00c76b161f5308f6655bac28ac3b6edeca25f4d262fc694e1aec5c310ef89986",
+      "licence_id": "CC-BY-4.0",
+      "publisher": "International Labour Organization",
+      "retention_policy": "IGNORED_LOCAL",
+      "reuse_status": "APPROVED",
+      "source_id": "ilo_modelled_occupation_2025",
+      "source_version": "EMP_2EMP_SEX_OCU_NB_A:2025-11"
+    },
+    {
+      "asset_uri": "data/raw/phase6b/ilo-modelled-employment-economic-activity-2025.csv",
+      "attribution": "Source: ILO modelled estimates, November 2025 edition; adapted by Konsider.",
+      "canonical_page_url": "https://rplumber.ilo.org/data/indicator/?id=EMP_2EMP_SEX_ECO_NB_A&format=csv",
+      "checksum": "sha256:ab1baf83fb7f3cd3646df98b129571c21651e65fe49237efc873bff7e832efef",
+      "licence_id": "CC-BY-4.0",
+      "publisher": "International Labour Organization",
+      "retention_policy": "IGNORED_LOCAL",
+      "reuse_status": "APPROVED",
+      "source_id": "ilo_modelled_economic_activity_2025",
+      "source_version": "EMP_2EMP_SEX_ECO_NB_A:2025-11"
+    },
+    {
+      "asset_uri": "data/raw/phase6b1/statcan-9810059401-canada.html",
+      "attribution": "Adapted from Statistics Canada table 98-10-0594-01; no endorsement implied.",
+      "canonical_page_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810059401",
+      "checksum": "sha256:3e2e50bbb7fde23890400e79636d8521b164b0678f9eec2ba03ab7c15aab8b46",
+      "licence_id": "STATISTICS-CANADA-OPEN-LICENCE",
+      "publisher": "Statistics Canada",
+      "retention_policy": "IGNORED_LOCAL",
+      "reuse_status": "APPROVED",
+      "source_id": "statcan_2021_census_noc",
+      "source_version": "98-10-0594-01:NOC-2021-v1.0"
+    },
+    {
+      "asset_uri": "data/raw/phase6b1/eurostat-lfsa-egai2d-mt.json",
+      "attribution": "Source: Eurostat lfsa_egai2d; adapted by Konsider.",
+      "canonical_page_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsa_egai2d",
+      "checksum": "sha256:b6eb11bf3845c8c05aaa905a5aa2d97fafcf5af902977455ed4f397d31213dfe",
+      "licence_id": "CC-BY-4.0",
+      "publisher": "Eurostat",
+      "retention_policy": "IGNORED_LOCAL",
+      "reuse_status": "APPROVED",
+      "source_id": "eurostat_lfsa_egai2d",
+      "source_version": "lfsa_egai2d:2025"
+    },
+    {
+      "asset_uri": "data/raw/phase6b1/japan-lfs-table-6-1.xlsx",
+      "attribution": "Source: Labour Force Survey, Statistics Bureau of Japan, via e-Stat; adapted by Konsider.",
+      "canonical_page_url": "https://www.e-stat.go.jp/en/stat-search/file-download?fileKind=0&statInfId=000012925012",
+      "checksum": "sha256:e7f5d59bda3c774c0f26f65f66007c699abf75e49a30dea711425bd037970d87",
+      "licence_id": "GOVERNMENT-OF-JAPAN-STANDARD-TERMS-V2",
+      "publisher": "Statistics Bureau of Japan",
+      "retention_policy": "IGNORED_LOCAL",
+      "reuse_status": "SUPPLEMENTAL_ONLY",
+      "source_id": "japan_lfs_occupation",
+      "source_version": "LFS-historical-table-6:2025"
+    },
+    {
+      "asset_uri": "https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1DA7E27S&language=en",
+      "attribution": "Source: Statistics Korea, KOSIS.",
+      "canonical_page_url": "https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1DA7E27S&language=en",
+      "checksum": null,
+      "licence_id": "KOSIS-PUBLIC-DATA-FREE-USE",
+      "publisher": "Statistics Korea",
+      "retention_policy": "NOT_RETAINED",
+      "reuse_status": "SUPPLEMENTAL_ONLY",
+      "source_id": "kosis_occupation",
+      "source_version": "DT_1DA7E27S:KSCO-8"
+    },
+    {
+      "asset_uri": "https://explore.data.stats.govt.nz/vis?df[id]=CEN23_WRK_009",
+      "attribution": "Source: Stats NZ, 2023 Census; adapted by Konsider.",
+      "canonical_page_url": "https://explore.data.stats.govt.nz/vis?df[id]=CEN23_WRK_009",
+      "checksum": null,
+      "licence_id": "CC-BY-4.0",
+      "publisher": "Stats NZ",
+      "retention_policy": "NOT_RETAINED",
+      "reuse_status": "SUPPLEMENTAL_ONLY",
+      "source_id": "stats_nz_census_occupation",
+      "source_version": "CEN23_WRK_009:ANZSCO-v1.3"
+    },
+    {
+      "asset_uri": "project-history/phases/phase-6/research/fixtures/phase6c-leiden-source-fixture.json",
+      "attribution": "CWTS Leiden Ranking Open Edition 2025; DOI 10.5281/zenodo.17473224; adapted by Konsider.",
+      "canonical_page_url": "https://doi.org/10.5281/zenodo.17473224",
+      "checksum": "sha256:53c6c796eb57baf95111901de17036cefb8a3833ee11bce7071212cde8aa866b",
+      "licence_id": "CC0-1.0",
+      "publisher": "Centre for Science and Technology Studies, Leiden University",
+      "retention_policy": "COMMITTED",
+      "reuse_status": "APPROVED",
+      "source_id": "cwts_leiden_open_2025_results",
+      "source_version": "CWTS-Leiden-Open-2025:10.5281/zenodo.17473224"
+    },
+    {
+      "asset_uri": "data/raw/phase6c/leiden-open-2025-universities.xlsx",
+      "attribution": "ROR identifiers supplied in the CWTS Leiden Ranking Open Edition 2025 universities workbook.",
+      "canonical_page_url": "https://open.leidenranking.com/information/universities",
+      "checksum": "sha256:35d96fe44a0f1724f0071fd11c47185063654b444cc837775c65643119ea2e74",
+      "licence_id": "CC0-1.0",
+      "publisher": "Research Organization Registry via CWTS Leiden Open workbook",
+      "retention_policy": "IGNORED_LOCAL",
+      "reuse_status": "APPROVED",
+      "source_id": "ror_via_cwts_workbook",
+      "source_version": "CWTS-Leiden-Open-2025-universities-workbook:ROR"
+    }
+  ]
+}

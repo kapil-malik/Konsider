@@ -171,21 +171,29 @@ test('renders compact accessible criterion symbols and source links', async () =
   expect(
     await screen.findByRole('heading', { name: 'What matters most?' }),
   ).toBeInTheDocument()
-  expect(screen.getAllByRole('slider')).toHaveLength(3)
+  expect(screen.queryByRole('slider')).not.toBeInTheDocument()
   expect(
-    screen.getByRole('slider', { name: 'Extreme heat exposure' }),
-  ).toHaveValue('0.6')
+    screen.getByRole('button', { name: 'Extreme heat exposure importance: Medium' }),
+  ).toHaveTextContent('Med')
+  expect(screen.getByRole('button', { name: 'Air quality importance: Medium' })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Overall job-market opportunity importance: Medium' })).toBeInTheDocument()
+  expect(screen.getByLabelText('Preference preset')).toHaveValue('balanced')
+  expect(screen.getByTitle('Extreme heat exposure')).toHaveTextContent(
+    'Extreme heat exposure',
+  )
   expect(screen.getAllByLabelText('Locality-derived criterion').length).toBeGreaterThan(0)
   expect(screen.getByLabelText('Experimental criterion')).toBeInTheDocument()
-  expect(screen.getAllByLabelText('Partial-coverage criterion').length).toBeGreaterThan(0)
-  expect(screen.getByLabelText('4 of 5 countries covered')).toHaveTextContent('4/5')
+  expect(screen.getAllByLabelText(/Partial-coverage criterion/).length).toBeGreaterThan(0)
+  expect(screen.getByLabelText('Partial-coverage criterion: 4 of 5 countries covered')).toBeInTheDocument()
+  expect(screen.queryByText('4/5')).not.toBeInTheDocument()
   expect(screen.queryByText('! Limited coverage')).not.toBeInTheDocument()
   expect(screen.queryByText('Coverage and scope details')).not.toBeInTheDocument()
 
-  const heat = screen.getByRole('slider', { name: 'Extreme heat exposure' })
-  heat.focus()
-  fireEvent.keyDown(heat, { key: 'ArrowLeft' })
-  expect(heat).toHaveValue('0.4')
+  await user.click(screen.getByRole('button', { name: 'Extreme heat exposure importance: Medium' }))
+  const heatChoices = screen.getByRole('listbox', { name: 'Extreme heat exposure importance choices' })
+  expect(within(heatChoices).getAllByRole('option')).toHaveLength(6)
+  await user.click(within(heatChoices).getByRole('option', { name: 'Low' }))
+  expect(screen.getByRole('button', { name: 'Extreme heat exposure importance: Low' })).toBeInTheDocument()
   expect(screen.queryByText(/Locality provenance remains available/)).not.toBeInTheDocument()
 
   await user.click(screen.getByRole('button', { name: 'Open criteria and sources for Extreme heat exposure' }))
@@ -198,7 +206,7 @@ test('renders compact accessible criterion symbols and source links', async () =
   const dialog = screen.getByRole('dialog', { name: 'Criteria and sources' })
   expect(within(dialog).getByText('Extreme heat exposure')).toBeInTheDocument()
   expect(within(dialog).getByText('major-cities-v1')).toBeInTheDocument()
-  expect(within(dialog).getByText('Top n mean ·')).toBeInTheDocument()
+  expect(within(dialog).getByText(/Server policy/)).toBeInTheDocument()
   expect(within(dialog).getAllByText('Universal').length).toBeGreaterThan(0)
   expect(within(dialog).getAllByText(/Primary observation/).length).toBeGreaterThan(0)
 })
@@ -222,9 +230,8 @@ test('uses preference_preset_id until an edit creates custom weights', async () 
     preference_preset_id: 'climate',
   })
 
-  const air = screen.getByRole('slider', { name: 'Air quality' })
-  air.focus()
-  fireEvent.keyDown(air, { key: 'ArrowRight' })
+  await user.click(screen.getByRole('button', { name: /Air quality importance/ }))
+  await user.click(screen.getByRole('option', { name: 'Medium' }))
   expect(preset).toHaveValue('__custom')
   await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
   await waitFor(() =>
@@ -482,13 +489,11 @@ test('serializes one and multiple required filters, preserves scores, and expose
     screen.getByRole('checkbox', { name: /Technology and software/ }),
   )
   await user.click(
-    screen.getByRole('checkbox', { name: /Skilled-trades or construction/ }),
+    screen.getByRole('checkbox', { name: /Skilled trades or construction/ }),
   )
   await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
 
-  await screen.findByRole('heading', {
-    name: '2 countries match all selected opportunity filters',
-  })
+  await screen.findByText('2 matching')
   expect(requests.filter((request) => request.path.endsWith('/rankings')).at(-1)?.body).toEqual({
     preference_preset_id: 'balanced',
     opportunity_filters: {
@@ -502,7 +507,7 @@ test('serializes one and multiple required filters, preserves scores, and expose
   expect(screen.getAllByText('8.5 / 10').length).toBeGreaterThan(0)
   expect(
     screen.getByRole('button', {
-      name: 'Remove Technology and software employment ecosystem opportunity filter',
+      name: 'Remove Technology and software opportunity filter',
     }),
   ).toBeInTheDocument()
   expect(screen.getAllByText(/Matches 2 filters/).length).toBeGreaterThan(0)
@@ -510,10 +515,7 @@ test('serializes one and multiple required filters, preserves scores, and expose
   expect(screen.getAllByText('Insufficient evidence').length).toBeGreaterThan(0)
 
   expect({
-    heading: screen.getByRole('heading', {
-      level: 3,
-      name: '2 countries match all selected opportunity filters',
-    }).textContent,
+    heading: screen.getByText('2 matching').textContent,
     returned: filtered.rankings.map((country) => ({
       rank: country.rank,
       baseRank: country.base_rank,
@@ -526,7 +528,7 @@ test('serializes one and multiple required filters, preserves scores, and expose
         "INSUFFICIENT_EVIDENCE": 1,
         "STRONG_SIGNAL_NOT_ESTABLISHED": 2,
       },
-      "heading": "2 countries match all selected opportunity filters",
+      "heading": "2 matching",
       "returned": [
         {
           "baseRank": 1,
@@ -557,10 +559,10 @@ test('explains excluded states and country evidence without negative or applican
     screen.getByRole('checkbox', { name: /Technology and software/ }),
   )
   await user.click(
-    screen.getByRole('checkbox', { name: /Skilled-trades or construction/ }),
+    screen.getByRole('checkbox', { name: /Skilled trades or construction/ }),
   )
   await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
-  await user.click(await screen.findByText(/Review 3 opportunity-filter excluded countries/))
+  await user.click(await screen.findByText('Opportunity-filter results'))
   await user.click(screen.getByRole('button', { name: 'Country 3' }))
 
   expect(
@@ -639,7 +641,7 @@ test('keeps Opportunity Filter evidence separate in desktop and mobile compariso
   renderApp()
   await screen.findByRole('heading', { name: 'Country ranking' })
   await user.click(
-    screen.getByRole('checkbox', { name: /Skilled-trades or construction/ }),
+    screen.getByRole('checkbox', { name: /Skilled trades or construction/ }),
   )
   await user.click(screen.getByRole('button', { name: 'Apply priorities' }))
   const comparisonBoxes = screen.getAllByRole('checkbox', { name: /Select Country/ })
@@ -703,8 +705,8 @@ test('progressively selects a TFC, preserves unknown offer state, and renders in
   await screen.findByRole('heading', { name: 'Country ranking' })
   await configureWorkSituation(user)
 
-  await screen.findByRole('heading', { name: 'Feasibility checks', level: 3 })
-  expect(screen.getByText('Additional inputs requested')).toBeInTheDocument()
+  const scenarioContext = await screen.findByRole('region', { name: 'Declared scenario' })
+  expect(within(scenarioContext).getByText('1 need more information')).toBeInTheDocument()
   expect(screen.getAllByText('More information required').length).toBeGreaterThan(0)
   const request = requests.filter((item) => item.path.endsWith('/rankings')).at(-1)
   expect(request?.body).toMatchObject({
@@ -747,8 +749,8 @@ test('uses one situation snapshot for route details and country comparison', asy
 
   await user.click(screen.getAllByRole('button', { name: 'View country details' })[0])
   expect(
-    (await screen.findAllByRole('heading', { name: 'Feasibility checks', level: 3 })).length,
-  ).toBeGreaterThan(1)
+    await screen.findByRole('heading', { name: 'Feasibility checks', level: 3 }),
+  ).toBeInTheDocument()
   expect(screen.getByText('Fictional skilled work route')).toBeInTheDocument()
   expect(screen.getByText(/external authority confirmation/i)).toBeInTheDocument()
   await user.click(screen.getByRole('button', { name: 'Close country details' }))

@@ -18,6 +18,7 @@ import type {
   TfcCatalogV2,
   WeightSelectionV2,
 } from './api/types'
+import { byDisplayOrder } from './displayName'
 import { ComparisonView } from './components/ComparisonView'
 import { CountryDetails } from './components/CountryDetails'
 import { ErrorNotice } from './components/ErrorNotice'
@@ -171,9 +172,9 @@ function Workspace({
 }) {
   const enabledCriteria = useMemo(
     () =>
-      catalog.criteria.filter(
-        (criterion) => criterion.ready && criterion.default_enabled,
-      ),
+      catalog.criteria
+        .filter((criterion) => criterion.ready && criterion.default_enabled)
+        .sort(byDisplayOrder),
     [catalog.criteria],
   )
   const defaultPreset = catalog.preference_presets[0]
@@ -561,6 +562,7 @@ function RankingWorkspace({
           {mode === 'comparison' && comparisonMutation.data && (
             <ComparisonView
               comparison={comparisonMutation.data}
+              criteria={[...catalog.criteria].sort(byDisplayOrder)}
               opportunityCatalog={opportunityCatalog}
               tfcCatalog={tfcCatalog}
               onBack={backToRankings}
@@ -573,6 +575,7 @@ function RankingWorkspace({
       {ranking && mode === 'ranking' && selectedCountry && (
         <CountryDetails
           countryCode={selectedCountry}
+          criteria={[...catalog.criteria].sort(byDisplayOrder)}
           selection={selectionFor(applied, appliedOpportunityFilterIds, appliedSituation)}
           opportunityCatalog={opportunityCatalog}
           tfcCatalog={tfcCatalog}

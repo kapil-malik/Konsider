@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react'
 
 import type { CatalogV2, TfcCatalogV2, TfcFieldDefinitionV2 } from '../api/types'
+import { compactDisplayName } from '../displayName'
 import {
   MAX_SCENARIOS,
   activeScenario,
@@ -351,7 +352,7 @@ export function SituationDialog({
                         />
                         <span>
                           <span className="option-heading">
-                            <strong>{definition.displayName}</strong>
+                            <strong>{compactDisplayName(definition)}</strong>
                             {recommended && <span className="recommendation-badge">Relevant to {purposeLabel(scenario.purpose)}</span>}
                           </span>
                           <small>{definition.user_question}</small>
@@ -559,7 +560,7 @@ export function SituationDialog({
               </div>
               <dl className="situation-review">
                 <div><dt>Active scenario</dt><dd>{situationSummary(draft)}</dd></div>
-                <div><dt>Checks that will run</dt><dd>{selectedDefinitions.length ? selectedDefinitions.map((item) => item.displayName).join(', ') : 'None'}</dd></div>
+                <div><dt>Checks that will run</dt><dd>{selectedDefinitions.length ? selectedDefinitions.map(compactDisplayName).join(', ') : 'None'}</dd></div>
                 <div><dt>Unknown or incomplete</dt><dd>{[...requiredFieldIds].filter((id) => {
                   if (id === 'applicant.occupation') return !draft.applicant.occupation.trim() || draft.applicant.occupationUnknown
                   if (id === 'applicant.qualifications') return draft.applicant.qualificationLevel === 'UNKNOWN'

@@ -1,6 +1,6 @@
 # Worker operations
 
-The active display-metadata release is overlay `2026-08-07.4`, bound to base `2026-08-07.3`.
+The active release is overlay `2026-08-08.2`, bound to base `2026-08-08.1`.
 Its checksum-backed evidence and rollback record are under
 `data/reports/catalog-display-metadata-2026-08-07/`.
 

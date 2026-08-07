@@ -33,7 +33,7 @@ C11_SOURCE_ID = "ilostat_job_market_opportunity"
 C11_SCORING_METHOD = "job_market_equal_component_percentiles_v1"
 MINIMUM_GLOBAL_CORE_COUNT = 8
 PROFILE_WEIGHTS = {
-    "equal_weight_mvp": 1.0,
+    "equal_weight_mvp": 0.6,
     "safety_and_stability": 0.6,
     "affordability_first": 0.6,
     "quality_of_life": 0.8,

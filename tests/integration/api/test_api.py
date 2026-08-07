@@ -17,7 +17,7 @@ def test_default_paths_load_the_schema_current_release_from_any_working_director
         response = client.get("/api/v2/health")
 
     assert response.status_code == 200
-    assert response.json()["release_id"] == "2026-08-07.3"
+    assert response.json()["release_id"] == "2026-08-08.1"
 
 
 def test_missing_release_returns_safe_503(tmp_path) -> None:

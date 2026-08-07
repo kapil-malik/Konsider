@@ -8,7 +8,7 @@ from konsider.api.app import create_app
 from konsider.ingestion.current_release import CurrentReleaseRepository
 
 ROOT = Path(__file__).resolve().parents[2]
-RELEASE_ID = "2026-08-07.3"
+RELEASE_ID = "2026-08-08.1"
 DEPRECATED_PUBLIC_FIELDS = {
     "profiles",
     "profile_id",

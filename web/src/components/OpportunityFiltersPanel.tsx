@@ -1,4 +1,5 @@
 import type { OpportunityFilterCatalogV2 } from '../api/types'
+import { compactDisplayName } from '../displayName'
 
 type OpportunityFiltersPanelProps = {
   catalog: OpportunityFilterCatalogV2
@@ -84,20 +85,20 @@ export function OpportunityFiltersPanel({
                     return (
                       <label
                         className={`opportunity-option${checked ? ' opportunity-option-selected' : ''}`}
-                        title={definition.displayName}
+                        title={compactDisplayName(definition)}
                         key={definition.id}
                       >
                         <input
                           type="checkbox"
                           checked={checked}
                           disabled={disabled}
-                          aria-label={definition.displayName}
+                          aria-label={compactDisplayName(definition)}
                           aria-describedby={`${definition.id}-meaning`}
                           onChange={() => onToggle(definition.id)}
                         />
                         <span>
                           <strong>
-                            {definition.compactName ?? definition.displayName}
+                            {compactDisplayName(definition)}
                           </strong>
                           <small id={`${definition.id}-meaning`}>
                             {definition.meaning}

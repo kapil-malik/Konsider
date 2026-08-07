@@ -125,44 +125,23 @@ export function FeasibilitySummary({
     tfcName(definitions.get(id), id),
   )
   const inputCount = assessment.status_counts.INPUT_REQUIRED
-  const evaluatedCount = assessment.status_counts.EVALUATED
   return (
-    <section className="feasibility-result-summary" aria-labelledby="feasibility-summary-heading">
-      <div className="feasibility-summary-heading">
-        <div>
-          <p className="eyebrow">Your declared scenario</p>
-          <h3 id="feasibility-summary-heading">Feasibility checks</h3>
-        </div>
-        <span className="badge badge-scope">No affinity-score impact</span>
-      </div>
-      {assessment.execution_status === 'NOT_EXECUTED_NO_CONTEXT' ? (
-        <p>Checks are selected, but no applicant or scenario context was supplied.</p>
-      ) : (
-        <p>
-          {evaluatedCount} country-check results evaluated
-          {inputCount > 0 ? ` · ${inputCount} need more information` : ''}. Results are bounded
-          screenings, not immigration, admission, or employment decisions.
-        </p>
-      )}
+    <section className="scenario-context" aria-label="Declared scenario">
+      <strong>Scenario:</strong>
       <div className="selected-tfc-list" aria-label="Selected feasibility checks">
         {selected.map((name) => <span key={name}>{name}</span>)}
       </div>
-      {assessment.input_required_fields.length > 0 && (
-        <div className="input-required-note" role="status">
-          <strong>Additional inputs requested</strong>
-          <span>{assessment.input_required_fields.map(readableTfcCode).join(', ')}</span>
-        </div>
-      )}
-      <div className="feasibility-summary-footer">
-        <span>
-          {assessment.snapshot
-            ? `Scenario date ${assessment.snapshot.evaluation_date} · Policy snapshot ${assessment.snapshot.tfc_release_id}`
-            : 'No scenario snapshot created'}
-        </span>
-        <button type="button" className="text-button" disabled={isUpdating} onClick={onEditSituation}>
-          Edit situation
-        </button>
-      </div>
+      {inputCount > 0 && <span className="scenario-input-note">{inputCount} need more information</span>}
+      <span
+        className="context-help"
+        title="Feasibility checks are bounded screenings and do not change affinity scores."
+        aria-label="About feasibility checks"
+      >
+        ⓘ
+      </span>
+      <button type="button" className="text-button" disabled={isUpdating} onClick={onEditSituation}>
+        Edit
+      </button>
     </section>
   )
 }

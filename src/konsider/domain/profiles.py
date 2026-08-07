@@ -76,11 +76,11 @@ MVP_PROFILES: dict[str, DefaultProfile] = {
             "all weights remain user-editable."
         ),
         weights={
-            "ambient_pm25_population_weighted": 1,
-            "household_consumption_price_level_us_100": 1,
-            "infrastructure_readiness_composite": 1,
-            "intentional_homicide_rate": 1,
-            "women_legal_economic_equality": 1,
+            "ambient_pm25_population_weighted": 0.6,
+            "household_consumption_price_level_us_100": 0.6,
+            "infrastructure_readiness_composite": 0.6,
+            "intentional_homicide_rate": 0.6,
+            "women_legal_economic_equality": 0.6,
         },
     )
 }

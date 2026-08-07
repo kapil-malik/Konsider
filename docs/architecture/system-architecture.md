@@ -25,8 +25,8 @@ CurrentReleaseRepository ----> RecommendationService --> FastAPI /api/v2 ---> Re
                          release catalog              OpenAPI + JSON responses
 ```
 
-The active pointer selects schema-6.1 overlay `2026-08-07.4`. The repository validates its six TFC
-payloads and checksum-bound schema-5.2 base `2026-08-07.3`, then exposes one joined in-memory
+The active pointer selects schema-6.1 overlay `2026-08-08.2`. The repository validates its six TFC
+payloads and checksum-bound schema-5.2 base `2026-08-08.1`, then exposes one joined in-memory
 snapshot. Historical schema-3/4 releases remain immutable and require an explicit internal loader.
 
 - The worker downloads ten registered official-source distributions, captures exact raw bytes,
@@ -45,7 +45,7 @@ snapshot. Historical schema-3/4 releases remain immutable and require an explici
   flags, assessments, and release labels from `/api/v2`. TanStack Query owns API work; local state
   owns guest edits.
 
-The active overlay is `2026-08-07.4`; its base contains 91 countries, 388 frozen urban centres and
+The active overlay is `2026-08-08.2`; its base contains 91 countries, 388 frozen urban centres and
 fourteen catalogued criteria. Extreme heat exposure and Projected warm-day frequency (2030) are experimental
 locality-derived criteria with 89/91 country coverage. Coverage, locality compatibility, and
 applicant-profile applicability, and filter-only opportunity remain independent structured

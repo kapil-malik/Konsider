@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "catalog_policy_binding": true,
+    "country_support_complete": true,
+    "effective_periods_valid": true,
+    "jurisdictions_valid": true,
+    "profile_ranking_fields_absent": true,
+    "rule_sources_resolved": true
+  },
+  "issues": [],
+  "promotion_eligible": true,
+  "schema_version": "tfc-validation-report-1.0",
+  "structural_passed": true,
+  "validated_as_of": "2026-08-05"
+}

@@ -77,7 +77,7 @@ def test_phase6g_candidate_is_draft_complete_and_does_not_change_active_pointer(
     )
     active = _json(ROOT / "data" / "releases" / "active.json")
     assert active == {
-        "release_id": "2026-08-07.4",
+        "release_id": "2026-08-08.2",
         "schema_version": "konsider-release-6.1",
     }
 

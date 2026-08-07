@@ -1,0 +1,486 @@
+[
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "CONDITIONAL_COMPLETE_CASE",
+    "criterion_id": "C66",
+    "derivation": {
+      "mode": "AGGREGATED_FROM_LOCALITIES",
+      "processor": {
+        "id": "top-n-mean",
+        "version": "1.0"
+      }
+    },
+    "experimental": true,
+    "parser": {
+      "id": "jrc-ghsl-urban-climate-csv",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": "c66-extreme-heat-top2-v1",
+      "derivation": "AGGREGATED_FROM_LOCALITIES",
+      "evidence_level": "LOCALITY",
+      "locality_analysis_threshold": 0.6,
+      "locality_type": "CITY",
+      "locality_universe_id": "ghsl-ucdb-top5-population-v1",
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "lower-is-better-linear-domain",
+      "version": "c66-extreme-heat-days-linear-v1"
+    },
+    "source_lineage_ids": [
+      "lineage:C66:ghsl-climate-r2024a-v1.2",
+      "lineage:ghsl-ucdb-r2024a-v1.2:locality-universe"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "CONDITIONAL_COMPLETE_CASE",
+    "criterion_id": "C67",
+    "derivation": {
+      "mode": "AGGREGATED_FROM_LOCALITIES",
+      "processor": {
+        "id": "top-n-mean",
+        "version": "1.0"
+      }
+    },
+    "experimental": true,
+    "parser": {
+      "id": "jrc-ghsl-urban-climate-csv",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": "c67-projected-warm-days-top2-v1",
+      "derivation": "AGGREGATED_FROM_LOCALITIES",
+      "evidence_level": "LOCALITY",
+      "locality_analysis_threshold": 0.6,
+      "locality_type": "CITY",
+      "locality_universe_id": "ghsl-ucdb-top5-population-v1",
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "lower-is-better-linear-domain",
+      "version": "c67-projected-warm-days-ssp245-linear-v1"
+    },
+    "source_lineage_ids": [
+      "lineage:C67:ghsl-climate-r2024a-v1.2",
+      "lineage:ghsl-ucdb-r2024a-v1.2:locality-universe"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "ambient_pm25_population_weighted",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "pm25_health_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:ambient_pm25_population_weighted:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "established_immigrant_presence",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "migrant_presence_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:established_immigrant_presence:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "household_consumption_price_level_us_100",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "icp_relative_cost_bands_v2"
+    },
+    "source_lineage_ids": [
+      "lineage:household_consumption_price_level_us_100:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "infrastructure_readiness_composite",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": true,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "infrastructure_readiness_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:infrastructure_readiness_composite:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "intentional_homicide_rate",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "homicide_risk_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:intentional_homicide_rate:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "CONDITIONAL_COMPLETE_CASE",
+    "criterion_id": "overall_job_market_opportunity",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "job_market_equal_component_percentiles_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:overall_job_market_opportunity:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "political_stability",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "wgi_political_stability_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:political_stability:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "CONDITIONAL_COMPLETE_CASE",
+    "criterion_id": "research_innovation_ecosystem",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": true,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "wipo_innovation_outputs_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:research_innovation_ecosystem:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "rule_of_law",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "wgi_rule_of_law_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:rule_of_law:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "CONDITIONAL_COMPLETE_CASE",
+    "criterion_id": "school_education_quality",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": true,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "learning_adjusted_schooling_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:school_education_quality:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "DIAGNOSTIC_ONLY",
+    "criterion_id": "uhc_service_coverage_index",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": false,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "uhc_coverage_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:uhc_service_coverage_index:schema4-2026-07-28.2"
+    ]
+  },
+  {
+    "applicability": {
+      "dimensions": [],
+      "mode": "UNIVERSAL"
+    },
+    "coverage_mode": "GLOBAL_CORE",
+    "criterion_id": "women_legal_economic_equality",
+    "derivation": {
+      "mode": "DIRECT",
+      "processor": null
+    },
+    "experimental": false,
+    "parser": {
+      "id": "schema4-normalized-release",
+      "version": "1.0"
+    },
+    "ready": true,
+    "scope": {
+      "aggregation_policy_id": null,
+      "derivation": "DIRECT",
+      "evidence_level": "COUNTRY",
+      "locality_analysis_threshold": null,
+      "locality_type": null,
+      "locality_universe_id": null,
+      "result_level": "COUNTRY"
+    },
+    "scoring": {
+      "id": "schema4-canonical-score",
+      "version": "wbl_legal_equality_bands_v1"
+    },
+    "source_lineage_ids": [
+      "lineage:women_legal_economic_equality:schema4-2026-07-28.2"
+    ]
+  }
+]

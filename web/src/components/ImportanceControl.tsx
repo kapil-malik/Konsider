@@ -1,6 +1,7 @@
-import type { CSSProperties, KeyboardEvent } from 'react'
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 
 import type { CatalogCriterionV2 } from '../api/types'
+import { boundedCompactDisplayName, compactDisplayName } from '../displayName'
 import { IMPORTANCE_STATES, importanceState } from '../preferences'
 
 type ImportanceControlProps = {
@@ -18,78 +19,105 @@ export function ImportanceControl({
   onChange,
   onOpenSources,
 }: ImportanceControlProps) {
+  const [open, setOpen] = useState(false)
+  const controlRef = useRef<HTMLDivElement>(null)
   const state = importanceState(value)
   const isPartial = criterion.coverage.mode === 'CONDITIONAL_COMPLETE_CASE'
   const isLocality = criterion.scope.derivation === 'AGGREGATED_FROM_LOCALITIES'
-  const fillStyle = { '--importance-fill': `${value * 100}%` } as CSSProperties
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    const currentIndex = IMPORTANCE_STATES.findIndex((item) => item.value === state.value)
-    let nextIndex = currentIndex
-    if (event.key === 'ArrowRight' || event.key === 'ArrowUp') nextIndex += 1
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') nextIndex -= 1
-    if (event.key === 'Home') nextIndex = 0
-    if (event.key === 'End') nextIndex = IMPORTANCE_STATES.length - 1
-    nextIndex = Math.max(0, Math.min(IMPORTANCE_STATES.length - 1, nextIndex))
-    if (nextIndex !== currentIndex) {
+  const name = compactDisplayName(criterion)
+  const boundedName = boundedCompactDisplayName(criterion)
+  const menuId = `importance-options-${criterion.id}`
+  const coverageLabel = isPartial
+    ? `Partial-coverage criterion: ${criterion.coverage.valid_country_count} of ${criterion.coverage.stable_country_count} countries covered`
+    : 'Full-coverage criterion'
+
+  useEffect(() => {
+    if (!open) return
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!controlRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+    document.addEventListener('pointerdown', closeOnOutsideClick)
+    return () => document.removeEventListener('pointerdown', closeOnOutsideClick)
+  }, [open])
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Escape') {
       event.preventDefault()
-      onChange(IMPORTANCE_STATES[nextIndex].value)
+      setOpen(false)
+    }
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      setOpen(true)
     }
   }
 
   return (
-    <div className="importance-control" data-criterion-id={criterion.id}>
-      <div className="importance-heading">
-        <label htmlFor={`importance-${criterion.id}`}>{criterion.displayName}</label>
-        <button
-          className="criterion-source-link"
-          type="button"
-          onClick={onOpenSources}
-          aria-label={`Open criteria and sources for ${criterion.displayName}`}
-          title="Open criteria and sources"
-        >
-          ↗
-        </button>
-      </div>
-      <div className="criterion-status-row">
-        <span
-          className={`criterion-symbol coverage-symbol${isPartial ? ' is-partial' : ''}`}
-          aria-label={isPartial ? 'Partial-coverage criterion' : 'Full-coverage criterion'}
-          title={isPartial ? 'Partial-coverage criterion' : 'Full-coverage criterion'}
-        >
-          <span aria-hidden="true">{isPartial ? '◐' : '●'}</span>
-        </span>
-        <span className="coverage-count" aria-label={`${criterion.coverage.valid_country_count} of ${criterion.coverage.stable_country_count} countries covered`}>
-          {criterion.coverage.valid_country_count}/{criterion.coverage.stable_country_count}{' '}
-        </span>
-        {isLocality && (
-          <span className="criterion-symbol locality-symbol" aria-label="Locality-derived criterion" title="Locality-derived criterion">
-            <span aria-hidden="true">⌖</span>
+    <div className="importance-control" data-criterion-id={criterion.id} ref={controlRef}>
+      <div className="importance-summary-row">
+        <div className="importance-heading">
+          <span className="importance-name" title={criterion.displayName}>{boundedName}</span>
+          <span
+            className={`criterion-symbol coverage-symbol${isPartial ? ' is-partial' : ''}`}
+            aria-label={coverageLabel}
+            title={coverageLabel}
+          >
+            <span aria-hidden="true">{isPartial ? '◐' : '●'}</span>
           </span>
-        )}
-        {criterion.experimental && (
-          <span className="criterion-symbol experimental-symbol" aria-label="Experimental criterion" title="Experimental criterion">
-            <span aria-hidden="true">◇</span>
-          </span>
-        )}
-      </div>
-      <input
-        className="importance-slider"
-        id={`importance-${criterion.id}`}
-        type="range"
-        min="0"
-        max="1"
-        step="0.2"
-        value={value}
-        disabled={disabled}
-        aria-valuetext={`${state.label}, ${state.value.toFixed(1)}`}
-        onChange={(event) => onChange(Number(event.currentTarget.value))}
-        onKeyDown={handleKeyDown}
-        style={fillStyle}
-      />
-      <div className="importance-ticks" aria-hidden="true">
-        {IMPORTANCE_STATES.map((item) => (
-          <span key={item.value}>{item.shortLabel}</span>
-        ))}
+          {isLocality && (
+            <span className="criterion-symbol locality-symbol" aria-label="Locality-derived criterion" title="Locality-derived criterion">
+              <span aria-hidden="true">⌖</span>
+            </span>
+          )}
+          {criterion.experimental && (
+            <span className="criterion-symbol experimental-symbol" aria-label="Experimental criterion" title="Experimental criterion">
+              <span aria-hidden="true">◇</span>
+            </span>
+          )}
+          <button
+            className="criterion-source-link"
+            type="button"
+            onClick={onOpenSources}
+            aria-label={`Open criteria and sources for ${name}`}
+            title="Open criteria and sources"
+          >
+            ↗
+          </button>
+        </div>
+        <div className="importance-picker">
+          <button
+            className="importance-trigger"
+            type="button"
+            disabled={disabled}
+            aria-label={`${name} importance: ${state.label}`}
+            aria-haspopup="listbox"
+            aria-expanded={open}
+            aria-controls={menuId}
+            onClick={() => setOpen((current) => !current)}
+            onKeyDown={handleKeyDown}
+          >
+            <span>{state.shortLabel}</span>
+            <span className="importance-chevron" aria-hidden="true">⌄</span>
+          </button>
+          {open && (
+            <div className="importance-options" id={menuId} role="listbox" aria-label={`${name} importance choices`}>
+              {IMPORTANCE_STATES.map((item) => (
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={item.value === state.value}
+                  className={item.value === state.value ? 'is-selected' : undefined}
+                  key={item.value}
+                  onClick={() => {
+                    onChange(item.value)
+                    setOpen(false)
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

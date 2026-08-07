@@ -3,12 +3,13 @@ import { useMemo, useState, type KeyboardEvent, type RefObject } from 'react'
 import type {
   CatalogCriterionV2,
   CatalogV2,
-  ContributionV2,
+  RankingContributionV3,
   OpportunityFilterCatalogV2,
   RankedCountryV2,
   RankingV2,
   TfcCatalogV2,
 } from '../api/types'
+import { compactDisplayName } from '../displayName'
 import {
   LOCALITY_CONTENT,
   contributingLocalityNames,
@@ -31,7 +32,7 @@ import { CountrySearchAutocomplete } from './CountryAutocomplete'
 const contributionFor = (
   country: RankedCountryV2,
   criterionId: string,
-): ContributionV2 | undefined =>
+): RankingContributionV3 | undefined =>
   country.contributions.find((item) => item.criterion_id === criterionId)
 
 function CriterionSymbols({ criterion }: { criterion: CatalogCriterionV2 }) {
@@ -224,7 +225,20 @@ export function RankingView({
       <div className="results-heading-row">
         <div>
           <p className="eyebrow">Current match</p>
-          <h2 id="rankings-heading">Country ranking</h2>
+          <div className="ranking-title-line">
+            <h2 id="rankings-heading">Country ranking</h2>
+            <span>{ranking.rankings.length} {ranking.rankings.length === 1 ? 'country' : 'countries'}</span>
+          </div>
+          <p className="ranking-subtitle">
+            Ranked by affinity score for your applied priorities{' '}
+            <span
+              className="context-help"
+              title="Locality compatibility is advisory. Opportunity filters restrict results; neither changes the affinity score."
+              aria-label="About ranking scope"
+            >
+              ⓘ
+            </span>
+          </p>
         </div>
         {isUpdating && (
           <span className="updating-state" role="status">
@@ -233,16 +247,48 @@ export function RankingView({
         )}
       </div>
 
-      <AssessmentSummary
-        ranking={ranking}
-        criteria={criteria}
-        countries={countries}
-        opportunityCatalog={opportunityCatalog}
-        isUpdating={isUpdating}
-        onSelectCountry={onSelectCountry}
-        onRemoveOpportunityFilter={onRemoveOpportunityFilter}
-        onClearOpportunityFilters={onClearOpportunityFilters}
-      />
+      {ranking.assessments.opportunity.active_filter_ids.length > 0 && (
+        <section className="opportunity-context" aria-label="Active opportunity filters">
+          <strong>Opportunity filters:</strong>
+          <div className="active-filter-chips">
+            {ranking.assessments.opportunity.active_filter_ids.map((filterId) => {
+              const definition = opportunityCatalog.definitions.find((item) => item.id === filterId)
+              const name = filterName(definition, filterId, true)
+              return (
+                <button
+                  type="button"
+                  className="active-filter-chip"
+                  disabled={isUpdating}
+                  title={name}
+                  aria-label={`Remove ${name} opportunity filter`}
+                  onClick={() => onRemoveOpportunityFilter(filterId)}
+                  key={filterId}
+                >
+                  {name} <span aria-hidden="true">×</span>
+                </button>
+              )
+            })}
+          </div>
+          <span className="context-result-count">
+            {ranking.assessments.opportunity.passing_country_count} matching
+          </span>
+          <span
+            className="context-help"
+            title="Selected filters require a verified strong signal and restrict which countries are shown."
+            aria-label="About opportunity filters"
+          >
+            ⓘ
+          </span>
+          <button
+            type="button"
+            className="text-button"
+            disabled={isUpdating}
+            onClick={onClearOpportunityFilters}
+          >
+            Clear all
+          </button>
+        </section>
+      )}
 
       {ranking.assessments.feasibility && tfcCatalog && (
         <FeasibilitySummary
@@ -253,15 +299,7 @@ export function RankingView({
         />
       )}
 
-      <div className="rank-scope">
-        <strong>Server-ranked countries for the applied priorities</strong>
-        <span>
-          Locality compatibility is advisory. Opportunity filters restrict results; neither
-          changes the affinity score.
-        </span>
-      </div>
-
-      <div className="ranking-filters" role="search" aria-label="Filter country ranking">
+      <div className="ranking-controls" role="search" aria-label="Filter and compare country ranking">
         <label>
           <span>Search countries</span>
           <CountrySearchAutocomplete
@@ -282,9 +320,6 @@ export function RankingView({
             ))}
           </select>
         </label>
-      </div>
-
-      <div className="ranking-toolbar">
         <label className="toggle-control">
           <input
             type="checkbox"
@@ -379,8 +414,8 @@ export function RankingView({
                   )}
                   {detailed &&
                     criteria.map((criterion) => (
-                      <th scope="col" key={criterion.id} title={criterion.displayName}>
-                        <span>{criterion.displayName}</span>
+                      <th scope="col" key={criterion.id} title={compactDisplayName(criterion)}>
+                        <span>{compactDisplayName(criterion)}</span>
                         <CriterionSymbols criterion={criterion} />
                       </th>
                     ))}
@@ -511,7 +546,7 @@ export function RankingView({
                         return (
                           <div key={criterion.id}>
                             <strong>
-                              {criterion.displayName}
+                              {compactDisplayName(criterion)}
                               <CriterionSymbols criterion={criterion} />
                             </strong>
                             {contribution ? (
@@ -536,7 +571,7 @@ export function RankingView({
 
       <footer className="ranking-footer">
         <span aria-live="polite">
-          Showing {visibleRankings.length} of {ranking.rankings.length} returned{' '}
+          Showing {visibleRankings.length} of {ranking.rankings.length} ranked{' '}
           {ranking.rankings.length === 1 ? 'country' : 'countries'} ·{' '}
           {ranking.assessments.coverage.excluded_countries.length} coverage excluded
           {ranking.assessments.opportunity.active_filter_ids.length > 0 && (
@@ -547,6 +582,16 @@ export function RankingView({
           Data release: {ranking.release_id}
         </button>
       </footer>
+
+      <AssessmentSummary
+        ranking={ranking}
+        criteria={criteria}
+        countries={countries}
+        opportunityCatalog={opportunityCatalog}
+        isUpdating={isUpdating}
+        onSelectCountry={onSelectCountry}
+        onClearOpportunityFilters={onClearOpportunityFilters}
+      />
     </section>
   )
 }

@@ -1,6 +1,7 @@
 import type {
   CatalogV2,
   ContributionV2,
+  RankingContributionV3,
   RankingRequestV2,
   RankingV2,
 } from './types'
@@ -33,6 +34,11 @@ declare const contribution: ContributionV2
 void contribution.contributing_localities
 void contribution.aggregation_policy
 void contribution.displayName
+
+declare const rankingContribution: RankingContributionV3
+void rankingContribution.contributing_localities
+// @ts-expect-error Compact ranking contributions omit the full evidence graph.
+void rankingContribution.observations
 
 // @ts-expect-error Locality provenance is structured, not a free-text city field.
 void contribution.city

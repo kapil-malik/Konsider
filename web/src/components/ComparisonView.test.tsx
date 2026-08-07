@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { ComparisonView } from './ComparisonView'
 import {
   comparisonWithOpportunityAndFeasibilityFixture,
+  catalogFixture,
   opportunityCatalogFixture,
   tfcCatalogFixture,
 } from '../test/fixtures'
@@ -11,6 +12,7 @@ test('comparison keeps OFC, feasibility, source dates, ranks, and criteria separ
   render(
     <ComparisonView
       comparison={comparisonWithOpportunityAndFeasibilityFixture}
+      criteria={catalogFixture.criteria}
       opportunityCatalog={opportunityCatalogFixture}
       tfcCatalog={tfcCatalogFixture}
       onBack={() => undefined}
@@ -29,4 +31,8 @@ test('comparison keeps OFC, feasibility, source dates, ranks, and criteria separ
   expect(screen.getAllByText(/Check evidence effective 2026-08-05/)).not.toHaveLength(0)
   expect(screen.getAllByText(/Filtered rank/)).not.toHaveLength(0)
   expect(screen.getAllByText(/Base rank/)).not.toHaveLength(0)
+  expect(screen.getByLabelText('Experimental criterion')).toHaveAttribute(
+    'title',
+    'Experimental criterion',
+  )
 })

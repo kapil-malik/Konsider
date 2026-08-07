@@ -2,6 +2,7 @@ import type {
   OpportunityFilterDefinitionV2,
   OpportunityFilterEvidenceV2,
 } from './api/types'
+import { compactDisplayName } from './displayName'
 
 export type OpportunityState = OpportunityFilterEvidenceV2['state']
 
@@ -86,6 +87,7 @@ export function filterName(
   filterId: string,
   compact = false,
 ): string {
+  void compact
   if (!definition) return filterId
-  return compact ? definition.compactName ?? definition.displayName : definition.displayName
+  return compactDisplayName(definition)
 }

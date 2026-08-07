@@ -196,10 +196,10 @@ readable schemas, and published release manifests take precedence if prose ever 
 - [Phase 7 closure report](history/phase7-closure-report.md)
 - [Release 2026-08-05.1](history/releases/2026-08-05.1.md)
 - [Release 2026-08-07.2](history/releases/2026-08-07.2.md)
-- [Release 2026-08-07.4](history/releases/2026-08-07.4.md)
+- [Release 2026-08-08.2](history/releases/2026-08-08.2.md)
 - [Phase 6 closure report](history/phase6-closure-report.md)
 - [Archived phase workspaces](../project-history/README.md)
 
 Historical files explain what was delivered at a point in time; they are not operational
-instructions. The active runtime serves schema-6.1 overlay `2026-08-07.4`, resolving immutable
-schema-5.2 ranking base `2026-08-07.3`; older releases require explicit historical loaders.
+instructions. The active runtime serves schema-6.1 overlay `2026-08-08.2`, resolving immutable
+schema-5.2 ranking base `2026-08-08.1`; older releases require explicit historical loaders.

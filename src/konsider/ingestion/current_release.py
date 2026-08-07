@@ -190,6 +190,18 @@ def validate_current_artifacts(artifacts: CurrentReleaseArtifacts) -> dict[str, 
         for entity_id, entity in entities.items()
         if entity.get("entity_type") == "COUNTRY"
     }
+    country_regions = {entity_id: entity.get("region") for entity_id, entity in countries.items()}
+    if any(country_regions.values()):
+        for entity_id, region in sorted(country_regions.items()):
+            if not region:
+                issues.append(
+                    _issue(
+                        "MISSING_COUNTRY_REGION",
+                        "Every country must carry a non-empty region once region metadata is present.",
+                        "geographic-entity",
+                        entity_id=entity_id,
+                    )
+                )
     catalog_entities = {
         row.get("entity_id"): row
         for row in artifacts.consumer_catalog.get("geographic_entities", [])

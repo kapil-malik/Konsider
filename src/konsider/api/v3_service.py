@@ -82,7 +82,21 @@ class RecommendationServiceV3:
         return _v3_tree(payload)
 
     def rank(self, *args, **kwargs) -> dict[str, Any]:
-        return _v3_tree(self.delegate.rank(*args, **kwargs))
+        payload = self.delegate.rank(*args, **kwargs)
+        for row in payload["rankings"]:
+            row["contributions"] = [
+                {
+                    "criterion_id": contribution["criterion_id"],
+                    "criterion_name": contribution["criterion_name"],
+                    "derivation": contribution["derivation"],
+                    "score": contribution["score"],
+                    "normalized_weight": contribution["normalized_weight"],
+                    "contribution": contribution["contribution"],
+                    "contributing_localities": contribution["contributing_localities"],
+                }
+                for contribution in row["contributions"]
+            ]
+        return _v3_tree(payload)
 
     def compare(self, *args, **kwargs) -> dict[str, Any]:
         return _v3_tree(self.delegate.compare(*args, **kwargs))

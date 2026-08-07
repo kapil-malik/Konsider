@@ -8,7 +8,7 @@ Last updated: 2026-08-05
 
 The local worker, immutable real-data release pipeline, schema/checksum-validating release consumer,
 deterministic recommendation service, five-route FastAPI v2 transport, and responsive React UI are
-implemented. Active overlay `2026-08-07.4` resolves base `2026-08-07.3` and exposes the stable 91-country universe, 388 frozen
+implemented. Active overlay `2026-08-08.2` resolves base `2026-08-08.1` and exposes the stable 91-country universe, 388 frozen
 urban centres, and fourteen available criteria. Eight are 91/91 global-core criteria; Overall job-market opportunity, School
 education quality, and Research and innovation ecosystem are conditional criteria, and UHC remains
 diagnostic-only. Infrastructure and the two Wave 2 additions are experimental. Phase 4's ranking

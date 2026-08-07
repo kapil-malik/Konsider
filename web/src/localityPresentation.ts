@@ -1,5 +1,5 @@
 import type {
-  ContributionV2,
+  RankingContributionV3,
   RankingV2,
   RankedCountryV2,
 } from './api/types'
@@ -136,7 +136,7 @@ export const PROFILE_CONTENT: Record<
   },
 }
 
-export function localityContributions(country: RankedCountryV2): ContributionV2[] {
+export function localityContributions(country: RankedCountryV2): RankingContributionV3[] {
   return country.contributions.filter(
     (contribution) => contribution.derivation === 'AGGREGATED_FROM_LOCALITIES',
   )
@@ -156,7 +156,7 @@ export function contributingLocalityNames(country: RankedCountryV2): string[] {
 
 export function localityName(
   entityId: string | null,
-  contributions: ContributionV2[],
+  contributions: RankingContributionV3[],
 ): string | null {
   if (!entityId) return null
   return (

@@ -342,6 +342,57 @@
         "title": "CatalogV3Response",
         "type": "object"
       },
+      "CompactContributionV3Response": {
+        "additionalProperties": false,
+        "properties": {
+          "contributing_localities": {
+            "items": {
+              "$ref": "#/components/schemas/ContributingLocalityResponse"
+            },
+            "title": "Contributing Localities",
+            "type": "array"
+          },
+          "contribution": {
+            "title": "Contribution",
+            "type": "number"
+          },
+          "criterion_id": {
+            "title": "Criterion Id",
+            "type": "string"
+          },
+          "derivation": {
+            "enum": [
+              "DIRECT",
+              "AGGREGATED_FROM_LOCALITIES"
+            ],
+            "title": "Derivation",
+            "type": "string"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "normalized_weight": {
+            "title": "Normalized Weight",
+            "type": "number"
+          },
+          "score": {
+            "title": "Score",
+            "type": "number"
+          }
+        },
+        "required": [
+          "criterion_id",
+          "displayName",
+          "derivation",
+          "score",
+          "normalized_weight",
+          "contribution",
+          "contributing_localities"
+        ],
+        "title": "CompactContributionV3Response",
+        "type": "object"
+      },
       "ComparedCountryV3Response": {
         "additionalProperties": false,
         "properties": {
@@ -2556,7 +2607,7 @@
           },
           "contributions": {
             "items": {
-              "$ref": "#/components/schemas/ContributionV3Response"
+              "$ref": "#/components/schemas/CompactContributionV3Response"
             },
             "title": "Contributions",
             "type": "array"
@@ -4902,65 +4953,6 @@
         "title": "V2ComparisonRequest",
         "type": "object"
       },
-      "V2RankingRequest": {
-        "additionalProperties": false,
-        "properties": {
-          "feasibility": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/TfcAssessmentSelectionRequest"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "opportunity_filters": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/OpportunityFilterSelection"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "preference_preset_id": {
-            "anyOf": [
-              {
-                "minLength": 1,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Preference Preset Id"
-          },
-          "top_k": {
-            "default": 10,
-            "minimum": 1.0,
-            "title": "Top K",
-            "type": "integer"
-          },
-          "weights": {
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "number"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Weights"
-          }
-        },
-        "title": "V2RankingRequest",
-        "type": "object"
-      },
       "V2WeightSelection": {
         "additionalProperties": false,
         "properties": {
@@ -5012,6 +5004,71 @@
           }
         },
         "title": "V2WeightSelection",
+        "type": "object"
+      },
+      "V3RankingRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "feasibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TfcAssessmentSelectionRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "opportunity_filters": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OpportunityFilterSelection"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "preference_preset_id": {
+            "anyOf": [
+              {
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preference Preset Id"
+          },
+          "top_k": {
+            "anyOf": [
+              {
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Top K"
+          },
+          "weights": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weights"
+          }
+        },
+        "title": "V3RankingRequest",
         "type": "object"
       }
     }
@@ -5301,7 +5358,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/V2RankingRequest"
+                "$ref": "#/components/schemas/V3RankingRequest"
               }
             }
           },

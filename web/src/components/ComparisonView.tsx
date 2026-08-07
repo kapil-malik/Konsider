@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react'
 
 import type {
+  CatalogCriterionV2,
   ComparisonV2,
   ContributionV2,
   OpportunityFilterCatalogV2,
   TfcCatalogV2,
 } from '../api/types'
+import { byDisplayOrder, compactDisplayName } from '../displayName'
 import {
   countryCode,
   readableCode,
@@ -24,6 +26,7 @@ import {
 
 type ComparisonViewProps = {
   comparison: ComparisonV2
+  criteria: CatalogCriterionV2[]
   opportunityCatalog: OpportunityFilterCatalogV2
   tfcCatalog: TfcCatalogV2 | null
   onBack: () => void
@@ -71,6 +74,7 @@ function ContributionValue({
 
 export function ComparisonView({
   comparison,
+  criteria,
   opportunityCatalog,
   tfcCatalog,
   onBack,
@@ -81,6 +85,17 @@ export function ComparisonView({
   const opportunityDefinitions = new Map(
     opportunityCatalog.definitions.map((definition) => [definition.id, definition]),
   )
+  const criteriaById = new Map(criteria.map((criterion) => [criterion.id, criterion]))
+  const criterionName = (criterionId: string, fallback: string) => {
+    const definition = criteriaById.get(criterionId)
+    return definition ? compactDisplayName(definition) : fallback
+  }
+  const orderedCriterionRows = [...comparison.criterion_rows].sort((first, second) => {
+    const firstDefinition = criteriaById.get(first.criterion_id)
+    const secondDefinition = criteriaById.get(second.criterion_id)
+    if (!firstDefinition || !secondDefinition) return first.criterion_id.localeCompare(second.criterion_id)
+    return byDisplayOrder(firstDefinition, secondDefinition)
+  })
   const opportunityFiltersActive =
     comparison.assessments.opportunity.active_filter_ids.length > 0
   const tfcDefinitions = new Map(
@@ -250,10 +265,10 @@ export function ComparisonView({
                   })}
                 </tr>
               ))}
-            {comparison.criterion_rows.map((row) => (
+            {orderedCriterionRows.map((row) => (
               <tr key={row.criterion_id}>
                 <th scope="row">
-                  {row.displayName}
+                  {criterionName(row.criterion_id, row.displayName)}
                   <span className="row-badges">
                     {row.coverage.mode === 'CONDITIONAL_COMPLETE_CASE' && (
                       <span
@@ -271,6 +286,15 @@ export function ComparisonView({
                         title="Locality-derived criterion"
                       >
                         <span aria-hidden="true">⌖</span>
+                      </span>
+                    )}
+                    {criteriaById.get(row.criterion_id)?.experimental && (
+                      <span
+                        className="criterion-symbol experimental-symbol"
+                        aria-label="Experimental criterion"
+                        title="Experimental criterion"
+                      >
+                        <span aria-hidden="true">◇</span>
                       </span>
                     )}
                   </span>
@@ -360,13 +384,13 @@ export function ComparisonView({
                 </div>
               )}
               <dl>
-                {comparison.criterion_rows.map((row) => {
+                {orderedCriterionRows.map((row) => {
                   const cell = row.cells.find(
                     (item) => item.country.entity_id === country.country.entity_id,
                   )
                   return (
                     <div key={row.criterion_id}>
-                      <dt>{row.displayName}</dt>
+                      <dt>{criterionName(row.criterion_id, row.displayName)}</dt>
                       <dd>
                         {cell ? (
                           <ContributionValue

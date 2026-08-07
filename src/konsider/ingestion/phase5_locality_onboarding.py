@@ -170,7 +170,7 @@ COUNTRY_NAME_ALIASES = {
 }
 
 PRESET_WEIGHTS = {
-    "equal_weight_mvp": {"C66": 1.0, "C67": 1.0},
+    "equal_weight_mvp": {"C66": 0.6, "C67": 0.6},
     "safety_and_stability": {"C66": 0.6, "C67": 0.6},
     "affordability_first": {"C66": 0.4, "C67": 0.4},
     "quality_of_life": {"C66": 1.0, "C67": 1.0},
@@ -274,6 +274,7 @@ def _country_entities(countries: dict[str, dict[str, Any]]) -> list[dict[str, An
             "entity_id": f"country:{code}",
             "entity_type": "COUNTRY",
             "display_name": row["display_name"],
+            "region": row["region"],
             "country_codes": [code],
             "aliases": [],
             "source_mappings": [

@@ -1,4 +1,5 @@
 import type { TfcDefinitionV2, TfcOutcomeV2 } from './api/types'
+import { compactDisplayName } from './displayName'
 
 export const readableTfcCode = (value: string) =>
   value
@@ -41,4 +42,4 @@ export function tfcOutcomeContent(outcome: TfcOutcomeV2) {
 export const tfcName = (
   definition: TfcDefinitionV2 | undefined,
   fallback: string,
-) => definition?.displayName ?? readableTfcCode(fallback)
+) => definition ? compactDisplayName(definition) : readableTfcCode(fallback)

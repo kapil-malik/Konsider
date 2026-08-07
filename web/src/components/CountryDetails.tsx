@@ -3,12 +3,14 @@ import { useEffect, useRef } from 'react'
 
 import { fetchCountryDetails } from '../api/client'
 import type {
+  CatalogCriterionV2,
   CountryDetailsV2,
   OpportunityFilterCatalogV2,
   RankedCountryV2,
   TfcCatalogV2,
   WeightSelectionV2,
 } from '../api/types'
+import { byDisplayOrder, compactDisplayName } from '../displayName'
 import {
   LOCALITY_CONTENT,
   localityName,
@@ -34,6 +36,7 @@ import {
 
 type CountryDetailsProps = {
   countryCode: string
+  criteria: CatalogCriterionV2[]
   selection: WeightSelectionV2
   opportunityCatalog: OpportunityFilterCatalogV2
   tfcCatalog: TfcCatalogV2 | null
@@ -206,6 +209,7 @@ function LocalityAssessment({
 
 export function CountryDetails({
   countryCode,
+  criteria,
   selection,
   opportunityCatalog,
   tfcCatalog,
@@ -216,6 +220,7 @@ export function CountryDetails({
   opportunityBaseRank,
   onClose,
 }: CountryDetailsProps) {
+  const criteriaById = new Map(criteria.map((criterion) => [criterion.id, criterion]))
   const headingRef = useRef<HTMLHeadingElement>(null)
   const detailsQuery = useQuery({
     queryKey: ['country-details', countryCode, selection],
@@ -310,7 +315,7 @@ export function CountryDetails({
             </>
           )}
           <div className="metric-grid">
-            {detailsQuery.data.criteria.map(({ criterion, evidence }) => {
+            {[...detailsQuery.data.criteria].sort((first, second) => byDisplayOrder(first.criterion, second.criterion)).map(({ criterion, evidence }) => {
               const contribution = evidence.contribution
               const localityDerived =
                 contribution?.derivation === 'AGGREGATED_FROM_LOCALITIES'
@@ -322,7 +327,7 @@ export function CountryDetails({
                   <div className="metric-card-heading">
                     <div>
                       <p className="eyebrow">{criterion.sectionName}</p>
-                      <h3>{criterion.displayName}</h3>
+                      <h3>{compactDisplayName(criteriaById.get(criterion.id) ?? criterion)}</h3>
                     </div>
                     {contribution ? (
                       <strong className="metric-score">

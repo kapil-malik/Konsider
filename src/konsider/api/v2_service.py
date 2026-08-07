@@ -27,6 +27,14 @@ def _display_name(definition: Mapping[str, Any]) -> str:
     return str(definition.get("displayName", definition.get("display_name")))
 
 
+def _criterion_sort_key(definition: Mapping[str, Any]) -> tuple[int, str]:
+    sort_order = definition.get("sortOrder", definition.get("sort_order"))
+    return (
+        int(sort_order) if sort_order is not None else 2**31 - 1,
+        str(definition["id"]),
+    )
+
+
 def _reason(
     code: str,
     *,
@@ -113,6 +121,7 @@ class RecommendationService:
 
     def catalog(self) -> dict[str, Any]:
         catalog = self.release.artifacts.consumer_catalog
+        criteria_by_id = {row["id"]: row for row in catalog["criteria"]}
         entities = {row["entity_id"]: row for row in self.release.artifacts.geographic_entities}
         countries = [
             {
@@ -120,7 +129,7 @@ class RecommendationService:
                 "entity_type": row["entity_type"],
                 "display_name": row["display_name"],
                 "country_codes": row["country_codes"],
-                "region": None,
+                "region": row.get("region"),
             }
             for row in sorted(entities.values(), key=lambda item: item["entity_id"])
             if row["entity_type"] == "COUNTRY"
@@ -144,14 +153,14 @@ class RecommendationService:
                     "country": country,
                     "criteria": sorted(
                         outcomes_by_country.get(country["entity_id"], []),
-                        key=lambda item: item["criterion_id"],
+                        key=lambda item: _criterion_sort_key(criteria_by_id[item["criterion_id"]]),
                     ),
                 }
                 for country in countries
             ],
             "criteria": [
                 self._catalog_criterion(row)
-                for row in sorted(catalog["criteria"], key=lambda item: item["id"])
+                for row in sorted(catalog["criteria"], key=_criterion_sort_key)
             ],
             "preference_presets": catalog["preference_presets"],
         }
@@ -287,7 +296,7 @@ class RecommendationService:
                             "entity_type": entity["entity_type"],
                             "display_name": entity["display_name"],
                             "country_codes": entity["country_codes"],
-                            "region": None,
+                            "region": entity.get("region"),
                         },
                         "input_score": locality["score"],
                         "observation_id": locality["observation_ids"][0],
@@ -402,6 +411,9 @@ class RecommendationService:
     ) -> dict[str, Any]:
         entities = {row["entity_id"]: row for row in self.release.artifacts.geographic_entities}
         active_ids = set(result.normalized_weights)
+        raw_criteria = {
+            row["id"]: row for row in self.release.artifacts.consumer_catalog["criteria"]
+        }
         rows = []
         contributions_by_country: dict[str, dict[str, dict[str, Any]]] = {}
         for row in result.rankings:
@@ -420,10 +432,16 @@ class RecommendationService:
                         "entity_type": entity["entity_type"],
                         "display_name": entity["display_name"],
                         "country_codes": entity["country_codes"],
-                        "region": None,
+                        "region": entity.get("region"),
                     },
                     "total_score": row.total_score,
-                    "contributions": list(contributions.values()),
+                    "contributions": [
+                        contributions[criterion_id]
+                        for criterion_id in sorted(
+                            contributions,
+                            key=lambda item: _criterion_sort_key(raw_criteria[item]),
+                        )
+                    ],
                     "assessments": {
                         "locality": row.locality_assessment.to_dict(),
                         "profile": row.profile_assessment.to_dict(),
@@ -449,7 +467,10 @@ class RecommendationService:
                     active_ids=active_ids,
                     contributions=country_contributions,
                 )
-                for criterion_id in sorted(active_ids)
+                for criterion_id in sorted(
+                    active_ids,
+                    key=lambda item: _criterion_sort_key(raw_criteria[item]),
+                )
             ]
             excluded.append(
                 {
@@ -458,7 +479,7 @@ class RecommendationService:
                         "entity_type": entity["entity_type"],
                         "display_name": entity["display_name"],
                         "country_codes": entity["country_codes"],
-                        "region": None,
+                        "region": entity.get("region"),
                     },
                     "final_aggregate": None,
                     "criterion_evidence": evidence,
@@ -679,7 +700,13 @@ class RecommendationService:
             }
         )
         rows = []
-        for criterion_id in sorted(active_ids):
+        raw_criteria = {
+            row["id"]: row for row in self.release.artifacts.consumer_catalog["criteria"]
+        }
+        for criterion_id in sorted(
+            active_ids,
+            key=lambda item: _criterion_sort_key(raw_criteria[item]),
+        ):
             cells = []
             for entity_id in requested_ids:
                 contributions = contribution_maps.get(entity_id, {})
@@ -751,7 +778,13 @@ class RecommendationService:
             for row in comparison["criterion_rows"]
         }
         details = []
-        for criterion_id in sorted(evidence):
+        raw_criteria = {
+            row["id"]: row for row in self.release.artifacts.consumer_catalog["criteria"]
+        }
+        for criterion_id in sorted(
+            evidence,
+            key=lambda item: _criterion_sort_key(raw_criteria[item]),
+        ):
             item = dict(evidence[criterion_id])
             item.pop("country")
             details.append({"criterion": catalog[criterion_id], "evidence": item})

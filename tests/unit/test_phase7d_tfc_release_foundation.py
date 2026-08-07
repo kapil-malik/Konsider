@@ -287,5 +287,5 @@ def test_active_display_release_remains_loadable_and_unchanged() -> None:
     loaded = CurrentReleaseRepository(ROOT / "data" / "releases").load_active()
     after = (ROOT / "data" / "releases" / "active.json").read_bytes()
     assert loaded.manifest["schema_version"] == "konsider-release-5.2"
-    assert loaded.manifest["release_id"] == "2026-08-07.3"
+    assert loaded.manifest["release_id"] == "2026-08-08.1"
     assert before == after

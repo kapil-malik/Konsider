@@ -17,19 +17,25 @@ from konsider.api.models.v2 import (
     ComparisonV2Response,
     ContributionV2Response,
     CountryAssessmentsV2Response,
+    ContributingLocalityResponse,
     CountryCriterionDetailV2Response,
     CountryDetailsV2Response,
+    GeographicEntityResponse,
     CoverageAssessmentV2Response,
     CriterionOutcomeEvidenceResponse,
     ExcludedCountryV2Response,
     HealthV2Response,
     OpportunityFilterCatalogV2Response,
     OpportunityFilterDefinitionV2Response,
-    RankedCountryV2Response,
     RankingV2Response,
     TfcCatalogV2Response,
     TfcDefinitionV2Response,
+    V2WeightSelection,
 )
+
+
+class V3RankingRequest(V2WeightSelection):
+    top_k: int | None = Field(default=None, strict=True, ge=1)
 
 
 class V3ContractMixin(ApiModel):
@@ -106,8 +112,22 @@ class AssessmentsV3Response(AssessmentsV2Response):
     coverage: CoverageAssessmentV3Response
 
 
-class RankedCountryV3Response(RankedCountryV2Response):
-    contributions: list[ContributionV3Response]
+class CompactContributionV3Response(ApiModel):
+    criterion_id: str
+    display_name: str = Field(alias="displayName")
+    derivation: Literal["DIRECT", "AGGREGATED_FROM_LOCALITIES"]
+    score: float
+    normalized_weight: float
+    contribution: float
+    contributing_localities: list[ContributingLocalityResponse]
+
+
+class RankedCountryV3Response(ApiModel):
+    rank: int = Field(ge=1)
+    base_rank: int = Field(ge=1)
+    country: GeographicEntityResponse
+    total_score: float
+    contributions: list[CompactContributionV3Response]
     assessments: CountryAssessmentsV2Response
 
 
